@@ -1,0 +1,8 @@
+content: |
+  - 🔐 **身份验证系列**
+    - [单点登录的演进](/zh-CN/2010/01/Evolution-of-Single-Sign-On-From-Kerberos-to-OIDC/)
+    - [理解 SAML](/zh-CN/2010/02/Understanding-SAML-Enterprise-Federation-Explained/)
+    - [理解 Kerberos](/zh-CN/2010/03/Understanding-Kerberos-Network-Authentication-Explained/)
+    - [OpenID Connect](/zh-CN/2014/11/OpenID-Connect-Modern-Authentication-Explained/)
+    - [OAuth 2.0 安全最佳实践](/zh-CN/2020/12/OAuth-2.0-Security-Best-Practices-From-Design-to-Implementation/)
+    - [身份代理](/zh-CN/2021/12/Identity-Broker-Patterns/)

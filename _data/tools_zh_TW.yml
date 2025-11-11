@@ -1,0 +1,39 @@
+content: |
+  - 📝 **文字處理**
+    - [文字統計](/zh-TW/tools/text-statistics/)
+    - [大小寫轉換器](/zh-TW/tools/case-converter/)
+    - [ASCII 文字繪製器](/zh-TW/tools/ascii-text-drawer/)
+    - [北約字母轉換器](/zh-TW/tools/nato-alphabet/)
+    - [表情符號選擇器](/zh-TW/tools/emoji-picker/)
+
+  - 🔧 **編碼與格式化**
+    - [Base64 編碼/解碼器](/zh-TW/tools/base64-converter/)
+    - [URL 編碼/解碼器](/zh-TW/tools/url-encoder/)
+    - [JSON 驗證器與格式化工具](/zh-TW/tools/json-validator/)
+    - [JSON 轉 YAML 轉換器](/zh-TW/tools/json-yaml-converter/)
+
+  - 🌐 **網路與 DNS**
+    - [DNS over HTTPS 查詢](/zh-TW/tools/doh-lookup/)
+    - [IPv4 子網路計算器](/zh-TW/tools/ipv4-subnet-calculator/)
+
+  - 🔒 **安全與分析**
+    - [Defang 工具](/zh-TW/tools/defang/)
+    - [雜湊文字](/zh-TW/tools/hash-text/)
+    - [X.509 憑證解碼器](/zh-TW/tools/x509-decoder/)
+    - [URL 解析器](/zh-TW/tools/url-parser/)
+
+  - ⚙️ **系統管理**
+    - [Chmod 計算器](/zh-TW/tools/chmod-calculator/)
+    - [Crontab 產生器](/zh-TW/tools/crontab-generator/)
+
+  - 🛠️ **實用工具**
+    - [溫度轉換器](/zh-TW/tools/temperature-converter/)
+    - [碼錶](/zh-TW/tools/chronometer/)
+    - [世界時鐘](/zh-TW/tools/world-clock/)
+    - [裝置資訊](/zh-TW/tools/device-information/)
+    - [Mermaid 圖表編輯器](/zh-TW/tools/mermaid-editor/)
+    - [QR Code 產生器](/zh-TW/tools/qr-code-generator/)
+
+  - 🖼️ **檔案分析**
+    - [PNG 中繼資料檢查器](/zh-TW/tools/png-metadata-checker/)
+    - [EXIF 提取器](/zh-TW/tools/exif-extractor/)

@@ -1,0 +1,101 @@
+---
+title: QRコード生成ツール
+layout: tools
+lang: ja
+series: tools
+---
+
+<link rel="stylesheet" href="/tools/qr-code-generator/style.css">
+
+<div id="qr-generator">
+    <div class="input-section">
+        <label for="qr-text">テキストまたはURL：</label>
+        <textarea id="qr-text" placeholder="QRコードを生成するテキストまたはURLを入力..."></textarea>
+        
+        <div class="options-grid">
+            <div class="option-group">
+                <label for="qr-size">サイズ：</label>
+                <input type="number" id="qr-size" value="300" min="100" max="1000" step="50">
+            </div>
+            
+            <div class="option-group">
+                <label for="qr-error">誤り訂正：</label>
+                <select id="qr-error">
+                    <option value="L">低 (7%)</option>
+                    <option value="M">中 (15%)</option>
+                    <option value="Q" selected>高 (25%)</option>
+                    <option value="H">最高 (30%)</option>
+                </select>
+            </div>
+            
+            <div class="option-group">
+                <label for="qr-gradient">グラデーション：</label>
+                <input type="checkbox" id="qr-gradient">
+            </div>
+            
+            <div class="option-group">
+                <label for="qr-color">カラー 1：</label>
+                <input type="color" id="qr-color" value="#000000">
+            </div>
+            
+            <div class="option-group" id="color2-group" style="display: none;">
+                <label for="qr-color2">カラー 2：</label>
+                <input type="color" id="qr-color2" value="#0000ff">
+            </div>
+            
+            <div class="option-group" id="gradient-type-group" style="display: none;">
+                <label for="gradient-type">タイプ：</label>
+                <select id="gradient-type">
+                    <option value="linear">線形</option>
+                    <option value="radial">放射状</option>
+                </select>
+            </div>
+            
+            <div class="option-group">
+                <label for="qr-bg">背景：</label>
+                <input type="color" id="qr-bg" value="#ffffff">
+            </div>
+            
+            <div class="option-group">
+                <label for="qr-type">ドットスタイル：</label>
+                <select id="qr-type">
+                    <option value="square">四角</option>
+                    <option value="rounded" selected>角丸</option>
+                    <option value="dots">ドット</option>
+                    <option value="classy">クラシック</option>
+                    <option value="classy-rounded">クラシック角丸</option>
+                    <option value="extra-rounded">超角丸</option>
+                </select>
+            </div>
+            
+            <div class="option-group">
+                <label for="corner-square-type">コーナー四角：</label>
+                <select id="corner-square-type">
+                    <option value="">なし</option>
+                    <option value="square">四角</option>
+                    <option value="extra-rounded" selected>超角丸</option>
+                    <option value="dot">ドット</option>
+                </select>
+            </div>
+            
+            <div class="option-group">
+                <label for="corner-dot-type">コーナードット：</label>
+                <select id="corner-dot-type">
+                    <option value="">なし</option>
+                    <option value="square">四角</option>
+                    <option value="dot" selected>ドット</option>
+                </select>
+            </div>
+        </div>
+        
+        <button id="generate-btn" class="btn-primary">QRコードを生成</button>
+    </div>
+    
+    <div class="output-section">
+        <div id="qr-canvas"></div>
+        <button id="download-btn" class="btn-secondary" style="display: none;">QRコードをダウンロード</button>
+    </div>
+</div>
+
+<script src="https://unpkg.com/qr-code-styling@1.9.2/lib/qr-code-styling.js"></script>
+<script src="/tools/qr-code-generator/script.local.js"></script>

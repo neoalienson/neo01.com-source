@@ -1,0 +1,48 @@
+---
+title: Base64 编码器/解码器
+layout: tools
+lang: zh-CN
+series: tools
+---
+
+    <link rel="stylesheet" href="/tools/base64-converter/style.css">
+
+        
+        <div class="controls">
+            <div class="checkbox-container">
+                <input type="checkbox" id="urlSafe">
+                <label for="urlSafe">URL Safe</label>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label for="inputText">Input Text:</label>
+            <textarea id="inputText" placeholder="Enter text to encode or Base64 to decode..."></textarea>
+            <div class="button-group">
+                <button class="btn-primary" onclick="encodeText()">编码 to Base64</button>
+                <button class="btn-secondary" onclick="decodeText()">解码 from Base64</button>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <div class="output-header">
+                <label for="outputText">输出：</label>
+                <button class="btn-copy" onclick="copyOutput()">复制</button>
+            </div>
+            <textarea id="outputText" readonly placeholder="Output will appear here..."></textarea>
+            <div id="message"></div>
+        </div>
+
+    <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+        <h2>关于 Base64 编码</h2>
+        <p>Base64 是一种编码方案，使用 64 个可打印字符（A-Z、a-z、0-9、+、/）将二进制数据转换为 ASCII 文本。它对于通过基于文本的协议（如电子邮件、JSON 或 XML）传输二进制数据至关重要。虽然 Base64 会使数据大小增加约 33%，但它确保二进制数据可以安全地通过为文本设计的系统。</p>
+        
+        <p>编码的工作原理是取 3 个字节（24 位）的输入并将其转换为 4 个 Base64 字符（每个 6 位）。当输入不能被 3 整除时，会添加填充字符（=）。URL 安全的 Base64 将 + 替换为 - 并将 / 替换为 _，以避免在 URL 和文件名中出现问题，非常适合令牌、标识符和查询参数。</p>
+        
+        <h3>常见使用案例</h3>
+        <p>Base64 无处不在：在 HTML/CSS 中嵌入图片（数据 URL）、编码电子邮件附件（MIME）、传输 JSON Web 令牌（JWT）、在数据库中存储二进制数据、编码 API 凭证以及处理文件上传。它不是加密——任何人都可以解码它——但它可以防止传输过程中的数据损坏。</p>
+        
+        <p>输入任何文字以将其编码为 Base64，或粘贴 Base64 以将其解码回纯文本。切换 URL 安全模式以进行网络友好的编码。该工具会自动检测您的输入是纯文本还是 Base64 并相应地处理它。所有操作都在您的浏览器本地进行以保护隐私。</p>
+    </div>
+
+    <script src="/tools/base64-converter/base64-converter.local.js"></script>

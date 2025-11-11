@@ -1,0 +1,26 @@
+---
+title: Device Information
+layout: tools
+series: tools
+---
+
+    <link rel="stylesheet" href="/css/tools-common.css">
+    <link rel="stylesheet" href="/tools/device-information/style.css">
+
+    <div class="tool_main">
+        <div class="info-grid" id="deviceInfo"></div>
+    </div>
+
+    <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+        <h2>About Device Information</h2>
+        <p>Device Information displays comprehensive details about your current device, browser, and network environment. This tool detects your operating system, browser version, screen resolution, timezone, language preferences, and more. It's useful for troubleshooting compatibility issues, testing responsive designs, and understanding your device's capabilities.</p>
+        
+        <p>The tool gathers information using browser APIs and JavaScript, including user agent parsing, screen properties, network information, and system preferences. All data is collected locally in your browser - nothing is sent to any server. The information displayed is what websites can typically detect about your device when you visit them.</p>
+        
+        <h3>Common Use Cases</h3>
+        <p>Web developers use device information for testing responsive designs across different screen sizes, debugging browser-specific issues, and verifying feature support. Users check their device specs when troubleshooting problems, verifying browser versions for compatibility, understanding privacy exposure, and confirming system settings like timezone and language.</p>
+        
+        <p>Simply load this page to see all available device information. The data updates automatically and reflects your current browser session. All detection happens locally in your browser.</p>
+    </div>
+
+    <script src="/tools/device-information/device-information.local.js"></script>

@@ -1,0 +1,112 @@
+---
+title: QR Code Generator
+layout: tools
+series: tools
+---
+
+<link rel="stylesheet" href="/tools/qr-code-generator/style.css">
+
+<div id="qr-generator">
+    <div class="input-section">
+        <label for="qr-text">Text or URL:</label>
+        <textarea id="qr-text" placeholder="Enter text or URL to generate QR code..."></textarea>
+        
+        <div class="options-grid">
+            <div class="option-group">
+                <label for="qr-size">Size:</label>
+                <input type="number" id="qr-size" value="300" min="100" max="1000" step="50">
+            </div>
+            
+            <div class="option-group">
+                <label for="qr-error">Error Correction:</label>
+                <select id="qr-error">
+                    <option value="L">Low (7%)</option>
+                    <option value="M">Medium (15%)</option>
+                    <option value="Q" selected>Quartile (25%)</option>
+                    <option value="H">High (30%)</option>
+                </select>
+            </div>
+            
+            <div class="option-group">
+                <label for="qr-gradient">Gradient:</label>
+                <input type="checkbox" id="qr-gradient">
+            </div>
+            
+            <div class="option-group">
+                <label for="qr-color">Color 1:</label>
+                <input type="color" id="qr-color" value="#000000">
+            </div>
+            
+            <div class="option-group" id="color2-group" style="display: none;">
+                <label for="qr-color2">Color 2:</label>
+                <input type="color" id="qr-color2" value="#0000ff">
+            </div>
+            
+            <div class="option-group" id="gradient-type-group" style="display: none;">
+                <label for="gradient-type">Type:</label>
+                <select id="gradient-type">
+                    <option value="linear">Linear</option>
+                    <option value="radial">Radial</option>
+                </select>
+            </div>
+            
+            <div class="option-group">
+                <label for="qr-bg">Background:</label>
+                <input type="color" id="qr-bg" value="#ffffff">
+            </div>
+            
+            <div class="option-group">
+                <label for="qr-type">Dot Style:</label>
+                <select id="qr-type">
+                    <option value="square">Square</option>
+                    <option value="rounded" selected>Rounded</option>
+                    <option value="dots">Dots</option>
+                    <option value="classy">Classy</option>
+                    <option value="classy-rounded">Classy Rounded</option>
+                    <option value="extra-rounded">Extra Rounded</option>
+                </select>
+            </div>
+            
+            <div class="option-group">
+                <label for="corner-square-type">Corner Square:</label>
+                <select id="corner-square-type">
+                    <option value="">None</option>
+                    <option value="square">Square</option>
+                    <option value="extra-rounded" selected>Extra Rounded</option>
+                    <option value="dot">Dot</option>
+                </select>
+            </div>
+            
+            <div class="option-group">
+                <label for="corner-dot-type">Corner Dot:</label>
+                <select id="corner-dot-type">
+                    <option value="">None</option>
+                    <option value="square">Square</option>
+                    <option value="dot" selected>Dot</option>
+                </select>
+            </div>
+        </div>
+        
+        <button id="generate-btn" class="btn-primary">Generate QR Code</button>
+    </div>
+    
+    <div class="output-section">
+        <div id="qr-canvas"></div>
+        <button id="download-btn" class="btn-secondary" style="display: none;">Download QR Code</button>
+    </div>
+</div>
+
+<div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+    <h2>About QR Code Generator</h2>
+    <p>QR Code Generator creates customizable QR codes from text, URLs, or any data. QR (Quick Response) codes are two-dimensional barcodes that can be scanned by smartphones to quickly access information. This tool generates high-quality QR codes with extensive customization options including colors, gradients, dot styles, and error correction levels.</p>
+    
+    <p>The generator supports various styling options: multiple dot patterns (square, rounded, dots), corner customization, color gradients (linear or radial), and adjustable error correction. Higher error correction allows QR codes to remain scannable even if partially damaged or obscured. Generated codes can be downloaded as PNG images for printing or digital use.</p>
+    
+    <h3>Common Use Cases</h3>
+    <p>Businesses use QR codes for marketing materials, product packaging, contactless payments, and event tickets. Restaurants create QR codes for digital menus. Websites generate codes for easy mobile access. Event organizers use them for check-ins and information sharing. Personal uses include WiFi sharing, contact information (vCards), and social media links. The customization options allow branding with company colors.</p>
+    
+    <p>Enter your text or URL, customize the appearance using the options, and click Generate. The QR code appears instantly and can be downloaded. Test with your phone's camera to ensure it scans correctly. All generation happens locally in your browser.</p>
+</div>
+
+<script src="https://unpkg.com/qr-code-styling@1.9.2/lib/qr-code-styling.js"></script>
+<script src="/tools/qr-code-generator/script.local.js"></script>

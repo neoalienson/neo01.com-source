@@ -1,0 +1,48 @@
+---
+title: SQL 美化器
+layout: tools
+lang: zh-TW
+series: tools
+---
+
+    <link rel="stylesheet" href="/css/tools-common.css">
+    <link rel="stylesheet" href="/tools/sql-prettify/style.css">
+
+    <div class="tool_main">
+        <div class="input-group">
+            <label for="sqlInput">SQL to format:</label>
+            <textarea id="sqlInput" placeholder="Enter your SQL query here...">SELECT u.id, u.name, p.title FROM users u JOIN posts p ON u.id = p.user_id WHERE u.active = 1 AND p.published = 1 ORDER BY p.created_at DESC;</textarea>
+        </div>
+        
+        <div class="controls">
+            <div class="control-group">
+                <label for="keywordCase">Keyword Case:</label>
+                <select id="keywordCase">
+                    <option value="upper">UPPER</option>
+                    <option value="lower">lower</option>
+                    <option value="preserve">Preserve</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label for="indentStyle">Indent Style:</label>
+                <select id="indentStyle">
+                    <option value="standard">Standard</option>
+                    <option value="tabular-left">Tabular Left</option>
+                    <option value="tabular-right">Tabular Right</option>
+                </select>
+            </div>
+            <button class="action-btn" onclick="formatSql()">格式化 SQL</button>
+        </div>
+        
+        <div class="action-buttons">
+            <button class="action-btn" onclick="minifySql()">壓縮 SQL</button>
+        </div>
+        
+        <div class="output-section">
+            <button class="copy-btn" onclick="copyResult()">複製</button>
+            <div class="output-label">Formatted SQL</div>
+            <div class="output-content" id="result"></div>
+        </div>
+    </div>
+
+    <script src="/tools/sql-prettify/sql-prettify.local.js"></script>

@@ -1,0 +1,60 @@
+---
+title: JSON Validator & Formatter
+layout: tools
+series: tools
+---
+
+    <link rel="stylesheet" href="/css/tools-common.css">
+    <link rel="stylesheet" href="/tools/json-validator/style.css">
+
+    <div class="tool_main">
+        <div class="json-container">
+            <div class="json-panel">
+                <h3>Input JSON</h3>
+                <textarea id="inputJson" placeholder="Paste your JSON here...">{"name":"John","age":30,"city":"New York","hobbies":["reading","swimming"]}</textarea>
+                <div class="options">
+                    <div class="option-group">
+                        <label for="sortKeys">Sort Keys:</label>
+                        <input type="checkbox" id="sortKeys">
+                    </div>
+                    <div class="option-group">
+                        <label for="indentSize">Indent:</label>
+                        <select id="indentSize">
+                            <option value="2">2 spaces</option>
+                            <option value="4">4 spaces</option>
+                            <option value="\t">Tab</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="controls">
+                    <button class="btn btn-primary" onclick="formatJson()">Format</button>
+                    <button class="btn btn-secondary" onclick="minifyJson()">Minify</button>
+                    <button class="btn btn-secondary" onclick="clearInput()">Clear</button>
+                </div>
+                <div id="inputStatus" class="status"></div>
+            </div>
+            
+            <div class="json-panel">
+                <h3>Formatted Output</h3>
+                <textarea id="outputJson" readonly></textarea>
+                <div class="controls">
+                    <button class="btn btn-primary" onclick="copyOutput()">Copy</button>
+                </div>
+                <div id="outputStatus" class="status"></div>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+        <h2>About JSON</h2>
+        <p>JSON (JavaScript Object Notation) is the universal language of data exchange on the web. It's lightweight, human-readable, and language-independent, making it perfect for APIs, configuration files, and data storage. Every modern web application uses JSON to communicate between frontend and backend, transmit data between services, and store structured information.</p>
+        
+        <p>However, JSON is strict about syntax—a single misplaced comma, missing quote, or trailing comma breaks everything. This validator instantly checks your JSON for errors, highlights problems, and formats it beautifully. It supports sorting keys alphabetically, customizable indentation (2 spaces, 4 spaces, or tabs), and minification for production use.</p>
+        
+        <h3>Why Validate JSON?</h3>
+        <p>Developers validate JSON to debug API responses, fix configuration files, verify data integrity, and ensure proper formatting before deployment. Malformed JSON causes runtime errors, failed API calls, and application crashes. This tool catches syntax errors immediately, showing exactly where and what went wrong.</p>
+        
+        <p>Paste any JSON to validate its syntax, format it with proper indentation, sort keys alphabetically, or minify it to reduce file size. Perfect for debugging API responses, cleaning up configuration files, or learning JSON structure. All processing happens locally—your data never leaves your browser.</p>
+    </div>
+
+    <script src="/tools/json-validator/json-validator.local.js"></script>

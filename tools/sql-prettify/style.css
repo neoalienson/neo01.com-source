@@ -1,0 +1,8 @@
+textarea {
+            min-height: 150px;
+        }
+        .control-group select {
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }

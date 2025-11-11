@@ -1,0 +1,40 @@
+---
+title: URL Encoder/Decoder
+layout: tools
+series: tools
+---
+
+    <link rel="stylesheet" href="/tools/url-encoder/style.css">
+
+    <div class="tool_main">
+        <div class="input-group">
+            <label for="textInput">Text to encode/decode:</label>
+            <textarea id="textInput" placeholder="Enter your text or URL here...">Hello World! This is a test URL: https://neo01.com/path?param=value&other=test</textarea>
+        </div>
+        
+        <div class="action-buttons">
+            <button class="action-btn" onclick="encodeText()">Encode</button>
+            <button class="action-btn" onclick="decodeText()">Decode</button>
+        </div>
+        
+        <div class="output-section">
+            <button class="copy-btn" onclick="copyResult()">Copy</button>
+            <div class="output-label">Result</div>
+            <div class="output-content" id="result"></div>
+        </div>
+    </div>
+
+    <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+        <h2>About URL Encoder/Decoder</h2>
+        <p>URL Encoder/Decoder converts text to and from URL-safe format. URLs can only contain certain characters, so special characters must be encoded using percent-encoding (e.g., space becomes %20). This tool handles encoding for safe URL transmission and decoding to restore original text, essential for web development and API work.</p>
+        
+        <p>The encoder converts special characters, spaces, and non-ASCII characters into percent-encoded format (%XX) that can be safely included in URLs. The decoder reverses this process, restoring encoded URLs to human-readable text. This is crucial for query parameters, form data, and any text that needs to be transmitted in URLs without breaking the URL structure.</p>
+        
+        <h3>Common Use Cases</h3>
+        <p>Web developers encode query parameters for API requests and form submissions. SEO specialists decode URLs to understand their structure. Developers debug URL-related issues by examining encoded values. Anyone sharing URLs with special characters needs encoding to ensure links work correctly. The tool helps construct proper URLs for web scraping, testing, and integration work.</p>
+        
+        <p>Paste your text or URL into the input field. Click Encode to convert to URL-safe format or Decode to restore encoded URLs. Copy the result for use in your applications or browsers. All processing happens locally in your browser.</p>
+    </div>
+
+    <script src="/tools/url-encoder/url-encoder.local.js"></script>
+    <link rel="stylesheet" href="/css/tools-common.css">

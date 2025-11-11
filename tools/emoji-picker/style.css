@@ -1,0 +1,81 @@
+.search-group {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: calc(100% - 28px);
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #007acc;
+        }
+        .categories {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .category-btn {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        .category-btn:hover, .category-btn.active {
+            background: #007acc;
+            color: white;
+            border-color: #007acc;
+        }
+        .emoji-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+            gap: 10px;
+            max-height: 400px;
+            overflow-y: auto;
+            border: 2px solid #e9ecef;
+            border-radius: 6px;
+            padding: 15px;
+        }
+        .emoji-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .emoji-item:hover {
+            background: #f8f9fa;
+        }
+        .emoji-char {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        .emoji-name {
+            font-size: 10px;
+            text-align: center;
+            color: #666;
+        }
+        .copied-message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .copied-message.show {
+            opacity: 1;
+        }

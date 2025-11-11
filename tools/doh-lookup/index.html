@@ -1,0 +1,87 @@
+---
+title: DNS over HTTPS Lookup
+layout: tools
+series: tools
+---
+
+    <link rel="stylesheet" href="/css/tools-common.css">
+    <link rel="stylesheet" href="/tools/doh-lookup/style.css">
+
+    <div class="tool_main">
+        <div class="input-row">
+            <label for="domainInput">Domain Name (e.g., neo01.com):</label>
+            <input type="text" id="domainInput" placeholder="neo01.com" value="neo01.com">
+        </div>
+
+        <div class="input-row">
+            <label for="recordType">Record Type:</label>
+            <select id="recordType">
+                <option value="A">A (IPv4 Address)</option>
+                <option value="AAAA">AAAA (IPv6 Address)</option>
+                <option value="CNAME">CNAME (Canonical Name)</option>
+                <option value="MX">MX (Mail Exchange)</option>
+                <option value="TXT">TXT (Text Record)</option>
+                <option value="NS">NS (Name Server)</option>
+                <option value="SOA">SOA (Start of Authority)</option>
+                <option value="PTR">PTR (Pointer)</option>
+                <option value="CAA">CAA (Certificate Authority)</option>
+            </select>
+        </div>
+
+        <div class="input-row">
+            <label for="dohProvider">DoH Provider:</label>
+            <select id="dohProvider" onchange="toggleCustomUrl()">
+                <option value="cloudflare">Cloudflare (1.1.1.1)</option>
+                <option value="google">Google (8.8.8.8)</option>
+                <option value="quad9">Quad9 (9.9.9.9)</option>
+                <option value="custom">Custom URL</option>
+            </select>
+        </div>
+
+        <div class="input-row" id="customUrlRow" style="display: none;">
+            <label for="customUrl">Custom DoH URL:</label>
+            <input type="text" id="customUrl" placeholder="Input URL here...">
+        </div>
+        
+        <div class="action-buttons">
+            <button class="action-btn" onclick="performLookup()">Lookup</button>
+            <button class="action-btn" onclick="clearResults()">Clear</button>
+        </div>
+
+        <div id="loading" style="display: none; text-align: center; margin: 20px 0;">
+            <div class="spinner"></div>
+            <p>Querying DNS over HTTPS...</p>
+        </div>
+        
+        <div class="output-list" id="output"></div>
+    </div>
+
+    <div class="info-section">
+        <h3>About DNS over HTTPS (DoH)</h3>
+        <p>This tool performs DNS lookups using DNS over HTTPS (DoH), which encrypts DNS queries to protect your privacy. Traditional DNS queries are sent in plain text, allowing ISPs and network operators to see which domains you're querying. DoH wraps these queries in HTTPS, making them indistinguishable from regular web traffic.</p>
+        
+        <h4>Supported Record Types:</h4>
+        <ul>
+            <li><strong>A</strong> - IPv4 address records</li>
+            <li><strong>AAAA</strong> - IPv6 address records</li>
+            <li><strong>CNAME</strong> - Canonical name (alias) records</li>
+            <li><strong>MX</strong> - Mail exchange server records</li>
+            <li><strong>TXT</strong> - Text records (SPF, DKIM, etc.)</li>
+            <li><strong>NS</strong> - Name server records</li>
+            <li><strong>SOA</strong> - Start of authority records</li>
+            <li><strong>PTR</strong> - Pointer records (reverse DNS)</li>
+            <li><strong>CAA</strong> - Certificate authority authorization</li>
+        </ul>
+
+        <h4>DoH Providers:</h4>
+        <ul>
+            <li><strong>Cloudflare (1.1.1.1)</strong> - https://cloudflare-dns.com/dns-query - Privacy-focused, minimal logging</li>
+            <li><strong>Google (8.8.8.8)</strong> - https://dns.google/resolve - High performance, global network</li>
+            <li><strong>Quad9 (9.9.9.9)</strong> - https://dns.quad9.net:5053/dns-query - Security-focused with threat blocking</li>
+            <li><strong>Custom</strong> - Use your own DoH server URL</li>
+        </ul>
+        
+        <p><strong>Note:</strong> Custom DoH URLs must support the JSON API format (application/dns-json) and allow CORS requests from this domain.</p>
+    </div>
+
+    <script src="/tools/doh-lookup/doh-lookup.local.js"></script>

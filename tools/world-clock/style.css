@@ -1,0 +1,269 @@
+.clocks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .clock-card {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+        .city-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #495057;
+            margin-bottom: 10px;
+        }
+        .time-display {
+            font-family: 'Courier New', monospace;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #007acc;
+            margin: 10px 0;
+        }
+        .date-display {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-bottom: 5px;
+        }
+        .timezone-display {
+            font-size: 0.8rem;
+            color: #6c757d;
+        }
+        .add-timezone {
+            background: #f8f9fa;
+            border: 2px dashed #e9ecef;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .add-timezone:hover {
+            border-color: #007acc;
+            background: #e3f2fd;
+        }
+        .add-timezone-text {
+            color: #6c757d;
+            font-size: 1.1rem;
+        }
+        select {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            margin: 10px;
+            width: 250px;
+        }
+        .remove-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 4px 8px;
+            cursor: pointer;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+        }
+        .modal-content {
+            background: white;
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 400px;
+        }
+        .modal-header {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .modal-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background: #007acc;
+            color: white;
+        }
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+        .analog-clock {
+            width: 200px;
+            height: 200px;
+            border: 4px solid #333;
+            border-radius: 50%;
+            position: relative;
+            margin: 20px auto;
+            background: white;
+        }
+        .clock-center {
+            width: 12px;
+            height: 12px;
+            background: #333;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 3;
+        }
+        .clock-hand {
+            position: absolute;
+            bottom: 50%;
+            left: 50%;
+            transform-origin: bottom center;
+            background: #333;
+            cursor: grab;
+        }
+        .clock-hand:active {
+            cursor: grabbing;
+        }
+        .hour-hand {
+            width: 6px;
+            height: 50px;
+            margin-left: -3px;
+            background: #333;
+            z-index: 2;
+        }
+        .minute-hand {
+            width: 4px;
+            height: 70px;
+            margin-left: -2px;
+            background: #666;
+            z-index: 1;
+        }
+        .clock-number {
+            position: absolute;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .time-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+        .time-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .time-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: 0.3s;
+            border-radius: 24px;
+        }
+        .time-slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: 0.3s;
+            border-radius: 50%;
+        }
+        .time-switch input:checked + .time-slider {
+            background-color: #007acc;
+        }
+        .time-switch input:checked + .time-slider:before {
+            transform: translateX(26px);
+        }
+        .clock-container {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .clock-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .clock-controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 250px;
+        }
+        @media (max-width: 1000px) {
+            .clock-container {
+                flex-direction: column;
+                gap: 20px;
+                align-items: center;
+            }
+        }
+        .card-analog-clock {
+            width: 80px;
+            height: 80px;
+            border: 2px solid #333;
+            border-radius: 50%;
+            position: relative;
+            margin: 15px auto 10px;
+            background: white;
+        }
+        .card-clock-center {
+            width: 6px;
+            height: 6px;
+            background: #333;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 3;
+        }
+        .card-clock-hand {
+            position: absolute;
+            bottom: 50%;
+            left: 50%;
+            transform-origin: bottom center;
+            background: #333;
+        }
+        .card-hour-hand {
+            width: 3px;
+            height: 20px;
+            margin-left: -1.5px;
+            background: #333;
+            z-index: 2;
+        }
+        .card-minute-hand {
+            width: 2px;
+            height: 28px;
+            margin-left: -1px;
+            background: #666;
+            z-index: 1;
+        }

@@ -1,0 +1,23 @@
+---
+title: PNGメタデータチェッカー
+layout: tools
+lang: ja
+series: tools
+---
+
+<link rel="stylesheet" href="/tools/png-metadata-checker/style.css">
+
+<div class="tool-container">
+    <p>PNGファイルをアップロードまたはドラッグ＆ドロップして、メタデータ情報を抽出および分析します。</p>
+    
+    <div class="drop-zone" id="dropZone">
+        <p>📁 ここをクリックするか、PNGファイルをドラッグ＆ドロップ</p>
+        <input type="file" id="fileInput" accept=".png,image/png">
+    </div>
+    
+    <div id="fileInfo" class="file-info" style="display: none;"></div>
+    <div id="output" class="metadata-output"></div>
+    <div id="error" class="error" style="display: none;"></div>
+</div>
+
+<script src="/tools/png-metadata-checker/png-metadata-checker.local.js"></script>

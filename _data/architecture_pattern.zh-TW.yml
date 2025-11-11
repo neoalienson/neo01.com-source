@@ -1,0 +1,18 @@
+content: |
+  - 🏗️ **架構模式系列**
+    - [架構模式快速參考](/zh-TW/2020/05/Architecture-Patterns-Quick-Reference/)
+    - [速率限制模式](/zh-TW/2019/01/Rate-Limiting-Pattern/)
+    - [防腐層模式](/zh-TW/2019/02/Anti-Corruption-Layer-Pattern/)
+    - [重試模式](/zh-TW/2019/03/Retry-Pattern/)
+    - [憑證檢查模式](/zh-TW/2019/04/Claim-Check-Pattern/)
+    - [具體化檢視模式](/zh-TW/2019/05/Materialized-View-Pattern/)
+    - [絞殺者無花果模式](/zh-TW/2019/06/Strangler-Fig-Pattern/)
+    - [邊車模式](/zh-TW/2019/07/Sidecar-Pattern/)
+    - [分片模式](/zh-TW/2019/08/Sharding-Pattern/)
+    - [閘道聚合模式](/zh-TW/2019/09/Gateway-Aggregation-Pattern/)
+    - [發布者-訂閱者模式](/zh-TW/2019/10/Publisher-Subscriber-Pattern/)
+    - [健康端點監控模式](/zh-TW/2019/11/Health-Endpoint-Monitoring-Pattern/)
+    - [聯合身份模式](/zh-TW/2019/12/Federated-Identity-Pattern/)
+    - [斷路器模式](/zh-TW/2020/01/Circuit-Breaker-Pattern/)
+    - [艙壁模式](/zh-TW/2020/03/Bulkhead-Pattern/)
+    - [非同步請求-回覆模式](/zh-TW/2020/04/Asynchronous-Request-Reply-Pattern/)

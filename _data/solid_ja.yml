@@ -1,0 +1,7 @@
+content: |
+  - 📐 **SOLID設計原則シリーズ**
+    - [単一責任の原則](/ja/2021/09/Single-Responsibility-Principle-SOLID/)
+    - [開閉原則](/ja/2021/09/Open-Closed-Principle-SOLID/)
+    - [リスコフの置換原則](/ja/2021/10/Liskov-Substitution-Principle-SOLID/)
+    - [インターフェース分離の原則](/ja/2021/11/Interface-Segregation-Principle-SOLID/)
+    - [依存性逆転の原則](/ja/2021/11/Dependency-Inversion-Principle-SOLID/)

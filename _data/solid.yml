@@ -1,0 +1,7 @@
+content: |
+  - 📐 **SOLID Design Principles Series**
+    - [Single Responsibility Principle](/2021/09/Single-Responsibility-Principle-SOLID/)
+    - [Open-Closed Principle](/2021/09/Open-Closed-Principle-SOLID/)
+    - [Liskov Substitution Principle](/2021/10/Liskov-Substitution-Principle-SOLID/)
+    - [Interface Segregation Principle](/2021/11/Interface-Segregation-Principle-SOLID/)
+    - [Dependency Inversion Principle](/2021/11/Dependency-Inversion-Principle-SOLID/)

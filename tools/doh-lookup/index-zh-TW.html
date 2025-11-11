@@ -1,0 +1,88 @@
+---
+title: DNS over HTTPS 查詢
+layout: tools
+lang: zh-TW
+series: tools
+---
+
+    <link rel="stylesheet" href="/css/tools-common.css">
+    <link rel="stylesheet" href="/tools/doh-lookup/style.css">
+
+    <div class="tool_main">
+        <div class="input-row">
+            <label for="domainInput">網域名稱（例如：neo01.com）：</label>
+            <input type="text" id="domainInput" placeholder="neo01.com" value="neo01.com">
+        </div>
+
+        <div class="input-row">
+            <label for="recordType">記錄類型：</label>
+            <select id="recordType">
+                <option value="A">A (IPv4 位址)</option>
+                <option value="AAAA">AAAA (IPv6 位址)</option>
+                <option value="CNAME">CNAME (規範名稱)</option>
+                <option value="MX">MX (郵件交換)</option>
+                <option value="TXT">TXT (文字記錄)</option>
+                <option value="NS">NS (名稱伺服器)</option>
+                <option value="SOA">SOA (授權起始)</option>
+                <option value="PTR">PTR (指標)</option>
+                <option value="CAA">CAA (憑證頒發機構)</option>
+            </select>
+        </div>
+
+        <div class="input-row">
+            <label for="dohProvider">DoH 提供商：</label>
+            <select id="dohProvider" onchange="toggleCustomUrl()">
+                <option value="cloudflare">Cloudflare (1.1.1.1)</option>
+                <option value="google">Google (8.8.8.8)</option>
+                <option value="quad9">Quad9 (9.9.9.9)</option>
+                <option value="custom">自訂 URL</option>
+            </select>
+        </div>
+
+        <div class="input-row" id="customUrlRow" style="display: none;">
+            <label for="customUrl">自訂 DoH URL：</label>
+            <input type="text" id="customUrl" placeholder="在此輸入 URL...">
+        </div>
+        
+        <div class="action-buttons">
+            <button class="action-btn" onclick="performLookup()">查詢</button>
+            <button class="action-btn" onclick="clearResults()">清除</button>
+        </div>
+
+        <div id="loading" style="display: none; text-align: center; margin: 20px 0;">
+            <div class="spinner"></div>
+            <p>正在透過 HTTPS 查詢 DNS...</p>
+        </div>
+        
+        <div class="output-list" id="output"></div>
+    </div>
+
+    <div class="info-section">
+        <h3>關於 DNS over HTTPS (DoH)</h3>
+        <p>此工具使用 DNS over HTTPS (DoH) 執行 DNS 查詢，它加密 DNS 查詢以保護您的隱私。傳統的 DNS 查詢以明文傳送，允許 ISP 和網路營運商看到您正在查詢哪些網域。DoH 將這些查詢包裝在 HTTPS 中，使它們與常規網路流量無法區分。</p>
+        
+        <h4>支援的記錄類型：</h4>
+        <ul>
+            <li><strong>A</strong> - IPv4 位址記錄</li>
+            <li><strong>AAAA</strong> - IPv6 位址記錄</li>
+            <li><strong>CNAME</strong> - 規範名稱（別名）記錄</li>
+            <li><strong>MX</strong> - 郵件交換伺服器記錄</li>
+            <li><strong>TXT</strong> - 文字記錄（SPF、DKIM 等）</li>
+            <li><strong>NS</strong> - 名稱伺服器記錄</li>
+            <li><strong>SOA</strong> - 授權起始記錄</li>
+            <li><strong>PTR</strong> - 指標記錄（反向 DNS）</li>
+            <li><strong>CAA</strong> - 憑證頒發機構授權</li>
+        </ul>
+
+        <h4>DoH 提供商：</h4>
+        <ul>
+            <li><strong>Cloudflare (1.1.1.1)</strong> - https://cloudflare-dns.com/dns-query - 注重隱私，最少日誌記錄</li>
+            <li><strong>Google (8.8.8.8)</strong> - https://dns.google/resolve - 高效能，全球網路</li>
+            <li><strong>Quad9 (9.9.9.9)</strong> - https://dns.quad9.net:5053/dns-query - 注重安全，威脅阻擋</li>
+            <li><strong>自訂</strong> - 使用您自己的 DoH 伺服器 URL</li>
+        </ul>
+        
+        <p><strong>注意：</strong>自訂 DoH URL 必須支援 JSON API 格式（application/dns-json）並允許來自此網域的 CORS 請求。</p>
+    </div>
+
+    <script src="/tools/doh-lookup/doh-lookup.local.js"></script>

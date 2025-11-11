@@ -1,0 +1,48 @@
+---
+title: JSON to YAML Converter
+layout: tools
+series: tools
+---
+
+    <link rel="stylesheet" href="/tools/json-yaml-converter/style.css">
+
+        
+        <div class="controls">
+            <div class="checkbox-container">
+                <input type="checkbox" id="prettyFormat" checked>
+                <label for="prettyFormat">Pretty Format</label>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label for="inputText">Input:</label>
+            <textarea id="inputText" placeholder="Enter JSON to convert to YAML or YAML to convert to JSON..."></textarea>
+            <div class="button-group">
+                <button class="btn-primary" onclick="convertToYaml()">JSON to YAML</button>
+                <button class="btn-secondary" onclick="convertToJson()">YAML to JSON</button>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <div class="output-header">
+                <label for="outputText">Output:</label>
+                <button class="btn-copy" onclick="copyOutput()">Copy</button>
+            </div>
+            <textarea id="outputText" readonly placeholder="Output will appear here..."></textarea>
+            <div id="message"></div>
+        </div>
+
+    <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+        <h2>About JSON to YAML Converter</h2>
+        <p>JSON to YAML Converter transforms data between JSON (JavaScript Object Notation) and YAML (YAML Ain't Markup Language) formats. Both are human-readable data serialization formats commonly used for configuration files, data exchange, and API responses. This tool makes it easy to convert between these formats for different use cases and preferences.</p>
+        
+        <p>JSON is widely used in web APIs and JavaScript applications with strict syntax rules. YAML is popular for configuration files due to its cleaner, more readable syntax with less punctuation. The converter supports bidirectional conversion with pretty formatting options to ensure output is properly indented and easy to read.</p>
+        
+        <h3>Common Use Cases</h3>
+        <p>Developers convert JSON to YAML when creating configuration files for Docker, Kubernetes, Ansible, or CI/CD pipelines that prefer YAML syntax. Converting YAML to JSON is useful for API testing, JavaScript processing, or when tools only accept JSON format. The converter helps migrate configurations between systems, validate syntax, and improve readability of complex data structures.</p>
+        
+        <p>Paste your JSON or YAML into the input field and click the appropriate conversion button. Enable Pretty Format for readable output. All conversion happens locally in your browser.</p>
+    </div>
+
+    <script src="/cache/js-yaml.min.local.js"></script>
+    <script src="/tools/json-yaml-converter/json-yaml-converter.local.js"></script>

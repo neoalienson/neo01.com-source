@@ -1,0 +1,59 @@
+---
+title: ASCII Text Drawer
+layout: tools
+series: tools
+---
+
+    <link rel="stylesheet" href="/tools/ascii-text-drawer/style.css">
+
+    <div class="tool_main">
+        
+        <div class="input-group">
+            <label for="textInput">Text to convert:</label>
+            <input type="text" id="textInput" placeholder="Enter your text here..." value="HELLO">
+        </div>
+        
+        <div class="input-group">
+            <label for="fontCategory">Font Category:</label>
+            <select id="fontCategory">
+                <option value="popular">Popular</option>
+                <option value="3d">3D & Effects</option>
+                <option value="small">Small & Compact</option>
+                <option value="decorative">Decorative</option>
+                <option value="script">Script & Cursive</option>
+                <option value="tech">Tech & Digital</option>
+                <option value="block">Block & Solid</option>
+                <option value="banner">Banner & Headers</option>
+                <option value="mono">Monospace</option>
+                <option value="themed">Themed & Special</option>
+                <option value="geometric">Geometric</option>
+                <option value="retro">Retro & Vintage</option>
+                <option value="stylized">Stylized & Effects</option>
+                <option value="artistic">Artistic & Creative</option>
+                <option value="money">Money Fonts</option>
+                <option value="names">Named Fonts</option>
+                <option value="amc">AMC Collection</option>
+                <option value="efti">Efti Collection</option>
+                <option value="misc">Miscellaneous</option>
+                <option value="all">All Fonts</option>
+            </select>
+        </div>
+        
+        <div class="output" id="output"></div>
+        <button class="copy-btn" onclick="copyToClipboard()">Copy to Clipboard</button>
+    </div>
+
+    <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+        <h2>About ASCII Text Drawer</h2>
+        <p>ASCII Text Drawer converts regular text into stylized ASCII art using various fonts. ASCII art is a graphic design technique that uses printable characters from the ASCII standard to create images and decorative text. This tool is perfect for creating eye-catching headers, banners, and decorative text for plain text environments.</p>
+        
+        <p>The tool uses the FIGlet font format, which defines character patterns using ASCII characters. Each font has a unique style, from simple block letters to elaborate 3D effects. The rendering happens entirely in your browser using JavaScript, ensuring your text remains private and processing is instant.</p>
+        
+        <h3>Common Use Cases</h3>
+        <p>ASCII art text is widely used in source code comments for section headers, README files to create attractive titles, terminal applications for splash screens, email signatures for a retro aesthetic, and social media posts where plain text formatting is limited. It's particularly popular in developer communities and retro computing enthusiasts.</p>
+        
+        <p>Simply enter your text, choose a font category, and browse through the available styles. All processing happens locally in your browser - no data is sent to any server.</p>
+    </div>
+
+    <script src="/tools/ascii-text-drawer/figlet.local.js"></script>
+    <script src="/tools/ascii-text-drawer/ascii-text-drawer.local.js"></script>

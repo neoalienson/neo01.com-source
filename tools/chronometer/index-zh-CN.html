@@ -1,0 +1,42 @@
+---
+title: 计时器
+layout: tools
+lang: zh-CN
+series: tools
+---
+
+    <link rel="stylesheet" href="/css/tools-common.css">
+    <link rel="stylesheet" href="/tools/chronometer/style.css">
+
+    <div class="tool_main">
+        <div class="chronometer-container">
+            <div class="time-display" id="time-display">00:00:00.000</div>
+            
+            <div class="controls">
+                <button class="btn btn-start" id="start-btn" onclick="startTimer()">开始</button>
+                <button class="btn btn-pause" id="pause-btn" onclick="pauseTimer()" style="display: none;">暂停</button>
+                <button class="btn btn-stop" id="stop-btn" onclick="stopTimer()" disabled>停止</button>
+                <button class="btn btn-reset" id="reset-btn" onclick="resetTimer()">重置</button>
+                <button class="btn btn-lap" id="lap-btn" onclick="recordLap()" disabled>计圈</button>
+            </div>
+            
+            <div class="laps-container" id="laps-container" style="display: none;">
+                <div class="laps-title">Lap Times</div>
+                <div id="laps-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+        <h2>关于计时器</h2>
+        <p>计时器是一个精确的秒表工具，用于以毫秒精度测量时间间隔。无论您是计时锻炼、跟踪任务持续时间、测量性能，还是进行实验，此计时器都能提供准确的时间测量和计圈记录功能。</p>
+        
+        <p>此工具以小时、分钟、秒和毫秒格式（HH:MM:SS.mmm）显示时间。您可以根需要开始、暂停和恢复计时，并记录多个计圈时间以跟踪较长会话内的间隔。所有计圈时间都会保留直到您重置计时器，使您轻松查看计时数据。</p>
+        
+        <h3>常见使用场景</h3>
+        <p>运动员使用计时器进行间歇训练和比赛计时，开发人员用于性能基准测试和优化测试，学生用于时间管理和学习会话，项目经理用于任务持续时间跟踪，研究人员用于实验计时。计圈功能对于跟踪循环训练或短跑间隔等活动中的多个间隔特别有用。</p>
+        
+        <p>点击开始以开始计时，暂停以临时停止，计圈以记录间隔时间，重置以清除所有数据。计时器完全在您的浏览器中运行，不会将数据发送到任何服务器。</p>
+    </div>
+
+    <script src="/tools/chronometer/chronometer.local.js"></script>

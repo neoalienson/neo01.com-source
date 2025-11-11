@@ -1,0 +1,32 @@
+---
+title: URL 解析器
+layout: tools
+lang: zh-CN
+series: tools
+---
+
+    <link rel="stylesheet" href="/css/tools-common.css">
+    <link rel="stylesheet" href="/tools/url-parser/style.css">
+
+    <div class="tool_main">
+        <div class="input-group">
+            <label for="urlInput">URL to parse:</label>
+            <input type="text" id="urlInput" placeholder="Enter URL here..." value="https://neo01.com:8080/path/to/page?param1=value1&param2=value2#section">
+        </div>
+        
+        <div class="output-grid" id="output"></div>
+    </div>
+
+    <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+        <h2>关于 URL 结构</h2>
+        <p>URL（统一资源定位符）是网络的地址，但它们比看起来更复杂。每个 URL 包含多个组件：协议（http/https）、主机名（域名）、端口（可选）、路径（资源位置）、查询参数（键值对）和片段（页面锚点）。理解这些部分对于网络开发、API 集成和安全分析至关重要。</p>
+        
+        <p>解析器将任何 URL 分解为其组成部分，使其易于检查、调试或提取特定组件。它处理边缘情况，如缺少协议、自定义端口、编码字符和复杂查询字符串。无论您是在排除损坏的链接、分析 API 端点还是学习网络基础知识，清楚地看到 URL 结构都有帮助。</p>
+        
+        <h3>为什么要解析 URL？</h3>
+        <p>开发人员解析 URL 以提取查询参数、验证用户输入、构建 API 请求、调试路由问题并分析来源数据。安全专业人员检查 URL 以发现钓鱼尝试、恶意参数或注入攻击。SEO 专家优化 URL 结构以适应搜索引擎。</p>
+        
+        <p>只需粘贴任何 URL，即可立即查看其所有组件的分解和说明。非常适合调试网络应用程序、理解 API 端点、教学 URL 结构或快速提取特定 URL 部分而无需编写代码。</p>
+    </div>
+
+    <script src="/tools/url-parser/url-parser.local.js"></script>

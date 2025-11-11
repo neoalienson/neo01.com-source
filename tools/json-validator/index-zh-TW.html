@@ -1,0 +1,61 @@
+---
+title: JSON 驗證器與格式化器
+layout: tools
+lang: zh-TW
+series: tools
+---
+
+    <link rel="stylesheet" href="/css/tools-common.css">
+    <link rel="stylesheet" href="/tools/json-validator/style.css">
+
+    <div class="tool_main">
+        <div class="json-container">
+            <div class="json-panel">
+                <h3>Input JSON</h3>
+                <textarea id="inputJson" placeholder="Paste your JSON here...">{"name":"John","age":30,"city":"New York","hobbies":["reading","swimming"]}</textarea>
+                <div class="options">
+                    <div class="option-group">
+                        <label for="sortKeys">排序 Keys:</label>
+                        <input type="checkbox" id="sortKeys">
+                    </div>
+                    <div class="option-group">
+                        <label for="indentSize">Indent:</label>
+                        <select id="indentSize">
+                            <option value="2">2 spaces</option>
+                            <option value="4">4 spaces</option>
+                            <option value="\t">Tab</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="controls">
+                    <button class="btn btn-primary" onclick="formatJson()">格式化</button>
+                    <button class="btn btn-secondary" onclick="minifyJson()">壓縮</button>
+                    <button class="btn btn-secondary" onclick="clearInput()">清除</button>
+                </div>
+                <div id="inputStatus" class="status"></div>
+            </div>
+            
+            <div class="json-panel">
+                <h3>Formatted Output</h3>
+                <textarea id="outputJson" readonly></textarea>
+                <div class="controls">
+                    <button class="btn btn-primary" onclick="copyOutput()">複製</button>
+                </div>
+                <div id="outputStatus" class="status"></div>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+        <h2>關於 JSON</h2>
+        <p>JSON（JavaScript Object Notation）是網路上資料交換的通用語言。它輕量級、人類可讀且與語言無關，非常適合 API、配置檔案和資料儲存。每個現代網路應用程式都使用 JSON 在前端和後端之間通訊、在服務之間傳輸資料並儲存結構化資訊。</p>
+        
+        <p>然而，JSON 對語法要求嚴格——一個放錯位置的逗號、缺少的引號或尾隨逗號都會破壞一切。此驗證器會立即檢查您的 JSON 是否有錯誤、突顯顯示問題並美麗地格式化它。它支持按字母順序排序鍵、可自訂的縮排（2 個空格、4 個空格或制表符）以及用於生產環境的壓縮。</p>
+        
+        <h3>為什麼要驗證 JSON？</h3>
+        <p>開發人員驗證 JSON 以除錯 API 回應、修復配置檔案、驗證資料完整性並確保部署前的正確格式。格式錯誤的 JSON 會導致執行時錯誤、API 呼叫失敗和應用程式崩潰。此工具會立即捕獲語法錯誤，準確顯示錯誤的位置和內容。</p>
+        
+        <p>貼上任何 JSON 以驗證其語法、使用適當的縮排進行格式化、按字母順序排序鍵或壓縮它以減小檔案大小。非常適合除錯 API 回應、清理配置檔案或學習 JSON 結構。所有處理都在本地進行——您的資料永遠不會離開您的瀏覽器。</p>
+    </div>
+
+    <script src="/tools/json-validator/json-validator.local.js"></script>

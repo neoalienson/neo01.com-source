@@ -1,0 +1,33 @@
+---
+title: 雜湊文字
+layout: tools
+lang: zh-TW
+series: tools
+---
+
+    <link rel="stylesheet" href="/css/tools-common.css">
+    <link rel="stylesheet" href="/tools/hash-text/style.css">
+
+    <div class="tool_main">
+        <div class="input-group">
+            <label for="textInput">Text to hash:</label>
+            <textarea id="textInput" placeholder="在此輸入您的文字...">Hello World!</textarea>
+        </div>
+        
+        <div class="output-grid" id="output"></div>
+    </div>
+
+    <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+        <h2>關於雜湊函數</h2>
+        <p>雜湊函數是將任何輸入資料轉換為固定大小字元串（稱為雜湊值或摘要）的加密演算法。它們是現代安全的基礎，從密碼儲存到區塊鏈驗證無處不在。良好的雜湊函數具有確定性（相同輸入總是產生相同輸出）、計算快速且實際上不可能逆向。</p>
+        
+        <p>此工具支援多種雜湊演算法：MD5（128位元，舊版）、SHA-1（160位元，已棄用於安全用途）、SHA-256（256位元，廣泛使用）、SHA-512（512位元，最高安全性）和 SHA-3（最新標準）。每種演算法在速度和安全性之間提供不同的權衡。雖然 MD5 和 SHA-1 仍可用於校驗和和非安全目的，但建議在加密應用中使用 SHA-256 和 SHA-512。</p>
+        
+        <h3>常見使用案例</h3>
+        <p>雜湊函數驗證資料完整性（檔案校驗和）、保護密碼（單向加密）、建立數位簽章、產生唯一識別碼並支援區塊鏈技術。當您下載軟體並驗證其雜湊值時，您正在確保檔案未被篡改。當網站儲存您的密碼時，它們會進行雜湊處理，因此即使網站也無法看到原始密碼。</p>
+        
+        <p>只需輸入任何文字，即可立即查看所有支援演算法的雜湊值。非常適合驗證檔案完整性、產生校驗和、測試雜湊實作或學習加密函數。該工具在您的瀏覽器中本地處理所有內容——不會將資料發送到任何伺服器。</p>
+    </div>
+
+    <script src="/cache/crypto-js.min.local.js"></script>
+    <script src="/tools/hash-text/hash-text.local.js"></script>

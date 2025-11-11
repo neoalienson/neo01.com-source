@@ -1,0 +1,3 @@
+.console { background: #1e1e1e; color: #d4d4d4; padding: 15px; border-radius: 6px; white-space: pre-wrap; }
+.passed { color: #28a745; }
+.failed { color: #dc3545; }

@@ -1,0 +1,31 @@
+---
+title: URL Parser
+layout: tools
+series: tools
+---
+
+    <link rel="stylesheet" href="/css/tools-common.css">
+    <link rel="stylesheet" href="/tools/url-parser/style.css">
+
+    <div class="tool_main">
+        <div class="input-group">
+            <label for="urlInput">URL to parse:</label>
+            <input type="text" id="urlInput" placeholder="Enter URL here..." value="https://neo01.com:8080/path/to/page?param1=value1&param2=value2#section">
+        </div>
+        
+        <div class="output-grid" id="output"></div>
+    </div>
+
+    <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+        <h2>About URL Structure</h2>
+        <p>URLs (Uniform Resource Locators) are the addresses of the web, but they're more complex than they appear. Each URL contains multiple components: protocol (http/https), hostname (domain), port (optional), path (resource location), query parameters (key-value pairs), and fragment (page anchor). Understanding these parts is crucial for web development, API integration, and security analysis.</p>
+        
+        <p>The parser breaks down any URL into its constituent parts, making it easy to inspect, debug, or extract specific components. It handles edge cases like missing protocols, custom ports, encoded characters, and complex query strings. Whether you're troubleshooting a broken link, analyzing API endpoints, or learning web fundamentals, seeing the URL structure clearly helps.</p>
+        
+        <h3>Why Parse URLs?</h3>
+        <p>Developers parse URLs to extract query parameters, validate user input, construct API requests, debug routing issues, and analyze referrer data. Security professionals examine URLs for phishing attempts, malicious parameters, or injection attacks. SEO specialists optimize URL structure for search engines.</p>
+        
+        <p>Simply paste any URL and instantly see all its components broken down and explained. Perfect for debugging web applications, understanding API endpoints, teaching URL structure, or quickly extracting specific URL parts without writing code.</p>
+    </div>
+
+    <script src="/tools/url-parser/url-parser.local.js"></script>

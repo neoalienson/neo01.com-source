@@ -1,0 +1,91 @@
+---
+title: Chmod 計算器
+layout: tools
+lang: zh-TW
+series: tools
+---
+
+    <link rel="stylesheet" href="/css/tools-common.css">
+    <link rel="stylesheet" href="/tools/chmod-calculator/style.css">
+
+    <div class="tool_main">
+        <div class="input-group">
+            <label>File Permissions:</label>
+            <div class="permission-grid">
+                <div></div>
+                <div class="permission-header">Owner</div>
+                <div class="permission-header">Group</div>
+                <div class="permission-header">Others</div>
+                
+                <div class="permission-label">Read</div>
+                <div class="permission-checkboxes">
+                    <input type="checkbox" id="owner-read" checked>
+                </div>
+                <div class="permission-checkboxes">
+                    <input type="checkbox" id="group-read" checked>
+                </div>
+                <div class="permission-checkboxes">
+                    <input type="checkbox" id="others-read">
+                </div>
+                
+                <div class="permission-label">Write</div>
+                <div class="permission-checkboxes">
+                    <input type="checkbox" id="owner-write" checked>
+                </div>
+                <div class="permission-checkboxes">
+                    <input type="checkbox" id="group-write">
+                </div>
+                <div class="permission-checkboxes">
+                    <input type="checkbox" id="others-write">
+                </div>
+                
+                <div class="permission-label">Execute</div>
+                <div class="permission-checkboxes">
+                    <input type="checkbox" id="owner-execute">
+                </div>
+                <div class="permission-checkboxes">
+                    <input type="checkbox" id="group-execute">
+                </div>
+                <div class="permission-checkboxes">
+                    <input type="checkbox" id="others-execute">
+                </div>
+            </div>
+        </div>
+        
+        <div class="output-section">
+            <button class="copy-btn" onclick="copyResult()">複製</button>
+            <div class="output-label">Octal Notation</div>
+            <div class="output-content" id="octal-result">644</div>
+        </div>
+        
+        <div class="output-section">
+            <button class="copy-btn" onclick="copySymbolic()">複製</button>
+            <div class="output-label">Symbolic Notation</div>
+            <div class="output-content" id="symbolic-result">rw-r--r--</div>
+        </div>
+        
+        <div class="output-section">
+            <button class="copy-btn" onclick="copyUmask()">複製</button>
+            <div class="output-label">Umask</div>
+            <div class="output-content" id="umask-result">022</div>
+        </div>
+        
+        <div class="input-group">
+            <label for="numericInput">Or enter octal value:</label>
+            <input type="text" id="numericInput" class="numeric-input" placeholder="644" maxlength="3">
+        </div>
+    </div>
+
+    <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+        <h2>關於 Chmod 計算器</h2>
+        <p>Chmod 計算器幫助您理解和生成 Unix/Linux 檔案權限代碼。檔案權限控制誰可以在基於 Unix 的系統上讀取、寫入或執行檔案。此工具在數字（八進位）表示法（如 755）和符號表示法（如 rwxr-xr-x）之間轉換，讓您輕鬆設定所需的確切權限。</p>
+        
+        <p>Unix 權限分為三個群組：擁有者、群組和其他人。每個群組可以具有讀取（4）、寫入（2）和執行（1）權限。八進位表示法將這些值加總得到每個群組的數字，結果是一個三位數。此工具還會計算 umask 值，該值決定新建檔案的預設權限。</p>
+        
+        <h3>常見使用情境</h3>
+        <p>系統管理員和開發人員在配置網頁伺服器檔案（檔案通常為 644，目錄為 755）、設定 SSH 密鑰（私鑰為 600）、使用正確的可執行權限部署應用程式、排除權限拒絕錯誤，以及學習 Unix 權限概念時使用 chmod 計算器。理解 chmod 對於安全的伺服器管理至關重要。</p>
+        
+        <p>勾選或取消勾選權限框以查看八進位和符號表示法的即時更新。您也可以直接輸入八進位值以查看它代表的權限。所有計算都在您的瀏覽器本地進行。</p>
+    </div>
+
+    <script src="/tools/chmod-calculator/chmod-calculator.local.js"></script>

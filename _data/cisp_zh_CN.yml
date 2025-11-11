@@ -1,0 +1,74 @@
+content: |
+  - [知识体系导航与学习路线图](/zh-CN/2025/10/CISP-Knowledge-System-Navigation/)
+  - 📋 **管理与组织领域**
+    - [安全组织机构](/zh-CN/2025/10/CISP-Security-Organization-Structure/)
+    - [安全策略](/zh-CN/2025/10/CISP-Security-Policy/)
+    - [信息安全管理组织](/zh-CN/2025/10/CISP-Security-Management-Organization/)
+    - [人员安全管理](/zh-CN/2025/10/CISP-Personnel-Security-Management/)
+    - [职业道德](/zh-CN/2025/10/CISP-Professional-Ethics/)
+    - [项目管理基础](/zh-CN/2025/10/CISP-Project-Management-Basics/)
+
+  - 🎯 **风险与业务连续性领域**
+    - [风险管理基础与背景建立](/zh-CN/2025/10/CISP-Risk-Management-Basics/)
+    - [风险评估与计算](/zh-CN/2025/10/CISP-Risk-Assessment/)
+    - [风险处置与监控](/zh-CN/2025/10/CISP-Risk-Treatment/)
+    - [风险管理、威胁建模与安全设计](/zh-CN/2025/10/CISP-Risk-Threat-Security-Design/)
+    - [业务连续性管理与灾难恢复](/zh-CN/2025/10/CISP-Business-Continuity-Disaster-Recovery/)
+    - [信息安全事件管理与应急响应](/zh-CN/2025/10/CISP-Security-Incident-Management/)
+    - [应急响应PDCERF方法论](/zh-CN/2025/10/CISP-Incident-Response-PDCERF/)
+    - [应急响应组织、标准与技术安全](/zh-CN/2025/10/CISP-Emergency-Response-Organizations-Standards/)
+
+  - 🔐 **技术安全领域**
+    - [信息安全CIA三要素](/zh-CN/2025/10/CISP-CIA-Triad/)
+    - [Windows操作系统安全配置](/zh-CN/2025/10/CISP-Windows-Security-Configuration/)
+    - [Linux系统安全](/zh-CN/2025/10/CISP-Linux-System-Security/)
+    - [访问控制](/zh-CN/2025/10/CISP-Access-Control/)
+    - [访问控制机制、蜜网、审计系统与WAPI](/zh-CN/2025/10/CISP-Access-Control-Audit-WAPI/)
+    - [身份鉴别方法](/zh-CN/2025/10/CISP-Authentication-Methods/)
+    - [密码学与安全](/zh-CN/2025/10/CISP-Cryptography-Security/)
+    - [PKI与数字证书](/zh-CN/2025/10/CISP-PKI-Digital-Certificates/)
+
+  - 🌐 **网络与系统安全领域**
+    - [网络基础知识](/zh-CN/2025/10/CISP-Network-Fundamentals/)
+    - [网络攻击与安全运营](/zh-CN/2025/10/CISP-Network-Attacks-Security-Operations/)
+    - [网络安全协议：SSL与VPN](/zh-CN/2025/10/CISP-Network-Security-Protocols-SSL-VPN/)
+    - [网络安全基础](/zh-CN/2025/10/CISP-Network-Security-Fundamentals/)
+    - [防火墙与入侵检测技术](/zh-CN/2025/10/CISP-Firewall-IDS-Technologies/)
+    - [高级安全主题](/zh-CN/2025/10/CISP-Advanced-Security-Topics/)
+    - [通信与操作安全](/zh-CN/2025/10/CISP-Communications-Operations-Security/)
+    - [通信与操作安全扩展](/zh-CN/2025/10/CISP-Communications-Operations-Security-Extended/)
+    - [安全机制与协议](/zh-CN/2025/10/CISP-Security-Mechanisms-Protocols/)
+    - [计算机取证与系统保障](/zh-CN/2025/10/CISP-Forensics-Network-Security/)
+    - [入侵检测系统与法律](/zh-CN/2025/10/CISP-IDS-Law/)
+    - [恶意代码传播方式](/zh-CN/2025/10/CISP-Malware-Propagation-Methods/)
+    - [邮件安全](/zh-CN/2025/10/CISP-Email-Security/)
+    - [渗透测试与安全技术](/zh-CN/2025/10/CISP-Penetration-Testing-Security-Tech/)
+    - [漏洞、社会工程与SDL](/zh-CN/2025/10/CISP-Vulnerabilities-Social-Engineering-SDL/)
+
+  - 💾 **数据与资产安全领域**
+    - [资产管理](/zh-CN/2025/10/CISP-Asset-Management/)
+    - [数据库安全](/zh-CN/2025/10/CISP-Database-Security/)
+
+  - 🏗️ **软件与开发安全领域**
+    - [软件安全](/zh-CN/2025/10/CISP-Software-Security/)
+    - [软件安全与SAMM模型](/zh-CN/2025/10/CISP-Software-Security-SAMM/)
+    - [软件开发安全](/zh-CN/2025/10/CISP-Software-Development-Security/)
+    - [软件测试与安全](/zh-CN/2025/10/CISP-Software-Testing-Security/)
+    - [Web软件安全](/zh-CN/2025/10/CISP-Web-Software-Security/)
+
+  - 🏢 **物理与环境安全领域**
+    - [物理与环境安全](/zh-CN/2025/10/CISP-Physical-Environmental-Security/)
+    
+  - 🏛️ **合规与框架领域**
+    - [信息安全等级保护基础](/zh-CN/2025/10/CISP-Information-Security-Level-Protection-Basics/)
+    - [中国信息安全法律法规](/zh-CN/2025/10/CISP-China-Information-Security-Laws/)
+    - [信息安全管理体系与标准](/zh-CN/2025/10/CISP-ISMS-and-Standards/)
+    - [标准与管理](/zh-CN/2025/10/CISP-Standards-Management/)
+    - [信息安全事件与风险管理](/zh-CN/2025/10/CISP-Incident-and-Risk-Management/)
+    - [保密法与威胁建模](/zh-CN/2025/10/CISP-Security-Law-and-Threat-Modeling/)
+    - [安全框架IATF与SABSA](/zh-CN/2025/10/CISP-Security-Frameworks-IATF-SABSA/)
+    - [安全模型演进](/zh-CN/2025/10/CISP-Security-Models-Evolution/)
+    - [系统工程与标准](/zh-CN/2025/10/CISP-System-Engineering-Standards/)
+    - [安全评估与审计](/zh-CN/2025/10/CISP-Security-Assessment-Audit/)
+    - [安全管理实践](/zh-CN/2025/10/CISP-Security-Management-Practice/)
+    - [技术基础综合](/zh-CN/2025/10/CISP-Technical-Fundamentals-Comprehensive/)

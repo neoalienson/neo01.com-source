@@ -1,0 +1,91 @@
+---
+title: Chmod計算機
+layout: tools
+lang: ja
+series: tools
+---
+
+    <link rel="stylesheet" href="/css/tools-common.css">
+    <link rel="stylesheet" href="/tools/chmod-calculator/style.css">
+
+    <div class="tool_main">
+        <div class="input-group">
+            <label>ファイルパーミッション:</label>
+            <div class="permission-grid">
+                <div></div>
+                <div class="permission-header">所有者</div>
+                <div class="permission-header">グループ</div>
+                <div class="permission-header">その他</div>
+                
+                <div class="permission-label">読み取り</div>
+                <div class="permission-checkboxes">
+                    <input type="checkbox" id="owner-read" checked>
+                </div>
+                <div class="permission-checkboxes">
+                    <input type="checkbox" id="group-read" checked>
+                </div>
+                <div class="permission-checkboxes">
+                    <input type="checkbox" id="others-read">
+                </div>
+                
+                <div class="permission-label">書き込み</div>
+                <div class="permission-checkboxes">
+                    <input type="checkbox" id="owner-write" checked>
+                </div>
+                <div class="permission-checkboxes">
+                    <input type="checkbox" id="group-write">
+                </div>
+                <div class="permission-checkboxes">
+                    <input type="checkbox" id="others-write">
+                </div>
+                
+                <div class="permission-label">実行</div>
+                <div class="permission-checkboxes">
+                    <input type="checkbox" id="owner-execute">
+                </div>
+                <div class="permission-checkboxes">
+                    <input type="checkbox" id="group-execute">
+                </div>
+                <div class="permission-checkboxes">
+                    <input type="checkbox" id="others-execute">
+                </div>
+            </div>
+        </div>
+        
+        <div class="output-section">
+            <button class="copy-btn" onclick="copyResult()">コピー</button>
+            <div class="output-label">8進数表記</div>
+            <div class="output-content" id="octal-result">644</div>
+        </div>
+        
+        <div class="output-section">
+            <button class="copy-btn" onclick="copySymbolic()">コピー</button>
+            <div class="output-label">記号表記</div>
+            <div class="output-content" id="symbolic-result">rw-r--r--</div>
+        </div>
+        
+        <div class="output-section">
+            <button class="copy-btn" onclick="copyUmask()">コピー</button>
+            <div class="output-label">Umask</div>
+            <div class="output-content" id="umask-result">022</div>
+        </div>
+        
+        <div class="input-group">
+            <label for="numericInput">または8進数値を入力:</label>
+            <input type="text" id="numericInput" class="numeric-input" placeholder="644" maxlength="3">
+        </div>
+    </div>
+
+    <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+        <h2>Chmod計算機について</h2>
+        <p>Chmod計算機は、Unix/Linuxのファイルパーミッションコードを理解し、生成するのに役立ちます。ファイルパーミッションは、Unixベースのシステムで誰がファイルを読み取り、書き込み、または実行できるかを制御します。このツールは、755のような数値（8進数）表記とrwxr-xr-xのような記号表記を変換し、必要な正確なパーミッションを簡単に設定できます。</p>
+        
+        <p>Unixパーミッションは、所有者、グループ、その他の3つのグループに分かれています。各グループは、読み取り（4）、書き込み（2）、実行（1）のパーミッションを持つことができます。8進数表記は、各グループのこれらの値を合計し、3桁の数字になります。このツールは、新しく作成されたファイルのデフォルトパーミッションを決定するumask値も計算します。</p>
+        
+        <h3>一般的な使用例</h3>
+        <p>システム管理者や開発者は、ウェブサーバーファイルの設定（ファイルは通常644、ディレクトリは755）、SSH鍵の設定（秘密鍵は600）、正しい実行パーミッションでのアプリケーションのデプロイ、パーミッション拒否エラーのトラブルシューティング、Unixパーミッションの概念学習などでchmod計算機を使用します。chmodを理解することは、安全なサーバー管理に不可欠です。</p>
+        
+        <p>パーミッションボックスをチェックまたはチェック解除すると、8進数と記号表記がリアルタイムで更新されます。8進数値を直接入力して、それが表すパーミッションを確認することもできます。すべての計算はブラウザ内でローカルに行われます。</p>
+    </div>
+
+    <script src="/tools/chmod-calculator/chmod-calculator.local.js"></script>

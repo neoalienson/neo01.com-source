@@ -1,0 +1,47 @@
+---
+title: Base64 Encoder/Decoder
+layout: tools
+series: tools
+---
+
+    <link rel="stylesheet" href="/tools/base64-converter/style.css">
+
+        
+        <div class="controls">
+            <div class="checkbox-container">
+                <input type="checkbox" id="urlSafe">
+                <label for="urlSafe">URL Safe</label>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label for="inputText">Input Text:</label>
+            <textarea id="inputText" placeholder="Enter text to encode or Base64 to decode..."></textarea>
+            <div class="button-group">
+                <button class="btn-primary" onclick="encodeText()">Encode to Base64</button>
+                <button class="btn-secondary" onclick="decodeText()">Decode from Base64</button>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <div class="output-header">
+                <label for="outputText">Output:</label>
+                <button class="btn-copy" onclick="copyOutput()">Copy</button>
+            </div>
+            <textarea id="outputText" readonly placeholder="Output will appear here..."></textarea>
+            <div id="message"></div>
+        </div>
+
+    <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+        <h2>About Base64 Encoding</h2>
+        <p>Base64 is an encoding scheme that converts binary data into ASCII text using 64 printable characters (A-Z, a-z, 0-9, +, /). It's essential for transmitting binary data over text-based protocols like email, JSON, or XML. While Base64 increases data size by about 33%, it ensures binary data can safely travel through systems designed for text.</p>
+        
+        <p>The encoding works by taking 3 bytes (24 bits) of input and converting them into 4 Base64 characters (6 bits each). When the input isn't divisible by 3, padding characters (=) are added. URL-safe Base64 replaces + with - and / with _ to avoid issues in URLs and filenames, making it perfect for tokens, identifiers, and query parameters.</p>
+        
+        <h3>Common Use Cases</h3>
+        <p>Base64 is everywhere: embedding images in HTML/CSS (data URLs), encoding email attachments (MIME), transmitting JSON Web Tokens (JWT), storing binary data in databases, encoding API credentials, and handling file uploads. It's not encryption—anyone can decode it—but it prevents data corruption during transmission.</p>
+        
+        <p>Enter any text to encode it to Base64, or paste Base64 to decode it back to plain text. Toggle URL-safe mode for web-friendly encoding. The tool automatically detects whether your input is plain text or Base64 and processes it accordingly. All operations happen locally in your browser for privacy.</p>
+    </div>
+
+    <script src="/tools/base64-converter/base64-converter.local.js"></script>

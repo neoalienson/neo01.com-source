@@ -1,0 +1,27 @@
+---
+title: 裝置資訊
+layout: tools
+lang: zh-TW
+series: tools
+---
+
+    <link rel="stylesheet" href="/css/tools-common.css">
+    <link rel="stylesheet" href="/tools/device-information/style.css">
+
+    <div class="tool_main">
+        <div class="info-grid" id="deviceInfo"></div>
+    </div>
+
+    <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+        <h2>關於裝置資訊</h2>
+        <p>裝置資訊顯示有關您當前裝置、瀏覽器和網路環境的綜合詳細資訊。此工具檢測您的作業系統、瀏覽器版本、螢幕解析度、時區、語言偏好等。它對於排除相容性問題、測試響應式設計以及了解裝置功能非常有用。</p>
+        
+        <p>此工具使用瀏覽器 API 和 JavaScript 收集資訊，包括使用者代理解析、螢幕屬性、網路資訊和系統偏好。所有資料都在您的瀏覽器本地收集 - 不會將任何內容傳送到任何伺服器。顯示的資訊是網站在您造訪時通常可以檢測到的內容。</p>
+        
+        <h3>常見使用情境</h3>
+        <p>Web 開發人員使用裝置資訊測試不同螢幕尺寸的響應式設計、除錯瀏覽器特定問題以及驗證功能支援。使用者在排除問題、驗證瀏覽器版本以確保相容性、了解隱私暴露以及確認系統設定（如時區和語言）時檢查裝置規格。</p>
+        
+        <p>只需載入此頁面即可查看所有可用的裝置資訊。資料會自動更新並反映您當前的瀏覽器工作階段。所有檢測都在您的瀏覽器本地進行。</p>
+    </div>
+
+    <script src="/tools/device-information/device-information.local.js"></script>

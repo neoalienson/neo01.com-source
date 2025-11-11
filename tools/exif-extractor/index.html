@@ -1,0 +1,37 @@
+---
+title: EXIF Extractor
+layout: tools
+series: tools
+---
+
+
+<div class="tool-container">
+    <p>Upload or drag and drop a JPEG image to extract and analyze its EXIF metadata information.</p>
+    
+    <div class="drop-zone" id="dropZone">
+        <p>📁 Click here or drag and drop a JPEG file</p>
+        <input type="file" id="fileInput" accept=".jpg,.jpeg,image/jpeg">
+    </div>
+    
+    <div id="fileInfo" class="file-info" style="display: none;"></div>
+    <div id="output" class="metadata-output"></div>
+    <div id="error" class="error" style="display: none;"></div>
+</div>
+
+<script src="/tools/exif-extractor/exif-tags.local.js"></script>
+<script src="/tools/exif-extractor/exif-extractor.local.js"></script>
+
+
+<div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+    <h2>About EXIF Extractor</h2>
+    <p>EXIF Extractor reads and displays metadata embedded in JPEG images. EXIF (Exchangeable Image File Format) data includes camera settings, GPS coordinates, timestamps, and other technical information automatically recorded when photos are taken. This tool helps photographers, investigators, and anyone curious about image origins understand the story behind their photos.</p>
+    
+    <p>The extractor parses EXIF tags including camera make and model, exposure settings (ISO, aperture, shutter speed), focal length, flash usage, orientation, GPS location, and timestamps. All processing happens in your browser using JavaScript - images are never uploaded to any server, ensuring complete privacy.</p>
+    
+    <h3>Common Use Cases</h3>
+    <p>Photographers use EXIF extractors to review camera settings from successful shots, verify image authenticity, organize photo libraries by location or date, and learn from other photographers' techniques. Digital forensics professionals analyze EXIF data for investigations. Privacy-conscious users check metadata before sharing photos online to avoid exposing sensitive location or device information.</p>
+    
+    <p>Click the drop zone or drag a JPEG file to extract its EXIF data. The tool displays all available metadata in an organized format. All processing happens locally - your images never leave your device.</p>
+</div>
+
+<link rel="stylesheet" href="/tools/exif-extractor/style.css">

@@ -1,0 +1,67 @@
+.input-group {
+    margin-bottom: 20px;
+}
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #555;
+} 
+input[type="text"], select {
+    width: calc(100% - 28px);
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+input[type="text"]:focus, select:focus {
+    outline: none;
+    border-color: #007acc;
+} 
+.output {
+    background: #1e1e1e;
+    color: #d4d4d4;
+    padding: 20px;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    white-space: pre;
+    overflow-x: auto;
+    margin-top: 20px;
+    border: 2px solid #333;
+}
+.font-result {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #444;
+}
+.font-name {
+    color: #007acc;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-family: Arial, sans-serif;
+}
+.copy-btn {
+    background: #007acc;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+.copy-btn:hover {
+    background: #005a9e;
+}
+.back-link {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #007acc;
+    text-decoration: none;
+    font-weight: 500;
+}
+.back-link:hover {
+    text-decoration: underline;
+}

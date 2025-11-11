@@ -1,0 +1,70 @@
+---
+title: ブラウザプロンプトAPIプレイグラウンド
+layout: tools
+lang: ja
+---
+
+    <link rel="stylesheet" href="/css/tools-common.css">
+    <link rel="stylesheet" href="/ai/prompt.css">
+
+    <div class="tool_main">
+        <p>
+            これはGemini Nanoを搭載したChromeの
+            <a href="https://developer.chrome.com/docs/ai/built-in">組み込みプロンプトAPI</a>
+            のデモです。
+        </p>
+        
+        <div id="error-message" class="error"></div>
+        
+        <div id="prompt-area" style="display: none;">
+            <form>
+                <label>
+                    プロンプト
+                    <textarea id="prompt-input" placeholder="何でも聞いてください...">フランスの首都は何ですか？</textarea>
+                </label>
+                <div class="form-controls">
+                    <button type="submit" id="submit-button">プロンプトを送信</button>
+                    <button type="button" id="reset-button">セッションをリセット</button>
+                    <span id="cost"></span>
+                </div>
+                <div class="settings">
+                    <label for="session-top-k">Top-k</label>
+                    <input id="session-top-k" min="1" type="number">
+                    <label for="session-temperature">Temperature</label>
+                    <input id="session-temperature" type="number" step="0.1" min="0">
+                </div>
+            </form>
+            
+            セッション統計
+            <table>
+                <thead>
+                    <tr>
+                        <th>Temperature</th>
+                        <th>Top-k</th>
+                        <th>使用トークン数</th>
+                        <th>残りトークン数</th>
+                        <th>総トークン数</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="temperature">&nbsp;</td>
+                        <td id="top-k">&nbsp;</td>
+                        <td id="tokens-so-far">&nbsp;</td>
+                        <td id="tokens-left">&nbsp;</td>
+                        <td id="max-tokens">&nbsp;</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            会話
+            <div id="response-area" class="conversation" style="display: none;"></div>
+            
+            <details>
+                <summary>生のレスポンス</summary>
+                <div></div>
+            </details>
+        </div>
+    </div>
+
+    <script type="module" src="/ai/prompt/prompt.local.js"></script>

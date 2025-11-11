@@ -1,0 +1,102 @@
+---
+title: 世界时钟
+layout: tools
+series: tools
+lang: zh-CN
+---
+
+    <link rel="stylesheet" href="/css/tools-common.css">
+    <link rel="stylesheet" href="/tools/world-clock/style.css">
+
+    <div class="tool_main">
+        <div class="clock-container">
+            <div class="clock-section">
+                <div class="analog-clock" id="analog-clock">
+                    <div class="clock-number" style="top:10px;left:50%;transform:translateX(-50%);">12</div>
+                    <div class="clock-number" style="top:50%;right:10px;transform:translateY(-50%);">3</div>
+                    <div class="clock-number" style="bottom:10px;left:50%;transform:translateX(-50%);">6</div>
+                    <div class="clock-number" style="top:50%;left:10px;transform:translateY(-50%);">9</div>
+                    <div class="clock-hand minute-hand" id="minute-hand"></div>
+                    <div class="clock-hand hour-hand" id="hour-hand"></div>
+                    <div class="clock-center"></div>
+                </div>
+                <div style="text-align:center;margin-top:10px;color:#666;font-size:14px;">拖动时钟指针调整时间</div>
+            </div>
+            <div class="clock-controls">
+                <div style="font-weight:bold;font-size:1.2rem;color:#495057;margin-bottom:10px;">参考时间</div>
+                <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:10px;">
+                    <div id="reference-time" style="font-family:'Courier New',monospace;font-size:2rem;font-weight:bold;color:#007acc;"></div>
+                    <button id="ampm-toggle" onclick="toggleAMPM()" style="display:none;padding:6px 12px;background:#007acc;color:white;border:none;border-radius:4px;cursor:pointer;font-size:1rem;font-weight:bold;"></button>
+                </div>
+                <div id="reference-date" style="font-size:0.9rem;color:#6c757d;margin-bottom:10px;text-align:center;"></div>
+                <div id="ampm-hint" style="display:none;color:#666;font-size:14px;margin-bottom:15px;text-align:center;">点击 AM/PM 切换</div>
+                <button onclick="resetTime()" style="padding:8px 16px;background:#6c757d;color:white;border:none;border-radius:4px;cursor:pointer;margin-bottom:15px;width:100%;">重置时间</button>
+                <div style="display:flex;align-items:center;justify-content:center;gap:10px;">
+                    <label style="font-size:14px;color:#555;">24 小时制</label>
+                    <label class="time-switch">
+                        <input type="checkbox" id="format24h" checked>
+                        <span class="time-slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="clocks-grid" id="clocks-grid">
+            <div class="add-timezone" onclick="showAddModal()">
+                <div class="add-timezone-text">+ 添加时区</div>
+            </div>
+        </div>
+        
+        <div class="modal" id="add-modal">
+            <div class="modal-content">
+                <div class="modal-header">添加时区</div>
+                <select id="timezone-select"></select>
+                <div class="modal-buttons">
+                    <button class="btn btn-secondary" onclick="hideAddModal()">取消</button>
+                    <button class="btn btn-primary" onclick="addTimezone()">添加</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+        <h2>关于世界时钟</h2>
+        <p>世界时钟同时显示多个时区的当前时间。在全球化的世界中，跨时区协调对于远程团队、国际业务和个人联系至关重要。此工具显示任何时区的实时时钟，让您轻松安排会议并一目了然地了解时差。</p>
+        
+        <p>时钟支持全球所有 IANA 时区并实时更新。将多个时区时钟添加到您的仪表板以同时监控不同地区。每个时钟显示当前时间、日期和时区偏移。界面简洁易读，非常适合放在第二个显示器上或在安排国际通话前查看。</p>
+        
+        <h3>常见使用场景</h3>
+        <p>远程团队通过检查团队成员的当地时间来协调跨时区会议。国际企业与客户和合作伙伴安排通话。旅行者追踪目的地和家乡的时间。活动组织者规划全球网络研讨会和会议。与国际客户合作的自由职业者避免排程冲突。股票交易员监控不同交易所的市场时间。</p>
+        
+        <p>点击"添加时区"选择您要监控的地区。时钟每秒自动更新。移除您不再需要的时钟。您的时区选择会保存在浏览器本地以方便使用。</p>
+    </div>
+
+    <script>
+        window.worldClockTranslations = {
+            remove: '删除',
+            locale: 'zh-CN',
+            dateFormat: { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' },
+            countries: {
+                'USA': '美国', 'Venezuela': '委内瑞拉', 'Canada': '加拿大', 'Brazil': '巴西',
+                'Argentina': '阿根廷', 'Portugal': '葡萄牙', 'UTC': 'UTC', 'UK': '英国',
+                'France': '法国', 'Germany': '德国', 'Italy': '意大利', 'Greece': '希腊',
+                'Turkey': '土耳其', 'Russia': '俄罗斯', 'UAE': '阿联酋', 'Afghanistan': '阿富汗',
+                'Pakistan': '巴基斯坦', 'India': '印度', 'Nepal': '尼泊尔', 'Bangladesh': '孟加拉',
+                'Myanmar': '缅甸', 'Thailand': '泰国', 'Singapore': '新加坡', 'Hong Kong': '香港',
+                'China': '中国', 'Japan': '日本', 'South Korea': '韩国', 'Australia': '澳大利亚',
+                'New Zealand': '新西兰', 'Fiji': '斐济'
+            },
+            cities: {
+                'Midway': '中途岛', 'Honolulu': '檀香山', 'Anchorage': '安克雷奇', 'Los Angeles': '洛杉矶',
+                'Denver': '丹佛', 'Chicago': '芝加哥', 'New York': '纽约', 'Caracas': '加拉加斯',
+                'Halifax': '哈利法克斯', 'St Johns': '圣约翰斯', 'Sao Paulo': '圣保罗', 'Buenos Aires': '布宜诺斯艾利斯',
+                'Azores': '亚速尔群岛', 'UTC': 'UTC', 'London': '伦敦', 'Paris': '巴黎',
+                'Berlin': '柏林', 'Rome': '罗马', 'Athens': '雅典', 'Istanbul': '伊斯坦布尔',
+                'Moscow': '莫斯科', 'Dubai': '迪拜', 'Kabul': '喀布尔', 'Karachi': '卡拉奇',
+                'Kolkata': '加尔各答', 'Kathmandu': '加德满都', 'Dhaka': '达卡', 'Yangon': '仰光',
+                'Bangkok': '曼谷', 'Singapore': '新加坡', 'Hong Kong': '香港', 'Shanghai': '上海',
+                'Tokyo': '东京', 'Seoul': '首尔', 'Adelaide': '阿德莱德', 'Sydney': '悉尼',
+                'Auckland': '奥克兰', 'Fiji': '斐济'
+            }
+        };
+    </script>
+    <script src="/tools/world-clock/world-clock.local.js"></script>

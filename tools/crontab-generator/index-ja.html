@@ -1,0 +1,94 @@
+---
+title: Crontabジェネレーター
+layout: tools
+lang: ja
+series: tools
+---
+
+    <link rel="stylesheet" href="/css/tools-common.css">
+    <link rel="stylesheet" href="/tools/crontab-generator/style.css">
+
+    <div class="tool_main">
+        <div class="time-grid">
+            <div class="input-group">
+                <label for="minute">分 (0-59)</label>
+                <select id="minute">
+                    <option value="*">毎分</option>
+                    <option value="0">0</option>
+                    <option value="*/5">5分ごと</option>
+                    <option value="*/10">10分ごと</option>
+                    <option value="*/15">15分ごと</option>
+                    <option value="*/30">30分ごと</option>
+                </select>
+            </div>
+            
+            <div class="input-group">
+                <label for="hour">時 (0-23)</label>
+                <select id="hour">
+                    <option value="*">毎時</option>
+                    <option value="0">0 (深夜)</option>
+                    <option value="6">6時</option>
+                    <option value="12">12時 (正午)</option>
+                    <option value="18">18時</option>
+                </select>
+            </div>
+            
+            <div class="input-group">
+                <label for="day">日 (1-31)</label>
+                <select id="day">
+                    <option value="*">毎日</option>
+                    <option value="1">1日</option>
+                    <option value="15">15日</option>
+                    <option value="*/7">7日ごと</option>
+                </select>
+            </div>
+            
+            <div class="input-group">
+                <label for="month">月 (1-12)</label>
+                <select id="month">
+                    <option value="*">毎月</option>
+                    <option value="1">1月</option>
+                    <option value="6">6月</option>
+                    <option value="12">12月</option>
+                </select>
+            </div>
+            
+            <div class="input-group">
+                <label for="weekday">曜日 (0-7)</label>
+                <select id="weekday">
+                    <option value="*">毎日</option>
+                    <option value="0">日曜日</option>
+                    <option value="1">月曜日</option>
+                    <option value="2">火曜日</option>
+                    <option value="3">水曜日</option>
+                    <option value="4">木曜日</option>
+                    <option value="5">金曜日</option>
+                    <option value="6">土曜日</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="output-section">
+            <button class="copy-btn" onclick="copyResult()">コピー</button>
+            <div class="output-label">Cron式</div>
+            <div class="output-content" id="cronResult">* * * * *</div>
+        </div>
+        
+        <div class="description">
+            <div class="description-text" id="cronDescription">毎分実行</div>
+        </div>
+    </div>
+
+    <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+        <h2>Crontabジェネレーターについて</h2>
+        <p>Crontabジェネレーターは、Unix/Linuxシステムで自動化タスクをスケジュールするためのcron式を作成します。Cronは時間ベースのジョブスケジューラーで、指定された間隔でコマンドやスクリプトを実行します。このツールは、5つの時間フィールドの複雑な形式を記憶することなく、正しいcron構文を構築するのに役立ちます。</p>
+        
+        <p>Cron式は5つのフィールドで構成されます：分（0-59）、時（0-23）、日（1-31）、月（1-12）、曜日（0-7）。各フィールドは、ワイルドカード（*）、特定の値、範囲、または間隔を使用できます。このツールは一般的なプリセットを提供し、cronジョブがいつ実行されるかの人間が読める説明を生成します。</p>
+        
+        <h3>一般的な使用例</h3>
+        <p>システム管理者は、自動バックアップ、ログローテーション、システムメンテナンス、監視スクリプトに使用します。開発者は、データ同期、レポート生成、キャッシュクリア、バッチ処理ジョブをスケジュールします。Webアプリケーションは、スケジュールされたメールの送信、一時ファイルのクリーンアップ、検索インデックスの更新、定期的なヘルスチェックの実行にcronを使用します。</p>
+        
+        <p>ドロップダウンから希望のスケジュールを選択すると、cron式が実行時間の説明とともに自動的に生成されます。式をコピーしてcrontabファイルに追加します。すべての生成はブラウザ内でローカルに行われます。</p>
+    </div>
+
+    <script src="/tools/crontab-generator/crontab-generator.local.js"></script>

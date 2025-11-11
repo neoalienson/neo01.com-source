@@ -1,0 +1,73 @@
+---
+title: Defang 工具
+layout: tools
+lang: zh-TW
+series: tools
+---
+
+    <link rel="stylesheet" href="/tools/defang/style.css">
+
+    <div id="defang-tool">
+        <div class="defang-input-group">
+            <label for="inputText">輸入文字：</label>
+            <textarea id="inputText" placeholder="輸入要 defang/refang 的 URL、IP 或電子郵件..."></textarea>
+        </div>
+
+        <div class="defang-controls">
+            <div class="defang-switch-container">
+                <label>將點號替換為 [.]</label>
+                <label class="defang-switch">
+                    <input type="checkbox" id="replaceDots" checked>
+                    <span class="defang-slider"></span>
+                </label>
+            </div>
+            <div class="defang-switch-container">
+                <label>將 HTTP 替換為 hxxp</label>
+                <label class="defang-switch">
+                    <input type="checkbox" id="replaceHttp" checked>
+                    <span class="defang-slider"></span>
+                </label>
+            </div>
+            <div class="defang-switch-container">
+                <label>將 :// 替換為 [://]</label>
+                <label class="defang-switch">
+                    <input type="checkbox" id="replaceProtocol" checked>
+                    <span class="defang-slider"></span>
+                </label>
+            </div>
+            <div class="defang-switch-container">
+                <label>將連接埠替換為 [:]port</label>
+                <label class="defang-switch">
+                    <input type="checkbox" id="replacePorts" checked>
+                    <span class="defang-slider"></span>
+                </label>
+            </div>
+        </div>
+
+        <div class="defang-button-group">
+            <button class="defang-btn-primary" onclick="defangText()">Defang</button>
+            <button class="defang-btn-secondary" onclick="refangText()">Refang</button>
+        </div>
+        
+
+        <div class="defang-output-section">
+            <button class="defang-btn-copy" onclick="copyOutput()">複製</button>
+            <div class="defang-output-label">輸出</div>
+            <div class="defang-output-content" id="outputText">輸出結果將顯示在這裡...</div>
+            <div id="message"></div>
+        </div>
+    </div>
+
+    <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+        <h2>關於 Defang 工具</h2>
+        <p>Defang 工具透過替換關鍵字元來安全地中和化潛在惡意的 URL、IP 位址和電子郵件位址，防止意外點擊或自動處理。這在網路安全中至關重要，尤其是在報告、電子郵件或文件中分享入侵指標（IOC）時。Defang 使 URL 和 IP 不可點擊，同時保持其可讀性以便分析。</p>
+        
+        <p>此工具提供多種 defang 選項：將點號替換為 [.]、將 http 轉換為 hxxp、用 [://] 包裹協定以及用括號包裹連接埠。您可以獨立啟用或禁用每個選項。Refang 功能反轉此過程，在控制環境中需要測試或調查時恢復原始 URL。</p>
+        
+        <h3>常見使用情境</h3>
+        <p>安全分析師在記錄惡意軟體活動、分享威脅情報報告、在公共論壇發佈 IOC、創建事件響應文件以及與團隊溝通可疑網域時使用 defang。它防止意外導航到惡意站點，並阻止安全工具自動標記或阻止共享內容。</p>
+        
+        <p>將您的 URL、IP 或電子郵件貼到輸入欄位中，選擇您的 defang 選項，然後點擊 Defang。需要時使用 Refang 恢復原始格式。所有處理都在您的瀏覽器本地進行。</p>
+    </div>
+
+    <script src="/tools/defang/defang.local.js"></script>

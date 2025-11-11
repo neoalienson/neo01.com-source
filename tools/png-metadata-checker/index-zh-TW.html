@@ -1,0 +1,23 @@
+---
+title: PNG 中繼資料檢查器
+layout: tools
+lang: zh-TW
+series: tools
+---
+
+<link rel="stylesheet" href="/tools/png-metadata-checker/style.css">
+
+<div class="tool-container">
+    <p>Upload or drag and drop a PNG file to extract and analyze its metadata information.</p>
+    
+    <div class="drop-zone" id="dropZone">
+        <p>📁 Click here or drag and drop a PNG file</p>
+        <input type="file" id="fileInput" accept=".png,image/png">
+    </div>
+    
+    <div id="fileInfo" class="file-info" style="display: none;"></div>
+    <div id="output" class="metadata-output"></div>
+    <div id="error" class="error" style="display: none;"></div>
+</div>
+
+<script src="/tools/png-metadata-checker/png-metadata-checker.local.js"></script>

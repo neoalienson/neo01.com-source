@@ -1,0 +1,32 @@
+---
+title: URLパーサー
+layout: tools
+lang: ja
+series: tools
+---
+
+    <link rel="stylesheet" href="/css/tools-common.css">
+    <link rel="stylesheet" href="/tools/url-parser/style.css">
+
+    <div class="tool_main">
+        <div class="input-group">
+            <label for="urlInput">解析するURL:</label>
+            <input type="text" id="urlInput" placeholder="ここにURLを入力してください..." value="https://neo01.com:8080/path/to/page?param1=value1&param2=value2#section">
+        </div>
+        
+        <div class="output-grid" id="output"></div>
+    </div>
+
+    <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+        <h2>URL構造について</h2>
+        <p>URL（Uniform Resource Locator）はウェブのアドレスですが、見た目よりも複雑です。各URLには複数のコンポーネントが含まれています：プロトコル（http/https）、ホスト名（ドメイン）、ポート（オプション）、パス（リソースの場所）、クエリパラメータ（キーと値のペア）、フラグメント（ページアンカー）。これらの部分を理解することは、Web開発、API統合、セキュリティ分析に不可欠です。</p>
+        
+        <p>パーサーは任意のURLをその構成要素に分解し、検査、デバッグ、または特定のコンポーネントの抽出を容易にします。プロトコルの欠落、カスタムポート、エンコードされた文字、複雑なクエリ文字列などのエッジケースを処理します。壊れたリンクのトラブルシューティング、APIエンドポイントの分析、Webの基礎を学ぶ場合でも、URL構造を明確に見ることが役立ちます。</p>
+        
+        <h3>なぜURLを解析するのか？</h3>
+        <p>開発者はURLを解析してクエリパラメータを抽出し、ユーザー入力を検証し、APIリクエストを構築し、ルーティングの問題をデバッグし、リファラーデータを分析します。セキュリティ専門家はURLを調査してフィッシングの試み、悪意のあるパラメータ、またはインジェクション攻撃を発見します。SEOスペシャリストは検索エンジン用にURL構造を最適化します。</p>
+        
+        <p>任意のURLを貼り付けるだけで、すべてのコンポーネントが分解されて説明されます。Webアプリケーションのデバッグ、APIエンドポイントの理解、URL構造の教育、またはコードを書かずに特定のURL部分を素早く抽出するのに最適です。</p>
+    </div>
+
+    <script src="/tools/url-parser/url-parser.local.js"></script>

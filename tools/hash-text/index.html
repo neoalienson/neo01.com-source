@@ -1,0 +1,32 @@
+---
+title: Hash Text
+layout: tools
+series: tools
+---
+
+    <link rel="stylesheet" href="/css/tools-common.css">
+    <link rel="stylesheet" href="/tools/hash-text/style.css">
+
+    <div class="tool_main">
+        <div class="input-group">
+            <label for="textInput">Text to hash:</label>
+            <textarea id="textInput" placeholder="Enter your text here...">Hello World!</textarea>
+        </div>
+        
+        <div class="output-grid" id="output"></div>
+    </div>
+
+    <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+        <h2>About Hash Functions</h2>
+        <p>Hash functions are cryptographic algorithms that transform any input data into a fixed-size string of characters, called a hash or digest. They're fundamental to modern security, used everywhere from password storage to blockchain verification. A good hash function is deterministic (same input always produces same output), fast to compute, and practically impossible to reverse.</p>
+        
+        <p>This tool supports multiple hash algorithms: MD5 (128-bit, legacy), SHA-1 (160-bit, deprecated for security), SHA-256 (256-bit, widely used), SHA-512 (512-bit, maximum security), and SHA-3 (latest standard). Each algorithm offers different trade-offs between speed and security. While MD5 and SHA-1 are still useful for checksums and non-security purposes, SHA-256 and SHA-512 are recommended for cryptographic applications.</p>
+        
+        <h3>Common Use Cases</h3>
+        <p>Hash functions verify data integrity (file checksums), secure passwords (one-way encryption), create digital signatures, generate unique identifiers, and power blockchain technology. When you download software and verify its hash, you're ensuring the file hasn't been tampered with. When websites store your password, they hash it so even they can't see the original.</p>
+        
+        <p>Simply enter any text and instantly see its hash values across all supported algorithms. Perfect for verifying file integrity, generating checksums, testing hash implementations, or learning about cryptographic functions. The tool processes everything locally in your browser—no data is sent to any server.</p>
+    </div>
+
+    <script src="/cache/crypto-js.min.local.js"></script>
+    <script src="/tools/hash-text/hash-text.local.js"></script>

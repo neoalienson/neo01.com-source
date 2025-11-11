@@ -1,0 +1,60 @@
+---
+title: ASCII 文字绘制器
+layout: tools
+lang: zh-CN
+series: tools
+---
+
+    <link rel="stylesheet" href="/tools/ascii-text-drawer/style.css">
+
+    <div class="tool_main">
+        
+        <div class="input-group">
+            <label for="textInput">要转换的文字：</label>
+            <input type="text" id="textInput" placeholder="在此输入您的文字..." value="HELLO">
+        </div>
+        
+        <div class="input-group">
+            <label for="fontCategory">字体类别：</label>
+            <select id="fontCategory">
+                <option value="popular">Popular</option>
+                <option value="3d">3D & Effects</option>
+                <option value="small">Small & Compact</option>
+                <option value="decorative">Decorative</option>
+                <option value="script">Script & Cursive</option>
+                <option value="tech">Tech & Digital</option>
+                <option value="block">Block & Solid</option>
+                <option value="banner">Banner & Headers</option>
+                <option value="mono">Monospace</option>
+                <option value="themed">Themed & Special</option>
+                <option value="geometric">Geometric</option>
+                <option value="retro">Retro & Vintage</option>
+                <option value="stylized">Stylized & Effects</option>
+                <option value="artistic">Artistic & Creative</option>
+                <option value="money">Money Fonts</option>
+                <option value="names">Named Fonts</option>
+                <option value="amc">AMC Collection</option>
+                <option value="efti">Efti Collection</option>
+                <option value="misc">Miscellaneous</option>
+                <option value="all">All Fonts</option>
+            </select>
+        </div>
+        
+        <div class="output" id="output"></div>
+        <button class="copy-btn" onclick="copyToClipboard()">复制 to Clipboard</button>
+    </div>
+
+    <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+        <h2>关于 ASCII 文字绘制器</h2>
+        <p>ASCII 文字绘制器可将普通文字转换为使用各种字体的风格化 ASCII 艺术。ASCII 艺术是一种图形设计技术，使用 ASCII 标准中的可打印字符来创建图像和装饰性文字。此工具非常适合为纯文本环境创建引人注目的标题、横幅和装饰性文字。</p>
+        
+        <p>此工具使用 FIGlet 字体格式，该格式使用 ASCII 字符定义字符图案。每种字体都有独特的风格，从简单的方块字母到精细的 3D 效果。渲染完全在您的浏览器中使用 JavaScript 进行，确保您的文字保持私密且处理即时完成。</p>
+        
+        <h3>常见使用场景</h3>
+        <p>ASCII 艺术文字广泛用于源代码注释中的区段标题、README 文件以创建吸引人的标题、终端应用程序的启动画面、具有复古美感的电子邮件签名，以及纯文本格式受限的社交媒体帖子。它在开发者社区和复古计算机爱好者中特别受欢迎。</p>
+        
+        <p>只需输入您的文字，选择字体类别，然后浏览可用的样式。所有处理都在您的浏览器本地进行 - 不会将任何数据发送到任何服务器。</p>
+    </div>
+
+    <script src="/tools/ascii-text-drawer/figlet.local.js"></script>
+    <script src="/tools/ascii-text-drawer/ascii-text-drawer.local.js"></script>

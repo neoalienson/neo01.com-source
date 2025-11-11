@@ -1,0 +1,38 @@
+---
+title: IPv4サブネット計算機
+layout: tools
+lang: ja
+series: tools
+---
+
+    <link rel="stylesheet" href="/css/tools-common.css">
+    <link rel="stylesheet" href="/tools/ipv4-subnet-calculator/style.css">
+
+    <div class="tool_main">
+        <div class="input-group">
+            <label for="ipInput">CIDR付きIPアドレス (例: 192.168.1.0/24):</label>
+            <input type="text" id="ipInput" placeholder="192.168.1.0/24" value="192.168.1.0/24">
+        </div>
+        
+        <div class="class-buttons">
+            <button class="class-btn" onclick="setClassA()">クラスA (/8)</button>
+            <button class="class-btn" onclick="setClassB()">クラスB (/16)</button>
+            <button class="class-btn" onclick="setClassC()">クラスC (/24)</button>
+        </div>
+        
+        <div class="output-grid" id="output"></div>
+    </div>
+
+    <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+        <h2>IPv4サブネット計算機について</h2>
+        <p>IPv4サブネット計算機は、IPアドレスとCIDR表記からネットワーク情報を計算します。サブネット化は、大きなネットワークを小さく管理しやすいセグメントに分割し、効率的なIPアドレス割り当てとネットワーク組織を実現します。このツールは、ネットワークアドレス、ブロードキャストアドレス、使用可能なホスト範囲、サブネットマスク、利用可能なホスト数を計算します。</p>
+        
+        <p>計算機はCIDR表記（例：192.168.1.0/24）を受け入れます。スラッシュの後の数字はネットワークプレフィックス長を示します。/1から/32までのすべてのサブネットサイズをサポートし、一般的なクラスA（/8）、クラスB（/16）、クラスC（/24）ネットワークへのクイックアクセスを提供します。結果には教育目的のためにバイナリ表現が含まれます。</p>
+        
+        <h3>一般的な使用例</h3>
+        <p>ネットワーク管理者は、ネットワークアーキテクチャの設計、部門やVLANへのIPアドレス範囲の割り当て、ルーティング問題のトラブルシューティング、ネットワーク拡張の計画時にサブネット計算機を使用します。ネットワーキングの概念を学ぶ学生は、サブネット化の原理を理解するために使用します。IT専門家は、サブネット構成を検証し、新しい展開のために利用可能なアドレスを計算します。</p>
+        
+        <p>CIDR表記付きIPアドレスを入力するか、一般的な構成のためにクラスボタンを使用します。計算機は、ネットワーク範囲、ブロードキャストアドレス、使用可能なホストを含むすべてのサブネット情報を即座に表示します。すべての計算はブラウザ内でローカルに行われます。</p>
+    </div>
+
+    <script src="/tools/ipv4-subnet-calculator/ipv4-subnet-calculator.local.js"></script>

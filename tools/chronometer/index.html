@@ -1,0 +1,41 @@
+---
+title: Chronometer
+layout: tools
+series: tools
+---
+
+    <link rel="stylesheet" href="/css/tools-common.css">
+    <link rel="stylesheet" href="/tools/chronometer/style.css">
+
+    <div class="tool_main">
+        <div class="chronometer-container">
+            <div class="time-display" id="time-display">00:00:00.000</div>
+            
+            <div class="controls">
+                <button class="btn btn-start" id="start-btn" onclick="startTimer()">Start</button>
+                <button class="btn btn-pause" id="pause-btn" onclick="pauseTimer()" style="display: none;">Pause</button>
+                <button class="btn btn-stop" id="stop-btn" onclick="stopTimer()" disabled>Stop</button>
+                <button class="btn btn-reset" id="reset-btn" onclick="resetTimer()">Reset</button>
+                <button class="btn btn-lap" id="lap-btn" onclick="recordLap()" disabled>Lap</button>
+            </div>
+            
+            <div class="laps-container" id="laps-container" style="display: none;">
+                <div class="laps-title">Lap Times</div>
+                <div id="laps-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+        <h2>About Chronometer</h2>
+        <p>Chronometer is a precise stopwatch tool for measuring time intervals with millisecond accuracy. Whether you're timing a workout, tracking task duration, measuring performance, or conducting experiments, this chronometer provides accurate time measurement with lap recording capabilities.</p>
+        
+        <p>The tool displays time in hours, minutes, seconds, and milliseconds format (HH:MM:SS.mmm). You can start, pause, and resume timing as needed, and record multiple lap times to track intervals within a longer session. All lap times are preserved until you reset the chronometer, making it easy to review your timing data.</p>
+        
+        <h3>Common Use Cases</h3>
+        <p>Athletes use chronometers for interval training and race timing, developers for performance benchmarking and optimization testing, students for time management and study sessions, project managers for task duration tracking, and researchers for experiment timing. The lap feature is particularly useful for tracking multiple intervals in activities like circuit training or sprint intervals.</p>
+        
+        <p>Click Start to begin timing, Pause to temporarily stop, Lap to record an interval time, and Reset to clear all data. The chronometer runs entirely in your browser with no data sent to any server.</p>
+    </div>
+
+    <script src="/tools/chronometer/chronometer.local.js"></script>

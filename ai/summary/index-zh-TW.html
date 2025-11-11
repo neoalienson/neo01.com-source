@@ -1,0 +1,63 @@
+---
+title: 瀏覽器文字摘要器遊樂場
+layout: tools
+lang: zh-TW
+---
+
+    <link rel="stylesheet" href="/css/tools-common.css">
+    <link rel="stylesheet" href="/ai/summary.css">
+
+    <div class="tool_main">
+        <main>
+            <fieldset>
+                <legend>提示</legend>
+                <textarea id="input" placeholder="輸入要摘要的文字...">敏捷的棕色狐狸跳過懶狗。這是一個示範 Chrome 內建 AI 摘要功能的範例文字。文字可以更長、更複雜，包含多個段落、技術細節和各種需要濃縮成更短、更易消化格式的主題。</textarea>
+                <div class="token-usage">代幣使用量：<span id="character-count">0</span></div>
+            </fieldset>
+            
+            <fieldset>
+                <legend>設定</legend>
+                <div class="settings-row">
+                    <div>
+                        <label for="type">摘要類型：</label>
+                        <select id="type">
+                            <option value="key-points" selected>重點</option>
+                            <option value="tldr">太長不看</option>
+                            <option value="teaser">預告</option>
+                            <option value="headline">標題</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="length">長度：</label>
+                        <select id="length">
+                            <option value="short" selected>短</option>
+                            <option value="medium">中</option>
+                            <option value="long">長</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="format">格式：</label>
+                        <select id="format">
+                            <option value="markdown" selected>Markdown</option>
+                            <option value="plain-text">純文字</option>
+                        </select>
+                    </div>
+                </div>
+            </fieldset>
+            
+            <div>
+                <h2>摘要</h2>
+                <pre id="output">在上方輸入文字以產生摘要...</pre>
+            </div>
+            
+            <div id="summarization-unsupported" class="error" style="display: none;">
+                此瀏覽器不支援摘要 API。請使用啟用 AI 功能的 Chrome Canary。
+            </div>
+            
+            <div id="summarization-unavailable" class="error" style="display: none;">
+                摘要 API 無法使用。請檢查您的瀏覽器設定。
+            </div>
+        </main>
+    </div>
+
+    <script src="/ai/summary/summary.local.js"></script>

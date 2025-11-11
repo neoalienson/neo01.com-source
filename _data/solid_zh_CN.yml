@@ -1,0 +1,7 @@
+content: |
+  - 📐 **SOLID设计原则系列**
+    - [单一职责原则](/zh-CN/2021/09/Single-Responsibility-Principle-SOLID/)
+    - [开闭原则](/zh-CN/2021/09/Open-Closed-Principle-SOLID/)
+    - [里氏替换原则](/zh-CN/2021/10/Liskov-Substitution-Principle-SOLID/)
+    - [接口隔离原则](/zh-CN/2021/11/Interface-Segregation-Principle-SOLID/)
+    - [依赖倒置原则](/zh-CN/2021/11/Dependency-Inversion-Principle-SOLID/)

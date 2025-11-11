@@ -1,0 +1,70 @@
+---
+title: 瀏覽器提示 API 遊樂場
+layout: tools
+lang: zh-TW
+---
+
+    <link rel="stylesheet" href="/css/tools-common.css">
+    <link rel="stylesheet" href="/ai/prompt.css">
+
+    <div class="tool_main">
+        <p>
+            這是 Chrome 內建
+            <a href="https://developer.chrome.com/docs/ai/built-in">提示 API</a>
+            的示範，由 Gemini Nano 提供支援。
+        </p>
+        
+        <div id="error-message" class="error"></div>
+        
+        <div id="prompt-area" style="display: none;">
+            <form>
+                <label>
+                    提示
+                    <textarea id="prompt-input" placeholder="問我任何問題...">法國的首都是什麼？</textarea>
+                </label>
+                <div class="form-controls">
+                    <button type="submit" id="submit-button">提交提示</button>
+                    <button type="button" id="reset-button">重置會話</button>
+                    <span id="cost"></span>
+                </div>
+                <div class="settings">
+                    <label for="session-top-k">Top-k</label>
+                    <input id="session-top-k" min="1" type="number">
+                    <label for="session-temperature">溫度</label>
+                    <input id="session-temperature" type="number" step="0.1" min="0">
+                </div>
+            </form>
+            
+            會話統計
+            <table>
+                <thead>
+                    <tr>
+                        <th>溫度</th>
+                        <th>Top-k</th>
+                        <th>已使用代幣</th>
+                        <th>剩餘代幣</th>
+                        <th>總代幣數</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="temperature">&nbsp;</td>
+                        <td id="top-k">&nbsp;</td>
+                        <td id="tokens-so-far">&nbsp;</td>
+                        <td id="tokens-left">&nbsp;</td>
+                        <td id="max-tokens">&nbsp;</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            對話
+            <div id="response-area" class="conversation" style="display: none;"></div>
+            
+            <details>
+                <summary>原始回應</summary>
+                <div></div>
+            </details>
+        </div>
+    </div>
+
+    <script type="module" src="/ai/prompt/prompt.local.js"></script>

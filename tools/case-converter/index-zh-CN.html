@@ -1,0 +1,32 @@
+---
+title: 大小写转换器
+layout: tools
+lang: zh-CN
+series: tools
+---
+
+    <link rel="stylesheet" href="/css/tools-common.css">
+    <link rel="stylesheet" href="/tools/case-converter/style.css">
+
+    <div class="tool_main">
+        <div class="input-group">
+            <label for="textInput">要转换的文字：</label>
+            <textarea id="textInput" placeholder="在此输入您的文字...">Hello World! This is a Sample Text.</textarea>
+        </div>
+        
+        <div class="output-grid" id="output"></div>
+    </div>
+
+    <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+        <h2>关于大小写转换器</h2>
+        <p>大小写转换器可将文本转换为编程和写作中常用的不同大小写样式。无论您需要 JavaScript 变量的 camelCase、Python 函数的 snake_case，还是常量的 SCREAMING_SNAKE_CASE，此工具都能立即将您的文本转换为所需的格式。</p>
+        
+        <p>此工具支持多种大小写惯例，包括大写、小写、标题大小写、句子大小写、camelCase、PascalCase、snake_case、kebab-case 等。每种转换都遵循软件开发中使用的标准惯例，非常适合重构代码或在项目中标准化命名惯例。</p>
+        
+        <h3>常见使用场景</h3>
+        <p>开发人员在重构代码以符合样式指南、将数据库列名转换为符合 ORM 惯例、将 API 响应键转换为符合前端命名模式，以及在不同编程语言之间标准化变量名称时使用大小写转换器。它对于需要调整标题或标题中大小写的作家也很有用。</p>
+        
+        <p>只需将您的文本粘贴到输入字段中，所有可用的大小写转换将立即显示。点击任何结果即可将其复制到剪贴板。所有处理都在您的浏览器本地进行。</p>
+    </div>
+
+    <script src="/tools/case-converter/case-converter.local.js"></script>

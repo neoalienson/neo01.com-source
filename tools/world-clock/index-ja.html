@@ -1,0 +1,102 @@
+---
+title: 世界時計
+layout: tools
+series: tools
+lang: ja
+---
+
+    <link rel="stylesheet" href="/css/tools-common.css">
+    <link rel="stylesheet" href="/tools/world-clock/style.css">
+
+    <div class="tool_main">
+        <div class="clock-container">
+            <div class="clock-section">
+                <div class="analog-clock" id="analog-clock">
+                    <div class="clock-number" style="top:10px;left:50%;transform:translateX(-50%);">12</div>
+                    <div class="clock-number" style="top:50%;right:10px;transform:translateY(-50%);">3</div>
+                    <div class="clock-number" style="bottom:10px;left:50%;transform:translateX(-50%);">6</div>
+                    <div class="clock-number" style="top:50%;left:10px;transform:translateY(-50%);">9</div>
+                    <div class="clock-hand minute-hand" id="minute-hand"></div>
+                    <div class="clock-hand hour-hand" id="hour-hand"></div>
+                    <div class="clock-center"></div>
+                </div>
+                <div style="text-align:center;margin-top:10px;color:#666;font-size:14px;">時計の針をドラッグして時刻を調整</div>
+            </div>
+            <div class="clock-controls">
+                <div style="font-weight:bold;font-size:1.2rem;color:#495057;margin-bottom:10px;">基準時刻</div>
+                <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:10px;">
+                    <div id="reference-time" style="font-family:'Courier New',monospace;font-size:2rem;font-weight:bold;color:#007acc;"></div>
+                    <button id="ampm-toggle" onclick="toggleAMPM()" style="display:none;padding:6px 12px;background:#007acc;color:white;border:none;border-radius:4px;cursor:pointer;font-size:1rem;font-weight:bold;"></button>
+                </div>
+                <div id="reference-date" style="font-size:0.9rem;color:#6c757d;margin-bottom:10px;text-align:center;"></div>
+                <div id="ampm-hint" style="display:none;color:#666;font-size:14px;margin-bottom:15px;text-align:center;">AM/PM をクリックして切り替え</div>
+                <button onclick="resetTime()" style="padding:8px 16px;background:#6c757d;color:white;border:none;border-radius:4px;cursor:pointer;margin-bottom:15px;width:100%;">時刻をリセット</button>
+                <div style="display:flex;align-items:center;justify-content:center;gap:10px;">
+                    <label style="font-size:14px;color:#555;">24時間表示</label>
+                    <label class="time-switch">
+                        <input type="checkbox" id="format24h" checked>
+                        <span class="time-slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="clocks-grid" id="clocks-grid">
+            <div class="add-timezone" onclick="showAddModal()">
+                <div class="add-timezone-text">+ タイムゾーンを追加</div>
+            </div>
+        </div>
+        
+        <div class="modal" id="add-modal">
+            <div class="modal-content">
+                <div class="modal-header">タイムゾーンを追加</div>
+                <select id="timezone-select"></select>
+                <div class="modal-buttons">
+                    <button class="btn btn-secondary" onclick="hideAddModal()">キャンセル</button>
+                    <button class="btn btn-primary" onclick="addTimezone()">追加</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+        <h2>世界時計について</h2>
+        <p>世界時計は複数のタイムゾーンの現在時刻を同時に表示します。グローバル化した世界では、リモートチーム、国際ビジネス、個人的なつながりにおいて、タイムゾーンを越えた調整が不可欠です。このツールは任意のタイムゾーンのライブ時計を表示し、会議のスケジュール調整や時差の把握を一目で簡単に行えます。</p>
+        
+        <p>時計は世界中のすべての IANA タイムゾーンをサポートし、リアルタイムで更新されます。ダッシュボードに複数のタイムゾーン時計を追加して、異なる地域を同時に監視できます。各時計には現在時刻、日付、タイムゾーンオフセットが表示されます。インターフェースはシンプルで読みやすく、セカンドモニターに表示したり、国際電話をスケジュールする前に確認するのに最適です。</p>
+        
+        <h3>一般的な使用例</h3>
+        <p>リモートチームはチームメンバーの現地時間を確認してタイムゾーンを越えた会議を調整します。国際企業はクライアントやパートナーとの通話をスケジュールします。旅行者は目的地と自宅のタイムゾーンの時刻を追跡します。イベント主催者はグローバルなウェビナーや会議を計画します。国際的なクライアントと仕事をするフリーランサーはスケジュールの競合を回避します。株式トレーダーは異なる取引所の市場時間を監視します。</p>
+        
+        <p>「タイムゾーンを追加」をクリックして、監視したい地域を選択します。時計は毎秒自動的に更新されます。不要になった時計は削除できます。タイムゾーンの選択は便利なようにブラウザにローカル保存されます。</p>
+    </div>
+
+    <script>
+        window.worldClockTranslations = {
+            remove: '削除',
+            locale: 'ja-JP',
+            dateFormat: { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' },
+            countries: {
+                'USA': 'アメリカ', 'Venezuela': 'ベネズエラ', 'Canada': 'カナダ', 'Brazil': 'ブラジル',
+                'Argentina': 'アルゼンチン', 'Portugal': 'ポルトガル', 'UTC': 'UTC', 'UK': 'イギリス',
+                'France': 'フランス', 'Germany': 'ドイツ', 'Italy': 'イタリア', 'Greece': 'ギリシャ',
+                'Turkey': 'トルコ', 'Russia': 'ロシア', 'UAE': 'アラブ首長国連邦', 'Afghanistan': 'アフガニスタン',
+                'Pakistan': 'パキスタン', 'India': 'インド', 'Nepal': 'ネパール', 'Bangladesh': 'バングラデシュ',
+                'Myanmar': 'ミャンマー', 'Thailand': 'タイ', 'Singapore': 'シンガポール', 'Hong Kong': '香港',
+                'China': '中国', 'Japan': '日本', 'South Korea': '韓国', 'Australia': 'オーストラリア',
+                'New Zealand': 'ニュージーランド', 'Fiji': 'フィジー'
+            },
+            cities: {
+                'Midway': 'ミッドウェー島', 'Honolulu': 'ホノルル', 'Anchorage': 'アンカレッジ', 'Los Angeles': 'ロサンゼルス',
+                'Denver': 'デンバー', 'Chicago': 'シカゴ', 'New York': 'ニューヨーク', 'Caracas': 'カラカス',
+                'Halifax': 'ハリファックス', 'St Johns': 'セントジョンズ', 'Sao Paulo': 'サンパウロ', 'Buenos Aires': 'ブエノスアイレス',
+                'Azores': 'アゾレス諸島', 'UTC': 'UTC', 'London': 'ロンドン', 'Paris': 'パリ',
+                'Berlin': 'ベルリン', 'Rome': 'ローマ', 'Athens': 'アテネ', 'Istanbul': 'イスタンブール',
+                'Moscow': 'モスクワ', 'Dubai': 'ドバイ', 'Kabul': 'カブール', 'Karachi': 'カラチ',
+                'Kolkata': 'コルカタ', 'Kathmandu': 'カトマンズ', 'Dhaka': 'ダッカ', 'Yangon': 'ヤンゴン',
+                'Bangkok': 'バンコク', 'Singapore': 'シンガポール', 'Hong Kong': '香港', 'Shanghai': '上海',
+                'Tokyo': '東京', 'Seoul': 'ソウル', 'Adelaide': 'アデレード', 'Sydney': 'シドニー',
+                'Auckland': 'オークランド', 'Fiji': 'フィジー'
+            }
+        };
+    </script>
+    <script src="/tools/world-clock/world-clock.local.js"></script>

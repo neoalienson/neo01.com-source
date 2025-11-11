@@ -1,0 +1,215 @@
+.tool-container {
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.drop-zone {
+    border: 2px dashed #007acc;
+    border-radius: 8px;
+    padding: 40px;
+    text-align: center;
+    background: #f8f9fa;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.drop-zone.dragover {
+    border-color: #0056b3;
+    background: #e3f2fd;
+}
+
+.drop-zone input[type="file"] {
+    display: none;
+}
+
+.file-info {
+    background: #e8f5e8;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border-left: 4px solid #4caf50;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #555;
+}
+
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+    min-height: 200px;
+    resize: vertical;
+    font-family: 'Courier New', monospace;
+    box-sizing: border-box;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #007acc;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.action-btn {
+    background: #007acc;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.action-btn:hover {
+    background: #005a9e;
+}
+
+.cert-result {
+    background: #f8f9fa;
+    border: 2px solid #e9ecef;
+    border-radius: 6px;
+    padding: 15px;
+    position: relative;
+}
+
+.cert-result .cert-name {
+    color: #007acc;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.cert-result .cert-output {
+    background: #1e1e1e;
+    color: #d4d4d4;
+    padding: 12px;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    word-break: break-all;
+    white-space: pre-wrap;
+}
+
+.cert-row {
+    display: grid;
+    gap: 5px;
+}
+
+.cert-field {
+    background: #f8f9fa;
+    border: none;
+    border-radius: 6px;
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.cert-field .cert-name {
+    color: #007acc;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    min-width: 200px;
+    flex-shrink: 0;
+    padding-right: 12px;
+}
+
+.cert-field .cert-output {
+    background: #1e1e1e;
+    color: #d4d4d4;
+    padding: 4px 16px;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    word-break: break-all;
+    white-space: pre-wrap;
+    flex: 1;
+}
+
+.copy-individual {
+    background: #007acc;
+    color: white;
+    border: none;
+    padding: 4px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 22px;
+    transition: background-color 0.3s;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.copy-individual:hover {
+    background: #005a9e;
+}
+
+.copy-action {
+    background: #007acc;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.copy-action:hover {
+    background: #005a9e;
+}
+
+#sampleCert {
+    white-space: pre;
+    overflow-x: auto;
+    word-break: normal;
+    max-height: 100px;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+#sampleCert.collapsed {
+    max-height: 100px !important;
+}
+
+#sampleCert:not(.collapsed) {
+    max-height: 5000px !important;
+}
+
+.cert-row[data-cols="2"] {
+    grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 1000px) {
+    .cert-row[data-cols="2"] {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 1200px) {
+    .cert-field {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 5px;
+    }
+    
+    .cert-field .cert-name {
+        min-width: auto;
+    }
+}

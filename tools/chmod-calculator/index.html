@@ -1,0 +1,90 @@
+---
+title: Chmod Calculator
+layout: tools
+series: tools
+---
+
+    <link rel="stylesheet" href="/css/tools-common.css">
+    <link rel="stylesheet" href="/tools/chmod-calculator/style.css">
+
+    <div class="tool_main">
+        <div class="input-group">
+            <label>File Permissions:</label>
+            <div class="permission-grid">
+                <div></div>
+                <div class="permission-header">Owner</div>
+                <div class="permission-header">Group</div>
+                <div class="permission-header">Others</div>
+                
+                <div class="permission-label">Read</div>
+                <div class="permission-checkboxes">
+                    <input type="checkbox" id="owner-read" checked>
+                </div>
+                <div class="permission-checkboxes">
+                    <input type="checkbox" id="group-read" checked>
+                </div>
+                <div class="permission-checkboxes">
+                    <input type="checkbox" id="others-read">
+                </div>
+                
+                <div class="permission-label">Write</div>
+                <div class="permission-checkboxes">
+                    <input type="checkbox" id="owner-write" checked>
+                </div>
+                <div class="permission-checkboxes">
+                    <input type="checkbox" id="group-write">
+                </div>
+                <div class="permission-checkboxes">
+                    <input type="checkbox" id="others-write">
+                </div>
+                
+                <div class="permission-label">Execute</div>
+                <div class="permission-checkboxes">
+                    <input type="checkbox" id="owner-execute">
+                </div>
+                <div class="permission-checkboxes">
+                    <input type="checkbox" id="group-execute">
+                </div>
+                <div class="permission-checkboxes">
+                    <input type="checkbox" id="others-execute">
+                </div>
+            </div>
+        </div>
+        
+        <div class="output-section">
+            <button class="copy-btn" onclick="copyResult()">Copy</button>
+            <div class="output-label">Octal Notation</div>
+            <div class="output-content" id="octal-result">644</div>
+        </div>
+        
+        <div class="output-section">
+            <button class="copy-btn" onclick="copySymbolic()">Copy</button>
+            <div class="output-label">Symbolic Notation</div>
+            <div class="output-content" id="symbolic-result">rw-r--r--</div>
+        </div>
+        
+        <div class="output-section">
+            <button class="copy-btn" onclick="copyUmask()">Copy</button>
+            <div class="output-label">Umask</div>
+            <div class="output-content" id="umask-result">022</div>
+        </div>
+        
+        <div class="input-group">
+            <label for="numericInput">Or enter octal value:</label>
+            <input type="text" id="numericInput" class="numeric-input" placeholder="644" maxlength="3">
+        </div>
+    </div>
+
+    <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+        <h2>About Chmod Calculator</h2>
+        <p>Chmod Calculator helps you understand and generate Unix/Linux file permission codes. File permissions control who can read, write, or execute files on Unix-based systems. This tool converts between the numeric (octal) notation like 755 and the symbolic notation like rwxr-xr-x, making it easy to set the exact permissions you need.</p>
+        
+        <p>Unix permissions are divided into three groups: owner, group, and others. Each group can have read (4), write (2), and execute (1) permissions. The octal notation sums these values for each group, resulting in a three-digit number. The tool also calculates the umask value, which determines default permissions for newly created files.</p>
+        
+        <h3>Common Use Cases</h3>
+        <p>System administrators and developers use chmod calculators when configuring web server files (typically 644 for files, 755 for directories), setting up SSH keys (600 for private keys), deploying applications with correct executable permissions, troubleshooting permission-denied errors, and learning Unix permission concepts. Understanding chmod is essential for secure server management.</p>
+        
+        <p>Check or uncheck the permission boxes to see the octal and symbolic notations update in real-time. You can also enter an octal value directly to see what permissions it represents. All calculations happen locally in your browser.</p>
+    </div>
+
+    <script src="/tools/chmod-calculator/chmod-calculator.local.js"></script>

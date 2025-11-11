@@ -1,0 +1,50 @@
+---
+title: Mermaid 圖表編輯器
+layout: tools
+lang: zh-TW
+series: tools
+---
+
+    <link rel="stylesheet" href="/css/tools-common.css">
+    <link rel="stylesheet" href="/tools/mermaid-editor/style.css">
+
+    <div class="tool_main">
+        <div class="editor-container">
+            <div class="editor-panel">
+                <h3>Mermaid Code</h3>
+                <div class="examples">
+                    <button class="example-btn" onclick="loadExample('flowchart')">Flowchart</button>
+                    <button class="example-btn" onclick="loadExample('sequence')">Sequence</button>
+                    <button class="example-btn" onclick="loadExample('gantt')">Gantt</button>
+                    <button class="example-btn" onclick="loadExample('pie')">Pie Chart</button>
+                    <button class="example-btn" onclick="loadExample('class')">Class Diagram</button>
+                </div>
+                <textarea id="mermaid-input" placeholder="Enter Mermaid diagram code...">graph TD
+    A[Start] --> B{Is it?}
+    B -->|Yes| C[OK]
+    C --> D[Rethink]
+    D --> B
+    B ---->|No| E[End]</textarea>
+                <div class="controls">
+                    <button class="btn btn-primary" onclick="renderDiagram()">Render</button>
+                    <button class="btn btn-secondary" onclick="clearEditor()">清除</button>
+                    <button class="btn btn-secondary" onclick="copyCode()">複製 Code</button>
+                </div>
+                <div id="error-message" class="error" style="display: none;"></div>
+            </div>
+            
+            <div class="editor-panel">
+                <h3>Diagram Output</h3>
+                <div class="controls">
+                    <button class="btn btn-secondary" onclick="zoomIn()">Zoom In</button>
+                    <button class="btn btn-secondary" onclick="zoomOut()">Zoom Out</button>
+                    <button class="btn btn-secondary" onclick="resetZoom()">重置 Zoom</button>
+                    <button class="btn btn-primary" onclick="downloadSVG()">下載 SVG</button>
+                </div>
+                <div id="diagram-output">Enter Mermaid code above and click Render to see the diagram...</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/cache/mermaid.min.local.js"></script>
+    <script src="/tools/mermaid-editor/mermaid-editor.local.js"></script>

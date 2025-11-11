@@ -1,0 +1,49 @@
+---
+title: JSON 到 YAML 转换器
+layout: tools
+lang: zh-CN
+series: tools
+---
+
+    <link rel="stylesheet" href="/tools/json-yaml-converter/style.css">
+
+        
+        <div class="controls">
+            <div class="checkbox-container">
+                <input type="checkbox" id="prettyFormat" checked>
+                <label for="prettyFormat">Pretty Format</label>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label for="inputText">输入：</label>
+            <textarea id="inputText" placeholder="Enter JSON to convert to YAML or YAML to convert to JSON..."></textarea>
+            <div class="button-group">
+                <button class="btn-primary" onclick="convertToYaml()">JSON to YAML</button>
+                <button class="btn-secondary" onclick="convertToJson()">YAML to JSON</button>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <div class="output-header">
+                <label for="outputText">输出：</label>
+                <button class="btn-copy" onclick="copyOutput()">复制</button>
+            </div>
+            <textarea id="outputText" readonly placeholder="Output will appear here..."></textarea>
+            <div id="message"></div>
+        </div>
+
+    <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+        <h2>关于 JSON 到 YAML 转换器</h2>
+        <p>JSON 到 YAML 转换器在 JSON（JavaScript Object Notation）和 YAML（YAML Ain't Markup Language）格式之间转换数据。两者都是人类可读的数据序列化格式，通常用于配置文件、数据交换和 API 响应。此工具使在不同用例和偏好之间转换这些格式变得容易。</p>
+        
+        <p>JSON 在 Web API 和 JavaScript 应用程序中广泛使用，具有严格的语法规则。YAML 因其更清晰、更易读的语法和更少的标点符号而在配置文件中很受欢迎。转换器支持双向转换，并具有美化格式选项，以确保输出正确缩进且易于阅读。</p>
+        
+        <h3>常见使用场景</h3>
+        <p>开发人员在为 Docker、Kubernetes、Ansible 或 CI/CD 管道创建配置文件时将 JSON 转换为 YAML，这些工具偏好 YAML 语法。将 YAML 转换为 JSON 对于 API 测试、JavaScript 处理或仅接受 JSON 格式的工具很有用。转换器有助于在系统之间迁移配置、验证语法以及提高复杂数据结构的可读性。</p>
+        
+        <p>将您的 JSON 或 YAML 粘贴到输入字段中，然后点击相应的转换按钮。启用美化格式以获得可读输出。所有转换都在您的浏览器本地进行。</p>
+    </div>
+
+    <script src="/cache/js-yaml.min.local.js"></script>
+    <script src="/tools/json-yaml-converter/json-yaml-converter.local.js"></script>

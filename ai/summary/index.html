@@ -1,0 +1,62 @@
+---
+title: Browser Text Summarizer Playground
+layout: tools
+---
+
+    <link rel="stylesheet" href="/css/tools-common.css">
+    <link rel="stylesheet" href="/ai/summary.css">
+
+    <div class="tool_main">
+        <main>
+            <fieldset>
+                <legend>Prompt</legend>
+                <textarea id="input" placeholder="Enter text to summarize...">The quick brown fox jumps over the lazy dog. This is a sample text that demonstrates the summarization capabilities of Chrome's built-in AI. The text can be much longer and more complex, containing multiple paragraphs, technical details, and various topics that need to be condensed into a shorter, more digestible format.</textarea>
+                <div class="token-usage">Token Usage: <span id="character-count">0</span></div>
+            </fieldset>
+            
+            <fieldset>
+                <legend>Settings</legend>
+                <div class="settings-row">
+                    <div>
+                        <label for="type">Summary Type:</label>
+                        <select id="type">
+                            <option value="key-points" selected>Key Points</option>
+                            <option value="tldr">TL;DR</option>
+                            <option value="teaser">Teaser</option>
+                            <option value="headline">Headline</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="length">Length:</label>
+                        <select id="length">
+                            <option value="short" selected>Short</option>
+                            <option value="medium">Medium</option>
+                            <option value="long">Long</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="format">Format:</label>
+                        <select id="format">
+                            <option value="markdown" selected>Markdown</option>
+                            <option value="plain-text">Plain text</option>
+                        </select>
+                    </div>
+                </div>
+            </fieldset>
+            
+            <div>
+                <h2>Summary</h2>
+                <pre id="output">Enter text above to generate a summary...</pre>
+            </div>
+            
+            <div id="summarization-unsupported" class="error" style="display: none;">
+                Summarization API is not supported in this browser. Please use Chrome Canary with AI features enabled.
+            </div>
+            
+            <div id="summarization-unavailable" class="error" style="display: none;">
+                Summarization API is not available. Please check your browser settings.
+            </div>
+        </main>
+    </div>
+
+    <script src="summary.local.js"></script>

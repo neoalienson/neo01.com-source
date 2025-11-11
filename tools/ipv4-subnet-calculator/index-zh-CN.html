@@ -1,0 +1,38 @@
+---
+title: IPv4 子网计算器
+layout: tools
+lang: zh-CN
+series: tools
+---
+
+    <link rel="stylesheet" href="/css/tools-common.css">
+    <link rel="stylesheet" href="/tools/ipv4-subnet-calculator/style.css">
+
+    <div class="tool_main">
+        <div class="input-group">
+            <label for="ipInput">IP Address with CIDR (e.g., 192.168.1.0/24):</label>
+            <input type="text" id="ipInput" placeholder="192.168.1.0/24" value="192.168.1.0/24">
+        </div>
+        
+        <div class="class-buttons">
+            <button class="class-btn" onclick="setClassA()">Class A (/8)</button>
+            <button class="class-btn" onclick="setClassB()">Class B (/16)</button>
+            <button class="class-btn" onclick="setClassC()">Class C (/24)</button>
+        </div>
+        
+        <div class="output-grid" id="output"></div>
+    </div>
+
+    <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+        <h2>关于 IPv4 子网计算器</h2>
+        <p>IPv4 子网计算器从 IP 地址和 CIDR 表示法计算网络信息。子网划分将大型网络分割为较小、可管理的网段，以实现高效的 IP 地址分配和网络组织。此工具计算网络地址、广播地址、可用主机范围、子网掩码和可用主机数量。</p>
+        
+        <p>计算器接受 CIDR 表示法（例如 192.168.1.0/24），其中斜线后的数字表示网络前缀长度。它支持从 /1 到 /32 的所有子网大小，并提供快速访问常见的 Class A（/8）、Class B（/16）和 Class C（/24）网络。结果包括二进制表示以供教育目的。</p>
+        
+        <h3>常见使用场景</h3>
+        <p>网络管理员在设计网络架构、将 IP 地址范围分配给部门或 VLAN、排除路由问题以及规划网络扩充时使用子网计算器。学习网络概念的学生使用它来理解子网划分原理。IT 专业人员验证子网配置并计算新部署的可用地址。</p>
+        
+        <p>输入带有 CIDR 表示法的 IP 地址，或使用类别按钮进行常见配置。计算器会立即显示所有子网信息，包括网络范围、广播地址和可用主机。所有计算都在您的浏览器本地进行。</p>
+    </div>
+
+    <script src="/tools/ipv4-subnet-calculator/ipv4-subnet-calculator.local.js"></script>

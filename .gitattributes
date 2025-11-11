@@ -1,1 +1,13 @@
 *.world filter=lfs diff=lfs merge=lfs -text
+tools/ascii-text-drawer/fonts/ASCII[[:space:]]12.flf filter=lfs diff=lfs merge=lfs -text
+tools/ascii-text-drawer/fonts/ASCII[[:space:]]9.flf filter=lfs diff=lfs merge=lfs -text
+tools/ascii-text-drawer/fonts/Big[[:space:]]ASCII[[:space:]]12.flf filter=lfs diff=lfs merge=lfs -text
+tools/ascii-text-drawer/fonts/Big[[:space:]]ASCII[[:space:]]9.flf filter=lfs diff=lfs merge=lfs -text
+tools/ascii-text-drawer/fonts/Big[[:space:]]Mono[[:space:]]12.flf filter=lfs diff=lfs merge=lfs -text
+tools/ascii-text-drawer/fonts/Big[[:space:]]Mono[[:space:]]9.flf filter=lfs diff=lfs merge=lfs -text
+tools/ascii-text-drawer/fonts/Mono[[:space:]]12.flf filter=lfs diff=lfs merge=lfs -text
+tools/ascii-text-drawer/fonts/Mono[[:space:]]9.flf filter=lfs diff=lfs merge=lfs -text
+tools/ascii-text-drawer/fonts/Small[[:space:]]ASCII[[:space:]]12.flf filter=lfs diff=lfs merge=lfs -text
+tools/ascii-text-drawer/fonts/Small[[:space:]]ASCII[[:space:]]9.flf filter=lfs diff=lfs merge=lfs -text
+tools/ascii-text-drawer/fonts/Small[[:space:]]Mono[[:space:]]12.flf filter=lfs diff=lfs merge=lfs -text
+tools/ascii-text-drawer/fonts/Small[[:space:]]Mono[[:space:]]9.flf filter=lfs diff=lfs merge=lfs -text

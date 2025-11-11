@@ -1,0 +1,60 @@
+---
+title: ASCIIテキストドロワー
+layout: tools
+lang: ja
+series: tools
+---
+
+    <link rel="stylesheet" href="/tools/ascii-text-drawer/style.css">
+
+    <div class="tool_main">
+        
+        <div class="input-group">
+            <label for="textInput">変換するテキスト:</label>
+            <input type="text" id="textInput" placeholder="ここにテキストを入力してください..." value="HELLO">
+        </div>
+        
+        <div class="input-group">
+            <label for="fontCategory">フォントカテゴリ:</label>
+            <select id="fontCategory">
+                <option value="popular">人気</option>
+                <option value="3d">3D＆エフェクト</option>
+                <option value="small">小型＆コンパクト</option>
+                <option value="decorative">装飾</option>
+                <option value="script">スクリプト＆筆記体</option>
+                <option value="tech">テクノロジー＆デジタル</option>
+                <option value="block">ブロック＆ソリッド</option>
+                <option value="banner">バナー＆ヘッダー</option>
+                <option value="mono">等幅</option>
+                <option value="themed">テーマ＆特殊</option>
+                <option value="geometric">幾何学</option>
+                <option value="retro">レトロ＆ビンテージ</option>
+                <option value="stylized">スタイライズ＆エフェクト</option>
+                <option value="artistic">芸術的＆クリエイティブ</option>
+                <option value="money">マネーフォント</option>
+                <option value="names">名前付きフォント</option>
+                <option value="amc">AMCコレクション</option>
+                <option value="efti">Eftiコレクション</option>
+                <option value="misc">その他</option>
+                <option value="all">すべてのフォント</option>
+            </select>
+        </div>
+        
+        <div class="output" id="output"></div>
+        <button class="copy-btn" onclick="copyToClipboard()">クリップボードにコピー</button>
+    </div>
+
+    <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+        <h2>ASCIIテキストドロワーについて</h2>
+        <p>ASCIIテキストドロワーは、通常のテキストをさまざまなフォントを使用したスタイライズされたASCIIアートに変換します。ASCIIアートは、ASCII標準の印刷可能な文字を使用して画像や装飾的なテキストを作成するグラフィックデザイン技術です。このツールは、プレーンテキスト環境で目を引くヘッダー、バナー、装飾的なテキストを作成するのに最適です。</p>
+        
+        <p>このツールは、ASCII文字を使用して文字パターンを定義するFIGletフォント形式を使用しています。各フォントには、シンプルなブロック文字から精巧な3D効果まで、独自のスタイルがあります。レンダリングはJavaScriptを使用してブラウザ内で完全に行われるため、テキストはプライベートに保たれ、処理は即座に完了します。</p>
+        
+        <h3>一般的な使用例</h3>
+        <p>ASCIIアートテキストは、ソースコードのコメントでのセクションヘッダー、魅力的なタイトルを作成するためのREADMEファイル、ターミナルアプリケーションのスプラッシュスクリーン、レトロな美学のメール署名、プレーンテキストフォーマットが制限されているソーシャルメディアの投稿など、幅広く使用されています。開発者コミュニティやレトロコンピューティング愛好家の間で特に人気があります。</p>
+        
+        <p>テキストを入力し、フォントカテゴリを選択して、利用可能なスタイルを閲覧するだけです。すべての処理はブラウザ内でローカルに行われます - データはサーバーに送信されません。</p>
+    </div>
+
+    <script src="/tools/ascii-text-drawer/figlet.local.js"></script>
+    <script src="/tools/ascii-text-drawer/ascii-text-drawer.local.js"></script>

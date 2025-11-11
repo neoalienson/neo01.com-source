@@ -1,0 +1,101 @@
+---
+title: QR Code 生成器
+layout: tools
+lang: zh-CN
+series: tools
+---
+
+<link rel="stylesheet" href="/tools/qr-code-generator/style.css">
+
+<div id="qr-generator">
+    <div class="input-section">
+        <label for="qr-text">文字或网址：</label>
+        <textarea id="qr-text" placeholder="输入文字或网址以生成 QR Code..."></textarea>
+        
+        <div class="options-grid">
+            <div class="option-group">
+                <label for="qr-size">尺寸：</label>
+                <input type="number" id="qr-size" value="300" min="100" max="1000" step="50">
+            </div>
+            
+            <div class="option-group">
+                <label for="qr-error">错误修正：</label>
+                <select id="qr-error">
+                    <option value="L">低 (7%)</option>
+                    <option value="M">中 (15%)</option>
+                    <option value="Q" selected>高 (25%)</option>
+                    <option value="H">最高 (30%)</option>
+                </select>
+            </div>
+            
+            <div class="option-group">
+                <label for="qr-gradient">渐变：</label>
+                <input type="checkbox" id="qr-gradient">
+            </div>
+            
+            <div class="option-group">
+                <label for="qr-color">颜色 1：</label>
+                <input type="color" id="qr-color" value="#000000">
+            </div>
+            
+            <div class="option-group" id="color2-group" style="display: none;">
+                <label for="qr-color2">颜色 2：</label>
+                <input type="color" id="qr-color2" value="#0000ff">
+            </div>
+            
+            <div class="option-group" id="gradient-type-group" style="display: none;">
+                <label for="gradient-type">类型：</label>
+                <select id="gradient-type">
+                    <option value="linear">线性</option>
+                    <option value="radial">放射状</option>
+                </select>
+            </div>
+            
+            <div class="option-group">
+                <label for="qr-bg">背景：</label>
+                <input type="color" id="qr-bg" value="#ffffff">
+            </div>
+            
+            <div class="option-group">
+                <label for="qr-type">点样式：</label>
+                <select id="qr-type">
+                    <option value="square">方形</option>
+                    <option value="rounded" selected>圆角</option>
+                    <option value="dots">圆点</option>
+                    <option value="classy">经典</option>
+                    <option value="classy-rounded">经典圆角</option>
+                    <option value="extra-rounded">超圆角</option>
+                </select>
+            </div>
+            
+            <div class="option-group">
+                <label for="corner-square-type">角落方框：</label>
+                <select id="corner-square-type">
+                    <option value="">无</option>
+                    <option value="square">方形</option>
+                    <option value="extra-rounded" selected>超圆角</option>
+                    <option value="dot">圆点</option>
+                </select>
+            </div>
+            
+            <div class="option-group">
+                <label for="corner-dot-type">角落点：</label>
+                <select id="corner-dot-type">
+                    <option value="">无</option>
+                    <option value="square">方形</option>
+                    <option value="dot" selected>圆点</option>
+                </select>
+            </div>
+        </div>
+        
+        <button id="generate-btn" class="btn-primary">生成 QR Code</button>
+    </div>
+    
+    <div class="output-section">
+        <div id="qr-canvas"></div>
+        <button id="download-btn" class="btn-secondary" style="display: none;">下载 QR Code</button>
+    </div>
+</div>
+
+<script src="https://unpkg.com/qr-code-styling@1.9.2/lib/qr-code-styling.js"></script>
+<script src="/tools/qr-code-generator/script.local.js"></script>

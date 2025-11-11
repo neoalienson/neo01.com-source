@@ -1,0 +1,184 @@
+---
+title: Tools Unit Test
+---
+
+    <link rel="stylesheet" href="test-runner.css">
+
+    <div id="output" class="console"></div>
+    
+    <script src="/cache/crypto-js.min.local.js"></script>
+    <script>
+        // Prevent auto-initialization in test environment
+        const originalAddEventListener = document.addEventListener;
+        document.addEventListener = (event, handler) => {
+            if (event === 'DOMContentLoaded' && handler.toString().includes('new ')) {
+                return; // Skip auto-initialization
+            }
+            originalAddEventListener.call(document, event, handler);
+        };
+    </script>
+    <script src="test-framework.local.js"></script>
+    <script>
+        // Initialize framework
+        const framework = new TestFramework();
+        framework.currentTool = null;
+        
+        // Restore addEventListener
+        document.addEventListener = originalAddEventListener;
+    </script>
+    <script>
+        framework.currentTool = 'json-validator';
+    </script>
+    <script src="json-validator/json-validator.local.js"></script>
+    <script src="json-validator/test.local.js"></script>
+    <script>
+        framework.currentTool = 'case-converter';
+    </script>
+    <script src="case-converter/test.local.js"></script>
+    <script>
+        framework.currentTool = 'hash-text';
+    </script>
+    <script src="hash-text/test.local.js"></script>
+    <script>
+        framework.currentTool = 'url-parser';
+    </script>
+    <script src="url-parser/test.local.js"></script>
+    <script>
+        framework.currentTool = 'temperature-converter';
+    </script>
+    <script src="temperature-converter/test.local.js"></script>
+    <script>
+        framework.currentTool = 'text-statistics';
+    </script>
+    <script src="text-statistics/test.local.js"></script>
+    <script>
+        framework.currentTool = 'sql-prettify';
+    </script>
+    <script src="sql-prettify/test.local.js"></script>
+    <script>
+        framework.currentTool = 'crontab-generator';
+    </script>
+    <script src="crontab-generator/test.local.js"></script>
+    <script>
+        framework.currentTool = 'ipv4-subnet-calculator';
+    </script>
+    <script src="ipv4-subnet-calculator/test.local.js"></script>
+    <script>
+        framework.currentTool = 'base64-converter';
+    </script>
+    <script src="base64-converter/base64-converter.local.js"></script>
+    <script src="base64-converter/test.local.js"></script>
+    <script>
+        framework.currentTool = 'x509-decoder';
+    </script>
+    <div style="display:none">
+        <div class="tool-container">
+            <textarea id="certInput"></textarea>
+            <input type="file" id="certFile">
+            <div id="fileInfo"></div>
+            <div id="dropZone"></div>
+            <div class="output-grid" id="output"></div>
+            <div class="cert-result" id="textOutput" style="display: none;">
+                <div id="textContent"></div>
+            </div>
+        </div>
+    </div>
+    <script src="/cache/jsrsasign-all.min.local.js"></script>
+    <script src="x509-decoder/x509-decoder.local.js"></script>
+    <script src="x509-decoder/test.local.js"></script>
+    <script src="x509-decoder/test.r11.local.js"></script>
+    <script src="x509-decoder/test.irsg.local.js"></script> 
+    <script src="x509-decoder/test.full.local.js"></script>
+    <script src="x509-decoder/test.github.local.js"></script>
+    <script src="x509-decoder/test.single-cert.local.js"></script>
+    <script src="x509-decoder/test.san-display.local.js"></script>
+    <script>
+        framework.currentTool = 'x509-chain';
+    </script>
+    <script src="x509-decoder/test.chain.local.js"></script>
+    <script src="x509-decoder/test.chain2.local.js"></script>
+    <script>
+        framework.currentTool = 'x509-ui';
+    </script>
+    <script src="x509-decoder/x509-decoder-ui.local.js"></script>
+    <script src="x509-decoder/test.ui.local.js"></script>
+    <script src="x509-decoder/test.ui-behavior.local.js"></script>
+    <script src="x509-decoder/test.ui-single-cert.local.js"></script>      
+    <script>
+        framework.currentTool = 'png-metadata-checker';
+    </script>
+    <script src="png-metadata-checker/png-metadata-checker.local.js"></script>
+    <script src="png-metadata-checker/test.local.js"></script>
+    <script>
+        framework.currentTool = 'exif-extractor';
+    </script>
+    <script src="exif-extractor/exif-tags.local.js"></script>
+    <script src="exif-extractor/exif-extractor.local.js"></script>
+    <script src="exif-extractor/test.local.js"></script>
+    <script>
+        framework.currentTool = 'json-yaml-converter';
+    </script>
+    <script src="/cache/js-yaml.min.local.js"></script>
+    <script src="json-yaml-converter/json-yaml-converter.local.js"></script>
+    <script src="json-yaml-converter/test.local.js"></script>
+    <script>
+        framework.currentTool = 'defang';
+    </script>
+    <script src="defang/defang.local.js"></script>
+    <script src="defang/test.local.js"></script>
+    <script>
+        framework.currentTool = 'world-clock';
+    </script>
+    <script src="world-clock/world-clock.local.js"></script>
+    <script src="world-clock/test.local.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const output = document.getElementById('output');
+            const originalLog = console.log;
+            const tools = {};
+            
+            console.log = (message) => {
+                const text = String(message);
+                const match = text.match(/^([✓✗]) ([^:]+):(.+?)(?::(.*)?)?$/);
+                
+                if (match) {
+                    const [, status, tool, testName, error] = match;
+                    
+                    if (!tools[tool]) {
+                        tools[tool] = { passed: 0, failed: 0, tests: [] };
+                    }
+                    
+                    if (status === '✓') {
+                        tools[tool].passed++;
+                        tools[tool].tests.push({ name: testName, status: 'passed' });
+                    } else {
+                        tools[tool].failed++;
+                        tools[tool].tests.push({ name: testName, status: 'failed', error: error?.trim() });
+                    }
+                    return;
+                }
+                
+                if (text.includes('Results:')) {
+                    output.innerHTML = 'Running tests...\n\n';
+                    Object.keys(tools).sort().forEach(tool => {
+                        const t = tools[tool];
+                        const total = t.passed + t.failed;
+                        if (total > 0) {
+                            output.innerHTML += `<strong>${tool}</strong>: ${t.passed}/${total} passed\n`;
+                            t.tests.forEach(test => {
+                                if (test.status === 'passed') {
+                                    output.innerHTML += `<span class="passed">  ✓ ${test.name}</span>\n`;
+                                } else {
+                                    output.innerHTML += `<span class="failed">  ✗ ${test.name}${test.error ? ': ' + test.error.replace(/</g, '&lt;').replace(/>/g, '&gt;') : ''}</span>\n`;
+                                }
+                            });
+                        }
+                    });
+                    output.innerHTML += '\n' + text.replace(/</g, '&lt;').replace(/>/g, '&gt;') + '\n';
+                }
+            };
+            
+            framework.run();
+            console.log = originalLog;
+        });
+    </script>

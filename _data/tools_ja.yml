@@ -1,0 +1,39 @@
+content: |
+  - 📝 **テキスト処理**
+    - [テキスト統計](/ja/tools/text-statistics/)
+    - [ケース変換](/ja/tools/case-converter/)
+    - [ASCII テキスト描画](/ja/tools/ascii-text-drawer/)
+    - [NATO アルファベット変換](/ja/tools/nato-alphabet/)
+    - [絵文字ピッカー](/ja/tools/emoji-picker/)
+
+  - 🔧 **エンコーディングとフォーマット**
+    - [Base64 エンコーダー/デコーダー](/ja/tools/base64-converter/)
+    - [URL エンコーダー/デコーダー](/ja/tools/url-encoder/)
+    - [JSON バリデーター＆フォーマッター](/ja/tools/json-validator/)
+    - [JSON to YAML コンバーター](/ja/tools/json-yaml-converter/)
+
+  - 🌐 **ネットワークと DNS**
+    - [DNS over HTTPS ルックアップ](/ja/tools/doh-lookup/)
+    - [IPv4 サブネット計算機](/ja/tools/ipv4-subnet-calculator/)
+
+  - 🔒 **セキュリティと分析**
+    - [Defang ツール](/ja/tools/defang/)
+    - [ハッシュテキスト](/ja/tools/hash-text/)
+    - [X.509 証明書デコーダー](/ja/tools/x509-decoder/)
+    - [URL パーサー](/ja/tools/url-parser/)
+
+  - ⚙️ **システム管理**
+    - [Chmod 計算機](/ja/tools/chmod-calculator/)
+    - [Crontab ジェネレーター](/ja/tools/crontab-generator/)
+
+  - 🛠️ **ユーティリティ**
+    - [温度変換](/ja/tools/temperature-converter/)
+    - [ストップウォッチ](/ja/tools/chronometer/)
+    - [世界時計](/ja/tools/world-clock/)
+    - [デバイス情報](/ja/tools/device-information/)
+    - [Mermaid 図エディター](/ja/tools/mermaid-editor/)
+    - [QR コード生成](/ja/tools/qr-code-generator/)
+
+  - 🖼️ **ファイル分析**
+    - [PNG メタデータチェッカー](/ja/tools/png-metadata-checker/)
+    - [EXIF 抽出](/ja/tools/exif-extractor/)

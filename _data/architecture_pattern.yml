@@ -1,0 +1,18 @@
+content: |
+  - 🏗️ **Architecture Pattern Series**
+    - [Architecture Patterns Quick Reference](/2020/05/Architecture-Patterns-Quick-Reference/)
+    - [Rate Limiting Pattern](/2019/01/Rate-Limiting-Pattern/)
+    - [Anti-Corruption Layer Pattern](/2019/02/Anti-Corruption-Layer-Pattern/)
+    - [Retry Pattern](/2019/03/Retry-Pattern/)
+    - [Claim Check Pattern](/2019/04/Claim-Check-Pattern/)
+    - [Materialized View Pattern](/2019/05/Materialized-View-Pattern/)
+    - [Strangler Fig Pattern](/2019/06/Strangler-Fig-Pattern/)
+    - [Sidecar Pattern](/2019/07/Sidecar-Pattern/)
+    - [Sharding Pattern](/2019/08/Sharding-Pattern/)
+    - [Gateway Aggregation Pattern](/2019/09/Gateway-Aggregation-Pattern/)
+    - [Publisher-Subscriber Pattern](/2019/10/Publisher-Subscriber-Pattern/)
+    - [Health Endpoint Monitoring Pattern](/2019/11/Health-Endpoint-Monitoring-Pattern/)
+    - [Federated Identity Pattern](/2019/12/Federated-Identity-Pattern/)
+    - [Circuit Breaker Pattern](/2020/01/Circuit-Breaker-Pattern/)
+    - [Bulkhead Pattern](/2020/03/Bulkhead-Pattern/)
+    - [Asynchronous Request-Reply Pattern](/2020/04/Asynchronous-Request-Reply-Pattern/)

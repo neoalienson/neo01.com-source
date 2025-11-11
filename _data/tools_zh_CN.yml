@@ -1,0 +1,39 @@
+content: |
+  - 📝 **文本处理**
+    - [文本统计](/zh-CN/tools/text-statistics/)
+    - [大小写转换器](/zh-CN/tools/case-converter/)
+    - [ASCII 文本绘制器](/zh-CN/tools/ascii-text-drawer/)
+    - [北约字母转换器](/zh-CN/tools/nato-alphabet/)
+    - [表情符号选择器](/zh-CN/tools/emoji-picker/)
+
+  - 🔧 **编码与格式化**
+    - [Base64 编码/解码器](/zh-CN/tools/base64-converter/)
+    - [URL 编码/解码器](/zh-CN/tools/url-encoder/)
+    - [JSON 验证器与格式化工具](/zh-CN/tools/json-validator/)
+    - [JSON 转 YAML 转换器](/zh-CN/tools/json-yaml-converter/)
+
+  - 🌐 **网络与 DNS**
+    - [DNS over HTTPS 查询](/zh-CN/tools/doh-lookup/)
+    - [IPv4 子网计算器](/zh-CN/tools/ipv4-subnet-calculator/)
+
+  - 🔒 **安全与分析**
+    - [Defang 工具](/zh-CN/tools/defang/)
+    - [哈希文本](/zh-CN/tools/hash-text/)
+    - [X.509 证书解码器](/zh-CN/tools/x509-decoder/)
+    - [URL 解析器](/zh-CN/tools/url-parser/)
+
+  - ⚙️ **系统管理**
+    - [Chmod 计算器](/zh-CN/tools/chmod-calculator/)
+    - [Crontab 生成器](/zh-CN/tools/crontab-generator/)
+
+  - 🛠️ **实用工具**
+    - [温度转换器](/zh-CN/tools/temperature-converter/)
+    - [秒表](/zh-CN/tools/chronometer/)
+    - [世界时钟](/zh-CN/tools/world-clock/)
+    - [设备信息](/zh-CN/tools/device-information/)
+    - [Mermaid 图表编辑器](/zh-CN/tools/mermaid-editor/)
+    - [QR Code 生成器](/zh-CN/tools/qr-code-generator/)
+
+  - 🖼️ **文件分析**
+    - [PNG 元数据检查器](/zh-CN/tools/png-metadata-checker/)
+    - [EXIF 提取器](/zh-CN/tools/exif-extractor/)

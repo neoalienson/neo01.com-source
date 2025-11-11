@@ -1,0 +1,61 @@
+---
+title: Mermaid Diagram Editor
+layout: tools
+series: tools
+---
+
+    <link rel="stylesheet" href="/css/tools-common.css">
+    <link rel="stylesheet" href="/tools/mermaid-editor/style.css">
+
+    <div class="tool_main">
+        <div class="editor-container">
+            <div class="editor-panel">
+                <h3>Mermaid Code</h3>
+                <div class="examples">
+                    <button class="example-btn" onclick="loadExample('flowchart')">Flowchart</button>
+                    <button class="example-btn" onclick="loadExample('sequence')">Sequence</button>
+                    <button class="example-btn" onclick="loadExample('gantt')">Gantt</button>
+                    <button class="example-btn" onclick="loadExample('pie')">Pie Chart</button>
+                    <button class="example-btn" onclick="loadExample('class')">Class Diagram</button>
+                </div>
+                <textarea id="mermaid-input" placeholder="Enter Mermaid diagram code...">graph TD
+    A[Start] --> B{Is it?}
+    B -->|Yes| C[OK]
+    C --> D[Rethink]
+    D --> B
+    B ---->|No| E[End]</textarea>
+                <div class="controls">
+                    <button class="btn btn-primary" onclick="renderDiagram()">Render</button>
+                    <button class="btn btn-secondary" onclick="clearEditor()">Clear</button>
+                    <button class="btn btn-secondary" onclick="copyCode()">Copy Code</button>
+                </div>
+                <div id="error-message" class="error" style="display: none;"></div>
+            </div>
+            
+            <div class="editor-panel">
+                <h3>Diagram Output</h3>
+                <div class="controls">
+                    <button class="btn btn-secondary" onclick="zoomIn()">Zoom In</button>
+                    <button class="btn btn-secondary" onclick="zoomOut()">Zoom Out</button>
+                    <button class="btn btn-secondary" onclick="resetZoom()">Reset Zoom</button>
+                    <button class="btn btn-primary" onclick="downloadSVG()">Download SVG</button>
+                </div>
+                <div id="diagram-output">Enter Mermaid code above and click Render to see the diagram...</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+        <h2>About Mermaid Diagram Editor</h2>
+        <p>Mermaid Diagram Editor provides a live preview environment for creating diagrams using Mermaid syntax. Mermaid is a JavaScript-based diagramming tool that renders text definitions into flowcharts, sequence diagrams, Gantt charts, class diagrams, and more. This editor lets you write Mermaid code and instantly see the visual result.</p>
+        
+        <p>The editor supports all major Mermaid diagram types including flowcharts, sequence diagrams, class diagrams, state diagrams, entity relationship diagrams, Gantt charts, and pie charts. It provides example templates to get started quickly, real-time rendering, zoom controls, and SVG export functionality for use in documentation or presentations.</p>
+        
+        <h3>Common Use Cases</h3>
+        <p>Developers use Mermaid for documenting system architectures, creating flowcharts for algorithms, visualizing database schemas, and generating diagrams for README files. Technical writers include Mermaid diagrams in documentation that can be version-controlled as text. Project managers create Gantt charts for project timelines. The text-based approach makes diagrams easy to maintain and update.</p>
+        
+        <p>Enter Mermaid syntax in the editor or load an example template. Click Render to generate the diagram. Use zoom controls to adjust the view and download as SVG for external use. All rendering happens locally in your browser.</p>
+    </div>
+
+    <script src="/cache/mermaid.min.local.js"></script>
+    <script src="/tools/mermaid-editor/mermaid-editor.local.js"></script>

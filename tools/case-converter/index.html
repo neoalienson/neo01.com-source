@@ -1,0 +1,31 @@
+---
+title: Case Converter
+layout: tools
+series: tools
+---
+
+    <link rel="stylesheet" href="/css/tools-common.css">
+    <link rel="stylesheet" href="/tools/case-converter/style.css">
+
+    <div class="tool_main">
+        <div class="input-group">
+            <label for="textInput">Text to convert:</label>
+            <textarea id="textInput" placeholder="Enter your text here...">Hello World! This is a Sample Text.</textarea>
+        </div>
+        
+        <div class="output-grid" id="output"></div>
+    </div>
+
+    <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+        <h2>About Case Converter</h2>
+        <p>Case Converter transforms text between different capitalization styles commonly used in programming and writing. Whether you need camelCase for JavaScript variables, snake_case for Python functions, or SCREAMING_SNAKE_CASE for constants, this tool instantly converts your text to the format you need.</p>
+        
+        <p>The tool supports multiple case conventions including uppercase, lowercase, title case, sentence case, camelCase, PascalCase, snake_case, kebab-case, and more. Each conversion follows the standard conventions used in software development, making it perfect for refactoring code or standardizing naming conventions across your project.</p>
+        
+        <h3>Common Use Cases</h3>
+        <p>Developers use case converters when refactoring code to match style guides, converting database column names to match ORM conventions, transforming API response keys to match frontend naming patterns, and standardizing variable names across different programming languages. It's also useful for writers who need to adjust capitalization in titles or headings.</p>
+        
+        <p>Simply paste your text into the input field, and all available case conversions will be displayed instantly. Click any result to copy it to your clipboard. All processing happens locally in your browser.</p>
+    </div>
+
+    <script src="/tools/case-converter/case-converter.local.js"></script>

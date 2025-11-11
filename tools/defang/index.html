@@ -1,0 +1,72 @@
+---
+title: Defang Tool
+layout: tools
+series: tools
+---
+
+    <link rel="stylesheet" href="/tools/defang/style.css">
+
+    <div id="defang-tool">
+        <div class="defang-input-group">
+            <label for="inputText">Input Text:</label>
+            <textarea id="inputText" placeholder="Enter URLs, IPs, or emails to defang/refang..."></textarea>
+        </div>
+
+        <div class="defang-controls">
+            <div class="defang-switch-container">
+                <label>Replace dots with [.]</label>
+                <label class="defang-switch">
+                    <input type="checkbox" id="replaceDots" checked>
+                    <span class="defang-slider"></span>
+                </label>
+            </div>
+            <div class="defang-switch-container">
+                <label>Replace HTTP with hxxp</label>
+                <label class="defang-switch">
+                    <input type="checkbox" id="replaceHttp" checked>
+                    <span class="defang-slider"></span>
+                </label>
+            </div>
+            <div class="defang-switch-container">
+                <label>Replace :// with [://]</label>
+                <label class="defang-switch">
+                    <input type="checkbox" id="replaceProtocol" checked>
+                    <span class="defang-slider"></span>
+                </label>
+            </div>
+            <div class="defang-switch-container">
+                <label>Replace ports with [:]port</label>
+                <label class="defang-switch">
+                    <input type="checkbox" id="replacePorts" checked>
+                    <span class="defang-slider"></span>
+                </label>
+            </div>
+        </div>
+
+        <div class="defang-button-group">
+            <button class="defang-btn-primary" onclick="defangText()">Defang</button>
+            <button class="defang-btn-secondary" onclick="refangText()">Refang</button>
+        </div>
+        
+
+        <div class="defang-output-section">
+            <button class="defang-btn-copy" onclick="copyOutput()">Copy</button>
+            <div class="defang-output-label">Output</div>
+            <div class="defang-output-content" id="outputText">Output will appear here...</div>
+            <div id="message"></div>
+        </div>
+    </div>
+
+    <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+        <h2>About Defang Tool</h2>
+        <p>Defang Tool safely neutralizes potentially malicious URLs, IP addresses, and email addresses by replacing key characters, preventing accidental clicks or automatic processing. This is essential in cybersecurity when sharing indicators of compromise (IOCs) in reports, emails, or documentation. Defanging makes URLs and IPs non-clickable while keeping them readable for analysis.</p>
+        
+        <p>The tool offers multiple defanging options: replacing dots with [.], converting http to hxxp, wrapping protocols with [://], and bracketing ports. You can enable or disable each option independently. The refang function reverses the process, restoring original URLs when needed for testing or investigation in controlled environments.</p>
+        
+        <h3>Common Use Cases</h3>
+        <p>Security analysts use defanging when documenting malware campaigns, sharing threat intelligence reports, posting IOCs in public forums, creating incident response documentation, and communicating with teams about suspicious domains. It prevents accidental navigation to malicious sites and stops security tools from automatically flagging or blocking shared content.</p>
+        
+        <p>Paste your URLs, IPs, or emails into the input field, select your defanging options, and click Defang. Use Refang to restore original format when needed. All processing happens locally in your browser.</p>
+    </div>
+
+    <script src="/tools/defang/defang.local.js"></script>

@@ -1,0 +1,29 @@
+---
+title: URL 编码器/解码器
+layout: tools
+lang: zh-CN
+series: tools
+---
+
+    <link rel="stylesheet" href="/tools/url-encoder/style.css">
+
+    <div class="tool_main">
+        <div class="input-group">
+            <label for="textInput">Text to encode/decode:</label>
+            <textarea id="textInput" placeholder="Enter your text or URL here...">Hello World! This is a test URL: https://neo01.com/path?param=value&other=test</textarea>
+        </div>
+        
+        <div class="action-buttons">
+            <button class="action-btn" onclick="encodeText()">编码</button>
+            <button class="action-btn" onclick="decodeText()">解码</button>
+        </div>
+        
+        <div class="output-section">
+            <button class="copy-btn" onclick="copyResult()">复制</button>
+            <div class="output-label">Result</div>
+            <div class="output-content" id="result"></div>
+        </div>
+    </div>
+
+    <script src="/tools/url-encoder/url-encoder.local.js"></script>
+    <link rel="stylesheet" href="/css/tools-common.css">

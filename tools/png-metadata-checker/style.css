@@ -1,0 +1,96 @@
+.tool-container {
+        margin: 0 auto;
+        padding: 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .drop-zone {
+        border: 2px dashed #007acc;
+        border-radius: 8px;
+        padding: 40px;
+        text-align: center;
+        background: #f8f9fa;
+        margin-bottom: 20px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .drop-zone.dragover {
+        border-color: #0056b3;
+        background: #e3f2fd;
+    }
+
+    .drop-zone input[type="file"] {
+        display: none;
+    }
+
+    .metadata-output {
+        background: #1e1e1e;
+        color: #d4d4d4;
+        padding: 20px;
+        border-radius: 8px;
+        font-family: 'Courier New', monospace;
+        white-space: pre-wrap;
+        margin-top: 20px;
+        display: none;
+    }
+
+    .metadata-section {
+        margin-bottom: 15px;
+        padding: 10px;
+        background: #2d2d30;
+        border-radius: 4px;
+    }
+
+    .metadata-title {
+        color: #569cd6;
+        font-weight: bold;
+        margin-bottom: 8px;
+    }
+
+    .metadata-item {
+        margin: 5px 0;
+        padding-left: 10px;
+    }
+
+    .metadata-item .metadata-value {
+        padding-left: 0;
+    }
+
+    .metadata-key {
+        color: #9cdcfe;
+    }
+
+    .metadata-value {
+        color: #ce9178;
+    }
+
+    .error {
+        color: #f44336;
+        background: #ffebee;
+        padding: 10px;
+        border-radius: 4px;
+        margin-top: 10px;
+    }
+
+    .file-info {
+        background: #e8f5e8;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        border-left: 4px solid #4caf50;
+    }
+
+    .clear-btn {
+        background: #dc3545;
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    .clear-btn:hover {
+        background: #c82333;
+    }

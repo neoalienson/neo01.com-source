@@ -1,0 +1,37 @@
+---
+title: IPv4 Subnet Calculator
+layout: tools
+series: tools
+---
+
+    <link rel="stylesheet" href="/css/tools-common.css">
+    <link rel="stylesheet" href="/tools/ipv4-subnet-calculator/style.css">
+
+    <div class="tool_main">
+        <div class="input-group">
+            <label for="ipInput">IP Address with CIDR (e.g., 192.168.1.0/24):</label>
+            <input type="text" id="ipInput" placeholder="192.168.1.0/24" value="192.168.1.0/24">
+        </div>
+        
+        <div class="class-buttons">
+            <button class="class-btn" onclick="setClassA()">Class A (/8)</button>
+            <button class="class-btn" onclick="setClassB()">Class B (/16)</button>
+            <button class="class-btn" onclick="setClassC()">Class C (/24)</button>
+        </div>
+        
+        <div class="output-grid" id="output"></div>
+    </div>
+
+    <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+        <h2>About IPv4 Subnet Calculator</h2>
+        <p>IPv4 Subnet Calculator computes network information from IP addresses and CIDR notation. Subnetting divides large networks into smaller, manageable segments for efficient IP address allocation and network organization. This tool calculates network address, broadcast address, usable host range, subnet mask, and the number of available hosts.</p>
+        
+        <p>The calculator accepts CIDR notation (e.g., 192.168.1.0/24) where the number after the slash indicates the network prefix length. It supports all subnet sizes from /1 to /32 and provides quick access to common Class A (/8), Class B (/16), and Class C (/24) networks. Results include binary representations for educational purposes.</p>
+        
+        <h3>Common Use Cases</h3>
+        <p>Network administrators use subnet calculators when designing network architectures, allocating IP address ranges to departments or VLANs, troubleshooting routing issues, and planning network expansions. Students learning networking concepts use it to understand subnetting principles. IT professionals verify subnet configurations and calculate available addresses for new deployments.</p>
+        
+        <p>Enter an IP address with CIDR notation or use the class buttons for common configurations. The calculator instantly displays all subnet information including network range, broadcast address, and usable hosts. All calculations happen locally in your browser.</p>
+    </div>
+
+    <script src="/tools/ipv4-subnet-calculator/ipv4-subnet-calculator.local.js"></script>

@@ -1,0 +1,39 @@
+content: |
+  - 📝 **Text Processing**
+    - [Text Statistics](/tools/text-statistics/)
+    - [Case Converter](/tools/case-converter/)
+    - [ASCII Text Drawer](/tools/ascii-text-drawer/)
+    - [NATO Alphabet Converter](/tools/nato-alphabet/)
+    - [Emoji Picker](/tools/emoji-picker/)
+
+  - 🔧 **Encoding & Formatting**
+    - [Base64 Encoder/Decoder](/tools/base64-converter/)
+    - [URL Encoder/Decoder](/tools/url-encoder/)
+    - [JSON Validator & Formatter](/tools/json-validator/)
+    - [JSON to YAML Converter](/tools/json-yaml-converter/)
+
+  - 🌐 **Network & DNS**
+    - [DNS over HTTPS Lookup](/tools/doh-lookup/)
+    - [IPv4 Subnet Calculator](/tools/ipv4-subnet-calculator/)
+
+  - 🔒 **Security & Analysis**
+    - [Defang Tool](/tools/defang/)
+    - [Hash Text](/tools/hash-text/)
+    - [X.509 Certificate Decoder](/tools/x509-decoder/)
+    - [URL Parser](/tools/url-parser/)
+
+  - ⚙️ **System Administration**
+    - [Chmod Calculator](/tools/chmod-calculator/)
+    - [Crontab Generator](/tools/crontab-generator/)
+
+  - 🛠️ **Utilities**
+    - [Temperature Converter](/tools/temperature-converter/)
+    - [Chronometer](/tools/chronometer/)
+    - [World Clock](/tools/world-clock/)
+    - [Device Information](/tools/device-information/)
+    - [Mermaid Diagram Editor](/tools/mermaid-editor/)
+    - [QR Code Generator](/tools/qr-code-generator/)
+
+  - 🖼️ **File Analysis**
+    - [PNG Metadata Checker](/tools/png-metadata-checker/)
+    - [EXIF Extractor](/tools/exif-extractor/)

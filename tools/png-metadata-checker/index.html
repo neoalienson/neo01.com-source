@@ -1,0 +1,34 @@
+---
+title: PNG Metadata Checker
+layout: tools
+series: tools
+---
+
+<link rel="stylesheet" href="/tools/png-metadata-checker/style.css">
+
+<div class="tool-container">
+    <p>Upload or drag and drop a PNG file to extract and analyze its metadata information.</p>
+    
+    <div class="drop-zone" id="dropZone">
+        <p>📁 Click here or drag and drop a PNG file</p>
+        <input type="file" id="fileInput" accept=".png,image/png">
+    </div>
+    
+    <div id="fileInfo" class="file-info" style="display: none;"></div>
+    <div id="output" class="metadata-output"></div>
+    <div id="error" class="error" style="display: none;"></div>
+</div>
+
+<div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+    <h2>About PNG Metadata Checker</h2>
+    <p>PNG Metadata Checker extracts and displays metadata embedded in PNG image files. PNG files can contain various metadata chunks including text annotations, creation timestamps, color profile information, and custom data. This tool parses the PNG file structure to reveal all embedded metadata, helping you understand what information is stored in your images.</p>
+    
+    <p>The checker reads PNG chunk data including tEXt (text), iTXt (international text), zTXt (compressed text), tIME (timestamp), pHYs (physical dimensions), and other standard PNG chunks. Unlike JPEG's EXIF data, PNG metadata is stored in a different format but can still contain sensitive information. All processing happens in your browser using JavaScript - files are never uploaded.</p>
+    
+    <h3>Common Use Cases</h3>
+    <p>Digital artists check PNG metadata to verify authorship information, creation tools, and copyright notices. Privacy-conscious users examine images before sharing online to ensure no sensitive data is embedded. Developers verify that image processing tools preserve or remove metadata as intended. Forensic analysts examine PNG metadata for authenticity verification and source identification.</p>
+    
+    <p>Click the drop zone or drag a PNG file to extract its metadata. The tool displays all available chunks and their contents in an organized format. All processing happens locally - your images never leave your device.</p>
+</div>
+
+<script src="/tools/png-metadata-checker/png-metadata-checker.local.js"></script>

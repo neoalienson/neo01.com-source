@@ -1,0 +1,27 @@
+---
+title: 设备信息
+layout: tools
+lang: zh-CN
+series: tools
+---
+
+    <link rel="stylesheet" href="/css/tools-common.css">
+    <link rel="stylesheet" href="/tools/device-information/style.css">
+
+    <div class="tool_main">
+        <div class="info-grid" id="deviceInfo"></div>
+    </div>
+
+    <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+        <h2>关于设备信息</h2>
+        <p>设备信息显示有关您当前设备、浏览器和网络环境的综合详细信息。此工具检测您的操作系统、浏览器版本、屏幕分辨率、时区、语言偏好等。它对于排除兼容性问题、测试响应式设计以及了解设备功能非常有用。</p>
+        
+        <p>此工具使用浏览器 API 和 JavaScript 收集信息，包括用户代理解析、屏幕属性、网络信息和系统偏好。所有数据都在您的浏览器本地收集 - 不会将任何内容发送到任何服务器。显示的信息是网站在您访问时通常可以检测到的内容。</p>
+        
+        <h3>常见使用场景</h3>
+        <p>Web 开发人员使用设备信息测试不同屏幕尺寸的响应式设计、调试浏览器特定问题以及验证功能支持。用户在排除问题、验证浏览器版本以确保兼容性、了解隐私暴露以及确认系统设置（如时区和语言）时检查设备规格。</p>
+        
+        <p>只需加载此页面即可查看所有可用的设备信息。数据会自动更新并反映您当前的浏览器会话。所有检测都在您的浏览器本地进行。</p>
+    </div>
+
+    <script src="/tools/device-information/device-information.local.js"></script>

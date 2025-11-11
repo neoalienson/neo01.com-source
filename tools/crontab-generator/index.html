@@ -1,0 +1,94 @@
+---
+title: Crontab Generator
+layout: tools
+series: tools
+---
+
+    <link rel="stylesheet" href="/css/tools-common.css">
+    <link rel="stylesheet" href="/tools/crontab-generator/style.css">
+
+    <div class="tool_main">
+        <div class="time-grid">
+            <div class="input-group">
+                <label for="minute">Minute (0-59)</label>
+                <select id="minute">
+                    <option value="*">Every minute</option>
+                    <option value="0">0</option>
+                    <option value="*/5">Every 5 minutes</option>
+                    <option value="*/10">Every 10 minutes</option>
+                    <option value="*/15">Every 15 minutes</option>
+                    <option value="*/30">Every 30 minutes</option>
+                </select>
+            </div>
+            
+            <div class="input-group">
+                <label for="hour">Hour (0-23)</label>
+                <select id="hour">
+                    <option value="*">Every hour</option>
+                    <option value="0">0 (midnight)</option>
+                    <option value="6">6 AM</option>
+                    <option value="12">12 PM (noon)</option>
+                    <option value="18">6 PM</option>
+                </select>
+            </div>
+            
+            <div class="input-group">
+                <label for="day">Day (1-31)</label>
+                <select id="day">
+                    <option value="*">Every day</option>
+                    <option value="1">1st</option>
+                    <option value="15">15th</option>
+                    <option value="*/7">Every 7 days</option>
+                </select>
+            </div>
+            
+            <div class="input-group">
+                <label for="month">Month (1-12)</label>
+                <select id="month">
+                    <option value="*">Every month</option>
+                    <option value="1">January</option>
+                    <option value="6">June</option>
+                    <option value="12">December</option>
+                </select>
+            </div>
+            
+            <div class="input-group">
+                <label for="weekday">Weekday (0-7)</label>
+                <select id="weekday">
+                    <option value="*">Every day</option>
+                    <option value="0">Sunday</option>
+                    <option value="1">Monday</option>
+                    <option value="2">Tuesday</option>
+                    <option value="3">Wednesday</option>
+                    <option value="4">Thursday</option>
+                    <option value="5">Friday</option>
+                    <option value="6">Saturday</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="output-section">
+            <button class="copy-btn" onclick="copyResult()">Copy</button>
+            <div class="output-label">Cron Expression</div>
+            <div class="output-content" id="cronResult">* * * * *</div>
+        </div>
+        
+        <div class="description">
+            <div class="description-text" id="cronDescription">Runs every minute</div>
+        </div>
+    </div>
+
+    <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+        <h2>About Crontab Generator</h2>
+        <p>Crontab Generator creates cron expressions for scheduling automated tasks on Unix/Linux systems. Cron is a time-based job scheduler that runs commands or scripts at specified intervals. This tool helps you build the correct cron syntax without memorizing the complex format of five time fields.</p>
+        
+        <p>A cron expression consists of five fields: minute (0-59), hour (0-23), day of month (1-31), month (1-12), and day of week (0-7). Each field can use wildcards (*), specific values, ranges, or intervals. The tool provides common presets and generates human-readable descriptions of when your cron job will run.</p>
+        
+        <h3>Common Use Cases</h3>
+        <p>System administrators use cron for automated backups, log rotation, system maintenance, and monitoring scripts. Developers schedule data synchronization, report generation, cache clearing, and batch processing jobs. Web applications use cron for sending scheduled emails, cleaning up temporary files, updating search indexes, and running periodic health checks.</p>
+        
+        <p>Select your desired schedule from the dropdowns, and the cron expression will be generated automatically with a description of when it runs. Copy the expression and add it to your crontab file. All generation happens locally in your browser.</p>
+    </div>
+
+    <script src="/tools/crontab-generator/crontab-generator.local.js"></script>
+    

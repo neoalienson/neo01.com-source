@@ -1,0 +1,33 @@
+---
+title: 哈希文字
+layout: tools
+lang: zh-CN
+series: tools
+---
+
+    <link rel="stylesheet" href="/css/tools-common.css">
+    <link rel="stylesheet" href="/tools/hash-text/style.css">
+
+    <div class="tool_main">
+        <div class="input-group">
+            <label for="textInput">Text to hash:</label>
+            <textarea id="textInput" placeholder="在此输入您的文字...">Hello World!</textarea>
+        </div>
+        
+        <div class="output-grid" id="output"></div>
+    </div>
+
+    <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+        <h2>关于哈希函数</h2>
+        <p>哈希函数是将任何输入数据转换为固定大小字符串（称为哈希值或摘要）的加密算法。它们是现代安全的基础，从密码存储到区块链验证无处不在。良好的哈希函数具有确定性（相同输入总是产生相同输出）、计算快速且实际上不可能逆向。</p>
+        
+        <p>此工具支持多种哈希算法：MD5（128位，旧版）、SHA-1（160位，已弃用于安全用途）、SHA-256（256位，广泛使用）、SHA-512（512位，最高安全性）和 SHA-3（最新标准）。每种算法在速度和安全性之间提供不同的权衡。虽然 MD5 和 SHA-1 仍可用于校验和和非安全目的，但建议在加密应用中使用 SHA-256 和 SHA-512。</p>
+        
+        <h3>常见使用案例</h3>
+        <p>哈希函数验证数据完整性（文件校验和）、保护密码（单向加密）、创建数字签名、生成唯一标识符并支持区块链技术。当您下载软件并验证其哈希值时，您正在确保文件未被篡改。当网站存储您的密码时，它们会进行哈希处理，因此即使网站也无法看到原始密码。</p>
+        
+        <p>只需输入任何文字，即可立即查看所有支持算法的哈希值。非常适合验证文件完整性、生成校验和、测试哈希实现或学习加密函数。该工具在您的浏览器中本地处理所有内容——不会将数据发送到任何服务器。</p>
+    </div>
+
+    <script src="/cache/crypto-js.min.local.js"></script>
+    <script src="/tools/hash-text/hash-text.local.js"></script>

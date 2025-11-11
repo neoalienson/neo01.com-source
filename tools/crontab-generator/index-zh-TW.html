@@ -1,0 +1,95 @@
+---
+title: Crontab 產生器
+layout: tools
+lang: zh-TW
+series: tools
+---
+
+    <link rel="stylesheet" href="/css/tools-common.css">
+    <link rel="stylesheet" href="/tools/crontab-generator/style.css">
+
+    <div class="tool_main">
+        <div class="time-grid">
+            <div class="input-group">
+                <label for="minute">Minute (0-59)</label>
+                <select id="minute">
+                    <option value="*">Every minute</option>
+                    <option value="0">0</option>
+                    <option value="*/5">Every 5 minutes</option>
+                    <option value="*/10">Every 10 minutes</option>
+                    <option value="*/15">Every 15 minutes</option>
+                    <option value="*/30">Every 30 minutes</option>
+                </select>
+            </div>
+            
+            <div class="input-group">
+                <label for="hour">Hour (0-23)</label>
+                <select id="hour">
+                    <option value="*">Every hour</option>
+                    <option value="0">0 (midnight)</option>
+                    <option value="6">6 AM</option>
+                    <option value="12">12 PM (noon)</option>
+                    <option value="18">6 PM</option>
+                </select>
+            </div>
+            
+            <div class="input-group">
+                <label for="day">Day (1-31)</label>
+                <select id="day">
+                    <option value="*">Every day</option>
+                    <option value="1">1st</option>
+                    <option value="15">15th</option>
+                    <option value="*/7">Every 7 days</option>
+                </select>
+            </div>
+            
+            <div class="input-group">
+                <label for="month">Month (1-12)</label>
+                <select id="month">
+                    <option value="*">Every month</option>
+                    <option value="1">January</option>
+                    <option value="6">June</option>
+                    <option value="12">December</option>
+                </select>
+            </div>
+            
+            <div class="input-group">
+                <label for="weekday">Weekday (0-7)</label>
+                <select id="weekday">
+                    <option value="*">Every day</option>
+                    <option value="0">Sunday</option>
+                    <option value="1">Monday</option>
+                    <option value="2">Tuesday</option>
+                    <option value="3">Wednesday</option>
+                    <option value="4">Thursday</option>
+                    <option value="5">Friday</option>
+                    <option value="6">Saturday</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="output-section">
+            <button class="copy-btn" onclick="copyResult()">複製</button>
+            <div class="output-label">Cron Expression</div>
+            <div class="output-content" id="cronResult">* * * * *</div>
+        </div>
+        
+        <div class="description">
+            <div class="description-text" id="cronDescription">Runs every minute</div>
+        </div>
+    </div>
+
+    <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+        <h2>關於 Crontab 產生器</h2>
+        <p>Crontab 產生器創建用於在 Unix/Linux 系統上調度自動化任務的 cron 表達式。Cron 是一個基於時間的作業調度程式，在指定的間隔執行命令或指令碼。此工具幫助您構建正確的 cron 語法，而無需記憶五個時間欄位的複雜格式。</p>
+        
+        <p>Cron 表達式由五個欄位組成：分鐘（0-59）、小時（0-23）、月份中的日期（1-31）、月份（1-12）和星期幾（0-7）。每個欄位可以使用萬用字元（*）、特定值、範圍或間隔。此工具提供常用預設並生成人類可讀的 cron 作業執行時間描述。</p>
+        
+        <h3>常見使用情境</h3>
+        <p>系統管理員使用 cron 進行自動備份、日誌輪換、系統維護和監控指令碼。開發人員調度資料同步、報告生成、快取清理和批次處理作業。Web 應用程式使用 cron 發送計劃電子郵件、清理臨時檔案、更新搜尋索引和執行定期健康檢查。</p>
+        
+        <p>從下拉選單中選擇您所需的調度，cron 表達式將自動生成並附帶執行時間描述。複製表達式並將其新增到您的 crontab 檔案。所有生成都在您的瀏覽器本地進行。</p>
+    </div>
+
+    <script src="/tools/crontab-generator/crontab-generator.local.js"></script>
+    

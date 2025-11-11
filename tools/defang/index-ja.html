@@ -1,0 +1,73 @@
+---
+title: Defang ツール
+layout: tools
+lang: ja
+series: tools
+---
+
+    <link rel="stylesheet" href="/tools/defang/style.css">
+
+    <div id="defang-tool">
+        <div class="defang-input-group">
+            <label for="inputText">入力テキスト：</label>
+            <textarea id="inputText" placeholder="defang/refang する URL、IP、またはメールアドレスを入力..."></textarea>
+        </div>
+
+        <div class="defang-controls">
+            <div class="defang-switch-container">
+                <label>ドットを [.] に置換</label>
+                <label class="defang-switch">
+                    <input type="checkbox" id="replaceDots" checked>
+                    <span class="defang-slider"></span>
+                </label>
+            </div>
+            <div class="defang-switch-container">
+                <label>HTTP を hxxp に置換</label>
+                <label class="defang-switch">
+                    <input type="checkbox" id="replaceHttp" checked>
+                    <span class="defang-slider"></span>
+                </label>
+            </div>
+            <div class="defang-switch-container">
+                <label>:// を [://] に置換</label>
+                <label class="defang-switch">
+                    <input type="checkbox" id="replaceProtocol" checked>
+                    <span class="defang-slider"></span>
+                </label>
+            </div>
+            <div class="defang-switch-container">
+                <label>ポートを [:]port に置換</label>
+                <label class="defang-switch">
+                    <input type="checkbox" id="replacePorts" checked>
+                    <span class="defang-slider"></span>
+                </label>
+            </div>
+        </div>
+
+        <div class="defang-button-group">
+            <button class="defang-btn-primary" onclick="defangText()">Defang</button>
+            <button class="defang-btn-secondary" onclick="refangText()">Refang</button>
+        </div>
+        
+
+        <div class="defang-output-section">
+            <button class="defang-btn-copy" onclick="copyOutput()">コピー</button>
+            <div class="defang-output-label">出力</div>
+            <div class="defang-output-content" id="outputText">出力結果がここに表示されます...</div>
+            <div id="message"></div>
+        </div>
+    </div>
+
+    <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+        <h2>Defangツールについて</h2>
+        <p>Defangツールは、主要な文字を置き換えることで、潜在的に悪意のあるURL、IPアドレス、メールアドレスを安全に無効化し、誤ってクリックしたり自動処理されたりするのを防ぎます。これは、レポート、メール、またはドキュメントで侵害指標（IOC）を共有する際にサイバーセキュリティで不可欠です。DefangはURLとIPをクリック不可にしながら、分析のために読み取り可能に保ちます。</p>
+        
+        <p>このツールは複数のdefangオプションを提供します：ドットを[.]に置き換え、httpをhxxpに変換、プロトコルを[://]でラップし、ポートを括弧で囲みます。各オプションは個別に有効または無効にできます。refang機能はこのプロセスを逆転し、制御された環境でテストや調査が必要な場合に元のURLを復元します。</p>
+        
+        <h3>一般的な使用例</h3>
+        <p>セキュリティアナリストは、マルウェアキャンペーンの文書化、脅威インテリジェンスレポートの共有、公開フォーラムでのIOCの投稿、インシデント対応ドキュメントの作成、疑わしいドメインについてチームとコミュニケーションする際にdefangを使用します。これにより、悪意のあるサイトへの誤ったナビゲーションを防ぎ、セキュリティツールが共有コンテンツを自動的にフラグ付けやブロックするのを防ぎます。</p>
+        
+        <p>URL、IP、またはメールを入力フィールドに貼り付け、defangオプションを選択し、Defangをクリックします。必要に応じてRefangを使用して元の形式に復元します。すべての処理はブラウザ内でローカルに行われます。</p>
+    </div>
+
+    <script src="/tools/defang/defang.local.js"></script>

@@ -1,0 +1,48 @@
+---
+title: Base64 編碼器/解碼器
+layout: tools
+lang: zh-TW
+series: tools
+---
+
+    <link rel="stylesheet" href="/tools/base64-converter/style.css">
+
+        
+        <div class="controls">
+            <div class="checkbox-container">
+                <input type="checkbox" id="urlSafe">
+                <label for="urlSafe">URL Safe</label>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label for="inputText">Input Text:</label>
+            <textarea id="inputText" placeholder="Enter text to encode or Base64 to decode..."></textarea>
+            <div class="button-group">
+                <button class="btn-primary" onclick="encodeText()">編碼 to Base64</button>
+                <button class="btn-secondary" onclick="decodeText()">解碼 from Base64</button>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <div class="output-header">
+                <label for="outputText">輸出：</label>
+                <button class="btn-copy" onclick="copyOutput()">複製</button>
+            </div>
+            <textarea id="outputText" readonly placeholder="Output will appear here..."></textarea>
+            <div id="message"></div>
+        </div>
+
+    <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+        <h2>關於 Base64 編碼</h2>
+        <p>Base64 是一種編碼方案，使用 64 個可列印字元（A-Z、a-z、0-9、+、/）將二進位資料轉換為 ASCII 文字。它對於透過基於文字的協定（如電子郵件、JSON 或 XML）傳輸二進位資料至關重要。雖然 Base64 會使資料大小增加約 33%，但它確保二進位資料可以安全地通過為文字設計的系統。</p>
+        
+        <p>編碼的工作原理是取 3 個位元組（24 位元）的輸入並將其轉換為 4 個 Base64 字元（每個 6 位元）。當輸入不能被 3 整除時，會添加填充字元（=）。URL 安全的 Base64 將 + 替換為 - 並將 / 替換為 _，以避免在 URL 和檔案名稱中出現問題，非常適合令牌、識別碼和查詢參數。</p>
+        
+        <h3>常見使用案例</h3>
+        <p>Base64 無處不在：在 HTML/CSS 中嵌入圖片（資料 URL）、編碼電子郵件附件（MIME）、傳輸 JSON Web 令牌（JWT）、在資料庫中儲存二進位資料、編碼 API 憑證以及處理檔案上傳。它不是加密——任何人都可以解碼它——但它可以防止傳輸過程中的資料損壞。</p>
+        
+        <p>輸入任何文字以將其編碼為 Base64，或貼上 Base64 以將其解碼回純文字。切換 URL 安全模式以進行網路友好的編碼。該工具會自動檢測您的輸入是純文字還是 Base64 並相應地處理它。所有操作都在您的瀏覽器本地進行以保護隱私。</p>
+    </div>
+
+    <script src="/tools/base64-converter/base64-converter.local.js"></script>

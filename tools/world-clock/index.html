@@ -1,0 +1,72 @@
+---
+title: World Clock
+layout: tools
+series: tools
+---
+
+    <link rel="stylesheet" href="/css/tools-common.css">
+    <link rel="stylesheet" href="/tools/world-clock/style.css">
+
+    <div class="tool_main">
+        <div class="clock-container">
+            <div class="clock-section">
+                <div class="analog-clock" id="analog-clock">
+                    <div class="clock-number" style="top:10px;left:50%;transform:translateX(-50%);">12</div>
+                    <div class="clock-number" style="top:50%;right:10px;transform:translateY(-50%);">3</div>
+                    <div class="clock-number" style="bottom:10px;left:50%;transform:translateX(-50%);">6</div>
+                    <div class="clock-number" style="top:50%;left:10px;transform:translateY(-50%);">9</div>
+                    <div class="clock-hand minute-hand" id="minute-hand"></div>
+                    <div class="clock-hand hour-hand" id="hour-hand"></div>
+                    <div class="clock-center"></div>
+                </div>
+                <div style="text-align:center;margin-top:10px;color:#666;font-size:14px;">Drag clock hands to adjust time</div>
+            </div>
+            <div class="clock-controls">
+                <div style="font-weight:bold;font-size:1.2rem;color:#495057;margin-bottom:10px;">Reference Time</div>
+                <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:10px;">
+                    <div id="reference-time" style="font-family:'Courier New',monospace;font-size:2rem;font-weight:bold;color:#007acc;"></div>
+                    <button id="ampm-toggle" onclick="toggleAMPM()" style="display:none;padding:6px 12px;background:#007acc;color:white;border:none;border-radius:4px;cursor:pointer;font-size:1rem;font-weight:bold;"></button>
+                </div>
+                <div id="reference-date" style="font-size:0.9rem;color:#6c757d;margin-bottom:10px;text-align:center;"></div>
+                <div id="ampm-hint" style="display:none;color:#666;font-size:14px;margin-bottom:15px;text-align:center;">Click AM/PM to toggle</div>
+                <button onclick="resetTime()" style="padding:8px 16px;background:#6c757d;color:white;border:none;border-radius:4px;cursor:pointer;margin-bottom:15px;width:100%;">Reset Time</button>
+                <div style="display:flex;align-items:center;justify-content:center;gap:10px;">
+                    <label style="font-size:14px;color:#555;">24-hour format</label>
+                    <label class="time-switch">
+                        <input type="checkbox" id="format24h" checked>
+                        <span class="time-slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="clocks-grid" id="clocks-grid">
+            <div class="add-timezone" onclick="showAddModal()">
+                <div class="add-timezone-text">+ Add Timezone</div>
+            </div>
+        </div>
+        
+        <div class="modal" id="add-modal">
+            <div class="modal-content">
+                <div class="modal-header">Add Timezone</div>
+                <select id="timezone-select"></select>
+                <div class="modal-buttons">
+                    <button class="btn btn-secondary" onclick="hideAddModal()">Cancel</button>
+                    <button class="btn btn-primary" onclick="addTimezone()">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+        <h2>About World Clock</h2>
+        <p>World Clock displays current time across multiple timezones simultaneously. In our globally connected world, coordinating across timezones is essential for remote teams, international business, and personal connections. This tool shows live clocks for any timezone, making it easy to schedule meetings and understand time differences at a glance.</p>
+        
+        <p>The clock supports all IANA timezones worldwide and updates in real-time. Add multiple timezone clocks to your dashboard to monitor different regions simultaneously. Each clock displays the current time, date, and timezone offset. The interface is clean and easy to read, perfect for keeping on a second monitor or checking before scheduling international calls.</p>
+        
+        <h3>Common Use Cases</h3>
+        <p>Remote teams coordinate meetings across timezones by checking team members' local times. International businesses schedule calls with clients and partners. Travelers track time in their destination and home timezone. Event organizers plan global webinars and conferences. Freelancers working with international clients avoid scheduling conflicts. Stock traders monitor market hours across different exchanges.</p>
+        
+        <p>Click Add Timezone to select regions you want to monitor. Clocks update automatically every second. Remove clocks you no longer need. Your timezone selections are saved locally in your browser for convenience.</p>
+    </div>
+
+    <script src="/tools/world-clock/world-clock.local.js"></script>

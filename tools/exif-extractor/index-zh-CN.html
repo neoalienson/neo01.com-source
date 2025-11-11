@@ -1,0 +1,38 @@
+---
+title: EXIF 提取器
+layout: tools
+lang: zh-CN
+series: tools
+---
+
+
+<div class="tool-container">
+    <p>Upload or drag and drop a JPEG image to extract and analyze its EXIF metadata information.</p>
+    
+    <div class="drop-zone" id="dropZone">
+        <p>📁 Click here or drag and drop a JPEG file</p>
+        <input type="file" id="fileInput" accept=".jpg,.jpeg,image/jpeg">
+    </div>
+    
+    <div id="fileInfo" class="file-info" style="display: none;"></div>
+    <div id="output" class="metadata-output"></div>
+    <div id="error" class="error" style="display: none;"></div>
+</div>
+
+<script src="/tools/exif-extractor/exif-tags.local.js"></script>
+<script src="/tools/exif-extractor/exif-extractor.local.js"></script>
+
+
+<div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+    <h2>关于 EXIF 提取器</h2>
+    <p>EXIF 提取器读取并显示嵌入在 JPEG 图像中的元数据。EXIF（可交换图像文件格式）数据包括相机设置、GPS 坐标、时间戳和其他在拍摄照片时自动记录的技术信息。此工具帮助摄影师、调查人员以及任何对图像来源感兴趣的人了解照片背后的故事。</p>
+    
+    <p>提取器解析 EXIF 标签，包括相机品牌和型号、曝光设置（ISO、光圈、快门速度）、焦距、闪光灯使用、方向、GPS 位置和时间戳。所有处理都使用 JavaScript 在您的浏览器中进行 - 图像永远不会上传到任何服务器，确保完全隐私。</p>
+    
+    <h3>常见使用场景</h3>
+    <p>摄影师使用 EXIF 提取器查看成功拍摄的相机设置、验证图像真实性、按位置或日期组织照片库，以及从其他摄影师的技术中学习。数字取证专业人员分析 EXIF 数据进行调查。注重隐私的用户在在线分享照片之前检查元数据，以避免暴露敏感的位置或设备信息。</p>
+    
+    <p>点击拖放区或拖动 JPEG 文件以提取其 EXIF 数据。工具以有组织的格式显示所有可用的元数据。所有处理都在本地进行 - 您的图像永远不会离开您的设备。</p>
+</div>
+
+<link rel="stylesheet" href="/tools/exif-extractor/style.css">

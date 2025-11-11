@@ -1,0 +1,39 @@
+---
+title: EXIF抽出
+layout: tools
+lang: ja
+series: tools
+---
+
+
+<div class="tool-container">
+    <p>JPEG画像をアップロードまたはドラッグ＆ドロップして、EXIFメタデータ情報を抽出および分析します。</p>
+    
+    <div class="drop-zone" id="dropZone">
+        <p>📁 ここをクリックするか、JPEGファイルをドラッグ＆ドロップ</p>
+        <input type="file" id="fileInput" accept=".jpg,.jpeg,image/jpeg">
+    </div>
+    
+    <div id="fileInfo" class="file-info" style="display: none;"></div>
+    <div id="output" class="metadata-output"></div>
+    <div id="error" class="error" style="display: none;"></div>
+</div>
+
+<script src="/tools/exif-extractor/exif-tags.local.js"></script>
+<script src="/tools/exif-extractor/exif-extractor.local.js"></script>
+
+
+<div style="margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+    <h2>EXIF抽出について</h2>
+    <p>EXIF抽出は、JPEG画像に埋め込まれたメタデータを読み取って表示します。EXIF（Exchangeable Image File Format）データには、カメラ設定、GPS座標、タイムスタンプ、その他の技術情報が含まれ、写真撮影時に自動的に記録されます。このツールは、写真家、調査員、画像の起源について知りたい人が写真の背後にあるストーリーを理解するのに役立ちます。</p>
+    
+    <p>抽出ツールは、カメラのメーカーとモデル、露出設定（ISO、絞り、シャッタースピード）、焦点距離、フラッシュ使用、向き、GPS位置、タイムスタンプなどのEXIFタグを解析します。すべての処理はJavaScriptを使用してブラウザ内で行われます - 画像はサーバーにアップロードされることはなく、完全なプライバシーが保証されます。</p>
+    
+    <h3>一般的な使用例</h3>
+    <p>写真家は、成功したショットのカメラ設定を確認したり、画像の真正性を検証したり、場所や日付でフォトライブラリを整理したり、他の写真家のテクニックから学んだりするためにEXIF抽出を使用します。デジタルフォレンジックの専門家は調査のためにEXIFデータを分析します。プライバシーを重視するユーザーは、機密性の高い位置情報やデバイス情報の露出を避けるために、写真をオンラインで共有する前にメタデータをチェックします。</p>
+    
+    <p>ドロップゾーンをクリックするか、JPEGファイルをドラッグしてEXIFデータを抽出します。ツールは利用可能なすべてのメタデータを整理された形式で表示します。すべての処理はローカルで行われます - 画像はデバイスから離れることはありません。</p>
+</div>
+
+<link rel="stylesheet" href="/tools/exif-extractor/style.css">
+

@@ -1,0 +1,8 @@
+content: |
+  - 🔐 **Authentication Series**
+    - [The Evolution of Single Sign-On](/2010/01/Evolution-of-Single-Sign-On-From-Kerberos-to-OIDC/)
+    - [Understanding SAML](/2010/02/Understanding-SAML-Enterprise-Federation-Explained/)
+    - [Understanding Kerberos](/2010/03/Understanding-Kerberos-Network-Authentication-Explained/)
+    - [OpenID Connect](/2014/11/OpenID-Connect-Modern-Authentication-Explained/)
+    - [OAuth 2.0 Security Best Practices](/2020/12/OAuth-2.0-Security-Best-Practices-From-Design-to-Implementation/)
+    - [Identity Broker](/2021/12/Identity-Broker-Patterns/)
