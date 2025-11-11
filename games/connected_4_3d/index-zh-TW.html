@@ -1,0 +1,36 @@
+---
+title: 立體四子棋
+layout: tools
+lang: zh-TW
+---
+
+    <div id="main-content">
+        <div id="game-container">
+            <div id="status-display">玩家 1 的回合</div>
+            <div id="top-controls">
+                <div id="mobile-controls">
+                    <button id="control-left" class="control-btn">←</button>
+                    <button id="control-up" class="control-btn">↑</button>
+                    <button id="control-down" class="control-btn">↓</button>
+                    <button id="control-right" class="control-btn">→</button>
+                    <button id="control-space" class="control-btn space-btn">放下</button>
+                    <button id="reset-button" class="control-btn space-btn">重置</button>
+                </div>
+            </div>
+            <canvas id="game-canvas"></canvas>
+        </div>
+        <div id="instructions-container">
+            <h2>遊戲說明</h2>
+            <p>使用方向鍵（左、右、上、下）移動抓手。</p>
+            <p>按空白鍵放下棋子。</p>
+            <p>將你的 4 個棋子連成一線（水平、垂直或對角線）即可獲勝！</p>
+            <p>點擊「重置」開始新遊戲。</p>
+
+            <h3>鏡頭控制</h3>
+            <p><strong>旋轉視角：</strong>按住滑鼠左鍵拖曳。</p>
+            <p><strong>縮放：</strong>滾動滑鼠滾輪。</p>
+            <p><strong>平移視角：</strong>按住滑鼠右鍵拖曳（或 Ctrl + 滑鼠左鍵）。</p>
+        </div>
+    </div>
+    <script type="module" src="/games/connected_4_3d/local.js"></script>
+    <link rel="stylesheet" href="/games/connected_4_3d/style.css">

@@ -1,0 +1,36 @@
+---
+title: Connected 4 in 3D
+layout: tools
+lang: ja
+---
+
+    <div id="main-content">
+        <div id="game-container">
+            <div id="status-display">プレイヤー1のターン</div>
+            <div id="top-controls">
+                <div id="mobile-controls">
+                    <button id="control-left" class="control-btn">←</button>
+                    <button id="control-up" class="control-btn">↑</button>
+                    <button id="control-down" class="control-btn">↓</button>
+                    <button id="control-right" class="control-btn">→</button>
+                    <button id="control-space" class="control-btn space-btn">落とす</button>
+                    <button id="reset-button" class="control-btn space-btn">リセット</button>
+                </div>
+            </div>
+            <canvas id="game-canvas"></canvas>
+        </div>
+        <div id="instructions-container">
+            <h2>ゲームの説明</h2>
+            <p>矢印キー（左、右、上、下）を使用してクローを移動します。</p>
+            <p>スペースバーを押してピースを落とします。</p>
+            <p>自分のピースを4つ並べて（横、縦、または斜め）勝利しましょう！</p>
+            <p>「リセット」をクリックして新しいゲームを開始します。</p>
+
+            <h3>カメラ操作</h3>
+            <p><strong>視点を回転:</strong> 左マウスボタンでクリック＆ドラッグ。</p>
+            <p><strong>ズームイン/アウト:</strong> マウスホイールをスクロール。</p>
+            <p><strong>視点を移動:</strong> 右マウスボタンでクリック＆ドラッグ（またはCtrl + 左マウスボタン）。</p>
+        </div>
+    </div>
+    <script type="module" src="/games/connected_4_3d/local.js"></script>
+    <link rel="stylesheet" href="/games/connected_4_3d/style.css">

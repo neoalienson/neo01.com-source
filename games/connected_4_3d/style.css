@@ -1,0 +1,112 @@
+
+#main-content {
+    display: flex;
+    gap: 20px; /* Space between game and instructions */
+    align-items: center; /* Align items to the center */
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    justify-content: center; /* Center items when wrapped */
+    padding: 20px; /* Add some padding for smaller screens */
+}
+
+#game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #333;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    max-width: 100%; /* Ensure it doesn't overflow */
+}
+
+#instructions-container {
+    width: 300px; /* Base width */
+    max-width: 100%; /* Ensure it doesn't overflow */
+    padding: 20px;
+    background-color: #333;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+#instructions-container h2 {
+    font-size: 1.8em;
+    margin-top: 0;
+    color: #007bff;
+}
+
+#instructions-container p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+#status-display {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+/* Top controls container */
+#top-controls {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+canvas {
+    display: block;
+    background-color: #000;
+    border-radius: 5px;
+}
+
+/* Mobile Controls */
+#mobile-controls {
+    display: flex; /* Always display, not just on mobile */
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    padding: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.control-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin: 0; /* Remove any default margins */
+}
+
+.control-btn:hover {
+    background-color: #0056b3;
+}
+
+.control-btn:active {
+    background-color: #0056b3;
+    transform: scale(0.95);
+}
+
+.space-btn {
+    width: 60px;
+    border-radius: 20px;
+}
+
+/* Show mobile controls on smaller screens */
+@media (max-width: 768px) {
+    #mobile-controls {
+        justify-content: flex-start;
+    }
+    
+    #instructions-container {
+        width: 100%;
+        max-width: 600px;
+    }
+}

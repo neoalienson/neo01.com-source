@@ -1,0 +1,35 @@
+---
+title: Connected 4 in 3D
+layout: tools
+---
+
+    <div id="main-content">
+        <div id="game-container">
+            <div id="status-display">Player 1's Turn</div>
+            <div id="top-controls">
+                <div id="mobile-controls">
+                    <button id="control-left" class="control-btn">←</button>
+                    <button id="control-up" class="control-btn">↑</button>
+                    <button id="control-down" class="control-btn">↓</button>
+                    <button id="control-right" class="control-btn">→</button>
+                    <button id="control-space" class="control-btn space-btn">DROP</button>
+                    <button id="reset-button" class="control-btn space-btn">Reset</button>
+                </div>
+            </div>
+            <canvas id="game-canvas"></canvas>
+        </div>
+        <div id="instructions-container">
+            <h2>Game Instructions</h2>
+            <p>Use Arrow Keys (Left, Right, Up, Down) to move the claw.</p>
+            <p>Press Spacebar to drop a piece.</p>
+            <p>Connect 4 of your pieces in a row (horizontally, vertically, or diagonally) to win!</p>
+            <p>Click "Reset" to start a new game.</p>
+
+            <h3>Camera Controls</h3>
+            <p><strong>Rotate View:</strong> Click and drag with the left mouse button.</p>
+            <p><strong>Zoom In/Out:</strong> Scroll the mouse wheel.</p>
+            <p><strong>Pan View:</strong> Click and drag with the right mouse button (or Ctrl + left mouse button).</p>
+        </div>
+    </div>
+    <script type="module" src="/games/connected_4_3d/local.js"></script>
+    <link rel="stylesheet" href="/games/connected_4_3d/style.css">
