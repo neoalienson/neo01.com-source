@@ -1,0 +1,47 @@
+*{
+  box-sizing:border-box;
+}
+.box{
+  width:100%;
+  margin:2em auto;
+}
+.message{
+  width:100%;
+  border-radius:15px;
+  padding:1em;
+}
+.person-a .message{
+  background:#f8f8f8;
+}
+.person-a{
+  display:flex;
+  align-items:flex-start;
+}
+
+.icon1{
+  --size:160px;
+  width:var(--size);
+  height:var(--size);
+  background:url(akira_1.jpeg);
+  background-position:center;
+  background-size:cover;
+  margin-right:.8em;
+  position:relative;
+}
+
+.icon2{
+  --size:160px;
+  width:var(--size);
+  height:var(--size);
+  background-position:center;
+  background-size:cover;
+  margin-right:.8em;
+  position:relative;
+}
+
+.person-b .message{
+  background:darkgrey;
+  margin:2em 0;
+  margin-left:0px;
+  color:white;
+}

@@ -1,0 +1,21 @@
+kbd { 
+    width: 30px;
+    display: inline-block;
+    text-align: center;
+}
+box { 
+    width: 48px;
+    display: inline-block;
+}
+mbox { 
+    width: 52px;
+    display: inline-block;
+}
+left-space{ 
+    width: 168px;
+    display: inline-block;
+}
+mid{ 
+    width: 4px;
+    display: inline-block;
+}
