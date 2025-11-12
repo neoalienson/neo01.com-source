@@ -26,70 +26,73 @@ Zero is the parameter index that indicates the data element to be formatted in t
 # Currency
 {0:C}
 numeric/decimal
-顯示“Price:”，后跟以貨幣格式表示的數字。貨幣格式取決于通過 Page 指令或 Web.config 文件中的區域性屬性指定的區域性設置。
+Displays "Price:" followed by a number in currency format. The currency format depends on the culture settings specified through the Page directive or the culture attribute in the Web.config file.
 
 # Integer
 {0:D4}
-整數()不能和小數一起使用。
-在由零填充的四個字符寬的字段中顯示整數。
+Integer (cannot be used with decimals).
+Displays an integer in a four-character-wide field padded with zeros.
 
 # Numeric
 {0:N2}%
-顯示精確到小數點后兩位的數字，后跟“%”。
+Displays a number accurate to two decimal places, followed by "%".
 
 # Numeric/Decimal
 {0:000.0}
-四舍五入到小數點后一位的數字。不到三位的數字用零填充。
+Number rounded to one decimal place. Numbers with fewer than three digits are padded with zeros.
 
 # Date/Datetime Long
 {0:D}
-長日期格式（“Thursday, August 06, 1996”）。日期格式取決于頁或 Web.config 文件的區域性設置。
+Long date format ("Thursday, August 06, 1996"). The date format depends on the culture settings of the page or Web.config file.
 
 # Date/Datetime short
 {0:d}
-短日期格式（“12/31/99”）。
+Short date format ("12/31/99").
 
 # Date/Datetime customize
 {0:yy-MM-dd}
-用數字的年－月－日表示的日期（96-08-06）。
+Date represented in numeric year-month-day format (96-08-06).
 
-2006-02-22 | asp.net數據格式的Format-- DataFormatString
+2006-02-22 | ASP.NET Data Format -- DataFormatString
 
-我們在呈現數據的時候，不要將未經修飾過的數據呈現給使用者。例如金額一萬元，如果我們直接顯示「10000」，可能會導致使用者看成一千或十萬，造成使用者閱讀數據上的困擾。若我們將一萬元潤飾后輸出為「NT$10,000」，不但讓使比較好閱讀，也會讓使用者減少犯錯的機會。\n下列畫面為潤飾過的結果：
-上述數據除了將DataGrid Web 控件以顏色來區隔記錄外，最主要將日期、單價以及小計這三個計字段的數據修飾的更容易閱讀。要修飾字段的輸出，只要設定字段的DataFormatString 屬性即可；其使用語法如下：
+When presenting data, we should not display unformatted data to users. For example, for an amount of ten thousand dollars, if we directly display "10000", it might cause users to read it as one thousand or one hundred thousand, creating confusion when reading the data. If we format ten thousand dollars and output it as "$10,000", it not only makes it easier for users to read but also reduces the chance of user errors.
 
-DataFormatString=\"{0:格式字符串}\"
+The above data, in addition to using colors to separate records in the DataGrid Web control, mainly formats the date, unit price, and subtotal fields to make them easier to read. To format field output, you only need to set the field's DataFormatString property; its syntax is as follows:
 
-我們知道在DataFormatString 中的 {0} 表示數據本身，而在冒號后面的格式字符串代表所們希望數據顯示的格式；另外在指定的格式符號后可以指定小數所要顯示的位數。例如原來的數據為「12.34」，若格式設定為 {0:N1}，則輸出為「12.3」。其常用的數值格式如下表所示：\n\n格式字符串 資料 結果
-\"{0:C}\" 12345.6789 $12,345.68
-\"{0:C}\" -12345.6789 ($12,345.68)
-\"{0:D}\" 12345 12345
-\"{0:D8}\" 12345 00012345
-\"{0:E}\" 12345.6789 1234568E+004
-\"{0:E10}\" 12345.6789 1.2345678900E+004
-\"{0:F}\" 12345.6789 12345.68
-\"{0:F0}\" 12345.6789 12346
-\"{0:G}\" 12345.6789 12345.6789
-\"{0:G7}\" 123456789 1.234568E8
-\"{0:N}\" 12345.6789 12,345.68
-\"{0:N4}\" 123456789 123,456,789.0000
-\"Total: {0:C}\" 12345.6789 Total: $12345.68
+DataFormatString="{0:format string}"
 
-其常用的日期格式如下表所示：
+We know that {0} in DataFormatString represents the data itself, and the format string after the colon represents the format we want the data to display in; additionally, after specifying the format symbol, you can specify the number of decimal places to display. For example, if the original data is "12.34" and the format is set to {0:N1}, the output will be "12.3". Common numeric formats are shown in the table below:
 
-格式 說明 輸出格式
-d 精簡日期格式 MM/dd/yyyy
-D 詳細日期格式 dddd, MMMM dd, yyyy
-f 完整格式 (long date + short time) dddd, MMMM dd, yyyy HH:mm
-F 完整日期時間格式
-(long date + long time)
-dddd, MMMM dd, yyyy HH:mm:ss
-g 一般格式 (short date + short time) MM/dd/yyyy HH:mm
-G 一般格式 (short date + long time) MM/dd/yyyy HH:mm:ss
-m,M 月日格式 MMMM dd\ns 適中日期時間格式 yyyy-MM-dd HH:mm:ss
-t 精簡時間格式 HH:mm\nT 詳細時間格式 HH:mm:ss
+Format String | Data | Result
+"{0:C}" | 12345.6789 | $12,345.68
+"{0:C}" | -12345.6789 | ($12,345.68)
+"{0:D}" | 12345 | 12345
+"{0:D8}" | 12345 | 00012345
+"{0:E}" | 12345.6789 | 1234568E+004
+"{0:E10}" | 12345.6789 | 1.2345678900E+004
+"{0:F}" | 12345.6789 | 12345.68
+"{0:F0}" | 12345.6789 | 12346
+"{0:G}" | 12345.6789 | 12345.6789
+"{0:G7}" | 123456789 | 1.234568E8
+"{0:N}" | 12345.6789 | 12,345.68
+"{0:N4}" | 123456789 | 123,456,789.0000
+"Total: {0:C}" | 12345.6789 | Total: $12345.68
 
-string.format格式結果
+Common date formats are shown in the table below:
+
+Format | Description | Output Format
+d | Short date format | MM/dd/yyyy
+D | Long date format | dddd, MMMM dd, yyyy
+f | Full format (long date + short time) | dddd, MMMM dd, yyyy HH:mm
+F | Full date time format (long date + long time) | dddd, MMMM dd, yyyy HH:mm:ss
+g | General format (short date + short time) | MM/dd/yyyy HH:mm
+G | General format (short date + long time) | MM/dd/yyyy HH:mm:ss
+m,M | Month day format | MMMM dd
+s | Sortable date time format | yyyy-MM-dd HH:mm:ss
+t | Short time format | HH:mm
+T | Long time format | HH:mm:ss
+
+String.Format Results
 
 String.Format
 
@@ -147,11 +150,11 @@ String.Format
 
 (X) Hexadecimal:. . . . . . . 00000003
 
-說明：
+Description:
 String.Format
-將指定的 String 中的每個格式項替換為相應對象的值的文本等效項。
+Replaces each format item in a specified String with the text equivalent of the value of a corresponding object.
 
-例子：
+Example:
 int iVisit = 100;
-string szName = \"Jackfled\";
-Response.Write(String.Format(\"您的帳號是：{0} 。訪問了 {1} 次.\", szName, iVisit));
+string szName = "Jackfled";
+Response.Write(String.Format("Your account is: {0}. Visited {1} times.", szName, iVisit));
