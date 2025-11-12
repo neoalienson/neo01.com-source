@@ -19,10 +19,6 @@ All content on this website is the property of the blog owner and is protected b
 
 This blog may contain links to third-party websites that are not controlled by the blog owner. These links are provided for your convenience, and the blog owner is not responsible for the content or accuracy of any linked websites.
 
-## Privacy Policy Disclosure
-
-We partner with Microsoft Clarity and Microsoft Advertising to capture how you use and interact with our website through behavioral metrics, heatmaps, and session replay to improve and market our products/services. Website usage data is captured using first and third-party cookies and other tracking technologies to determine the popularity of products/services and online activity. Additionally, we use this information for site optimization, fraud/security purposes, and advertising. For more information about how Microsoft collects and uses your data, visit the [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement)
-
 ## AI Generated Content Disclosure
 
 This blog site utilizes generative AI tools to enhance our creative process, primarily focusing on writing assistance. Our AI systems, including LLaMA 2, LLaMA 3, and DALL-E, aid in improving readability, detecting spelling and grammar errors, and optimizing search engine rankings, but not limited to these functions. While we do not rely on AI-generated images or videos, human editors thoroughly review any AI-produced content to ensure its accuracy, relevance, and overall quality before incorporating it into this blog posts. This hybrid approach allows us to streamline our workflow while maintaining the highest standards of creative expression.

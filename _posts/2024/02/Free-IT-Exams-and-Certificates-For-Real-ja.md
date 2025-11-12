@@ -79,7 +79,7 @@ Google Cloudは、Google Cloudの顧客限定のイニシアチブである「Ge
 
 Google Cloud認定資格の旅を始めましょう：
 
-https://cloud.google.com/innovators/getcertified（サインインが必要）
+https://cloud.google.com/innovators/getcertified （サインインが必要）
 
 ![Google Cloud Digital Leader Certificate](/about-me/certs/google-cloud-digital-leader-cert.jpeg){.cert}
 

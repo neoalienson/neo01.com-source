@@ -77,7 +77,7 @@ Google Cloud 通过其"2025 年获得认证"计划提供免费培训，这是专
 
 开始您的 Google Cloud 认证之旅：
 
-https://cloud.google.com/innovators/getcertified（需要登录）
+https://cloud.google.com/innovators/getcertified （需要登录）
 
 ![Google Cloud 数字领导者证书](/about-me/certs/google-cloud-digital-leader-cert.jpeg){.cert}
 

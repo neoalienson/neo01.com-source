@@ -158,7 +158,7 @@ Below is a list of packages I have successfully built:
 - php5-snmp (required for cacti)
 - cacti
 
-Packages are uploaded to [https://app.box.com/wdcloud](https://app.box.com/wdcloud target=_blank).
+Packages are uploaded to [https://app.box.com/wdcloud](https://app.box.com/wdcloud).
 
 Script to build:
 {% gist 1629e9a9bf266fb4abfc %}

@@ -14,12 +14,10 @@ lang: zh-CN
 # 编程
 
 * [CodeSchool](https://www.codeschool.com)
-* [CodeFight](https://codefights.com/)
 * [HackerRank](https://www.hackerrank.com)
 * [CodeCombat](https://codecombat.com)
 * [CodinGame](https://www.codingame.com)
 * [学习 Git 分支](https://learngitbranching.js.org/)
-* [使用交互式浏览器场景学习 Kubernetes](https://www.katacoda.com/courses/kubernetes)
 
 # 网络安全
 * [(ISC)2 国际信息系统安全认证联盟](https://www.isc2.org/)

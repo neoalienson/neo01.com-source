@@ -259,9 +259,3 @@ AaCを採用した組織は、大幅な改善を報告しています：
     - チームが自動化されたアーキテクチャ検証を採用するのを妨げているものは何ですか？
     
     以下のコメントであなたの考えと経験を共有してください！
-
----
-
-*シリーズの次：[パート3 - 自動化エンジン：AaCが開発を変革する方法](../Architecture_As_Code_Part_3_The_Automation_Engine)*
-
-*シリーズの前：[パート1 - 革命の始まり](../Architecture_As_Code_Part_1_The_Revolution_Begins)*

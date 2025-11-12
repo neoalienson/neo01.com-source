@@ -12,4 +12,4 @@ lang: zh-TW
 * [在 MacOS 上變更 Java 版本] http://www.guigarage.com/2013/02/change-java-version-on-mac-os/
 
 ## 其他
-* [ASP.NET string.Format（中文）](/zh-TW/pages/useful-information/aspnet-string-format)
+* [ASP.NET string.Format](/zh-TW/pages/useful-information/aspnet-string-format)

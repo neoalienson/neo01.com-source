@@ -258,9 +258,3 @@ In Part 3, we'll explore how these principles enable deep automation throughout 
     - What's preventing your team from adopting automated architectural validation?
     
     Share your thoughts and experiences in the comments below!
-
----
-
-*Next in Series: [Part 3 - The Automation Engine: How AaC Transforms Development](../Architecture_As_Code_Part_3_The_Automation_Engine)*
-
-*Previous in Series: [Part 1 - The Revolution Begins](../Architecture_As_Code_Part_1_The_Revolution_Begins)*

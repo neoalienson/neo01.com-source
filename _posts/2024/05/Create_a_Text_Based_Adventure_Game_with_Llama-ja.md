@@ -21,7 +21,7 @@ Gradio、LLaMA、OLLAMAでテキストベースのアドベンチャーゲーム
 開発者はGPT-2以来、大規模言語モデル（LLM）を使用してテキストベースのゲームを開発してきましたが、セットアップは困難でした。Gradio、LLaMA 3、OLLAMAを使えば、無料で自分のコンピューター上でローカルに実行されるテキストベースのゲームを作成するのが非常に簡単です。
 
 冒険が始まる前に、Gradio、LLaMA、ollamaについてより多くの背景情報を得ることができます：
-[Running_Your_Own_ChatGPT_and_Copilot_with_Ollama](../../2024/Running_Your_Own_ChatGPT_and_Copilot_with_Ollama)
+[Running_Your_Own_ChatGPT_and_Copilot_with_Ollama](/ja/2024/05/Running_Your_Own_ChatGPT_and_Copilot_with_Ollama)
 
 上記のブログ投稿と同様に、ollama APIが使用され、llama3:instructモデルが推奨されます。モデルをプルしていると仮定します：
 

@@ -14,7 +14,7 @@ comments: true
 ![正面](/2014/03/share-a-coke-with-neo/shareWithNeo1.jpeg)
 ![背面](/2014/03/share-a-coke-with-neo/shareWithNeo2.jpeg)
 
-你可以查看 [https://www.shareacoke.co.za/](https://www.shareacoke.co.za/) 以获取可用的名字。
+你可以查看 hxxps[://]www[.]shareacoke[.]co[.]za 以获取可用的名字。
 
 英国也有类似的活动，
 

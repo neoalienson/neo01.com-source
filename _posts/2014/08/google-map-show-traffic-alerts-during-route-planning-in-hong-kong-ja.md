@@ -30,4 +30,4 @@ iPhoneでGoogle Mapsにアクセスし、目的地をタップして、どのル
 
 これらの交通事故レポートがリアルタイムで更新されていることを確信しています。万歳！
 
-香港政府のウェブサイト（http://www.gov.hk/en/theme/psi/datasets/specialtrafficnews.htm）によると、これらの交通事故レポートのソースは政府自体から来ている可能性があります。
+香港政府のウェブサイト（ http://www.gov.hk/en/theme/psi/datasets/specialtrafficnews.htm ）によると、これらの交通事故レポートのソースは政府自体から来ている可能性があります。

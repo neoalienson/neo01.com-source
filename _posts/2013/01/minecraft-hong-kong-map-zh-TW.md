@@ -21,4 +21,4 @@ comments: true
 
 現在，讓我們考慮下一步：是否值得達到 1:1、1:2 或 1:5 的比例？1:1 會是相當長的路程，而較大的比例可能會讓街道看起來很奇怪。所以，這是一個平衡的問題！😄
 
-[下載地圖](Hong_Kong.world)
+[下載地圖](/2013/01/minecraft-hong-kong-map/Hong_Kong.world)

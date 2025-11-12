@@ -139,7 +139,3 @@ Consider the story of a large e-commerce platform that adopted AaC. Their monoli
 In this series, we'll explore how Architecture as Code transforms every aspect of software development. In Part 2, we'll dive deep into the core principles that make AaC work and the tangible benefits it delivers.
 
 *What architectural challenges are you facing in your current projects? Share in the comments below!*
-
----
-
-*Next in Series: [Part 2 - Building the Foundation: Core Principles and Benefits](../Architecture_As_Code_Part_2_Building_the_Foundation)*

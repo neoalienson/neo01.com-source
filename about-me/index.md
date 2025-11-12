@@ -9,11 +9,11 @@ grammar_checked: 2025-07-01
 
 I'm a technology professional with expertise spanning AI, cloud architecture and cybersecurity. My journey in the tech industry has led me to pursue continuous learning through professional certifications across major cloud platforms and security frameworks. The certificates displayed below represent hands-on experience with enterprise-grade technologies and demonstrate my commitment to staying current with industry best practices and emerging technologies.
 
-All certificates shown on this page are earned through **proctored examinations**. Proctored exams are supervised assessments conducted under strict security measures, including identity verification, live monitoring, and controlled testing environments to ensure exam integrity. This differs from non-proctored assessments, which are typically online courses or self-paced learning modules without supervised testing. The rigorous nature of proctored certifications provides greater assurance of the candidate's verified knowledge and skills. Non-proctored course completions are listed on a [separate page](non_proctored_certs).
+All certificates shown on this page are earned through **proctored examinations**. Proctored exams are supervised assessments conducted under strict security measures, including identity verification, live monitoring, and controlled testing environments to ensure exam integrity. This differs from non-proctored assessments, which are typically online courses or self-paced learning modules without supervised testing. The rigorous nature of proctored certifications provides greater assurance of the candidate's verified knowledge and skills. Non-proctored course completions are listed on a [separate page](non_proctored_certs/).
 
-Beyond formal certifications, I actively engage with emerging technologies through various learning platforms and vendor training programs. My collection includes [digital badges](badges) from completion certificates.
+Beyond formal certifications, I actively engage with emerging technologies through various learning platforms and vendor training programs. My collection includes [digital badges](badges/) from completion certificates.
 
-[and more ...](more)
+[and more ...](more/)
 
 ## Certificates
 

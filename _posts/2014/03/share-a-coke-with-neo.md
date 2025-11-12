@@ -17,7 +17,7 @@ My friend brought me a bottle of Coke with my name on it from his business trip 
 ![front](shareWithNeo1.jpeg)
 ![back](shareWithNeo2.jpeg)
 
-You can check [https://www.shareacoke.co.za/](https://www.shareacoke.co.za/) for the available names.
+You can check hxxps[://]www[.]shareacoke[.]co[.]za for the available names.
 
 There are similar activities in the U.K. as well,
 

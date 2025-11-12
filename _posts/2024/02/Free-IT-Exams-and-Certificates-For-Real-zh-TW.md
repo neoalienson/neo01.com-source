@@ -77,7 +77,7 @@ Google Cloud 通過其「2025 年獲得認證」計畫提供免費培訓，這�
 
 開始你的 Google Cloud 認證之旅：
 
-https://cloud.google.com/innovators/getcertified（需要登入）
+https://cloud.google.com/innovators/getcertified （需要登入）
 
 ![Google Cloud Digital Leader 證書](/about-me/certs/google-cloud-digital-leader-cert.jpeg){.cert}
 

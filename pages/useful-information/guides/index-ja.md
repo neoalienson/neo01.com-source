@@ -10,4 +10,4 @@ lang: ja
 * [MacOSでJavaバージョンを変更] http://www.guigarage.com/2013/02/change-java-version-on-mac-os/
 
 ## その他
-* [ASP.NET string.Format（中国語）](aspnet-string-format)
+* [ASP.NET string.Format](/ja/pages/useful-information/aspnet-string-format)

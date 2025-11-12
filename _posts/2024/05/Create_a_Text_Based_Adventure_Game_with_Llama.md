@@ -19,7 +19,7 @@ Building a Text-Based Adventure Game with Gradio, LLaMA, and OLLAMA
 Developers have been using Large Language Models (LLMs) to develop text-based games since GPT-2, but it was difficult to set up. With Gradio, LLaMA 3, and OLLAMA, it is super easy to create a text-based game running locally on your own computer for free.
 
 Before the adventure begins, you can have more background on Gradio, LLaMA, and ollama:
-[Running_Your_Own_ChatGPT_and_Copilot_with_Ollama](../../2024/Running_Your_Own_ChatGPT_and_Copilot_with_Ollama)
+[Running_Your_Own_ChatGPT_and_Copilot_with_Ollama](/2024/05/Running_Your_Own_ChatGPT_and_Copilot_with_Ollama)
 
 Like the above blog post, ollama API will be used and llama3:instruct model is recommended. Assume you have the model pulled:
 

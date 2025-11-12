@@ -259,9 +259,3 @@ AaC 促進架構師、開發人員和利益相關者之間更好的溝通：
     - 是什麼阻止你的團隊採用自動化架構驗證？
     
     在下面的評論中分享你的想法和經驗！
-
----
-
-*系列下一篇：[第三部分 - 自動化引擎：AaC 如何轉變開發](../Architecture_As_Code_Part_3_The_Automation_Engine)*
-
-*系列上一篇：[第一部分 - 革命的開端](../Architecture_As_Code_Part_1_The_Revolution_Begins)*

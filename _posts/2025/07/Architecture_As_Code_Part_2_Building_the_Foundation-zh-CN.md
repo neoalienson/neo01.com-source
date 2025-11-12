@@ -259,9 +259,3 @@ AaC 促进架构师、开发人员和利益相关者之间更好的沟通：
     - 是什么阻止你的团队采用自动化架构验证？
     
     在下面的评论中分享你的想法和经验！
-
----
-
-*系列下一篇：[第三部分 - 自动化引擎：AaC 如何转变开发](../Architecture_As_Code_Part_3_The_Automation_Engine)*
-
-*系列上一篇：[第一部分 - 革命的开端](../Architecture_As_Code_Part_1_The_Revolution_Begins)*

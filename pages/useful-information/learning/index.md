@@ -13,12 +13,10 @@ grammar_checked: 2025-07-01
 # Coding
 
 * [CodeSchool](https://www.codeschool.com)
-* [CodeFight](https://codefights.com/)
 * [HackerRank](https://www.hackerrank.com)
 * [CodeCombat](https://codecombat.com)
 * [CodinGame](https://www.codingame.com)
 * [Learn Git Branching](https://learngitbranching.js.org/)
-* [Learn Kubernetes using Interactive Browser-Based Scenarios](https://www.katacoda.com/courses/kubernetes)
 
 # Cybersecurity
 * [(ISC)2 International Information Systems Security Certification Consortium](https://www.isc2.org/)

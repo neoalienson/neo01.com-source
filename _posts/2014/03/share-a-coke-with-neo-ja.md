@@ -16,7 +16,7 @@ comments: true
 ![正面](/2014/03/share-a-coke-with-neo/shareWithNeo1.jpeg)
 ![背面](/2014/03/share-a-coke-with-neo/shareWithNeo2.jpeg)
 
-利用可能な名前は[https://www.shareacoke.co.za/](https://www.shareacoke.co.za/)で確認できます。
+利用可能な名前は hxxps[://]www[.]shareacoke[.]co[.]za で確認できます。
 
 イギリスでも同様のアクティビティがあります。
 

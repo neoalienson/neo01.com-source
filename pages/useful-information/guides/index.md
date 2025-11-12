@@ -11,4 +11,4 @@ grammar_checked: 2025-07-01
 * [Change Java version on MacOS] http://www.guigarage.com/2013/02/change-java-version-on-mac-os/
 
 ## Others
-* [ASP.NET string.Format (Chinese)](aspnet-string-format)
+* [ASP.NET string.Format](../aspnet-string-format)

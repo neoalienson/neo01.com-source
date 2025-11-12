@@ -12,12 +12,10 @@ lang: ja
 # コーディング
 
 * [CodeSchool](https://www.codeschool.com)
-* [CodeFight](https://codefights.com/)
 * [HackerRank](https://www.hackerrank.com)
 * [CodeCombat](https://codecombat.com)
 * [CodinGame](https://www.codingame.com)
 * [Learn Git Branching](https://learngitbranching.js.org/)
-* [インタラクティブなブラウザベースのシナリオを使用してKubernetesを学ぶ](https://www.katacoda.com/courses/kubernetes)
 
 # サイバーセキュリティ
 * [(ISC)2 国際情報システムセキュリティ認証コンソーシアム](https://www.isc2.org/)

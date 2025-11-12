@@ -156,7 +156,7 @@ cp -R bin /usr/local
 - php5-snmp（cacti 所需）
 - cacti
 
-包已上传到 [https://app.box.com/wdcloud](https://app.box.com/wdcloud target=_blank)。
+包已上传到 [https://app.box.com/wdcloud](https://app.box.com/wdcloud)。
 
 构建脚本：
 {% gist 1629e9a9bf266fb4abfc %}

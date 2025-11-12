@@ -7,21 +7,21 @@ grammar_checked: 2025-07-01
 ---
 
 {0:d} YY-MM-DD
-{0:p} 百分比00.00%
+{0:p} Percentage 00.00%
 {0:N2} 12.68
 {0:N0} 13
 {0:c2} $12.68
 {0:d} 3/23/2003
 {0:T} 12:00:00 AM
-{0:男;;女}
+{0:Male;;Female}
 
-DataGrid-數據格式設置表達式
+DataGrid - Data Format Setting Expressions
 
-數據格式設置表達式
-.NET Framework 格式設置表達式，它在數據顯示在列中之前先應用于數據。此表達式由可選靜態文本和用以下格式表示的格式說明符組成：
+Data Format Setting Expressions
+.NET Framework format setting expressions are applied to data before it is displayed in columns. This expression consists of optional static text and format specifiers represented in the following format:
 {0:format specifier}
 
-零是參數索引，它指示列中要格式化的數據元素；因此，通常用零來指示第一個（且唯一的）元素。format specifier 前面有一個冒號 (:)，它由一個或多個字母組成，指示如何格式化數據。可以使用的格式說明符取決于要格式化的數據類型：日期、數字或其他類型。下表顯示了不同數據類型的格式設置表達式的示例。有關格式設置表達式的更多信息，請參見格式化類型。
+Zero is the parameter index that indicates the data element to be formatted in the column; therefore, zero is typically used to indicate the first (and only) element. The format specifier is preceded by a colon (:) and consists of one or more letters that indicate how to format the data. The format specifiers that can be used depend on the data type to be formatted: dates, numbers, or other types. The following table shows examples of format setting expressions for different data types. For more information about format setting expressions, see Formatting Types.
 
 # Currency
 {0:C}
@@ -30,7 +30,7 @@ numeric/decimal
 
 # Integer
 {0:D4}
-整數()不能和小數一起使用。)
+整數()不能和小數一起使用。
 在由零填充的四個字符寬的字段中顯示整數。
 
 # Numeric

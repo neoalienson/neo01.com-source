@@ -147,7 +147,7 @@ cp -R bin /usr/local
 - php5-snmp（cactiに必要）
 - cacti
 
-パッケージは[https://app.box.com/wdcloud](https://app.box.com/wdcloud target=_blank)にアップロードされています。
+パッケージは[https://app.box.com/wdcloud](https://app.box.com/wdcloud)にアップロードされています。
 
 ビルドスクリプト：
 {% gist 1629e9a9bf266fb4abfc %}

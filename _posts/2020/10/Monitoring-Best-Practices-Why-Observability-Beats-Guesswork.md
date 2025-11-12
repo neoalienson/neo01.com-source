@@ -366,7 +366,7 @@ Batch job failures → Email to team lead
 
 **Bad**: "High CPU on server-123"
 
-**Good**: "[CRITICAL] 200 users affected - Payment API: CPU >90% for 10min, error rate 5%. Runbook: https://wiki/payment-cpu"
+**Good**: "[CRITICAL] 200 users affected - Payment API: CPU >90% for 10min, error rate 5%. Runbook: hxxps[://]wiki/payment-cpu
 
 **Actionable information**:
 - **Impact level first**: [CRITICAL], [WARNING], [INFO] - tells recipient urgency at a glance
