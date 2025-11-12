@@ -1,13 +1,13 @@
 ---
 title: 我的徽章
-subtitle: 關於我
+subtitle: 关于我
 id: 2145
 date: 2008-07-03
 updated: 2024-03-27
 comments: false
 spell_checked: 2025-07-01
 grammar_checked: 2025-07-01
-lang: zh-TW
+lang: zh-CN
 ---
 
 ## 徽章
@@ -96,4 +96,4 @@ lang: zh-TW
 - ![Forgerock Access Management Product Knowledge](/about-me/badges/forgerock-access-management-product-knowledge.2.png)
 </span>
 
-<link rel="stylesheet" href="/about-me/badges.css">
+<link rel="stylesheet" href="/about-me/badges/badges.css">

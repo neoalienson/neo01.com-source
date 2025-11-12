@@ -369,7 +369,7 @@ spec:
 
 !!!tip "🛠️ 有用的工具"
     - **[Cilium Editor](https://editor.cilium.io/)**：可视化网络策略编辑器
-    - **[Network Policy Viewer](https://github.com/runoncloud/network-policy-viewer)**：将策略可视化为图形
+    - **[Network Policy Viewer](https://github.com/runoncloud/kubectl-np-viewer)**：将策略可视化为图形
     - **[Inspektor Gadget](https://github.com/inspektor-gadget/inspektor-gadget)**：实时调试网络流量
     - **[Calico Enterprise](https://www.tigera.io/tigera-products/calico-enterprise/)**：高级策略管理（商业版）
 

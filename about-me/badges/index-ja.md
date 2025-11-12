@@ -94,4 +94,4 @@ lang: ja
 - ![Forgerock Access Management Product Knowledge](/about-me/badges/forgerock-access-management-product-knowledge.2.png)
 </span>
 
-<link rel="stylesheet" href="/about-me/badges.css">
+<link rel="stylesheet" href="/about-me/badges/badges.css">

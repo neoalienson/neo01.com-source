@@ -61,7 +61,7 @@ ISC2 Certified in Cybersecurity (CC)は、世界的に有名なISC2（Internatio
 
 * 認定資格には年会費が必要
 
-![ISC2 Certified in Cybersecurity](/about-me/certs/isc2-cc-cert.png){.cert}
+![ISC2 Certified in Cybersecurity](/about-me/certs/isc2-cc-cert.jpeg){.cert}
 
 | | |
 |---|---|
@@ -81,7 +81,7 @@ Google Cloud認定資格の旅を始めましょう：
 
 https://cloud.google.com/innovators/getcertified（サインインが必要）
 
-![Google Cloud Digital Leader Certificate](/about-me/certs/google-cloud-digital-leader-cert.png){.cert}
+![Google Cloud Digital Leader Certificate](/about-me/certs/google-cloud-digital-leader-cert.jpeg){.cert}
 
 長所：
 
@@ -193,7 +193,7 @@ https://www.sixsigmaonline.org/six-sigma-white-belt-certification/
 * 比較的認知度が低い
 * オンラインクイズ
 
-![Six Sigma White Belt Certificate](/about-me/non_proctored_certs/sixsigmaonline-six-sigma-white-belt.png){.cert}
+![Six Sigma White Belt Certificate](/about-me/non_proctored_certs/sixsigmaonline-six-sigma-white-belt.jpeg){.cert}
 
 | | |
 |---|---|
@@ -250,7 +250,7 @@ https://skillshop.exceedlms.com/
 * オンラインクイズ
 * 知識はGoogle製品に関連
 
-![Google AI-Powered Performance Ads Certification](/about-me/non_proctored_certs/google-ai-cert.png){.cert}
+![Google AI-Powered Performance Ads Certification](/about-me/non_proctored_certs/google-ai-cert.jpeg){.cert}
 
 | | |
 |---|---|

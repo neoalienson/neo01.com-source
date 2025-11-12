@@ -15,7 +15,7 @@ excerpt: "Ollama、Gradio、LLaMA 3で独自のChatGPTとCopilotを無料でロ�
 comments: true
 ---
 
-![](/2024/05/Running_Your_Own_ChatGPT_and_Copilot_with_Ollama/llama.png)
+
 ChatGPTやCopilotのようなAI搭載チャットボットの機能を、サードパーティのサービスに依存せずに探求したいと思ったことはありませんか？Ollamaといくつかのセットアップで、独自のChatGPTインスタンスを実行し、特定のニーズに合わせてカスタマイズできます。アプリやプロジェクトに会話型AIを統合しようとしている開発者、AIモデルのパフォーマンスを分析しようとしている研究者、または単にこの最先端技術を実験したい愛好家であっても、独自のチャットボットを制御することで、イノベーションと発見のエキサイティングな可能性が開かれます。
 
 *とにかく、私は独自のChatGPTとCopilotを実行したいです。*

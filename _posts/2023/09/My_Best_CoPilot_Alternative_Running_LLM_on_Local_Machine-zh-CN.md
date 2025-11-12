@@ -16,7 +16,7 @@ comments: true
 
 ## 使用 ollama 设置 Code Llama
 
-ollama（https://ollama.ai/）使用类似 Dockerfile 的配置文件。它还管理从 LLM 到系统提示的 Docker 层。ollama 在设置和运行 Code Llama 方面提供了很大的帮助。尽管网站说 Windows 即将推出，但我遵循 https://github.com/jmorganca/ollama 中的步骤并成功运行。以下是我的设置，
+ollama (https://ollama.ai/) 使用类似 Dockerfile 的配置文件。它还管理从 LLM 到系统提示的 Docker 层。ollama 在设置和运行 Code Llama 方面提供了很大的帮助。尽管网站说 Windows 即将推出，但我遵循 https://github.com/jmorganca/ollama 中的步骤并成功运行。以下是我的设置，
 1. Windows 11
 2. WSL 2 与 Ubuntu
 3. Nvidia 3060 12GB
@@ -24,7 +24,7 @@ ollama（https://ollama.ai/）使用类似 Dockerfile 的配置文件。它还�
 
 如果您没有足够的显示内存，它会退回到系统 RAM 和 CPU。
 
-有许多模型供您选择（https://ollama.ai/library），但您应该首先尝试 Code Llama。您可以使用 `ollama pull codellama` 像 docker 镜像一样拉取 Code Llama。然而，有一个许可协议需要接受（https://ai.meta.com/resources/models-and-libraries/llama-downloads/）。一旦您请求、接受并获得批准，您就可以开始使用它。如果您不这样做，还有许多其他库可以尝试。
+有许多模型供您选择 (https://ollama.ai/library)，但您应该首先尝试 Code Llama。您可以使用 `ollama pull codellama` 像 docker 镜像一样拉取 Code Llama。然而，有一个许可协议需要接受（https://ai.meta.com/resources/models-and-libraries/llama-downloads/）。一旦您请求、接受并获得批准，您就可以开始使用它。如果您不这样做，还有许多其他库可以尝试。
 
 :question: 为什么我选择显示卡上的 12GB 显示内存而不是 8GB、16GB、24GB？
 8GB 显示卡更常见且更便宜，但额外的 4GB 显示内存（VRAM）可以让您在下一个层级运行更大的模型。LLM 通常以 3 个层级构建，具有不同的模型参数大小，每个层级大约使用一定量的 VRAM。下面显示 12GB 适合 7B 和 13B。超过 12GB 的 RAM 是浪费，除非您花时间量化下一层级的模型并接受量化后模型运行速度会慢得多。Code Llama 提供了一个 34B 模型，您可以使用 24GB，这是 24GB 显示卡的唯一使用案例。

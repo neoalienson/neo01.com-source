@@ -369,7 +369,7 @@ spec:
 
 !!!tip "🛠️ 役立つツール"
     - **[Cilium Editor](https://editor.cilium.io/)**：ビジュアルネットワークポリシーエディタ
-    - **[Network Policy Viewer](https://github.com/runoncloud/network-policy-viewer)**：ポリシーをグラフとして視覚化
+    - **[Network Policy Viewer](https://github.com/runoncloud/kubectl-np-viewer)**：ポリシーをグラフとして視覚化
     - **[Inspektor Gadget](https://github.com/inspektor-gadget/inspektor-gadget)**：リアルタイムでネットワークトラフィックをデバッグ
     - **[Calico Enterprise](https://www.tigera.io/tigera-products/calico-enterprise/)**：高度なポリシー管理（商用）
 

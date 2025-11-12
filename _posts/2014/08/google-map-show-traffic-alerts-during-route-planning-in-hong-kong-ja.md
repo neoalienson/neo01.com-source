@@ -26,7 +26,7 @@ iPhoneでGoogle Mapsにアクセスし、目的地をタップして、どのル
 ![google.map.traffic.hk.4](/2014/08/google-map-show-traffic-alerts-during-route-planning-in-hong-kong/google.map_.traffic.hk_.4.jpeg)
 
 オンラインで検索しましたが、交通警報に関する関連情報は見つかりませんでした。10分後にオフィスに戻ったとき、関連するレポートを見つけました。
-![google.map.traffic.hk.1](/2014/08/google-map-show-traffic-alerts-during-route-planning-in-hong-kong/google.map_.traffic.hk_.1.jpeg)
+![google.map.traffic.hk.1](/2014/08/google-map-show-traffic-alerts-during-route-planning-in-hong-kong/google.map_.traffic.hk_.1.png)
 
 これらの交通事故レポートがリアルタイムで更新されていることを確信しています。万歳！
 

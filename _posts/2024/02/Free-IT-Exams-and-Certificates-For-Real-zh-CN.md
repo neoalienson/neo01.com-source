@@ -59,7 +59,7 @@ ISC2 网络安全认证 (CC) 是由世界知名的 ISC2（国际信息系统安�
 
 * 认证需要年费
 
-![ISC2 网络安全认证](/about-me/certs/isc2-cc-cert.png){.cert}
+![ISC2 网络安全认证](/about-me/certs/isc2-cc-cert.jpeg){.cert}
 
 | | |
 |---|---|
@@ -79,7 +79,7 @@ Google Cloud 通过其"2025 年获得认证"计划提供免费培训，这是专
 
 https://cloud.google.com/innovators/getcertified（需要登录）
 
-![Google Cloud 数字领导者证书](/about-me/certs/google-cloud-digital-leader-cert.png){.cert}
+![Google Cloud 数字领导者证书](/about-me/certs/google-cloud-digital-leader-cert.jpeg){.cert}
 
 优点：
 
@@ -191,7 +191,7 @@ https://www.sixsigmaonline.org/six-sigma-white-belt-certification/
 * 相对较不知名
 * 在线测验
 
-![六西格玛白带证书](/about-me/non_proctored_certs/sixsigmaonline-six-sigma-white-belt.png){.cert}
+![六西格玛白带证书](/about-me/non_proctored_certs/sixsigmaonline-six-sigma-white-belt.jpeg){.cert}
 
 | | |
 |---|---|
@@ -248,7 +248,7 @@ https://skillshop.exceedlms.com/
 * 在线测验
 * 知识与 Google 的产品相关
 
-![Google AI 驱动的性能广告认证](/about-me/non_proctored_certs/google-ai-cert.png){.cert}
+![Google AI 驱动的性能广告认证](/about-me/non_proctored_certs/google-ai-cert.jpeg){.cert}
 
 | | |
 |---|---|

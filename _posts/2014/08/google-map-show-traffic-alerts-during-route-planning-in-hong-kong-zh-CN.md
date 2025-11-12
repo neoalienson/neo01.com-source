@@ -25,7 +25,7 @@ comments: true
 ![google.map.traffic.hk.4](/2014/08/google-map-show-traffic-alerts-during-route-planning-in-hong-kong/google.map_.traffic.hk_.4.jpeg)
 
 在网上搜索后，我找不到任何关于交通警报的相关信息。直到 10 分钟后，当我回到办公室时，我才找到相关报道。
-![google.map.traffic.hk.1](/2014/08/google-map-show-traffic-alerts-during-route-planning-in-hong-kong/google.map_.traffic.hk_.1.jpeg)
+![google.map.traffic.hk.1](/2014/08/google-map-show-traffic-alerts-during-route-planning-in-hong-kong/google.map_.traffic.hk_.1.png)
 
 我确信这些交通事件报告是实时更新的。万岁！
 

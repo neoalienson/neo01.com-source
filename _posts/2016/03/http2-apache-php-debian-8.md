@@ -98,6 +98,6 @@ There are many tutorials about setting up SPDY that would suggest choosing SPDY 
 
 ## About the new VPS
 
-I have been using Openshift.com for free for years. However, I have to switch to another service from Openshift because the free account doesn't support CA-signed SSL. Paid users can add CA-signed SSL to their website. I do not mind paying, but they do not accept payment from Hong Kong. SSL is getting more important in search engine ranking, and it is required for an advanced protocol such as SPDY that can improve page loading performance. I chose a VPS from hostmada.com for USD 24 a year in the end.
+I have been using Openshift.com for free for years. However, I have to switch to another service from Openshift because the free account doesn't support CA-signed SSL. Paid users can add CA-signed SSL to their website. I do not mind paying, but they do not accept payment from Hong Kong. SSL is getting more important in search engine ranking, and it is required for an advanced protocol such as SPDY that can improve page loading performance. I chose a VPS from hostmada[.]com for USD 24 a year in the end.
 
 _Enjoy!_

@@ -14,7 +14,7 @@ excerpt: Run your own ChatGPT and Copilot locally for free with Ollama, Gradio, 
 comments: true
 ---
 
-![](llama.png)
+
 Ever wanted to explore the capabilities of AI-powered chatbots like ChatGPT and Copilot without relying on third-party services? With Ollama and some setup, you can run your own instance of ChatGPT and customize it to fit your specific needs. Whether you're a developer looking to integrate conversational AI into your app or project, a researcher seeking to analyze the performance of AI models, or simply an enthusiast wanting to experiment with this cutting-edge technology - having control over your own chatbot can open up exciting possibilities for innovation and discovery.
 
 *Whatever, I want to run my own ChatGPT and Copilot.*

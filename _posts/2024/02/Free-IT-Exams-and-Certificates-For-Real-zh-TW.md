@@ -59,7 +59,7 @@ ISC2 網路安全認證 (CC) 是由世界知名的 ISC2（國際資訊系統安�
 
 * 認證需要年費
 
-![ISC2 網路安全認證](/about-me/certs/isc2-cc-cert.png){.cert}
+![ISC2 網路安全認證](/about-me/certs/isc2-cc-cert.jpeg){.cert}
 
 | | |
 |---|---|
@@ -79,7 +79,7 @@ Google Cloud 通過其「2025 年獲得認證」計畫提供免費培訓，這�
 
 https://cloud.google.com/innovators/getcertified（需要登入）
 
-![Google Cloud Digital Leader 證書](/about-me/certs/google-cloud-digital-leader-cert.png){.cert}
+![Google Cloud Digital Leader 證書](/about-me/certs/google-cloud-digital-leader-cert.jpeg){.cert}
 
 優點：
 
@@ -191,7 +191,7 @@ https://www.sixsigmaonline.org/six-sigma-white-belt-certification/
 * 相對較不知名
 * 線上測驗
 
-![六標準差白帶證書](/about-me/non_proctored_certs/sixsigmaonline-six-sigma-white-belt.png){.cert}
+![六標準差白帶證書](/about-me/non_proctored_certs/sixsigmaonline-six-sigma-white-belt.jpeg){.cert}
 
 | | |
 |---|---|
@@ -248,7 +248,7 @@ https://skillshop.exceedlms.com/
 * 線上測驗
 * 知識與 Google 的產品相關
 
-![Google AI 驅動的效能廣告認證](/about-me/non_proctored_certs/google-ai-cert.png){.cert}
+![Google AI 驅動的效能廣告認證](/about-me/non_proctored_certs/google-ai-cert.jpeg){.cert}
 
 | | |
 |---|---|

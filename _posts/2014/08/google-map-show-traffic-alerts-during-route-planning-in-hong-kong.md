@@ -27,7 +27,7 @@ Next, I checked westbound traffic by switching back to the original route from H
 ![google.map.traffic.hk.4](google.map_.traffic.hk_.4.jpeg)
 
 After searching online, I couldn't find any relevant information about the traffic alert. It wasn't until 10 minutes later, when I returned to the office, that I found a related report.
-![google.map.traffic.hk.1](google.map_.traffic.hk_.1.jpeg)
+![google.map.traffic.hk.1](google.map_.traffic.hk_.1.png)
 
 I am confident that these traffic incident reports are updated in real time. Hooray!
 

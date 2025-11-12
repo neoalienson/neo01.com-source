@@ -61,7 +61,7 @@ Cons:
 
 * An annual fee is required for the certification
 
-![ISC2 Certified in Cybersecurity](/about-me/certs/isc2-cc-cert.png){.cert}
+![ISC2 Certified in Cybersecurity](/about-me/certs/isc2-cc-cert.jpeg){.cert}
 
 | | |
 |---|---|
@@ -81,7 +81,7 @@ Start your journey with Google Cloud certifications:
 
 https://cloud.google.com/innovators/getcertified (requires sign-in)
 
-![Google Cloud Digital Leader Certificate](/about-me/certs/google-cloud-digital-leader-cert.png){.cert}
+![Google Cloud Digital Leader Certificate](/about-me/certs/google-cloud-digital-leader-cert.jpeg){.cert}
 
 Pros:
 
@@ -193,7 +193,7 @@ Cons:
 * Relatively less well recognized
 * Online quiz
 
-![Six Sigma White Belt Certificate](/about-me/non_proctored_certs/sixsigmaonline-six-sigma-white-belt.png){.cert}
+![Six Sigma White Belt Certificate](/about-me/non_proctored_certs/sixsigmaonline-six-sigma-white-belt.jpeg){.cert}
 
 | | |
 |---|---|
@@ -250,7 +250,7 @@ Cons:
 * Online quiz
 * Knowledge is related to Google's products
 
-![Google AI-Powered Performance Ads Certification](/about-me/non_proctored_certs/google-ai-cert.png){.cert}
+![Google AI-Powered Performance Ads Certification](/about-me/non_proctored_certs/google-ai-cert.jpeg){.cert}
 
 | | |
 |---|---|

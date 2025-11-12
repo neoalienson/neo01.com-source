@@ -36,7 +36,7 @@ grammar_checked: 2025-07-01
 ## My desk
 
 ### 2006
-![My desk at 2006](more/mydesk-200602.jpg)
+![My desk at 2006](mydesk-200602.jpg)
 
 ## Misc
 * [My Docker Hub](https://hub.docker.com/u/neoalienson/)

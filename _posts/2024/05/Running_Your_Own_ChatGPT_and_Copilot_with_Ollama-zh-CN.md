@@ -12,8 +12,6 @@ excerpt: 用 Ollama、Gradio 和 LLaMA 3 在本地免费运行自己的 ChatGPT 
 comments: true
 ---
 
-![](/2024/05/Running_Your_Own_ChatGPT_and_Copilot_with_Ollama/llama.png)
-
 你是否曾想探索像 ChatGPT 和 Copilot 这样的 AI 驱动聊天机器人的能力，而不依赖第三方服务？通过 Ollama 和一些设置，你可以运行自己的 ChatGPT 实例，并根据你的特定需求进行定制。无论你是想将对话式 AI 集成到应用程序或项目中的开发者、寻求分析 AI 模型性能的研究人员，还是只是想尝试这项尖端技术的爱好者——掌控自己的聊天机器人可以为创新和探索开启令人兴奋的可能性。
 
 *总之，我想运行自己的 ChatGPT 和 Copilot。*

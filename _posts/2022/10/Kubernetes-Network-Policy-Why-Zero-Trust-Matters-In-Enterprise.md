@@ -369,7 +369,7 @@ Implementing network policies doesn't have to be all-or-nothing. Here's a pragma
 
 !!!tip "🛠️ Tools to Help"
     - **[Cilium Editor](https://editor.cilium.io/)**: Visual network policy editor
-    - **[Network Policy Viewer](https://github.com/runoncloud/network-policy-viewer)**: Visualize policies as graphs
+    - **[Network Policy Viewer](https://github.com/runoncloud/kubectl-np-viewer)**: Visualize policies as graphs
     - **[Inspektor Gadget](https://github.com/inspektor-gadget/inspektor-gadget)**: Debug network traffic in real-time
     - **[Calico Enterprise](https://www.tigera.io/tigera-products/calico-enterprise/)**: Advanced policy management (commercial)
 
