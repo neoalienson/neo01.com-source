@@ -47,7 +47,8 @@ The concierge doesn't do the actual work—they route requests efficiently and p
 
 ## How Does a Reverse Proxy Work?
 
-{% mermaid %}flowchart LR
+```mermaid
+flowchart LR
     Client["👤 Client<br/>(Browser)"]
     RP["🚪 Reverse Proxy<br/>(nginx/Traefik)"]
     
@@ -66,7 +67,7 @@ The concierge doesn't do the actual work—they route requests efficiently and p
     
     style RP fill:#fff3e0
     style Backend fill:#e8f5e9
-{% endmermaid %}
+```
 
 **Request Flow:**
 
@@ -135,7 +136,8 @@ With load balancing:
 
 **Solution:** Reverse proxy handles all SSL/TLS encryption/decryption.
 
-{% mermaid %}flowchart LR
+```mermaid
+flowchart LR
     Client["👤 Client"]
     RP["🚪 Reverse Proxy"]
     App1["🖥️ App Server 1"]
@@ -146,7 +148,7 @@ With load balancing:
     RP <-->|"HTTP<br/>(Plain)"| App2
     
     style RP fill:#fff3e0
-{% endmermaid %}
+```
 
 **Benefits:**
 
@@ -344,7 +346,8 @@ If the reverse proxy goes down, all services become unreachable—even if backen
 
 **Active-Passive:**
 
-{% mermaid %}flowchart TD
+```mermaid
+flowchart TD
     Client["👤 Clients"]
     VIP["🌐 Virtual IP<br/>(203.0.113.10)"]
     RP1["🚪 Reverse Proxy 1<br/>(Active)"]
@@ -365,7 +368,7 @@ If the reverse proxy goes down, all services become unreachable—even if backen
     style RP1 fill:#c8e6c9
     style RP2 fill:#ffecb3
     style Backend fill:#e8f5e9
-{% endmermaid %}
+```
 
 **How it works:**
 - Two reverse proxies share a virtual IP

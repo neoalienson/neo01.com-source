@@ -115,7 +115,8 @@ comments: true
 
 当这三个阶段形成持续循环时，真正的力量就会显现：
 
-{% mermaid %}graph TB
+```mermaid
+graph TB
     A["新问题"] --> B["阶段 1:<br/>分析与生成"]
     B --> C["更新的学习指南"]
     C --> D["阶段 2:<br/>验证覆盖范围"]
@@ -133,7 +134,7 @@ comments: true
     style D fill:#e8f5e9,stroke:#388e3d
     style F fill:#f3e5f5,stroke:#7b1fa2
     style J fill:#c8e6c9,stroke:#2e7d32
-{% endmermaid %}
+```
 
 每次迭代不只是增加信息——它精炼理解。早期迭代可能产生基本解释。后期迭代，在更多问题和更深入分析的基础上，产生细致、相互连接的内容，揭示领域的底层结构。
 
@@ -196,7 +197,8 @@ comments: true
 
 当 AI 从带有答案的问题生成内容时，答案充当**情境约束**，显著减少不准确性。AI 不是自由地生成关于主题的内容（可能漂移到听起来合理的错误），而是必须以与提供的正确答案一致的方式解释概念。
 
-{% mermaid %}graph LR
+```mermaid
+graph LR
     A["学习材料创建"]
     
     B["人工编写<br/>指南"]
@@ -225,7 +227,7 @@ comments: true
     style B fill:#e8f5e9,stroke:#388e3d
     style C fill:#ffebee,stroke:#c62828
     style D fill:#e3f2fd,stroke:#1976d2,stroke-width:3px
-{% endmermaid %}
+```
 
 
 ## 优势：为什么这种方法有效
@@ -752,7 +754,8 @@ AI 生成的内容可能不准确——这是众所周知的限制。然而，�
 
 **验证工作流程：**
 
-{% mermaid %}graph TB
+```mermaid
+graph TB
     A["AI 生成内容"] --> B["多模型验证"]
     B --> C{"共识？"}
     C -->|是| D["信心分数：高"]
@@ -769,7 +772,7 @@ AI 生成的内容可能不准确——这是众所周知的限制。然而，�
     style D fill:#c8e6c9,stroke:#388e3d
     style E fill:#fff3e0,stroke:#f57c00
     style K fill:#c8e6c9,stroke:#2e7d32
-{% endmermaid %}
+```
 
 ### 可访问性和包容性
 
@@ -931,7 +934,8 @@ AI 驱动的学习平台
 
 **关键要点：**
 
-{% mermaid %}graph LR
+```mermaid
+graph LR
     A["AI 辅助学习"]
     
     B["认知益处"]
@@ -961,7 +965,7 @@ AI 驱动的学习平台
     style B fill:#e8f5e9,stroke:#388e3d
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#ffebee,stroke:#c62828
-{% endmermaid %}
+```
 
 优势是明确的：更好的组织、更深的理解、减少的焦虑和更有效的学习。挑战是真实的但可管理的：维持主导权、验证质量、前期时间投资以及与社交学习的平衡。
 

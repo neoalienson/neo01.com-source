@@ -49,7 +49,7 @@ class ProductPageClient {
 }
 ```
 
-{% mermaid %}
+```mermaid
 graph TB
     Client[クライアントアプリケーション]
     Client -->|1. 商品取得| Catalog[カタログサービス]
@@ -65,7 +65,7 @@ graph TB
     Pricing -->|レスポンス| Client
     
     style Client fill:#e03131,stroke:#c92a2a
-{% endmermaid %}
+```
 
 !!!warning "⚠️ 複数呼び出しの問題"
     **高レイテンシ**：各リクエストがネットワークラウンドトリップ時間を追加
@@ -93,7 +93,7 @@ graph TB
 
 クライアントとバックエンドサービスの間にゲートウェイを配置します。ゲートウェイは単一のリクエストを受信し、複数のサービスにファンアウトし、レスポンスを集約し、統一された結果を返します。
 
-{% mermaid %}
+```mermaid
 graph TB
     Client[クライアントアプリケーション]
     Client -->|単一リクエスト| Gateway[集約ゲートウェイ]
@@ -114,7 +114,7 @@ graph TB
     
     style Gateway fill:#51cf66,stroke:#2f9e44
     style Client fill:#4dabf7,stroke:#1971c2
-{% endmermaid %}
+```
 
 ### シンプルな実装
 

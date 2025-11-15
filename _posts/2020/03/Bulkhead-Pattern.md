@@ -40,7 +40,7 @@ Key principles:
 3. **Contain failures** within their designated partition
 4. **Maintain service** for unaffected components
 
-{% mermaid %}
+```mermaid
 graph TB
     subgraph "Without Bulkhead"
         A1[Service A] --> SP[Shared Pool<br/>100 threads]
@@ -62,7 +62,7 @@ graph TB
     style X2 fill:#ffd43b,stroke:#f59f00
     style OK1 fill:#51cf66,stroke:#2f9e44
     style OK2 fill:#51cf66,stroke:#2f9e44
-{% endmermaid %}
+```
 
 ## How It Works: Resource Isolation
 
@@ -308,7 +308,7 @@ app.post('/api/reports', rateLimiter(bulkheadConfig.lowThroughput),
     
     **Resource Optimization**: Allocate resources based on actual usage patterns and priorities.
 
-{% mermaid %}
+```mermaid
 graph TD
     A[Resource Analysis] --> B{Shared Resources?}
     B -->|Yes| C{Critical Services?}
@@ -322,7 +322,7 @@ graph TD
     
     style E fill:#51cf66,stroke:#2f9e44
     style D fill:#4dabf7,stroke:#1971c2
-{% endmermaid %}
+```
 
 ## Architecture Quality Attributes
 

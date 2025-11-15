@@ -524,7 +524,8 @@ log.info(f"使用者登入: {username}")
 - **成本**：低（S3 Glacier：每 GB 每月 $0.004）
 - **用例**：長期模式分析、罕見的錯誤調查
 
-{% mermaid %}graph LR
+```mermaid
+graph LR
     A["應用程式日誌"] --> B["熱儲存<br/>7-30 天<br/>$0.50/GB"]
     B --> C["溫儲存<br/>30-90 天<br/>$0.023/GB"]
     C --> D["冷儲存<br/>90 天 - 1 年<br/>$0.004/GB"]
@@ -535,7 +536,7 @@ log.info(f"使用者登入: {username}")
     style C fill:#ffd43b,stroke:#f59f00,color:#000
     style D fill:#51cf66,stroke:#2f9e44,color:#fff
     style E fill:#868e96,stroke:#495057,color:#fff
-{% endmermaid %}
+```
 
 ### 按應用程式日誌層級的保留
 

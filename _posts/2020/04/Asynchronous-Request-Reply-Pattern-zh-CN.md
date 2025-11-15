@@ -42,7 +42,7 @@ comments: true
 3. **客户端轮询状态端点**或在完成时接收回调
 4. **客户端在处理完成时获取结果**
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant Client as 客户端
     participant API as API 网关
@@ -69,7 +69,7 @@ sequenceDiagram
     API->>Storage: 12. 获取结果
     Storage-->>API: 13. 返回结果
     API-->>Client: 14. 200 OK + 结果数据
-{% endmermaid %}
+```
 
 ## 运作方式：模式实战
 

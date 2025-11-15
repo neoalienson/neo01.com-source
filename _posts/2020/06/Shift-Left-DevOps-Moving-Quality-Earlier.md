@@ -20,7 +20,7 @@ This isn't just about testing earlier. It's about fundamentally rethinking when 
 
 For decades, software development followed a linear path:
 
-{% mermaid %}
+```mermaid
 graph LR
     A([📝 Requirements]) --> B([💻 Development])
     B --> C([🧪 Testing])
@@ -28,7 +28,7 @@ graph LR
     D --> E([⚙️ Operations])
     style C fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style E fill:#ffebee,stroke:#c62828,stroke-width:2px
-{% endmermaid %}
+```
 
 Developers wrote code. When they finished, they "threw it over the wall" to QA teams who tested it. If bugs were found, code went back to developers. This cycle repeated until quality gates were passed.
 
@@ -48,7 +48,7 @@ Developers wrote code. When they finished, they "threw it over the wall" to QA t
 
 Shift-left changes the fundamental question from "How do we test this?" to "How do we build quality in from the start?"
 
-{% mermaid %}
+```mermaid
 graph LR
     A([📝 Requirements<br/>+ Test Planning]) --> B([💻 Development<br/>+ Unit Tests])
     B --> C([🧪 Integration Tests<br/>+ Security Scans])
@@ -57,7 +57,7 @@ graph LR
     style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
     style B fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style C fill:#fff3e0,stroke:#f57c00,stroke-width:2px
-{% endmermaid %}
+```
 
 Quality practices are integrated into every phase:
 
@@ -78,7 +78,7 @@ Quality practices are integrated into every phase:
 
 Effective shift-left practices follow a continuous improvement cycle that applies at every level of development:
 
-{% mermaid %}
+```mermaid
 graph LR
     A([🔍 Observe<br/>Current State]) --> B([🎯 Plan<br/>Improvements])
     B --> C([⚡ Act<br/>Implement Changes])
@@ -88,7 +88,7 @@ graph LR
     style B fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style C fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style D fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
-{% endmermaid %}
+```
 
 **Observe**: Understand the current state of your code, tests, and quality metrics. What's working? What's failing? Where are the bottlenecks?
 
@@ -132,7 +132,7 @@ TDD inverts the traditional development process: write tests before writing code
 3. **Refactor**: Improve code quality while keeping tests green
 4. **Repeat**: Move to the next feature
 
-{% mermaid %}
+```mermaid
 graph LR
     A([❌ Write<br/>Failing Test]) --> B([✅ Make<br/>Test Pass])
     B --> C([🔧 Refactor<br/>Code])
@@ -140,7 +140,7 @@ graph LR
     style A fill:#ffebee,stroke:#c62828,stroke-width:2px
     style B fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style C fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
-{% endmermaid %}
+```
 
 **Benefits:**
 
@@ -180,7 +180,7 @@ CI automates the process of integrating code changes and running tests. Every co
 
 **How CI Works:**
 
-{% mermaid %}
+```mermaid
 graph TB
     A([👨‍💻 Developer<br/>Commits Code]) --> B([🔄 CI Server<br/>Detects Change])
     B --> C([🏗️ Build<br/>Application])
@@ -192,7 +192,7 @@ graph TB
     style E fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style F fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style G fill:#ffebee,stroke:#c62828,stroke-width:2px
-{% endmermaid %}
+```
 
 **Key Principles:**
 
@@ -282,7 +282,7 @@ Security scanning moves security testing from pre-deployment to development time
 
 **Container Scanning**: Analyzes Docker images for security issues.
 
-{% mermaid %}
+```mermaid
 graph TB
     A([💻 Code Commit]) --> B([🔍 SAST Scan])
     B --> C([📦 Dependency Check])
@@ -293,7 +293,7 @@ graph TB
     style E fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style F fill:#ffebee,stroke:#c62828,stroke-width:2px
     style G fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-{% endmermaid %}
+```
 
 **Benefits:**
 
@@ -381,7 +381,7 @@ terraform apply
 
 The testing pyramid guides how to distribute testing efforts across different levels.
 
-{% mermaid %}
+```mermaid
 graph TB
     A[🔺 Testing Pyramid]
     B[E2E Tests<br/>Few, Slow, Expensive]
@@ -395,7 +395,7 @@ graph TB
     style B fill:#ffebee,stroke:#c62828,stroke-width:2px
     style C fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style D fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-{% endmermaid %}
+```
 
 **Unit Tests (Base):**
 - Test individual functions or classes

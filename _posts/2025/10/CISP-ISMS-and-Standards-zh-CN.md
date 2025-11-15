@@ -25,7 +25,7 @@ canonical_lang: zh-CN
     - 在建设阶段同步实施信息安全建设
     - 安全与功能并重，不可偏废
 
-{% mermaid %}
+```mermaid
 graph TB
     A["信息化建设"]
     
@@ -51,7 +51,7 @@ graph TB
     style B1 fill:#e8f5e9,stroke:#388e3d
     style C1 fill:#e8f5e9,stroke:#388e3d
     style D1 fill:#e8f5e9,stroke:#388e3d
-{% endmermaid %}
+```
 
 ### 1.2 信息安全工程的常见误区
 
@@ -83,7 +83,7 @@ graph TB
 
 GB/T 22080-2008《信息技术 安全技术 信息安全管理体系 要求》指出，建立信息安全管理体系应参照PDCA模型进行。
 
-{% mermaid %}
+```mermaid
 graph TB
     A["ISMS PDCA模型"]
     
@@ -118,7 +118,7 @@ graph TB
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 ### 2.2 ISMS各阶段的工作内容
 
@@ -166,7 +166,7 @@ graph TB
 
 若组织声称其ISMS符合ISO/IEC 27001或GB/T 22080标准要求，需要在资产管理方面实施常规控制。
 
-{% mermaid %}
+```mermaid
 graph TB
     A["资产管理"]
     
@@ -186,7 +186,7 @@ graph TB
     
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#e8f5e9,stroke:#388e3d
-{% endmermaid %}
+```
 
 **资产管理的两个控制目标：**
 
@@ -223,7 +223,7 @@ graph TB
 
 我国等级保护政策的发展经历了以下阶段：
 
-{% mermaid %}
+```mermaid
 timeline
     title 等级保护政策发展历程
     1994 : 思想提出 : 计算机系统安全保护等级划分思想提出
@@ -231,7 +231,7 @@ timeline
     2003-2007 : 政策颁布 : 等级保护相关政策文件颁布
     2007-2008 : 标准发布 : 等级保护相关标准发布
     2017 : 法律确立 : 网络安全法将等级保护制度作为基本策略
-{% endmermaid %}
+```
 
 ### 3.2 等级保护发展的正确顺序
 
@@ -279,7 +279,7 @@ timeline
 - Detection（检测）
 - Response（响应）
 
-{% mermaid %}
+```mermaid
 graph TB
     A["P2DR模型"]
     
@@ -308,7 +308,7 @@ graph TB
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 ### 4.2 P2DR模型的核心特点
 
@@ -430,7 +430,7 @@ P2DR循环：
 
 **风险管理流程：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["风险管理流程"]
     
@@ -458,7 +458,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 ## 七、信息安全策略变更
 
@@ -549,7 +549,7 @@ Act阶段（保持和改进）：
 
 **ISMS文档体系：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["ISMS文档体系"]
     
@@ -581,7 +581,7 @@ graph TB
     E --> E3["变更记录"]
     
     style B fill:#e3f2fd,stroke:#1976d2
-{% endmermaid %}
+```
 
 **ISMS文档层次对比：**
 
@@ -617,7 +617,7 @@ graph TB
 
 **应急响应计划生命周期：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["应急响应计划生命周期"]
     
@@ -658,7 +658,7 @@ graph TB
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 ## 十一、信息安全事件分级
 
@@ -786,7 +786,7 @@ graph TB
 
 **备份策略类型：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["备份策略"]
     
@@ -813,7 +813,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 ## 十四、SSE-CMM与系统工程
 
@@ -884,7 +884,7 @@ graph TB
 
 **三维模型示意：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["霍尔三维结构模型"]
     
@@ -903,7 +903,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 ## 十五、总结
 

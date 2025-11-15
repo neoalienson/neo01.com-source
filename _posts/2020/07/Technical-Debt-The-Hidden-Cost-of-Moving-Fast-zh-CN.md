@@ -48,7 +48,7 @@ Ward Cunningham 在 1992 年创造了"技术债务"这个术语，用来描述�
 
 复利加速是因为新代码建立在旧债务之上：
 
-{% mermaid %}
+```mermaid
 graph TB
     A([第 1 周:<br/>硬编码配置<br/>节省 2 小时]) --> B([第 2 周:<br/>添加变通方案<br/>成本: 1 小时])
     B --> C([第 4 周:<br/>另一个变通方案<br/>成本: 2 小时])
@@ -60,7 +60,7 @@ graph TB
     style C fill:#ffe0b2,stroke:#f57c00,stroke-width:2px
     style D fill:#ffccbc,stroke:#d84315,stroke-width:2px
     style E fill:#ffebee,stroke:#c62828,stroke-width:3px
-{% endmermaid %}
+```
 
 **第 1 周**：你跳过适当的错误处理以更快交付。
 
@@ -144,7 +144,7 @@ graph TB
     
     目标不是零债务——而是确保利息支付不超过你交付价值的能力。
 
-{% mermaid %}
+```mermaid
 graph LR
     A([⚡ 快速解决方案<br/>快速交付]) --> B([📈 技术债务<br/>累积])
     B --> C([⏰ 利息复利<br/>开发变慢])
@@ -154,7 +154,7 @@ graph LR
     style B fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style C fill:#ffebee,stroke:#c62828,stroke-width:2px
     style D fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
-{% endmermaid %}
+```
 
 ## 技术债务的类型
 
@@ -268,7 +268,7 @@ graph LR
 - 需要什么依赖项或先决条件？
 - 你将如何测试重构版本？
 
-{% mermaid %}
+```mermaid
 graph TB
     A([🎯 业务需求<br/>需要速度]) --> B{债务<br/>合理吗?}
     B -->|否| C([✅ 正确构建<br/>无捷径])
@@ -282,7 +282,7 @@ graph TB
     style C fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style D fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
     style I fill:#fff3e0,stroke:#f57c00,stroke-width:2px
-{% endmermaid %}
+```
 
 !!!example "🎬 正确完成的战略债务"
     一家初创公司需要在 3 周内向投资者演示他们的产品。他们决定承担故意债务：
@@ -495,7 +495,7 @@ graph TB
 
 管理技术债务遵循持续改进循环：
 
-{% mermaid %}
+```mermaid
 graph LR
     A([🔍 观察<br/>识别债务]) --> B([🎯 计划<br/>优先处理工作])
     B --> C([⚡ 行动<br/>重构和修复])
@@ -505,7 +505,7 @@ graph LR
     style B fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style C fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style D fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
-{% endmermaid %}
+```
 
 **观察**：定期评估你的代码库。使用静态分析工具、审查指标并听取开发人员的反馈。债务在哪里累积？什么造成了最大的痛苦？
 
@@ -643,7 +643,7 @@ graph LR
 - 如果安全，清理数据库表
 - 庆祝复杂性的减少
 
-{% mermaid %}
+```mermaid
 graph TB
     A([📊 分析<br/>功能使用]) --> B{值得<br/>保留?}
     B -->|是| C([✅ 保留和维护])
@@ -656,7 +656,7 @@ graph TB
     
     style C fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style H fill:#e8f5e9,stroke:#388e3c,stroke-width:3px
-{% endmermaid %}
+```
 
 #### 要挑战的需求类型
 
@@ -939,7 +939,7 @@ graph TB
 
 **用视觉呈现：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A([当前状态<br/>每季度 5 个功能<br/>高事故率]) --> B{投资于<br/>债务减少?}
     B -->|否| C([6 个月后<br/>每季度 2 个功能<br/>危机模式])
@@ -948,7 +948,7 @@ graph TB
     style A fill:#ffebee,stroke:#c62828,stroke-width:2px
     style C fill:#b71c1c,stroke:#000,stroke-width:3px,color:#fff
     style D fill:#e8f5e9,stroke:#388e3c,stroke-width:3px
-{% endmermaid %}
+```
 
 **预测反对意见：**
 
@@ -1052,7 +1052,7 @@ graph TB
 
 **捕获需求差距**：设计迫使你思考边缘情况、错误处理和集成点。你在编写需要返工的代码之前发现缺失的需求。
 
-{% mermaid %}
+```mermaid
 graph TB
     A([📋 需求]) --> B([🎨 设计阶段<br/>架构和规划])
     B --> C{设计<br/>审查}
@@ -1067,7 +1067,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
     style E fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style G fill:#ffebee,stroke:#c62828,stroke-width:2px
-{% endmermaid %}
+```
 
 **实用的设计优先实践：**
 

@@ -148,7 +148,8 @@ GoogleのSite Reliability Engineeringチームは、ユーザー向けシステ�
 - ログはなぜ間違っているかを教える
 - トレースはどこで間違っているかを教える
 
-{% mermaid %}graph TD
+```mermaid
+graph TD
     A["🔔 アラート発生"] --> B["📊 メトリクス"]
     B --> C{"何が間違っている？"}
     C --> D["📝 ログ"]
@@ -161,7 +162,7 @@ GoogleのSite Reliability Engineeringチームは、ユーザー向けシステ�
     style D fill:#51cf66,stroke:#2f9e44,color:#fff
     style F fill:#ffd43b,stroke:#f59f00,color:#000
     style G fill:#69db7c,stroke:#2f9e44,color:#fff
-{% endmermaid %}
+```
 
 !!!info "ℹ️ 可観測性の三角形"
     メトリクス、ログ、トレースは連携して機能する。メトリクスは問題をアラートし、ログは根本原因の診断を助け、トレースはリクエストフローを示す。完全な可観測性には3つすべてが必要である。
@@ -302,7 +303,8 @@ ALERT: avg(error_rate, 5m) > 2% AND avg(error_rate, 15m) > 1%
 
 ### アラートルーティング戦略
 
-{% mermaid %}graph LR
+```mermaid
+graph LR
     A["🚨 アラート生成"] --> B{"重要度？"}
     
     B -->|クリティカル| C["📟 PagerDuty"]
@@ -323,7 +325,7 @@ ALERT: avg(error_rate, 5m) > 2% AND avg(error_rate, 15m) > 1%
     style C fill:#fa5252,stroke:#c92a2a,color:#fff
     style D fill:#4dabf7,stroke:#1971c2,color:#fff
     style E fill:#51cf66,stroke:#2f9e44,color:#fff
-{% endmermaid %}
+```
 
 **重要度別ルーティング**：
 

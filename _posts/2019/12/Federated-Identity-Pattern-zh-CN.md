@@ -65,7 +65,7 @@ class TraditionalAuthSystem {
 
 将身份验证委托给受信任的外部身份识别提供者。用户只需在身份识别提供者进行一次验证，即可访问多个应用程序，无需重新输入凭证。
 
-{% mermaid %}
+```mermaid
 graph LR
     User([用户]) -->|1. 访问应用程序| App[应用程序]
     App -->|2. 重定向至 IdP| IdP[身份识别提供者]
@@ -78,7 +78,7 @@ graph LR
     style App fill:#51cf66,stroke:#2f9e44
     style IdP fill:#ffd43b,stroke:#f59f00
     style STS fill:#ff8787,stroke:#c92a2a
-{% endmermaid %}
+```
 
 ### 运作方式
 
@@ -439,7 +439,7 @@ const provider = discovery.discoverProvider('user@company.com');
 
 用户验证一次即可访问多个应用程序：
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant User as 用户
     participant App1 as 应用程序 1
@@ -458,7 +458,7 @@ sequenceDiagram
     App2->>IdP: 检查验证
     IdP->>App2: 返回现有令牌
     App2->>User: 授予访问权（无需登录）
-{% endmermaid %}
+```
 
 ### 2. 集中式身份管理
 

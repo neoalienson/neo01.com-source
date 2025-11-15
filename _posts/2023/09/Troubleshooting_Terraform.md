@@ -34,18 +34,18 @@ The debug log can be massive and over 100MB! If you would like to focus on debug
 Terraform analyzes dependencies between Terraform modules before execution. Dependency analysis ensures resources are provisioned in the correct order. Meanwhile, Terraform uses the analysis results for efficient parallel execution of operations by identifying independent sets of resources that can be provisioned or modified concurrently. However, logs from concurrent execution are very difficult to read, and we have to disable the concurrency with the parameter `-parallelism=1` on `plan` and `apply`.
 
 With `-parallelism=1`, resources are created/modified/destroyed one at a time, in sequence. This allows for easier debugging and troubleshooting, as each resource is executed one at a time. e.g., `terraform apply -parallelism=1`:
-{% mermaid %}
+```mermaid
 graph TD
   A[Terraform Operation] --> C[Resource 1 Modification]
   C --> D[Resource 2 Modification]
   D --> E[Terraform Execution Completed]
-{% endmermaid %}
+```
 
 When `-parallelism` is not specified, the default value is 10. The resources are created/modified/destroyed in parallel, allowing for faster execution. However, this can also make it more difficult to debug and troubleshoot issues, as multiple resources are executed simultaneously. e.g., `terraform apply`:
-{% mermaid %}
+```mermaid
   graph TD
   A[Terraform Operation] --> C[Resource 1 Modification]
   A --> D[Resource 2 Modification]
   D --> E[Terraform Execution Completed]
   C --> E
-{% endmermaid %}
+```

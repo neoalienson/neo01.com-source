@@ -108,7 +108,8 @@ HTTP 重新導向和 HTTP POST 繫結在實務中占主導地位。IdP 將瀏覽
 
 SAML 的架構實現了跨組織邊界的聯合身份驗證：
 
-{% mermaid %}---
+```mermaid
+---
 title: SAML 架構
 ---
 flowchart TD
@@ -127,7 +128,7 @@ flowchart TD
     
     style IdP fill:#f96,stroke:#333,stroke-width:3px
     style Browser fill:#9cf,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 瀏覽器充當中介。IdP 和 SP 在身份驗證期間從不直接通訊——所有訊息都透過瀏覽器流動。這種設計跨越防火牆和組織邊界。SP 不需要網路存取 IdP。IdP 不需要提前知道所有 SP。
 
@@ -141,7 +142,8 @@ SAML 支援兩種主要身份驗證流程：SP 發起和 IdP 發起。
 
 SP 發起流程從應用程式開始：
 
-{% mermaid %}---
+```mermaid
+---
 title: SAML SP 發起身份驗證流程
 ---
 sequenceDiagram
@@ -160,7 +162,7 @@ sequenceDiagram
     Browser->>SP: POST SAML 判斷提示
     SP->>SP: 驗證簽章
     SP->>Browser: 授予存取權限
-{% endmermaid %}
+```
 
 詳細流程：
 

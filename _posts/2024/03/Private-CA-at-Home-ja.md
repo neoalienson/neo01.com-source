@@ -44,7 +44,8 @@ CAはデジタル証明書を発行するエンティティです。ブラウザ
 
 **信頼チェーン：**
 
-{% mermaid %}flowchart TD
+```mermaid
+flowchart TD
     A["🏛️ ルートCA<br/>(プライベートCA)"] --> B["📜 中間CA<br/>(オプション)"]
     B --> C["🔒 サーバー証明書<br/>(homeserver.local)"]
     B --> D["🔒 サーバー証明書<br/>(nas.local)"]
@@ -61,7 +62,7 @@ CAはデジタル証明書を発行するエンティティです。ブラウザ
     style D fill:#e8f5e9
     style E fill:#e8f5e9
     style F fill:#fff3e0
-{% endmermaid %}
+```
 
 ### ルートCA vs 中間CA
 
@@ -419,7 +420,8 @@ acme.sh --cron
 
 **ACMEフロー図：**
 
-{% mermaid %}sequenceDiagram
+```mermaid
+sequenceDiagram
     participant Client as ACMEクライアント
     participant CA as step-ca
     participant Web as Webサーバー
@@ -434,7 +436,7 @@ acme.sh --cron
     CA->>Client: 8. 証明書を発行
     
     Note over Client,CA: 証明書が自動的に発行されました！
-{% endmermaid %}
+```
 
 **ACMEが優れている理由：**
 
@@ -615,7 +617,8 @@ services:
 
 ### 証明書ライフサイクル
 
-{% mermaid %}flowchart TD
+```mermaid
+flowchart TD
     A["📝 証明書作成"] --> B["🚀 サーバーにデプロイ"]
     B --> C["👁️ 有効期限を監視"]
     C --> D{"⏰ 有効期限が近い？"}
@@ -630,7 +633,7 @@ services:
     style D fill:#fff9c4
     style E fill:#f3e5f5
     style F fill:#e8f5e9
-{% endmermaid %}
+```
 
 ### 更新スクリプト
 

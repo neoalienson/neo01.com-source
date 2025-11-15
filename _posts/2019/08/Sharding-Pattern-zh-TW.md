@@ -27,7 +27,7 @@ comments: true
 - 減少任何單一資料庫的競爭
 - 實現資料局部性以獲得更好的效能
 
-{% mermaid %}
+```mermaid
 graph TB
     A[應用程式] --> B[分片邏輯]
     B --> C[分片 1<br/>使用者 A-H]
@@ -39,7 +39,7 @@ graph TB
     style C fill:#51cf66,stroke:#2f9e44
     style D fill:#51cf66,stroke:#2f9e44
     style E fill:#51cf66,stroke:#2f9e44
-{% endmermaid %}
+```
 
 ## 問題：單一伺服器的限制
 
@@ -128,7 +128,7 @@ class GlobalApplication {
 - 在獨立的儲存節點上執行
 - 獨立運作
 
-{% mermaid %}
+```mermaid
 graph TB
     A[應用程式層] --> B[分片映射/路由器]
     B --> C[分片 A<br/>訂單 0-999]
@@ -147,7 +147,7 @@ graph TB
     style D fill:#51cf66,stroke:#2f9e44
     style E fill:#51cf66,stroke:#2f9e44
     style F fill:#51cf66,stroke:#2f9e44
-{% endmermaid %}
+```
 
 ## 分片策略
 
@@ -186,7 +186,7 @@ class LookupShardRouter {
 }
 ```
 
-{% mermaid %}
+```mermaid
 graph LR
     A[請求:<br/>Tenant-3] --> B[查找<br/>分片映射]
     B --> C{Tenant-3<br/>→ 分片 B}
@@ -195,7 +195,7 @@ graph LR
     style A fill:#4dabf7,stroke:#1971c2
     style B fill:#ffd43b,stroke:#fab005
     style D fill:#51cf66,stroke:#2f9e44
-{% endmermaid %}
+```
 
 !!!tip "💡 查找策略的優點"
     **靈活性**：透過更新映射輕鬆重新平衡
@@ -244,7 +244,7 @@ class RangeShardRouter {
 }
 ```
 
-{% mermaid %}
+```mermaid
 graph TB
     A[查詢:<br/>2019 年第二季訂單] --> B[範圍路由器]
     B --> C[分片 Q2<br/>2019 年 4-6 月]
@@ -258,7 +258,7 @@ graph TB
     style B fill:#ffd43b,stroke:#fab005
     style C fill:#51cf66,stroke:#2f9e44
     style E fill:#51cf66,stroke:#2f9e44
-{% endmermaid %}
+```
 
 !!!tip "💡 範圍策略的優點"
     **範圍查詢**：有效檢索連續資料
@@ -318,7 +318,7 @@ console.log(router.getShardForUser('user-125')); // db-shard-3
 // 使用者分散到各個分片
 ```
 
-{% mermaid %}
+```mermaid
 graph TB
     A[使用者 ID] --> B[雜湊函數]
     B --> C[user-55 → 雜湊: 2]
@@ -334,7 +334,7 @@ graph TB
     style F fill:#51cf66,stroke:#2f9e44
     style G fill:#51cf66,stroke:#2f9e44
     style H fill:#51cf66,stroke:#2f9e44
-{% endmermaid %}
+```
 
 !!!tip "💡 雜湊策略的優點"
     **均勻分佈**：防止熱點

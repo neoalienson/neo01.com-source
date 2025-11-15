@@ -50,7 +50,7 @@ comments: true
 
 **风险评估方法对比：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["风险评估方法"]
     
@@ -77,7 +77,7 @@ graph LR
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 **三种方法详细对比：**
 
@@ -252,7 +252,7 @@ graph LR
 
 **风险评估的三个步骤：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["风险识别"] --> B["风险分析"]
     B --> C["风险评价"]
@@ -270,7 +270,7 @@ graph LR
     style A fill:#e3f2fd,stroke:#1976d2
     style B fill:#fff3e0,stroke:#f57c00
     style C fill:#e8f5e9,stroke:#388e3d
-{% endmermaid %}
+```
 
 ### 3.2 风险识别
 
@@ -436,7 +436,7 @@ graph LR
 
 **定量风险评估的关键指标：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["定量风险评估指标"]
     
@@ -464,7 +464,7 @@ graph TB
     style D fill:#e8f5e9,stroke:#388e3d
     style E fill:#f3e5f5,stroke:#7b1fa2
     style F fill:#ffebee,stroke:#c62828
-{% endmermaid %}
+```
 
 ### 4.2 定量风险评估计算公式
 

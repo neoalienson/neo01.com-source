@@ -29,7 +29,7 @@ RPC 服務需要可被發現。當客戶端想要呼叫遠端程序時，它需�
 3. 客戶端必須查詢埠對應器/端點對應器服務來發現埠
 4. 這增加了複雜性、延遲和潛在的故障點
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant Client as 客戶端
     participant PortMapper as 埠對應器<br/>(埠 111)
@@ -41,7 +41,7 @@ sequenceDiagram
     PortMapper->>Client: 埠 54321
     Client->>RPC: 連接到 54321
     Note over Client,RPC: ❌ 複雜、脆弱、<br/>防火牆不友善
-{% endmermaid %}
+```
 
 ### 伺服器應用程式使用動態埠的問題
 
@@ -73,7 +73,7 @@ Microsoft SQL Server 提供了一個完美的例子，說明為什麼臨時埠�
 
 SQL Server 具名執行個體（例如 `SERVER\INSTANCE1`）預設使用動態埠。當具名執行個體啟動時，它會綁定到可用的臨時埠。客戶端透過查詢 UDP 埠 1434 上的 SQL Server Browser 服務來發現此埠。
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant Client as 客戶端
     participant Browser as SQL Browser<br/>(UDP 1434)
@@ -85,7 +85,7 @@ sequenceDiagram
     Browser->>Client: 埠 49823
     Client->>Instance: 連接到 49823
     Note over Instance,Client: ❌ 防火牆惡夢<br/>重新啟動時埠會改變
-{% endmermaid %}
+```
 
 ### 為什麼這會造成問題
 
@@ -172,7 +172,7 @@ WMI 使用 DCOM（分散式 COM），它依賴於 RPC。預設情況下：
 - 實際的 WMI 通訊使用 49152-65535 範圍內的隨機埠
 - 防火牆必須允許整個範圍才能讓 WMI 運作
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant Client as 客戶端
     participant EPM as 端點對應器<br/>(埠 135)
@@ -182,7 +182,7 @@ sequenceDiagram
     EPM->>Client: 使用埠 52341
     Client->>WMI: 連接到 52341
     Note over Client,WMI: ❌ 需要在防火牆中<br/>開放 49152-65535
-{% endmermaid %}
+```
 
 ### 解決方案：限制 RPC 動態埠範圍
 
@@ -362,7 +362,7 @@ spec:
 
 ## RPC 最佳實踐摘要
 
-{% mermaid %}
+```mermaid
 graph TB
     A(["RPC 服務設計"]) --> B{需要外部<br/>存取？}
     B -->|是| C(["使用固定埠<br/>1024-49151"])
@@ -377,7 +377,7 @@ graph TB
     style C fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style E fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style H fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
-{% endmermaid %}
+```
 
 ## 舊版 RPC 系統
 

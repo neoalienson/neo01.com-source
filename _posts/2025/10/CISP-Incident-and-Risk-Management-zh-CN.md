@@ -21,7 +21,7 @@ canonical_lang: zh-CN
 
 GB/Z 20986-2007《信息安全事件分级分类指南》将信息安全事件分为四级：
 
-{% mermaid %}
+```mermaid
 graph TB
     A["信息安全事件分级"]
     
@@ -44,7 +44,7 @@ graph TB
     style C fill:#ff9800,stroke:#e65100
     style D fill:#ffc107,stroke:#f57c00
     style E fill:#4caf50,stroke:#2e7d32
-{% endmermaid %}
+```
 
 ### 1.2 事件分类
 
@@ -113,7 +113,7 @@ graph TB
     3. 不明确事项由指定的保密工作部门确定
     4. 不能由单位自行参考后报批
 
-{% mermaid %}
+```mermaid
 graph TB
     A["国家秘密定级"]
     
@@ -138,7 +138,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 ### 2.2 国家秘密定级流程
 
@@ -175,7 +175,7 @@ graph TB
 
 IPsec（Internet Protocol Security）提供两种工作模式：传输模式和隧道模式。
 
-{% mermaid %}
+```mermaid
 graph TB
     A["IPsec工作模式"]
     
@@ -195,7 +195,7 @@ graph TB
     
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#e8f5e9,stroke:#388e3d
-{% endmermaid %}
+```
 
 ### 3.2 IPsec协议组成
 
@@ -219,7 +219,7 @@ graph TB
 
 **传输模式 vs 隧道模式：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["原始IP包"]
     B["传输模式"]
@@ -236,7 +236,7 @@ graph LR
     
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#e8f5e9,stroke:#388e3d
-{% endmermaid %}
+```
 
 ## 四、ISMS管理层职责
 
@@ -254,7 +254,7 @@ graph LR
     - 管理层：制定方针、确定战略、提供资源
     - IT部门：实施技术措施、执行安全策略
 
-{% mermaid %}
+```mermaid
 graph LR
     A["信息安全方针"]
     
@@ -274,7 +274,7 @@ graph LR
     
     style B fill:#e8f5e9,stroke:#388e3d
     style C fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 ### 4.2 管理层的ISMS职责
 
@@ -357,7 +357,7 @@ graph LR
 
 风险处理有四种基本方式，需要根据具体情况选择。
 
-{% mermaid %}
+```mermaid
 graph TB
     A["风险处理方式"]
     
@@ -387,7 +387,7 @@ graph TB
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 ### 7.2 风险处理方式的选择
 

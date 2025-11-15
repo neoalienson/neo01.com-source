@@ -29,7 +29,7 @@ Strangler Fig 提供了一种增量的现代化方法。与其一次性替换整
 4. **停用旧系统**，一旦所有功能都已迁移
 5. **移除门面**，当迁移完成时
 
-{% mermaid %}
+```mermaid
 graph LR
     A[客户端] --> B[门面/代理]
     B -->|旧功能| C[旧系统]
@@ -40,7 +40,7 @@ graph LR
     style B fill:#ffd43b,stroke:#fab005
     style C fill:#fa5252,stroke:#c92a2a
     style D fill:#51cf66,stroke:#2f9e44
-{% endmermaid %}
+```
 
 ## 运作方式：实际旅程
 
@@ -114,7 +114,7 @@ app.post('/checkout', async (req, res) => {
 
 最棘手的方面之一是管理两个系统之间的数据：
 
-{% mermaid %}
+```mermaid
 graph TD
     A[客户端请求] --> B[门面]
     B --> C{哪个系统？}
@@ -128,7 +128,7 @@ graph TD
     style B fill:#ffd43b,stroke:#fab005
     style D fill:#51cf66,stroke:#2f9e44
     style E fill:#fa5252,stroke:#c92a2a
-{% endmermaid %}
+```
 
 ```javascript
 class DataSyncService {

@@ -119,7 +119,8 @@ Kerberos 使用對稱金鑰加密以提高效率：
 
 理解身份驗證流程揭示了 Kerberos 如何實現安全、高效的身份驗證：
 
-{% mermaid %}---
+```mermaid
+---
 title: Kerberos 身份驗證流程
 ---
 sequenceDiagram
@@ -139,7 +140,7 @@ sequenceDiagram
     Service->>KDC: 驗證票據
     KDC->>Service: 票據有效
     Service->>Client: 授予存取權限
-{% endmermaid %}
+```
 
 ### 分步身份驗證
 

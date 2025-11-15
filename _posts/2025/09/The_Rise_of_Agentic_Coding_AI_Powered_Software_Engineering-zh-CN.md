@@ -31,7 +31,7 @@ comments: true
 
 然后是游戏规则改变者：**自主代理时代**。这些不再只是建议引擎——它们是能够读取整个代码库、理解项目架构并做出独立决策的数字同事。现代工具可以同时重构跨数十个文件的认证系统，更新导入、修复类型定义并在整个过程中保持一致性。它们可以在卡住时浏览文档，运行终端命令来测试自己的代码，甚至将应用程序部署到生产环境。
 
-{% mermaid %}
+```mermaid
 timeline
     title AI 驱动编码的演变
     2022-2023 : 复制粘贴时代
@@ -45,7 +45,7 @@ timeline
               : 多文件编辑
               : 独立决策
               : YOLO 模式自动化
-{% endmermaid %}
+```
 
 这不仅仅是关于更快地编写代码——这是关于从根本上重新定义成为软件开发人员的意义。当 AI 处理常规实现细节时，开发人员从代码打字员转变为解决方案架构师，专注于创意问题解决而不是语法记忆。
 
@@ -55,7 +55,7 @@ timeline
 
 在其核心，代理式编码系统通过一个持续的循环运作：**观察 → 计划 → 行动 → 反思**。代理首先观察你的代码库、需求和当前状态。然后它创建一个行动计划，通过编写或修改代码来执行该计划，并反思结果以确定下一步。这个循环重复，直到任务完成或需要人工干预。
 
-{% mermaid %}
+```mermaid
 graph LR
     A([🔍 观察<br/>分析代码库<br/>和需求]) --> B([🎯 计划<br/>创建策略<br/>和方法])
     B --> C([⚡ 行动<br/>编写和修改<br/>代码])
@@ -65,7 +65,7 @@ graph LR
     style B fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style C fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style D fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
-{% endmermaid %}
+```
 
 魔法通过复杂的上下文管理发生。与忘记先前对话的简单聊天机器人不同，代理式系统维护你的项目结构、编码模式、先前决策甚至你的个人偏好的持久记忆。当你要求代理「添加用户认证」时，它不只是生成通用代码——它分析你现有的架构，识别要修改的适当文件，理解你的数据库架构，并以与你项目风格一致的方式实现认证。
 
@@ -153,7 +153,7 @@ graph LR
 
 这种方法被认为是高度安全的，因为即使 AI 生成恶意代码，它也只能影响临时容器，而不是你的实际开发环境或个人文件。
 
-{% mermaid %}
+```mermaid
 graph TB
     A([👤 开发人员<br/>给出指示]) --> B([🤖 AI 代理<br/>生成代码])
     B --> C([🐳 Docker 沙盒<br/>隔离环境])
@@ -167,7 +167,7 @@ graph TB
     style C fill:#e3f2fd,stroke:#1976d2,stroke-width:3px
     style G fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style H fill:#ffebee,stroke:#c62828,stroke-width:2px
-{% endmermaid %}
+```
 
 !!!tip "🛡️ 为什么沙盒对企业很重要"
     没有沙盒，具有终端访问权限的 AI 代理可能会：
@@ -413,7 +413,7 @@ AI 根据风险和影响优先考虑测试用例，生成合成测试数据，�
 
 AI 运营（AIOps）关联日志、跟踪和指标以减少平均恢复时间（MTTR）并保护服务级别目标（SLO）。当问题发生时，AI 通常可以比人工操作员更快地诊断并建议修复。
 
-{% mermaid %}
+```mermaid
 graph TB
     A([📋 需求<br/>NLP 解析和用户故事]) --> B([🏗️ 设计<br/>架构提案])
     B --> C([💻 实现<br/>代理式编码])
@@ -427,7 +427,7 @@ graph TB
     style D fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style E fill:#fce4ec,stroke:#c2185b,stroke-width:2px
     style F fill:#e0f2f1,stroke:#00796b,stroke-width:2px
-{% endmermaid %}
+```
 
 ## 好处和优势
 

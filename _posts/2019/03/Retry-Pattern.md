@@ -28,7 +28,8 @@ These failures are typically self-correcting. A database that's momentarily over
 
 Design your application to expect transient failures and handle them transparently. The Retry pattern introduces a mechanism that automatically retries failed operations, minimizing the impact on business functionality.
 
-{% mermaid %}graph LR
+```mermaid
+graph LR
     A["Application"] --> B["Retry Logic"]
     B --> C["Remote Service"]
     C -->|"Success"| D["Return Result"]
@@ -40,7 +41,7 @@ Design your application to expect transient failures and handle them transparent
     style B fill:#fff4e1
     style C fill:#ffe1e1
     style D fill:#d3f9d8
-{% endmermaid %}
+```
 
 !!!tip "💡 Built-in Retry Mechanisms"
     Many modern client libraries and frameworks include configurable retry logic. Check your library's documentation before implementing custom retry code.
@@ -163,7 +164,8 @@ Log failures appropriately to avoid alert fatigue:
 
 This approach gives operators visibility without flooding them with alerts for self-correcting issues.
 
-{% mermaid %}graph TB
+```mermaid
+graph TB
     A["Request Fails"] --> B["Log: INFO - Attempt 1 failed"]
     B --> C["Wait & Retry"]
     C --> D["Request Fails Again"]
@@ -176,7 +178,7 @@ This approach gives operators visibility without flooding them with alerts for s
     style A fill:#ffe1e1
     style H fill:#d3f9d8
     style I fill:#ff6b6b
-{% endmermaid %}
+```
 
 ### Performance Impact
 
@@ -255,14 +257,15 @@ Avoid layering multiple retry policies:
 
 **Solution**: Configure lower-level tasks to fail fast and report failures. Let higher-level tasks handle retries based on their own policies.
 
-{% mermaid %}graph TB
+```mermaid
+graph TB
     A["Task A<br/>(Retry Policy)"] --> B["Task B<br/>(No Retry)"]
     B -->|"Fails Fast"| A
     A -->|"Retries Based on Policy"| B
     
     style A fill:#e1f5ff
     style B fill:#fff4e1
-{% endmermaid %}
+```
 
 ## When to Use This Pattern
 
@@ -287,7 +290,8 @@ The Retry and Circuit Breaker patterns complement each other:
 - **Retry**: Handles transient failures by attempting the operation again
 - **Circuit Breaker**: Prevents retries when a service is known to be down
 
-{% mermaid %}stateDiagram-v2
+```mermaid
+stateDiagram-v2
     [*] --> Closed: Normal Operation
     Closed --> Open: Failure Threshold Exceeded
     Open --> HalfOpen: Timeout Elapsed
@@ -308,7 +312,7 @@ The Retry and Circuit Breaker patterns complement each other:
         Limited requests allowed
         Testing service recovery
     end note
-{% endmermaid %}
+```
 
 Together, these patterns provide comprehensive fault handling:
 

@@ -113,7 +113,8 @@ ITリスクは、技術関連のイベントがビジネス目標に悪影響を
 
 効果的なリスク管理は構造化されたアプローチに従います：
 
-{% mermaid %}flowchart TD
+```mermaid
+flowchart TD
     A[リスクの特定] --> B[リスクの評価]
     B --> C[リスクの優先順位付け]
     C --> D[制御の実装]
@@ -125,7 +126,7 @@ ITリスクは、技術関連のイベントがビジネス目標に悪影響を
     style C fill:#f96,stroke:#333,stroke-width:3px
     style D fill:#9cf,stroke:#333,stroke-width:2px
     style E fill:#9cf,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 ### リスクの特定
 

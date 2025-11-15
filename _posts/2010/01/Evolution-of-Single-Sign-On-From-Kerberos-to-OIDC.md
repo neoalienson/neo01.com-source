@@ -16,7 +16,8 @@ This exploration traces SSO's evolution from 1980s network authentication to tod
 
 ### SSO Evolution Timeline
 
-{% mermaid %}timeline
+```mermaid
+timeline
     title Single Sign-On Evolution
     section 1980s
         1988 : Kerberos v4
@@ -41,7 +42,7 @@ This exploration traces SSO's evolution from 1980s network authentication to tod
         2014 : OpenID Connect
              : Authentication + Authorization
              : Cloud-native SSO
-{% endmermaid %}
+```
 
 ## The Password Problem
 
@@ -121,7 +122,8 @@ Kerberos, developed at MIT in the 1980s, provided secure authentication for dist
 
 Kerberos solved a critical problem: how to authenticate users across a network without sending passwords. The protocol uses symmetric key cryptography and a trusted Key Distribution Center (KDC). The name "Kerberos" comes from Greek mythology—the three-headed dog guarding the underworld, representing the client, server, and KDC working together.
 
-{% mermaid %}---
+```mermaid
+---
 title: Kerberos Architecture
 ---
 flowchart TD
@@ -141,7 +143,7 @@ flowchart TD
     
     style KDC fill:#f96,stroke:#333,stroke-width:3px
     style Client fill:#9cf,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 !!!tip "📖 Deep Dive: Kerberos"
     For detailed coverage of Kerberos architecture, authentication flows, ticket structure, security considerations, and implementation guidance, see [Understanding Kerberos: Network Authentication Explained](/2010/03/Understanding-Kerberos-Network-Authentication-Explained/).
@@ -215,7 +217,8 @@ Security Assertion Markup Language (SAML) enables SSO across organizational boun
 
 SAML separates authentication from application access. The Identity Provider (IdP) handles authentication—verifying who you are. Service Providers (SPs) trust the IdP's assertions about your identity. When you access a SAML-enabled application, it redirects you to your organization's IdP. You authenticate once at the IdP, which issues a SAML assertion—a digitally signed XML document stating who you are and what attributes you have.
 
-{% mermaid %}---
+```mermaid
+---
 title: SAML Architecture
 ---
 flowchart TD
@@ -232,7 +235,7 @@ flowchart TD
     
     style IdP fill:#f96,stroke:#333,stroke-width:3px
     style Browser fill:#9cf,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 ### SAML in Practice
 
@@ -422,7 +425,8 @@ OpenID Connect solved the authentication problem OAuth wasn't designed for:
 
 OIDC extends OAuth by adding an ID Token—a JWT containing identity claims. When you authenticate with OIDC, you receive both an ID Token (proving who you are) and an access token (granting API access). This clear separation eliminates confusion and provides secure authentication.
 
-{% mermaid %}---
+```mermaid
+---
 title: OpenID Connect Architecture
 ---
 flowchart TD
@@ -444,7 +448,7 @@ flowchart TD
     
     style AuthServer fill:#f96,stroke:#333,stroke-width:3px
     style Client fill:#9cf,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 ### OIDC in Practice
 

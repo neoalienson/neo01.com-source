@@ -490,7 +490,8 @@ DoH は進化を続けており、いくつかのトレンドがその将来の�
 
 オブリビアス DoH（RFC 9230）は、クエリの可視性と IP アドレスの可視性を分離することで、DoH の信頼集中問題に対処します：
 
-{% mermaid %}sequenceDiagram
+```mermaid
+sequenceDiagram
     participant Client as クライアント
     participant Proxy as プロキシ
     participant Target as DoH サーバー
@@ -504,7 +505,7 @@ DoH は進化を続けており、いくつかのトレンドがその将来の�
     Target->>Proxy: 暗号化された応答を送信
     Proxy->>Client: 暗号化された応答を転送
     Client->>Client: 応答を復号化
-{% endmermaid %}
+```
 
 !!!anote "🔐 ODoH プライバシーモデル"
     **従来の DoH：**
@@ -557,7 +558,8 @@ DNS over HTTPS は、数十年にわたって可視であったプロトコル�
 
 しかし、DoH の採用は物議を醸しており、確立されたネットワーク管理の実践に挑戦し、中央集権化、エンタープライズセキュリティ、規制管理に関する懸念を引き起こしています。ネットワーク管理者は、セキュリティ監視とトラブルシューティングに依存していた可視性を失います。DNS トラフィックは少数の大規模プロバイダーに集中し、新たなリスクを生み出します。組織は、DNS の可視性なしで保護を維持するためにセキュリティ戦略を調整する必要があります。
 
-{% mermaid %}graph TB
+```mermaid
+graph TB
     A["DoH 採用"]
     
     B["プライバシーの利点"]
@@ -587,7 +589,7 @@ DNS over HTTPS は、数十年にわたって可視であったプロトコル�
     style B fill:#e8f5e9,stroke:#388e3c
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 DoH をめぐる議論は、インターネットガバナンスにおけるより広範な緊張を反映しています：プライバシー対制御、中央集権化対分散、ユーザー自律性対ネットワーク管理。完璧な解決策はありません—各アプローチにはトレードオフと異なる信頼の前提が伴います。
 

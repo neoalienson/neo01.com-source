@@ -430,7 +430,8 @@ Let's walk through a realistic banking scenario that demonstrates why state mana
 4. **Balance queries** return current state
 5. **Transfers** move money between accounts
 
-{% mermaid %}sequenceDiagram
+```mermaid
+sequenceDiagram
     participant Client
     participant Mock as Mock Banking API
     
@@ -451,7 +452,7 @@ Let's walk through a realistic banking scenario that demonstrates why state mana
     
     Client->>Mock: GET /accounts/ACC001/transactions
     Mock-->>Client: 200 [{TXN001: deposit}, {TXN002: withdraw}]
-{% endmermaid %}
+```
 
 **Step 1: Opening an Account**
 
@@ -739,7 +740,8 @@ Without state management, these critical scenarios would go untested until produ
 
 The banking mock follows this state flow:
 
-{% mermaid %}stateDiagram-v2
+```mermaid
+stateDiagram-v2
     [*] --> Started
     Started --> AccountCreated: POST /accounts
     AccountCreated --> Balance1000: Deposit $1000
@@ -749,7 +751,7 @@ The banking mock follows this state flow:
     Balance700 --> Balance700: Withdraw $1000 (fails)
     Balance700 --> Balance500: Transfer $200 out
     Balance500 --> [*]
-{% endmermaid %}
+```
 
 Each state transition validates business rules and updates the mock's internal state accordingly.
 
@@ -835,7 +837,8 @@ This approach reduces integration friction and ensures frontend/backend alignmen
 
 In microservices architectures, services depend on multiple other services. Running all dependencies locally is impractical. Mock servers enable isolated development:
 
-{% mermaid %}graph LR
+```mermaid
+graph LR
     A["Service A<br/>(Development)"]
     B["Service B<br/>(Mock)"]
     C["Service C<br/>(Mock)"]
@@ -849,7 +852,7 @@ In microservices architectures, services depend on multiple other services. Runn
     style B fill:#fff3e0,stroke:#f57c00
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 Developers work on Service A with mocked dependencies, then swap mocks for real services during integration testing.
 
@@ -1086,7 +1089,8 @@ Mock servers have evolved from simple testing utilities to essential development
 
 The benefits are substantial: teams work independently without waiting for dependencies, error scenarios are tested exhaustively, tests become fast and deterministic, and development costs decrease. Mock servers transform development from sequential to parallel, from fragile to robust, from slow to fast.
 
-{% mermaid %}graph LR
+```mermaid
+graph LR
     A["Mock Server Benefits"]
     
     B["Development Acceleration"]
@@ -1113,7 +1117,7 @@ The benefits are substantial: teams work independently without waiting for depen
     style B fill:#e8f5e9,stroke:#388e3c
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 However, mock servers aren't without challenges. Maintaining mock accuracy requires discipline and automation. False confidence from passing tests against inaccurate mocks can lead to production failures. Complex stateful scenarios are difficult to mock realistically. The key is balancing mocks with real integration testing—use mocks for speed and isolation, but validate against real services regularly.
 

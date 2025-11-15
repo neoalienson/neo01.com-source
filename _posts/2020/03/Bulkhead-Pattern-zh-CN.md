@@ -41,7 +41,7 @@ comments: true
 3. **包含故障**在其指定的分区内
 4. **维持服务**对未受影响的组件
 
-{% mermaid %}
+```mermaid
 graph TB
     subgraph "没有隔舱"
         A1[服务 A] --> SP[共享池<br/>100 线程]
@@ -63,7 +63,7 @@ graph TB
     style X2 fill:#ffd43b,stroke:#f59f00
     style OK1 fill:#51cf66,stroke:#2f9e44
     style OK2 fill:#51cf66,stroke:#2f9e44
-{% endmermaid %}
+```
 
 ## 运作方式：资源隔离
 
@@ -309,7 +309,7 @@ app.post('/api/reports', rateLimiter(bulkheadConfig.lowThroughput),
     
     **资源优化**：根据实际使用模式和优先级分配资源。
 
-{% mermaid %}
+```mermaid
 graph TD
     A[资源分析] --> B{共享资源？}
     B -->|是| C{关键服务？}
@@ -323,7 +323,7 @@ graph TD
     
     style E fill:#51cf66,stroke:#2f9e44
     style D fill:#4dabf7,stroke:#1971c2
-{% endmermaid %}
+```
 
 ## 架构质量属性
 

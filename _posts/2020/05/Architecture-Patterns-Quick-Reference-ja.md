@@ -100,7 +100,8 @@ comments: true
 
 このフローチャートを使用して、状況に最も適切なパターンに移動します：
 
-{% mermaid %}graph TD
+```mermaid
+graph TD
     Start["課題は何ですか？"] --> Q1{"サービスの<br/>可用性？"}
     
     Q1 -->|"繰り返し失敗"| CB["サーキットブレーカー"]
@@ -141,7 +142,7 @@ comments: true
     style HEM fill:#ffd43b
     style Sidecar fill:#ffd43b
     style SF fill:#a78bfa
-{% endmermaid %}
+```
 
 ## パターン比較マトリックス
 
@@ -321,7 +322,8 @@ Godオブジェクト、カーゴカルトプログラミング、コピー&ペ�
 
 組織のパターン採用成熟度を評価します：
 
-{% mermaid %}graph LR
+```mermaid
+graph LR
     L1["レベル1:<br/>アドホック"] --> L2["レベル2:<br/>認識"]
     L2 --> L3["レベル3:<br/>定義済み"]
     L3 --> L4["レベル4:<br/>管理済み"]
@@ -332,7 +334,7 @@ Godオブジェクト、カーゴカルトプログラミング、コピー&ペ�
     style L3 fill:#4dabf7
     style L4 fill:#51cf66
     style L5 fill:#a78bfa
-{% endmermaid %}
+```
 
 **レベル1 - アドホック**：一貫したパターン使用なし、反応的な問題解決
 

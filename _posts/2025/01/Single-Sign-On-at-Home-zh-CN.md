@@ -301,7 +301,8 @@ users:
 
 ### 架构
 
-{% mermaid %}flowchart TD
+```mermaid
+flowchart TD
   User["👤 用户"]
   Proxy["🚪 反向代理 (Traefik/nginx)"]
   Authelia["🔐 Authelia"]
@@ -322,7 +323,7 @@ users:
   style Proxy fill:#fff3e0
   style LDAP fill:#f3e5f5
   style Services fill:#e8f5e9
-{% endmermaid %}
+```
 
 ### 先决条件
 
@@ -503,7 +504,8 @@ docker-compose up -d
 
 现在你已经设置好 Authelia，让我们看看当你访问受保护的服务时到底发生了什么：
 
-{% mermaid %}sequenceDiagram
+```mermaid
+sequenceDiagram
     participant User
     participant App as 应用程序 (Nextcloud)
     participant SSO as SSO 提供者 (Authelia)
@@ -523,7 +525,7 @@ docker-compose up -d
     App->>SSO: 9. 检查现有会话
     SSO->>App: 10. 有效会话存在
     App->>User: 11. 授予访问权限（无需登录）
-{% endmermaid %}
+```
 
 **幕后发生的事情：**
 

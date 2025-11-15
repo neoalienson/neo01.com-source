@@ -107,7 +107,8 @@ The HTTP Redirect and HTTP POST bindings dominate in practice. The IdP redirects
 
 SAML's architecture enables federation across organizational boundaries:
 
-{% mermaid %}---
+```mermaid
+---
 title: SAML Architecture
 ---
 flowchart TD
@@ -126,7 +127,7 @@ flowchart TD
     
     style IdP fill:#f96,stroke:#333,stroke-width:3px
     style Browser fill:#9cf,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 The browser acts as the intermediary. The IdP and SPs never communicate directly during authentication—all messages flow through the browser. This design works across firewalls and organizational boundaries. The SP doesn't need network access to the IdP. The IdP doesn't need to know about all SPs in advance.
 
@@ -140,7 +141,8 @@ SAML supports two primary authentication flows: SP-initiated and IdP-initiated.
 
 The SP-initiated flow starts at the application:
 
-{% mermaid %}---
+```mermaid
+---
 title: SAML SP-Initiated Authentication Flow
 ---
 sequenceDiagram
@@ -159,7 +161,7 @@ sequenceDiagram
     Browser->>SP: POST SAML Assertion
     SP->>SP: Validate signature
     SP->>Browser: Grant access
-{% endmermaid %}
+```
 
 The detailed flow:
 

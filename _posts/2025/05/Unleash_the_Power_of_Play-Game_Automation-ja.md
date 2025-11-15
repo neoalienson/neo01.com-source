@@ -237,7 +237,8 @@ MCPに飛び込む前に、この「魔法」を機能させるものを理解�
 
 **エージェントループ**：
 
-{% mermaid %}flowchart TD
+```mermaid
+flowchart TD
     A["🎯 目標：ホワイトハウスを建設"] --> B["🤔 考える：次は何？"]
     B --> C{"✅ 目標は完了？"}
     C -->|"いいえ"| D["📋 計画：基礎ブロックを配置<br/>してベース構造を作成"]
@@ -253,7 +254,7 @@ MCPに飛び込む前に、この「魔法」を機能させるものを理解�
     style E fill:#e8f5e9
     style F fill:#e1f5fe
     style Z fill:#c8e6c9
-{% endmermaid %}
+```
 
 **主要概念**：
 

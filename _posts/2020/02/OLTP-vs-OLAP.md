@@ -28,7 +28,7 @@ Modern businesses need databases for two distinct purposes:
 - Forecast demand
 - Identify patterns
 
-{% mermaid %}
+```mermaid
 graph TB
     subgraph OLTP["🏪 OLTP System"]
         T1[Customer Order]
@@ -69,7 +69,7 @@ graph TB
     style OLTP fill:#e3f2fd,stroke:#1976d2
     style OLAP fill:#f3e5f5,stroke:#7b1fa2
     style ETL fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 ## OLTP: The Operational Workhorse
 
@@ -335,7 +335,7 @@ CREATE TABLE dim_store (
 );
 ```
 
-{% mermaid %}
+```mermaid
 graph TB
     F[Fact Table<br/>fact_sales<br/>sale_id, quantity, revenue, profit]
     
@@ -354,7 +354,7 @@ graph TB
     style D2 fill:#81c784,stroke:#388e3c
     style D3 fill:#81c784,stroke:#388e3c
     style D4 fill:#81c784,stroke:#388e3c
-{% endmermaid %}
+```
 
 ### OLAP Query Patterns
 

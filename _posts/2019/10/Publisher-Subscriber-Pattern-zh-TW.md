@@ -29,7 +29,7 @@ comments: true
 - 通訊是非同步的
 - 消費者可以動態訂閱/取消訂閱
 
-{% mermaid %}
+```mermaid
 graph TB
     P[發佈者] --> IC[輸入通道]
     IC --> MB{訊息代理}
@@ -45,7 +45,7 @@ graph TB
     style S1 fill:#51cf66,stroke:#2f9e44
     style S2 fill:#51cf66,stroke:#2f9e44
     style S3 fill:#51cf66,stroke:#2f9e44
-{% endmermaid %}
+```
 
 ## 問題：事件分發中的緊密耦合
 
@@ -282,7 +282,7 @@ class Subscriber {
 
 發佈者和訂閱者獨立運作：
 
-{% mermaid %}
+```mermaid
 graph LR
     P1[訂單服務] --> MB{訊息代理}
     P2[使用者服務] --> MB
@@ -300,7 +300,7 @@ graph LR
     style S2 fill:#51cf66,stroke:#2f9e44
     style S3 fill:#51cf66,stroke:#2f9e44
     style S4 fill:#51cf66,stroke:#2f9e44
-{% endmermaid %}
+```
 
 ```javascript
 // 發佈者不知道訂閱者

@@ -28,7 +28,7 @@ RPC services need to be discoverable. When a client wants to call a remote proce
 3. Client must query a port mapper/endpoint mapper service to discover the port
 4. This adds complexity, latency, and potential failure points
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant Client
     participant PortMapper as Port Mapper<br/>(Port 111)
@@ -40,7 +40,7 @@ sequenceDiagram
     PortMapper->>Client: Port 54321
     Client->>RPC: Connect to 54321
     Note over Client,RPC: ❌ Complex, fragile,<br/>firewall-unfriendly
-{% endmermaid %}
+```
 
 ### Problems with Dynamic Ports for Server Applications
 
@@ -72,7 +72,7 @@ Microsoft SQL Server provides a perfect example of why ephemeral ports cause pro
 
 SQL Server named instances (e.g., `SERVER\INSTANCE1`) use dynamic ports by default. When a named instance starts, it binds to an available ephemeral port. Clients discover this port by querying the SQL Server Browser service on UDP port 1434.
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant Client
     participant Browser as SQL Browser<br/>(UDP 1434)
@@ -84,7 +84,7 @@ sequenceDiagram
     Browser->>Client: Port 49823
     Client->>Instance: Connect to 49823
     Note over Client,Instance: ❌ Firewall nightmare<br/>Port changes on restart
-{% endmermaid %}
+```
 
 ### Why This Is Problematic
 
@@ -171,7 +171,7 @@ WMI uses DCOM (Distributed COM), which relies on RPC. By default:
 - Actual WMI communication uses random ports from 49152-65535
 - Firewalls must allow the entire range for WMI to work
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant Client
     participant EPM as Endpoint Mapper<br/>(Port 135)
@@ -181,7 +181,7 @@ sequenceDiagram
     EPM->>Client: Use port 52341
     Client->>WMI: Connect to 52341
     Note over Client,WMI: ❌ Requires opening<br/>49152-65535 in firewall
-{% endmermaid %}
+```
 
 ### Solution: Restrict RPC Dynamic Port Range
 
@@ -361,7 +361,7 @@ spec:
 
 ## RPC Best Practices Summary
 
-{% mermaid %}
+```mermaid
 graph TB
     A(["RPC Service Design"]) --> B{Need external<br/>access?}
     B -->|Yes| C(["Use Fixed Port<br/>1024-49151"])
@@ -376,7 +376,7 @@ graph TB
     style C fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style E fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style H fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
-{% endmermaid %}
+```
 
 ## Legacy RPC Systems
 

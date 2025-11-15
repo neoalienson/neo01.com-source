@@ -270,7 +270,7 @@ IIS安全最佳实践：
 
 **攻击流程：**
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant A as 攻击者
     participant P as 易受攻击程序
@@ -292,7 +292,7 @@ sequenceDiagram
     C->>C: 跳转到恶意代码
     
     Note over C: 执行攻击者的代码
-{% endmermaid %}
+```
 
 ### 9.4 缓冲区溢出类型
 
@@ -507,7 +507,7 @@ IP欺骗攻击类型：
 
 **TCP序列号预测攻击：**
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant A as 攻击者
     participant V as 受害者
@@ -527,7 +527,7 @@ sequenceDiagram
     A->>T: 伪造源IP<br/>恶意命令
     
     Note over T: 4. 执行命令，认为是受害者发送
-{% endmermaid %}
+```
 
 ### 10.4 IP欺骗防护措施
 

@@ -28,7 +28,7 @@ comments: true
 - 不保证兼容性
 - 可能被移除
 
-{% mermaid %}
+```mermaid
 graph TB
     subgraph Public["🌐 公开 API"]
         P1[文档化方法]
@@ -67,7 +67,7 @@ graph TB
     style Public fill:#e3f2fd,stroke:#1976d2
     style Private fill:#ffebee,stroke:#c62828
     style App fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 ## 公开 API：官方接口
 
@@ -684,7 +684,7 @@ class Component {
 // - 阅读 CHANGELOG 以了解弃用通知
 ```
 
-{% mermaid %}
+```mermaid
 graph TB
     A[需要使用 API？]
     
@@ -711,7 +711,7 @@ graph TB
     
     style F fill:#c8e6c9,stroke:#388e3c
     style G fill:#ffcdd2,stroke:#c62828
-{% endmermaid %}
+```
 
 
 ## 设计你自己的 API
@@ -1031,7 +1031,7 @@ if (!Array.prototype.includes) {
 
 ### 弃用时间表
 
-{% mermaid %}
+```mermaid
 gantt
     title API 弃用生命周期
     dateFormat YYYY-MM
@@ -1043,7 +1043,7 @@ gantt
     迁移指南已发布 :active, 2021-01, 2021-03
     section v3.0
     API 已移除              :crit, 2022-01, 2022-12
-{% endmermaid %}
+```
 
 !!!tip "💡 弃用最佳实践"
     **1. 提早公告**
@@ -1253,7 +1253,7 @@ function ModernFunctionalComponent() {
 
 **关键要点**：
 
-{% mermaid %}
+```mermaid
 graph LR
     A[需要功能？]
     B{公开 API<br/>中可用？}
@@ -1277,7 +1277,7 @@ graph LR
     style F fill:#c8e6c9,stroke:#388e3c
     style G fill:#c8e6c9,stroke:#388e3c
     style H fill:#ffcdd2,stroke:#c62828
-{% endmermaid %}
+```
 
 ### 决策矩阵
 

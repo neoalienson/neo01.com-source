@@ -35,7 +35,7 @@ comments: true
 
 现在，让我们检视可用于您的 VPN/代理冒险的云端服务。您可以在云端上创建 VPN/代理服务器。为简单起见，让我们从 Google Cloud 上的代理服务器开始。以下是它的工作原理：
 
-{% mermaid %}
+```mermaid
 flowchart LR
 pc["您的电脑\n在国家 A\n\n"]
 ssh["SSH 通道\n\n"]
@@ -44,7 +44,7 @@ proxy["Google Cloud 上的代理\n在国家 B\n\n"]
 ssh-->proxy
 target["目标网站\n\n"]
 proxy-->target
-{% endmermaid %}
+```
 
 流程图说明了在 Google Cloud 上设置代理服务器。您的电脑（PC）在国家 A，您想访问受限制或因您的位置而被封锁内容的目标网站（target）。您从电脑创建 SSH 通道（ssh）到 Google Cloud 上的代理服务器（proxy），该服务器位于国家 B。这允许您绕过地理限制并访问目标网站，就像您在国家 B 一样。
 

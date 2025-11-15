@@ -56,7 +56,7 @@ services:
 
 现在架构约束是明确的且可强制执行的。
 
-{% mermaid %}
+```mermaid
 graph LR
     A[隐式决策<br/>隐藏在代码中] -->|转换| B[明确决策<br/>在架构中定义]
     B --> C[机器可读]
@@ -67,7 +67,7 @@ graph LR
     style C fill:#4dabf7,stroke:#1971c2
     style D fill:#4dabf7,stroke:#1971c2
     style E fill:#4dabf7,stroke:#1971c2
-{% endmermaid %}
+```
 
 ### AaC 中的决策类型
 
@@ -141,7 +141,7 @@ describe('微服务架构', () => {
     3. **部署门**：生产部署前的架构合规性
     4. **运行时监控**：生产中的持续验证
 
-{% mermaid %}
+```mermaid
 graph TD
     A[开发人员提交] --> B[预提交钩子]
     B -->|通过| C[推送到分支]
@@ -162,7 +162,7 @@ graph TD
     style K fill:#ffd43b,stroke:#fab005
     style I fill:#51cf66,stroke:#2f9e44
     style J fill:#ff6b6b,stroke:#c92a2a
-{% endmermaid %}
+```
 
 ## 核心原则 4：活文档
 
@@ -189,7 +189,7 @@ graph TD
 
 通过这四个核心原则的协同工作——明确决策、版本控制、自动验证和活文档——架构即代码在整个软件开发生命周期中提供了令人信服的优势。
 
-{% mermaid %}
+```mermaid
 graph LR
     OS[订单服务] -->|✓ 通过网关| AG[API 网关]
     AG --> US[用户服务]
@@ -199,7 +199,7 @@ graph LR
     style AG fill:#51cf66,stroke:#2f9e44
     style US fill:#4dabf7,stroke:#1971c2
     style PS fill:#4dabf7,stroke:#1971c2
-{% endmermaid %}
+```
 
 ### 改进的一致性和质量
 

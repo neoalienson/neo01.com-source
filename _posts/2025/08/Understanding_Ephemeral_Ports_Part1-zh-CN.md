@@ -22,7 +22,7 @@ comments: true
 
 当你在浏览器中输入 URL 时，你的计算机需要建立与网页服务器的连接。服务器监听众所周知的端口（HTTP 通常是端口 80，HTTPS 是端口 443），但你的计算机需要自己的端口号来接收响应。你的操作系统会自动选择一个可用的临时端口——比如说端口 54321——并将其用于这个特定的连接。
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant Client as 你的计算机<br/>(IP: 192.168.1.100)
     participant OS as 操作系统
@@ -35,7 +35,7 @@ sequenceDiagram
     OS->>Client: 将数据传递给浏览器
     Note over OS: 连接结束
     OS->>OS: 释放端口 54321<br/>以供重用
-{% endmermaid %}
+```
 
 ### 端口号范围
 
@@ -106,7 +106,7 @@ sequenceDiagram
 
 当通信结束时，操作系统会将临时端口标记为可重用。然而，通常会有一个短暂的等待期（TIME_WAIT 状态），以确保来自旧连接的延迟数据包不会到达并混淆使用相同端口的新连接。
 
-{% mermaid %}
+```mermaid
 stateDiagram-v2
     [*] --> Available: 端口在池中
     Available --> Assigned: 应用程序请求<br/>连接
@@ -119,7 +119,7 @@ stateDiagram-v2
         通常 30-120 秒
         防止数据包混淆
     end note
-{% endmermaid %}
+```
 
 ### 多个同时连接
 
@@ -173,7 +173,7 @@ stateDiagram-v2
 
 **DHCP 客户端**：获取 IP 地址时，DHCP 客户端使用特定端口，尽管不总是来自临时端口范围。
 
-{% mermaid %}
+```mermaid
 graph TB
     subgraph "你的计算机"
         Browser(["🌐 网页浏览器"])
@@ -204,7 +204,7 @@ graph TB
     PortPool -->|54324:5432| Database
     
     style PortPool fill:#e3f2fd,stroke:#1976d2,stroke-width:3px
-{% endmermaid %}
+```
 
 ## 客户端应用程序的最佳实践
 

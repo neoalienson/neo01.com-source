@@ -238,7 +238,8 @@ adb shell "input swipe 300 1400 300 800 100"
 
 **智能体循环：**
 
-{% mermaid %}flowchart TD
+```mermaid
+flowchart TD
     A["🎯 目標：建造白宫"] --> B["🤔 思考：下一步是什麼？"]
     B --> C{"✅ 目標完成了嗎？"}
     C -->|"否"| D["📋 计划：放置基础方块<br/>以建立基础结构"]
@@ -254,7 +255,7 @@ adb shell "input swipe 300 1400 300 800 100"
     style E fill:#e8f5e9
     style F fill:#e1f5fe
     style Z fill:#c8e6c9
-{% endmermaid %}
+```
 
 **關鍵概念：**
 

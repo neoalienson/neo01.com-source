@@ -30,7 +30,7 @@ comments: true
 
 **僅周邊防禦**：僅專注於外部防禦而忽視內部安全不是安全設計。現代威脅需要深度防禦，而不僅僅是堅固的外牆。
 
-{% mermaid %}
+```mermaid
 graph LR
     A(安全設計) -->|主動| B(從一開始建構)
     A -->|全面| C(每層都受保護)
@@ -42,7 +42,7 @@ graph LR
     
     style A fill:#90EE90
     style E fill:#FFB6C6
-{% endmermaid %}
+```
 
 相比之下，「預設安全」是開箱即用設定應該盡可能安全的原則。想像購買一部智慧型手機，預設啟用所有必要的隱私設定，而不是需要手動調整這些設定來保護您的資料。
 
@@ -58,7 +58,7 @@ graph LR
 
 這些實踐是相互關聯的；威脅建模為控制驗證提供資訊，自動化有助於一致應用通過威脅建模識別的控制。
 
-{% mermaid %}
+```mermaid
 graph TD
     A(威脅建模) -->|識別風險| B[安全控制]
     B -->|實施| C[控制驗證]
@@ -72,7 +72,7 @@ graph TD
     style A fill:#87CEEB
     style E fill:#90EE90
     style G fill:#FFD700
-{% endmermaid %}
+```
 
 ## 自動化控制驗證和補救：增強安全設計
 

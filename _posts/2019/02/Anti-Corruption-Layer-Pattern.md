@@ -45,7 +45,8 @@ To interoperate with these systems, your new application might be forced to supp
 
 The Anti-Corruption Layer pattern solves this by isolating different subsystems and placing a translation layer between them. This layer handles all communication between the two systems, allowing one system to remain unchanged while the other avoids compromising its design.
 
-{% mermaid %}graph LR
+```mermaid
+graph LR
     A["Modern Application<br/>(Subsystem A)"]
     ACL["Anti-Corruption<br/>Layer"]
     B["Legacy System<br/>(Subsystem B)"]
@@ -56,7 +57,7 @@ The Anti-Corruption Layer pattern solves this by isolating different subsystems 
     style A fill:#4CAF50,stroke:#2E7D32,color:#fff
     style ACL fill:#2196F3,stroke:#1565C0,color:#fff
     style B fill:#FF9800,stroke:#E65100,color:#fff
-{% endmermaid %}
+```
 
 ### How It Works
 
@@ -107,7 +108,8 @@ class LegacySystemAdapter {
 
 Deploy the ACL as a separate microservice:
 
-{% mermaid %}graph TB
+```mermaid
+graph TB
     subgraph "Modern Architecture"
         A1[Service A]
         A2[Service B]
@@ -128,7 +130,7 @@ Deploy the ACL as a separate microservice:
     ACL --> L2
     
     style ACL fill:#2196F3,stroke:#1565C0,color:#fff
-{% endmermaid %}
+```
 
 ### 3. API Gateway Pattern
 

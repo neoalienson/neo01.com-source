@@ -25,7 +25,7 @@ canonical_lang: zh-CN
 
 **各楼层风险分析：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["数据中心楼层选择"]
     
@@ -63,7 +63,7 @@ graph LR
     style C fill:#ffcdd2,stroke:#b71c1c
     style D fill:#ffebee,stroke:#c62828
     style E fill:#c8e6c9,stroke:#2e7d32
-{% endmermaid %}
+```
 
 **楼层风险对比：**
 
@@ -130,7 +130,7 @@ graph LR
 
 数据中心应采用多层物理访问控制，形成纵深防御。
 
-{% mermaid %}
+```mermaid
 graph TB
     A["外围边界"]
     B["建筑入口"]
@@ -154,7 +154,7 @@ graph TB
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#fce4ec,stroke:#c2185b
-{% endmermaid %}
+```
 
 **各层控制措施：**
 
@@ -244,7 +244,7 @@ graph TB
 
 **电力系统架构：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["市电"]
     B["备用发电机"]
@@ -267,7 +267,7 @@ graph TB
     style C fill:#2196f3,stroke:#1565c0
     style D fill:#9c27b0,stroke:#6a1b9a
     style E fill:#e3f2fd,stroke:#1976d2
-{% endmermaid %}
+```
 
 **电力保障措施：**
 
@@ -359,7 +359,7 @@ graph TB
 
 **授权流程：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["访问申请"] --> B["身份验证"]
     B --> C["授权审批"]
@@ -373,7 +373,7 @@ graph LR
     style D fill:#f3e5f5,stroke:#7b1fa2
     style E fill:#e8f5e9,stroke:#388e3d
     style F fill:#fce4ec,stroke:#c2185b
-{% endmermaid %}
+```
 
 **授权的重要性：**
 - 🔐 确保只有合法人员进入
@@ -420,7 +420,7 @@ graph LR
 
 干管灭火器系统使用水，但是只有在发现火警以后水才进入管道。
 
-{% mermaid %}
+```mermaid
 graph TB
     A["干管系统"] --> B["平时管道无水"]
     A --> C["火警触发"]
@@ -433,7 +433,7 @@ graph TB
     
     style A fill:#e3f2fd,stroke:#1976d2
     style F fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 **消防系统对比：**
 

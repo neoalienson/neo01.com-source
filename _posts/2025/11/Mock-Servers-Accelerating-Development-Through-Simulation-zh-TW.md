@@ -434,7 +434,8 @@ Mock 通常使用過於簡單的資料——"test@example.com"、"John Doe"、�
 4. **餘額查詢**回傳當前狀態
 5. **轉帳**在帳戶之間轉移資金
 
-{% mermaid %}sequenceDiagram
+```mermaid
+sequenceDiagram
     participant Client as 客戶端
     participant Mock as Mock 銀行 API
     
@@ -455,7 +456,7 @@ Mock 通常使用過於簡單的資料——"test@example.com"、"John Doe"、�
     
     Client->>Mock: GET /accounts/ACC001/transactions
     Mock-->>Client: 200 [{TXN001: 存款}, {TXN002: 提款}]
-{% endmermaid %}
+```
 
 **步驟 1：開戶**
 
@@ -743,7 +744,8 @@ GET /api/accounts/ACC001
 
 銀行 mock 遵循此狀態流：
 
-{% mermaid %}stateDiagram-v2
+```mermaid
+stateDiagram-v2
     [*] --> Started
     Started --> AccountCreated: POST /accounts
     AccountCreated --> Balance1000: 存款 $1000
@@ -753,7 +755,7 @@ GET /api/accounts/ACC001
     Balance700 --> Balance700: 提款 $1000（失敗）
     Balance700 --> Balance500: 轉出 $200
     Balance500 --> [*]
-{% endmermaid %}
+```
 
 每個狀態轉換驗證業務規則並相應地更新 mock 的內部狀態。
 
@@ -840,7 +842,8 @@ Mock 伺服器支援幾種強大的開發模式。
 
 在微服務架構中，服務依賴於多個其他服務。在本地執行所有依賴項是不切實際的。Mock 伺服器支援隔離開發：
 
-{% mermaid %}graph LR
+```mermaid
+graph LR
     A["服務 A<br/>（開發中）"]
     B["服務 B<br/>（Mock）"]
     C["服務 C<br/>（Mock）"]
@@ -854,7 +857,7 @@ Mock 伺服器支援幾種強大的開發模式。
     style B fill:#fff3e0,stroke:#f57c00
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 開發人員使用模擬的依賴項處理服務 A，然後在整合測試期間將 mock 替換為真實服務。
 
@@ -1091,7 +1094,8 @@ Mock 伺服器已經從簡單的測試工具演變為基本的開發工具，從
 
 好處是巨大的：團隊獨立工作而無需等待依賴項，錯誤場景得到詳盡測試，測試變得快速和確定性，開發成本降低。Mock 伺服器將開發從順序轉變為並行，從脆弱轉變為健壯，從緩慢轉變為快速。
 
-{% mermaid %}graph LR
+```mermaid
+graph LR
     A["Mock 伺服器優勢"]
     
     B["開發加速"]
@@ -1118,7 +1122,7 @@ Mock 伺服器已經從簡單的測試工具演變為基本的開發工具，從
     style B fill:#e8f5e9,stroke:#388e3c
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 然而，Mock 伺服器並非沒有挑戰。保持 mock 準確性需要紀律和自動化。針對不準確的 mock 通過測試產生的虛假信心可能導致生產故障。複雜的有狀態場景難以真實地模擬。關鍵是平衡 mock 與真實整合測試——使用 mock 以獲得速度和隔離，但定期針對真實服務進行驗證。
 

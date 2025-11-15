@@ -254,7 +254,8 @@ Most SaaS providers only support federation with **enterprise subscriptions**:
 
 **Visual comparison:**
 
-{% mermaid %}flowchart LR
+```mermaid
+flowchart LR
     A["👤 User"] -->|"1. Login request"| B["🔐 IdP<br/>(Authelia)"]
     B -->|"2. Check credentials"| C["📚 User Directory<br/>(YAML/LDAP)"]
     C -->|"3. Valid user"| B
@@ -267,7 +268,7 @@ Most SaaS providers only support federation with **enterprise subscriptions**:
     style B fill:#e3f2fd
     style C fill:#f3e5f5
     style D fill:#e8f5e9
-{% endmermaid %}
+```
 
 #### Putting It All Together
 
@@ -446,7 +447,8 @@ You want to use your homelab SSO for GitHub. GitHub requires Enterprise ($21/use
 
 ### Architecture
 
-{% mermaid %}flowchart TD
+```mermaid
+flowchart TD
   User["👤 User"]
   Proxy["🚪 Reverse Proxy (Traefik/nginx)"]
   Authelia["🔐 Authelia"]
@@ -467,7 +469,7 @@ You want to use your homelab SSO for GitHub. GitHub requires Enterprise ($21/use
   style Proxy fill:#fff3e0
   style LDAP fill:#f3e5f5
   style Services fill:#e8f5e9
-{% endmermaid %}
+```
 
 ### Prerequisites
 
@@ -648,7 +650,8 @@ Visit `https://auth.homelab.local` to see the login page.
 
 Now that you have Authelia set up, let's see exactly what happens when you access a protected service:
 
-{% mermaid %}sequenceDiagram
+```mermaid
+sequenceDiagram
     participant User
     participant App as Application (Nextcloud)
     participant SSO as SSO Provider (Authelia)
@@ -668,7 +671,7 @@ Now that you have Authelia set up, let's see exactly what happens when you acces
     App->>SSO: 9. Check existing session
     SSO->>App: 10. Valid session exists
     App->>User: 11. Grant access (no login needed)
-{% endmermaid %}
+```
 
 **What happens behind the scenes:**
 

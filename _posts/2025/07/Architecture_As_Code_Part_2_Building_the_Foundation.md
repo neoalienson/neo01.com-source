@@ -55,7 +55,7 @@ services:
 
 Now the architectural constraint is explicit and enforceable.
 
-{% mermaid %}
+```mermaid
 graph LR
     A[Implicit Decision<br/>Hidden in Code] -->|Transform| B[Explicit Decision<br/>Defined in Architecture]
     B --> C[Machine-Readable]
@@ -66,7 +66,7 @@ graph LR
     style C fill:#4dabf7,stroke:#1971c2
     style D fill:#4dabf7,stroke:#1971c2
     style E fill:#4dabf7,stroke:#1971c2
-{% endmermaid %}
+```
 
 ### Decision Types in AaC
 
@@ -140,7 +140,7 @@ describe('Microservices Architecture', () => {
     3. **Deployment gates**: Architecture compliance before production deployment
     4. **Runtime monitoring**: Continuous validation in production
 
-{% mermaid %}
+```mermaid
 graph TD
     A[Developer Commits] --> B[Pre-commit Hook]
     B -->|Pass| C[Push to Branch]
@@ -161,7 +161,7 @@ graph TD
     style K fill:#ffd43b,stroke:#fab005
     style I fill:#51cf66,stroke:#2f9e44
     style J fill:#ff6b6b,stroke:#c92a2a
-{% endmermaid %}
+```
 
 ## Core Principle 4: Living Documentation
 
@@ -188,7 +188,7 @@ Since documentation is generated from code:
 
 With these four core principles working together—explicit decisions, version control, automated validation, and living documentation—Architecture as Code delivers compelling advantages that extend across the software development lifecycle.
 
-{% mermaid %}
+```mermaid
 graph LR
     OS[Order Service] -->|✓ Through Gateway| AG[API Gateway]
     AG --> US[User Service]
@@ -198,7 +198,7 @@ graph LR
     style AG fill:#51cf66,stroke:#2f9e44
     style US fill:#4dabf7,stroke:#1971c2
     style PS fill:#4dabf7,stroke:#1971c2
-{% endmermaid %}
+```
 
 ### Improved Consistency and Quality
 

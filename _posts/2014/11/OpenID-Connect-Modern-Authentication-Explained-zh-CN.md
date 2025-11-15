@@ -104,7 +104,8 @@ OIDC 涉及四个主要实体：
 
 ### 架构图
 
-{% mermaid %}---
+```mermaid
+---
 title: OpenID Connect 架构
 ---
 flowchart TD
@@ -126,7 +127,7 @@ flowchart TD
     
     style AuthServer fill:#f96,stroke:#333,stroke-width:3px
     style Client fill:#9cf,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 客户端通过授权服务器验证用户身份，接收 ID 令牌和访问令牌。客户端使用 ID 令牌建立用户身份。资源服务器验证访问令牌以授权 API 请求。
 
@@ -164,7 +165,8 @@ OIDC 支持多种身份验证流程以适应不同场景。
 
 此流程通过在后端使用客户端密钥将授权码交换为令牌来保持令牌安全。授权码通过浏览器传递，但令牌不会，从而保护它们免受基于浏览器的攻击。
 
-{% mermaid %}---
+```mermaid
+---
 title: OpenID Connect 身份验证流程
 ---
 sequenceDiagram
@@ -185,7 +187,7 @@ sequenceDiagram
     Client->>API: API 请求 + 访问令牌
     API->>API: 验证访问令牌
     API->>Client: 受保护的资源
-{% endmermaid %}
+```
 
 ### 带 PKCE 的授权码流程
 

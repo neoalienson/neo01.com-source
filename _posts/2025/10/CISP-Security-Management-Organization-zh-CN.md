@@ -25,7 +25,7 @@ comments: true
 
 **组织人员来源：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["信息安全管理组织"]
     
@@ -55,7 +55,7 @@ graph LR
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 **组织设计要点：**
 
@@ -75,7 +75,7 @@ graph LR
 
 **组织间保密协议的关键要素：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["保密协议"]
     
@@ -109,7 +109,7 @@ graph LR
     style D fill:#e8f5e9,stroke:#388e3d
     style E fill:#e8f5e9,stroke:#388e3d
     style F fill:#ffebee,stroke:#c62828
-{% endmermaid %}
+```
 
 **保密协议必须包含的内容：**
 
@@ -126,7 +126,7 @@ graph LR
 
 **需要保持联系的外部机构：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["信息安全管理<br/>日常工作"]
     
@@ -159,7 +159,7 @@ graph LR
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#f3e5f5,stroke:#7b1fa2
     style E fill:#fce4ec,stroke:#c2185b
-{% endmermaid %}
+```
 
 **与外部专家合作的价值：**
 
@@ -178,7 +178,7 @@ graph LR
 
 **客户和外部组织访问信息资产的管理原则：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["外部访问请求"]
     
@@ -206,7 +206,7 @@ graph LR
     style B fill:#fff3e0,stroke:#f57c00
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 **正确的访问管理做法：**
 

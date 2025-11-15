@@ -56,7 +56,7 @@ services:
 
 現在架構約束是明確的且可強制執行的。
 
-{% mermaid %}
+```mermaid
 graph LR
     A[隱式決策<br/>隱藏在程式碼中] -->|轉換| B[明確決策<br/>在架構中定義]
     B --> C[機器可讀]
@@ -67,7 +67,7 @@ graph LR
     style C fill:#4dabf7,stroke:#1971c2
     style D fill:#4dabf7,stroke:#1971c2
     style E fill:#4dabf7,stroke:#1971c2
-{% endmermaid %}
+```
 
 ### AaC 中的決策類型
 
@@ -141,7 +141,7 @@ describe('微服務架構', () => {
     3. **部署門**：生產部署前的架構合規性
     4. **執行時監控**：生產中的持續驗證
 
-{% mermaid %}
+```mermaid
 graph TD
     A[開發人員提交] --> B[預提交鉤子]
     B -->|通過| C[推送到分支]
@@ -162,7 +162,7 @@ graph TD
     style K fill:#ffd43b,stroke:#fab005
     style I fill:#51cf66,stroke:#2f9e44
     style J fill:#ff6b6b,stroke:#c92a2a
-{% endmermaid %}
+```
 
 ## 核心原則 4：活文件
 
@@ -189,7 +189,7 @@ graph TD
 
 透過這四個核心原則的協同工作——明確決策、版本控制、自動驗證和活文件——架構即程式碼在整個軟體開發生命週期中提供了令人信服的優勢。
 
-{% mermaid %}
+```mermaid
 graph LR
     OS[訂單服務] -->|✓ 透過閘道| AG[API 閘道]
     AG --> US[使用者服務]
@@ -199,7 +199,7 @@ graph LR
     style AG fill:#51cf66,stroke:#2f9e44
     style US fill:#4dabf7,stroke:#1971c2
     style PS fill:#4dabf7,stroke:#1971c2
-{% endmermaid %}
+```
 
 ### 改進的一致性和品質
 

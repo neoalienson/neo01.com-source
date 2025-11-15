@@ -33,13 +33,14 @@ The long answer: Let's explore both sides.
 
 **1. Simplicity**
 
-{% mermaid %}flowchart LR
+```mermaid
+flowchart LR
     App1["📱 Mobile App"] --> DB[("🗄️ Database")]
     App2["💻 Web App"] --> DB
     App3["📊 Analytics"] --> DB
     
     style DB fill:#e3f2fd
-{% endmermaid %}
+```
 
 - Fewer moving parts
 - No middleware to maintain
@@ -100,7 +101,8 @@ Developers can:
 
 **Problem:** Every application needs database credentials.
 
-{% mermaid %}flowchart TD
+```mermaid
+flowchart TD
     subgraph "Security Risk"
         App1["📱 Mobile App<br/>(DB credentials in code)"]
         App2["💻 Web App<br/>(DB credentials in config)"]
@@ -114,7 +116,7 @@ Developers can:
     App4 --> DB
     
     style DB fill:#ffebee
-{% endmermaid %}
+```
 
 **Risks:**
 
@@ -434,7 +436,8 @@ There are two main patterns for placing an API layer in front of databases:
 
 #### Pattern 1: Monolithic API Layer
 
-{% mermaid %}flowchart TD
+```mermaid
+flowchart TD
     subgraph Apps["Applications"]
         App1["📱 Mobile App"]
         App2["💻 Web App"]
@@ -455,7 +458,7 @@ There are two main patterns for placing an API layer in front of databases:
     
     style API fill:#e8f5e9
     style DB fill:#e3f2fd
-{% endmermaid %}
+```
 
 **Characteristics:**
 - Single API service
@@ -465,7 +468,8 @@ There are two main patterns for placing an API layer in front of databases:
 
 #### Pattern 2: Microservices (Database-per-Service)
 
-{% mermaid %}flowchart TD
+```mermaid
+flowchart TD
     subgraph Apps["Applications"]
         App1["📱 Mobile App"]
         App2["💻 Web App"]
@@ -499,7 +503,7 @@ There are two main patterns for placing an API layer in front of databases:
     style Gateway fill:#fff3e0
     style Services fill:#e8f5e9
     style Databases fill:#e3f2fd
-{% endmermaid %}
+```
 
 **Characteristics:**
 - Multiple independent services
@@ -1056,7 +1060,8 @@ app.use((req, res, next) => {
 
 **Scenario:** Analytics and reporting tools need complex queries.
 
-{% mermaid %}flowchart LR
+```mermaid
+flowchart LR
     subgraph Write["Write Operations"]
         App1["📱 Mobile App"]
         App2["💻 Web App"]
@@ -1076,7 +1081,7 @@ app.use((req, res, next) => {
     style API fill:#e8f5e9
     style DB fill:#e3f2fd
     style ReadDB fill:#fff3e0
-{% endmermaid %}
+```
 
 **Setup:**
 
@@ -1101,13 +1106,14 @@ For analytics workloads, you have two main options:
 
 **Option 1: Read Replica (Real-Time)**
 
-{% mermaid %}flowchart LR
+```mermaid
+flowchart LR
     Prod[("🗄️ Production DB")] -.->|"Continuous<br/>Replication"| Replica[("📖 Read Replica")]
     Analytics["📊 Analytics Tool"] --> Replica
     
     style Prod fill:#e3f2fd
     style Replica fill:#fff3e0
-{% endmermaid %}
+```
 
 ```sql
 -- Analytics queries run on replica
@@ -1230,7 +1236,8 @@ GROUP BY DATE(created_at);
 
 **Option 2: ETL to Data Warehouse (Batch)**
 
-{% mermaid %}flowchart LR
+```mermaid
+flowchart LR
     Prod[("🗄️ Production DB")] -->|"Nightly<br/>Extract"| ETL["⚙️ ETL Process"]
     ETL -->|"Transform<br/>& Load"| DW[("📊 Data Warehouse")]
     Analytics["📊 Analytics Tool"] --> DW
@@ -1238,7 +1245,7 @@ GROUP BY DATE(created_at);
     style Prod fill:#e3f2fd
     style ETL fill:#fff3e0
     style DW fill:#e8f5e9
-{% endmermaid %}
+```
 
 ```python
 # ETL job runs nightly
@@ -1496,7 +1503,8 @@ Analytical needs → Data Warehouse
 
 **Example Architecture:**
 
-{% mermaid %}flowchart TD
+```mermaid
+flowchart TD
     Prod[("🗄️ Production DB")]
     
     Prod -.->|"Real-time<br/>Replication"| Replica[("📖 Read Replica")]
@@ -1509,7 +1517,7 @@ Analytical needs → Data Warehouse
     style Prod fill:#e3f2fd
     style Replica fill:#fff3e0
     style DW fill:#e8f5e9
-{% endmermaid %}
+```
 
 **Migration Path:**
 

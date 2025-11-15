@@ -304,7 +304,8 @@ ERROR: Payment failed for user john@neo01.com amount 99.99 reason card_declined
 - **コスト**：低（S3 Glacier：$0.004/GB/月）
 - **使用例**：長期パターン分析、まれなバグ調査
 
-{% mermaid %}graph LR
+```mermaid
+graph LR
     A["アプリケーションログ"] --> B["ホットストレージ<br/>7-30日<br/>$0.50/GB"]
     B --> C["ウォームストレージ<br/>30-90日<br/>$0.023/GB"]
     C --> D["コールドストレージ<br/>90日 - 1年<br/>$0.004/GB"]
@@ -315,7 +316,7 @@ ERROR: Payment failed for user john@neo01.com amount 99.99 reason card_declined
     style C fill:#ffd43b,stroke:#f59f00,color:#000
     style D fill:#51cf66,stroke:#2f9e44,color:#fff
     style E fill:#868e96,stroke:#495057,color:#fff
-{% endmermaid %}
+```
 
 ### ログレベル別の保持
 

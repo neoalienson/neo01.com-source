@@ -24,7 +24,8 @@ Understanding how this works isn't just technical curiosity—it's about knowing
 
 When you connect to `https://neo01.com` on a corporate network with SSL interception, here's what actually happens:
 
-{% mermaid %}sequenceDiagram
+```mermaid
+sequenceDiagram
     participant C as Your Browser
     participant P as Corporate Proxy
     participant B as neo01.com
@@ -44,7 +45,7 @@ When you connect to `https://neo01.com` on a corporate network with SSL intercep
     P->>B: Re-encrypt and forward
     B->>P: Send response
     P->>C: Decrypt, inspect, re-encrypt
-{% endmermaid %}
+```
 
 **The critical steps**:
 

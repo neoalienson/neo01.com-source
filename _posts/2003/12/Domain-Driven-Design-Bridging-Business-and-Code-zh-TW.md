@@ -19,7 +19,8 @@ excerpt: "領域驅動設計承諾軟體能說業務語言，但從資料庫中�
 
 ### 領域驅動設計時間軸
 
-{% mermaid %}timeline
+```mermaid
+timeline
     title 領域中心設計的演進
     section 1990s
         1994 : 設計模式
@@ -48,7 +49,7 @@ excerpt: "領域驅動設計承諾軟體能說業務語言，但從資料庫中�
         2016 : 微服務 + DDD
              : 限界上下文即服務
              : 分散式領域模型
-{% endmermaid %}
+```
 
 ## 資料庫中心的問題
 
@@ -645,7 +646,8 @@ DDD 提供戰略模式來管理大型系統中的複雜性。
 
 限界上下文透過明確分離模型來解決這個問題。每個上下文都有自己針對其需求優化的模型。銷售上下文有一個具有訂單歷史的 Customer。支援上下文有一個具有支援工單的 Customer。這些是不同的模型，這沒問題。
 
-{% mermaid %}graph TB
+```mermaid
+graph TB
     subgraph Sales["銷售上下文"]
         SC[客戶<br/>- 訂單<br/>- 信用額度<br/>- 付款條件]
     end
@@ -665,7 +667,7 @@ DDD 提供戰略模式來管理大型系統中的複雜性。
     style Sales fill:#e1f5ff,stroke:#333,stroke-width:2px
     style Support fill:#fff4e1,stroke:#333,stroke-width:2px
     style Shipping fill:#e8f5e9,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 ### 上下文映射
 
@@ -1123,7 +1125,8 @@ DDD 與事件溯源和 CQRS 配合良好：
 
 DDD 自然適合六角（埠與配接器）架構：
 
-{% mermaid %}graph TB
+```mermaid
+graph TB
     subgraph Core["領域核心"]
         DM[領域模型<br/>實體、值物件<br/>聚合、服務]
     end
@@ -1150,7 +1153,7 @@ DDD 自然適合六角（埠與配接器）架構：
     style Core fill:#e1f5ff,stroke:#333,stroke-width:3px
     style Ports fill:#fff4e1,stroke:#333,stroke-width:2px
     style Adapters fill:#e8f5e9,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 !!!anote "🏛️ 六角架構 + DDD"
     **結構**

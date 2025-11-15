@@ -434,7 +434,8 @@ Mock 通常使用过于简单的数据——"test@example.com"、"John Doe"、�
 4. **余额查询**返回当前状态
 5. **转账**在账户之间转移资金
 
-{% mermaid %}sequenceDiagram
+```mermaid
+sequenceDiagram
     participant Client as 客户端
     participant Mock as Mock 银行 API
     
@@ -455,7 +456,7 @@ Mock 通常使用过于简单的数据——"test@example.com"、"John Doe"、�
     
     Client->>Mock: GET /accounts/ACC001/transactions
     Mock-->>Client: 200 [{TXN001: 存款}, {TXN002: 取款}]
-{% endmermaid %}
+```
 
 **步骤 1：开户**
 
@@ -743,7 +744,8 @@ GET /api/accounts/ACC001
 
 银行 mock 遵循此状态流：
 
-{% mermaid %}stateDiagram-v2
+```mermaid
+stateDiagram-v2
     [*] --> Started
     Started --> AccountCreated: POST /accounts
     AccountCreated --> Balance1000: 存款 $1000
@@ -753,7 +755,7 @@ GET /api/accounts/ACC001
     Balance700 --> Balance700: 取款 $1000（失败）
     Balance700 --> Balance500: 转出 $200
     Balance500 --> [*]
-{% endmermaid %}
+```
 
 每个状态转换验证业务规则并相应地更新 mock 的内部状态。
 
@@ -840,7 +842,8 @@ Mock 服务器支持几种强大的开发模式。
 
 在微服务架构中，服务依赖于多个其他服务。在本地运行所有依赖项是不切实际的。Mock 服务器支持隔离开发：
 
-{% mermaid %}graph LR
+```mermaid
+graph LR
     A["服务 A<br/>（开发中）"]
     B["服务 B<br/>（Mock）"]
     C["服务 C<br/>（Mock）"]
@@ -854,7 +857,7 @@ Mock 服务器支持几种强大的开发模式。
     style B fill:#fff3e0,stroke:#f57c00
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 开发人员使用模拟的依赖项处理服务 A，然后在集成测试期间将 mock 替换为真实服务。
 
@@ -1095,7 +1098,8 @@ Mock 服务器已经从简单的测试工具演变为基本的开发工具，从
 
 好处是巨大的：团队独立工作而无需等待依赖项，错误场景得到详尽测试，测试变得快速和确定性，开发成本降低。Mock 服务器将开发从顺序转变为并行，从脆弱转变为健壮，从缓慢转变为快速。
 
-{% mermaid %}graph LR
+```mermaid
+graph LR
     A["Mock 服务器优势"]
     
     B["开发加速"]
@@ -1122,7 +1126,7 @@ Mock 服务器已经从简单的测试工具演变为基本的开发工具，从
     style B fill:#e8f5e9,stroke:#388e3c
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 然而，Mock 服务器并非没有挑战。保持 mock 准确性需要纪律和自动化。针对不准确的 mock 通过测试产生的虚假信心可能导致生产故障。复杂的有状态场景难以真实地模拟。关键是平衡 mock 与真实集成测试——使用 mock 以获得速度和隔离，但定期针对真实服务进行验证。
 

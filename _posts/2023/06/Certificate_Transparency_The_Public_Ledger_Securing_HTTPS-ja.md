@@ -32,7 +32,7 @@ HTTPSとブラウザのあの小さな南京錠アイコンについて初めて
 
 各事件は証明書エコシステム全体への信頼を損ないました。業界は認証局を信頼するだけに頼らない解決策を必要としていました。
 
-{% mermaid %}
+```mermaid
 graph TB
     A([🏢 認証局<br/>証明書を発行]) --> B{信頼されたCA?}
     B -->|はい| C([✅ ブラウザが<br/>証明書を信頼])
@@ -42,7 +42,7 @@ graph TB
     style E fill:#ffebee,stroke:#c62828,stroke-width:3px
     style C fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style D fill:#fff3e0,stroke:#f57c00,stroke-width:2px
-{% endmermaid %}
+```
 
 ## 解決策：公開された追記専用ログ
 
@@ -58,7 +58,7 @@ graph TB
 
 この透明性により、証明書エコシステムは「信頼するが検証しない」から「信頼し常に検証する」に変わります。
 
-{% mermaid %}
+```mermaid
 graph LR
     A([🏢 認証局]) --> B([📝 CTログ1])
     A --> C([📝 CTログ2])
@@ -75,7 +75,7 @@ graph LR
     style D fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
     style G fill:#ffebee,stroke:#c62828,stroke-width:2px
     style H fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-{% endmermaid %}
+```
 
 ## 証明書の透明性の仕組み
 
@@ -133,7 +133,7 @@ CAが証明書を発行するとき、証明書（または事前証明書）を
 
 **追記専用証明**：マークル木構造により、ログが成長しただけ（新しい証明書が追加された）で、古いエントリを変更または削除していないことを証明できます。これは「一貫性証明」と呼ばれます。
 
-{% mermaid %}
+```mermaid
 graph TB
     A([ルートハッシュ<br/>H1234]) --> B([H12])
     A --> C([H34])
@@ -149,7 +149,7 @@ graph TB
     style E fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style F fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style G fill:#fff3e0,stroke:#f57c00,stroke-width:2px
-{% endmermaid %}
+```
 
 !!!anote "🔐 暗号的保証"
     マークル木構造は数学的確実性を提供します：
@@ -242,7 +242,7 @@ CTの最も強力な機能の1つは、誰でもログを監視できること�
 
 **分散化**：ブロックチェーンベースのアプローチにより、CTログをさらに分散化し、特定のログオペレーターへの依存を減らし、回復力を高めることができます。
 
-{% mermaid %}
+```mermaid
 timeline
     title 証明書の透明性の進化
     2011 : DigiNotar侵害
@@ -259,7 +259,7 @@ timeline
     未来 : プライバシーと自動化の強化
            : プライバシー保護メカニズム
            : 自動脅威対応
-{% endmermaid %}
+```
 
 ## 証明書の透明性を始める
 

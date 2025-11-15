@@ -69,7 +69,7 @@ canonical_lang: zh-CN
 
 **深度防御的核心思想：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["深度防御策略"]
     
@@ -93,7 +93,7 @@ graph TB
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#e8f5e9,stroke:#388e3d
     style E fill:#e3f2fd,stroke:#1976d2
-{% endmermaid %}
+```
 
 ### 1.3 保护与检测机制
 
@@ -131,7 +131,7 @@ graph TB
 
 **保护与检测的关系：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["攻击者"] --> B["保护机制"]
     B -->|"突破"| C["检测机制"]
@@ -150,7 +150,7 @@ graph LR
     style B fill:#e8f5e9,stroke:#388e3d
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#e3f2fd,stroke:#1976d2
-{% endmermaid %}
+```
 
 ### 1.4 多层安全机制示例
 
@@ -243,7 +243,7 @@ graph LR
 
 **密码协议设计的正确原则：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["密码协议设计原则"]
     
@@ -271,7 +271,7 @@ graph TB
     
     style B fill:#ffcdd2,stroke:#b71c1c
     style C fill:#c8e6c9,stroke:#2e7d32
-{% endmermaid %}
+```
 
 ### 2.3 密码协议设计要求
 
@@ -380,7 +380,7 @@ graph TB
 
 **数字签名的正确理解：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["数字签名"]
     
@@ -405,7 +405,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#e8f5e9,stroke:#388e3d
-{% endmermaid %}
+```
 
 ### 3.2 数字签名的工作原理
 
@@ -471,7 +471,7 @@ graph TB
 
 **完整性机制可以防范的攻击：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["完整性机制"]
     
@@ -492,7 +492,7 @@ graph TB
     style A fill:#e3f2fd,stroke:#1976d2
     style B fill:#4caf50,stroke:#2e7d32,color:#fff
     style C fill:#ffebee,stroke:#c62828
-{% endmermaid %}
+```
 
 !!!success "✅ 完整性机制防范的攻击"
     **数据传输中被篡改或破坏**
@@ -579,7 +579,7 @@ graph TB
 
 **完整性机制的工作流程：**
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant S as 发送方
     participant N as 网络
@@ -596,7 +596,7 @@ sequenceDiagram
     else 摘要不同
         R->>R: ❌ 数据被篡改，拒绝接受
     end
-{% endmermaid %}
+```
 
 ### 4.4 完整性机制的局限性
 
@@ -619,7 +619,7 @@ sequenceDiagram
 
 **综合安全方案：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["完整的安全方案"]
     
@@ -643,7 +643,7 @@ graph TB
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#f3e5f5,stroke:#7b1fa2
     style E fill:#fce4ec,stroke:#c2185b
-{% endmermaid %}
+```
 
 **实际应用示例：**
 
@@ -710,7 +710,7 @@ graph TB
 
 **TCP/IP协议栈安全协议分层：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["TCP/IP协议栈"]
     
@@ -741,7 +741,7 @@ graph TB
     style C fill:#e3f2fd,stroke:#1976d2
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#e8f5e9,stroke:#388e3d
-{% endmermaid %}
+```
 
 ### 4.2 各层安全协议详解
 

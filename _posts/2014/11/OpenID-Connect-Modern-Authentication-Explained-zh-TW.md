@@ -104,7 +104,8 @@ OIDC 涉及四個主要實體：
 
 ### 架構圖
 
-{% mermaid %}---
+```mermaid
+---
 title: OpenID Connect 架構
 ---
 flowchart TD
@@ -126,7 +127,7 @@ flowchart TD
     
     style AuthServer fill:#f96,stroke:#333,stroke-width:3px
     style Client fill:#9cf,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 客戶端透過授權伺服器驗證使用者身分，接收 ID 權杖和存取權杖。客戶端使用 ID 權杖建立使用者身分。資源伺服器驗證存取權杖以授權 API 請求。
 
@@ -164,7 +165,8 @@ OIDC 支援多種身份驗證流程以適應不同場景。
 
 此流程透過在後端使用客戶端密鑰將授權碼交換為權杖來保持權杖安全。授權碼透過瀏覽器傳遞，但權杖不會，從而保護它們免受基於瀏覽器的攻擊。
 
-{% mermaid %}---
+```mermaid
+---
 title: OpenID Connect 身份驗證流程
 ---
 sequenceDiagram
@@ -185,7 +187,7 @@ sequenceDiagram
     Client->>API: API 請求 + 存取權杖
     API->>API: 驗證存取權杖
     API->>Client: 受保護的資源
-{% endmermaid %}
+```
 
 ### 帶 PKCE 的授權碼流程
 

@@ -118,7 +118,8 @@ Symmetric key cryptography is faster than public key cryptography, making Kerber
 
 Understanding the authentication flow reveals how Kerberos achieves secure, efficient authentication:
 
-{% mermaid %}---
+```mermaid
+---
 title: Kerberos Authentication Flow
 ---
 sequenceDiagram
@@ -138,7 +139,7 @@ sequenceDiagram
     Service->>KDC: Validate Ticket
     KDC->>Service: Ticket Valid
     Service->>Client: Grant Access
-{% endmermaid %}
+```
 
 ### Step-by-Step Authentication
 

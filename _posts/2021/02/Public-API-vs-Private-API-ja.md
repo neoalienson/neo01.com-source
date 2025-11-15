@@ -28,7 +28,7 @@ comments: true
 - 互換性の保証なし
 - 削除される可能性がある
 
-{% mermaid %}
+```mermaid
 graph TB
     subgraph Public["🌐 パブリック API"]
         P1[文書化されたメソッド]
@@ -67,7 +67,7 @@ graph TB
     style Public fill:#e3f2fd,stroke:#1976d2
     style Private fill:#ffebee,stroke:#c62828
     style App fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 ## パブリック API：公式インターフェース
 
@@ -684,7 +684,7 @@ class Component {
 // - CHANGELOG で非推奨通知を読む
 ```
 
-{% mermaid %}
+```mermaid
 graph TB
     A[API を使用する必要がありますか？]
     
@@ -711,7 +711,7 @@ graph TB
     
     style F fill:#c8e6c9,stroke:#388e3c
     style G fill:#ffcdd2,stroke:#c62828
-{% endmermaid %}
+```
 
 
 ## 独自の API の設計
@@ -1031,7 +1031,7 @@ if (!Array.prototype.includes) {
 
 ### 非推奨化のタイムライン
 
-{% mermaid %}
+```mermaid
 gantt
     title API 非推奨化ライフサイクル
     dateFormat YYYY-MM
@@ -1043,7 +1043,7 @@ gantt
     移行ガイド公開 :active, 2021-01, 2021-03
     section v3.0
     API 削除              :crit, 2022-01, 2022-12
-{% endmermaid %}
+```
 
 !!!tip "💡 非推奨化のベストプラクティス"
     **1. 早期に通知する**
@@ -1253,7 +1253,7 @@ function ModernFunctionalComponent() {
 
 **重要なポイント**：
 
-{% mermaid %}
+```mermaid
 graph LR
     A[機能が必要？]
     B{パブリック API<br/>で利用可能？}
@@ -1277,7 +1277,7 @@ graph LR
     style F fill:#c8e6c9,stroke:#388e3c
     style G fill:#c8e6c9,stroke:#388e3c
     style H fill:#ffcdd2,stroke:#c62828
-{% endmermaid %}
+```
 
 ### 意思決定マトリックス
 

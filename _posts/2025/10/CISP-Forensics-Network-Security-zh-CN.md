@@ -52,7 +52,7 @@ canonical_lang: zh-CN
 
 ### 1.3 计算机取证流程
 
-{% mermaid %}
+```mermaid
 graph LR
     A["准备<br/>Preparation"] --> B["保护<br/>Protection"]
     B --> C["提取<br/>Extraction"]
@@ -64,7 +64,7 @@ graph LR
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#f3e5f5,stroke:#7b1fa2
     style E fill:#ffebee,stroke:#c62828
-{% endmermaid %}
+```
 
 **五个步骤详解：**
 
@@ -115,7 +115,7 @@ graph LR
 
 假设某电子商务系统的RPO为3小时：
 
-{% mermaid %}
+```mermaid
 timeline
     title RPO = 3小时的数据恢复场景
     09&colon;<00 : 最后一次备份
@@ -126,7 +126,7 @@ timeline
     14&colon;<00 : 恢复完成
           : 只能恢复到09:00的数据
           : 丢失了3小时的数据 （09:00-12:00）
-{% endmermaid %}
+```
 
 **RPO的影响因素：**
 
@@ -143,7 +143,7 @@ timeline
 
 假设某系统的RTO为1小时：
 
-{% mermaid %}
+```mermaid
 graph LR
     A["12:00<br/>故障发生"] --> B["12:10<br/>故障检测"]
     B --> C["12:20<br/>问题定位"]
@@ -152,7 +152,7 @@ graph LR
     
     style A fill:#ffcdd2,stroke:#c62828
     style E fill:#e8f5e9,stroke:#388e3d
-{% endmermaid %}
+```
 
 **RTO的组成部分：**
 
@@ -188,7 +188,7 @@ graph LR
 
 **XSS攻击场景示例：**
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant U as 用户
     participant S as 社交网站
@@ -204,7 +204,7 @@ sequenceDiagram
     T->>T: 截获用户社交信息
     
     Note over T: 获取用户及好友信息
-{% endmermaid %}
+```
 
 ### 3.2 XSS攻击类型
 
@@ -374,7 +374,7 @@ node server.js  # 监听80端口
 
 ### 5.2 保障模型三要素
 
-{% mermaid %}
+```mermaid
 graph LR
     A["信息系统安全保障模型"]
     
@@ -405,7 +405,7 @@ graph LR
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 **三要素详解：**
 
@@ -540,7 +540,7 @@ graph LR
 
 **数据封装流程：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["应用层<br/>Application Layer"] --> B["传输层<br/>Transport Layer"]
     B --> C["互联网络层<br/>Internet Layer"]
@@ -554,7 +554,7 @@ graph TB
     style B fill:#e8f5e9,stroke:#388e3d
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 **数据封装的层次顺序：**
 

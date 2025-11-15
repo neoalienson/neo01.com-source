@@ -27,7 +27,7 @@ A sidecar component in software:
 - Provides supporting features
 - Operates independently
 
-{% mermaid %}
+```mermaid
 graph LR
     A[Client] --> B[Load Balancer]
     B --> C[Application Instance 1]
@@ -43,7 +43,7 @@ graph LR
     style D fill:#4dabf7,stroke:#1971c2
     style C1 fill:#ffd43b,stroke:#fab005
     style D1 fill:#ffd43b,stroke:#fab005
-{% endmermaid %}
+```
 
 ## The Problem: Cross-Cutting Concerns
 
@@ -275,7 +275,7 @@ kubectl set image deployment/my-app \
 
 A sidecar proxy handles all network communication:
 
-{% mermaid %}
+```mermaid
 graph LR
     A[Service A] --> A1[Proxy Sidecar]
     B[Service B] --> B1[Proxy Sidecar]
@@ -289,7 +289,7 @@ graph LR
     style B fill:#4dabf7,stroke:#1971c2
     style A1 fill:#ffd43b,stroke:#fab005
     style B1 fill:#ffd43b,stroke:#fab005
-{% endmermaid %}
+```
 
 ```javascript
 // Application makes simple HTTP calls

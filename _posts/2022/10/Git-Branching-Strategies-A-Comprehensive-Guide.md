@@ -39,7 +39,7 @@ Git Flow, introduced by Vincent Driessen, remains popular for teams with schedul
 
 ### Git Flow Structure
 
-{% mermaid %}
+```mermaid
 ---
 config:
   logLevel: 'debug'
@@ -76,7 +76,7 @@ gitGraph
     commit id: "v1.0.1" tag: "v1.0.1"
     checkout develop
     merge hotfix/critical-bug
-{% endmermaid %}
+```
 
 ### Git Flow Implementation
 
@@ -122,7 +122,7 @@ GitHub Flow emphasizes simplicity and continuous deployment, making it ideal for
 
 ### GitHub Flow Structure
 
-{% mermaid %}
+```mermaid
 ---
 config:
   logLevel: 'debug'
@@ -153,7 +153,7 @@ gitGraph
     checkout main
     merge hotfix/payment-bug
     commit id: "Deploy" type: HIGHLIGHT
-{% endmermaid %}
+```
 
 ### GitHub Flow Process
 
@@ -193,7 +193,7 @@ GitLab Flow combines the simplicity of GitHub Flow with the release management c
 
 ### GitLab Flow with Environment Branches
 
-{% mermaid %}
+```mermaid
 ---
 config:
   logLevel: 'debug'
@@ -231,7 +231,7 @@ gitGraph
     merge feature/mobile-app
     checkout staging
     merge main
-{% endmermaid %}
+```
 
 ### GitLab Flow Implementation
 
@@ -269,7 +269,7 @@ The Feature Branch Workflow focuses on isolating feature development while maint
 
 ### Feature Branch Structure
 
-{% mermaid %}
+```mermaid
 ---
 config:
   logLevel: 'debug'
@@ -299,7 +299,7 @@ gitGraph
     commit id: "Release analytics"
     merge feature/notifications
     commit id: "Release notifications"
-{% endmermaid %}
+```
 
 ### Advanced Branching Patterns
 

@@ -108,7 +108,8 @@ HTTP 重定向和 HTTP POST 绑定在实践中占主导地位。IdP 将浏览器
 
 SAML 的架构实现了跨组织边界的联合身份验证：
 
-{% mermaid %}---
+```mermaid
+---
 title: SAML 架构
 ---
 flowchart TD
@@ -127,7 +128,7 @@ flowchart TD
     
     style IdP fill:#f96,stroke:#333,stroke-width:3px
     style Browser fill:#9cf,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 浏览器充当中介。IdP 和 SP 在身份验证期间从不直接通信——所有消息都通过浏览器流动。这种设计跨越防火墙和组织边界。SP 不需要网络访问 IdP。IdP 不需要提前知道所有 SP。
 
@@ -141,7 +142,8 @@ SAML 支持两种主要身份验证流程：SP 发起和 IdP 发起。
 
 SP 发起流程从应用程序开始：
 
-{% mermaid %}---
+```mermaid
+---
 title: SAML SP 发起身份验证流程
 ---
 sequenceDiagram
@@ -160,7 +162,7 @@ sequenceDiagram
     Browser->>SP: POST SAML 断言
     SP->>SP: 验证签名
     SP->>Browser: 授予访问权限
-{% endmermaid %}
+```
 
 详细流程：
 

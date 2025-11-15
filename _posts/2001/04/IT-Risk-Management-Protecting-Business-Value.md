@@ -111,7 +111,8 @@ Effective risk management follows a structured approach that transforms reactive
 
 Effective risk management follows a structured approach:
 
-{% mermaid %}flowchart TD
+```mermaid
+flowchart TD
     A[Identify Risks] --> B[Assess Risks]
     B --> C[Prioritize Risks]
     C --> D[Implement Controls]
@@ -123,7 +124,7 @@ Effective risk management follows a structured approach:
     style C fill:#f96,stroke:#333,stroke-width:3px
     style D fill:#9cf,stroke:#333,stroke-width:2px
     style E fill:#9cf,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 ### Risk Identification
 

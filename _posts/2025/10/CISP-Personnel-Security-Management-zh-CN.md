@@ -20,7 +20,7 @@ comments: true
 
 ## 一、人员安全管理的重要性
 
-{% mermaid %}
+```mermaid
 graph LR
     A["人员安全管理"] --> B["最难的环节"]
     A --> C["最重要的环节"]
@@ -39,13 +39,13 @@ graph LR
     style B fill:#ffebee,stroke:#c62828
     style C fill:#e8f5e9,stroke:#2e7d32
     style D fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 ## 二、人员安全管理的关键环节
 
 **完整的人员安全管理生命周期：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["招聘前"] --> B["入职时"]
     B --> C["在职期间"]
@@ -63,7 +63,7 @@ graph LR
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#fce4ec,stroke:#c2185b
-{% endmermaid %}
+```
 
 **关键控制措施：**
 
@@ -148,7 +148,7 @@ graph LR
 
 在单位中，以下人员的安全风险需要特别关注：
 
-{% mermaid %}
+```mermaid
 graph LR
     A["人员安全风险等级"]
     
@@ -177,7 +177,7 @@ graph LR
     style C fill:#8bc34a,stroke:#558b2f
     style D fill:#ff9800,stroke:#e65100
     style E fill:#f44336,stroke:#c62828
-{% endmermaid %}
+```
 
 !!!danger "🚨 最高风险：对公司不满的员工"
     **为什么风险最大：**
@@ -302,7 +302,7 @@ graph LR
 
 信息安全培训是人员安全管理的重要组成部分，应该建立分层次、全覆盖的培训体系。
 
-{% mermaid %}
+```mermaid
 graph TB
     A["信息安全培训体系"]
     
@@ -337,7 +337,7 @@ graph TB
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#fce4ec,stroke:#c2185b
-{% endmermaid %}
+```
 
 ### 4.2 分层培训计划
 
@@ -379,7 +379,7 @@ graph TB
 
 **为什么要培训高层管理者（一把手）：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["高层管理者培训的必要性"]
     
@@ -410,7 +410,7 @@ graph LR
     style C fill:#c5e1a5,stroke:#558b2f
     style D fill:#fff9c4,stroke:#f57f17
     style E fill:#b2dfdb,stroke:#00695c
-{% endmermaid %}
+```
 
 !!!warning "⚠️ 网络安全法的要求"
     **《中华人民共和国网络安全法》明确规定：**

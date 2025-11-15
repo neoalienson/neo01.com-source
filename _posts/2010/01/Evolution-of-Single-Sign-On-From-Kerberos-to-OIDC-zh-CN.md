@@ -17,7 +17,8 @@ series: authentication
 
 ### SSO 演进时间线
 
-{% mermaid %}timeline
+```mermaid
+timeline
     title 单点登录演进
     section 1980年代
         1988 : Kerberos v4
@@ -42,7 +43,7 @@ series: authentication
         2014 : OpenID Connect
              : 身份验证 + 授权
              : 云原生 SSO
-{% endmermaid %}
+```
 
 ## 密码问题
 
@@ -122,7 +123,8 @@ Kerberos 由 MIT 在 1980 年代开发，为分布式系统提供安全身份验
 
 Kerberos 解决了一个关键问题：如何在不发送密码的情况下跨网络验证用户身份。该协议使用对称密钥加密和可信的密钥分发中心（KDC）。"Kerberos"这个名字来自希腊神话——守卫冥界的三头犬，代表客户端、服务器和 KDC，它们共同保护身份验证的安全。
 
-{% mermaid %}---
+```mermaid
+---
 title: Kerberos 架构
 ---
 flowchart TD
@@ -142,7 +144,7 @@ flowchart TD
     
     style KDC fill:#f96,stroke:#333,stroke-width:3px
     style Client fill:#9cf,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 !!!tip "📖 深入了解：Kerberos"
     有关 Kerberos 架构、身份验证流程、票据结构、安全考虑和实施指南的详细内容，请参阅[理解 Kerberos：网络身份验证详解](/zh-CN/2010/03/Understanding-Kerberos-Network-Authentication-Explained/)。
@@ -216,7 +218,8 @@ SPNEGO 使内网 Web 应用程序能够使用 Windows 身份验证。员工访�
     - 成熟的企业标准
 
 
-{% mermaid %}---
+```mermaid
+---
 title: SAML 架构
 ---
 flowchart TD
@@ -233,11 +236,12 @@ flowchart TD
     
     style IdP fill:#f96,stroke:#333,stroke-width:3px
     style Browser fill:#9cf,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 SAML 将身份验证与应用程序访问分离。身份提供者（IdP）处理身份验证——验证你是谁。服务提供者（SP）信任 IdP 关于你身份的断言。当你访问启用 SAML 的应用程序时，它会将你重定向到组织的 IdP。你在 IdP 进行一次身份验证，IdP 会颁发 SAML 断言——一个数字签名的 XML 文档，说明你是谁以及你拥有哪些属性。
 
-{% mermaid %}---
+```mermaid
+---
 title: SAML 架构
 ---
 flowchart TD
@@ -254,7 +258,7 @@ flowchart TD
     
     style IdP fill:#f96,stroke:#333,stroke-width:3px
     style Browser fill:#9cf,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 ### SAML 实践
 
@@ -446,7 +450,8 @@ OpenID Connect 解决了 OAuth 未设计解决的身份验证问题：
 
 OIDC 通过添加 ID 令牌扩展了 OAuth——一个包含身份声明的 JWT。当你使用 OIDC 进行身份验证时，你会同时收到 ID 令牌（证明你是谁）和访问令牌（授予 API 访问权限）。这种明确的分离消除了混淆并提供了安全的身份验证。
 
-{% mermaid %}---
+```mermaid
+---
 title: OpenID Connect 架构
 ---
 flowchart TD
@@ -468,7 +473,7 @@ flowchart TD
     
     style AuthServer fill:#f96,stroke:#333,stroke-width:3px
     style Client fill:#9cf,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 ### OIDC 实践
 

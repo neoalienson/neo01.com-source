@@ -48,7 +48,7 @@ canonical_lang: zh-CN
 
 **VPN的核心价值：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["VPN核心价值"]
     
@@ -75,7 +75,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 ### 1.2 VPN的安全服务
 
@@ -142,7 +142,7 @@ VPN安全服务：
 
 **SSL/TLS握手过程中的密钥使用：**
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant C as 客户端
     participant S as 服务器
@@ -164,7 +164,7 @@ sequenceDiagram
     
     C->>S: 加密数据（用会话密钥）
     S->>C: 加密数据（用会话密钥）
-{% endmermaid %}
+```
 
 **公钥和私钥的功能对比：**
 
@@ -273,7 +273,7 @@ SSL/TLS安全特性：
 
 **SSL和IPSec的应用场景：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["选择SSL还是IPSec"]
     
@@ -295,7 +295,7 @@ graph TB
     
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#e8f5e9,stroke:#388e3d
-{% endmermaid %}
+```
 
 **SSL协议的优势总结：**
 
@@ -354,7 +354,7 @@ SSL协议优势：
 
 **IPSec协议栈结构：**
 
-{% mermaid %}
+```mermaid
 graph TB
     subgraph "IPSec协议栈"
         A["应用层"]
@@ -382,7 +382,7 @@ graph TB
     style F fill:#e3f2fd
     style G fill:#e8f5e9
     style H fill:#fff3e0
-{% endmermaid %}
+```
 
 **IPSec协议功能对比：**
 
@@ -469,7 +469,7 @@ IPSec在网络层工作，可以保护所有上层协议
 
 **NAT工作原理：**
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant I as 内部主机<br/>192.168.1.10
     participant F as 防火墙/NAT<br/>公网IP: 1.2.3.4
@@ -486,7 +486,7 @@ sequenceDiagram
     E->>F: 源IP: 8.8.8.8<br/>目标IP: 1.2.3.4
     Note over F: NAT转换<br/>1.2.3.4 → 192.168.1.10
     F->>I: 源IP: 8.8.8.8<br/>目标IP: 192.168.1.10
-{% endmermaid %}
+```
 
 **NAT类型：**
 
@@ -527,7 +527,7 @@ sequenceDiagram
 
 **网络安全防御层次：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["互联网"] --> B["防火墙<br/>第一道防线"]
     B --> C["IDS/IPS<br/>第二道防线"]
@@ -540,7 +540,7 @@ graph LR
     style C fill:#ff9800
     style F fill:#ffc107
     style G fill:#4caf50
-{% endmermaid %}
+```
 
 **防火墙在安全架构中的位置：**
 
@@ -667,7 +667,7 @@ iptables -A INPUT -p tcp --dport 53 -s 授权DNS服务器IP -j ACCEPT
 
 **网络可用性提升方案：**
 
-{% mermaid %}
+```mermaid
 graph TB
     subgraph "链路冗余架构"
         A["核心交换机A"]
@@ -689,7 +689,7 @@ graph TB
     style C fill:#2196f3
     style D fill:#2196f3
     style E fill:#ff9800
-{% endmermaid %}
+```
 
 **可用性提升技术对比：**
 
@@ -776,7 +776,7 @@ graph TB
 
 **Intranet架构：**
 
-{% mermaid %}
+```mermaid
 graph TB
     subgraph "Intranet（企业内部网络）"
         A["Web服务器"]
@@ -808,7 +808,7 @@ graph TB
     style D fill:#4caf50
     style E fill:#4caf50
     style G fill:#f44336
-{% endmermaid %}
+```
 
 ## 九、总结
 

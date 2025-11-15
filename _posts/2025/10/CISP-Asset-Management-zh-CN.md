@@ -23,7 +23,7 @@ canonical_lang: zh-CN
 
 信息资产可以分为多个类别，每个类别有不同的管理要求。
 
-{% mermaid %}
+```mermaid
 graph TB
     A["信息资产"]
     
@@ -71,7 +71,7 @@ graph TB
     style E fill:#fff3e0,stroke:#f57c00
     style F fill:#fce4ec,stroke:#c2185b
     style G fill:#e1f5fe,stroke:#0277bd
-{% endmermaid %}
+```
 
 ## 二、各类资产详解
 
@@ -194,7 +194,7 @@ graph TB
 
 **介质类资产包括：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["介质资产"]
     
@@ -222,7 +222,7 @@ graph LR
     style B fill:#fff3e0,stroke:#f57c00
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 **不属于介质资产的：**
 - ❌ 纸质文档（属于数据资产）
@@ -255,7 +255,7 @@ graph LR
 
 每个信息资产都必须明确其责任人。
 
-{% mermaid %}
+```mermaid
 graph TB
     A["信息资产"]
     
@@ -282,7 +282,7 @@ graph TB
     style B fill:#c8e6c9,stroke:#2e7d32
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#e3f2fd,stroke:#1976d2
-{% endmermaid %}
+```
 
 **各角色职责对比：**
 
@@ -340,7 +340,7 @@ graph TB
 
 ### 4.1 资产生命周期
 
-{% mermaid %}
+```mermaid
 graph LR
     A["采购/创建"] --> B["登记入库"]
     B --> C["分配使用"]
@@ -358,7 +358,7 @@ graph LR
     style D fill:#f3e5f5,stroke:#7b1fa2
     style E fill:#fce4ec,stroke:#c2185b
     style F fill:#ffebee,stroke:#c62828
-{% endmermaid %}
+```
 
 **各阶段管理要点：**
 
@@ -442,7 +442,7 @@ graph LR
 
 **常用标识方式：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["敏感性标识方法"]
     
@@ -472,7 +472,7 @@ graph TB
     style C fill:#c8e6c9,stroke:#2e7d32
     style D fill:#c8e6c9,stroke:#2e7d32
     style E fill:#ffebee,stroke:#c62828
-{% endmermaid %}
+```
 
 **标识方式对比：**
 
@@ -549,7 +549,7 @@ graph TB
 
 **PC出售前的处理方法：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["机密PC处置"]
     
@@ -580,7 +580,7 @@ graph TB
     style C fill:#ffebee,stroke:#c62828
     style D fill:#ffebee,stroke:#c62828
     style E fill:#e8f5e9,stroke:#388e3d
-{% endmermaid %}
+```
 
 !!!anote "💡 消磁是最佳选择"
     **在公开市场出售时选择消磁的原因：**
@@ -648,7 +648,7 @@ graph TB
 
 **责任分配：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["资产安全责任"]
     
@@ -680,7 +680,7 @@ graph TB
     style C fill:#e3f2fd,stroke:#1976d2
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 !!!anote "💡 安全管理员的核心责任"
     **为什么安全管理员负主要责任：**

@@ -255,7 +255,8 @@ users:
 
 **視覚的比較：**
 
-{% mermaid %}flowchart LR
+```mermaid
+flowchart LR
     A["👤 ユーザー"] -->|"1. ログインリクエスト"| B["🔐 IdP<br/>(Authelia)"]
     B -->|"2. 認証情報をチェック"| C["📚 ユーザーディレクトリ<br/>(YAML/LDAP)"]
     C -->|"3. 有効なユーザー"| B
@@ -268,7 +269,7 @@ users:
     style B fill:#e3f2fd
     style C fill:#f3e5f5
     style D fill:#e8f5e9
-{% endmermaid %}
+```
 
 #### すべてをまとめる
 
@@ -449,7 +450,8 @@ users:
 
 ### アーキテクチャ
 
-{% mermaid %}flowchart TD
+```mermaid
+flowchart TD
   User["👤 ユーザー"]
   Proxy["🚪 リバースプロキシ (Traefik/nginx)"]
   Authelia["🔐 Authelia"]
@@ -470,7 +472,7 @@ users:
   style Proxy fill:#fff3e0
   style LDAP fill:#f3e5f5
   style Services fill:#e8f5e9
-{% endmermaid %}
+```
 
 ### 前提条件
 
@@ -651,7 +653,8 @@ docker-compose up -d
 
 Authelia をセットアップしたので、保護されたサービスにアクセスしたときに何が起こるかを正確に見てみましょう：
 
-{% mermaid %}sequenceDiagram
+```mermaid
+sequenceDiagram
     participant User as ユーザー
     participant App as アプリケーション (Nextcloud)
     participant SSO as SSO プロバイダー (Authelia)
@@ -671,7 +674,7 @@ Authelia をセットアップしたので、保護されたサービスにア�
     App->>SSO: 9. 既存のセッションをチェック
     SSO->>App: 10. 有効なセッションが存在
     App->>User: 11. アクセスを許可（ログイン不要）
-{% endmermaid %}
+```
 
 **舞台裏で何が起こるか：**
 

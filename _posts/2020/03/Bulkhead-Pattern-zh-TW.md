@@ -41,7 +41,7 @@ comments: true
 3. **包含故障**在其指定的分區內
 4. **維持服務**對未受影響的元件
 
-{% mermaid %}
+```mermaid
 graph TB
     subgraph "沒有隔艙"
         A1[服務 A] --> SP[共享池<br/>100 執行緒]
@@ -63,7 +63,7 @@ graph TB
     style X2 fill:#ffd43b,stroke:#f59f00
     style OK1 fill:#51cf66,stroke:#2f9e44
     style OK2 fill:#51cf66,stroke:#2f9e44
-{% endmermaid %}
+```
 
 ## 運作方式：資源隔離
 
@@ -309,7 +309,7 @@ app.post('/api/reports', rateLimiter(bulkheadConfig.lowThroughput),
     
     **資源最佳化**：根據實際使用模式和優先級分配資源。
 
-{% mermaid %}
+```mermaid
 graph TD
     A[資源分析] --> B{共享資源？}
     B -->|是| C{關鍵服務？}
@@ -323,7 +323,7 @@ graph TD
     
     style E fill:#51cf66,stroke:#2f9e44
     style D fill:#4dabf7,stroke:#1971c2
-{% endmermaid %}
+```
 
 ## 架構品質屬性
 

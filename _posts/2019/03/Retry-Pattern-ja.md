@@ -28,7 +28,8 @@ comments: true
 
 一時的な障害を予期し、透過的に処理するようにアプリケーションを設計します。再試行パターンは、失敗した操作を自動的に再試行するメカニズムを導入し、ビジネス機能への影響を最小限に抑えます。
 
-{% mermaid %}graph LR
+```mermaid
+graph LR
     A["アプリケーション"] --> B["再試行ロジック"]
     B --> C["リモートサービス"]
     C -->|"成功"| D["結果を返す"]
@@ -40,7 +41,7 @@ comments: true
     style B fill:#fff4e1
     style C fill:#ffe1e1
     style D fill:#d3f9d8
-{% endmermaid %}
+```
 
 !!!tip "💡 組み込みの再試行メカニズム"
     多くのモダンなクライアントライブラリとフレームワークには、設定可能な再試行ロジックが含まれています。カスタム再試行コードを実装する前に、ライブラリのドキュメントを確認してください。
@@ -163,7 +164,8 @@ comments: true
 
 このアプローチにより、オペレーターは自己修正の問題に対するアラートで溢れることなく可視性を得ることができます。
 
-{% mermaid %}graph TB
+```mermaid
+graph TB
     A["リクエスト失敗"] --> B["ログ: INFO - 試行1失敗"]
     B --> C["待機して再試行"]
     C --> D["リクエスト再び失敗"]
@@ -176,7 +178,7 @@ comments: true
     style A fill:#ffe1e1
     style H fill:#d3f9d8
     style I fill:#ff6b6b
-{% endmermaid %}
+```
 
 ### パフォーマンスへの影響
 
@@ -255,14 +257,15 @@ comments: true
 
 **ソリューション**：下位レベルのタスクを高速に失敗し、障害を報告するように設定します。上位レベルのタスクが独自のポリシーに基づいて再試行を処理できるようにします。
 
-{% mermaid %}graph TB
+```mermaid
+graph TB
     A["タスク A<br/>(再試行ポリシー)"] --> B["タスク B<br/>(再試行なし)"]
     B -->|"高速に失敗"| A
     A -->|"ポリシーに基づいて再試行"| B
     
     style A fill:#e1f5ff
     style B fill:#fff4e1
-{% endmermaid %}
+```
 
 ## このパターンを使用する場合
 
@@ -287,7 +290,8 @@ comments: true
 - **再試行**：操作を再度試行することで一時的な障害を処理します
 - **サーキットブレーカー**：サービスがダウンしていることがわかっている場合に再試行を防ぎます
 
-{% mermaid %}stateDiagram-v2
+```mermaid
+stateDiagram-v2
     [*] --> Closed: 通常動作
     Closed --> Open: 障害しきい値超過
     Open --> HalfOpen: タイムアウト経過
@@ -308,7 +312,7 @@ comments: true
         限定的なリクエストが許可
         サービス回復をテスト
     end note
-{% endmermaid %}
+```
 
 これらのパターンを組み合わせることで、包括的な障害処理が提供されます：
 

@@ -24,7 +24,7 @@ comments: true
 
 信息安全从业人员掌握着组织的核心信息资产和安全防护能力，职业道德直接关系到信息安全的有效性和可信度。
 
-{% mermaid %}
+```mermaid
 graph LR
     A["职业道德重要性"]
     
@@ -54,13 +54,13 @@ graph LR
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 ### 1.2 职业道德准则框架
 
 **CISP职业道德准则的核心内容：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["CISP职业道德准则"]
     
@@ -82,7 +82,7 @@ graph TB
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#f3e5f5,stroke:#7b1fa2
     style F fill:#c8e6c9,stroke:#2e7d32
-{% endmermaid %}
+```
 
 ## 二、职业道德准则详解
 
@@ -176,7 +176,7 @@ graph TB
 
 **专业操守要求：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["专业操守"]
     
@@ -206,7 +206,7 @@ graph TB
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 **具体行为规范：**
 

@@ -20,7 +20,7 @@ thumbnail: /assets/devops/thumbnail.png
 
 几十年来，软件开发遵循线性路径：
 
-{% mermaid %}
+```mermaid
 graph LR
     A([📝 需求]) --> B([💻 开发])
     B --> C([🧪 测试])
@@ -28,7 +28,7 @@ graph LR
     D --> E([⚙️ 运维])
     style C fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style E fill:#ffebee,stroke:#c62828,stroke-width:2px
-{% endmermaid %}
+```
 
 开发人员编写代码。完成后，他们将代码"扔过墙"给 QA 团队进行测试。如果发现 bug，代码会返回给开发人员。这个循环不断重复，直到通过质量关卡。
 
@@ -48,7 +48,7 @@ graph LR
 
 左移改变了根本问题，从"我们如何测试这个？"变为"我们如何从一开始就构建质量？"
 
-{% mermaid %}
+```mermaid
 graph LR
     A([📝 需求<br/>+ 测试计划]) --> B([💻 开发<br/>+ 单元测试])
     B --> C([🧪 集成测试<br/>+ 安全扫描])
@@ -57,7 +57,7 @@ graph LR
     style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
     style B fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style C fill:#fff3e0,stroke:#f57c00,stroke-width:2px
-{% endmermaid %}
+```
 
 质量实践被整合到每个阶段：
 
@@ -78,7 +78,7 @@ graph LR
 
 有效的左移实践遵循一个持续改进循环，适用于开发的每个层面：
 
-{% mermaid %}
+```mermaid
 graph LR
     A([🔍 观察<br/>当前状态]) --> B([🎯 计划<br/>改进])
     B --> C([⚡ 行动<br/>实施变更])
@@ -88,7 +88,7 @@ graph LR
     style B fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style C fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style D fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
-{% endmermaid %}
+```
 
 **观察**：了解代码、测试和质量指标的当前状态。什么有效？什么失败了？瓶颈在哪里？
 
@@ -132,7 +132,7 @@ TDD 颠覆了传统的开发流程：在编写代码之前先编写测试。
 3. **重构**：在保持测试通过的同时提高代码质量
 4. **重复**：转向下一个功能
 
-{% mermaid %}
+```mermaid
 graph LR
     A([❌ 编写<br/>失败测试]) --> B([✅ 使<br/>测试通过])
     B --> C([🔧 重构<br/>代码])
@@ -140,7 +140,7 @@ graph LR
     style A fill:#ffebee,stroke:#c62828,stroke-width:2px
     style B fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style C fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
-{% endmermaid %}
+```
 
 **好处：**
 
@@ -180,7 +180,7 @@ CI 自动化了集成代码变更和运行测试的过程。每次提交都会�
 
 **CI 如何工作：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A([👨💻 开发者<br/>提交代码]) --> B([🔄 CI 服务器<br/>检测变更])
     B --> C([🏗️ 构建<br/>应用程序])
@@ -192,7 +192,7 @@ graph TB
     style E fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style F fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style G fill:#ffebee,stroke:#c62828,stroke-width:2px
-{% endmermaid %}
+```
 
 **关键原则：**
 
@@ -282,7 +282,7 @@ pipeline:
 
 **容器扫描**：分析 Docker 镜像的安全问题。
 
-{% mermaid %}
+```mermaid
 graph TB
     A([💻 代码提交]) --> B([🔍 SAST 扫描])
     B --> C([📦 依赖检查])
@@ -293,7 +293,7 @@ graph TB
     style E fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style F fill:#ffebee,stroke:#c62828,stroke-width:2px
     style G fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-{% endmermaid %}
+```
 
 **好处：**
 
@@ -381,7 +381,7 @@ terraform apply
 
 测试金字塔指导如何在不同层面分配测试工作。
 
-{% mermaid %}
+```mermaid
 graph TB
     A[🔺 测试金字塔]
     B[端到端测试<br/>少量、慢速、昂贵]
@@ -395,7 +395,7 @@ graph TB
     style B fill:#ffebee,stroke:#c62828,stroke-width:2px
     style C fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style D fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-{% endmermaid %}
+```
 
 **单元测试（基础）：**
 - 测试单个函数或类

@@ -22,13 +22,13 @@ The answer is yes, thanks to Slidev, a presentation framework that lets you writ
 
 In this blog post, I will introduce you to Slidev and show you how it compares to traditional presentation tools like PowerPoint. I will also explore the possibility of generating presentation code with large language model (LLM) AI.
 
-{% mermaid %}
+```mermaid
 graph LR
     A["Traditional Tools"] --> B["PowerPoint/Keynote"]
     C["Presentation as Code"] --> D["Markdown + Slidev"]
     B --> E["Visual Editor"]
     D --> F["Code Editor + Git"]
-{% endmermaid %}
+```
 
 ## What is Presentation as Code?
 

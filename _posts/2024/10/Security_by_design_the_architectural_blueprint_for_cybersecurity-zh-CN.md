@@ -30,7 +30,7 @@ comments: true
 
 **仅周边防御**：仅专注于外部防御而忽视内部安全不是安全设计。现代威胁需要深度防御，而不仅仅是坚固的外墙。
 
-{% mermaid %}
+```mermaid
 graph LR
     A(安全设计) -->|主动| B(从一开始构建)
     A -->|全面| C(每层都受保护)
@@ -42,7 +42,7 @@ graph LR
     
     style A fill:#90EE90
     style E fill:#FFB6C6
-{% endmermaid %}
+```
 
 相比之下，"默认安全"是开箱即用设置应该尽可能安全的原则。想象购买一部智能手机，默认启用所有必要的隐私设置，而不是需要手动调整这些设置来保护您的数据。
 
@@ -58,7 +58,7 @@ graph LR
 
 这些实践是相互关联的；威胁建模为控制验证提供信息，自动化有助于一致应用通过威胁建模识别的控制。
 
-{% mermaid %}
+```mermaid
 graph TD
     A(威胁建模) -->|识别风险| B[安全控制]
     B -->|实施| C[控制验证]
@@ -72,7 +72,7 @@ graph TD
     style A fill:#87CEEB
     style E fill:#90EE90
     style G fill:#FFD700
-{% endmermaid %}
+```
 
 ## 自动化控制验证和补救：增强安全设计
 

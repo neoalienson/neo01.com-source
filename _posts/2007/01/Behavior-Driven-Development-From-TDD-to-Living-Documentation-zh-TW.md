@@ -17,7 +17,8 @@ excerpt: "BDD 承諾讓業務利害關係人能讀懂測試，但從單元測試
 
 ### 測試演進時間軸
 
-{% mermaid %}timeline
+```mermaid
+timeline
     title 測試方法論演進
     section 1990s
         1994 : 單元測試
@@ -40,7 +41,7 @@ excerpt: "BDD 承諾讓業務利害關係人能讀懂測試，但從單元測試
         2015 : 活文件
              : 測試即文件
              : 持續驗證
-{% endmermaid %}
+```
 
 ## 測試問題
 
@@ -189,7 +190,8 @@ TDD 反轉測試流程：
 
 TDD 將測試視為設計工具，而非驗證工具。不是先寫程式碼再測試，而是先寫測試。測試描述你希望程式碼做什麼。然後你撰寫最簡單的程式碼讓測試通過。最後，你重構以改善設計，同時保持測試綠燈。
 
-{% mermaid %}---
+```mermaid
+---
 title: TDD 紅-綠-重構循環
 ---
 flowchart LR
@@ -204,7 +206,7 @@ flowchart LR
     style Red fill:#f99,stroke:#333,stroke-width:2px
     style Green fill:#9f9,stroke:#333,stroke-width:2px
     style Refactor fill:#99f,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 ### TDD 實務
 
@@ -302,7 +304,8 @@ BDD 引入了規格的結構化格式：
 
 Given-When-Then 提供描述行為的範本。Given 建立情境。When 描述動作。Then 指定預期結果。這個結構適用於業務規格和技術測試。
 
-{% mermaid %}---
+```mermaid
+---
 title: BDD 規格結構
 ---
 flowchart TD
@@ -316,7 +319,7 @@ flowchart TD
     style Given fill:#9cf,stroke:#333,stroke-width:2px
     style When fill:#fc9,stroke:#333,stroke-width:2px
     style Then fill:#9f9,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 ### BDD 框架出現
 
@@ -420,7 +423,8 @@ Gherkin 規格任何人都能閱讀。業務分析師撰寫描述期望行為的
 
 BDD 改變開發工作流程：
 
-{% mermaid %}---
+```mermaid
+---
 title: BDD 開發工作流程
 ---
 flowchart TD
@@ -441,7 +445,7 @@ flowchart TD
     style Business fill:#9cf,stroke:#333,stroke-width:2px
     style Execute fill:#fc9,stroke:#333,stroke-width:2px
     style Done fill:#9f9,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 工作流程從業務利害關係人用 Gherkin 描述期望行為開始。開發者實作步驟定義和功能程式碼。規格作為測試執行，驗證行為。當測試通過時，功能完成，規格成為活文件。
 

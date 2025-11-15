@@ -45,7 +45,8 @@ comments: true
 
 腐敗防止層パターンは、異なるサブシステムを分離し、それらの間に翻訳層を配置することでこれを解決します。この層は、2つのシステム間のすべての通信を処理し、一方のシステムを変更せずに維持しながら、もう一方のシステムが設計を損なうことを回避できるようにします。
 
-{% mermaid %}graph LR
+```mermaid
+graph LR
     A["モダンアプリケーション<br/>(サブシステムA)"]
     ACL["腐敗防止<br/>層"]
     B["レガシーシステム<br/>(サブシステムB)"]
@@ -56,7 +57,7 @@ comments: true
     style A fill:#4CAF50,stroke:#2E7D32,color:#fff
     style ACL fill:#2196F3,stroke:#1565C0,color:#fff
     style B fill:#FF9800,stroke:#E65100,color:#fff
-{% endmermaid %}
+```
 
 ### 仕組み
 
@@ -107,7 +108,8 @@ class LegacySystemAdapter {
 
 ACLを別のマイクロサービスとしてデプロイします：
 
-{% mermaid %}graph TB
+```mermaid
+graph TB
     subgraph "モダンアーキテクチャ"
         A1[サービス A]
         A2[サービス B]
@@ -128,7 +130,7 @@ ACLを別のマイクロサービスとしてデプロイします：
     ACL --> L2
     
     style ACL fill:#2196F3,stroke:#1565C0,color:#fff
-{% endmermaid %}
+```
 
 ### 3. APIゲートウェイパターン
 

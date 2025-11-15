@@ -21,7 +21,7 @@ GitOps means managing your entire infrastructure like you manage code in Git –
 
 GitOps is a way of managing your infrastructure and applications using Git as the single source of truth. It lets you define your desired state in code, and then use tools to apply that state to your environments. GitOps enables continuous delivery, as any change in your Git repository triggers a pipeline that deploys the new version of your code.
 
-{% mermaid %}
+```mermaid
 graph LR
     A([Developer]) -->|Commits| B[(Git Repository)]
     B -->|Triggers| C[CI/CD Pipeline]
@@ -33,7 +33,7 @@ graph LR
     style C fill:#90EE90
     style D fill:#FFD700
     style E fill:#FFA07A
-{% endmermaid %}
+```
 
 ## GitOps for Jenkins Pipelines
 
@@ -262,7 +262,7 @@ Track the health of your GitOps-managed pipelines:
 - **Sync Status**: Ensure Git state matches Jenkins state
 - **Failure Alerts**: Get notified when seeder jobs fail
 
-{% mermaid %}
+```mermaid
 graph TD
     A[Git Commit] -->|Webhook| B[Seeder Job]
     B -->|Success| C[Update Metrics]
@@ -276,7 +276,7 @@ graph TD
     style B fill:#87CEEB
     style C fill:#90EE90
     style D fill:#FFB6C6
-{% endmermaid %}
+```
 
 ### State Management Patterns
 

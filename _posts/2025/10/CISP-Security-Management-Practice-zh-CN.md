@@ -25,7 +25,7 @@ comments: true
 
 **威胁主体排序（从低到高）：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["威胁主体排序"]
     
@@ -49,7 +49,7 @@ graph TB
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#ffebee,stroke:#e53935
     style E fill:#b71c1c,stroke:#b71c1c,color:#fff
-{% endmermaid %}
+```
 
 **威胁主体特征对比：**
 
@@ -71,7 +71,7 @@ graph TB
 
 **体系建设需要重点考虑的因素：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["信息安全保障<br/>管理体系建设"]
     
@@ -102,7 +102,7 @@ graph LR
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#f3e5f5,stroke:#7b1fa2
     style E fill:#ffebee,stroke:#c62828
-{% endmermaid %}
+```
 
 **必须考虑的因素：**
 
@@ -138,7 +138,7 @@ graph LR
 
 **信息安全管理的根本目标：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["信息安全管理<br/>日常工作"]
     
@@ -158,7 +158,7 @@ graph TB
     style A fill:#e3f2fd,stroke:#1976d2
     style B fill:#4caf50,stroke:#2e7d32,color:#fff
     style C fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 !!!success "🎯 根本目标"
     **保护组织的信息资产**是信息安全管理的根本目标。
@@ -184,7 +184,7 @@ graph TB
 
 **风险管理是信息安全管理的根本方法：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["风险管理"]
     
@@ -214,7 +214,7 @@ graph TB
     style B fill:#e8f5e9,stroke:#388e3d
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 **管理方法层次关系：**
 
@@ -241,7 +241,7 @@ graph TB
 
 **资产分类分级的责任主体：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["信息资产"]
     
@@ -272,7 +272,7 @@ graph LR
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#f3e5f5,stroke:#7b1fa2
     style E fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 !!!success "🎯 最终责任人"
     **信息资产所有者**负有资产分类与分级的最终责任。
@@ -316,7 +316,7 @@ graph LR
 
 **职责分离（Separation of Duties, SoD）的目的：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["职责分离原则"]
     
@@ -341,7 +341,7 @@ graph TB
     style B fill:#e8f5e9,stroke:#388e3d
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 **需要分离的职责组合：**
 
@@ -395,7 +395,7 @@ graph TB
 
 **构建安全管理组织体系的必需内容：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["安全管理<br/>组织体系"]
     
@@ -426,7 +426,7 @@ graph TB
     style C fill:#4caf50,stroke:#2e7d32,color:#fff
     style D fill:#4caf50,stroke:#2e7d32,color:#fff
     style E fill:#ffebee,stroke:#c62828
-{% endmermaid %}
+```
 
 **必需考虑的内容：**
 
@@ -464,7 +464,7 @@ graph TB
 
 **信息安全保障的四大要素：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["信息安全保障"]
     
@@ -495,7 +495,7 @@ graph LR
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#f3e5f5,stroke:#7b1fa2
     style E fill:#fce4ec,stroke:#c2185b
-{% endmermaid %}
+```
 
 !!!anote "💡 四大要素"
     信息安全保障要素包括：**技术、管理、工程、人员**
@@ -529,7 +529,7 @@ graph LR
 
 **信息安全保障的正确理念：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["信息安全保障"]
     
@@ -562,7 +562,7 @@ graph TB
     style C fill:#4caf50,stroke:#2e7d32,color:#fff
     style D fill:#4caf50,stroke:#2e7d32,color:#fff
     style E fill:#4caf50,stroke:#2e7d32,color:#fff
-{% endmermaid %}
+```
 
 **正确的理念：**
 
@@ -597,7 +597,7 @@ graph TB
 
 **信息安全保障的生命周期：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["规划"] --> B["设计"]
     B --> C["实施"]
@@ -612,7 +612,7 @@ graph LR
     style D fill:#f3e5f5,stroke:#7b1fa2
     style E fill:#fce4ec,stroke:#c2185b
     style F fill:#e1f5fe,stroke:#0277bd
-{% endmermaid %}
+```
 
 **持续性活动的体现：**
 
@@ -631,7 +631,7 @@ graph LR
 
 **工程监理的定位与作用：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["信息安全<br/>工程监理"]
     
@@ -656,7 +656,7 @@ graph TB
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#4caf50,stroke:#2e7d32,color:#fff
     style E fill:#ffebee,stroke:#c62828
-{% endmermaid %}
+```
 
 !!!success "✅ 监理的作用"
     
@@ -694,7 +694,7 @@ graph TB
 
 **监理的独立性原则：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["监理独立性"]
     
@@ -719,13 +719,13 @@ graph LR
     style B fill:#4caf50,stroke:#2e7d32,color:#fff
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 ### 9.2 应急响应方法论
 
 **GB/T 24364-2009 应急响应过程：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["1. 准备"] --> B["2. 确认"]
     B --> C["3. 遏制"]
@@ -739,7 +739,7 @@ graph LR
     style D fill:#f3e5f5,stroke:#7b1fa2
     style E fill:#fce4ec,stroke:#c2185b
     style F fill:#e1f5fe,stroke:#0277bd
-{% endmermaid %}
+```
 
 !!!anote "💡 应急响应六步法"
     依据GB/T 24364-2009《信息安全技术 信息安全应急响应计划规范》，应急响应过程包括六个步骤，**第二步是确认**。
@@ -774,7 +774,7 @@ graph LR
 
 **确认阶段的关键问题：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["确认阶段"]
     
@@ -808,13 +808,13 @@ graph TB
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#f3e5f5,stroke:#7b1fa2
     style E fill:#fce4ec,stroke:#c2185b
-{% endmermaid %}
+```
 
 ### 9.3 信息安全组织架构
 
 **国家信息安全组织架构的两种模式：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["国家信息安全<br/>组织架构模式"]
     
@@ -836,7 +836,7 @@ graph TB
     style B fill:#e8f5e9,stroke:#388e3d
     style C fill:#fff3e0,stroke:#f57c00
     style C2 fill:#4caf50,stroke:#2e7d32,color:#fff
-{% endmermaid %}
+```
 
 !!!success "🎯 美国采用多部门协调模式"
     美国的信息安全组织架构采用**多部门协调**的做法，多个部门分别管理信息安全相关工作，同时加强部门间的协调。
@@ -850,7 +850,7 @@ graph TB
 
 **美国信息安全组织架构特点：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["美国信息安全<br/>组织架构"]
     
@@ -881,7 +881,7 @@ graph TB
     
     style A fill:#e3f2fd,stroke:#1976d2
     style G fill:#4caf50,stroke:#2e7d32,color:#fff
-{% endmermaid %}
+```
 
 **多部门协调模式的关键要素：**
 
@@ -914,7 +914,7 @@ graph TB
 
 **信息安全保障的立体保障体系：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["信息安全保障<br/>立体保障"]
     
@@ -935,7 +935,7 @@ graph TB
     style A fill:#e3f2fd,stroke:#1976d2
     style B fill:#fff3e0,stroke:#f57c00
     style C fill:#4caf50,stroke:#2e7d32,color:#fff
-{% endmermaid %}
+```
 
 !!!anote "💡 运行时安全工作的范围"
     信息安全保障是一种立体保障，在运行时的安全工作包括：
@@ -977,7 +977,7 @@ graph TB
 
 **信息安全保障的生命周期阶段：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["规划设计"] --> B["建设实施"]
     B --> C["运行维护"]
@@ -992,7 +992,7 @@ graph LR
     
     style A fill:#fff3e0,stroke:#f57c00
     style C fill:#4caf50,stroke:#2e7d32,color:#fff
-{% endmermaid %}
+```
 
 **运行时安全工作的三大支柱：**
 
@@ -1051,7 +1051,7 @@ graph LR
 
 **运行时安全工作的协同关系：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["运行时安全工作"]
     
@@ -1078,7 +1078,7 @@ graph TB
     style B fill:#e8f5e9,stroke:#388e3d
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 **运行时安全工作的最佳实践：**
 

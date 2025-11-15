@@ -28,7 +28,7 @@ thumbnail_80: /assets/cisp/thumbnail_80.png
 
 #### 复杂性的来源
 
-{% mermaid %}
+```mermaid
 graph TD
     A["系统复杂性"] --> B["技术复杂性"]
     A --> C["业务复杂性"]
@@ -50,7 +50,7 @@ graph TD
     style B fill:#ffd93d
     style C fill:#ffd93d
     style D fill:#ffd93d
-{% endmermaid %}
+```
 
 **技术层面的复杂性**：
 - 多层次的系统架构（网络层、系统层、应用层）
@@ -107,7 +107,7 @@ graph TD
 
 ### 信息安全发展的三个阶段
 
-{% mermaid %}
+```mermaid
 timeline
     title 信息安全发展历程
     section 通信保密阶段
@@ -122,7 +122,7 @@ timeline
         2000s-至今 : 全生命周期
                   : 体系化防御
                   : 动态防护
-{% endmermaid %}
+```
 
 ### 信息安全保障阶段的基本特征
 
@@ -141,7 +141,7 @@ timeline
 
 **纵深防御架构**：
 
-{% mermaid %}
+```mermaid
 graph TB
     subgraph "防御层次"
         L1["物理层"]
@@ -164,7 +164,7 @@ graph TB
     style L3 fill:#e3f2fd
     style L4 fill:#e3f2fd
     style L5 fill:#e3f2fd
-{% endmermaid %}
+```
 
 #### ✅ 动态发展变化
 
@@ -209,7 +209,7 @@ PDR模型是一个动态的安全模型，包含三个核心要素：
 
 P2DR模型在PDR基础上增加了Policy（策略）要素：
 
-{% mermaid %}
+```mermaid
 graph LR
     P1["Policy<br/>策略"] --> P2["Protection<br/>防护"]
     P2 --> D["Detection<br/>检测"]
@@ -220,7 +220,7 @@ graph LR
     style P2 fill:#2196f3
     style D fill:#ff9800
     style R fill:#f44336
-{% endmermaid %}
+```
 
 **Policy（策略）**：
 - 安全策略制定
@@ -278,7 +278,7 @@ Rt：响应时间（从检测到响应完成）
 
 **安全运营中心（SOC）架构**：
 
-{% mermaid %}
+```mermaid
 graph TB
     subgraph "策略层"
         P["安全策略<br/>管理制度"]
@@ -317,7 +317,7 @@ graph TB
     style R1 fill:#f44336
     style R2 fill:#f44336
     style R3 fill:#f44336
-{% endmermaid %}
+```
 
 ## CC标准（Common Criteria）
 
@@ -420,7 +420,7 @@ CC标准使用**EAL（Evaluation Assurance Level）**评估保证等级：
 
 #### 评估流程
 
-{% mermaid %}
+```mermaid
 graph LR
     A["定义PP"] --> B["编写ST"]
     B --> C["开发TOE"]
@@ -432,7 +432,7 @@ graph LR
     style C fill:#fff3e0
     style D fill:#f3e5f5
     style E fill:#e8f5e9
-{% endmermaid %}
+```
 
 ## 信息安全与业务发展的关系
 
@@ -445,7 +445,7 @@ graph LR
 
 ### 安全与业务的平衡
 
-{% mermaid %}
+```mermaid
 graph TB
     A["业务发展"] <--> B["信息安全"]
     
@@ -462,7 +462,7 @@ graph TB
     
     style A fill:#4caf50
     style B fill:#2196f3
-{% endmermaid %}
+```
 
 ### 投资收益的特点
 

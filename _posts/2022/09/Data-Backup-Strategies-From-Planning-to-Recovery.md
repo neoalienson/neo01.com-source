@@ -247,7 +247,7 @@ Combination of local and cloud storage for optimal balance.
 - Local cache for frequently accessed data
 - Automated tiering based on access patterns
 
-{% mermaid %}
+```mermaid
 graph TD
     A("Production Data") --> B("Local Backup")
     A --> C("Cloud Backup")
@@ -263,7 +263,7 @@ graph TD
     style E fill:#fff3e0
     style F fill:#ffebee
     style G fill:#ffebee
-{% endmermaid %}
+```
 
 ## Backup Retention Policies
 

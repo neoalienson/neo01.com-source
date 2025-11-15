@@ -37,7 +37,7 @@ comments: true
 3. **トークンのみを送信**：メッセージングシステムを通じて
 4. **ペイロードを取得**：必要に応じてトークンを使用して
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant Sender
     participant DataStore as 外部データストア
@@ -51,7 +51,7 @@ sequenceDiagram
     Receiver->>DataStore: 5. トークンを使用してペイロードを取得
     DataStore-->>Receiver: 6. ペイロードを返す
     Receiver->>Receiver: 7. ペイロードを処理
-{% endmermaid %}
+```
 
 ## 仕組み：実際のパターン
 
@@ -180,7 +180,7 @@ function generateClaimCheck() {
     
     **複雑なルーティング**：メッセージが複数のコンポーネントを通過する場合、中間者を通じてトークンのみを渡すことで、繰り返しのシリアル化/デシリアル化のオーバーヘッドを回避します。
 
-{% mermaid %}
+```mermaid
 graph TD
     A[メッセージサイズ分析] --> B{サイズ > しきい値？}
     B -->|はい| C[クレームチェックを使用]
@@ -192,7 +192,7 @@ graph TD
     
     style C fill:#51cf66,stroke:#2f9e44
     style F fill:#4dabf7,stroke:#1971c2
-{% endmermaid %}
+```
 
 ## アーキテクチャ品質属性
 

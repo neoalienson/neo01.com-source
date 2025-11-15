@@ -34,7 +34,7 @@ canonical_lang: zh-CN
        - 考虑系统遭到破坏后的影响
        - 确定最终的保护等级
 
-{% mermaid %}
+```mermaid
 graph TB
     A["等级保护定级阶段"]
     
@@ -54,7 +54,7 @@ graph TB
     
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#e8f5e9,stroke:#388e3d
-{% endmermaid %}
+```
 
 ### 1.2 定级步骤详解
 
@@ -108,7 +108,7 @@ graph TB
        - 安全工程实施的规范性
        - 工程建设的质量
 
-{% mermaid %}
+```mermaid
 graph TB
     A["信息系统安全评估"]
     
@@ -135,7 +135,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 ### 2.2 三个方面的评估内容
 
@@ -204,7 +204,7 @@ graph TB
        - 威胁发生的可能性
        - 威胁造成的影响
 
-{% mermaid %}
+```mermaid
 graph TB
     A["安全保障需求"]
     
@@ -231,7 +231,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 ### 3.2 需求因素详解
 
@@ -292,7 +292,7 @@ graph TB
        - 工程管理
        - 工程质量
 
-{% mermaid %}
+```mermaid
 graph TB
     A["GB/T 20274评估对象"]
     
@@ -319,7 +319,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 **评估对象的准确理解：**
 
@@ -362,7 +362,7 @@ TCSEC（Trusted Computer System Evaluation Criteria，可信计算机系统评�
        - A1：验证设计
        - 最高级别的安全保护
 
-{% mermaid %}
+```mermaid
 graph TB
     A["TCSEC安全等级"]
     
@@ -391,7 +391,7 @@ graph TB
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#e8f5e9,stroke:#388e3d
     style E fill:#e3f2fd,stroke:#1976d2
-{% endmermaid %}
+```
 
 ### 4.2 TCSEC等级详解
 
@@ -483,7 +483,7 @@ A级：形式化验证，最高安全
        - 信息保障技术框架
        - 用于信息保障体系建设
 
-{% mermaid %}
+```mermaid
 timeline
     title 评估标准发展历程
     1985 : TCSEC : 美国橙皮书 : 计算机系统评估
@@ -491,7 +491,7 @@ timeline
     1996 : CC v1.0 : 通用准则诞生 : 融合各国标准
     1999 : ISO/IEC 15408 : CC成为国际标准 : 全球通行
     2000s : 广泛应用 : CC成为主流 : 国际认可
-{% endmermaid %}
+```
 
 ### 5.2 各标准特点对比
 
@@ -521,7 +521,7 @@ timeline
        - 评估保证级别
        - 从EAL1到EAL7，共7个级别
 
-{% mermaid %}
+```mermaid
 graph TB
     A["CC标准"]
     
@@ -545,7 +545,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 **CC标准的EAL级别：**
 

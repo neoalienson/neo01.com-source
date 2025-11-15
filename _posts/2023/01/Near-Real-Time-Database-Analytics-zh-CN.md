@@ -18,7 +18,7 @@ comments: true
 
 传统数据架构依赖于定期运行的批处理 ETL（提取、转换、加载）流程——通常是在夜间运行。当业务决策可以等到早上时，这种方法运作良好，但今天的竞争环境需要更快的洞察。
 
-{% mermaid %}
+```mermaid
 graph LR
     subgraph Traditional["⏰ 传统批处理 ETL"]
         T1[OLTP 数据库] -->|夜间 ETL| T2[数据仓库]
@@ -32,7 +32,7 @@ graph LR
     
     style Traditional fill:#ffcdd2,stroke:#c62828
     style RealTime fill:#c8e6c9,stroke:#2e7d32
-{% endmermaid %}
+```
 
 **批处理的局限性：**
 
@@ -52,7 +52,7 @@ graph LR
 
 四种架构模式应运而生，以应对近实时分析的挑战。每种模式在复杂性、延迟和能力之间提供不同的权衡：
 
-{% mermaid %}
+```mermaid
 graph TB
     subgraph Lambda["🔀 Lambda 架构"]
         L1[批处理层<br/>历史数据]
@@ -62,9 +62,9 @@ graph TB
         L2 --> L3
     end
     style Lambda fill:#e3f2fd,stroke:#1976d2
-{% endmermaid %}
+```
 
-{% mermaid %}
+```mermaid
 graph TB    
     subgraph Kappa["⚡ Kappa 架构"]
         K1[流处理<br/>所有数据]
@@ -73,9 +73,9 @@ graph TB
     end
 
     style Kappa fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
-{% mermaid %}
+```mermaid
 graph TB   
     subgraph Microservices["🔧 事件驱动微服务"]
         M1[服务 A<br/>摄取]
@@ -85,9 +85,9 @@ graph TB
         M2 --> M3
     end
     style Microservices fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
-{% mermaid %}
+```mermaid
 graph TB   
     subgraph Medallion["🥇 Medallion 架构"]
         MD1[青铜层<br/>原始数据]
@@ -97,7 +97,7 @@ graph TB
         MD2 --> MD3
     end
     style Medallion fill:#e8f5e9,stroke:#388e3c
-{% endmermaid %}
+```
 
 **快速比较：**
 
@@ -135,7 +135,7 @@ Lambda 架构背后的基本思想是通过将工作负载分成两个互补系�
 
 ### 架构组件
 
-{% mermaid %}
+```mermaid
 graph TB
     DS[数据源] --> BP[批处理<br/>Hadoop/Spark]
     DS --> SP[流处理<br/>Kafka/Flink]
@@ -152,7 +152,7 @@ graph TB
     style BP fill:#64b5f6,stroke:#1976d2
     style SP fill:#81c784,stroke:#388e3c
     style SL fill:#ffb74d,stroke:#f57c00
-{% endmermaid %}
+```
 
 !!!warning "⚠️ Lambda 架构的挑战"
     **双重代码库**：维护独立的批处理和流处理逻辑增加了复杂性，可能导致不一致。
@@ -197,7 +197,7 @@ Kappa 架构挑战了对独立批处理和流处理系统的需求。相反，�
 
 ### 架构组件
 
-{% mermaid %}
+```mermaid
 graph TB
     DS[数据源] --> KS[Kafka 流<br/>事件日志]
     KS --> SP1[流处理器 1<br/>当前视图]
@@ -212,7 +212,7 @@ graph TB
     style KS fill:#7b1fa2,stroke:#4a148c
     style SP1 fill:#ab47bc,stroke:#7b1fa2
     style SP2 fill:#ce93d8,stroke:#ab47bc
-{% endmermaid %}
+```
 
 !!!anote "💡 Kappa 架构的优势"
     **单一代码库**：一套处理逻辑处理所有数据，降低复杂性并确保一致性。
@@ -270,7 +270,7 @@ graph TB
 
 ### 架构组件
 
-{% mermaid %}
+```mermaid
 graph TB
     ES[事件源] --> EB[事件总线<br/>Kafka/RabbitMQ]
     
@@ -291,7 +291,7 @@ graph TB
     style MS2 fill:#ffb74d,stroke:#f57c00
     style MS3 fill:#ffb74d,stroke:#f57c00
     style MS4 fill:#ffb74d,stroke:#f57c00
-{% endmermaid %}
+```
 
 !!!anote "💡 微服务的优势"
     **独立扩展**：根据特定负载扩展每个服务。
@@ -366,7 +366,7 @@ Medallion 架构采用结构化的分层方法进行数据处理，每层都有�
 
 ### 架构组件
 
-{% mermaid %}
+```mermaid
 graph LR
     DS[数据源] --> B[青铜层<br/>原始数据<br/>按原样存储]
     B --> S[白银层<br/>清洗数据<br/>验证和去重]
@@ -379,7 +379,7 @@ graph LR
     style B fill:#cd7f32,stroke:#8b4513,color:#fff
     style S fill:#c0c0c0,stroke:#808080
     style G fill:#ffd700,stroke:#daa520
-{% endmermaid %}
+```
 
 !!!anote "💡 Medallion 架构的优势"
     **数据血缘**：从原始数据到业务指标的清晰可追溯性。
@@ -580,7 +580,7 @@ graph LR
 
 ### 决策流程图
 
-{% mermaid %}
+```mermaid
 graph TD
     Start([开始：选择架构]) --> Q1{延迟<br/>需求？}
     
@@ -611,7 +611,7 @@ graph TD
     style Med3 fill:#e8f5e9,stroke:#388e3c,stroke-width:3px
     style Lambda1 fill:#e3f2fd,stroke:#1976d2,stroke-width:3px
     style Lambda2 fill:#e3f2fd,stroke:#1976d2,stroke-width:3px
-{% endmermaid %}
+```
 
 ### 按场景的模式推荐
 

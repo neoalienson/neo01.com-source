@@ -56,7 +56,7 @@ canonical_lang: zh-CN
 
 **IATF的四个焦点领域：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["IATF四个焦点领域"]
     
@@ -90,7 +90,7 @@ graph LR
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#e8f5e9,stroke:#388e3d
     style E fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 **四个焦点领域详解：**
 
@@ -175,7 +175,7 @@ IATF四个焦点领域：
 
 **多点防御示意图：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["互联网"] --> B["边界防火墙"]
     B --> C["DMZ"]
@@ -194,11 +194,11 @@ graph TB
     style D fill:#fff9c4,stroke:#f57f17
     style E fill:#e8f5e9,stroke:#388e3d
     style F fill:#e3f2fd,stroke:#1976d2
-{% endmermaid %}
+```
 
 **分层防御示意图：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["分层防御体系"]
     
@@ -229,7 +229,7 @@ graph TB
     style E fill:#e8f5e9,stroke:#388e3d
     style F fill:#e3f2fd,stroke:#1976d2
     style G fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 **多点防御 vs 分层防御：**
 
@@ -325,7 +325,7 @@ IATF应用步骤：
 
 **SABSA的六层模型：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["SABSA六层模型"]
     
@@ -356,7 +356,7 @@ graph TB
     style E fill:#f3e5f5,stroke:#7b1fa2
     style F fill:#fce4ec,stroke:#c2185b
     style G fill:#ffebee,stroke:#c62828
-{% endmermaid %}
+```
 
 **SABSA六层详解：**
 

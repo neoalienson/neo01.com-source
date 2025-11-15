@@ -99,7 +99,7 @@ Patterns that support system modernization:
 
 Use this flowchart to navigate to the most appropriate pattern for your situation:
 
-{% mermaid %}
+```mermaid
 graph TD
     Start[What's your challenge?] --> Q1{Service<br/>availability?}
     
@@ -141,7 +141,7 @@ graph TD
     style HEM fill:#ffd43b
     style Sidecar fill:#ffd43b
     style SF fill:#a78bfa
-{% endmermaid %}
+```
 
 ## Pattern Comparison Matrix
 
@@ -321,7 +321,7 @@ Expand successful implementations:
 
 Assess your organization's pattern adoption maturity:
 
-{% mermaid %}
+```mermaid
 graph LR
     L1[Level 1:<br/>Ad-hoc] --> L2[Level 2:<br/>Aware]
     L2 --> L3[Level 3:<br/>Defined]
@@ -333,7 +333,7 @@ graph LR
     style L3 fill:#4dabf7
     style L4 fill:#51cf66
     style L5 fill:#a78bfa
-{% endmermaid %}
+```
 
 **Level 1 - Ad-hoc**: No consistent pattern usage, reactive problem-solving
 

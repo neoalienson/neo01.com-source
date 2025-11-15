@@ -17,7 +17,8 @@ series: authentication
 
 ### SSO 進化のタイムライン
 
-{% mermaid %}timeline
+```mermaid
+timeline
     title シングルサインオンの進化
     section 1980年代
         1988 : Kerberos v4
@@ -42,7 +43,7 @@ series: authentication
         2014 : OpenID Connect
              : 認証 + 認可
              : クラウドネイティブ SSO
-{% endmermaid %}
+```
 
 ## パスワードの問題
 
@@ -122,7 +123,8 @@ Kerberos は1980年代に MIT で開発され、分散システムに安全な�
 
 Kerberos は重要な問題を解決しました：パスワードを送信せずにネットワーク経由でユーザーを認証する方法。このプロトコルは対称鍵暗号と信頼できる鍵配布センター（KDC）を使用します。「Kerberos」という名前はギリシャ神話に由来します—冥界を守る三つ頭の犬で、クライアント、サーバー、KDC を表し、すべてが協力して認証を保護します。
 
-{% mermaid %}---
+```mermaid
+---
 title: Kerberos アーキテクチャ
 ---
 flowchart TD
@@ -142,7 +144,7 @@ flowchart TD
     
     style KDC fill:#f96,stroke:#333,stroke-width:3px
     style Client fill:#9cf,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 !!!tip "📖 詳細：Kerberos"
     Kerberos アーキテクチャ、認証フロー、チケット構造、セキュリティ考慮事項、実装ガイダンスの詳細については、[Kerberos を理解する：ネットワーク認証詳解](/ja/2010/03/Understanding-Kerberos-Network-Authentication-Explained/)を参照してください。
@@ -217,7 +219,8 @@ Security Assertion Markup Language（SAML）は組織の境界を越えた SSO �
 
 SAML は認証とアプリケーションアクセスを分離します。アイデンティティプロバイダー（IdP）が認証を処理します—あなたが誰であるかを確認します。サービスプロバイダー（SP）は IdP のあなたの ID に関するアサーションを信頼します。SAML 対応アプリケーションにアクセスすると、組織の IdP にリダイレクトされます。IdP で一度認証すると、IdP は SAML アサーション—あなたが誰で、どのような属性を持っているかを示すデジタル署名された XML ドキュメント—を発行します。
 
-{% mermaid %}---
+```mermaid
+---
 title: SAML アーキテクチャ
 ---
 flowchart TD
@@ -234,7 +237,7 @@ flowchart TD
     
     style IdP fill:#f96,stroke:#333,stroke-width:3px
     style Browser fill:#9cf,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 ### SAML の実践
 
@@ -426,7 +429,8 @@ OpenID Connect は OAuth が設計されていなかった認証問題を解決�
 
 OIDC は ID トークン—ID クレームを含む JWT—を追加することで OAuth を拡張します。OIDC で認証すると、ID トークン（あなたが誰であるかを証明）とアクセストークン（API アクセスを許可）の両方を受け取ります。この明確な分離により混乱がなくなり、安全な認証が提供されます。
 
-{% mermaid %}---
+```mermaid
+---
 title: OpenID Connect アーキテクチャ
 ---
 flowchart TD
@@ -448,7 +452,7 @@ flowchart TD
     
     style AuthServer fill:#f96,stroke:#333,stroke-width:3px
     style Client fill:#9cf,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 ### OIDC の実践
 

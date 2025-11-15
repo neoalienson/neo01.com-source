@@ -35,7 +35,7 @@ The best pay-as-you-go option is per month. Per usage pay-as-you-go model does n
 
 Now, let us examine the available cloud services for your VPN/proxy adventures. You can create a VPN/proxy server on Cloud. For simplicity, let's start with a proxy server on Google Cloud. Here's how it is going to work:
 
-{% mermaid %}
+```mermaid
 flowchart LR
 pc["Your PC\nin Country A\n\n"]
 ssh["SSH tunnel\n\n"]
@@ -44,7 +44,7 @@ proxy["Proxy on Google Cloud\nin Country B\n\n"]
 ssh-->proxy
 target["Target Website\n\n"]
 proxy-->target
-{% endmermaid %}
+```
 
 The flowchart illustrates the setup of a proxy server on Google Cloud. Your PC (PC) is in Country A, and you want to access a target website (target) that is restricted or has content blocked by your location. You establish an SSH tunnel (ssh) from your PC to the proxy server (proxy) on Google Cloud, which is located in Country B. This allows you to bypass geographical restrictions and access the target website as if you were in Country B.
 

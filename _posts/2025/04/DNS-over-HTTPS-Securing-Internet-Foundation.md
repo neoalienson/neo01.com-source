@@ -487,7 +487,8 @@ These mechanisms enable seamless DoH adoption while respecting network policies.
 
 Oblivious DoH (RFC 9230) addresses DoH's trust concentration problem by separating query visibility from IP address visibility:
 
-{% mermaid %}sequenceDiagram
+```mermaid
+sequenceDiagram
     participant Client
     participant Proxy
     participant Target as DoH Server
@@ -501,7 +502,7 @@ Oblivious DoH (RFC 9230) addresses DoH's trust concentration problem by separati
     Target->>Proxy: Send encrypted response
     Proxy->>Client: Forward encrypted response
     Client->>Client: Decrypt response
-{% endmermaid %}
+```
 
 !!!anote "🔐 ODoH Privacy Model"
     **Traditional DoH:**
@@ -554,7 +555,8 @@ DNS over HTTPS represents a fundamental shift in internet privacy, encrypting a 
 
 However, DoH's adoption has been contentious, challenging established network management practices and raising concerns about centralization, enterprise security, and regulatory control. Network administrators lose visibility they've relied on for security monitoring and troubleshooting. DNS traffic concentrates among a few large providers, creating new risks. Organizations must adapt their security strategies to maintain protection without DNS visibility.
 
-{% mermaid %}graph TB
+```mermaid
+graph TB
     A["DoH Adoption"]
     
     B["Privacy Benefits"]
@@ -584,7 +586,7 @@ However, DoH's adoption has been contentious, challenging established network ma
     style B fill:#e8f5e9,stroke:#388e3c
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 The debate around DoH reflects broader tensions in internet governance: privacy versus control, centralization versus distribution, user autonomy versus network management. There's no perfect solution—each approach involves trade-offs and different trust assumptions.
 

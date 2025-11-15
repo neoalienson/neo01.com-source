@@ -20,7 +20,7 @@ thumbnail: /assets/devops/thumbnail.png
 
 在探索右移之前，讓我們先釐清左移實現了什麼。傳統的軟體開發生命週期是這樣的：
 
-{% mermaid %}
+```mermaid
 graph LR
     A([📝 需求]) --> B([💻 開發])
     B --> C([🧪 測試])
@@ -28,13 +28,13 @@ graph LR
     D --> E([⚙️ 維運])
     style C fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style E fill:#ffebee,stroke:#c62828,stroke-width:2px
-{% endmermaid %}
+```
 
 測試發生得很晚，在開發「完成」之後。在這個階段發現 bug 的成本很高——程式碼必須返回給已經轉向其他專案的開發人員。回饋循環緩慢且成本高昂。
 
 左移將品質實踐提前：
 
-{% mermaid %}
+```mermaid
 graph LR
     A([📝 需求<br/>+ 測試計畫]) --> B([💻 開發<br/>+ 單元測試])
     B --> C([🧪 整合測試<br/>+ 安全掃描])
@@ -43,7 +43,7 @@ graph LR
     style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
     style B fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style C fill:#fff3e0,stroke:#f57c00,stroke-width:2px
-{% endmermaid %}
+```
 
 **關鍵左移實踐：**
 - **測試驅動開發（TDD）**：在編寫程式碼之前編寫測試
@@ -60,7 +60,7 @@ graph LR
 
 右移不是將生產環境視為應該「正常運作」的黑盒，而是將生產環境視為學習環境。它將 DevOps 實踐擴展到部署之外：
 
-{% mermaid %}
+```mermaid
 graph LR
     A([📝 需求]) --> B([💻 開發])
     B --> C([🧪 測試])
@@ -70,7 +70,7 @@ graph LR
     F -.回饋.-> A
     style E fill:#e0f2f1,stroke:#00796b,stroke-width:2px
     style F fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
-{% endmermaid %}
+```
 
 **核心右移原則：**
 
@@ -100,7 +100,7 @@ graph LR
 
 **可觀測性**讓你可以對系統行為提出任意問題：「為什麼這個特定使用者的請求花了 5 秒？」「下午 2 點到 3 點之間發生了什麼變化導致延遲激增？」你不需要提前預測問題。
 
-{% mermaid %}
+```mermaid
 graph TB
     A([🌐 生產系統]) --> B([📊 指標<br/>CPU、記憶體、請求])
     A --> C([📝 日誌<br/>應用程式事件])
@@ -111,7 +111,7 @@ graph TB
     E --> F([❓ 提出問題<br/>理解行為])
     style E fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
     style F fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-{% endmermaid %}
+```
 
 **可觀測性的三大支柱：**
 
@@ -166,7 +166,7 @@ if (featureFlags.isEnabled('new-checkout-flow', user)) {
 
 **終止開關**：無需重新部署即可立即停用有問題的功能。
 
-{% mermaid %}
+```mermaid
 graph TB
     A([🚀 部署到生產環境]) --> B{特性開關}
     B -->|1% 使用者| C([👥 金絲雀組])
@@ -178,7 +178,7 @@ graph TB
     style E fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style G fill:#ffebee,stroke:#c62828,stroke-width:2px
     style H fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-{% endmermaid %}
+```
 
 **好處：**
 
@@ -211,7 +211,7 @@ graph TB
 
 5. **學習和改進**：如果系統沒有按預期表現，修復問題並重複
 
-{% mermaid %}
+```mermaid
 graph LR
     A([📊 定義<br/>穩定狀態]) --> B([🤔 假設<br/>行為])
     B --> C([💥 引入<br/>混沌])
@@ -223,7 +223,7 @@ graph LR
     style C fill:#ffebee,stroke:#c62828,stroke-width:2px
     style F fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style G fill:#fff3e0,stroke:#f57c00,stroke-width:2px
-{% endmermaid %}
+```
 
 **常見混沌實驗：**
 
@@ -326,7 +326,7 @@ async function checkoutFlow() {
 
 **事後審查**：從發生的事情中學習，不歸咎於人。
 
-{% mermaid %}
+```mermaid
 graph TB
     A([🚨 偵測到事故]) --> B([🔍 分類<br/>評估影響])
     B --> C([📢 溝通<br/>通知利益相關者])
@@ -338,7 +338,7 @@ graph TB
     style D fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style F fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
     style G fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-{% endmermaid %}
+```
 
 **無責備事後分析：**
 
@@ -363,7 +363,7 @@ graph TB
 
 最有效的 DevOps 組織不會在左移和右移之間做選擇——他們兩者都擁抱。每個都解決軟體品質的不同方面：
 
-{% mermaid %}
+```mermaid
 graph TB
     subgraph "左移：預防"
         A([單元測試])
@@ -393,7 +393,7 @@ graph TB
     E --> I
     I -.回饋.-> A
     style E fill:#e3f2fd,stroke:#1976d2,stroke-width:3px
-{% endmermaid %}
+```
 
 **何時強調左移：**
 

@@ -31,7 +31,7 @@ A software circuit breaker:
 - Permits limited test requests after timeout
 - Closes when service demonstrates recovery
 
-{% mermaid %}
+```mermaid
 stateDiagram-v2
     [*] --> Closed
     Closed --> Open: Failure threshold reached
@@ -56,7 +56,7 @@ stateDiagram-v2
         Trial requests allowed
         Evaluating recovery
     end note
-{% endmermaid %}
+```
 
 ## Problem: Cascading Failures in Distributed Systems
 
@@ -217,7 +217,7 @@ class CircuitBreaker {
 
 ## Circuit Breaker States
 
-{% mermaid %}
+```mermaid
 graph TB
     subgraph Closed["🟢 CLOSED State"]
         C1[Request arrives]
@@ -267,7 +267,7 @@ graph TB
     style Closed fill:#d3f9d8,stroke:#2f9e44
     style Open fill:#ffe3e3,stroke:#c92a2a
     style HalfOpen fill:#fff3bf,stroke:#f59f00
-{% endmermaid %}
+```
 
 ### Closed State: Normal Operation
 

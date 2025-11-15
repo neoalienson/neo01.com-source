@@ -108,7 +108,8 @@ HTTP リダイレクトと HTTP POST バインディングが実際には支配�
 
 SAML のアーキテクチャは、組織の境界を越えたフェデレーションを実現します：
 
-{% mermaid %}---
+```mermaid
+---
 title: SAML アーキテクチャ
 ---
 flowchart TD
@@ -127,7 +128,7 @@ flowchart TD
     
     style IdP fill:#f96,stroke:#333,stroke-width:3px
     style Browser fill:#9cf,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 ブラウザが仲介役として機能します。IdP と SP は認証中に直接通信することはありません—すべてのメッセージはブラウザを通じて流れます。この設計はファイアウォールと組織の境界を越えて機能します。SP は IdP へのネットワークアクセスを必要としません。IdP はすべての SP を事前に知る必要がありません。
 
@@ -141,7 +142,8 @@ SAML は 2 つの主要な認証フローをサポートします：SP 開始と
 
 SP 開始フローはアプリケーションから始まります：
 
-{% mermaid %}---
+```mermaid
+---
 title: SAML SP 開始認証フロー
 ---
 sequenceDiagram
@@ -160,7 +162,7 @@ sequenceDiagram
     Browser->>SP: SAML アサーションを POST
     SP->>SP: 署名を検証
     SP->>Browser: アクセスを許可
-{% endmermaid %}
+```
 
 詳細なフロー：
 

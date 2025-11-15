@@ -27,7 +27,7 @@ comments: true
 - 提供支援功能
 - 獨立運作
 
-{% mermaid %}
+```mermaid
 graph LR
     A[客戶端] --> B[負載平衡器]
     B --> C[應用程式實例 1]
@@ -43,7 +43,7 @@ graph LR
     style D fill:#4dabf7,stroke:#1971c2
     style C1 fill:#ffd43b,stroke:#fab005
     style D1 fill:#ffd43b,stroke:#fab005
-{% endmermaid %}
+```
 
 ## 問題：橫切關注點
 
@@ -275,7 +275,7 @@ kubectl set image deployment/my-app \
 
 Sidecar 代理處理所有網路通訊：
 
-{% mermaid %}
+```mermaid
 graph LR
     A[服務 A] --> A1[代理 Sidecar]
     B[服務 B] --> B1[代理 Sidecar]
@@ -289,7 +289,7 @@ graph LR
     style B fill:#4dabf7,stroke:#1971c2
     style A1 fill:#ffd43b,stroke:#fab005
     style B1 fill:#ffd43b,stroke:#fab005
-{% endmermaid %}
+```
 
 ```javascript
 // 應用程式進行簡單的 HTTP 呼叫

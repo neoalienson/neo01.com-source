@@ -92,7 +92,8 @@ OAuth 定義了四個參與授權流程的不同角色：
 
 ### 流程概覽
 
-{% mermaid %}sequenceDiagram
+```mermaid
+sequenceDiagram
     participant User as 👤 資源擁有者
     participant Browser as 🌐 瀏覽器
     participant Client as 📱 客戶端應用程式
@@ -109,7 +110,7 @@ OAuth 定義了四個參與授權流程的不同角色：
     AuthServer->>Client: 8. 存取權杖 + 重新整理權杖
     Client->>ResourceServer: 9. 使用存取權杖的 API 請求
     ResourceServer->>Client: 10. 受保護的資源資料
-{% endmermaid %}
+```
 
 ### 逐步分解
 
@@ -218,7 +219,8 @@ OAuth 定義了四個參與授權流程的不同角色：
 
 ### 隱式流程如何運作
 
-{% mermaid %}sequenceDiagram
+```mermaid
+sequenceDiagram
     participant User as 👤 資源擁有者
     participant Browser as 🌐 瀏覽器/SPA
     participant AuthServer as 🔐 授權伺服器
@@ -231,7 +233,7 @@ OAuth 定義了四個參與授權流程的不同角色：
     Browser->>Browser: 5. 從 URL 提取權杖
     Browser->>ResourceServer: 6. 使用權杖的 API 請求
     ResourceServer->>Browser: 7. 受保護的資源
-{% endmermaid %}
+```
 
 ### 為什麼隱式流程被棄用
 
@@ -286,7 +288,8 @@ PKCE 透過添加無法預先提取的動態、每次請求密鑰來解決這個
 
 ### PKCE 流程
 
-{% mermaid %}sequenceDiagram
+```mermaid
+sequenceDiagram
     participant User as 👤 資源擁有者
     participant Client as 📱 行動應用程式/SPA
     participant AuthServer as 🔐 授權伺服器
@@ -303,7 +306,7 @@ PKCE 透過添加無法預先提取的動態、每次請求密鑰來解決這個
     AuthServer->>Client: 9. 存取權杖
     Client->>ResourceServer: 10. API 請求
     ResourceServer->>Client: 11. 受保護的資源
-{% endmermaid %}
+```
 
 ### PKCE 實作細節
 
@@ -395,7 +398,8 @@ PKCE 現在建議所有 OAuth 客戶端使用，包括能夠儲存密鑰的機�
 
 ### 客戶端憑證流程
 
-{% mermaid %}sequenceDiagram
+```mermaid
+sequenceDiagram
     participant Client as 🖥️ 客戶端服務
     participant AuthServer as 🔐 授權伺服器
     participant ResourceServer as 💾 資源伺服器
@@ -405,7 +409,7 @@ PKCE 現在建議所有 OAuth 客戶端使用，包括能夠儲存密鑰的機�
     AuthServer->>Client: 3. 存取權杖
     Client->>ResourceServer: 4. 使用權杖的 API 請求
     ResourceServer->>Client: 5. 受保護的資源
-{% endmermaid %}
+```
 
 ### 實作
 
@@ -571,7 +575,8 @@ OpenID Connect (OIDC) 擴展 OAuth 2.0 以提供身份驗證：
 
 ### 重新整理權杖流程
 
-{% mermaid %}sequenceDiagram
+```mermaid
+sequenceDiagram
     participant Client as 📱 客戶端應用程式
     participant AuthServer as 🔐 授權伺服器
     participant ResourceServer as 💾 資源伺服器
@@ -583,7 +588,7 @@ OpenID Connect (OIDC) 擴展 OAuth 2.0 以提供身份驗證：
     AuthServer->>Client: 5. 新存取權杖 + 新重新整理權杖
     Client->>ResourceServer: 6. 使用新權杖的 API 請求
     ResourceServer->>Client: 7. 受保護的資源
-{% endmermaid %}
+```
 
 ### 重新整理權杖安全
 

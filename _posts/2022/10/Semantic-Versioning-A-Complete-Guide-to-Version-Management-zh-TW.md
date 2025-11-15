@@ -46,7 +46,7 @@ thumbnail: /assets/coding/2.png
 
 讓我們追蹤一個函式庫如何透過不同類型的變更進行演進：
 
-{% mermaid %}
+```mermaid
 gitGraph
     commit id: "1.0.0 初始發布"
     commit id: "1.0.1 錯誤修復" tag: "PATCH"
@@ -55,7 +55,7 @@ gitGraph
     commit id: "1.1.1 錯誤修復" tag: "PATCH"
     commit id: "1.2.0 新 API" tag: "MINOR"
     commit id: "2.0.0 破壞性變更" tag: "MAJOR"
-{% endmermaid %}
+```
 
 **版本 1.0.0 → 1.0.1**：修復使用者驗證中的空指標例外
 **版本 1.0.1 → 1.0.2**：修補 SQL 注入漏洞
@@ -64,7 +64,7 @@ gitGraph
 **版本 1.1.1 → 1.2.0**：新增使用者角色管理 API
 **版本 1.2.0 → 2.0.0**：移除已棄用的身份驗證方法
 
-{% mermaid %}
+```mermaid
 flowchart TD
     A["🔄 程式碼變更"] --> B{"💥 破壞性變更？"}
     B -->|是| C["📈 主版本號"]
@@ -78,7 +78,7 @@ flowchart TD
     style E fill:#4ecdc4
     style G fill:#45b7d1
     style H fill:#96ceb4
-{% endmermaid %}
+```
 
 ## 預發布版本和建置中繼資料
 
@@ -133,7 +133,7 @@ SemVer 定義了嚴格的版本比較優先順序規則：
 
 以下是語意化版本控制如何與 Git 分支策略整合：
 
-{% mermaid %}
+```mermaid
 gitGraph
     commit id: "2.1.0"
     branch feature/user-search
@@ -158,13 +158,13 @@ gitGraph
     checkout main
     merge feature/breaking-auth
     commit id: "3.0.0" tag: "MAJOR"
-{% endmermaid %}
+```
 
 ### 發布分支策略
 
 對於複雜專案，使用發布分支來穩定版本：
 
-{% mermaid %}
+```mermaid
 gitGraph
     commit id: "2.0.0"
     commit id: "功能 A"
@@ -186,7 +186,7 @@ gitGraph
     checkout release/2.2
     commit id: "2.2.0-rc.1"
     commit id: "2.2.0" tag: "發布"
-{% endmermaid %}
+```
 
 ## 在專案中實施 SemVer
 
@@ -360,7 +360,7 @@ mypackage@1.3.0-beta.20221022
 ```
 
 **工作流程範例**：
-{% mermaid %}
+```mermaid
 gitGraph
     commit id: "1.2.0 發布"
     commit id: "開始 1.3.0-SNAPSHOT"
@@ -371,7 +371,7 @@ gitGraph
     commit id: "更多功能"
     commit id: "發布 SNAPSHOT-3"
     commit id: "1.3.0 發布" tag: "不可變"
-{% endmermaid %}
+```
 
 ### 不可變儲存庫
 

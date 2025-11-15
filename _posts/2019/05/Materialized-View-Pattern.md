@@ -43,7 +43,7 @@ The Materialized View pattern addresses this challenge by generating and storing
 3. **Stores the results** in a format optimized for fast retrieval
 4. **Updates the view** when source data changes
 
-{% mermaid %}
+```mermaid
 graph LR
     A[Source Data Store] -->|Transform & Aggregate| B[Materialized View]
     C[Application Query] -->|Fast Read| B
@@ -52,7 +52,7 @@ graph LR
     
     style B fill:#51cf66,stroke:#2f9e44
     style A fill:#4dabf7,stroke:#1971c2
-{% endmermaid %}
+```
 
 The key insight: a materialized view is completely disposable. It can be rebuilt entirely from source data, making it a specialized form of cache that stores computed results rather than raw data.
 
@@ -272,7 +272,7 @@ class MaterializedViewReader {
 
 Views don't need to reside in the same store as source data:
 
-{% mermaid %}
+```mermaid
 graph TD
     A[Transactional DB] -->|Extract| D[View Builder]
     B[Document Store] -->|Extract| D
@@ -285,7 +285,7 @@ graph TD
     style E fill:#51cf66,stroke:#2f9e44
     style F fill:#51cf66,stroke:#2f9e44
     style G fill:#51cf66,stroke:#2f9e44
-{% endmermaid %}
+```
 
 **Storage Options:**
 - **In-memory cache** (Redis, Memcached): Ultra-fast access, volatile

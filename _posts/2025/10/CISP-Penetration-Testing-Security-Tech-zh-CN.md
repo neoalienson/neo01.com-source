@@ -43,7 +43,7 @@ canonical_lang: zh-CN
     - 发现设计和实现中的安全缺陷
     - 提供改进建议
 
-{% mermaid %}
+```mermaid
 graph TB
     A["渗透测试"]
     
@@ -70,7 +70,7 @@ graph TB
     style D fill:#e8f5e9,stroke:#388e3d
     style E fill:#f3e5f5,stroke:#7b1fa2
     style F fill:#ffebee,stroke:#c62828
-{% endmermaid %}
+```
 
 ### 1.2 渗透测试过程
 
@@ -93,7 +93,7 @@ graph TB
 
 **渗透测试时间选择原则：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["渗透测试时间选择"]
     
@@ -115,7 +115,7 @@ graph LR
     
     style B fill:#c8e6c9,stroke:#2e7d32
     style C fill:#ffcdd2,stroke:#b71c1c
-{% endmermaid %}
+```
 
 ### 1.3 渗透测试流程详解
 
@@ -208,7 +208,7 @@ graph LR
 
 **按测试者掌握的信息分类：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["渗透测试类型"]
     
@@ -232,7 +232,7 @@ graph TB
     style B fill:#263238,stroke:#000,color:#fff
     style C fill:#eceff1,stroke:#000
     style D fill:#78909c,stroke:#000,color:#fff
-{% endmermaid %}
+```
 
 **三种测试类型对比：**
 
@@ -258,7 +258,7 @@ graph TB
     3. 接收方使用发送方的公钥验证签名
     4. 验证成功则确认消息来源和完整性
 
-{% mermaid %}
+```mermaid
 graph LR
     A["原始消息"] --> B["计算摘要"]
     B --> C["私钥加密"]
@@ -273,7 +273,7 @@ graph LR
     style A fill:#e3f2fd,stroke:#1976d2
     style D fill:#e8f5e9,stroke:#388e3d
     style I fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 ### 2.2 数字签名的安全特性
 
@@ -301,7 +301,7 @@ graph LR
 
 **数字签名 vs 加密：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["密码学技术"]
     
@@ -324,7 +324,7 @@ graph TB
     
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 **数字签名的功能对比：**
 
@@ -435,7 +435,7 @@ graph TB
 
 **HTTPS协议架构：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["HTTPS协议栈"]
     
@@ -457,7 +457,7 @@ graph TB
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#e8f5e9,stroke:#388e3d
     style E fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 ### 3.3 HTTP vs HTTPS
 

@@ -49,7 +49,7 @@ class ProductPageClient {
 }
 ```
 
-{% mermaid %}
+```mermaid
 graph TB
     Client[客戶端應用程式]
     Client -->|1. 取得商品| Catalog[目錄服務]
@@ -65,7 +65,7 @@ graph TB
     Pricing -->|回應| Client
     
     style Client fill:#e03131,stroke:#c92a2a
-{% endmermaid %}
+```
 
 !!!warning "⚠️ 多次呼叫的問題"
     **高延遲**：每個請求都增加網路往返時間
@@ -93,7 +93,7 @@ graph TB
 
 在客戶端與後端服務之間放置閘道。閘道接收單一請求，向多個服務發出請求，聚合回應後回傳統一結果。
 
-{% mermaid %}
+```mermaid
 graph TB
     Client[客戶端應用程式]
     Client -->|單一請求| Gateway[聚合閘道]
@@ -114,7 +114,7 @@ graph TB
     
     style Gateway fill:#51cf66,stroke:#2f9e44
     style Client fill:#4dabf7,stroke:#1971c2
-{% endmermaid %}
+```
 
 ### 簡單實作
 

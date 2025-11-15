@@ -20,7 +20,7 @@ comments: true
 
 ## 知识体系概览
 
-{% mermaid %}
+```mermaid
 graph LR
     A["业务连续性管理与灾难恢复"]
     B["备份站点管理"]
@@ -67,7 +67,7 @@ graph LR
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#e1f5fe,stroke:#0277bd
     style F fill:#fff3e0,stroke:#ff6f00
-{% endmermaid %}
+```
 
 ## 备份站点类型
 
@@ -75,7 +75,7 @@ graph LR
 
 备份站点根据准备程度和恢复能力分为三种主要类型：
 
-{% mermaid %}
+```mermaid
 graph LR
     A["冷站<br/>Cold Site"]
     B["温站<br/>Warm Site"]
@@ -87,7 +87,7 @@ graph LR
     style A fill:#bbdefb,stroke:#1976d2
     style B fill:#fff9c4,stroke:#f57c00
     style C fill:#ffcdd2,stroke:#c62828
-{% endmermaid %}
+```
 
 #### 🧊 冷站（Cold Site）
 
@@ -192,7 +192,7 @@ graph LR
 
 ### 制定流程
 
-{% mermaid %}
+```mermaid
 graph TD
     A["开始制定灾难恢复计划"]
     B["执行业务影响分析<br/>Business Impact Analysis"]
@@ -213,7 +213,7 @@ graph TD
     
     style B fill:#ffcdd2,stroke:#c62828
     style C fill:#ffcdd2,stroke:#c62828
-{% endmermaid %}
+```
 
 ### 第一步：业务影响分析
 
@@ -292,7 +292,7 @@ graph TD
 
 **BIA执行顺序：**
 
-{% mermaid %}
+```mermaid
 graph TD
     A["开始BIA"]
     B["1. 识别重要业务流程<br/>根据恢复优先级设定"]
@@ -306,7 +306,7 @@ graph TD
     D --> E
     
     style B fill:#ffcdd2,stroke:#c62828
-{% endmermaid %}
+```
 
 **为什么这个顺序很重要？**
 
@@ -372,7 +372,7 @@ graph TD
 
 **RTO增加的影响：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["RTO增加"]
     B["灾难容忍度增加"]
@@ -384,7 +384,7 @@ graph LR
     style A fill:#bbdefb,stroke:#1976d2
     style B fill:#c8e6c9,stroke:#388e3d
     style C fill:#c8e6c9,stroke:#388e3d
-{% endmermaid %}
+```
 
 **关键理解：**
 
@@ -408,7 +408,7 @@ graph LR
 
 **成本分析框架：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["总成本"]
     B["停机成本"]
@@ -433,7 +433,7 @@ graph TB
     style B fill:#fff3e0,stroke:#f57c00
     style C fill:#fff3e0,stroke:#f57c00
     style E fill:#ffcdd2,stroke:#c62828
-{% endmermaid %}
+```
 
 **1. 停机成本**
 
@@ -488,7 +488,7 @@ graph TB
 !!!anote "🛡️ 有效BCP的三大支柱"
     一个有效的业务连续性计划包括三个核心特性：防止（Prevention）、减轻（Mitigation）、恢复（Recovery）。
 
-{% mermaid %}
+```mermaid
 graph LR
     A["业务连续性计划"]
     B["防止<br/>Prevention"]
@@ -515,7 +515,7 @@ graph LR
     style B fill:#c8e6c9,stroke:#388e3d
     style C fill:#fff9c4,stroke:#f57c00
     style D fill:#ffcdd2,stroke:#c62828
-{% endmermaid %}
+```
 
 #### 1. 防止（Prevention）
 
@@ -593,7 +593,7 @@ graph LR
 
 ### 流程类型与优先级
 
-{% mermaid %}
+```mermaid
 graph TD
     A["业务流程分类"]
     B["关键流程<br/>Critical Processes"]
@@ -619,7 +619,7 @@ graph TD
     style B fill:#ffcdd2,stroke:#c62828
     style C fill:#fff9c4,stroke:#f57c00
     style D fill:#c8e6c9,stroke:#388e3d
-{% endmermaid %}
+```
 
 #### 1. 关键流程（最高优先级）
 
@@ -682,7 +682,7 @@ graph TD
     - **RTO（恢复时间目标）**：系统恢复到可用状态的目标时间
     - **RPO（恢复点目标）**：可接受的数据恢复的最近时间点
 
-{% mermaid %}
+```mermaid
 graph TB
     A["恢复策略选择"]
     B["评估灾难容忍度"]
@@ -704,7 +704,7 @@ graph TB
     style E1 fill:#ffcdd2,stroke:#c62828
     style E2 fill:#fff9c4,stroke:#f57c00
     style E3 fill:#bbdefb,stroke:#1976d2
-{% endmermaid %}
+```
 
 ### 热站使用场景
 
@@ -800,7 +800,7 @@ graph TB
 
 **决策流程：**
 
-{% mermaid %}
+```mermaid
 graph TD
     A["开始选择恢复策略"]
     B{"灾难容忍度？"}
@@ -824,7 +824,7 @@ graph TD
     style E fill:#ffcdd2,stroke:#c62828
     style F fill:#fff9c4,stroke:#f57c00
     style G fill:#bbdefb,stroke:#1976d2
-{% endmermaid %}
+```
 
 ## 互惠协议与备份站点共享
 
@@ -852,7 +852,7 @@ graph TD
 
 如果其中一个组织更新了软硬件配置，可能意味着将与互惠协议中另一方的系统不兼容。这将导致任意一家公司都将无法在灾难之后使用另一家的设施持续其业务操作。
 
-{% mermaid %}
+```mermaid
 graph TD
     A["公司A更新系统"]
     B["软硬件配置变化"]
@@ -868,7 +868,7 @@ graph TD
     E --> F
     
     style F fill:#ffcdd2,stroke:#c62828
-{% endmermaid %}
+```
 
 ### 互惠协议的主要风险分析
 
@@ -1102,7 +1102,7 @@ graph TD
 
 网络服务器群集安装在同一个地点的设置，会导致整个网络的脆弱性，形成灾难或其他破坏性事件的单点故障。
 
-{% mermaid %}
+```mermaid
 graph TD
     A["所有服务器在同一地点"]
     B["单点故障风险"]
@@ -1117,7 +1117,7 @@ graph TD
     
     style A fill:#ffcdd2,stroke:#c62828
     style E fill:#ffcdd2,stroke:#c62828
-{% endmermaid %}
+```
 
 ### 高可用性网络配置对比
 
@@ -1183,7 +1183,7 @@ graph TD
 
 服务器集群使得两个或两个以上的服务器作为一个单元来工作，因此其中一个发生故障时，其他的服务器依旧可以正常工作。
 
-{% mermaid %}
+```mermaid
 graph LR
     A["服务器1"]
     B["服务器2"]
@@ -1202,7 +1202,7 @@ graph LR
     
     style F fill:#ffcdd2,stroke:#c62828
     style G fill:#c8e6c9,stroke:#388e3d
-{% endmermaid %}
+```
 
 ### 容错方案对比
 
@@ -1337,7 +1337,7 @@ graph LR
 
 **数据备份分类体系：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["数据备份分类"]
     
@@ -1362,7 +1362,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 #### 1. 按数据类型分类
 
@@ -1391,7 +1391,7 @@ graph TB
 
 **三种备份方式对比：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["完全备份"]
     B["差异备份"]
@@ -1405,7 +1405,7 @@ graph LR
     style A fill:#e3f2fd,stroke:#1976d2
     style B fill:#fff3e0,stroke:#f57c00
     style C fill:#e8f5e9,stroke:#388e3d
-{% endmermaid %}
+```
 
 | 备份方式 | 备份内容 | 备份速度 | 恢复速度 | 存储空间 | 适用场景 |
 |---------|---------|---------|---------|---------|----------|
@@ -1663,7 +1663,7 @@ graph LR
 
 **灾难恢复能力等级体系：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["灾难恢复能力等级"]
     
@@ -1694,7 +1694,7 @@ graph TB
     style E fill:#c5e1a5,stroke:#558b2f
     style F fill:#a5d6a7,stroke:#2e7d32
     style G fill:#81c784,stroke:#1b5e20
-{% endmermaid %}
+```
 
 **六个等级详解：**
 

@@ -60,7 +60,7 @@ class PaymentService {
 
 外部監視ツールが定期的にチェックしてアプリケーションの健康状態を確認できる専用エンドポイントを公開します。
 
-{% mermaid %}
+```mermaid
 graph TB
     A[監視ツール] -->|HTTP GET /health| B[ロードバランサー]
     B --> C[アプリインスタンス1]
@@ -95,7 +95,7 @@ graph TB
     style C1 fill:#51cf66,stroke:#2f9e44
     style D1 fill:#51cf66,stroke:#2f9e44
     style E1 fill:#ff6b6b,stroke:#c92a2a
-{% endmermaid %}
+```
 
 ### 基本的な実装
 

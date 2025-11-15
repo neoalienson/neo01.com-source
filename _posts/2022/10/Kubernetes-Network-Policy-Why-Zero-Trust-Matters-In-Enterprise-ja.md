@@ -121,7 +121,8 @@ spec:
 !!!danger "🔓 ノードレベルのセキュリティギャップ"
     ファイアウォールルールがノードにインターネットへのアクセスを許可する場合（1つのPodのためだけであっても）、そのノード上のすべてのPodがそのアクセスを継承します。従来のファイアウォールでは、Pod固有のエグレスポリシーを強制できません。これが、ノードレベルのセキュリティがKubernetesには不十分である理由です。
 
-{% mermaid %}graph TB
+```mermaid
+graph TB
     subgraph "従来のファイアウォール（ノードレベル）"
         FW1["ファイアウォールルール：インターネット許可"]
         Node1["Kubernetesノード"]
@@ -161,7 +162,7 @@ spec:
     style PodC2 fill:#ccffcc
     style FW1 fill:#ffeecc
     style NP1 fill:#ccffee
-{% endmermaid %}
+```
 
 **その他の制限事項**：
 

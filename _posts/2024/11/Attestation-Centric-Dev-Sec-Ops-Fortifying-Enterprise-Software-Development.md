@@ -18,7 +18,7 @@ There is a growing demand within enterprises for a reliable method to trace soft
 
 Once an enterprise has equipped itself with a wide array of DevSecOps tools, the next challenge is integrating them to minimize fragmentation. The market offers numerous tools, each claiming to be the ultimate solution for security challenges. However, in reality, no single tool can address all issues comprehensively. The key challenge is to build a cohesive ecosystem where these tools operate in harmony, ensuring a transparent and efficient pipeline for software delivery.
 
-{% mermaid %}
+```mermaid
 graph TB
     subgraph Frag["Traditional Fragmented Approach"]
     Code1[Code Repository] --> Tool1[Snyk]
@@ -50,7 +50,7 @@ graph TB
     style Att2 fill:#51cf66,stroke:#2f9e44
     style Att3 fill:#51cf66,stroke:#2f9e44
     style Store fill:#4dabf7,stroke:#1971c2
-{% endmermaid %}
+```
 
 Many enterprises choose to develop their own developer portals that integrate or consume scanning reports from these tools and provide a unified view for developers and security engineers. This approach allows for centralized management of vulnerabilities, compliance checks, and other security-related tasks. However, it requires **significant investment** in development and maintenance. Without proper integration and a seamless workflow, these tools can become a nightmare for development teams. Additionally, different development teams often have distinct tooling for their Software Development Life Cycle (SDLC); for example, mobile development teams may use specialized scanning tools.
 
@@ -94,7 +94,7 @@ Anyone can verify the attestation using the public key, ensuring the artifact ha
     
     However, unlike blockchain, attestations don't require distributed consensus or mining—they're lightweight, fast, and designed specifically for software supply chain security.
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant Dev as Developer
     participant Repo as Code Repository
@@ -112,7 +112,7 @@ sequenceDiagram
     Store->>Verify: Provide Attestation
     Verify->>Verify: Verify Signature
     Verify->>Verify: ✓ Attestation Valid
-{% endmermaid %}
+```
 
 The concept of attestation and metadata has been present in the industry for decades, but it is only recently that we have started seeing more tools and services emerging to support this. GitHub, for instance, has recently launched a [public beta](https://github.blog/2024-05-02-introducing-artifact-attestations-now-in-public-beta/) for artifact attestations.
 
@@ -126,7 +126,7 @@ Imagine Sarah, a security engineer at a large financial institution. Her team us
 
 With attestation-centric DevSecOps, each tool generates cryptographically signed attestations about its findings. When Sarah needs to assess the security posture of a mobile application that uses shared infrastructure components, she can trace the complete security journey through attestations:
 
-{% mermaid %}
+```mermaid
 graph TB
     A[Code Commit] -->|Code Attestation| B[Source Verified]
     B -->|Build Attestation| C[Build Verified]
@@ -147,7 +147,7 @@ graph TB
     style Info2 fill:none,stroke:none
     style Info3 fill:none,stroke:none
     style Info4 fill:none,stroke:none
-{% endmermaid %}
+```
 
 !!!success "✅ Attestation Types in Action"
     - **Code Attestation**: Confirms the source code integrity and author identity
@@ -163,7 +163,7 @@ Attestation-centric approaches provide a living audit trail. When a new vulnerab
 
 ## Real-World Implementation: The Three Pillars
 
-{% mermaid %}
+```mermaid
 graph TB
     subgraph "Pillar 1: Standardized Metadata"
     Tools[DevSecOps Tools] -->|Generate| Meta[Standardized Attestations]
@@ -186,7 +186,7 @@ graph TB
     style Q1 fill:#e7f5ff,stroke:#1971c2
     style Q2 fill:#e7f5ff,stroke:#1971c2
     style Q3 fill:#e7f5ff,stroke:#1971c2
-{% endmermaid %}
+```
 
 !!!tip "🏛️ Pillar 1: Standardized Metadata Collection"
     Every tool in your DevSecOps pipeline should generate attestations in a standardized format. This doesn't mean replacing your existing tools—it means augmenting them with attestation capabilities.
@@ -242,7 +242,7 @@ predicate:
     3. **Establish Policies**: Define what attestations are required for different types of deployments
     4. **Train Your Teams**: Ensure developers and security engineers understand how to interpret and use attestation data
 
-{% mermaid %}
+```mermaid
 graph LR
     A[Week 1-2<br/>Pilot Build<br/>Attestations] --> B[Week 3-4<br/>Add Security<br/>Scan Attestations]
     B --> C[Week 5-6<br/>Integrate<br/>Deployment Attestations]
@@ -254,7 +254,7 @@ graph LR
     style C fill:#4dabf7,stroke:#1971c2
     style D fill:#51cf66,stroke:#2f9e44
     style E fill:#51cf66,stroke:#2f9e44
-{% endmermaid %}
+```
 
 ## Conclusion: Trust Through Transparency
 

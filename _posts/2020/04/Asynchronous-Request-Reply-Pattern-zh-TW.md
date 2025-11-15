@@ -42,7 +42,7 @@ comments: true
 3. **客戶端輪詢狀態端點**或在完成時接收回呼
 4. **客戶端在處理完成時擷取結果**
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant Client as 客戶端
     participant API as API 閘道
@@ -69,7 +69,7 @@ sequenceDiagram
     API->>Storage: 12. 擷取結果
     Storage-->>API: 13. 回傳結果
     API-->>Client: 14. 200 OK + 結果資料
-{% endmermaid %}
+```
 
 ## 運作方式：模式實戰
 

@@ -520,7 +520,8 @@ How long should you keep application logs? Balance debugging needs, post-mortem 
 - **Cost**: Low (S3 Glacier: $0.004/GB/month)
 - **Use case**: Long-term pattern analysis, rare bug investigations
 
-{% mermaid %}graph LR
+```mermaid
+graph LR
     A["Application Logs"] --> B["Hot Storage<br/>7-30 days<br/>$0.50/GB"]
     B --> C["Warm Storage<br/>30-90 days<br/>$0.023/GB"]
     C --> D["Cold Storage<br/>90 days - 1 year<br/>$0.004/GB"]
@@ -531,7 +532,7 @@ How long should you keep application logs? Balance debugging needs, post-mortem 
     style C fill:#ffd43b,stroke:#f59f00,color:#000
     style D fill:#51cf66,stroke:#2f9e44,color:#fff
     style E fill:#868e96,stroke:#495057,color:#fff
-{% endmermaid %}
+```
 
 ### Retention by Application Log Level
 

@@ -20,7 +20,7 @@ This is where "shift-right" comes in - extending DevOps practices into productio
 
 Before we explore shift-right, let's clarify what shift-left achieved. The traditional software development lifecycle looked like this:
 
-{% mermaid %}
+```mermaid
 graph LR
     A([📝 Requirements]) --> B([💻 Development])
     B --> C([🧪 Testing])
@@ -28,13 +28,13 @@ graph LR
     D --> E([⚙️ Operations])
     style C fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style E fill:#ffebee,stroke:#c62828,stroke-width:2px
-{% endmermaid %}
+```
 
 Testing happened late, after development was "complete." Finding bugs at this stage was expensive - code had to be sent back to developers who had already moved on to other projects. The feedback loop was slow and costly.
 
 Shift-left moved quality practices earlier:
 
-{% mermaid %}
+```mermaid
 graph LR
     A([📝 Requirements<br/>+ Test Planning]) --> B([💻 Development<br/>+ Unit Tests])
     B --> C([🧪 Integration Tests<br/>+ Security Scans])
@@ -43,7 +43,7 @@ graph LR
     style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
     style B fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style C fill:#fff3e0,stroke:#f57c00,stroke-width:2px
-{% endmermaid %}
+```
 
 **Key Shift-Left Practices:**
 - **Test-Driven Development (TDD)**: Writing tests before code
@@ -60,7 +60,7 @@ Shift-right recognizes a fundamental truth: production is different. No matter h
 
 Instead of treating production as a black box that should "just work," shift-right embraces production as a learning environment. It extends DevOps practices beyond deployment:
 
-{% mermaid %}
+```mermaid
 graph LR
     A([📝 Requirements]) --> B([💻 Development])
     B --> C([🧪 Testing])
@@ -70,7 +70,7 @@ graph LR
     F -.Feedback.-> A
     style E fill:#e0f2f1,stroke:#00796b,stroke-width:2px
     style F fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
-{% endmermaid %}
+```
 
 **Core Shift-Right Principles:**
 
@@ -100,7 +100,7 @@ Traditional monitoring asks "Is the system up?" Observability asks "Why is the s
 
 **Observability** lets you ask arbitrary questions about system behavior: "Why did this specific user's request take 5 seconds?" "What changed between 2 PM and 3 PM that caused latency to spike?" You don't need to predict the question in advance.
 
-{% mermaid %}
+```mermaid
 graph TB
     A([🌐 Production System]) --> B([📊 Metrics<br/>CPU, Memory, Requests])
     A --> C([📝 Logs<br/>Application Events])
@@ -111,7 +111,7 @@ graph TB
     E --> F([❓ Ask Questions<br/>Understand Behavior])
     style E fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
     style F fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-{% endmermaid %}
+```
 
 **The Three Pillars of Observability:**
 
@@ -166,7 +166,7 @@ This simple pattern enables powerful deployment strategies:
 
 **Kill Switches**: Instantly disable problematic features without redeploying.
 
-{% mermaid %}
+```mermaid
 graph TB
     A([🚀 Deploy to Production]) --> B{Feature Flag}
     B -->|1% Users| C([👥 Canary Group])
@@ -178,7 +178,7 @@ graph TB
     style E fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style G fill:#ffebee,stroke:#c62828,stroke-width:2px
     style H fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-{% endmermaid %}
+```
 
 **Benefits:**
 
@@ -211,7 +211,7 @@ Chaos engineering deliberately introduces failures into production systems to ve
 
 5. **Learn and Improve**: If the system doesn't behave as expected, fix the issues and repeat
 
-{% mermaid %}
+```mermaid
 graph LR
     A([📊 Define<br/>Steady State]) --> B([🤔 Hypothesize<br/>Behavior])
     B --> C([💥 Introduce<br/>Chaos])
@@ -223,7 +223,7 @@ graph LR
     style C fill:#ffebee,stroke:#c62828,stroke-width:2px
     style F fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style G fill:#fff3e0,stroke:#f57c00,stroke-width:2px
-{% endmermaid %}
+```
 
 **Common Chaos Experiments:**
 
@@ -326,7 +326,7 @@ Incidents are inevitable. What matters is how you respond and what you learn.
 
 **Post-Incident Review**: Learn from what happened without blame.
 
-{% mermaid %}
+```mermaid
 graph TB
     A([🚨 Incident Detected]) --> B([🔍 Triage<br/>Assess Impact])
     B --> C([📢 Communicate<br/>Notify Stakeholders])
@@ -338,7 +338,7 @@ graph TB
     style D fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style F fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
     style G fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-{% endmermaid %}
+```
 
 **Blameless Post-Mortems:**
 
@@ -363,7 +363,7 @@ The goal isn't to find who caused the incident - it's to understand why the syst
 
 The most effective DevOps organizations don't choose between shift-left and shift-right - they embrace both. Each addresses different aspects of software quality:
 
-{% mermaid %}
+```mermaid
 graph TB
     subgraph "Shift-Left: Prevention"
         A([Unit Tests])
@@ -393,7 +393,7 @@ graph TB
     E --> I
     I -.Feedback.-> A
     style E fill:#e3f2fd,stroke:#1976d2,stroke-width:3px
-{% endmermaid %}
+```
 
 **When to Emphasize Shift-Left:**
 

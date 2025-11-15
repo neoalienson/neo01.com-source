@@ -91,7 +91,8 @@ The Authorization Code flow is the most secure OAuth flow, recommended for appli
 
 ### Flow Overview
 
-{% mermaid %}sequenceDiagram
+```mermaid
+sequenceDiagram
     participant User as 👤 Resource Owner
     participant Browser as 🌐 Browser
     participant Client as 📱 Client Application
@@ -108,7 +109,7 @@ The Authorization Code flow is the most secure OAuth flow, recommended for appli
     AuthServer->>Client: 8. Access Token + Refresh Token
     Client->>ResourceServer: 9. API Request with Access Token
     ResourceServer->>Client: 10. Protected Resource Data
-{% endmermaid %}
+```
 
 ### Step-by-Step Breakdown
 
@@ -217,7 +218,8 @@ The Implicit flow was designed for browser-based applications that cannot secure
 
 ### How Implicit Flow Worked
 
-{% mermaid %}sequenceDiagram
+```mermaid
+sequenceDiagram
     participant User as 👤 Resource Owner
     participant Browser as 🌐 Browser/SPA
     participant AuthServer as 🔐 Authorization Server
@@ -230,7 +232,7 @@ The Implicit flow was designed for browser-based applications that cannot secure
     Browser->>Browser: 5. Extract Token from URL
     Browser->>ResourceServer: 6. API Request with Token
     ResourceServer->>Browser: 7. Protected Resource
-{% endmermaid %}
+```
 
 ### Why Implicit Flow is Deprecated
 
@@ -285,7 +287,8 @@ PKCE solves this by adding dynamic, per-request secrets that cannot be pre-extra
 
 ### PKCE Flow
 
-{% mermaid %}sequenceDiagram
+```mermaid
+sequenceDiagram
     participant User as 👤 Resource Owner
     participant Client as 📱 Mobile App/SPA
     participant AuthServer as 🔐 Authorization Server
@@ -302,7 +305,7 @@ PKCE solves this by adding dynamic, per-request secrets that cannot be pre-extra
     AuthServer->>Client: 9. Access Token
     Client->>ResourceServer: 10. API Request
     ResourceServer->>Client: 11. Protected Resource
-{% endmermaid %}
+```
 
 ### PKCE Implementation Details
 
@@ -395,7 +398,8 @@ The Client Credentials flow is designed for machine-to-machine communication whe
 
 ### Client Credentials Flow
 
-{% mermaid %}sequenceDiagram
+```mermaid
+sequenceDiagram
     participant Client as 🖥️ Client Service
     participant AuthServer as 🔐 Authorization Server
     participant ResourceServer as 💾 Resource Server
@@ -405,7 +409,7 @@ The Client Credentials flow is designed for machine-to-machine communication whe
     AuthServer->>Client: 3. Access Token
     Client->>ResourceServer: 4. API Request with Token
     ResourceServer->>Client: 5. Protected Resource
-{% endmermaid %}
+```
 
 ### Implementation
 
@@ -572,7 +576,8 @@ Refresh tokens enable long-term access without requiring users to re-authenticat
 
 ### Refresh Token Flow
 
-{% mermaid %}sequenceDiagram
+```mermaid
+sequenceDiagram
     participant Client as 📱 Client Application
     participant AuthServer as 🔐 Authorization Server
     participant ResourceServer as 💾 Resource Server
@@ -584,7 +589,7 @@ Refresh tokens enable long-term access without requiring users to re-authenticat
     AuthServer->>Client: 5. New Access Token + New Refresh Token
     Client->>ResourceServer: 6. API Request with New Token
     ResourceServer->>Client: 7. Protected Resource
-{% endmermaid %}
+```
 
 ### Refresh Token Security
 

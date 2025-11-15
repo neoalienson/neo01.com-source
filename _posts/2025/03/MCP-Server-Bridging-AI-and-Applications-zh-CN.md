@@ -252,7 +252,8 @@ MCP服务器通常是包装现有系统的轻量级进程。数据库MCP服务�
     - 通过SSE事件ID和`Last-Event-ID`头支持流可恢复性
 
 
-{% mermaid %}graph TB
+```mermaid
+graph TB
     subgraph "本地（Stdio）"
         A["AI应用程序<br/>（MCP客户端）"]
         B["MCP服务器<br/>（文件系统）"]
@@ -287,7 +288,7 @@ MCP服务器通常是包装现有系统的轻量级进程。数据库MCP服务�
     style D fill:#fff9c4,stroke:#f57c00
     style E fill:#fff9c4,stroke:#f57c00
     style J fill:#ffccbc,stroke:#d84315
-{% endmermaid %}
+```
 
 ### 客户端集成
 
@@ -561,7 +562,8 @@ MCP采用背后的驱动因素反映了软件开发向模块化、可重用性�
 
 好处是巨大的：加速开发、提高可靠性、增强安全性和生态系统增长。采用MCP的组织在其AI战略中获得了灵活性，避免了供应商锁定，同时访问不断增长的可重用集成库。挑战——标准化权衡、安全考虑和生态系统成熟度——是可管理的，并且随着协议的演进而减少。
 
-{% mermaid %}graph LR
+```mermaid
+graph LR
     A["MCP采用"]
     
     B["关键驱动因素"]
@@ -591,7 +593,7 @@ MCP采用背后的驱动因素反映了软件开发向模块化、可重用性�
     style B fill:#e8f5e9,stroke:#388e3d
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 展望未来，MCP的演进将由社区贡献、企业采用以及与新兴AI能力的集成来塑造。协议的可扩展性确保它可以适应新需求，同时保持向后兼容性。随着专业服务器生态系统的成熟和AI模型获得原生MCP支持，协议的价值主张得到加强。
 

@@ -91,7 +91,8 @@ OAuth は認可フローに参加する 4 つの異なる役割を定義しま�
 
 ### フロー概要
 
-{% mermaid %}sequenceDiagram
+```mermaid
+sequenceDiagram
     participant User as 👤 リソース所有者
     participant Browser as 🌐 ブラウザ
     participant Client as 📱 クライアントアプリケーション
@@ -108,7 +109,7 @@ OAuth は認可フローに参加する 4 つの異なる役割を定義しま�
     AuthServer->>Client: 8. アクセストークン + リフレッシュトークン
     Client->>ResourceServer: 9. アクセストークン付き API リクエスト
     ResourceServer->>Client: 10. 保護されたリソースデータ
-{% endmermaid %}
+```
 
 ### ステップバイステップの詳細
 
@@ -217,7 +218,8 @@ OAuth は認可フローに参加する 4 つの異なる役割を定義しま�
 
 ### インプリシットフローの仕組み
 
-{% mermaid %}sequenceDiagram
+```mermaid
+sequenceDiagram
     participant User as 👤 リソース所有者
     participant Browser as 🌐 ブラウザ/SPA
     participant AuthServer as 🔐 認可サーバー
@@ -230,7 +232,7 @@ OAuth は認可フローに参加する 4 つの異なる役割を定義しま�
     Browser->>Browser: 5. URL からトークンを抽出
     Browser->>ResourceServer: 6. トークン付き API リクエスト
     ResourceServer->>Browser: 7. 保護されたリソース
-{% endmermaid %}
+```
 
 ### なぜインプリシットフローが非推奨なのか
 
@@ -284,7 +286,8 @@ Proof Key for Code Exchange（PKCE、「ピクシー」と発音）は、シー�
 PKCE は、事前に抽出できない動的な、リクエストごとのシークレットを追加することでこれを解決します。
 ### PKCE フロー
 
-{% mermaid %}sequenceDiagram
+```mermaid
+sequenceDiagram
     participant User as 👤 リソース所有者
     participant Client as 📱 モバイルアプリ/SPA
     participant AuthServer as 🔐 認可サーバー
@@ -301,7 +304,7 @@ PKCE は、事前に抽出できない動的な、リクエストごとのシー
     AuthServer->>Client: 9. アクセストークン
     Client->>ResourceServer: 10. API リクエスト
     ResourceServer->>Client: 11. 保護されたリソース
-{% endmermaid %}
+```
 
 ### PKCE 実装詳細
 
@@ -394,7 +397,8 @@ PKCE は現在、シークレットを保存できる機密クライアントを
 
 ### クライアント認証情報フロー
 
-{% mermaid %}sequenceDiagram
+```mermaid
+sequenceDiagram
     participant Client as 🖥️ クライアントサービス
     participant AuthServer as 🔐 認可サーバー
     participant ResourceServer as 💾 リソースサーバー
@@ -404,7 +408,7 @@ PKCE は現在、シークレットを保存できる機密クライアントを
     AuthServer->>Client: 3. アクセストークン
     Client->>ResourceServer: 4. トークン付き API リクエスト
     ResourceServer->>Client: 5. 保護されたリソース
-{% endmermaid %}
+```
 
 ### 実装
 
@@ -570,7 +574,8 @@ API 認可には OAuth 2.0 を使用。ユーザー認証には OpenID Connect �
 
 ### リフレッシュトークンフロー
 
-{% mermaid %}sequenceDiagram
+```mermaid
+sequenceDiagram
     participant Client as 📱 クライアントアプリケーション
     participant AuthServer as 🔐 認可サーバー
     participant ResourceServer as 💾 リソースサーバー
@@ -582,7 +587,7 @@ API 認可には OAuth 2.0 を使用。ユーザー認証には OpenID Connect �
     AuthServer->>Client: 5. 新しいアクセストークン + 新しいリフレッシュトークン
     Client->>ResourceServer: 6. 新しいトークン付き API リクエスト
     ResourceServer->>Client: 7. 保護されたリソース
-{% endmermaid %}
+```
 
 ### リフレッシュトークンセキュリティ
 

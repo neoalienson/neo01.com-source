@@ -19,7 +19,8 @@ excerpt: "ドメイン駆動設計はビジネス言語を話すソフトウェ�
 
 ### ドメイン駆動設計のタイムライン
 
-{% mermaid %}timeline
+```mermaid
+timeline
     title ドメイン中心設計の進化
     section 1990s
         1994 : デザインパターン
@@ -48,7 +49,7 @@ excerpt: "ドメイン駆動設計はビジネス言語を話すソフトウェ�
         2016 : マイクロサービス + DDD
              : 境界づけられたコンテキストとしてのサービス
              : 分散ドメインモデル
-{% endmermaid %}
+```
 
 ## データベース中心の問題
 
@@ -645,7 +646,8 @@ DDDは大規模システムの複雑性を管理するための戦略的パタ�
 
 境界づけられたコンテキストは、モデルを明示的に分離することでこれを解決する。各コンテキストは、そのニーズに最適化された独自のモデルを持つ。販売コンテキストには注文履歴を持つCustomerがある。サポートコンテキストにはサポートチケットを持つCustomerがある。これらは異なるモデルであり、それで問題ない。
 
-{% mermaid %}graph TB
+```mermaid
+graph TB
     subgraph Sales["販売コンテキスト"]
         SC[顧客<br/>- 注文<br/>- 与信限度<br/>- 支払条件]
     end
@@ -665,7 +667,7 @@ DDDは大規模システムの複雑性を管理するための戦略的パタ�
     style Sales fill:#e1f5ff,stroke:#333,stroke-width:2px
     style Support fill:#fff4e1,stroke:#333,stroke-width:2px
     style Shipping fill:#e8f5e9,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 ### コンテキストマッピング
 
@@ -1123,7 +1125,8 @@ DDDはイベントソーシングとCQRSとよく組み合わさる：
 
 DDDはヘキサゴナル（ポートとアダプタ）アーキテクチャと自然に適合する：
 
-{% mermaid %}graph TB
+```mermaid
+graph TB
     subgraph Core["ドメインコア"]
         DM[ドメインモデル<br/>エンティティ、値オブジェクト<br/>集約、サービス]
     end
@@ -1150,7 +1153,7 @@ DDDはヘキサゴナル（ポートとアダプタ）アーキテクチャと�
     style Core fill:#e1f5ff,stroke:#333,stroke-width:3px
     style Ports fill:#fff4e1,stroke:#333,stroke-width:2px
     style Adapters fill:#e8f5e9,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 !!!anote "🏛️ ヘキサゴナルアーキテクチャ + DDD"
     **構造**

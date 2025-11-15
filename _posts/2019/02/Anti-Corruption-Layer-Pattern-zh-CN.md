@@ -45,7 +45,8 @@ comments: true
 
 防腐层模式通过隔离不同的子系统并在它们之间放置一个转译层来解决这个问题。这一层处理两个系统之间的所有通信，允许一个系统保持不变，而另一个系统避免损害其设计。
 
-{% mermaid %}graph LR
+```mermaid
+graph LR
     A["现代应用程序<br/>（子系统 A）"]
     ACL["防腐层"]
     B["遗留系统<br/>（子系统 B）"]
@@ -56,7 +57,7 @@ comments: true
     style A fill:#4CAF50,stroke:#2E7D32,color:#fff
     style ACL fill:#2196F3,stroke:#1565C0,color:#fff
     style B fill:#FF9800,stroke:#E65100,color:#fff
-{% endmermaid %}
+```
 
 ### 运作方式
 
@@ -107,7 +108,8 @@ class LegacySystemAdapter {
 
 将 ACL 部署为独立的微服务：
 
-{% mermaid %}graph TB
+```mermaid
+graph TB
     subgraph "现代架构"
         A1[服务 A]
         A2[服务 B]
@@ -128,7 +130,7 @@ class LegacySystemAdapter {
     ACL --> L2
     
     style ACL fill:#2196F3,stroke:#1565C0,color:#fff
-{% endmermaid %}
+```
 
 ### 3. API 网关模式
 

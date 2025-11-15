@@ -27,7 +27,7 @@ A sharded data store:
 - Reduces contention on any single database
 - Enables data locality for better performance
 
-{% mermaid %}
+```mermaid
 graph TB
     A[Application] --> B[Sharding Logic]
     B --> C[Shard 1<br/>Users A-H]
@@ -39,7 +39,7 @@ graph TB
     style C fill:#51cf66,stroke:#2f9e44
     style D fill:#51cf66,stroke:#2f9e44
     style E fill:#51cf66,stroke:#2f9e44
-{% endmermaid %}
+```
 
 ## The Problem: Single Server Limitations
 
@@ -128,7 +128,7 @@ Divide the data store into horizontal partitions called shards. Each shard:
 - Runs on a separate storage node
 - Operates independently
 
-{% mermaid %}
+```mermaid
 graph TB
     A[Application Layer] --> B[Shard Map/Router]
     B --> C[Shard A<br/>Orders 0-999]
@@ -147,7 +147,7 @@ graph TB
     style D fill:#51cf66,stroke:#2f9e44
     style E fill:#51cf66,stroke:#2f9e44
     style F fill:#51cf66,stroke:#2f9e44
-{% endmermaid %}
+```
 
 ## Sharding Strategies
 
@@ -186,7 +186,7 @@ class LookupShardRouter {
 }
 ```
 
-{% mermaid %}
+```mermaid
 graph LR
     A[Request:<br/>Tenant-3] --> B[Lookup<br/>Shard Map]
     B --> C{Tenant-3<br/>→ Shard B}
@@ -195,7 +195,7 @@ graph LR
     style A fill:#4dabf7,stroke:#1971c2
     style B fill:#ffd43b,stroke:#fab005
     style D fill:#51cf66,stroke:#2f9e44
-{% endmermaid %}
+```
 
 !!!tip "💡 Lookup Strategy Benefits"
     **Flexibility**: Easy to rebalance by updating the map
@@ -244,7 +244,7 @@ class RangeShardRouter {
 }
 ```
 
-{% mermaid %}
+```mermaid
 graph TB
     A[Query:<br/>Orders in Q2 2019] --> B[Range Router]
     B --> C[Shard Q2<br/>Apr-Jun 2019]
@@ -258,7 +258,7 @@ graph TB
     style B fill:#ffd43b,stroke:#fab005
     style C fill:#51cf66,stroke:#2f9e44
     style E fill:#51cf66,stroke:#2f9e44
-{% endmermaid %}
+```
 
 !!!tip "💡 Range Strategy Benefits"
     **Range Queries**: Efficiently retrieve sequential data
@@ -318,7 +318,7 @@ console.log(router.getShardForUser('user-125')); // db-shard-3
 // Users distributed across shards
 ```
 
-{% mermaid %}
+```mermaid
 graph TB
     A[User IDs] --> B[Hash Function]
     B --> C[user-55 → Hash: 2]
@@ -334,7 +334,7 @@ graph TB
     style F fill:#51cf66,stroke:#2f9e44
     style G fill:#51cf66,stroke:#2f9e44
     style H fill:#51cf66,stroke:#2f9e44
-{% endmermaid %}
+```
 
 !!!tip "💡 Hash Strategy Benefits"
     **Even Distribution**: Prevents hotspots

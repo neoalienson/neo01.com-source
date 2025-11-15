@@ -44,7 +44,8 @@ CA 是簽發數位憑證的實體。當你的瀏覽器信任某個 CA 時，它�
 
 **信任鏈：**
 
-{% mermaid %}flowchart TD
+```mermaid
+flowchart TD
     A["🏛️ 根 CA<br/>(你的私有 CA)"] --> B["📜 中繼 CA<br/>(選用)"]
     B --> C["🔒 伺服器憑證<br/>(homeserver.local)"]
     B --> D["🔒 伺服器憑證<br/>(nas.local)"]
@@ -61,7 +62,7 @@ CA 是簽發數位憑證的實體。當你的瀏覽器信任某個 CA 時，它�
     style D fill:#e8f5e9
     style E fill:#e8f5e9
     style F fill:#fff3e0
-{% endmermaid %}
+```
 
 ### 根 CA vs 中繼 CA
 
@@ -419,7 +420,8 @@ acme.sh --cron
 
 **ACME 流程圖：**
 
-{% mermaid %}sequenceDiagram
+```mermaid
+sequenceDiagram
     participant Client as ACME 客戶端
     participant CA as step-ca
     participant Web as 網頁伺服器
@@ -434,7 +436,7 @@ acme.sh --cron
     CA->>Client: 8. 簽發憑證
     
     Note over Client,CA: 憑證自動簽發！
-{% endmermaid %}
+```
 
 **為什麼 ACME 更好：**
 
@@ -615,7 +617,8 @@ services:
 
 ### 憑證生命週期
 
-{% mermaid %}flowchart TD
+```mermaid
+flowchart TD
     A["📝 建立憑證"] --> B["🚀 部署到伺服器"]
     B --> C["👁️ 監控到期日"]
     C --> D{"⏰ 即將到期？"}
@@ -630,7 +633,7 @@ services:
     style D fill:#fff9c4
     style E fill:#f3e5f5
     style F fill:#e8f5e9
-{% endmermaid %}
+```
 
 ### 更新腳本
 

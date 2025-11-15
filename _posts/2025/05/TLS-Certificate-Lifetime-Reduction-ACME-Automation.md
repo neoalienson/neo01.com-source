@@ -619,7 +619,8 @@ These practices minimize risk and ensure smooth operations even when issues aris
 
 Organizations must plan their automation journey with the CA/Browser Forum timeline in mind:
 
-{% mermaid %}gantt
+```mermaid
+gantt
     title ACME Implementation Timeline vs. Certificate Lifetime Reductions
     dateFormat YYYY-MM-DD
     section Certificate Limits
@@ -633,7 +634,7 @@ Organizations must plan their automation journey with the CA/Browser Forum timel
     Legacy Integration     :2026-05-17, 180d
     Full Automation        :milestone, 2026-11-13, 0d
     Optimization           :2026-11-13, 2029-03-15
-{% endmermaid %}
+```
 
 !!!warning "⏰ Critical Deadlines"
     **By March 2026** (200-day limit)
@@ -751,7 +752,8 @@ The drivers behind this change are compelling: trust decay over time, the failur
 
 ACME automation emerges as the essential solution to this challenge. What began as a convenience for managing Let's Encrypt certificates has evolved into a comprehensive framework for certificate lifecycle management. The protocol's standardization, broad tool support, and enterprise features make it viable for organizations of all sizes and complexity levels. The benefits extend far beyond simply handling shorter lifetimes—organizations report improved security posture, reduced operational costs, eliminated human error, and better scalability.
 
-{% mermaid %}graph TB
+```mermaid
+graph TB
     A["47-Day Certificate Mandate"]
     
     B["Key Drivers"]
@@ -780,7 +782,7 @@ ACME automation emerges as the essential solution to this challenge. What began 
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 The challenges are real but manageable. Legacy systems, organizational resistance, and technical complexity require careful planning and phased implementation. However, organizations that start now have adequate time to implement automation before the critical 2027 deadline when 100-day certificates make manual management highly impractical. The key is to begin with pilot projects, build expertise gradually, and expand systematically rather than attempting wholesale transformation overnight.
 

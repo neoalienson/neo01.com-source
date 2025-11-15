@@ -33,13 +33,14 @@ CRMシステムは顧客データを必要としています。分析ダッシ�
 
 **1. シンプルさ**
 
-{% mermaid %}flowchart LR
+```mermaid
+flowchart LR
     App1["📱 モバイルアプリ"] --> DB[("🗄️ データベース")]
     App2["💻 Webアプリ"] --> DB
     App3["📊 分析"] --> DB
     
     style DB fill:#e3f2fd
-{% endmermaid %}
+```
 
 - 可動部分が少ない
 - 保守するミドルウェアがない
@@ -100,7 +101,8 @@ APIレイヤー: アプリ → API → データベース (2ホップ)
 
 **問題：** すべてのアプリケーションがデータベース認証情報を必要とします。
 
-{% mermaid %}flowchart TD
+```mermaid
+flowchart TD
     subgraph "セキュリティリスク"
         App1["📱 モバイルアプリ<br/>(コード内のDB認証情報)"]
         App2["💻 Webアプリ<br/>(設定内のDB認証情報)"]
@@ -114,7 +116,7 @@ APIレイヤー: アプリ → API → データベース (2ホップ)
     App4 --> DB
     
     style DB fill:#ffebee
-{% endmermaid %}
+```
 
 **リスク：**
 
@@ -434,7 +436,8 @@ GRANT ALL PRIVILEGES ON database.* TO 'app_user'@'%';
 
 #### パターン1：モノリシックAPIレイヤー
 
-{% mermaid %}flowchart TD
+```mermaid
+flowchart TD
     subgraph Apps["アプリケーション"]
         App1["📱 モバイルアプリ"]
         App2["💻 Webアプリ"]
@@ -455,7 +458,7 @@ GRANT ALL PRIVILEGES ON database.* TO 'app_user'@'%';
     
     style API fill:#e8f5e9
     style DB fill:#e3f2fd
-{% endmermaid %}
+```
 
 **特徴：**
 - 単一のAPIサービス
@@ -465,7 +468,8 @@ GRANT ALL PRIVILEGES ON database.* TO 'app_user'@'%';
 
 #### パターン2：マイクロサービス（サービスごとのデータベース）
 
-{% mermaid %}flowchart TD
+```mermaid
+flowchart TD
     subgraph Apps["アプリケーション"]
         App1["📱 モバイルアプリ"]
         App2["💻 Webアプリ"]
@@ -499,7 +503,7 @@ GRANT ALL PRIVILEGES ON database.* TO 'app_user'@'%';
     style Gateway fill:#fff3e0
     style Services fill:#e8f5e9
     style Databases fill:#e3f2fd
-{% endmermaid %}
+```
 
 **特徴：**
 - 複数の独立したサービス
@@ -1056,7 +1060,8 @@ app.use((req, res, next) => {
 
 **シナリオ：** 分析とレポートツールが複雑なクエリを必要とします。
 
-{% mermaid %}flowchart LR
+```mermaid
+flowchart LR
     subgraph Write["書き込み操作"]
         App1["📱 モバイルアプリ"]
         App2["💻 Webアプリ"]
@@ -1076,7 +1081,7 @@ app.use((req, res, next) => {
     style API fill:#e8f5e9
     style DB fill:#e3f2fd
     style ReadDB fill:#fff3e0
-{% endmermaid %}
+```
 
 **セットアップ：**
 
@@ -1101,13 +1106,14 @@ GRANT SELECT ON database.* TO 'analytics'@'%';
 
 **オプション1：読み取りレプリカ（リアルタイム）**
 
-{% mermaid %}flowchart LR
+```mermaid
+flowchart LR
     Prod[("🗄️ 本番DB")] -.->|"継続的<br/>レプリケーション"| Replica[("📖 読み取りレプリカ")]
     Analytics["📊 分析ツール"] --> Replica
     
     style Prod fill:#e3f2fd
     style Replica fill:#fff3e0
-{% endmermaid %}
+```
 
 ```sql
 -- レプリカで分析クエリを実行
@@ -1230,7 +1236,8 @@ GROUP BY DATE(created_at);
 
 **オプション2：データウェアハウスへのETL（バッチ）**
 
-{% mermaid %}flowchart LR
+```mermaid
+flowchart LR
     Prod[("🗄️ 本番DB")] -->|"夜間<br/>抽出"| ETL["⚙️ ETLプロセス"]
     ETL -->|"変換<br/>& ロード"| DW[("📊 データウェアハウス")]
     Analytics["📊 分析ツール"] --> DW
@@ -1238,7 +1245,7 @@ GROUP BY DATE(created_at);
     style Prod fill:#e3f2fd
     style ETL fill:#fff3e0
     style DW fill:#e8f5e9
-{% endmermaid %}
+```
 
 ```python
 # ETLジョブが夜間実行
@@ -1496,7 +1503,8 @@ def build_customer_360():
 
 **アーキテクチャ例：**
 
-{% mermaid %}flowchart TD
+```mermaid
+flowchart TD
     Prod[("🗄️ 本番DB")]
     
     Prod -.->|"リアルタイム<br/>レプリケーション"| Replica[("📖 読み取りレプリカ")]
@@ -1509,7 +1517,7 @@ def build_customer_360():
     style Prod fill:#e3f2fd
     style Replica fill:#fff3e0
     style DW fill:#e8f5e9
-{% endmermaid %}
+```
 
 **移行パス：**
 

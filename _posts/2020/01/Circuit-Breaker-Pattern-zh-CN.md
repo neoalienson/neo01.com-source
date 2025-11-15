@@ -31,7 +31,7 @@ comments: true
 - 超时后允许有限的测试请求
 - 服务展现恢复时关闭
 
-{% mermaid %}
+```mermaid
 stateDiagram-v2
     [*] --> Closed
     Closed --> Open: 达到失败阈值
@@ -56,7 +56,7 @@ stateDiagram-v2
         允许试探请求
         评估恢复状况
     end note
-{% endmermaid %}
+```
 
 ## 问题：分布式系统中的连锁故障
 
@@ -217,7 +217,7 @@ class CircuitBreaker {
 
 ## 断路器状态
 
-{% mermaid %}
+```mermaid
 graph TB
     subgraph Closed["🟢 关闭状态"]
         C1[请求到达]
@@ -267,7 +267,7 @@ graph TB
     style Closed fill:#d3f9d8,stroke:#2f9e44
     style Open fill:#ffe3e3,stroke:#c92a2a
     style HalfOpen fill:#fff3bf,stroke:#f59f00
-{% endmermaid %}
+```
 
 ### 关闭状态：正常运作
 

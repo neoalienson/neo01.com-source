@@ -31,7 +31,7 @@ Understanding what Security by Design is not helps clarify its true nature:
 
 **Perimeter-Only Defense**: Focusing solely on external defenses while ignoring internal security is not Security by Design. Modern threats require defense in depth, not just a strong outer wall.
 
-{% mermaid %}
+```mermaid
 graph LR
     A(Security by Design) -->|Proactive| B(Built-in from Start)
     A -->|Holistic| C(Every Layer Protected)
@@ -43,7 +43,7 @@ graph LR
     
     style A fill:#90EE90
     style E fill:#FFB6C6
-{% endmermaid %}
+```
 
 
 Comparatively, "Security by Default" is the principle that out-of-the-box settings should be the most secure possible. Imagine buying a smartphone that, by default, has all the necessary privacy settings enabled, as opposed to one that requires you to manually adjust these settings to secure your data.
@@ -60,7 +60,7 @@ Threat modeling, control validation, automation, and security principles are fun
 
 These practices are interconnected; threat modeling informs control validation, and automation aids in the consistent application of the controls identified through threat modeling.
 
-{% mermaid %}
+```mermaid
 graph TD
     A(Threat Modeling) -->|Identifies Risks| B[Security Controls]
     B -->|Implements| C[Control Validation]
@@ -74,7 +74,7 @@ graph TD
     style A fill:#87CEEB
     style E fill:#90EE90
     style G fill:#FFD700
-{% endmermaid %}
+```
 
 ## Automating Control Validation and Remediation: Enhancing Security by Design
 

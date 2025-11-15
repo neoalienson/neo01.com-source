@@ -115,7 +115,8 @@ comments: true
 
 當這三個階段形成持續循環時，真正的力量就會顯現：
 
-{% mermaid %}graph TB
+```mermaid
+graph TB
     A["新問題"] --> B["階段 1:<br/>分析與生成"]
     B --> C["更新的學習指南"]
     C --> D["階段 2:<br/>驗證涵蓋範圍"]
@@ -133,7 +134,7 @@ comments: true
     style D fill:#e8f5e9,stroke:#388e3d
     style F fill:#f3e5f5,stroke:#7b1fa2
     style J fill:#c8e6c9,stroke:#2e7d32
-{% endmermaid %}
+```
 
 每次迭代不只是增加資訊——它精煉理解。早期迭代可能產生基本解釋。後期迭代，在更多問題和更深入分析的基礎上，產生細緻、相互連結的內容，揭示領域的底層結構。
 
@@ -196,7 +197,8 @@ comments: true
 
 當 AI 從帶有答案的問題生成內容時，答案充當**情境約束**，顯著減少不準確性。AI 不是自由地生成關於主題的內容（可能漂移到聽起來合理的錯誤），而是必須以與提供的正確答案一致的方式解釋概念。
 
-{% mermaid %}graph LR
+```mermaid
+graph LR
     A["學習材料創建"]
     
     B["人工編寫<br/>指南"]
@@ -225,7 +227,7 @@ comments: true
     style B fill:#e8f5e9,stroke:#388e3d
     style C fill:#ffebee,stroke:#c62828
     style D fill:#e3f2fd,stroke:#1976d2,stroke-width:3px
-{% endmermaid %}
+```
 
 
 ## 優勢：為什麼這種方法有效
@@ -752,7 +754,8 @@ AI 生成的內容可能不準確——這是眾所周知的限制。然而，�
 
 **驗證工作流程：**
 
-{% mermaid %}graph TB
+```mermaid
+graph TB
     A["AI 生成內容"] --> B["多模型驗證"]
     B --> C{"共識？"}
     C -->|是| D["信心分數：高"]
@@ -769,7 +772,7 @@ AI 生成的內容可能不準確——這是眾所周知的限制。然而，�
     style D fill:#c8e6c9,stroke:#388e3d
     style E fill:#fff3e0,stroke:#f57c00
     style K fill:#c8e6c9,stroke:#2e7d32
-{% endmermaid %}
+```
 
 ### 可及性和包容性
 
@@ -931,7 +934,8 @@ AI 驅動的學習平台
 
 **關鍵要點：**
 
-{% mermaid %}graph LR
+```mermaid
+graph LR
     A["AI 輔助學習"]
     
     B["認知益處"]
@@ -961,7 +965,7 @@ AI 驅動的學習平台
     style B fill:#e8f5e9,stroke:#388e3d
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#ffebee,stroke:#c62828
-{% endmermaid %}
+```
 
 優勢是明確的：更好的組織、更深的理解、減少的焦慮和更有效的學習。挑戰是真實的但可管理的：維持主導權、驗證品質、前期時間投資以及與社交學習的平衡。
 

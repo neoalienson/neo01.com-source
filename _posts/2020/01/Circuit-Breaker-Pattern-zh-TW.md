@@ -31,7 +31,7 @@ comments: true
 - 逾時後允許有限的測試請求
 - 服務展現恢復時關閉
 
-{% mermaid %}
+```mermaid
 stateDiagram-v2
     [*] --> Closed
     Closed --> Open: 達到失敗閾值
@@ -56,7 +56,7 @@ stateDiagram-v2
         允許試探請求
         評估恢復狀況
     end note
-{% endmermaid %}
+```
 
 ## 問題：分散式系統中的連鎖故障
 
@@ -217,7 +217,7 @@ class CircuitBreaker {
 
 ## 斷路器狀態
 
-{% mermaid %}
+```mermaid
 graph TB
     subgraph Closed["🟢 關閉狀態"]
         C1[請求到達]
@@ -267,7 +267,7 @@ graph TB
     style Closed fill:#d3f9d8,stroke:#2f9e44
     style Open fill:#ffe3e3,stroke:#c92a2a
     style HalfOpen fill:#fff3bf,stroke:#f59f00
-{% endmermaid %}
+```
 
 ### 關閉狀態：正常運作
 

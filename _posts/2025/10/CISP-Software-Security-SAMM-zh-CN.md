@@ -54,7 +54,7 @@ canonical_lang: zh-CN
     
     **注意：购置（Procurement）不是SAMM的核心业务功能！**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["SAMM核心业务功能"]
     
@@ -88,7 +88,7 @@ graph TB
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 ### 2.2 治理（Governance）
 
@@ -165,7 +165,7 @@ graph TB
 
 **验证方法：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["验证方法"]
     
@@ -189,7 +189,7 @@ graph LR
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 ### 2.5 部署（Deployment）
 
@@ -241,7 +241,7 @@ graph LR
 
 **SAMM定义了四个成熟度级别：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["成熟度级别"]
     
@@ -264,7 +264,7 @@ graph TB
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#e8f5e9,stroke:#388e3d
     style E fill:#e3f2fd,stroke:#1976d2
-{% endmermaid %}
+```
 
 **成熟度级别详解：**
 

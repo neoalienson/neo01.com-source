@@ -37,7 +37,7 @@ canonical_lang: zh-CN
 
 **按严重程度分类：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["安全事件分类"]
     
@@ -60,7 +60,7 @@ graph TB
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#ffccbc,stroke:#d84315
     style E fill:#ffcdd2,stroke:#b71c1c
-{% endmermaid %}
+```
 
 ## 二、事件响应流程概述
 
@@ -83,7 +83,7 @@ graph TB
 
 **应急响应各阶段的核心目标：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["应急响应阶段"]
     
@@ -117,13 +117,13 @@ graph TB
     style C fill:#ffebee,stroke:#c62828
     style D fill:#e8f5e9,stroke:#388e3d
     style E fill:#e3f2fd,stroke:#1976d2
-{% endmermaid %}
+```
 
 ### 2.3 恢复阶段的行动
 
 **恢复阶段的主要工作内容：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["恢复阶段行动"]
     
@@ -156,7 +156,7 @@ graph TB
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#e8f5e9,stroke:#388e3d
     style E fill:#ffcdd2,stroke:#b71c1c
-{% endmermaid %}
+```
 
 !!!anote "💡 恢复阶段的核心工作"
     **恢复阶段的三大任务：**
@@ -275,7 +275,7 @@ graph TB
 
 **通知顺序和优先级：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["安全事件发生"]
     
@@ -305,7 +305,7 @@ graph TB
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#ffccbc,stroke:#d84315
     style E fill:#ffcdd2,stroke:#b71c1c
-{% endmermaid %}
+```
 
 !!!anote "💡 通知优先级的考虑因素"
     **通知优先级的决定因素：**
@@ -346,7 +346,7 @@ graph TB
 
 **组织内应急通知应主要采用电话方式：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["应急通知方式"]
     
@@ -371,7 +371,7 @@ graph TB
     
     style B fill:#c8e6c9,stroke:#2e7d32
     style C fill:#ffcdd2,stroke:#b71c1c
-{% endmermaid %}
+```
 
 !!!anote "📞 电话通知的优势"
     **电话是应急通知的首选方式：**
@@ -410,7 +410,7 @@ graph TB
 
 **如果可能，最应该得到第一个应急事件通知的小组是应急响应日常运行小组：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["安全事件发生"]
     
@@ -430,7 +430,7 @@ graph TB
     
     style B fill:#c8e6c9,stroke:#2e7d32
     style B1 fill:#e3f2fd,stroke:#1976d2
-{% endmermaid %}
+```
 
 !!!anote "💡 日常运行小组的首要职责"
     **日常运行小组的关键作用：**
@@ -498,7 +498,7 @@ graph TB
 
 **计算机安全事件响应团队（CSIRT）：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["CSIRT团队"]
     
@@ -528,7 +528,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 **团队成员职责：**
 
@@ -569,7 +569,7 @@ graph TB
 
 应急响应计划与应急响应这两个方面是相互补充与促进的关系。
 
-{% mermaid %}
+```mermaid
 graph LR
     A["应急响应计划"] --> B["指导策略"]
     B --> C["应急响应"]
@@ -582,7 +582,7 @@ graph LR
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#ffebee,stroke:#c62828
     style E fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 !!!anote "💡 应急响应计划与应急响应的关系"
     **相互补充与促进的关系：**
@@ -663,7 +663,7 @@ graph LR
 
 **建立应急响应计划的正确步骤：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["1. 获得管理层支持"] --> B["2. 实施业务影响分析"]
     B --> C["3. 确定应急人员"]
@@ -684,7 +684,7 @@ graph TB
     style D fill:#f3e5f5,stroke:#7b1fa2
     style E fill:#e8f5e9,stroke:#388e3d
     style F fill:#fce4ec,stroke:#c2185b
-{% endmermaid %}
+```
 
 !!!anote "💡 建立应急响应计划的关键步骤"
     **第一步：获得管理层支持（最重要的第一步）**
@@ -728,7 +728,7 @@ graph TB
 - ✅ 确定支持公司运行的关键系统
 - ❌ 确定业务面临风险时的潜在损失和影响（属于风险评估）
 
-{% mermaid %}
+```mermaid
 graph TB
     A["业务影响分析 BIA"]
     
@@ -759,7 +759,7 @@ graph TB
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#f3e5f5,stroke:#7b1fa2
     style E fill:#fce4ec,stroke:#c2185b
-{% endmermaid %}
+```
 
 !!!anote "💡 BIA与风险评估的区别"
     **业务影响分析（BIA）的主要工作：**
@@ -839,7 +839,7 @@ graph TB
 
 应急响应领导小组是信息安全应急响应工作的组织领导机构。
 
-{% mermaid %}
+```mermaid
 graph TB
     A["应急响应领导小组"]
     
@@ -866,7 +866,7 @@ graph TB
     style B fill:#c8e6c9,stroke:#2e7d32
     style C fill:#e3f2fd,stroke:#1976d2
     style D fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 !!!anote "💡 应急响应领导小组组长"
     **组长应由最高管理层担任：**
@@ -921,7 +921,7 @@ graph TB
 
 应急响应流程一般顺序是：**信息安全事件通告 → 信息安全事件评估 → 应急启动 → 应急处置 → 后期处置**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["1. 信息安全<br/>事件通告"] --> B["2. 信息安全<br/>事件评估"]
     B --> C["3. 应急启动"]
@@ -939,7 +939,7 @@ graph LR
     style C fill:#ffebee,stroke:#c62828
     style D fill:#e8f5e9,stroke:#388e3d
     style E fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 !!!anote "💡 应急响应流程各阶段说明"
     **应急响应流程的五个阶段及其主要工作：**
@@ -1056,7 +1056,7 @@ graph LR
 
 应急响应计划文档应该分发给参与应急响应工作的所有人员。
 
-{% mermaid %}
+```mermaid
 graph TB
     A["应急响应计划文档"]
     
@@ -1074,7 +1074,7 @@ graph TB
     
     style B fill:#c8e6c9,stroke:#2e7d32
     style C fill:#ffcdd2,stroke:#b71c1c
-{% endmermaid %}
+```
 
 !!!anote "💡 应急响应计划文档分发原则"
     **文档分发的三个基本原则：**
@@ -1121,7 +1121,7 @@ graph TB
 - ✅ 工作原则
 - ❌ 角色职责（不属于总则）
 
-{% mermaid %}
+```mermaid
 graph TB
     A["应急响应计划结构"]
     
@@ -1156,7 +1156,7 @@ graph TB
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#e8f5e9,stroke:#388e3d
     style E fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 !!!anote "💡 应急响应计划总则内容"
     **总则应包含的四个部分：**
@@ -1224,7 +1224,7 @@ graph TB
 
 发现一台被病毒感染的终端后，首先应该：**拔掉网线**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["发现病毒感染终端"]
     
@@ -1258,7 +1258,7 @@ graph TB
     style C fill:#e3f2fd,stroke:#1976d2
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#e8f5e9,stroke:#388e3d
-{% endmermaid %}
+```
 
 !!!anote "💡 病毒感染的首要处理措施"
     **第一时间隔离病毒源的重要性：**
@@ -1304,7 +1304,7 @@ graph TB
 
 **特别重大事件 - 重大事件 - 较大事件 - 一般事件**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["我国信息安全事件分级"]
     
@@ -1338,7 +1338,7 @@ graph TB
     style C fill:#ffccbc,stroke:#d84315
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#c8e6c9,stroke:#2e7d32
-{% endmermaid %}
+```
 
 !!!anote "💡 我国信息安全事件分级"
     **四级分类标准：**
@@ -1373,7 +1373,7 @@ graph TB
 
 我国信息安全事件分级参考三个要素：信息系统的重要程度、系统损失和社会影响。其中，依据信息系统的重要程度对信息系统进行划分的正确级别包括：
 
-{% mermaid %}
+```mermaid
 graph TB
     A["信息系统重要程度划分"]
     
@@ -1406,7 +1406,7 @@ graph TB
     style C fill:#ffccbc,stroke:#d84315
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#e0e0e0,stroke:#757575
-{% endmermaid %}
+```
 
 !!!anote "💡 信息系统重要程度划分"
     **标准划分的三个级别：**
@@ -1451,7 +1451,7 @@ graph TB
 3. ✅ 社会影响
 4. ❌ 业务损失（不是主要考虑要素）
 
-{% mermaid %}
+```mermaid
 graph TB
     A["信息安全事件分级要素"]
     
@@ -1478,7 +1478,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 !!!anote "💡 事件分级考虑要素"
     **三大考虑要素：**
@@ -1531,7 +1531,7 @@ graph TB
 
 根据病毒攻击、非法入侵等原因造成的不同影响程度，校园网安全事件分为四个级别：
 
-{% mermaid %}
+```mermaid
 graph TB
     A["校园网安全事件分级"]
     
@@ -1569,7 +1569,7 @@ graph TB
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#ffccbc,stroke:#d84315
     style E fill:#ffcdd2,stroke:#b71c1c
-{% endmermaid %}
+```
 
 #### 7.4.1 一般事件（IV级）
 
@@ -2521,7 +2521,7 @@ BCP制定完整流程：
 
 **改进循环：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["事件发生"] --> B["响应处理"]
     B --> C["事后分析"]
@@ -2536,7 +2536,7 @@ graph LR
     style D fill:#f3e5f5,stroke:#7b1fa2
     style E fill:#e8f5e9,stroke:#388e3d
     style F fill:#fce4ec,stroke:#c2185b
-{% endmermaid %}
+```
 
 ## 九、总结
 

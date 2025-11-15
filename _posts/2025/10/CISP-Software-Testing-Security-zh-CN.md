@@ -47,7 +47,7 @@ canonical_lang: zh-CN
 
 **常见的软件安全测试方法：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["软件安全测试方法"]
     
@@ -67,7 +67,7 @@ graph TB
     
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 **测试方法对比：**
 
@@ -105,7 +105,7 @@ graph TB
     - 不需要了解内部结构
     - 关注输入输出行为
 
-{% mermaid %}
+```mermaid
 graph TB
     A["模糊测试流程"]
     
@@ -134,7 +134,7 @@ graph TB
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#f3e5f5,stroke:#7b1fa2
     style F fill:#ffcdd2,stroke:#c62828
-{% endmermaid %}
+```
 
 ### 2.2 模糊测试过程
 
@@ -240,7 +240,7 @@ graph TB
 
 **测试用例的类型：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["测试用例类型"]
     
@@ -267,7 +267,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#e8f5e9,stroke:#388e3d
-{% endmermaid %}
+```
 
 **测试数据生成策略：**
 
@@ -324,7 +324,7 @@ graph TB
 
 **监测的异常类型：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["异常监测"]
     
@@ -351,7 +351,7 @@ graph TB
     style B fill:#ffcdd2,stroke:#c62828
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#e3f2fd,stroke:#1976d2
-{% endmermaid %}
+```
 
 **异常监测方法：**
 
@@ -477,7 +477,7 @@ graph TB
 
 **实际应用中的模糊测试流程：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["模糊测试实践"]
     
@@ -511,7 +511,7 @@ graph TB
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 ### 4.2 最佳实践
 

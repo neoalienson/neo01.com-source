@@ -53,7 +53,7 @@ comments: true
 
 **项目的关键特征：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["项目特征"]
     
@@ -76,7 +76,7 @@ graph TB
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#e8f5e9,stroke:#388e3d
     style E fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 **特征详解：**
 

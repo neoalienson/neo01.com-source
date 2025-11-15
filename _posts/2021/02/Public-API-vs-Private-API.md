@@ -28,7 +28,7 @@ Modern applications expose functionality through APIs (Application Programming I
 - No compatibility guarantees
 - Subject to removal
 
-{% mermaid %}
+```mermaid
 graph TB
     subgraph Public["🌐 Public API"]
         P1[Documented Methods]
@@ -67,7 +67,7 @@ graph TB
     style Public fill:#e3f2fd,stroke:#1976d2
     style Private fill:#ffebee,stroke:#c62828
     style App fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 
 ## Public APIs: The Official Interface
@@ -688,7 +688,7 @@ class Component {
 // - Read CHANGELOG for deprecation notices
 ```
 
-{% mermaid %}
+```mermaid
 graph TB
     A[Need to use an API?]
     
@@ -715,7 +715,7 @@ graph TB
     
     style F fill:#c8e6c9,stroke:#388e3c
     style G fill:#ffcdd2,stroke:#c62828
-{% endmermaid %}
+```
 
 
 ## Designing Your Own APIs
@@ -1036,7 +1036,7 @@ if (!Array.prototype.includes) {
 
 ### Deprecation Timeline
 
-{% mermaid %}
+```mermaid
 gantt
     title API Deprecation Lifecycle
     dateFormat YYYY-MM
@@ -1048,7 +1048,7 @@ gantt
     Migration Guide Published :active, 2021-01, 2021-03
     section v3.0
     API Removed              :crit, 2022-01, 2022-12
-{% endmermaid %}
+```
 
 !!!tip "💡 Deprecation Best Practices"
     **1. Announce early**
@@ -1259,7 +1259,7 @@ Understanding the distinction between public and private APIs is crucial for bui
 
 **Key Takeaways**:
 
-{% mermaid %}
+```mermaid
 graph LR
     A[Need Functionality?]
     B{Available in<br/>Public API?}
@@ -1283,7 +1283,7 @@ graph LR
     style F fill:#c8e6c9,stroke:#388e3c
     style G fill:#c8e6c9,stroke:#388e3c
     style H fill:#ffcdd2,stroke:#c62828
-{% endmermaid %}
+```
 
 ### Decision Matrix
 

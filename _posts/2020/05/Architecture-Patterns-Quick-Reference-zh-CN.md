@@ -100,7 +100,7 @@ comments: true
 
 使用此流程图导航到最适合您情况的模式：
 
-{% mermaid %}
+```mermaid
 graph TD
     Start[您的挑战是什么？] --> Q1{服务<br/>可用性？}
     
@@ -142,7 +142,7 @@ graph TD
     style HEM fill:#ffd43b
     style Sidecar fill:#ffd43b
     style SF fill:#a78bfa
-{% endmermaid %}
+```
 
 ## 模式比较矩阵
 
@@ -322,7 +322,7 @@ graph TD
 
 评估您组织的模式采用成熟度：
 
-{% mermaid %}
+```mermaid
 graph LR
     L1[等级 1:<br/>临时] --> L2[等级 2:<br/>意识]
     L2 --> L3[等级 3:<br/>定义]
@@ -334,7 +334,7 @@ graph LR
     style L3 fill:#4dabf7
     style L4 fill:#51cf66
     style L5 fill:#a78bfa
-{% endmermaid %}
+```
 
 **等级 1 - 临时**：没有一致的模式使用，被动解决问题
 

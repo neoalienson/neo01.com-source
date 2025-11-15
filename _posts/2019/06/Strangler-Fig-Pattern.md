@@ -29,7 +29,7 @@ Strangler Fig provides an incremental approach to modernization. Instead of repl
 4. **Decommission the legacy system** once all functionality is migrated
 5. **Remove the façade** when migration is complete
 
-{% mermaid %}
+```mermaid
 graph LR
     A[Client] --> B[Façade/Proxy]
     B -->|Legacy Features| C[Legacy System]
@@ -40,7 +40,7 @@ graph LR
     style B fill:#ffd43b,stroke:#fab005
     style C fill:#fa5252,stroke:#c92a2a
     style D fill:#51cf66,stroke:#2f9e44
-{% endmermaid %}
+```
 
 ## How It Works: A Practical Journey
 
@@ -114,7 +114,7 @@ app.post('/checkout', async (req, res) => {
 
 One of the trickiest aspects is managing data across both systems:
 
-{% mermaid %}
+```mermaid
 graph TD
     A[Client Request] --> B[Façade]
     B --> C{Which System?}
@@ -128,7 +128,7 @@ graph TD
     style B fill:#ffd43b,stroke:#fab005
     style D fill:#51cf66,stroke:#2f9e44
     style E fill:#fa5252,stroke:#c92a2a
-{% endmermaid %}
+```
 
 ```javascript
 class DataSyncService {

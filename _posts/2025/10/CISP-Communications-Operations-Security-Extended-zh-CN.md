@@ -25,7 +25,7 @@ canonical_lang: zh-CN
 
 不同的信息安全风险评估方法可能得到不同的风险评估结果，组织应根据实际情况选择适当的风险评估方法。
 
-{% mermaid %}
+```mermaid
 graph TB
     A["风险评估方法"]
     
@@ -47,7 +47,7 @@ graph TB
     
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 !!!danger "🚨 常见错误认知"
     **错误说法：定量风险分析相比定性风险分析能得到准确的数值，所以在实际工作中应使用定量风险分析，而不应选择定性风险分析**
@@ -135,7 +135,7 @@ graph TB
 
 **这个鉴别过程属于：单向鉴别**
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant U as 用户
     participant S as 服务器
@@ -147,7 +147,7 @@ sequenceDiagram
     S->>U: 5. 返回结果（成功/失败）
     
     Note over U,S: 仅服务器验证用户身份<br/>用户未验证服务器身份<br/>属于单向鉴别
-{% endmermaid %}
+```
 
 !!!anote "💡 单向鉴别的特征"
     **为什么是单向鉴别：**
@@ -205,7 +205,7 @@ sequenceDiagram
 
 **ARP欺骗攻击机制：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["正常ARP通信"]
     B["ARP欺骗攻击"]
@@ -222,7 +222,7 @@ graph TB
     
     style A fill:#c8e6c9,stroke:#2e7d32
     style B fill:#ffcdd2,stroke:#b71c1c
-{% endmermaid %}
+```
 
 !!!danger "🚨 关于ARP欺骗的错误理解"
     **错误说法：彻底解决ARP欺骗的方法是避免使用ARP协议和ARP缓存，直接采用IP地址和其他主机进行连接**
@@ -309,7 +309,7 @@ ARP欺骗综合防护方案：
 
 **核心原则：在软件立项和需求阶段投入安全资源，总体成本远低于运行阶段修复**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["软件生命周期"]
     
@@ -336,7 +336,7 @@ graph TB
     style D fill:#ffccbc,stroke:#d84315
     style E fill:#ffcdd2,stroke:#c62828
     style F fill:#d32f2f,stroke:#b71c1c,color:#fff
-{% endmermaid %}
+```
 
 !!!anote "💡 软件安全成本倍增规律"
     **为什么早期投入成本更低：**

@@ -24,7 +24,7 @@ Git merge 透過建立一個新提交來組合兩個分支，該提交將它們�
 
 ### Merge 的運作原理
 
-{% mermaid %}
+```mermaid
 gitGraph
     commit id: "A"
     commit id: "B"
@@ -36,7 +36,7 @@ gitGraph
     commit id: "E"
     merge feature
     commit id: "合併提交"
-{% endmermaid %}
+```
 
 **Merge 過程**：
 ```bash
@@ -56,7 +56,7 @@ git merge feature
 **快進合併（Fast-Forward Merge）**：
 當不存在分歧的變更時，Git 只是將分支指標向前移動。
 
-{% mermaid %}
+```mermaid
 gitGraph
     commit id: "A"
     commit id: "B"
@@ -66,7 +66,7 @@ gitGraph
     commit id: "D"
     checkout main
     merge feature
-{% endmermaid %}
+```
 
 ```bash
 # 快進合併（無合併提交）
@@ -106,7 +106,7 @@ Git rebase 將提交從一個分支移動或重放到另一個分支，建立線
 
 ### Rebase 的運作原理
 
-{% mermaid %}
+```mermaid
 gitGraph
     commit id: "A"
     commit id: "B"
@@ -119,7 +119,7 @@ gitGraph
     checkout feature
     commit id: "C'" type: HIGHLIGHT
     commit id: "D'" type: HIGHLIGHT
-{% endmermaid %}
+```
 
 **Rebase 過程**：
 ```bash
@@ -196,7 +196,7 @@ drop jkl012 除錯日誌
 
 ### 視覺化比較
 
-{% mermaid %}
+```mermaid
 ---
 config:
   theme: 'default'
@@ -219,7 +219,7 @@ gitGraph
     checkout main
     cherry-pick id: "功能 C"
     cherry-pick id: "功能 D"
-{% endmermaid %}
+```
 
 ### 決策矩陣
 
@@ -262,7 +262,7 @@ git merge --no-ff feature/user-profile
 
 ### Pull Request 工作流
 
-{% mermaid %}
+```mermaid
 gitGraph
     commit id: "基礎"
     branch feature
@@ -277,7 +277,7 @@ gitGraph
     checkout main
     merge feature
     commit id: "PR 已合併"
-{% endmermaid %}
+```
 
 **Pull Request 的最佳實踐**：
 ```bash
@@ -353,7 +353,7 @@ git commit -m "新增完整的使用者個人資料功能"
 # 結果：主分支上的單一提交包含所有變更
 ```
 
-{% mermaid %}
+```mermaid
 gitGraph
     commit id: "A"
     commit id: "B"
@@ -364,7 +364,7 @@ gitGraph
     commit id: "E"
     checkout main
     commit id: "壓縮的 C+D+E" type: HIGHLIGHT
-{% endmermaid %}
+```
 
 **何時使用壓縮合併**：
 - 功能有許多小提交
@@ -457,7 +457,7 @@ squash mno345 修復測試
 
 ### 決策流程圖
 
-{% mermaid %}
+```mermaid
 flowchart TD
     A["🔀 需要整合分支？"] --> B{"📍 公共/共享分支？"}
     B -->|是| C["✅ 使用 MERGE"]
@@ -474,7 +474,7 @@ flowchart TD
     style E fill:#45b7d1
     style G fill:#96ceb4
     style H fill:#ff6b6b
-{% endmermaid %}
+```
 
 ### 團隊指南範本
 

@@ -37,7 +37,7 @@ Claim-Check 模式通过分离数据存储和消息传递的关注点，优雅�
 3. **仅通过消息系统传送令牌**
 4. **在需要时使用令牌取回负载**
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant Sender as 发送者
     participant DataStore as 外部数据存储
@@ -51,7 +51,7 @@ sequenceDiagram
     Receiver->>DataStore: 5. 使用令牌取回负载
     DataStore-->>Receiver: 6. 返回负载
     Receiver->>Receiver: 7. 处理负载
-{% endmermaid %}
+```
 
 ## 运作方式：模式实践
 
@@ -180,7 +180,7 @@ function generateClaimCheck() {
     
     **复杂路由**：当消息穿越多个组件时，通过仅在中介层传递令牌来避免重复的序列化/反序列化开销。
 
-{% mermaid %}
+```mermaid
 graph TD
     A[消息大小分析] --> B{大小 > 阈值？}
     B -->|是| C[使用 Claim-Check]
@@ -192,7 +192,7 @@ graph TD
     
     style C fill:#51cf66,stroke:#2f9e44
     style F fill:#4dabf7,stroke:#1971c2
-{% endmermaid %}
+```
 
 ## 架构质量属性
 

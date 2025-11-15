@@ -25,7 +25,7 @@ BSI（Build Security In）是指将安全内建到软件过程中，而不是可
 
 **BSI的核心理念：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["BSI核心理念"]
     
@@ -54,7 +54,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 !!!anote "💡 BSI的关键特征"
     **BSI强调的核心思想：**
@@ -80,7 +80,7 @@ graph TB
 
 **软件安全三大支柱：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["软件安全"]
     
@@ -109,7 +109,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 !!!danger "🚨 常见错误：安全测试不是三大支柱之一"
     **错误说法：软件安全的三根支柱是风险管理、软件安全触点和安全测试**
@@ -155,7 +155,7 @@ graph TB
 
 **三大支柱如何协同工作：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["安全知识"] --> B["应用风险管理"]
     A --> C["软件安全接触点"]
@@ -167,7 +167,7 @@ graph LR
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#c8e6c9,stroke:#2e7d32
-{% endmermaid %}
+```
 
 !!!anote "💡 三大支柱的协同作用"
     **安全知识是基础：**
@@ -191,7 +191,7 @@ graph LR
 
 **软件开发生命周期中的安全接触点：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["需求阶段"] --> A1["安全需求分析"]
     B["设计阶段"] --> B1["架构风险分析"]
@@ -212,7 +212,7 @@ graph TB
     style D fill:#fff3e0,stroke:#ff9800
     style E fill:#e8f5e9,stroke:#388e3d
     style F fill:#fce4ec,stroke:#c2185b
-{% endmermaid %}
+```
 
 **关键接触点详解：**
 
@@ -229,7 +229,7 @@ graph TB
 
 **代码审核的类型：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["代码审核"]
     
@@ -256,7 +256,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 ### 3.3 渗透测试
 
@@ -286,7 +286,7 @@ graph TB
 
 **应用风险管理的关键步骤：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["风险识别"] --> B["风险评估"]
     B --> C["风险处置"]
@@ -302,7 +302,7 @@ graph LR
     style B fill:#fff3e0,stroke:#f57c00
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 **风险处置策略：**
 
@@ -339,7 +339,7 @@ graph LR
 
 **核心安全原则：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["安全原则"]
     
@@ -370,7 +370,7 @@ graph TB
     style E fill:#f3e5f5,stroke:#7b1fa2
     style F fill:#fce4ec,stroke:#c2185b
     style G fill:#e1f5fe,stroke:#0277bd
-{% endmermaid %}
+```
 
 ### 5.2 常见漏洞类型
 
@@ -421,7 +421,7 @@ graph TB
 
 **SSE-CMM的核心理念：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["SSE-CMM"]
     
@@ -448,7 +448,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 ### 6.2 SSE-CMM的正确理解
 
@@ -504,7 +504,7 @@ graph TB
 
 **5个成熟度级别：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["SSE-CMM成熟度级别"]
     
@@ -531,7 +531,7 @@ graph TB
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#c8e6c9,stroke:#2e7d32
     style F fill:#e3f2fd,stroke:#1976d2
-{% endmermaid %}
+```
 
 **各级别特征：**
 

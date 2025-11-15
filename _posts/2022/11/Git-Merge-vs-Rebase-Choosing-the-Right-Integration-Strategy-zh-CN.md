@@ -24,7 +24,7 @@ Git merge 通过创建一个新提交来组合两个分支，该提交将它们�
 
 ### Merge 的工作原理
 
-{% mermaid %}
+```mermaid
 gitGraph
     commit id: "A"
     commit id: "B"
@@ -36,7 +36,7 @@ gitGraph
     commit id: "E"
     merge feature
     commit id: "合并提交"
-{% endmermaid %}
+```
 
 **Merge 过程**：
 ```bash
@@ -56,7 +56,7 @@ git merge feature
 **快进合并（Fast-Forward Merge）**：
 当不存在分歧的更改时，Git 只是将分支指针向前移动。
 
-{% mermaid %}
+```mermaid
 gitGraph
     commit id: "A"
     commit id: "B"
@@ -66,7 +66,7 @@ gitGraph
     commit id: "D"
     checkout main
     merge feature
-{% endmermaid %}
+```
 
 ```bash
 # 快进合并（无合并提交）
@@ -106,7 +106,7 @@ Git rebase 将提交从一个分支移动或重放到另一个分支，创建线
 
 ### Rebase 的工作原理
 
-{% mermaid %}
+```mermaid
 gitGraph
     commit id: "A"
     commit id: "B"
@@ -119,7 +119,7 @@ gitGraph
     checkout feature
     commit id: "C'" type: HIGHLIGHT
     commit id: "D'" type: HIGHLIGHT
-{% endmermaid %}
+```
 
 **Rebase 过程**：
 ```bash
@@ -196,7 +196,7 @@ drop jkl012 调试日志
 
 ### 可视化比较
 
-{% mermaid %}
+```mermaid
 ---
 config:
   theme: 'default'
@@ -219,7 +219,7 @@ gitGraph
     checkout main
     cherry-pick id: "功能 C"
     cherry-pick id: "功能 D"
-{% endmermaid %}
+```
 
 ### 决策矩阵
 
@@ -262,7 +262,7 @@ git merge --no-ff feature/user-profile
 
 ### Pull Request 工作流
 
-{% mermaid %}
+```mermaid
 gitGraph
     commit id: "基础"
     branch feature
@@ -277,7 +277,7 @@ gitGraph
     checkout main
     merge feature
     commit id: "PR 已合并"
-{% endmermaid %}
+```
 
 **Pull Request 的最佳实践**：
 ```bash
@@ -353,7 +353,7 @@ git commit -m "添加完整的用户个人资料功能"
 # 结果：主分支上的单个提交包含所有更改
 ```
 
-{% mermaid %}
+```mermaid
 gitGraph
     commit id: "A"
     commit id: "B"
@@ -364,7 +364,7 @@ gitGraph
     commit id: "E"
     checkout main
     commit id: "压缩的 C+D+E" type: HIGHLIGHT
-{% endmermaid %}
+```
 
 **何时使用压缩合并**：
 - 功能有许多小提交
@@ -457,7 +457,7 @@ squash mno345 修复测试
 
 ### 决策流程图
 
-{% mermaid %}
+```mermaid
 flowchart TD
     A["🔀 需要集成分支？"] --> B{"📍 公共/共享分支？"}
     B -->|是| C["✅ 使用 MERGE"]
@@ -474,7 +474,7 @@ flowchart TD
     style E fill:#45b7d1
     style G fill:#96ceb4
     style H fill:#ff6b6b
-{% endmermaid %}
+```
 
 ### 团队指南模板
 

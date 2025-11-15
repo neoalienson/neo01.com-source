@@ -538,7 +538,8 @@ test('spy with partial override', () => {
 
 ### 決定フレームワーク
 
-{% mermaid %}graph TD
+```mermaid
+graph TD
     A["依存関係を置き換える必要がある？"]
     A -->|はい| B["相互作用を検証する必要がある？"]
     A -->|いいえ| Z["実際のオブジェクトを使用"]
@@ -556,7 +557,7 @@ test('spy with partial override', () => {
     style F fill:#e3f2fd,stroke:#1976d2
     style G fill:#fff3e0,stroke:#f57c00
     style H fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 ### 比較マトリックス
 
@@ -811,7 +812,8 @@ fake = FakeRepository()
 - **Fake** は動作する実装を提供する—複雑な依存関係に使用
 - **Spy** は実際のオブジェクトを観察する—実際の動作が重要な場合に使用
 
-{% mermaid %}graph LR
+```mermaid
+graph LR
     A["テストダブル"]
     
     B["Stub<br/>（出力制御）"]
@@ -841,7 +843,7 @@ fake = FakeRepository()
     style C fill:#e3f2fd,stroke:#1976d2
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#e8f5e9,stroke:#388e3c
-{% endmermaid %}
+```
 
 最良のテストは、ニーズを満たす最もシンプルなテストダブルを使用します。mockよりstubを、テストダブルより実際のオブジェクトを、動作検証より状態検証を優先します。内部実装の詳細ではなく、アーキテクチャの境界でモックします。テストダブルをシンプルに保ちます—複雑なダブルは設計上の問題を示しています。
 

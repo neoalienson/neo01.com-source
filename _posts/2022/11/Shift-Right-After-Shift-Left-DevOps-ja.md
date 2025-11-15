@@ -20,7 +20,7 @@ DevOpsの世界は何年も「シフトレフト」について話題にして�
 
 シフトライトを探求する前に、シフトレフトが達成したことを明確にしましょう。従来のソフトウェア開発ライフサイクルは次のようなものでした：
 
-{% mermaid %}
+```mermaid
 graph LR
     A([📝 要件]) --> B([💻 開発])
     B --> C([🧪 テスト])
@@ -28,13 +28,13 @@ graph LR
     D --> E([⚙️ 運用])
     style C fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style E fill:#ffebee,stroke:#c62828,stroke-width:2px
-{% endmermaid %}
+```
 
 テストは開発が「完了」した後の遅い段階で行われました。この段階でバグを見つけることは高コストでした。コードは既に他のプロジェクトに移っている開発者に送り返す必要がありました。フィードバックループは遅く、コストがかかりました。
 
 シフトレフトは品質プラクティスを早い段階に移行しました：
 
-{% mermaid %}
+```mermaid
 graph LR
     A([📝 要件<br/>+ テスト計画]) --> B([💻 開発<br/>+ ユニットテスト])
     B --> C([🧪 統合テスト<br/>+ セキュリティスキャン])
@@ -43,7 +43,7 @@ graph LR
     style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
     style B fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style C fill:#fff3e0,stroke:#f57c00,stroke-width:2px
-{% endmermaid %}
+```
 
 **主要なシフトレフトプラクティス：**
 - **テスト駆動開発（TDD）**：コードの前にテストを書く
@@ -60,7 +60,7 @@ graph LR
 
 本番環境を「ただ動作すべき」ブラックボックスとして扱う代わりに、シフトライトは本番環境を学習環境として受け入れます。デプロイを超えてDevOpsプラクティスを拡張します：
 
-{% mermaid %}
+```mermaid
 graph LR
     A([📝 要件]) --> B([💻 開発])
     B --> C([🧪 テスト])
@@ -70,7 +70,7 @@ graph LR
     F -.フィードバック.-> A
     style E fill:#e0f2f1,stroke:#00796b,stroke-width:2px
     style F fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
-{% endmermaid %}
+```
 
 **コアシフトライト原則：**
 
@@ -100,7 +100,7 @@ graph LR
 
 **可観測性**は、システムの動作について任意の質問をすることができます：「なぜこの特定のユーザーのリクエストは5秒かかったのか？」「午後2時から3時の間に何が変わってレイテンシが急上昇したのか？」事前に質問を予測する必要はありません。
 
-{% mermaid %}
+```mermaid
 graph TB
     A([🌐 本番システム]) --> B([📊 メトリクス<br/>CPU、メモリ、リクエスト])
     A --> C([📝 ログ<br/>アプリケーションイベント])
@@ -111,7 +111,7 @@ graph TB
     E --> F([❓ 質問する<br/>動作を理解する])
     style E fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
     style F fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-{% endmermaid %}
+```
 
 **可観測性の3つの柱：**
 
@@ -166,7 +166,7 @@ if (featureFlags.isEnabled('new-checkout-flow', user)) {
 
 **キルスイッチ**：再デプロイせずに問題のある機能を即座に無効化します。
 
-{% mermaid %}
+```mermaid
 graph TB
     A([🚀 本番環境にデプロイ]) --> B{フィーチャーフラグ}
     B -->|1% ユーザー| C([👥 カナリアグループ])
@@ -178,7 +178,7 @@ graph TB
     style E fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style G fill:#ffebee,stroke:#c62828,stroke-width:2px
     style H fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-{% endmermaid %}
+```
 
 **メリット：**
 
@@ -211,7 +211,7 @@ graph TB
 
 5. **学習と改善**：システムが期待通りに動作しない場合、問題を修正して繰り返す
 
-{% mermaid %}
+```mermaid
 graph LR
     A([📊 定常状態を<br/>定義]) --> B([🤔 動作を<br/>仮説化])
     B --> C([💥 カオスを<br/>導入])
@@ -223,7 +223,7 @@ graph LR
     style C fill:#ffebee,stroke:#c62828,stroke-width:2px
     style F fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style G fill:#fff3e0,stroke:#f57c00,stroke-width:2px
-{% endmermaid %}
+```
 
 **一般的なカオス実験：**
 
@@ -326,7 +326,7 @@ async function checkoutFlow() {
 
 **インシデント後レビュー**：非難なしに何が起こったかから学びます。
 
-{% mermaid %}
+```mermaid
 graph TB
     A([🚨 インシデント検出]) --> B([🔍 トリアージ<br/>影響を評価])
     B --> C([📢 コミュニケーション<br/>ステークホルダーに通知])
@@ -338,7 +338,7 @@ graph TB
     style D fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style F fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
     style G fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-{% endmermaid %}
+```
 
 **非難のないポストモーテム：**
 
@@ -363,7 +363,7 @@ graph TB
 
 最も効果的なDevOps組織は、シフトレフトとシフトライトのどちらかを選択するのではなく、両方を受け入れます。それぞれがソフトウェア品質の異なる側面に対処します：
 
-{% mermaid %}
+```mermaid
 graph TB
     subgraph "シフトレフト：予防"
         A([ユニットテスト])
@@ -393,7 +393,7 @@ graph TB
     E --> I
     I -.フィードバック.-> A
     style E fill:#e3f2fd,stroke:#1976d2,stroke-width:3px
-{% endmermaid %}
+```
 
 **シフトレフトを強調すべき場合：**
 

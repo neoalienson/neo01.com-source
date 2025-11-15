@@ -17,7 +17,8 @@ series: authentication
 
 ### SSO 演進時間線
 
-{% mermaid %}timeline
+```mermaid
+timeline
     title 單點登入演進
     section 1980年代
         1988 : Kerberos v4
@@ -42,7 +43,7 @@ series: authentication
         2014 : OpenID Connect
              : 身份驗證 + 授權
              : 雲原生 SSO
-{% endmermaid %}
+```
 
 ## 密碼問題
 
@@ -122,7 +123,8 @@ Kerberos 由 MIT 在 1980 年代開發，為分散式系統提供安全身份驗
 
 Kerberos 解決了一個關鍵問題：如何在不傳送密碼的情況下跨網路驗證使用者身份。該協定使用對稱金鑰加密和可信的金鑰分發中心（KDC）。「Kerberos」這個名字來自希臘神話——守衛冥界的三頭犬，代表客戶端、伺服器和 KDC，它們共同保護身份驗證的安全。
 
-{% mermaid %}---
+```mermaid
+---
 title: Kerberos 架構
 ---
 flowchart TD
@@ -142,7 +144,7 @@ flowchart TD
     
     style KDC fill:#f96,stroke:#333,stroke-width:3px
     style Client fill:#9cf,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 !!!tip "📖 深入了解：Kerberos"
     有關 Kerberos 架構、身份驗證流程、票據結構、安全考量和實作指南的詳細內容，請參閱[理解 Kerberos：網路身份驗證詳解](/zh-TW/2010/03/Understanding-Kerberos-Network-Authentication-Explained/)。
@@ -217,7 +219,8 @@ SPNEGO 使內網 Web 應用程式能夠使用 Windows 身份驗證。員工存�
 
 SAML 將身份驗證與應用程式存取分離。身分提供者（IdP）處理身份驗證——驗證你是誰。服務提供者（SP）信任 IdP 關於你身分的判斷提示。當你存取啟用 SAML 的應用程式時，它會將你重新導向到組織的 IdP。你在 IdP 進行一次身份驗證，IdP 會頒發 SAML 判斷提示——一個數位簽章的 XML 文件，說明你是誰以及你擁有哪些屬性。
 
-{% mermaid %}---
+```mermaid
+---
 title: SAML 架構
 ---
 flowchart TD
@@ -234,7 +237,7 @@ flowchart TD
     
     style IdP fill:#f96,stroke:#333,stroke-width:3px
     style Browser fill:#9cf,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 ### SAML 實務
 
@@ -426,7 +429,8 @@ OpenID Connect 解決了 OAuth 未設計解決的身份驗證問題：
 
 OIDC 透過新增 ID 權杖擴展了 OAuth——一個包含身分宣告的 JWT。當你使用 OIDC 進行身份驗證時，你會同時收到 ID 權杖（證明你是誰）和存取權杖（授予 API 存取權限）。這種明確的分離消除了混淆並提供了安全的身份驗證。
 
-{% mermaid %}---
+```mermaid
+---
 title: OpenID Connect 架構
 ---
 flowchart TD
@@ -448,7 +452,7 @@ flowchart TD
     
     style AuthServer fill:#f96,stroke:#333,stroke-width:3px
     style Client fill:#9cf,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 ### OIDC 實務
 

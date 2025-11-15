@@ -38,7 +38,7 @@ canonical_lang: zh-CN
 
 **按攻击方式分类：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["拒绝服务攻击"]
     
@@ -66,7 +66,7 @@ graph LR
     style B fill:#ffcdd2,stroke:#c62828
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#e3f2fd,stroke:#1976d2
-{% endmermaid %}
+```
 
 **三类攻击对比：**
 
@@ -104,7 +104,7 @@ graph LR
 
 **UDP Flood攻击示意图：**
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant A as 攻击者
     participant T as 目标服务器
@@ -123,7 +123,7 @@ sequenceDiagram
     T--xU: 无法响应
     
     Note over U: 服务不可用
-{% endmermaid %}
+```
 
 **流量型攻击对比：**
 
@@ -161,7 +161,7 @@ sequenceDiagram
 
 **Land攻击原理：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["攻击者"] --> B["伪造数据包"]
     B --> C["源IP = 目标IP<br/>源端口 = 目标端口"]
@@ -173,7 +173,7 @@ graph TB
     style B fill:#ffcdd2,stroke:#c62828
     style F fill:#ff9800,stroke:#e65100
     style G fill:#f44336,stroke:#b71c1c
-{% endmermaid %}
+```
 
 **Teardrop攻击原理：**
 
@@ -249,7 +249,7 @@ DoS攻击防护体系：
 
 **Smurf攻击示意图：**
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant A as 攻击者
     participant R as 路由器
@@ -268,7 +268,7 @@ sequenceDiagram
         R->>R: 丢弃广播包
         Note over R: 攻击被阻止
     end
-{% endmermaid %}
+```
 
 **防护配置示例：**
 
@@ -306,7 +306,7 @@ interface GigabitEthernet0/0
 
 **公钥替换攻击流程：**
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant A as Alice
     participant M as 中间人（Mallory）
@@ -327,7 +327,7 @@ sequenceDiagram
     M->>B: 转发给Bob
     
     Note over M: 中间人可以：<br/>1. 窃听所有通信<br/>2. 篡改消息内容<br/>3. 冒充任意一方
-{% endmermaid %}
+```
 
 **攻击类型对比：**
 
@@ -368,7 +368,7 @@ sequenceDiagram
 
 **ARP欺骗示例：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["受害者A<br/>192.168.1.10"]
     M["攻击者M<br/>192.168.1.50"]
@@ -385,7 +385,7 @@ graph TB
     style M fill:#f44336,stroke:#b71c1c,color:#fff
     style A fill:#ffcdd2,stroke:#c62828
     style G fill:#e3f2fd,stroke:#1976d2
-{% endmermaid %}
+```
 
 ### 2.4 MITM防护措施
 
@@ -447,7 +447,7 @@ graph TB
 
 **信息收集工具分类：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["信息收集工具"]
     
@@ -469,7 +469,7 @@ graph TB
     
     style B fill:#c8e6c9,stroke:#2e7d32
     style C fill:#ffcdd2,stroke:#c62828
-{% endmermaid %}
+```
 
 **常用信息收集工具：**
 
@@ -576,7 +576,7 @@ nslookup example.com 8.8.8.8
 
 **Whois数据库信息：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["Whois数据库"]
     
@@ -607,7 +607,7 @@ graph TB
     E --> E2["域名状态"]
     
     style A fill:#e3f2fd,stroke:#1976d2
-{% endmermaid %}
+```
 
 **信息来源对比：**
 
@@ -695,7 +695,7 @@ Name Server: B.IANA-SERVERS.NET
 
 **ICMP Flood攻击流程：**
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant A as 攻击者
     participant T as 目标服务器
@@ -718,7 +718,7 @@ sequenceDiagram
     T--xU: 资源耗尽，无法响应
     
     Note over T: 服务不可用
-{% endmermaid %}
+```
 
 ### 5.2 ICMP攻击类型对比
 
@@ -879,7 +879,7 @@ access-list 101 permit icmp any any
 
 **WLAN安全措施对比：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["WLAN安全措施"]
     
@@ -902,7 +902,7 @@ graph TB
     
     style B fill:#c8e6c9,stroke:#2e7d32
     style C fill:#ffcdd2,stroke:#c62828
-{% endmermaid %}
+```
 
 **安全措施详解：**
 
@@ -1015,7 +1015,7 @@ WLAN安全配置清单：
 
 **ARP欺骗攻击流程：**
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant V as 受害者
     participant A as 攻击者
@@ -1040,7 +1040,7 @@ sequenceDiagram
     A->>V: 转发流量
     
     Note over A: 中间人位置<br/>完全控制通信
-{% endmermaid %}
+```
 
 ### 7.2 ARP欺骗防护措施
 
@@ -1202,7 +1202,7 @@ ip arp inspection validate src-mac dst-mac ip
 
 **详细分析：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["安全控制措施"]
     
@@ -1225,7 +1225,7 @@ graph TB
     style B fill:#c8e6c9,stroke:#2e7d32
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#e3f2fd,stroke:#1976d2
-{% endmermaid %}
+```
 
 **逐项分析：**
 
@@ -1375,7 +1375,7 @@ RAID级别3：
 
 **纵深防御策略：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["安全事件"]
     
@@ -1402,7 +1402,7 @@ graph TB
     style B fill:#c8e6c9,stroke:#2e7d32
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#e3f2fd,stroke:#1976d2
-{% endmermaid %}
+```
 
 **完整的安全控制体系：**
 
@@ -1445,7 +1445,7 @@ graph TB
 
 **访问审计系统记录的信息：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["访问审计系统"]
     
@@ -1467,7 +1467,7 @@ graph TB
     
     style B fill:#c8e6c9,stroke:#2e7d32
     style C fill:#ffcdd2,stroke:#c62828
-{% endmermaid %}
+```
 
 **详细记录内容：**
 
@@ -1612,7 +1612,7 @@ graph TB
 
 **检测措施分类：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["检测未授权活动"]
     
@@ -1640,7 +1640,7 @@ graph TB
     style B fill:#c8e6c9,stroke:#2e7d32
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#ffcdd2,stroke:#c62828
-{% endmermaid %}
+```
 
 **详细分析：**
 

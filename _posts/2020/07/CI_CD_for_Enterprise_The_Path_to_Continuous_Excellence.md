@@ -35,7 +35,7 @@ DevOps emerged to address the disconnect between development and operations. The
 
 This cultural shift required new practices and tools. Automation became essential. Infrastructure as code made environments reproducible. Monitoring and observability became first-class concerns. And at the heart of it all was CI/CD - the technical foundation that made continuous delivery possible.
 
-{% mermaid %}
+```mermaid
 timeline
     title Evolution of Software Delivery
     2000-2005 : Waterfall Era
@@ -54,7 +54,7 @@ timeline
               : Multiple deployments per day
               : Automated testing and security
               : Cloud-native architectures
-{% endmermaid %}
+```
 
 ## Understanding CI/CD: More Than Just Automation
 
@@ -85,7 +85,7 @@ The terms are often confused, but the distinction matters:
 
 Most enterprises start with Continuous Delivery and gradually move toward Continuous Deployment as their practices mature and confidence grows.
 
-{% mermaid %}
+```mermaid
 graph LR
     A([💻 Code Commit]) --> B([🔨 Build])
     B --> C([🧪 Automated Tests])
@@ -102,7 +102,7 @@ graph LR
     style C fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
     style I fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style E fill:#ffebee,stroke:#c62828,stroke-width:2px
-{% endmermaid %}
+```
 
 ### The Pipeline: Your Deployment Assembly Line
 
@@ -310,7 +310,7 @@ After staging validation, the application is ready for production deployment.
 
 **Rolling Deployment**: Update servers one at a time or in small batches. This minimizes risk while avoiding the infrastructure cost of blue-green deployments.
 
-{% mermaid %}
+```mermaid
 graph TB
     A([📦 New Version Ready]) --> B{Deployment<br/>Strategy}
     B -->|Blue-Green| C([🔵 Deploy to Blue])
@@ -331,7 +331,7 @@ graph TB
     
     style E fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style L fill:#ffebee,stroke:#c62828,stroke-width:2px
-{% endmermaid %}
+```
 
 ### Stage 6: Post-Deployment Validation
 

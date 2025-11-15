@@ -65,7 +65,7 @@ class TraditionalAuthSystem {
 
 信頼できる外部IDプロバイダーに認証を委任します。ユーザーはIDプロバイダーで一度認証し、資格情報を再入力せずに複数のアプリケーションにアクセスします。
 
-{% mermaid %}
+```mermaid
 graph LR
     User([ユーザー]) -->|1. アプリにアクセス| App[アプリケーション]
     App -->|2. IdPにリダイレクト| IdP[IDプロバイダー]
@@ -78,7 +78,7 @@ graph LR
     style App fill:#51cf66,stroke:#2f9e44
     style IdP fill:#ffd43b,stroke:#f59f00
     style STS fill:#ff8787,stroke:#c92a2a
-{% endmermaid %}
+```
 
 ### 動作の仕組み
 
@@ -194,7 +194,7 @@ const canAccess = await authz.authorize(userToken, '/admin');
 
 ユーザーは一度認証し、複数のアプリケーションにアクセス：
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant User as ユーザー
     participant App1 as アプリ1
@@ -213,7 +213,7 @@ sequenceDiagram
     App2->>IdP: 認証をチェック
     IdP->>App2: 既存のトークンを返す
     App2->>User: アクセスを許可（ログイン不要）
-{% endmermaid %}
+```
 
 ### 2. 集中化されたID管理
 

@@ -121,7 +121,8 @@ This means:
 !!!danger "🔓 The Node-Level Security Gap"
     If a firewall rule allows a node to access the internet (even for just one pod), every pod on that node inherits that access. You cannot enforce pod-specific egress policies with traditional firewalls. This is why node-level security is insufficient for Kubernetes.
 
-{% mermaid %}graph TB
+```mermaid
+graph TB
     subgraph "Traditional Firewall (Node-Level)"
         FW1["Firewall Rule: Allow Internet"]
         Node1["Kubernetes Node"]
@@ -161,7 +162,7 @@ This means:
     style PodC2 fill:#ccffcc
     style FW1 fill:#ffeecc
     style NP1 fill:#ccffee
-{% endmermaid %}
+```
 
 **Other limitations**:
 

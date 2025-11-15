@@ -25,7 +25,8 @@ thumbnail_80: /2021/01/Enterprise-Transparent-Proxy-Privacy-Concerns/thumbnail_8
 
 SSL傍受を備えた企業ネットワーク上で `https://neo01.com` に接続すると、実際には次のようなことが起こります：
 
-{% mermaid %}sequenceDiagram
+```mermaid
+sequenceDiagram
     participant C as あなたのブラウザ
     participant P as 企業プロキシ
     participant B as neo01.com
@@ -45,7 +46,7 @@ SSL傍受を備えた企業ネットワーク上で `https://neo01.com` に接�
     P->>B: 再暗号化して転送
     B->>P: レスポンスを送信
     P->>C: 復号化、検査、再暗号化
-{% endmermaid %}
+```
 
 **重要なステップ**：
 

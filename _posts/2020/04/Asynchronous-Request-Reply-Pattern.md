@@ -44,7 +44,7 @@ The Asynchronous Request-Reply pattern separates the request submission from res
 3. **Client polls status endpoint** or receives a callback when complete
 4. **Client retrieves results** when processing finishes
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant Client
     participant API as API Gateway
@@ -71,7 +71,7 @@ sequenceDiagram
     API->>Storage: 12. Retrieve result
     Storage-->>API: 13. Return result
     API-->>Client: 14. 200 OK + result data
-{% endmermaid %}
+```
 
 ## How It Works: The Pattern in Action
 

@@ -34,7 +34,7 @@ canonical_lang: zh-CN
 
 **《国家信息化领导小组关于加强信息安全保障工作的意见》的重要性：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["中办发[2003]27号文件"]
     
@@ -67,7 +67,7 @@ graph TB
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#f3e5f5,stroke:#7b1fa2
     style E fill:#fce4ec,stroke:#c2185b
-{% endmermaid %}
+```
 
 **文件核心内容：**
 
@@ -99,7 +99,7 @@ graph TB
 
 信息安全等级保护是我国的一项基础制度，具有一定强制性，其实施的主要目的是有效地提高我国信息和信息系统安全建设的整体水平，重点保障基础信息网络和重要信息系统的安全。
 
-{% mermaid %}
+```mermaid
 graph TB
     A["信息安全等级保护"]
     
@@ -128,7 +128,7 @@ graph TB
     style D fill:#f3e5f5,stroke:#7b1fa2
     style E fill:#fce4ec,stroke:#c2185b
     style F fill:#e1f5fe,stroke:#0277bd
-{% endmermaid %}
+```
 
 !!!anote "💡 等级保护的特点"
     **基础性制度：**
@@ -145,7 +145,7 @@ graph TB
 
 我国信息安全等级保护将信息系统分为五个安全保护等级：
 
-{% mermaid %}
+```mermaid
 graph TB
     A["等级保护五级体系"]
     
@@ -172,7 +172,7 @@ graph TB
     style D fill:#ffe0b2,stroke:#e65100
     style E fill:#ffcdd2,stroke:#c62828
     style F fill:#f3e5f5,stroke:#4a148c
-{% endmermaid %}
+```
 
 **各等级详细说明：**
 
@@ -191,7 +191,7 @@ graph TB
 
 **测评体系关键要素：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["等级保护测评体系"]
     
@@ -217,7 +217,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 **测评体系管理流程：**
 
@@ -258,7 +258,7 @@ graph TB
 
 信息安全保障技术框架（Information Assurance Technical Framework, IATF）是美国国家安全局（NSA）制定的框架，目的是为保障政府和工业的信息基础设施提供技术指南。
 
-{% mermaid %}
+```mermaid
 graph TB
     A["IATF框架"]
     
@@ -288,7 +288,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 ### 3.2 IATF的核心思想：深度防御
 
@@ -309,7 +309,7 @@ graph TB
 
 深度防御战略包含三个核心要素：
 
-{% mermaid %}
+```mermaid
 graph LR
     A["深度防御三要素"]
     
@@ -336,7 +336,7 @@ graph LR
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 **三要素详解：**
 
@@ -355,7 +355,7 @@ graph LR
 
 **纵深防御的四个层次：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["纵深防御层次"]
     
@@ -385,7 +385,7 @@ graph TB
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 ## 四、安全培训管理
 
@@ -393,7 +393,7 @@ graph TB
 
 安全培训是提升组织整体安全水平的关键手段，需要针对不同人员制定不同的培训计划。
 
-{% mermaid %}
+```mermaid
 graph TB
     A["安全培训体系"]
     
@@ -427,7 +427,7 @@ graph TB
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 ### 4.2 分层培训策略
 
@@ -480,7 +480,7 @@ graph TB
 
 通用准则（Common Criteria, CC）是目前系统安全认证方面最权威的国际标准，全称为《信息技术安全评估通用准则》。
 
-{% mermaid %}
+```mermaid
 graph TB
     A["CC标准"]
     
@@ -505,7 +505,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 ### 5.2 CC标准的先进性
 
@@ -544,7 +544,7 @@ graph TB
 
 **保护轮廓（PP）与安全目标（ST）：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["CC标准核心概念"]
     
@@ -564,7 +564,7 @@ graph LR
     
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#e8f5e9,stroke:#388e3d
-{% endmermaid %}
+```
 
 ## 六、总结
 

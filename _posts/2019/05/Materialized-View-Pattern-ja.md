@@ -43,7 +43,7 @@ comments: true
 3. **結果を保存**：高速検索用に最適化された形式で
 4. **ビューを更新**：ソースデータが変更されたとき
 
-{% mermaid %}
+```mermaid
 graph LR
     A[ソースデータストア] -->|変換と集計| B[マテリアライズドビュー]
     C[アプリケーションクエリ] -->|高速読み取り| B
@@ -52,7 +52,7 @@ graph LR
     
     style B fill:#51cf66,stroke:#2f9e44
     style A fill:#4dabf7,stroke:#1971c2
-{% endmermaid %}
+```
 
 重要な洞察：マテリアライズドビューは完全に使い捨てです。ソースデータから完全に再構築できるため、生データではなく計算結果を保存する特殊な形式のキャッシュです。
 
@@ -272,7 +272,7 @@ class MaterializedViewReader {
 
 ビューはソースデータと同じストアに存在する必要はありません：
 
-{% mermaid %}
+```mermaid
 graph TD
     A[トランザクションDB] -->|抽出| D[ビュービルダー]
     B[ドキュメントストア] -->|抽出| D
@@ -285,7 +285,7 @@ graph TD
     style E fill:#51cf66,stroke:#2f9e44
     style F fill:#51cf66,stroke:#2f9e44
     style G fill:#51cf66,stroke:#2f9e44
-{% endmermaid %}
+```
 
 **ストレージオプション：**
 - **インメモリキャッシュ**（Redis、Memcached）：超高速アクセス、揮発性

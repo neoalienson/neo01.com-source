@@ -41,20 +41,20 @@ comments: true
 4. **验证是手动的**且不频繁
 5. **文档变得陈旧**且不可信
 
-{% mermaid %}
+```mermaid
 graph TD
     UI[用户界面] --> API[API 网关]
     API --> AUTH[授权器]
     AUTH --> DB[(数据库)]
-{% endmermaid %}
+```
 
 **图 1：预期的架构设计（带授权器的 API 网关）**
 
-{% mermaid %}
+```mermaid
 graph TD
     UI[用户界面] --> API[API 网关]
     API --> DB[(数据库)]
-{% endmermaid %}
+```
 
 **图 2：实际实现（现实 - 缺少授权器）**
 

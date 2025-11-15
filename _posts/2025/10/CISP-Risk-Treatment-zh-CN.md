@@ -25,7 +25,7 @@ comments: true
 
 **四种风险处置策略：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["风险处置策略"]
     
@@ -48,7 +48,7 @@ graph TB
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#e3f2fd,stroke:#1976d2
     style E fill:#e8f5e9,stroke:#388e3d
-{% endmermaid %}
+```
 
 **策略选择指南：**
 
@@ -259,7 +259,7 @@ graph TB
 
 **残余风险的正确理解：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["初始风险"]
     B["风险处置"]
@@ -285,7 +285,7 @@ graph TB
     style B fill:#fff3e0,stroke:#f57c00
     style C fill:#fff9c4,stroke:#f57f17
     style D fill:#c8e6c9,stroke:#2e7d32
-{% endmermaid %}
+```
 
 **残余风险管理原则：**
 
@@ -448,7 +448,7 @@ graph TB
 
 **风险管理的持续改进循环：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["计划<br/>Plan"] --> B["执行<br/>Do"]
     B --> C["检查<br/>Check"]
@@ -459,7 +459,7 @@ graph LR
     style B fill:#e8f5e9,stroke:#388e3d
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 ## 七、安全管理问题
 
 ### 9.1 组织安全问题的主要原因
@@ -498,7 +498,7 @@ graph LR
 
 **安全管理的重要性：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["安全管理"]
     
@@ -529,7 +529,7 @@ graph TB
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 **缺少安全管理的典型表现：**
 
@@ -602,7 +602,7 @@ graph TB
 
 **自动软件管理系统的功能：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["自动软件管理系统"]
     
@@ -633,7 +633,7 @@ graph TB
     E --> E3["回滚机制"]
     
     style A fill:#e3f2fd,stroke:#1976d2
-{% endmermaid %}
+```
 
 **自动软件管理的优势：**
 
@@ -722,7 +722,7 @@ graph TB
 
 **信息安全风险模型：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["资产所有者"]
     B["资产"]
@@ -751,7 +751,7 @@ graph TB
     style D fill:#fff9c4,stroke:#f57f17
     style E fill:#c8e6c9,stroke:#2e7d32
     style F fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 **风险要素关系：**
 
@@ -867,7 +867,7 @@ graph TB
 
 **ISMS的PDCA循环：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["Plan<br/>策划"] --> B["Do<br/>实施"]
     B --> C["Check<br/>检查"]
@@ -883,7 +883,7 @@ graph LR
     style B fill:#e8f5e9,stroke:#388e3d
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 ### 10.4 等级保护测评周期
 

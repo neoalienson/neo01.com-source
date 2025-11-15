@@ -27,7 +27,7 @@ thumbnail: /assets/database/thumbnail.png
 
 今天，我们生活在一个**多语言持久化**的世界，应用程序使用多种数据库类型，每种都处理最适合它的工作负载。您的电子商务网站可能使用关系型数据库处理交易、文档存储处理产品目录、缓存处理会话数据，以及图形数据库处理推荐。
 
-{% mermaid %}
+```mermaid
 timeline
     title 数据库系统的演进
     1970s : 关系型数据库
@@ -45,7 +45,7 @@ timeline
     2020s : 云原生与分布式
           : 无服务器数据库
           : 多模型系统
-{% endmermaid %}
+```
 
 ## 关系型数据库（RDBMS）：基础
 
@@ -109,7 +109,7 @@ timeline
     
     如果任何步骤失败，一切都会回滚 - 没有部分订单或库存差异。
 
-{% mermaid %}
+```mermaid
 graph TB
     A([👤 客户]) --> B([📦 订单])
     C([📚 书籍]) --> D([📋 订单项目])
@@ -120,7 +120,7 @@ graph TB
     style B fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style C fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style D fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
-{% endmermaid %}
+```
 
 ## 文档数据库：灵活且无模式
 
@@ -311,7 +311,7 @@ graph TB
     
     数据库有效地仅扫描用户 123 的相关列族，按时间戳过滤。即使有数百万用户的数十亿活动，查询也能在毫秒内返回结果。
 
-{% mermaid %}
+```mermaid
 graph LR
     A([📊 分析查询]) --> B([列存储])
     B --> C([仅读取<br/>需要的列])
@@ -323,7 +323,7 @@ graph LR
     
     style D fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style H fill:#ffebee,stroke:#c62828,stroke-width:2px
-{% endmermaid %}
+```
 
 ## 图形数据库：关系优先
 
@@ -384,7 +384,7 @@ graph LR
     
     此查询有效地遍历关系以寻找朋友推荐。在关系型数据库中，这需要多次自连接，速度会慢得多。
 
-{% mermaid %}
+```mermaid
 graph TB
     A([👤 Alice]) -->|FRIENDS_WITH| B([👤 Bob])
     A -->|FRIENDS_WITH| C([👤 Carol])
@@ -395,7 +395,7 @@ graph TB
     
     style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
     style E fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-{% endmermaid %}
+```
 
 ## 时间序列数据库：针对时间数据优化
 
@@ -522,7 +522,7 @@ graph TB
     
     传统关键字搜索会错过这些语义连接。
 
-{% mermaid %}
+```mermaid
 graph TB
     A([📝 用户查询<br/>「如何重置密码？」]) --> B([🔢 转换为向量<br/>[0.23, -0.45, ...]])
     B --> C([🔍 向量数据库<br/>寻找相似向量])
@@ -533,7 +533,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
     style C fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style F fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-{% endmermaid %}
+```
 
 ## 嵌入式数据库：轻量且自包含
 
@@ -631,7 +631,7 @@ graph TB
     - 简单 - 基本功能不需要后端服务器
     - 稍后同步 - 可在连接可用时上传到云
 
-{% mermaid %}
+```mermaid
 graph TB
     A([📱 移动应用程序]) --> B([SQLite 数据库<br/>本地文件])
     B --> C([离线访问<br/>不需要网络])
@@ -642,7 +642,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
     style C fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style F fill:#fff3e0,stroke:#f57c00,stroke-width:2px
-{% endmermaid %}
+```
 
 !!!tip "💡 SQLite：世界上部署最广泛的数据库"
     SQLite 可能是世界上使用最广泛的数据库：
@@ -764,7 +764,7 @@ graph TB
 - **Neo4j**：产品推荐（基于关系的建议）
 - **InfluxDB**：应用程序指标（时间序列监控数据）
 
-{% mermaid %}
+```mermaid
 graph TB
     A([🛒 电子商务<br/>应用程序]) --> B([PostgreSQL<br/>订单与库存])
     A --> C([MongoDB<br/>产品目录])
@@ -780,7 +780,7 @@ graph TB
     style E fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
     style F fill:#e0f2f1,stroke:#00796b,stroke-width:2px
     style G fill:#fce4ec,stroke:#c2185b,stroke-width:2px
-{% endmermaid %}
+```
 
 ### 好处
 
@@ -870,7 +870,7 @@ graph TB
     
     **现实检查**：99% 的应用程序不需要区块链。传统数据库更快、更便宜、更灵活。只有在去中心化和不可变性是绝对要求时才使用区块链。
 
-{% mermaid %}
+```mermaid
 graph LR
     A([📝 新交易]) --> B([创建区块])
     B --> C([广播到网络])
@@ -883,7 +883,7 @@ graph LR
     style F fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style G fill:#ffebee,stroke:#c62828,stroke-width:2px
     style H fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
-{% endmermaid %}
+```
 
 ## 新兴趋势与未来方向
 

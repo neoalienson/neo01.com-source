@@ -65,7 +65,7 @@ class TraditionalAuthSystem {
 
 將身分驗證委託給受信任的外部身分識別提供者。使用者只需在身分識別提供者進行一次驗證，即可存取多個應用程式，無需重新輸入憑證。
 
-{% mermaid %}
+```mermaid
 graph LR
     User([使用者]) -->|1. 存取應用程式| App[應用程式]
     App -->|2. 重新導向至 IdP| IdP[身分識別提供者]
@@ -78,7 +78,7 @@ graph LR
     style App fill:#51cf66,stroke:#2f9e44
     style IdP fill:#ffd43b,stroke:#f59f00
     style STS fill:#ff8787,stroke:#c92a2a
-{% endmermaid %}
+```
 
 ### 運作方式
 
@@ -439,7 +439,7 @@ const provider = discovery.discoverProvider('user@company.com');
 
 使用者驗證一次即可存取多個應用程式：
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant User as 使用者
     participant App1 as 應用程式 1
@@ -458,7 +458,7 @@ sequenceDiagram
     App2->>IdP: 檢查驗證
     IdP->>App2: 回傳現有權杖
     App2->>User: 授予存取權（無需登入）
-{% endmermaid %}
+```
 
 ### 2. 集中式身分管理
 

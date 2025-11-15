@@ -150,7 +150,8 @@ Git LFS 用指针替换大型文件，同时将实际内容分开存储。
 
 LFS 需要额外的基础设施：
 
-{% mermaid %}graph TB
+```mermaid
+graph TB
     Dev[开发者]
     Git[Git 仓库]
     LFS[LFS 服务器]
@@ -168,7 +169,7 @@ LFS 需要额外的基础设施：
     style Git fill:#f9f,stroke:#333,stroke-width:2px
     style LFS fill:#bbf,stroke:#333,stroke-width:2px
     style Storage fill:#bfb,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 !!!anote "🏗️ LFS 基础设施"
     **组件**

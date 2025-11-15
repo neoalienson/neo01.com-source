@@ -104,7 +104,8 @@ OIDC には 4 つの主要なエンティティが関与します：
 
 ### アーキテクチャ図
 
-{% mermaid %}---
+```mermaid
+---
 title: OpenID Connect アーキテクチャ
 ---
 flowchart TD
@@ -126,7 +127,7 @@ flowchart TD
     
     style AuthServer fill:#f96,stroke:#333,stroke-width:3px
     style Client fill:#9cf,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 クライアントは認可サーバーを通じてユーザーを認証し、ID トークンとアクセストークンを受け取ります。クライアントは ID トークンを使用してユーザー ID を確立します。リソースサーバーはアクセストークンを検証して API リクエストを認可します。
 
@@ -164,7 +165,8 @@ OIDC は異なるシナリオに対して複数の認証フローをサポート
 
 このフローは、バックエンドでクライアントシークレットを使用して認可コードをトークンと交換することでトークンを安全に保ちます。認可コードはブラウザを通過しますが、トークンは通過せず、ブラウザベースの攻撃から保護されます。
 
-{% mermaid %}---
+```mermaid
+---
 title: OpenID Connect 認証フロー
 ---
 sequenceDiagram
@@ -185,7 +187,7 @@ sequenceDiagram
     Client->>API: API リクエスト + アクセストークン
     API->>API: アクセストークンを検証
     API->>Client: 保護されたリソース
-{% endmermaid %}
+```
 
 ### PKCE 付き認可コードフロー
 

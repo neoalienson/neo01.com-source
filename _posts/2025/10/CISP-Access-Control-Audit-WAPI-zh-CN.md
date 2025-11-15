@@ -39,7 +39,7 @@ comments: true
     - 提高系统可扩展性和容错性
     - 典型实现：区块链、分布式账本
 
-{% mermaid %}
+```mermaid
 graph TB
     A["访问控制机制"]
     
@@ -61,7 +61,7 @@ graph TB
     
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#e8f5e9,stroke:#388e3d
-{% endmermaid %}
+```
 
 ### 1.2 TACACS+协议
 
@@ -86,7 +86,7 @@ graph TB
 
 **TACACS+工作流程：**
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant U as 用户
     participant D as 网络设备<br/>(客户端)
@@ -106,7 +106,7 @@ sequenceDiagram
     Note over D,T: 集中式访问控制
     
     style T fill:#e3f2fd,stroke:#1976d2
-{% endmermaid %}
+```
 
 ### 1.3 TACACS+ vs RADIUS
 
@@ -176,7 +176,7 @@ sequenceDiagram
     - 在不被察觉的情况下记录攻击行为
     - 分析攻击手法和工具
 
-{% mermaid %}
+```mermaid
 graph TB
     A["蜜网系统"]
     
@@ -200,7 +200,7 @@ graph TB
     style B fill:#fff3e0,stroke:#f57c00
     style C fill:#e3f2fd,stroke:#1976d2
     style D fill:#e8f5e9,stroke:#388e3d
-{% endmermaid %}
+```
 
 ### 2.2 蜜网的功能
 
@@ -243,7 +243,7 @@ graph TB
 
 **蜜网部署架构：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["互联网"]
     B["防火墙"]
@@ -267,7 +267,7 @@ graph TB
     style C fill:#c8e6c9,stroke:#2e7d32
     style D fill:#fff3e0,stroke:#f57c00
     style D3 fill:#e3f2fd,stroke:#1976d2
-{% endmermaid %}
+```
 
 **蜜网工作流程：**
 
@@ -344,7 +344,7 @@ graph TB
     - 展示分析结果
     - 支持决策制定
 
-{% mermaid %}
+```mermaid
 graph LR
     A["审计系统"]
     
@@ -366,7 +366,7 @@ graph LR
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#e8f5e9,stroke:#388e3d
-{% endmermaid %}
+```
 
 ### 3.2 审计系统组成详解
 
@@ -508,7 +508,7 @@ graph LR
     - WAI（WLAN Authentication Infrastructure）：身份鉴别
     - WPI（WLAN Privacy Infrastructure）：数据加密
 
-{% mermaid %}
+```mermaid
 graph TB
     A["WAPI安全机制"]
     
@@ -528,7 +528,7 @@ graph TB
     
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#e8f5e9,stroke:#388e3d
-{% endmermaid %}
+```
 
 ### 4.2 WAPI安全机制详解
 

@@ -40,20 +40,20 @@ Traditional software architecture suffered from a fundamental flaw: it was disco
 4. **Validation was manual** and infrequent
 5. **Documentation became stale** and untrustworthy
 
-{% mermaid %}
+```mermaid
 graph TD
     UI[User Interface] --> API[API Gateway]
     API --> AUTH[Authorizer]
     AUTH --> DB[(Database)]
-{% endmermaid %}
+```
 
 **Diagram 1: Intended Architecture Design (API Gateway with Authorizer)**
 
-{% mermaid %}
+```mermaid
 graph TD
     UI[User Interface] --> API[API Gateway]
     API --> DB[(Database)]
-{% endmermaid %}
+```
 
 **Diagram 2: Actual Implementation (Reality - Authorizer Missing)**
 

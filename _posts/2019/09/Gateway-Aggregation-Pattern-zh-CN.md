@@ -49,7 +49,7 @@ class ProductPageClient {
 }
 ```
 
-{% mermaid %}
+```mermaid
 graph TB
     Client[客户端应用程序]
     Client -->|1. 获取商品| Catalog[目录服务]
@@ -65,7 +65,7 @@ graph TB
     Pricing -->|响应| Client
     
     style Client fill:#e03131,stroke:#c92a2a
-{% endmermaid %}
+```
 
 !!!warning "⚠️ 多次调用的问题"
     **高延迟**：每个请求都增加网络往返时间
@@ -93,7 +93,7 @@ graph TB
 
 在客户端与后端服务之间放置网关。网关接收单一请求，向多个服务发出请求，聚合响应后返回统一结果。
 
-{% mermaid %}
+```mermaid
 graph TB
     Client[客户端应用程序]
     Client -->|单一请求| Gateway[聚合网关]
@@ -114,7 +114,7 @@ graph TB
     
     style Gateway fill:#51cf66,stroke:#2f9e44
     style Client fill:#4dabf7,stroke:#1971c2
-{% endmermaid %}
+```
 
 ### 简单实现
 

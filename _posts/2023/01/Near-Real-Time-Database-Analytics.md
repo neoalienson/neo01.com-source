@@ -18,7 +18,7 @@ This is the challenge of near real-time analytics: bridging the gap between oper
 
 Traditional data architectures rely on batch ETL (Extract, Transform, Load) processes that run periodically—often overnight. This approach worked well when business decisions could wait until morning, but today's competitive landscape demands faster insights.
 
-{% mermaid %}
+```mermaid
 graph LR
     subgraph Traditional["⏰ Traditional Batch ETL"]
         T1[OLTP Database] -->|Nightly ETL| T2[Data Warehouse]
@@ -32,7 +32,7 @@ graph LR
     
     style Traditional fill:#ffcdd2,stroke:#c62828
     style RealTime fill:#c8e6c9,stroke:#2e7d32
-{% endmermaid %}
+```
 
 **Limitations of Batch Processing:**
 
@@ -53,7 +53,7 @@ graph LR
 
 Four architectural patterns have emerged to address near real-time analytics challenges. Each offers different trade-offs between complexity, latency, and capabilities:
 
-{% mermaid %}
+```mermaid
 graph TB
     subgraph Lambda["🔀 Lambda Architecture"]
         L1[Batch Layer<br/>Historical Data]
@@ -63,9 +63,9 @@ graph TB
         L2 --> L3
     end
     style Lambda fill:#e3f2fd,stroke:#1976d2
-{% endmermaid %}
+```
 
-{% mermaid %}
+```mermaid
 graph TB    
     subgraph Kappa["⚡ Kappa Architecture"]
         K1[Stream Processing<br/>All Data]
@@ -74,9 +74,9 @@ graph TB
     end
 
     style Kappa fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
-{% mermaid %}
+```mermaid
 graph TB   
     subgraph Microservices["🔧 Event-Driven Microservices"]
         M1[Service A<br/>Ingestion]
@@ -86,9 +86,9 @@ graph TB
         M2 --> M3
     end
     style Microservices fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
-{% mermaid %}
+```mermaid
 graph TB   
     subgraph Medallion["🥇 Medallion Architecture"]
         MD1[Bronze<br/>Raw Data]
@@ -98,7 +98,7 @@ graph TB
         MD2 --> MD3
     end
     style Medallion fill:#e8f5e9,stroke:#388e3c
-{% endmermaid %}
+```
 
 **Quick Comparison:**
 
@@ -136,7 +136,7 @@ The fundamental idea behind Lambda Architecture is to handle both historical and
 
 ### Architecture Components
 
-{% mermaid %}
+```mermaid
 graph TB
     DS[Data Sources] --> BP[Batch Processing<br/>Hadoop/Spark]
     DS --> SP[Stream Processing<br/>Kafka/Flink]
@@ -153,7 +153,7 @@ graph TB
     style BP fill:#64b5f6,stroke:#1976d2
     style SP fill:#81c784,stroke:#388e3c
     style SL fill:#ffb74d,stroke:#f57c00
-{% endmermaid %}
+```
 
 ### Implementation Example
 
@@ -349,7 +349,7 @@ Kappa Architecture challenges the need for separate batch and stream processing 
 
 ### Architecture Components
 
-{% mermaid %}
+```mermaid
 graph TB
     DS[Data Sources] --> KS[Kafka Streams<br/>Event Log]
     KS --> SP1[Stream Processor 1<br/>Current View]
@@ -364,7 +364,7 @@ graph TB
     style KS fill:#7b1fa2,stroke:#4a148c
     style SP1 fill:#ab47bc,stroke:#7b1fa2
     style SP2 fill:#ce93d8,stroke:#ab47bc
-{% endmermaid %}
+```
 
 ### Key Principle
 
@@ -617,7 +617,7 @@ This pattern applies microservices principles to analytics, decomposing a monoli
 
 ### Architecture Components
 
-{% mermaid %}
+```mermaid
 graph TB
     ES[Event Sources] --> EB[Event Bus<br/>Kafka/RabbitMQ]
     
@@ -638,7 +638,7 @@ graph TB
     style MS2 fill:#ffb74d,stroke:#f57c00
     style MS3 fill:#ffb74d,stroke:#f57c00
     style MS4 fill:#ffb74d,stroke:#f57c00
-{% endmermaid %}
+```
 
 ### Implementation Example
 
@@ -997,7 +997,7 @@ Medallion Architecture applies a structured, layered approach to data processing
 
 ### Architecture Components
 
-{% mermaid %}
+```mermaid
 graph TB
     DS[Data Sources] --> B[Bronze Layer<br/>Raw Data<br/>As-Is Storage]
     B --> S[Silver Layer<br/>Cleaned Data<br/>Validated & Deduplicated]
@@ -1010,7 +1010,7 @@ graph TB
     style B fill:#cd7f32,stroke:#8b4513,color:#fff
     style S fill:#c0c0c0,stroke:#808080
     style G fill:#ffd700,stroke:#daa520
-{% endmermaid %}
+```
 
 ### Layer Responsibilities
 
@@ -1734,7 +1734,7 @@ How complex are your analytics requirements?
 
 ### Decision Flowchart
 
-{% mermaid %}
+```mermaid
 graph TD
     Start([Start: Choose Architecture]) --> Q1{Latency<br/>Requirement?}
     
@@ -1765,7 +1765,7 @@ graph TD
     style Med3 fill:#e8f5e9,stroke:#388e3c,stroke-width:3px
     style Lambda1 fill:#e3f2fd,stroke:#1976d2,stroke-width:3px
     style Lambda2 fill:#e3f2fd,stroke:#1976d2,stroke-width:3px
-{% endmermaid %}
+```
 
 ### Pattern Recommendations by Scenario
 

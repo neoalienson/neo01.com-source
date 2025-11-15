@@ -17,7 +17,8 @@ excerpt: "BDDはビジネス関係者が読めるテストを約束するが、�
 
 ### テスト進化のタイムライン
 
-{% mermaid %}timeline
+```mermaid
+timeline
     title テスト方法論の進化
     section 1990s
         1994 : 単体テスト
@@ -40,7 +41,7 @@ excerpt: "BDDはビジネス関係者が読めるテストを約束するが、�
         2015 : リビングドキュメント
              : テストとしてのドキュメント
              : 継続的な検証
-{% endmermaid %}
+```
 
 ## テストの問題
 
@@ -189,7 +190,8 @@ TDDはテストプロセスを反転させる：
 
 TDDはテストを検証ツールではなく設計ツールとして扱う。コードを書いてからテストするのではなく、最初にテストを書く。テストはコードに何をしてほしいかを記述する。次に、テストを通過させる最もシンプルなコードを書く。最後に、テストをグリーンに保ちながら設計を改善するためにリファクタリングする。
 
-{% mermaid %}---
+```mermaid
+---
 title: TDD レッド・グリーン・リファクタサイクル
 ---
 flowchart LR
@@ -204,7 +206,7 @@ flowchart LR
     style Red fill:#f99,stroke:#333,stroke-width:2px
     style Green fill:#9f9,stroke:#333,stroke-width:2px
     style Refactor fill:#99f,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 ### TDDの実践
 
@@ -302,7 +304,8 @@ BDDは仕様のための構造化されたフォーマットを導入した：
 
 Given-When-Thenは振る舞いを記述するためのテンプレートを提供する。Givenはコンテキストを確立する。Whenはアクションを記述する。Thenは期待される結果を指定する。この構造はビジネス仕様と技術的なテストの両方に機能する。
 
-{% mermaid %}---
+```mermaid
+---
 title: BDD仕様構造
 ---
 flowchart TD
@@ -316,7 +319,7 @@ flowchart TD
     style Given fill:#9cf,stroke:#333,stroke-width:2px
     style When fill:#fc9,stroke:#333,stroke-width:2px
     style Then fill:#9f9,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 ### BDDフレームワークの登場
 
@@ -420,7 +423,8 @@ Gherkin仕様は誰でも読める。ビジネスアナリストは期待され�
 
 BDDは開発ワークフローを変える：
 
-{% mermaid %}---
+```mermaid
+---
 title: BDD開発ワークフロー
 ---
 flowchart TD
@@ -441,7 +445,7 @@ flowchart TD
     style Business fill:#9cf,stroke:#333,stroke-width:2px
     style Execute fill:#fc9,stroke:#333,stroke-width:2px
     style Done fill:#9f9,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 ワークフローはビジネス関係者がGherkinで期待される振る舞いを記述することから始まる。開発者はステップ定義と機能コードを実装する。仕様はテストとして実行され、振る舞いを検証する。テストが成功すると、機能は完成し、仕様はリビングドキュメントになる。
 

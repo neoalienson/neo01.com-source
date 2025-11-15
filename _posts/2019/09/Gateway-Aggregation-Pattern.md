@@ -49,7 +49,7 @@ class ProductPageClient {
 }
 ```
 
-{% mermaid %}
+```mermaid
 graph TB
     Client[Client Application]
     Client -->|1. Get Product| Catalog[Catalog Service]
@@ -65,7 +65,7 @@ graph TB
     Pricing -->|Response| Client
     
     style Client fill:#e03131,stroke:#c92a2a
-{% endmermaid %}
+```
 
 !!!warning "⚠️ Problems with Multiple Calls"
     **High Latency**: Each request adds network round-trip time
@@ -93,7 +93,7 @@ Even with parallel requests, you're managing multiple connections, handling mult
 
 Place a gateway between the client and backend services. The gateway receives a single request, fans out to multiple services, aggregates the responses, and returns a unified result.
 
-{% mermaid %}
+```mermaid
 graph TB
     Client[Client Application]
     Client -->|Single Request| Gateway[Aggregation Gateway]
@@ -114,7 +114,7 @@ graph TB
     
     style Gateway fill:#51cf66,stroke:#2f9e44
     style Client fill:#4dabf7,stroke:#1971c2
-{% endmermaid %}
+```
 
 ### Simple Implementation
 

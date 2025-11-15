@@ -23,7 +23,7 @@ Git merge combines two branches by creating a new commit that ties together thei
 
 ### How Merge Works
 
-{% mermaid %}
+```mermaid
 gitGraph
     commit id: "A"
     commit id: "B"
@@ -35,7 +35,7 @@ gitGraph
     commit id: "E"
     merge feature
     commit id: "Merge commit"
-{% endmermaid %}
+```
 
 **Merge Process**:
 ```bash
@@ -55,7 +55,7 @@ git merge feature
 **Fast-Forward Merge**:
 When no divergent changes exist, Git simply moves the branch pointer forward.
 
-{% mermaid %}
+```mermaid
 gitGraph
     commit id: "A"
     commit id: "B"
@@ -65,7 +65,7 @@ gitGraph
     commit id: "D"
     checkout main
     merge feature
-{% endmermaid %}
+```
 
 ```bash
 # Fast-forward merge (no merge commit)
@@ -105,7 +105,7 @@ Git rebase moves or replays commits from one branch onto another, creating a lin
 
 ### How Rebase Works
 
-{% mermaid %}
+```mermaid
 gitGraph
     commit id: "A"
     commit id: "B"
@@ -118,7 +118,7 @@ gitGraph
     checkout feature
     commit id: "C'" type: HIGHLIGHT
     commit id: "D'" type: HIGHLIGHT
-{% endmermaid %}
+```
 
 **Rebase Process**:
 ```bash
@@ -195,7 +195,7 @@ drop jkl012 Debug logging
 
 ### Visual Comparison
 
-{% mermaid %}
+```mermaid
 ---
 config:
   theme: 'default'
@@ -218,7 +218,7 @@ gitGraph
     checkout main
     cherry-pick id: "Feature C"
     cherry-pick id: "Feature D"
-{% endmermaid %}
+```
 
 ### Decision Matrix
 
@@ -261,7 +261,7 @@ git merge --no-ff feature/user-profile
 
 ### Pull Request Workflow
 
-{% mermaid %}
+```mermaid
 gitGraph
     commit id: "Base"
     branch feature
@@ -276,7 +276,7 @@ gitGraph
     checkout main
     merge feature
     commit id: "PR merged"
-{% endmermaid %}
+```
 
 **Best practice for pull requests**:
 ```bash
@@ -352,7 +352,7 @@ git commit -m "Add complete user profile feature"
 # Result: Single commit on main with all changes
 ```
 
-{% mermaid %}
+```mermaid
 gitGraph
     commit id: "A"
     commit id: "B"
@@ -363,7 +363,7 @@ gitGraph
     commit id: "E"
     checkout main
     commit id: "Squashed C+D+E" type: HIGHLIGHT
-{% endmermaid %}
+```
 
 **When to use squash merge**:
 - Feature has many small commits
@@ -456,7 +456,7 @@ squash mno345 Fix test
 
 ### Decision Flowchart
 
-{% mermaid %}
+```mermaid
 flowchart TD
     A["🔀 Need to integrate branches?"] --> B{"📍 Public/shared branch?"}
     B -->|Yes| C["✅ Use MERGE"]
@@ -473,7 +473,7 @@ flowchart TD
     style E fill:#45b7d1
     style G fill:#96ceb4
     style H fill:#ff6b6b
-{% endmermaid %}
+```
 
 ### Team Guidelines Template
 

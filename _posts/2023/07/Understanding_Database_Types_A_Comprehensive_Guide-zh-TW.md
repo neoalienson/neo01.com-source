@@ -27,7 +27,7 @@ thumbnail: /assets/database/thumbnail.png
 
 今天，我們生活在一個**多語言持久化**的世界，應用程式使用多種資料庫類型，每種都處理最適合它的工作負載。您的電子商務網站可能使用關聯式資料庫處理交易、文件儲存處理產品目錄、快取處理會話資料，以及圖形資料庫處理推薦。
 
-{% mermaid %}
+```mermaid
 timeline
     title 資料庫系統的演進
     1970s : 關聯式資料庫
@@ -45,7 +45,7 @@ timeline
     2020s : 雲原生與分散式
           : 無伺服器資料庫
           : 多模型系統
-{% endmermaid %}
+```
 
 ## 關聯式資料庫（RDBMS）：基礎
 
@@ -109,7 +109,7 @@ timeline
     
     如果任何步驟失敗，一切都會回滾 - 沒有部分訂單或庫存差異。
 
-{% mermaid %}
+```mermaid
 graph TB
     A([👤 客戶]) --> B([📦 訂單])
     C([📚 書籍]) --> D([📋 訂單項目])
@@ -120,7 +120,7 @@ graph TB
     style B fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style C fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style D fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
-{% endmermaid %}
+```
 
 ## 文件資料庫：靈活且無架構
 
@@ -311,7 +311,7 @@ graph TB
     
     資料庫有效地僅掃描使用者 123 的相關列族，按時間戳記過濾。即使有數百萬使用者的數十億活動，查詢也能在毫秒內返回結果。
 
-{% mermaid %}
+```mermaid
 graph LR
     A([📊 分析查詢]) --> B([列儲存])
     B --> C([僅讀取<br/>需要的列])
@@ -323,7 +323,7 @@ graph LR
     
     style D fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style H fill:#ffebee,stroke:#c62828,stroke-width:2px
-{% endmermaid %}
+```
 
 ## 圖形資料庫：關聯性優先
 
@@ -384,7 +384,7 @@ graph LR
     
     此查詢有效地遍歷關聯性以尋找朋友推薦。在關聯式資料庫中，這需要多次自連接，速度會慢得多。
 
-{% mermaid %}
+```mermaid
 graph TB
     A([👤 Alice]) -->|FRIENDS_WITH| B([👤 Bob])
     A -->|FRIENDS_WITH| C([👤 Carol])
@@ -395,7 +395,7 @@ graph TB
     
     style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
     style E fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-{% endmermaid %}
+```
 
 ## 時間序列資料庫：針對時間資料最佳化
 
@@ -522,7 +522,7 @@ graph TB
     
     傳統關鍵字搜尋會錯過這些語義連接。
 
-{% mermaid %}
+```mermaid
 graph TB
     A([📝 使用者查詢<br/>「如何重設密碼？」]) --> B([🔢 轉換為向量<br/>[0.23, -0.45, ...]])
     B --> C([🔍 向量資料庫<br/>尋找相似向量])
@@ -533,7 +533,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
     style C fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style F fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-{% endmermaid %}
+```
 
 ## 嵌入式資料庫：輕量且自包含
 
@@ -631,7 +631,7 @@ graph TB
     - 簡單 - 基本功能不需要後端伺服器
     - 稍後同步 - 可在連接可用時上傳到雲端
 
-{% mermaid %}
+```mermaid
 graph TB
     A([📱 行動應用程式]) --> B([SQLite 資料庫<br/>本地檔案])
     B --> C([離線存取<br/>不需要網路])
@@ -642,7 +642,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
     style C fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style F fill:#fff3e0,stroke:#f57c00,stroke-width:2px
-{% endmermaid %}
+```
 
 !!!tip "💡 SQLite：世界上部署最廣泛的資料庫"
     SQLite 可能是世界上使用最廣泛的資料庫：
@@ -764,7 +764,7 @@ graph TB
 - **Neo4j**：產品推薦（基於關聯性的建議）
 - **InfluxDB**：應用程式指標（時間序列監控資料）
 
-{% mermaid %}
+```mermaid
 graph TB
     A([🛒 電子商務<br/>應用程式]) --> B([PostgreSQL<br/>訂單與庫存])
     A --> C([MongoDB<br/>產品目錄])
@@ -780,7 +780,7 @@ graph TB
     style E fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
     style F fill:#e0f2f1,stroke:#00796b,stroke-width:2px
     style G fill:#fce4ec,stroke:#c2185b,stroke-width:2px
-{% endmermaid %}
+```
 
 ### 好處
 
@@ -870,7 +870,7 @@ graph TB
     
     **現實檢查**：99% 的應用程式不需要區塊鏈。傳統資料庫更快、更便宜、更靈活。只有在去中心化和不可變性是絕對要求時才使用區塊鏈。
 
-{% mermaid %}
+```mermaid
 graph LR
     A([📝 新交易]) --> B([建立區塊])
     B --> C([廣播到網路])
@@ -883,7 +883,7 @@ graph LR
     style F fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style G fill:#ffebee,stroke:#c62828,stroke-width:2px
     style H fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
-{% endmermaid %}
+```
 
 ## 新興趨勢與未來方向
 

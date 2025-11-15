@@ -207,7 +207,7 @@ Windows操作系统提供了"本地安全策略"功能，用于配置系统的�
        - IPsec规则
        - 网络通信保护
 
-{% mermaid %}
+```mermaid
 graph TB
     A["Windows本地安全策略"]
     
@@ -239,7 +239,7 @@ graph TB
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#e8f5e9,stroke:#388e3d
     style E fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 ## 二、安全配置的分类
 
@@ -247,7 +247,7 @@ graph TB
 
 **操作系统安全配置包括四大类：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["操作系统安全配置"]
     
@@ -274,7 +274,7 @@ graph TB
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#e8f5e9,stroke:#388e3d
     style E fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 ### 2.2 配置类型说明
 
@@ -351,7 +351,7 @@ graph TB
 
 **Windows身份鉴别三大组件：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["Windows身份鉴别系统"]
     
@@ -378,7 +378,7 @@ graph LR
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#e8f5e9,stroke:#388e3d
-{% endmermaid %}
+```
 
 ### 4.2 LSA（本地安全授权机构）
 
@@ -519,7 +519,7 @@ SAM（Security Accounts Manager）功能：
 
 **Windows远程登录鉴别机制的发展历程：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["SMB鉴别机制"] --> B["LM鉴别机制"]
     B --> C["NTLM鉴别机制"]
@@ -534,7 +534,7 @@ graph LR
     style B fill:#fff3e0,stroke:#f57c00
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#e3f2fd,stroke:#1976d2
-{% endmermaid %}
+```
 
 **各阶段特点对比：**
 

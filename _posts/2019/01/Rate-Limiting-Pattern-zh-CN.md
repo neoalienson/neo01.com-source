@@ -60,7 +60,8 @@ comments: true
 - 事件流平台（例如，Apache Kafka）
 - 云端队列服务
 
-{% mermaid %}graph LR
+```mermaid
+graph LR
     A["API<br/>(高速率)"] --> B["持久化<br/>消息队列"]
     B --> C["作业处理器 1"]
     B --> D["作业处理器 2"]
@@ -72,7 +73,7 @@ comments: true
     style A fill:#e1f5ff
     style B fill:#fff4e1
     style F fill:#ffe1e1
-{% endmermaid %}
+```
 
 ### 细粒度时间间隔
 
@@ -140,7 +141,8 @@ comments: true
 
 使用 blob 存储为每个逻辑分区创建一个小文件。应用程序在短时间内（例如，15 秒）获得这些文件的独占租约。对于授予的每个租约，应用程序可以使用该分区的容量。
 
-{% mermaid %}block-beta
+```mermaid
+block-beta
 columns 3
   block:processes:3
     columns 3
@@ -170,7 +172,7 @@ columns 3
   style processes fill:#e1f5ff
   style leases fill:#fff4e1
   style service fill:#ffe1e1
-{% endmermaid %}
+```
 
 为了减少延迟，为每个进程分配少量独占容量。进程只在超过其保留容量时才寻求共享容量租约。
 
@@ -201,7 +203,8 @@ columns 3
 
 所有组件（API、作业处理器）都是独立扩展的独立进程，不直接通信。
 
-{% mermaid %}graph TB
+```mermaid
+graph TB
     U1["用户"] --> API["API"]
     U2["用户"] --> API
     
@@ -222,7 +225,7 @@ columns 3
     style QB fill:#fff4e1
     style LS fill:#f0e1ff
     style DB fill:#ffe1e1
-{% endmermaid %}
+```
 
 **工作流程：**
 

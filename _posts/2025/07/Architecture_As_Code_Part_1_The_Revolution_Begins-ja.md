@@ -41,20 +41,20 @@ comments: true
 4. **検証は手動で頻度が低かった**
 5. **ドキュメントは古くなり信頼できなくなった**
 
-{% mermaid %}
+```mermaid
 graph TD
     UI[ユーザーインターフェース] --> API[APIゲートウェイ]
     API --> AUTH[オーソライザー]
     AUTH --> DB[(データベース)]
-{% endmermaid %}
+```
 
 **図1: 意図されたアーキテクチャ設計（オーソライザー付きAPIゲートウェイ）**
 
-{% mermaid %}
+```mermaid
 graph TD
     UI[ユーザーインターフェース] --> API[APIゲートウェイ]
     API --> DB[(データベース)]
-{% endmermaid %}
+```
 
 **図2: 実際の実装（現実 - オーソライザーが欠落）**
 

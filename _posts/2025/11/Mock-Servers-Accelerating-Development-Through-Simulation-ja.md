@@ -434,7 +434,8 @@ Pactのような契約テストツールは、コンシューマー駆動の契�
 4. **残高照会**で現在の状態を返す
 5. **振込**で口座間で資金を移動
 
-{% mermaid %}sequenceDiagram
+```mermaid
+sequenceDiagram
     participant Client as クライアント
     participant Mock as モック銀行API
     
@@ -455,7 +456,7 @@ Pactのような契約テストツールは、コンシューマー駆動の契�
     
     Client->>Mock: GET /accounts/ACC001/transactions
     Mock-->>Client: 200 [{TXN001: 預金}, {TXN002: 引き出し}]
-{% endmermaid %}
+```
 
 **ステップ1：口座開設**
 
@@ -743,7 +744,8 @@ GET /api/accounts/ACC001
 
 銀行モックはこの状態フローに従います：
 
-{% mermaid %}stateDiagram-v2
+```mermaid
+stateDiagram-v2
     [*] --> Started
     Started --> AccountCreated: POST /accounts
     AccountCreated --> Balance1000: 預金 $1000
@@ -753,7 +755,7 @@ GET /api/accounts/ACC001
     Balance700 --> Balance700: 引き出し $1000（失敗）
     Balance700 --> Balance500: 振込 $200
     Balance500 --> [*]
-{% endmermaid %}
+```
 
 各状態遷移はビジネスルールを検証し、それに応じてモックの内部状態を更新します。
 
@@ -840,7 +842,8 @@ GET /api/accounts/ACC001
 
 マイクロサービスアーキテクチャでは、サービスは複数の他のサービスに依存します。すべての依存関係をローカルで実行することは非現実的です。モックサーバーは分離された開発を可能にします：
 
-{% mermaid %}graph LR
+```mermaid
+graph LR
     A["サービスA<br/>（開発中）"]
     B["サービスB<br/>（モック）"]
     C["サービスC<br/>（モック）"]
@@ -854,7 +857,7 @@ GET /api/accounts/ACC001
     style B fill:#fff3e0,stroke:#f57c00
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 開発者はモックされた依存関係でサービスAを作業し、統合テスト中にモックを実際のサービスに交換します。
 
@@ -1091,7 +1094,8 @@ GET /api/accounts/ACC001
 
 メリットは大きいです：チームは依存関係を待つことなく独立して作業し、エラーシナリオは徹底的にテストされ、テストは高速で決定論的になり、開発コストは減少します。モックサーバーは開発を順次から並行へ、脆弱から堅牢へ、遅いから速いへと変革します。
 
-{% mermaid %}graph LR
+```mermaid
+graph LR
     A["モックサーバーのメリット"]
     
     B["開発の加速"]
@@ -1118,7 +1122,7 @@ GET /api/accounts/ACC001
     style B fill:#e8f5e9,stroke:#388e3c
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 しかし、モックサーバーには課題がないわけではありません。モックの正確性を維持するには規律と自動化が必要です。不正確なモックに対して合格するテストからの誤った自信は本番障害につながる可能性があります。複雑なステートフルシナリオは現実的にモックすることが困難です。鍵はモックと実際の統合テストのバランスを取ることです——速度と分離のためにモックを使用しますが、定期的に実際のサービスに対して検証します。
 

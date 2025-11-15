@@ -25,7 +25,7 @@ Linux系统安全是信息安全的重要组成部分，理解Linux的安全机�
 
 **passwd文件的作用：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["/etc/passwd文件"]
     
@@ -51,7 +51,7 @@ graph TB
     style B fill:#e8f5e9,stroke:#388e3d
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 ### 1.2 passwd文件格式
 
@@ -203,7 +203,7 @@ user4:!!:19000:0:99999:7:::
 
 **Linux支持的密码加密算法：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["密码加密算法"]
     
@@ -226,7 +226,7 @@ graph TB
     style C fill:#ffccbc,stroke:#d84315
     style D fill:#c8e6c9,stroke:#2e7d32
     style E fill:#a5d6a7,stroke:#1b5e20
-{% endmermaid %}
+```
 
 **密码格式说明：**
 
@@ -285,7 +285,7 @@ $1$saltstring$hash...
 
 **密码验证流程：**
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant U as 用户
     participant S as 系统
@@ -307,7 +307,7 @@ sequenceDiagram
     
     style S fill:#e3f2fd,stroke:#1976d2
     style SH fill:#ffebee,stroke:#c62828
-{% endmermaid %}
+```
 
 ## 四、用户账户管理
 
@@ -512,7 +512,7 @@ cp /etc/shadow /etc/shadow.bak
 
 **SUID的工作原理：**
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant U as 普通用户
     participant P as passwd程序
@@ -528,7 +528,7 @@ sequenceDiagram
     S->>P: 修改成功
     P->>U: 密码修改完成
     Note over U: 进程结束<br/>权限恢复
-{% endmermaid %}
+```
 
 ### 6.3 为什么passwd命令需要SUID
 
@@ -680,7 +680,7 @@ drwxrwxrwt 10 root root 4096 Jan 1 12:00 /tmp
 
 **Capabilities vs SUID：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["权限需求"]
     
@@ -700,7 +700,7 @@ graph TB
     
     style B fill:#ffcdd2,stroke:#b71c1c
     style C fill:#c8e6c9,stroke:#2e7d32
-{% endmermaid %}
+```
 
 ### 7.2 常用Capabilities列表
 
@@ -859,7 +859,7 @@ Capabilities安全清单：
 
 **Linux系统安全关键要素：**
 
-{% mermaid %}
+```mermaid
 mindmap
   root((Linux系统安全))
     用户认证
@@ -882,7 +882,7 @@ mindmap
       及时更新
       安全配置
       应急响应
-{% endmermaid %}
+```
 
 ### 8.2 重要考点总结
 

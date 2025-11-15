@@ -25,7 +25,8 @@ thumbnail_80: /2021/01/Enterprise-Transparent-Proxy-Privacy-Concerns/thumbnail_8
 
 当你在具有 SSL 拦截的公司网络上连接到 `https://neo01.com` 时，实际发生的情况如下：
 
-{% mermaid %}sequenceDiagram
+```mermaid
+sequenceDiagram
     participant C as 你的浏览器
     participant P as 公司代理服务器
     participant B as neo01.com
@@ -45,7 +46,7 @@ thumbnail_80: /2021/01/Enterprise-Transparent-Proxy-Privacy-Concerns/thumbnail_8
     P->>B: 重新加密并转发
     B->>P: 发送响应
     P->>C: 解密、检查、重新加密
-{% endmermaid %}
+```
 
 **关键步骤**：
 

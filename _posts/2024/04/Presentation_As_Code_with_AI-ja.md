@@ -23,13 +23,13 @@ excerpt: "プレゼンテーション・アズ・コードのためのSlidevとL
 
 このブログ投稿では、Slidevを紹介し、PowerPointなどの従来のプレゼンテーションツールとの比較を示します。また、大規模言語モデル（LLM）AIでプレゼンテーションコードを生成する可能性も探ります。
 
-{% mermaid %}
+```mermaid
 graph LR
     A["従来のツール"] --> B["PowerPoint/Keynote"]
     C["プレゼンテーション・アズ・コード"] --> D["Markdown + Slidev"]
     B --> E["ビジュアルエディタ"]
     D --> F["コードエディタ + Git"]
-{% endmermaid %}
+```
 
 ## プレゼンテーション・アズ・コードとは？
 

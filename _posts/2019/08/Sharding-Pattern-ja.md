@@ -27,7 +27,7 @@ comments: true
 - 単一のデータベースでの競合を削減
 - より良いパフォーマンスのためのデータの局所性を可能にする
 
-{% mermaid %}
+```mermaid
 graph TB
     A[アプリケーション] --> B[シャーディングロジック]
     B --> C[シャード 1<br/>ユーザー A-H]
@@ -39,7 +39,7 @@ graph TB
     style C fill:#51cf66,stroke:#2f9e44
     style D fill:#51cf66,stroke:#2f9e44
     style E fill:#51cf66,stroke:#2f9e44
-{% endmermaid %}
+```
 
 ## 問題：単一サーバーの制限
 
@@ -128,7 +128,7 @@ class GlobalApplication {
 - 別のストレージノードで実行
 - 独立して動作
 
-{% mermaid %}
+```mermaid
 graph TB
     A[アプリケーション層] --> B[シャードマップ/ルーター]
     B --> C[シャード A<br/>注文 0-999]
@@ -147,7 +147,7 @@ graph TB
     style D fill:#51cf66,stroke:#2f9e44
     style E fill:#51cf66,stroke:#2f9e44
     style F fill:#51cf66,stroke:#2f9e44
-{% endmermaid %}
+```
 
 ## シャーディング戦略
 

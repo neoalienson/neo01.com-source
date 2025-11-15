@@ -36,7 +36,7 @@ The Claim-Check pattern elegantly solves this problem by separating the concerns
 3. **Send only the token** through the messaging system
 4. **Retrieve the payload** using the token when needed
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant Sender
     participant DataStore as External Data Store
@@ -50,7 +50,7 @@ sequenceDiagram
     Receiver->>DataStore: 5. Retrieve payload using token
     DataStore-->>Receiver: 6. Return payload
     Receiver->>Receiver: 7. Process payload
-{% endmermaid %}
+```
 
 ## How It Works: The Pattern in Action
 
@@ -179,7 +179,7 @@ function generateClaimCheck() {
     
     **Complex Routing**: When messages traverse multiple components, avoid repeated serialization/deserialization overhead by passing only tokens through intermediaries.
 
-{% mermaid %}
+```mermaid
 graph TD
     A[Message Size Analysis] --> B{Size > Threshold?}
     B -->|Yes| C[Use Claim-Check]
@@ -191,7 +191,7 @@ graph TD
     
     style C fill:#51cf66,stroke:#2f9e44
     style F fill:#4dabf7,stroke:#1971c2
-{% endmermaid %}
+```
 
 ## Architecture Quality Attributes
 

@@ -73,7 +73,7 @@ canonical_lang: zh-CN
 
 **系统工程的正确理解：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["系统工程方法"]
     
@@ -101,7 +101,7 @@ graph TB
     
     style B fill:#ffcdd2,stroke:#b71c1c
     style C fill:#c8e6c9,stroke:#2e7d32
-{% endmermaid %}
+```
 
 ### 1.3 系统工程的基本特点
 
@@ -133,7 +133,7 @@ graph TB
 
 **系统工程的设计流程：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["系统工程设计流程"]
     
@@ -162,7 +162,7 @@ graph TB
     style E fill:#f3e5f5,stroke:#7b1fa2
     style F fill:#fce4ec,stroke:#c2185b
     style G fill:#ffebee,stroke:#c62828
-{% endmermaid %}
+```
 
 ### 1.4 系统工程在信息安全中的应用
 
@@ -197,7 +197,7 @@ graph TB
 
 **深度防御示例：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["深度防御体系"]
     
@@ -225,7 +225,7 @@ graph TB
     style D fill:#f3e5f5,stroke:#7b1fa2
     style E fill:#fce4ec,stroke:#c2185b
     style F fill:#ffebee,stroke:#c62828
-{% endmermaid %}
+```
 
 ## 二、分组密码算法
 
@@ -233,7 +233,7 @@ graph TB
 
 **密码算法的主要分类：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["密码算法"]
     
@@ -257,7 +257,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#e8f5e9,stroke:#388e3d
-{% endmermaid %}
+```
 
 ### 2.2 分组密码算法
 
@@ -335,7 +335,7 @@ graph TB
 
 **分组密码的常见工作模式：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["分组密码工作模式"]
     
@@ -362,7 +362,7 @@ graph TB
     style D fill:#e3f2fd,stroke:#1976d2
     style E fill:#fff3e0,stroke:#f57c00
     style F fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 **工作模式对比：**
 
@@ -426,7 +426,7 @@ graph TB
 
 **标准的层级体系：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["标准体系"]
     
@@ -458,7 +458,7 @@ graph LR
     style D fill:#e8f5e9,stroke:#388e3d
     style E fill:#f3e5f5,stroke:#7b1fa2
     style F fill:#fce4ec,stroke:#c2185b
-{% endmermaid %}
+```
 
 ### 3.3 标准的性质
 
@@ -618,7 +618,7 @@ BS 7799-2 (1999) → ISO/IEC 27001 (2005)
 
 **SSE-CMM的6个能力级别：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["SSE-CMM能力级别"]
     
@@ -649,7 +649,7 @@ graph TB
     style E fill:#e8f5e9,stroke:#388e3d
     style F fill:#e3f2fd,stroke:#1976d2
     style G fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 **6个能力级别详解：**
 
@@ -731,7 +731,7 @@ SSE-CMM能力级别特征：
 
 **5级（持续优化）的实际含义：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["5级：持续优化"]
     
@@ -766,7 +766,7 @@ graph LR
     style C fill:#e3f2fd,stroke:#1976d2
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#fce4ec,stroke:#c2185b
-{% endmermaid %}
+```
 
 ### 4.4 SSE-CMM的过程域
 
@@ -821,7 +821,7 @@ SSE-CMM过程域（不是只有3个风险过程）：
 
 **SSE-CMM强调整合而非独立：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["系统安全工程"]
     
@@ -844,7 +844,7 @@ graph LR
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 **SSE-CMM的整合理念：**
 
@@ -978,7 +978,7 @@ SSE-CMM应用场景：
 
 **九项重点工作的关系：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["信息安全保障<br/>九项重点工作"]
     
@@ -1014,7 +1014,7 @@ graph LR
     style D fill:#f3e5f5,stroke:#7b1fa2
     style E fill:#fce4ec,stroke:#c2185b
     style F fill:#ffebee,stroke:#c62828
-{% endmermaid %}
+```
 
 !!!tip "💡 九项工作的范围界定"
     **九项工作的内容范围：**
@@ -1122,7 +1122,7 @@ graph LR
 
 **九项工作的实施循环：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["资金投入"]
     B["人才培养"]
@@ -1154,7 +1154,7 @@ graph TB
     style G fill:#e0f2f1,stroke:#00695c
     style H fill:#fff9c4,stroke:#f57f17
     style I fill:#ede7f6,stroke:#5e35b1
-{% endmermaid %}
+```
 
 ### 5.4 国产化与信息安全的关系
 

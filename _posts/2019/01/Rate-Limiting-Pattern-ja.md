@@ -60,7 +60,8 @@ APIがスロットルされたサービスが許可するよりも速くリク�
 - イベントストリーミングプラットフォーム（例：Apache Kafka）
 - クラウドベースのキューサービス
 
-{% mermaid %}graph LR
+```mermaid
+graph LR
     A["API<br/>(高レート)"] --> B["永続的<br/>メッセージキュー"]
     B --> C["ジョブプロセッサ 1"]
     B --> D["ジョブプロセッサ 2"]
@@ -72,7 +73,7 @@ APIがスロットルされたサービスが許可するよりも速くリク�
     style A fill:#e1f5ff
     style B fill:#fff4e1
     style F fill:#ffe1e1
-{% endmermaid %}
+```
 
 ### 細かい時間間隔
 
@@ -140,7 +141,8 @@ APIがスロットルされたサービスが許可するよりも速くリク�
 
 ブロブストレージを使用して、論理パーティションごとに1つの小さなファイルを作成します。アプリケーションは、短期間（例：15秒）これらのファイルの排他的リースを取得します。付与された各リースに対して、アプリケーションはそのパーティションの容量を使用できます。
 
-{% mermaid %}block-beta
+```mermaid
+block-beta
 columns 3
   block:processes:3
     columns 3
@@ -170,7 +172,7 @@ columns 3
   style processes fill:#e1f5ff
   style leases fill:#fff4e1
   style service fill:#ffe1e1
-{% endmermaid %}
+```
 
 レイテンシを削減するために、各プロセスに少量の排他的容量を割り当てます。プロセスは、予約容量を超えた場合にのみ共有容量リースを求めます。
 
@@ -201,7 +203,8 @@ columns 3
 
 すべてのコンポーネント（API、ジョブプロセッサ）は、独立してスケールし、直接通信しない別々のプロセスです。
 
-{% mermaid %}graph TB
+```mermaid
+graph TB
     U1["ユーザー"] --> API["API"]
     U2["ユーザー"] --> API
     
@@ -222,7 +225,7 @@ columns 3
     style QB fill:#fff4e1
     style LS fill:#f0e1ff
     style DB fill:#ffe1e1
-{% endmermaid %}
+```
 
 **ワークフロー：**
 

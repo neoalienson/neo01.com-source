@@ -22,7 +22,7 @@ Webページを開いたり、メールを送信したり、動画をストリ�
 
 ブラウザにURLを入力すると、コンピュータはWebサーバーへの接続を確立する必要があります。サーバーはよく知られたポート（通常、HTTPの場合はポート80、HTTPSの場合は443）でリッスンしていますが、コンピュータはレスポンスを受信するために独自のポート番号が必要です。オペレーティングシステムは自動的に利用可能なエフェメラルポート（例えば、ポート54321）を選択し、この特定の接続に使用します。
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant Client as あなたのコンピュータ<br/>(IP: 192.168.1.100)
     participant OS as オペレーティングシステム
@@ -35,7 +35,7 @@ sequenceDiagram
     OS->>Client: ブラウザにデータを配信
     Note over OS: 接続終了
     OS->>OS: ポート54321を解放<br/>して再利用可能に
-{% endmermaid %}
+```
 
 ### ポート番号の範囲
 
@@ -106,7 +106,7 @@ sequenceDiagram
 
 通信が終了すると、オペレーティングシステムはエフェメラルポートを再利用可能としてマークします。ただし、古い接続からの遅延パケットが到着して同じポートを使用する新しい接続を混乱させないように、短い待機期間（TIME_WAIT状態）があることがよくあります。
 
-{% mermaid %}
+```mermaid
 stateDiagram-v2
     [*] --> Available: プール内のポート
     Available --> Assigned: アプリケーションが<br/>接続を要求
@@ -119,7 +119,7 @@ stateDiagram-v2
         通常30-120秒
         パケットの混乱を防ぐ
     end note
-{% endmermaid %}
+```
 
 ### 複数の同時接続
 
@@ -173,7 +173,7 @@ stateDiagram-v2
 
 **DHCPクライアント**：IPアドレスを取得するとき、DHCPクライアントは特定のポートを使用しますが、必ずしもエフェメラル範囲からではありません。
 
-{% mermaid %}
+```mermaid
 graph TB
     subgraph "あなたのコンピュータ"
         Browser(["🌐 Webブラウザ"])
@@ -204,7 +204,7 @@ graph TB
     PortPool -->|54324:5432| Database
     
     style PortPool fill:#e3f2fd,stroke:#1976d2,stroke-width:3px
-{% endmermaid %}
+```
 
 ## クライアントアプリケーションのベストプラクティス
 

@@ -16,7 +16,8 @@ This exploration traces testing's evolution from unit tests to executable specif
 
 ### Testing Evolution Timeline
 
-{% mermaid %}timeline
+```mermaid
+timeline
     title Testing Methodology Evolution
     section 1990s
         1994 : Unit Testing
@@ -39,7 +40,7 @@ This exploration traces testing's evolution from unit tests to executable specif
         2015 : Living Documentation
              : Tests as documentation
              : Continuous validation
-{% endmermaid %}
+```
 
 ## The Testing Problem
 
@@ -188,7 +189,8 @@ TDD inverts the testing process:
 
 TDD treats tests as design tools, not verification tools. Instead of writing code then testing it, you write tests first. The test describes what you want the code to do. Then you write the simplest code to make the test pass. Finally, you refactor to improve design while keeping tests green.
 
-{% mermaid %}---
+```mermaid
+---
 title: TDD Red-Green-Refactor Cycle
 ---
 flowchart LR
@@ -203,7 +205,7 @@ flowchart LR
     style Red fill:#f99,stroke:#333,stroke-width:2px
     style Green fill:#9f9,stroke:#333,stroke-width:2px
     style Refactor fill:#99f,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 ### TDD in Practice
 
@@ -301,7 +303,8 @@ BDD introduced a structured format for specifications:
 
 Given-When-Then provides a template for describing behavior. Given establishes context. When describes the action. Then specifies the expected result. This structure works for both business specifications and technical tests.
 
-{% mermaid %}---
+```mermaid
+---
 title: BDD Specification Structure
 ---
 flowchart TD
@@ -315,7 +318,7 @@ flowchart TD
     style Given fill:#9cf,stroke:#333,stroke-width:2px
     style When fill:#fc9,stroke:#333,stroke-width:2px
     style Then fill:#9f9,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 ### BDD Frameworks Emerge
 
@@ -419,7 +422,8 @@ Step definitions implement the technical details behind readable specifications.
 
 BDD changes the development workflow:
 
-{% mermaid %}---
+```mermaid
+---
 title: BDD Development Workflow
 ---
 flowchart TD
@@ -440,7 +444,7 @@ flowchart TD
     style Business fill:#9cf,stroke:#333,stroke-width:2px
     style Execute fill:#fc9,stroke:#333,stroke-width:2px
     style Done fill:#9f9,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 The workflow starts with business stakeholders describing desired behavior in Gherkin. Developers implement step definitions and feature code. Specifications execute as tests, validating behavior. When tests pass, features are complete and specifications become living documentation.
 

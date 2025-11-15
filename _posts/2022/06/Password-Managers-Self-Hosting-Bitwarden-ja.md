@@ -718,7 +718,8 @@ Vaultwardenは、最小限のリソース要件で完全なBitwarden機能セッ
     - 最小限の運用オーバーヘッド
     - セルフホストがプライマリ、クラウドはステージング
 
-{% mermaid %}graph TB
+```mermaid
+graph TB
     subgraph "自宅/オフィスから離れて"
         Mobile["📱 モバイルデバイス<br/>（デュアル構成）"]
         Cloud["☁️ クラウドボルト<br/>（一時的なステージング）"]
@@ -744,7 +745,7 @@ Vaultwardenは、最小限のリソース要件で完全なBitwarden機能セッ
     style SelfHosted fill:#c8e6c9
     style Firewall fill:#ffccbc
     style NewSite fill:#fff9c4
-{% endmermaid %}
+```
 
 
 ### ワークフローの詳細

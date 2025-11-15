@@ -31,7 +31,7 @@ canonical_lang: zh-CN
 
 **CERT的历史：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["1988年<br/>Morris蠕虫事件"] --> B["CERT/CC成立<br/>卡内基梅隆大学"]
     B --> C["各国建立CERT"]
@@ -41,7 +41,7 @@ graph LR
     style A fill:#ffcdd2,stroke:#c62828
     style B fill:#e3f2fd,stroke:#1976d2
     style E fill:#c8e6c9,stroke:#2e7d32
-{% endmermaid %}
+```
 
 **重要里程碑：**
 
@@ -122,7 +122,7 @@ CERT主要职责：
 
 **多组件事故的挑战：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["多组件事故"]
     
@@ -152,7 +152,7 @@ graph TB
     style A fill:#ffcdd2,stroke:#c62828
     style F fill:#ffccbc,stroke:#d84315
     style G fill:#c8e6c9,stroke:#2e7d32
-{% endmermaid %}
+```
 
 **攻击链示例：**
 
@@ -178,7 +178,7 @@ graph TB
 
 **SIEM系统架构：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["数据源"]
     B["日志收集"]
@@ -205,7 +205,7 @@ graph TB
     style A fill:#e3f2fd,stroke:#1976d2
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#ffcdd2,stroke:#c62828
-{% endmermaid %}
+```
 
 **关联分析的优势：**
 
@@ -228,7 +228,7 @@ graph TB
 
 **DoS攻击影响的三个层次：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["DoS攻击影响"]
     
@@ -262,7 +262,7 @@ graph TB
     style C fill:#c8e6c9,stroke:#2e7d32
     style D fill:#c8e6c9,stroke:#2e7d32
     style E fill:#ffcdd2,stroke:#c62828
-{% endmermaid %}
+```
 
 **正确理解DoS攻击：**
 
@@ -373,7 +373,7 @@ graph TB
 
 **正确的管理方针：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["我国信息安全管理方针"]
     
@@ -394,7 +394,7 @@ graph TB
     style A fill:#e3f2fd,stroke:#1976d2
     style B fill:#c8e6c9,stroke:#2e7d32
     style C fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 **方针对比：**
 
@@ -456,7 +456,7 @@ graph TB
 
 **责任原则详解：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["信息安全责任原则"]
     
@@ -477,7 +477,7 @@ graph LR
     style A fill:#e3f2fd,stroke:#1976d2
     style B fill:#c8e6c9,stroke:#2e7d32
     style C fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 **责任主体示例：**
 
@@ -535,7 +535,7 @@ TC260工作组：
 
 **标准化工作内容：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["TC260职责"]
     
@@ -566,7 +566,7 @@ graph TB
     E --> E3["技术咨询"]
     
     style A fill:#e3f2fd,stroke:#1976d2
-{% endmermaid %}
+```
 
 **重要标准系列：**
 
@@ -589,7 +589,7 @@ graph TB
 
 **审计系统架构：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["审计系统"]
     
@@ -616,7 +616,7 @@ graph LR
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#c8e6c9,stroke:#2e7d32
-{% endmermaid %}
+```
 
 ### 6.3 各组成部分详解
 
@@ -723,7 +723,7 @@ graph LR
 
 **审计系统部署架构：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["数据源"]
     B["日志收集器"]
@@ -751,7 +751,7 @@ graph TB
     style A fill:#e3f2fd,stroke:#1976d2
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#c8e6c9,stroke:#2e7d32
-{% endmermaid %}
+```
 
 ## 七、OSI安全服务
 
@@ -764,7 +764,7 @@ graph TB
 
 **OSI七层模型及其安全服务：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["OSI七层模型"]
     
@@ -794,7 +794,7 @@ graph TB
     
     style L5 fill:#c8e6c9,stroke:#2e7d32
     style L5S fill:#e8f5e9,stroke:#388e3d
-{% endmermaid %}
+```
 
 ### 7.3 各层安全服务详解
 
@@ -875,7 +875,7 @@ graph TB
 
 **传输方式安全性对比：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["数据传输方式"]
     
@@ -905,7 +905,7 @@ graph TB
     style B fill:#ffcdd2,stroke:#c62828
     style C fill:#c8e6c9,stroke:#2e7d32
     style C1 fill:#e8f5e9,stroke:#388e3d
-{% endmermaid %}
+```
 
 ### 8.3 各种传输方式的安全特性
 
@@ -994,7 +994,7 @@ TACACS+（Terminal Access Controller Access-Control System Plus）：
 
 **HTTPS工作流程：**
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant C as 客户端
     participant S as 服务器
@@ -1018,7 +1018,7 @@ sequenceDiagram
     S->>C: 加密的HTTP响应
     
     Note over C,S: 窃听者无法解密
-{% endmermaid %}
+```
 
 **HTTPS安全保障：**
 
@@ -1057,7 +1057,7 @@ sequenceDiagram
 
 **完整信息解析：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["-rwxr-xr-x 3 root root 1024 Sep 13 11:58 test"]
     
@@ -1083,7 +1083,7 @@ graph TB
     B --> B4["r-x 其他用户权限"]
     
     style B fill:#e3f2fd,stroke:#1976d2
-{% endmermaid %}
+```
 
 ### 9.3 权限详细分析
 
@@ -1190,7 +1190,7 @@ mysql       3306/tcp                # MySQL
 
 **文件作用：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["应用程序"]
     B["/etc/services"]
@@ -1204,7 +1204,7 @@ graph LR
     B --> A1
     
     style B fill:#e3f2fd,stroke:#1976d2
-{% endmermaid %}
+```
 
 ### 10.3 相关配置文件对比
 
@@ -1246,7 +1246,7 @@ graph LR
 
 **邮件安全标准对比：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["邮件相关标准"]
     
@@ -1271,7 +1271,7 @@ graph TB
     style B fill:#c8e6c9,stroke:#2e7d32
     style C fill:#e3f2fd,stroke:#1976d2
     style D fill:#ffcdd2,stroke:#c62828
-{% endmermaid %}
+```
 
 ### 11.3 各标准详解
 
@@ -1347,7 +1347,7 @@ X.400 - 邮件系统标准：
 
 **X.500和LDAP的关系：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["X.500<br/>目录服务标准"]
     B["DAP<br/>Directory Access Protocol"]
@@ -1367,7 +1367,7 @@ graph LR
     
     style A fill:#e3f2fd,stroke:#1976d2
     style C fill:#c8e6c9,stroke:#2e7d32
-{% endmermaid %}
+```
 
 ## 十二、域名注册信息查询
 
@@ -1430,7 +1430,7 @@ Name Server: B.IANA-SERVERS.NET
 
 **Fuzz测试的正确特性：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["Fuzz测试特性"]
     
@@ -1450,7 +1450,7 @@ graph TB
     
     style B fill:#c8e6c9,stroke:#2e7d32
     style C fill:#ffcdd2,stroke:#c62828
-{% endmermaid %}
+```
 
 **Fuzz测试的理论基础：**
 

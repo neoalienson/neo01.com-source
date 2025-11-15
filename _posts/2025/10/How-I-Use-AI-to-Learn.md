@@ -113,7 +113,7 @@ Our brains are pattern-recognition machines. When information is well-organized 
 
 The real power emerges when these three phases form a continuous cycle:
 
-{% mermaid %}
+```mermaid
 graph TB
     A["New Questions"] --> B["Phase 1:<br/>Analyze & Generate"]
     B --> C["Updated Study Guides"]
@@ -132,7 +132,7 @@ graph TB
     style D fill:#e8f5e9,stroke:#388e3d
     style F fill:#f3e5f5,stroke:#7b1fa2
     style J fill:#c8e6c9,stroke:#2e7d32
-{% endmermaid %}
+```
 
 Each iteration doesn't just add information—it refines understanding. Early iterations might produce basic explanations. Later iterations, informed by more questions and deeper analysis, produce nuanced, interconnected content that reveals the underlying structure of the domain.
 
@@ -195,7 +195,7 @@ This is the method I use—generating study materials by analyzing actual exam q
 
 When AI generates content from questions with answers, the answers act as **context constraints** that significantly reduce inaccuracy. Instead of AI freely generating content about a topic (which can drift into plausible-sounding errors), it must explain concepts in a way that's consistent with the provided correct answers.
 
-{% mermaid %}
+```mermaid
 graph LR
     A["Study Material Creation"]
     
@@ -225,7 +225,7 @@ graph LR
     style B fill:#e8f5e9,stroke:#388e3d
     style C fill:#ffebee,stroke:#c62828
     style D fill:#e3f2fd,stroke:#1976d2,stroke-width:3px
-{% endmermaid %}
+```
 
 ## The Advantages: Why This Approach Works
 
@@ -750,7 +750,7 @@ As mentioned in the results section, AI accuracy is a concern. Future systems co
 
 **Validation workflow:**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["AI Generates Content"] --> B["Multi-Model Verification"]
     B --> C{"Consensus?"}
@@ -768,7 +768,7 @@ graph TB
     style D fill:#c8e6c9,stroke:#388e3d
     style E fill:#fff3e0,stroke:#f57c00
     style K fill:#c8e6c9,stroke:#2e7d32
-{% endmermaid %}
+```
 
 ### Accessibility and Inclusivity
 
@@ -930,7 +930,7 @@ The iterative approach—analyze, verify, refine, repeat—mirrors the natural l
 
 **Key Takeaways:**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["AI-Assisted Learning"]
     
@@ -961,7 +961,7 @@ graph LR
     style B fill:#e8f5e9,stroke:#388e3d
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#ffebee,stroke:#c62828
-{% endmermaid %}
+```
 
 The advantages are clear: better organization, deeper understanding, reduced anxiety, and more efficient learning. The challenges are real but manageable: maintaining agency, verifying quality, investing time upfront, and balancing with social learning.
 

@@ -49,7 +49,7 @@ comments: true
 
 **风险要素关系图：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["资产<br/>Assets"] 
     B["威胁<br/>Threats"]
@@ -73,7 +73,7 @@ graph TB
     style D fill:#f3e5f5,stroke:#7b1fa2
     style E fill:#ffcdd2,stroke:#c62828
     style F fill:#e8f5e9,stroke:#388e3d
-{% endmermaid %}
+```
 
 ### 1.3 降低风险的方法
 
@@ -95,7 +95,7 @@ graph TB
 
 **完整的风险管理流程：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["风险识别"] --> B["风险评估"]
     B --> C["风险处置"]
@@ -106,7 +106,7 @@ graph LR
     style B fill:#fff3e0,stroke:#f57c00
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 **各阶段详解：**
 
@@ -148,7 +148,7 @@ S-1-5-21-1534169462-1651380828-111620652-500
 
 **SID结构解析：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["S"] --> B["1"]
     B --> C["5"]
@@ -168,7 +168,7 @@ graph LR
     
     style A fill:#e3f2fd,stroke:#1976d2
     style H fill:#ffebee,stroke:#c62828
-{% endmermaid %}
+```
 
 **SID各部分说明：**
 
@@ -293,7 +293,7 @@ Get-LocalUser | Select-Object Name, SID
 
 **STRIDE威胁建模步骤：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["1. 识别资产"] --> B["2. 创建架构图"]
     B --> C["3. 识别威胁"]
@@ -304,7 +304,7 @@ graph LR
     style A fill:#e3f2fd,stroke:#1976d2
     style C fill:#ffebee,stroke:#c62828
     style E fill:#e8f5e9,stroke:#388e3d
-{% endmermaid %}
+```
 
 ## 四、木马后门防护
 
@@ -394,7 +394,7 @@ HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run
 
 **广为接受的应急响应六阶段模型：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["1. 准备<br/>Preparation"] --> B["2. 检测<br/>Detection"]
     B --> C["3. 遏制<br/>Containment"]
@@ -409,7 +409,7 @@ graph LR
     style D fill:#f3e5f5,stroke:#7b1fa2
     style E fill:#e8f5e9,stroke:#388e3d
     style F fill:#e1f5fe,stroke:#0277bd
-{% endmermaid %}
+```
 
 **六个阶段详解：**
 
@@ -492,7 +492,7 @@ graph LR
 
 **纵深防御层次：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["物理安全"]
     B["网络安全"]
@@ -515,7 +515,7 @@ graph TB
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#f3e5f5,stroke:#7b1fa2
     style E fill:#ffebee,stroke:#c62828
-{% endmermaid %}
+```
 
 ### 6.3 其他安全设计原则
 

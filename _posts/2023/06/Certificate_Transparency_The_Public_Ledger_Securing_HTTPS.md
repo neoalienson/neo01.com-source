@@ -31,7 +31,7 @@ The consequences were severe:
 
 Each incident eroded trust in the entire certificate ecosystem. The industry needed a solution that didn't rely solely on trusting certificate authorities.
 
-{% mermaid %}
+```mermaid
 graph TB
     A([🏢 Certificate Authority<br/>Issues certificate]) --> B{Trusted CA?}
     B -->|Yes| C([✅ Browser trusts<br/>certificate])
@@ -41,7 +41,7 @@ graph TB
     style E fill:#ffebee,stroke:#c62828,stroke-width:3px
     style C fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style D fill:#fff3e0,stroke:#f57c00,stroke-width:2px
-{% endmermaid %}
+```
 
 ## The Solution: Public, Append-Only Logs
 
@@ -57,7 +57,7 @@ Certificate Transparency introduces a simple but powerful concept: make every ce
 
 This transparency transforms the certificate ecosystem from "trust but don't verify" to "trust and always verify."
 
-{% mermaid %}
+```mermaid
 graph LR
     A([🏢 Certificate<br/>Authority]) --> B([📝 CT Log 1])
     A --> C([📝 CT Log 2])
@@ -74,7 +74,7 @@ graph LR
     style D fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
     style G fill:#ffebee,stroke:#c62828,stroke-width:2px
     style H fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-{% endmermaid %}
+```
 
 ## How Certificate Transparency Works
 
@@ -132,7 +132,7 @@ This structure provides powerful properties:
 
 **Append-Only Proof**: The Merkle tree structure allows proving that a log has only grown (new certificates added) without modifying or removing old entries. This is called a "consistency proof."
 
-{% mermaid %}
+```mermaid
 graph TB
     A([Root Hash<br/>H1234]) --> B([H12])
     A --> C([H34])
@@ -148,7 +148,7 @@ graph TB
     style E fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style F fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style G fill:#fff3e0,stroke:#f57c00,stroke-width:2px
-{% endmermaid %}
+```
 
 !!!anote "🔐 Cryptographic Guarantee"
     The Merkle tree structure provides mathematical certainty:
@@ -241,7 +241,7 @@ Certificate Transparency continues to evolve, with several developments on the h
 
 **Decentralization**: Blockchain-based approaches could further decentralize CT logs, reducing reliance on specific log operators and increasing resilience.
 
-{% mermaid %}
+```mermaid
 timeline
     title Evolution of Certificate Transparency
     2011 : DigiNotar Breach
@@ -258,7 +258,7 @@ timeline
     Future : Enhanced Privacy & Automation
            : Privacy-preserving mechanisms
            : Automated threat response
-{% endmermaid %}
+```
 
 ## Getting Started with Certificate Transparency
 

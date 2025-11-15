@@ -490,7 +490,8 @@ DoH 繼續發展，幾個趨勢塑造了其未來發展。
 
 不經意 DoH（RFC 9230）透過分離查詢可見性和 IP 位址可見性來解決 DoH 的信任集中問題：
 
-{% mermaid %}sequenceDiagram
+```mermaid
+sequenceDiagram
     participant Client as 用戶端
     participant Proxy as 代理
     participant Target as DoH 伺服器
@@ -504,7 +505,7 @@ DoH 繼續發展，幾個趨勢塑造了其未來發展。
     Target->>Proxy: 傳送加密回應
     Proxy->>Client: 轉發加密回應
     Client->>Client: 解密回應
-{% endmermaid %}
+```
 
 !!!anote "🔐 ODoH 隱私模型"
     **傳統 DoH：**
@@ -557,7 +558,8 @@ DNS over HTTPS 代表了網際網路隱私的根本轉變，加密了幾十年�
 
 然而，DoH 的採用一直存在爭議，挑戰了既定的網路管理實務，並引發了對中心化、企業安全和監管控制的擔憂。網路管理員失去了他們依賴的安全監控和故障排除的可見性。DNS 流量集中在少數大型提供商中，造成了新的風險。組織必須調整其安全策略以在沒有 DNS 可見性的情況下保持保護。
 
-{% mermaid %}graph TB
+```mermaid
+graph TB
     A["DoH 採用"]
     
     B["隱私優勢"]
@@ -587,7 +589,7 @@ DNS over HTTPS 代表了網際網路隱私的根本轉變，加密了幾十年�
     style B fill:#e8f5e9,stroke:#388e3c
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 圍繞 DoH 的辯論反映了網際網路治理中更廣泛的緊張關係：隱私與控制、中心化與分散、使用者自主權與網路管理。沒有完美的解決方案——每種方法都涉及權衡和不同的信任假設。
 

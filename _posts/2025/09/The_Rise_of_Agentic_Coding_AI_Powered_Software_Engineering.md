@@ -30,7 +30,7 @@ The real breakthrough came when AI moved into our development environments. Inst
 
 Then came the game-changer: the **autonomous agent era**. These weren't just suggestion engines anymore - they were digital colleagues capable of reading entire codebases, understanding project architecture, and making independent decisions. Modern tools can refactor authentication systems across dozens of files simultaneously, updating imports, fixing type definitions, and maintaining consistency throughout. They can browse documentation when stuck, run terminal commands to test their own code, and even deploy applications to production.
 
-{% mermaid %}
+```mermaid
 timeline
     title Evolution of AI-Powered Coding
     2022-2023 : Copy-Paste Era
@@ -44,7 +44,7 @@ timeline
               : Multi-file editing
               : Independent decision-making
               : YOLO mode automation
-{% endmermaid %}
+```
 
 This isn't just about writing code faster - it's about fundamentally redefining what it means to be a software developer. When AI handles the routine implementation details, developers transform from code typists into solution architects, focusing on creative problem-solving rather than syntax memorization.
 
@@ -54,7 +54,7 @@ To understand agentic coding, imagine having a highly skilled developer sitting 
 
 At its core, an agentic coding system operates through a continuous loop: **Observe → Plan → Act → Reflect**. The agent first observes your codebase, requirements, and current state. It then creates a plan of action, executes that plan by writing or modifying code, and reflects on the results to determine next steps. This cycle repeats until the task is complete or human intervention is needed.
 
-{% mermaid %}
+```mermaid
 graph LR
     A([🔍 Observe<br/>Analyze codebase<br/>& requirements]) --> B([🎯 Plan<br/>Create strategy<br/>& approach])
     B --> C([⚡ Act<br/>Write & modify<br/>code])
@@ -64,7 +64,7 @@ graph LR
     style B fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style C fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style D fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
-{% endmermaid %}
+```
 
 The magic happens through sophisticated context management. Unlike simple chatbots that forget previous conversations, agentic systems maintain persistent memory of your project structure, coding patterns, previous decisions, and even your personal preferences. When you ask an agent to "add user authentication," it doesn't just generate generic code - it analyzes your existing architecture, identifies the appropriate files to modify, understands your database schema, and implements authentication in a way that's consistent with your project's style.
 
@@ -151,7 +151,7 @@ When AI agents run terminal commands or execute code, they could potentially har
 
 This approach is considered highly secure because even if AI generates malicious code, it can only affect the temporary container, not your actual development environment or personal files.
 
-{% mermaid %}
+```mermaid
 graph TB
     A([👤 Developer<br/>Gives instruction]) --> B([🤖 AI Agent<br/>Generates code])
     B --> C([🐳 Docker Sandbox<br/>Isolated environment])
@@ -165,7 +165,7 @@ graph TB
     style C fill:#e3f2fd,stroke:#1976d2,stroke-width:3px
     style G fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style H fill:#ffebee,stroke:#c62828,stroke-width:2px
-{% endmermaid %}
+```
 
 !!!tip "🛡️ Why Sandboxing Matters for Enterprises"
     Without sandboxing, an AI agent with terminal access could:
@@ -410,7 +410,7 @@ Predictive analytics tune deployment strategies, set rollback triggers, and opti
 
 AI operations (AIOps) correlate logs, traces, and metrics to reduce mean time to recovery (MTTR) and protect service level objectives (SLOs). When issues occur, AI can often diagnose and suggest fixes faster than human operators.
 
-{% mermaid %}
+```mermaid
 graph TB
     A([📋 Requirements<br/>NLP parsing & user stories]) --> B([🏗️ Design<br/>Architecture proposals])
     B --> C([💻 Implementation<br/>Agentic coding])
@@ -424,7 +424,7 @@ graph TB
     style D fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style E fill:#fce4ec,stroke:#c2185b,stroke-width:2px
     style F fill:#e0f2f1,stroke:#00796b,stroke-width:2px
-{% endmermaid %}
+```
 
 ## Benefits and Advantages
 

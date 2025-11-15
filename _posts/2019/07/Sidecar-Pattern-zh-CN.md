@@ -27,7 +27,7 @@ comments: true
 - 提供支持功能
 - 独立运作
 
-{% mermaid %}
+```mermaid
 graph LR
     A[客户端] --> B[负载均衡器]
     B --> C[应用程序实例 1]
@@ -43,7 +43,7 @@ graph LR
     style D fill:#4dabf7,stroke:#1971c2
     style C1 fill:#ffd43b,stroke:#fab005
     style D1 fill:#ffd43b,stroke:#fab005
-{% endmermaid %}
+```
 
 ## 问题：横切关注点
 
@@ -275,7 +275,7 @@ kubectl set image deployment/my-app \
 
 Sidecar 代理处理所有网络通信：
 
-{% mermaid %}
+```mermaid
 graph LR
     A[服务 A] --> A1[代理 Sidecar]
     B[服务 B] --> B1[代理 Sidecar]
@@ -289,7 +289,7 @@ graph LR
     style B fill:#4dabf7,stroke:#1971c2
     style A1 fill:#ffd43b,stroke:#fab005
     style B1 fill:#ffd43b,stroke:#fab005
-{% endmermaid %}
+```
 
 ```javascript
 // 应用程序进行简单的 HTTP 调用

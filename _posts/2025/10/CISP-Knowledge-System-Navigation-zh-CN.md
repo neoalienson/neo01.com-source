@@ -21,7 +21,7 @@ canonical_lang: zh-CN
 
 基本安全管理措施主要包含七大核心领域：
 
-{% mermaid %}
+```mermaid
 graph LR
     A["基本安全管理措施"]
     
@@ -78,7 +78,7 @@ graph LR
     style G fill:#fff3e0,stroke:#f57c00
     style H fill:#fce4ec,stroke:#c2185b
     style I fill:#ede7f6,stroke:#5e35b1
-{% endmermaid %}
+```
 
 ## 系列文章导航
 
@@ -159,7 +159,7 @@ graph LR
 
 ## PDCA循环
 
-{% mermaid %}
+```mermaid
 graph TB
     P["Plan<br/>计划<br/>分析问题、制定目标"]
     D["Do<br/>执行<br/>实施计划内容"]
@@ -175,7 +175,7 @@ graph TB
     style D fill:#e8f5e9,stroke:#388e3d,stroke-width:2px
     style C fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style A fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
-{% endmermaid %}
+```
 
 PDCA循环是管理学常用的持续改进模型，包含计划（Plan）、执行（Do）、检查（Check）、处理（Act）四个阶段。
 

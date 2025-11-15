@@ -54,7 +54,7 @@ comments: true
 
 以学校教务系统为例：
 
-{% mermaid %}
+```mermaid
 graph TB
     A["教务系统"]
     
@@ -80,7 +80,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 **访问控制在教务系统中的作用：**
 
@@ -135,7 +135,7 @@ graph TB
 
 **主体和客体的定义：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["主体<br/>Subject"]
     B["访问权限<br/>Permission"]
@@ -160,7 +160,7 @@ graph LR
     style A fill:#e3f2fd,stroke:#1976d2
     style B fill:#fff3e0,stroke:#f57c00
     style C fill:#e8f5e9,stroke:#388e3c
-{% endmermaid %}
+```
 
 **主体、客体和访问权限的关系：**
 
@@ -245,7 +245,7 @@ graph LR
 
 **访问权限 vs 访问控制结果：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["主体请求访问"]
     B["检查访问权限"]
@@ -268,7 +268,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2
     style D fill:#c8e6c9,stroke:#2e7d32
     style E fill:#ffcdd2,stroke:#c62828
-{% endmermaid %}
+```
 
 **Unix/Linux目录权限示例：**
 
@@ -301,7 +301,7 @@ graph TB
 
 保护分级信息机密性的模型包括：**Bell-LaPadula模型**和**信息流模型**。
 
-{% mermaid %}
+```mermaid
 graph TB
     A["机密性模型"]
     
@@ -321,7 +321,7 @@ graph TB
     
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#e8f5e9,stroke:#388e3d
-{% endmermaid %}
+```
 
 !!!anote "💡 机密性模型的选择"
     **为什么选择这两个模型：**
@@ -347,7 +347,7 @@ graph TB
 
 完整性模型包括：**Biba模型**和**Clark-Wilson模型**。
 
-{% mermaid %}
+```mermaid
 graph TB
     A["完整性模型"]
     
@@ -367,7 +367,7 @@ graph TB
     
     style B fill:#fff3e0,stroke:#f57c00
     style C fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 !!!anote "💡 完整性模型对比"
     **两种完整性模型的区别：**
@@ -396,7 +396,7 @@ graph TB
 
 多边安全模型包括：**Chinese Wall模型**和**BMA模型**。
 
-{% mermaid %}
+```mermaid
 graph TB
     A["多边安全模型"]
     
@@ -416,7 +416,7 @@ graph TB
     
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#c8e6c9,stroke:#2e7d32
-{% endmermaid %}
+```
 
 !!!anote "💡 多边安全模型的应用"
     **Chinese Wall模型（金融机构）：**
@@ -444,7 +444,7 @@ graph TB
 
 **BLP模型基于两种规则保障数据的机密性和敏感度：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["BLP模型规则"]
     
@@ -464,7 +464,7 @@ graph TB
     
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 !!!anote "💡 BLP模型的核心规则"
     **两条规则：**
@@ -510,7 +510,7 @@ graph TB
 
 **Biba模型基于两种规则保障数据的完整性：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["Biba模型规则"]
     
@@ -530,7 +530,7 @@ graph TB
     
     style B fill:#e8f5e9,stroke:#388e3d
     style C fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 !!!anote "💡 Biba模型的核心规则"
     **两条规则：**
@@ -648,7 +648,7 @@ graph TB
 
 **两种机制的核心区别：**
 
-{% mermaid %}
+```mermaid
 graph TB
     subgraph ACL["访问控制列表 ACL"]
         A1["文件A"]
@@ -670,7 +670,7 @@ graph TB
     
     style ACL fill:#e3f2fd,stroke:#1976d2
     style CL fill:#e8f5e9,stroke:#388e3d
-{% endmermaid %}
+```
 
 **详细对比：**
 
@@ -766,7 +766,7 @@ graph TB
 
 **关键区别：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["访问控制"]
     
@@ -787,7 +787,7 @@ graph TB
     
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#e8f5e9,stroke:#388e3d
-{% endmermaid %}
+```
 
 | 类别 | 实现机制 | 安全模型 |
 |------|---------|----------|
@@ -858,7 +858,7 @@ Kerberos是一种常用的集中访问控制协议，通过可信第三方的认
 
 **Kerberos运行环境组成：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["Kerberos运行环境"]
     
@@ -888,7 +888,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 !!!anote "💡 Kerberos三大组件"
     **Kerberos运行环境由三个部分组成：**
@@ -932,7 +932,7 @@ graph TB
 
 **详细认证流程：**
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant C as 客户端
     participant AS as 认证服务器(AS)
@@ -954,7 +954,7 @@ sequenceDiagram
     style AS fill:#e3f2fd,stroke:#1976d2
     style TGS fill:#fff3e0,stroke:#f57c00
     style S fill:#e8f5e9,stroke:#388e3d
-{% endmermaid %}
+```
 
 **三个阶段详解：**
 
@@ -1167,7 +1167,7 @@ Kerberos关键概念：
 
 **访问控制实施流程四要素：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["1. 主体<br/>Subject"]
     B["2. 访问控制实施部件<br/>Access Control<br/>Enforcement"]
@@ -1183,7 +1183,7 @@ graph LR
     style B fill:#fff3e0,stroke:#f57c00
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 ### 7.2 四要素详解
 
@@ -1255,7 +1255,7 @@ graph LR
 
 **完整的访问控制过程：**
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant S as 1.主体
     participant E as 2.实施部件
@@ -1279,7 +1279,7 @@ sequenceDiagram
     style E fill:#fff3e0,stroke:#f57c00
     style O fill:#e8f5e9,stroke:#388e3d
     style D fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 ### 7.4 实际应用示例
 
@@ -1346,7 +1346,7 @@ sequenceDiagram
 
 **主要访问控制策略：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["访问控制策略"]
     
@@ -1376,7 +1376,7 @@ graph TB
     style C fill:#ffebee,stroke:#c62828
     style D fill:#e8f5e9,stroke:#388e3d
     style E fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 ### 7.2 强制访问控制（MAC）的特点
 
@@ -1400,7 +1400,7 @@ graph TB
 
 **强制访问控制（MAC）的正确理解：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["强制访问控制 MAC"]
     
@@ -1426,7 +1426,7 @@ graph TB
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 **MAC vs DAC对比：**
 

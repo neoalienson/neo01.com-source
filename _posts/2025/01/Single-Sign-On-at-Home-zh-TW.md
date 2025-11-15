@@ -256,7 +256,8 @@ users:
 
 **視覺化比較：**
 
-{% mermaid %}flowchart LR
+```mermaid
+flowchart LR
     A["👤 使用者"] -->|"1. 登入請求"| B["🔐 IdP<br/>(Authelia)"]
     B -->|"2. 檢查憑證"| C["📚 使用者目錄<br/>(YAML/LDAP)"]
     C -->|"3. 有效使用者"| B
@@ -269,7 +270,7 @@ users:
     style B fill:#e3f2fd
     style C fill:#f3e5f5
     style D fill:#e8f5e9
-{% endmermaid %}
+```
 
 #### 整合在一起
 
@@ -451,7 +452,8 @@ users:
 
 ### 架構
 
-{% mermaid %}flowchart TD
+```mermaid
+flowchart TD
   User["👤 使用者"]
   Proxy["🚪 反向代理 (Traefik/nginx)"]
   Authelia["🔐 Authelia"]
@@ -472,7 +474,7 @@ users:
   style Proxy fill:#fff3e0
   style LDAP fill:#f3e5f5
   style Services fill:#e8f5e9
-{% endmermaid %}
+```
 
 ### 先決條件
 
@@ -653,7 +655,8 @@ docker-compose up -d
 
 現在你已經設定好 Authelia，讓我們看看當你存取受保護的服務時到底發生了什麼：
 
-{% mermaid %}sequenceDiagram
+```mermaid
+sequenceDiagram
     participant User
     participant App as 應用程式 (Nextcloud)
     participant SSO as SSO 提供者 (Authelia)
@@ -673,7 +676,7 @@ docker-compose up -d
     App->>SSO: 9. 檢查現有工作階段
     SSO->>App: 10. 有效工作階段存在
     App->>User: 11. 授予存取權限（無需登入）
-{% endmermaid %}
+```
 
 **幕後發生的事情：**
 

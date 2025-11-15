@@ -32,7 +32,7 @@ thumbnail: /2023/06/Certificate_Transparency_The_Public_Ledger_Securing_HTTPS/th
 
 每起事件都侵蚀了对整个证书生态系统的信任。业界需要一个不仅仅依赖信任证书机构的解决方案。
 
-{% mermaid %}
+```mermaid
 graph TB
     A([🏢 证书机构<br/>发行证书]) --> B{受信任的 CA？}
     B -->|是| C([✅ 浏览器信任<br/>证书])
@@ -42,7 +42,7 @@ graph TB
     style E fill:#ffebee,stroke:#c62828,stroke-width:3px
     style C fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style D fill:#fff3e0,stroke:#f57c00,stroke-width:2px
-{% endmermaid %}
+```
 
 ## 解决方案：公开、仅可附加的日志
 
@@ -58,7 +58,7 @@ graph TB
 
 这种透明化将证书生态系统从"信任但不验证"转变为"信任并始终验证"。
 
-{% mermaid %}
+```mermaid
 graph LR
     A([🏢 证书<br/>机构]) --> B([📝 CT 日志 1])
     A --> C([📝 CT 日志 2])
@@ -75,7 +75,7 @@ graph LR
     style D fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
     style G fill:#ffebee,stroke:#c62828,stroke-width:2px
     style H fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-{% endmermaid %}
+```
 
 ## 证书透明化如何运作
 
@@ -133,7 +133,7 @@ Merkle 树以二叉树组织证书，其中：
 
 **仅可附加证明**：Merkle 树结构允许证明日志只增长（添加证书）而没有修改或移除旧条目。这称为"一致性证明"。
 
-{% mermaid %}
+```mermaid
 graph TB
     A([根哈希值<br/>H1234]) --> B([H12])
     A --> C([H34])
@@ -149,7 +149,7 @@ graph TB
     style E fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style F fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style G fill:#fff3e0,stroke:#f57c00,stroke-width:2px
-{% endmermaid %}
+```
 
 !!!anote "🔐 密码学保证"
     Merkle 树结构提供数学确定性：
@@ -242,7 +242,7 @@ CT 最强大的功能之一是任何人都可以监控日志。几个工具和�
 
 **去中心化**：基于区块链的方法可以进一步去中心化 CT 日志，减少对特定日志运营商的依赖并增加韧性。
 
-{% mermaid %}
+```mermaid
 timeline
     title 证书透明化的演进
     2011 : DigiNotar 漏洞
@@ -259,7 +259,7 @@ timeline
     未来 : 增强的隐私与自动化
            : 隐私保护机制
            : 自动化威胁响应
-{% endmermaid %}
+```
 
 ## 开始使用证书透明化
 

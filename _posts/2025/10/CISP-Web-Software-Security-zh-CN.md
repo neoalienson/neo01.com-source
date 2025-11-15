@@ -75,7 +75,7 @@ Web服务器安全配置和软件安全开发是信息安全的重要实践领�
 
 **为什么要隐藏版本信息：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["版本信息泄露风险"]
     
@@ -103,7 +103,7 @@ graph TB
     style C fill:#fff9c4,stroke:#f57f17
     style D fill:#ffcdd2,stroke:#d32f2f
     style E fill:#b71c1c,stroke:#000,color:#fff
-{% endmermaid %}
+```
 
 ### 1.3 Apache安全配置
 
@@ -289,7 +289,7 @@ Web服务器安全加固：
 
 **DoS攻击分类：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["拒绝服务攻击"]
     
@@ -319,7 +319,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#ffcdd2,stroke:#c62828
-{% endmermaid %}
+```
 
 ### 2.3 应用层DoS攻击详解
 
@@ -455,7 +455,7 @@ graph TB
 
 **计算示例图示：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["代码行数<br/>296,000行"] --> B["转换为KLOC<br/>296 KLOC"]
     C["缺陷总数<br/>145个"] --> D["计算密度<br/>145 ÷ 296"]
@@ -466,7 +466,7 @@ graph LR
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#e8f5e9,stroke:#388e3d
     style E fill:#ffebee,stroke:#c62828
-{% endmermaid %}
+```
 
 ### 3.3 缺陷密度的意义
 

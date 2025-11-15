@@ -46,7 +46,7 @@ comments: true
     - 由地方人大和政府制定
     - 在本行政区域内有效
 
-{% mermaid %}
+```mermaid
 graph TB
     A["中国法律法规体系"]
     
@@ -72,7 +72,7 @@ graph TB
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#e3f2fd,stroke:#1976d2
     style E fill:#e8f5e9,stroke:#388e3d
-{% endmermaid %}
+```
 
 ### 1.2 法律与规章的区别
 
@@ -128,7 +128,7 @@ graph TB
 
 ### 2.2 刑法规定的计算机犯罪类型
 
-{% mermaid %}
+```mermaid
 graph TB
     A["刑法计算机犯罪"]
     
@@ -156,7 +156,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#ffcdd2,stroke:#c62828
     style D fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 ### 2.3 刑法规定的罪名范围
 
@@ -259,7 +259,7 @@ graph TB
     - 取证主体不限于执法机构，企业和个人在合法授权下也可进行
     - 但涉及刑事案件的取证通常需要执法机关参与
 
-{% mermaid %}
+```mermaid
 graph TB
     A["计算机取证合法原则"]
     
@@ -294,7 +294,7 @@ graph TB
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 ### 3.3 计算机取证的基本原则
 
@@ -428,7 +428,7 @@ graph TB
     - 按照涉密信息系统分级保护要求进行保护
     - 不能因为涉密而豁免等级保护要求
 
-{% mermaid %}
+```mermaid
 graph TB
     A["信息安全等级保护管理办法"]
     
@@ -462,7 +462,7 @@ graph TB
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#e8f5e9,stroke:#388e3d
     style E fill:#ffcdd2,stroke:#c62828
-{% endmermaid %}
+```
 
 ### 5.3 等级保护的五个等级
 
@@ -569,7 +569,7 @@ graph TB
     - 不是法律，是部门规章
     - 由公安部等四部门联合发布
 
-{% mermaid %}
+```mermaid
 graph TB
     A["中国信息安全法律"]
     
@@ -595,7 +595,7 @@ graph TB
     style B fill:#ffcdd2,stroke:#c62828
     style C fill:#e3f2fd,stroke:#1976d2
     style D fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 ### 6.2 法律与规章的识别
 
@@ -623,7 +623,7 @@ graph TB
     - 国家安全机关：负责国家安全相关工作
     - 国家密码主管部门：负责密码管理工作
 
-{% mermaid %}
+```mermaid
 graph TB
     A["信息安全管理体系"]
     
@@ -657,7 +657,7 @@ graph TB
     style C fill:#e3f2fd,stroke:#1976d2
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#e8f5e9,stroke:#388e3d
-{% endmermaid %}
+```
 
 ### 7.2 各部门职责对比
 
@@ -707,7 +707,7 @@ graph TB
     - 重要领域强制使用符合国家标准的商用密码
     - 一般领域鼓励使用商用密码保护信息安全
 
-{% mermaid %}
+```mermaid
 graph TB
     A["商用密码管理"]
     
@@ -737,7 +737,7 @@ graph TB
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 ### 8.3 商用密码管理的关键点
 
@@ -813,7 +813,7 @@ graph TB
     - 全国人大常委会没有审议通过《中华人民共和国信息安全法》
     - 这是错误说法
 
-{% mermaid %}
+```mermaid
 graph LR
     A["2003年<br/>中办发27号文"] --> B["2007年<br/>等级保护管理办法"]
     B --> C["2008年<br/>政府系统安全通知"]
@@ -825,7 +825,7 @@ graph LR
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#f3e5f5,stroke:#7b1fa2
     style E fill:#ffcdd2,stroke:#c62828
-{% endmermaid %}
+```
 
 ### 9.2 重要政策文件
 
@@ -919,7 +919,7 @@ graph LR
 
 ### 10.3 管理部门职责对比
 
-{% mermaid %}
+```mermaid
 graph TB
     A["信息安全管理部门"]
     
@@ -953,7 +953,7 @@ graph TB
     style C fill:#e3f2fd,stroke:#1976d2
     style D fill:#e8f5e9,stroke:#388e3d
     style E fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 ## 十一、扩展阅读
 

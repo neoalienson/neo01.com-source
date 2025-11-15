@@ -34,7 +34,7 @@ Enterprise CI pipelines differ fundamentally from startup or small team workflow
 
 A well-designed enterprise CI pipeline follows a structured flow that balances speed with thoroughness.
 
-{% mermaid %}
+```mermaid
 graph LR
     A([📝 Code Commit]) --> B([🔍 Static Analysis])
     B --> C([🏗️ Build])
@@ -50,7 +50,7 @@ graph LR
     style F fill:#ffebee,stroke:#c62828,stroke-width:2px
     style I fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style J fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-{% endmermaid %}
+```
 
 ### Stage 1: Source Control Integration
 
@@ -88,7 +88,7 @@ Implement a comprehensive testing strategy:
 
 **Performance Tests**: Ensure changes don't degrade system performance. Run on representative workloads.
 
-{% mermaid %}
+```mermaid
 graph TB
     A([🔺 Testing Pyramid])
     A --> B([E2E Tests<br/>Slow, Comprehensive])
@@ -98,7 +98,7 @@ graph TB
     style B fill:#ffebee,stroke:#c62828,stroke-width:2px
     style C fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style D fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-{% endmermaid %}
+```
 
 ### Stage 5: Artifact Management
 
@@ -167,7 +167,7 @@ In enterprise environments with dozens or hundreds of services, maintaining indi
 
 **The Template Hierarchy**:
 
-{% mermaid %}
+```mermaid
 graph TB
     A([🎯 Base Template<br/>Common stages for all projects]) --> B([☕ Java Template<br/>Maven/Gradle specifics])
     A --> C([🐍 Python Template<br/>pip/pytest specifics])
@@ -183,7 +183,7 @@ graph TB
     style E fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style F fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style G fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-{% endmermaid %}
+```
 
 **Base Template Example** (GitHub Actions):
 
@@ -364,7 +364,7 @@ ci-templates-repo/
 
 **Team Collaboration Model**:
 
-{% mermaid %}
+```mermaid
 graph TB
     A([🏢 Platform Team<br/>Template Owners]) -->|Maintains & Publishes| B([📦 Template Repository])
     B -->|Consumes| C([👥 Team A<br/>Java Services])
@@ -381,7 +381,7 @@ graph TB
     style A fill:#e3f2fd,stroke:#1976d2,stroke-width:3px
     style B fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style F fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-{% endmermaid %}
+```
 
 **Customization Layers for Teams**:
 
@@ -677,7 +677,7 @@ The idea is seductive: one pipeline to rule them all. Every application, regardl
 
 A truly universal pipeline becomes either too generic to be useful or too complex to maintain. Consider these scenarios:
 
-{% mermaid %}
+```mermaid
 graph TB
     A([Universal Pipeline]) --> B{Application Type?}
     B -->|Java| C[Maven build<br/>JUnit tests<br/>JAR packaging]
@@ -692,7 +692,7 @@ graph TB
     style E fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style F fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style G fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-{% endmermaid %}
+```
 
 **The Complexity Explosion**:
 

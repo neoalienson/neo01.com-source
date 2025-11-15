@@ -716,7 +716,8 @@ Configure your credential manager with **both** cloud service and self-hosted se
     - Minimal operational overhead
     - Self-hosted remains primary, cloud is staging
 
-{% mermaid %}graph TB
+```mermaid
+graph TB
     subgraph "Away from Home/Office"
         Mobile["📱 Mobile Device<br/>(Dual Configuration)"]
         Cloud["☁️ Cloud Vault<br/>(Temporary Staging)"]
@@ -742,7 +743,7 @@ Configure your credential manager with **both** cloud service and self-hosted se
     style SelfHosted fill:#c8e6c9
     style Firewall fill:#ffccbc
     style NewSite fill:#fff9c4
-{% endmermaid %}
+```
 
 ### Workflow Details
 

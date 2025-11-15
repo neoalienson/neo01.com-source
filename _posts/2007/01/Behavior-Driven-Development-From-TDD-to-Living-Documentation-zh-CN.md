@@ -17,7 +17,8 @@ excerpt: "BDD 承诺让业务利益相关者能读懂测试，但从单元测试
 
 ### 测试演进时间轴
 
-{% mermaid %}timeline
+```mermaid
+timeline
     title 测试方法论演进
     section 1990s
         1994 : 单元测试
@@ -40,7 +41,7 @@ excerpt: "BDD 承诺让业务利益相关者能读懂测试，但从单元测试
         2015 : 活文档
              : 测试即文档
              : 持续验证
-{% endmermaid %}
+```
 
 ## 测试问题
 
@@ -189,7 +190,8 @@ TDD 反转测试流程：
 
 TDD 将测试视为设计工具，而非验证工具。不是先写代码再测试，而是先写测试。测试描述你希望代码做什么。然后你编写最简单的代码让测试通过。最后，你重构以改善设计，同时保持测试绿灯。
 
-{% mermaid %}---
+```mermaid
+---
 title: TDD 红-绿-重构循环
 ---
 flowchart LR
@@ -204,7 +206,7 @@ flowchart LR
     style Red fill:#f99,stroke:#333,stroke-width:2px
     style Green fill:#9f9,stroke:#333,stroke-width:2px
     style Refactor fill:#99f,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 ### TDD 实务
 
@@ -302,7 +304,8 @@ BDD 引入了规范的结构化格式：
 
 Given-When-Then 提供描述行为的模板。Given 建立情境。When 描述动作。Then 指定预期结果。这个结构适用于业务规范和技术测试。
 
-{% mermaid %}---
+```mermaid
+---
 title: BDD 规范结构
 ---
 flowchart TD
@@ -316,7 +319,7 @@ flowchart TD
     style Given fill:#9cf,stroke:#333,stroke-width:2px
     style When fill:#fc9,stroke:#333,stroke-width:2px
     style Then fill:#9f9,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 ### BDD 框架出现
 
@@ -420,7 +423,8 @@ Gherkin 规范任何人都能阅读。业务分析师编写描述期望行为的
 
 BDD 改变开发工作流程：
 
-{% mermaid %}---
+```mermaid
+---
 title: BDD 开发工作流程
 ---
 flowchart TD
@@ -441,7 +445,7 @@ flowchart TD
     style Business fill:#9cf,stroke:#333,stroke-width:2px
     style Execute fill:#fc9,stroke:#333,stroke-width:2px
     style Done fill:#9f9,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 工作流程从业务利益相关者用 Gherkin 描述期望行为开始。开发者实现步骤定义和功能代码。规范作为测试执行，验证行为。当测试通过时，功能完成，规范成为活文档。
 

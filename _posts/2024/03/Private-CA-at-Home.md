@@ -43,7 +43,8 @@ A CA is an entity that issues digital certificates. When your browser trusts a C
 
 **The Trust Chain:**
 
-{% mermaid %}flowchart TD
+```mermaid
+flowchart TD
     A["🏛️ Root CA<br/>(Your Private CA)"] --> B["📜 Intermediate CA<br/>(Optional)"]
     B --> C["🔒 Server Certificate<br/>(homeserver.local)"]
     B --> D["🔒 Server Certificate<br/>(nas.local)"]
@@ -60,7 +61,7 @@ A CA is an entity that issues digital certificates. When your browser trusts a C
     style D fill:#e8f5e9
     style E fill:#e8f5e9
     style F fill:#fff3e0
-{% endmermaid %}
+```
 
 ### Root CA vs Intermediate CA
 
@@ -418,7 +419,8 @@ acme.sh --cron
 
 **ACME Flow Diagram:**
 
-{% mermaid %}sequenceDiagram
+```mermaid
+sequenceDiagram
     participant Client as ACME Client
     participant CA as step-ca
     participant Web as Web Server
@@ -433,7 +435,7 @@ acme.sh --cron
     CA->>Client: 8. Issue certificate
     
     Note over Client,CA: Certificate issued automatically!
-{% endmermaid %}
+```
 
 **Why ACME is Better:**
 
@@ -614,7 +616,8 @@ services:
 
 ### Certificate Lifecycle
 
-{% mermaid %}flowchart TD
+```mermaid
+flowchart TD
     A["📝 Create Certificate"] --> B["🚀 Deploy to Server"]
     B --> C["👁️ Monitor Expiration"]
     C --> D{"⏰ Approaching Expiration?"}
@@ -629,7 +632,7 @@ services:
     style D fill:#fff9c4
     style E fill:#f3e5f5
     style F fill:#e8f5e9
-{% endmermaid %}
+```
 
 ### Renewal Script
 

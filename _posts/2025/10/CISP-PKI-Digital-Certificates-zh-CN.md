@@ -45,7 +45,7 @@ canonical_lang: zh-CN
 
 ### 2.1 PKI体系架构
 
-{% mermaid %}
+```mermaid
 graph TB
     A["PKI体系架构"]
     
@@ -69,7 +69,7 @@ graph TB
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#ffcdd2,stroke:#c62828
     style F fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 ### 2.2 认证权威机构（CA）
 
@@ -118,7 +118,7 @@ graph TB
 
 **RA在证书申请流程中的关键作用：**
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant U as 终端实体<br/>用户
     participant R as RA<br/>注册权威机构
@@ -132,7 +132,7 @@ sequenceDiagram
     C->>C: 5. 签发数字证书
     C->>D: 6. 发布证书
     D->>U: 7. 用户获取证书
-{% endmermaid %}
+```
 
 **RA与CA的区别：**
 
@@ -253,7 +253,7 @@ sequenceDiagram
 
 **证书验证的步骤：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["证书验证"]
     
@@ -280,7 +280,7 @@ graph TB
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#f3e5f5,stroke:#7b1fa2
     style F fill:#e1f5fe,stroke:#0277bd
-{% endmermaid %}
+```
 
 ## 四、证书生命周期管理
 
@@ -288,7 +288,7 @@ graph TB
 
 **完整的证书申请流程：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["1. 用户生成密钥对"]
     B["2. 创建证书申请<br/>CSR"]
@@ -309,7 +309,7 @@ graph TB
     
     style D fill:#e8f5e9,stroke:#388e3d
     style F fill:#e3f2fd,stroke:#1976d2
-{% endmermaid %}
+```
 
 **证书申请（CSR）包含的信息：**
 
@@ -349,7 +349,7 @@ graph TB
 
 **证书撤销流程：**
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant U as 用户/管理员
     participant R as RA
@@ -364,7 +364,7 @@ sequenceDiagram
     C->>CRL: 5. 更新CRL
     C->>O: 6. 更新OCSP
     Note over CRL,O: 证书状态已更新
-{% endmermaid %}
+```
 
 **撤销后的处理：**
 

@@ -44,7 +44,7 @@ canonical_lang: zh-CN
 
 **拒绝服务攻击的影响：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["拒绝服务攻击"]
     
@@ -78,7 +78,7 @@ graph TB
     style C fill:#f44336,stroke:#b71c1c
     style D fill:#ff9800,stroke:#e65100
     style E fill:#ffebee,stroke:#d32f2f
-{% endmermaid %}
+```
 
 **DoS攻击类型与影响：**
 
@@ -165,7 +165,7 @@ graph TB
 
 **数字签名工作原理：**
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant A as Alice（发送方）
     participant B as Bob（接收方）
@@ -184,7 +184,7 @@ sequenceDiagram
     else 哈希值不同
         Note over B: ❌ 签名无效<br/>消息被篡改或伪造
     end
-{% endmermaid %}
+```
 
 **数字签名的特性：**
 
@@ -289,7 +289,7 @@ WPA2安全特性（基于IEEE 802.11i）：
 
 **WPA2四次握手过程：**
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant C as 客户端
     participant AP as 接入点
@@ -312,20 +312,20 @@ sequenceDiagram
     C->>AP: 确认消息
     
     Note over C,AP: ✅ 密钥协商完成<br/>开始加密通信
-{% endmermaid %}
+```
 
 ### 3.5 无线安全演进
 
 **无线安全技术演进：**
 
-{% mermaid %}
+```mermaid
 timeline
     title 无线安全技术演进
     1999 : WEP（已弃用）<br/>RC4加密<br/>易被破解
     2003 : WPA（过渡方案）<br/>TKIP<br/>改进但仍有缺陷
     2004 : WPA2（IEEE 802.11i）<br/>AES-CCMP<br/>强安全性
     2018 : WPA3<br/>SAE<br/>防字典攻击
-{% endmermaid %}
+```
 
 **安全性对比：**
 

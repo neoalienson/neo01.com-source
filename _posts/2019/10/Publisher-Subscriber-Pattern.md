@@ -29,7 +29,7 @@ In software, the pub/sub pattern:
 - Communication is asynchronous
 - Consumers can subscribe/unsubscribe dynamically
 
-{% mermaid %}
+```mermaid
 graph TB
     P[Publisher] --> IC[Input Channel]
     IC --> MB{Message Broker}
@@ -45,7 +45,7 @@ graph TB
     style S1 fill:#51cf66,stroke:#2f9e44
     style S2 fill:#51cf66,stroke:#2f9e44
     style S3 fill:#51cf66,stroke:#2f9e44
-{% endmermaid %}
+```
 
 ## The Problem: Tight Coupling in Event Distribution
 
@@ -282,7 +282,7 @@ class Subscriber {
 
 Publishers and subscribers operate independently:
 
-{% mermaid %}
+```mermaid
 graph LR
     P1[Order Service] --> MB{Message Broker}
     P2[User Service] --> MB
@@ -300,7 +300,7 @@ graph LR
     style S2 fill:#51cf66,stroke:#2f9e44
     style S3 fill:#51cf66,stroke:#2f9e44
     style S4 fill:#51cf66,stroke:#2f9e44
-{% endmermaid %}
+```
 
 ```javascript
 // Publisher doesn't know about subscribers

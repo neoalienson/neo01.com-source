@@ -29,7 +29,7 @@ comments: true
 - 通信是异步的
 - 消费者可以动态订阅/取消订阅
 
-{% mermaid %}
+```mermaid
 graph TB
     P[发布者] --> IC[输入通道]
     IC --> MB{消息代理}
@@ -45,7 +45,7 @@ graph TB
     style S1 fill:#51cf66,stroke:#2f9e44
     style S2 fill:#51cf66,stroke:#2f9e44
     style S3 fill:#51cf66,stroke:#2f9e44
-{% endmermaid %}
+```
 
 ## 问题：事件分发中的紧密耦合
 
@@ -282,7 +282,7 @@ class Subscriber {
 
 发布者和订阅者独立运作：
 
-{% mermaid %}
+```mermaid
 graph LR
     P1[订单服务] --> MB{消息代理}
     P2[用户服务] --> MB
@@ -300,7 +300,7 @@ graph LR
     style S2 fill:#51cf66,stroke:#2f9e44
     style S3 fill:#51cf66,stroke:#2f9e44
     style S4 fill:#51cf66,stroke:#2f9e44
-{% endmermaid %}
+```
 
 ```javascript
 // 发布者不知道订阅者

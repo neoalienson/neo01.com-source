@@ -44,7 +44,7 @@ canonical_lang: zh-CN
 
 **攻击类型分层：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["网络攻击分类"]
     
@@ -70,7 +70,7 @@ graph TB
     style B fill:#c8e6c9,stroke:#2e7d32
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#e3f2fd,stroke:#1976d2
-{% endmermaid %}
+```
 
 
 ### 4.3 数据链路层攻击详解
@@ -267,7 +267,7 @@ MAC Flooding攻击：
 
 **应用层防火墙工作示例：**
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant C as 客户端
     participant AF as 应用层防火墙
@@ -290,13 +290,13 @@ sequenceDiagram
         AF->>C: 拒绝请求
         Note over C,AF: 记录审计日志
     end
-{% endmermaid %}
+```
 
 ### 5.4 防火墙类型对比
 
 **按工作层次分类：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["防火墙类型"]
     
@@ -319,7 +319,7 @@ graph TB
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 **防火墙类型详细对比：**
 
@@ -490,7 +490,7 @@ IDS主要功能：
 
 **检测方法对比：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["IDS检测方法"]
     
@@ -516,7 +516,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#e8f5e9,stroke:#388e3d
-{% endmermaid %}
+```
 
 ### 6.4 IDS类型
 
@@ -595,7 +595,7 @@ HIDS（主机入侵检测系统）：
     - 串联部署
     - IDS + 主动响应能力
 
-{% mermaid %}
+```mermaid
 graph LR
     A["网络流量"] --> B["IDS<br/>（旁路）"]
     A --> C["正常转发"]
@@ -608,7 +608,7 @@ graph LR
     
     style B fill:#e3f2fd,stroke:#1976d2
     style F fill:#ffebee,stroke:#c62828
-{% endmermaid %}
+```
 
 ### 6.6 IDS的局限性
 
@@ -677,7 +677,7 @@ IDS局限性：
 
 **网络拓扑示意图：**
 
-{% mermaid %}
+```mermaid
 graph TB
     I["互联网"]
     H["总部"]
@@ -705,7 +705,7 @@ graph TB
     style F1 fill:#ffcdd2,stroke:#c62828
     style F2 fill:#ffcdd2,stroke:#c62828
     style F3 fill:#ffcdd2,stroke:#c62828
-{% endmermaid %}
+```
 
 ### 7.3 路由模式详解
 
@@ -938,7 +938,7 @@ object network WEB_SERVER
 
 **模式选择流程：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["开始：选择防火墙模式"]
     
@@ -969,4 +969,4 @@ graph TB
     style G fill:#e3f2fd,stroke:#1976d2
     style H fill:#e8f5e9,stroke:#388e3d
     style I fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```

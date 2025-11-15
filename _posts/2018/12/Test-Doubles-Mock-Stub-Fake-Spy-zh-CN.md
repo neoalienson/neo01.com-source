@@ -538,7 +538,8 @@ test('spy with partial override', () => {
 
 ### 决策框架
 
-{% mermaid %}graph TD
+```mermaid
+graph TD
     A["需要替换依赖项？"]
     A -->|是| B["需要验证交互？"]
     A -->|否| Z["使用真实对象"]
@@ -556,7 +557,7 @@ test('spy with partial override', () => {
     style F fill:#e3f2fd,stroke:#1976d2
     style G fill:#fff3e0,stroke:#f57c00
     style H fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 ### 对比矩阵
 
@@ -811,7 +812,8 @@ fake = FakeRepository()
 - **Fake** 提供工作实现——用于复杂依赖项
 - **Spy** 观察真实对象——当真实行为很重要时使用
 
-{% mermaid %}graph LR
+```mermaid
+graph LR
     A["测试替身"]
     
     B["Stub<br/>（控制输出）"]
@@ -841,7 +843,7 @@ fake = FakeRepository()
     style C fill:#e3f2fd,stroke:#1976d2
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#e8f5e9,stroke:#388e3c
-{% endmermaid %}
+```
 
 最好的测试使用满足其需求的最简单的测试替身。优先使用 stub 而不是 mock，真实对象而不是测试替身，状态验证而不是行为验证。在架构边界处模拟，而不是内部实现细节。保持测试替身简单——复杂的替身表明设计问题。
 

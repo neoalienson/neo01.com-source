@@ -33,13 +33,14 @@ thumbnail_80: thumbnail_80.png
 
 **1. 简单性**
 
-{% mermaid %}flowchart LR
+```mermaid
+flowchart LR
     App1["📱 移动应用程序"] --> DB[("🗄️ 数据库")]
     App2["💻 Web 应用程序"] --> DB
     App3["📊 分析"] --> DB
     
     style DB fill:#e3f2fd
-{% endmermaid %}
+```
 
 - 更少的移动部件
 - 无需维护中间件
@@ -100,7 +101,8 @@ API 层：应用程序 → API → 数据库（2 跳）
 
 **问题：**每个应用程序都需要数据库凭证。
 
-{% mermaid %}flowchart TD
+```mermaid
+flowchart TD
     subgraph "安全风险"
         App1["📱 移动应用程序<br/>(代码中的数据库凭证)"]
         App2["💻 Web 应用程序<br/>(配置中的数据库凭证)"]
@@ -114,7 +116,7 @@ API 层：应用程序 → API → 数据库（2 跳）
     App4 --> DB
     
     style DB fill:#ffebee
-{% endmermaid %}
+```
 
 **风险：**
 
@@ -435,7 +437,8 @@ GRANT ALL PRIVILEGES ON database.* TO 'app_user'@'%';
 
 #### 模式 1：单体 API 层
 
-{% mermaid %}flowchart TD
+```mermaid
+flowchart TD
     subgraph Apps["应用程序"]
         App1["📱 移动应用程序"]
         App2["💻 Web 应用程序"]
@@ -456,7 +459,7 @@ GRANT ALL PRIVILEGES ON database.* TO 'app_user'@'%';
     
     style API fill:#e8f5e9
     style DB fill:#e3f2fd
-{% endmermaid %}
+```
 
 **特征：**
 - 单一 API 服务
@@ -466,7 +469,8 @@ GRANT ALL PRIVILEGES ON database.* TO 'app_user'@'%';
 
 #### 模式 2：微服务（每服务一个数据库）
 
-{% mermaid %}flowchart TD
+```mermaid
+flowchart TD
     subgraph Apps["应用程序"]
         App1["📱 移动应用程序"]
         App2["💻 Web 应用程序"]
@@ -500,7 +504,7 @@ GRANT ALL PRIVILEGES ON database.* TO 'app_user'@'%';
     style Gateway fill:#fff3e0
     style Services fill:#e8f5e9
     style Databases fill:#e3f2fd
-{% endmermaid %}
+```
 
 **特征：**
 - 多个独立服务
@@ -1058,7 +1062,8 @@ app.use((req, res, next) => {
 
 **情境：**分析和报表工具需要复杂查询。
 
-{% mermaid %}flowchart LR
+```mermaid
+flowchart LR
     subgraph Write["写入操作"]
         App1["📱 移动应用程序"]
         App2["💻 Web 应用程序"]
@@ -1078,7 +1083,7 @@ app.use((req, res, next) => {
     style API fill:#e8f5e9
     style DB fill:#e3f2fd
     style ReadDB fill:#fff3e0
-{% endmermaid %}
+```
 
 **设置：**
 
@@ -1103,13 +1108,14 @@ GRANT SELECT ON database.* TO 'analytics'@'%';
 
 **选项 1：读取副本（实时）**
 
-{% mermaid %}flowchart LR
+```mermaid
+flowchart LR
     Prod[("🗄️ 生产数据库")] -.->|"持续<br/>复制"| Replica[("📖 读取副本")]
     Analytics["📊 分析工具"] --> Replica
     
     style Prod fill:#e3f2fd
     style Replica fill:#fff3e0
-{% endmermaid %}
+```
 
 ```sql
 -- 分析查询在副本上执行
@@ -1232,7 +1238,8 @@ GROUP BY DATE(created_at);
 
 **选项 2：ETL 到数据仓库（批处理）**
 
-{% mermaid %}flowchart LR
+```mermaid
+flowchart LR
     Prod[("🗄️ 生产数据库")] -->|"夜间<br/>提取"| ETL["⚙️ ETL 流程"]
     ETL -->|"转换<br/>& 加载"| DW[("📊 数据仓库")]
     Analytics["📊 分析工具"] --> DW
@@ -1240,7 +1247,7 @@ GROUP BY DATE(created_at);
     style Prod fill:#e3f2fd
     style ETL fill:#fff3e0
     style DW fill:#e8f5e9
-{% endmermaid %}
+```
 
 ```python
 # ETL 作业每晚执行
@@ -1498,7 +1505,8 @@ def build_customer_360():
 
 **示例架构：**
 
-{% mermaid %}flowchart TD
+```mermaid
+flowchart TD
     Prod[("🗄️ 生产数据库")]
     
     Prod -.->|"实时<br/>复制"| Replica[("📖 读取副本")]
@@ -1511,7 +1519,7 @@ def build_customer_360():
     style Prod fill:#e3f2fd
     style Replica fill:#fff3e0
     style DW fill:#e8f5e9
-{% endmermaid %}
+```
 
 **迁移路径：**
 

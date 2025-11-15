@@ -31,7 +31,7 @@ comments: true
 - タイムアウト後に限定的なテストリクエストを許可
 - サービスが回復を示すと閉じる
 
-{% mermaid %}
+```mermaid
 stateDiagram-v2
     [*] --> Closed
     Closed --> Open: 失敗しきい値に達した
@@ -56,7 +56,7 @@ stateDiagram-v2
         試行リクエストが許可される
         回復を評価中
     end note
-{% endmermaid %}
+```
 
 ## 問題：分散システムにおけるカスケード障害
 

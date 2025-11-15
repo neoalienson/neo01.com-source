@@ -288,7 +288,7 @@ MVP思考はScrumと自然に統合されます：
 
 リーンスタートアップの核心サイクルはアジャイルフレームワーク内で機能します：
 
-{% mermaid %}
+```mermaid
 graph LR
     A["💡 アイデア<br/>（仮定）"] --> B["🔨 構築<br/>（MVP）"]
     B --> C["📊 測定<br/>（データ）"]
@@ -299,7 +299,7 @@ graph LR
     style B fill:#51cf66
     style C fill:#4dabf7
     style D fill:#ffd43b
-{% endmermaid %}
+```
 
 !!!anote "🔄 アジャイルへのマッピング"
     **アイデア → プロダクトバックログ**

@@ -60,7 +60,7 @@ class PaymentService {
 
 Expose dedicated endpoints that external monitoring tools can check regularly to verify your application's health.
 
-{% mermaid %}
+```mermaid
 graph TB
     A[Monitoring Tool] -->|HTTP GET /health| B[Load Balancer]
     B --> C[App Instance 1]
@@ -95,7 +95,7 @@ graph TB
     style C1 fill:#51cf66,stroke:#2f9e44
     style D1 fill:#51cf66,stroke:#2f9e44
     style E1 fill:#ff6b6b,stroke:#c92a2a
-{% endmermaid %}
+```
 
 ### Basic Implementation
 
@@ -439,7 +439,7 @@ match health_ok {
 
 Check your application from different geographic locations:
 
-{% mermaid %}
+```mermaid
 graph TB
     A[Monitoring Service US-East] -->|Check every 30s| B[Application]
     C[Monitoring Service EU-West] -->|Check every 30s| B
@@ -453,7 +453,7 @@ graph TB
     style B fill:#4dabf7,stroke:#1971c2
     style F fill:#ff6b6b,stroke:#c92a2a
     style G fill:#ffd43b,stroke:#fab005
-{% endmermaid %}
+```
 
 ```javascript
 class MultiLocationMonitor {

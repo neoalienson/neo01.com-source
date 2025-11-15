@@ -26,7 +26,7 @@ comments: true
 
 **主要管理部门及职责：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["我国信息安全管理体制"]
     
@@ -54,7 +54,7 @@ graph LR
     style D fill:#f3e5f5,stroke:#7b1fa2
     style E fill:#fce4ec,stroke:#c2185b
     style F fill:#e1f5fe,stroke:#0277bd
-{% endmermaid %}
+```
 
 **主要法规及制定部门：**
 
@@ -133,7 +133,7 @@ graph LR
 
 职责分离（Separation of Duties, SoD）是信息安全管理的基石原则之一。
 
-{% mermaid %}
+```mermaid
 graph LR
     A["开发人员"] -.不应访问.-> B["生产数据"]
     C["程序员"] -.不应使用.-> D["系统控制台"]
@@ -148,7 +148,7 @@ graph LR
     style D fill:#ffebee,stroke:#c62828
     style F fill:#ffebee,stroke:#c62828
     style H fill:#ffebee,stroke:#c62828
-{% endmermaid %}
+```
 
 **职责分离的主要目的：**
 
@@ -179,7 +179,7 @@ graph LR
 
 在信息安全组织架构中，人员通常划分为三个层级：
 
-{% mermaid %}
+```mermaid
 graph LR
     A["组织层级"]
     
@@ -206,7 +206,7 @@ graph LR
     style B fill:#e8eaf6,stroke:#3f51b5
     style C fill:#f3e5f5,stroke:#9c27b0
     style D fill:#e8f5e9,stroke:#388e3d
-{% endmermaid %}
+```
 
 **系统管理员的角色定位：**
 
@@ -242,7 +242,7 @@ graph LR
 
 **信息系统保护级别决策责任：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["业务主管"] --> B["提出保护等级需求"]
     B --> C["评估业务影响"]
@@ -263,7 +263,7 @@ graph TB
     style H fill:#e0e0e0,stroke:#757575
     style I fill:#e0e0e0,stroke:#757575
     style J fill:#e0e0e0,stroke:#757575
-{% endmermaid %}
+```
 
 !!!anote "💡 关键理解"
     业务主管是信息系统需求方，最了解业务价值和影响，因此应该对信息系统资产所需的保护等级提出要求。其他角色虽然参与安全管理，但不是需求方，不负责提出系统保护等级。
@@ -289,7 +289,7 @@ graph TB
 
 **内部组织管理的常规控制措施：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["内部组织管理"]
     
@@ -332,7 +332,7 @@ graph LR
     style H fill:#e8f5e9,stroke:#388e3d
     style I fill:#e8f5e9,stroke:#388e3d
     style J fill:#ffcdd2,stroke:#b71c1c
-{% endmermaid %}
+```
 
 !!!anote "💡 内部组织管理控制措施"
     **属于内部组织管理的控制措施：**
@@ -392,7 +392,7 @@ graph LR
 
 **外部各方管理的控制措施：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["外部各方管理"]
     
@@ -419,7 +419,7 @@ graph LR
     style B fill:#fff3e0,stroke:#f57c00
     style C fill:#e3f2fd,stroke:#1976d2
     style D fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 ## 六、供应商管理
 
@@ -429,7 +429,7 @@ graph LR
 
 **评价标准优先级：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["供货商评价标准"]
     
@@ -459,7 +459,7 @@ graph LR
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#ffccbc,stroke:#d84315
     style E fill:#ffcdd2,stroke:#b71c1c
-{% endmermaid %}
+```
 
 **评价标准详解：**
 

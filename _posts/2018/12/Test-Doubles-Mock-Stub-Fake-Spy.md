@@ -537,7 +537,8 @@ Selecting the appropriate test double depends on what you're testing and what yo
 
 ### Decision Framework
 
-{% mermaid %}graph TD
+```mermaid
+graph TD
     A["Need to replace dependency?"]
     A -->|Yes| B["Need to verify interactions?"]
     A -->|No| Z["Use real object"]
@@ -555,7 +556,7 @@ Selecting the appropriate test double depends on what you're testing and what yo
     style F fill:#e3f2fd,stroke:#1976d2
     style G fill:#fff3e0,stroke:#f57c00
     style H fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 ### Comparison Matrix
 
@@ -810,7 +811,8 @@ Test doubles are essential tools for writing effective unit tests. Understanding
 - **Fakes** provide working implementations—use for complex dependencies
 - **Spies** observe real objects—use when real behavior matters
 
-{% mermaid %}graph LR
+```mermaid
+graph LR
     A["Test Doubles"]
     
     B["Stub<br/>(Control Output)"]
@@ -840,7 +842,7 @@ Test doubles are essential tools for writing effective unit tests. Understanding
     style C fill:#e3f2fd,stroke:#1976d2
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#e8f5e9,stroke:#388e3c
-{% endmermaid %}
+```
 
 The best tests use the simplest test double that meets their needs. Prefer stubs over mocks, real objects over test doubles, and state verification over behavior verification. Mock at architectural boundaries, not internal implementation details. Keep test doubles simple—complex doubles indicate design problems.
 

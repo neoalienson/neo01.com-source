@@ -70,7 +70,7 @@ thumbnail_80: /assets/cisp/thumbnail_80.png
     - 持续改进
     - 定期复查
 
-{% mermaid %}
+```mermaid
 graph LR
     A["1.定级"] --> B["2.备案"]
     B --> C["3.建设整改"]
@@ -83,7 +83,7 @@ graph LR
     style C fill:#fff3e0
     style D fill:#f3e5f5
     style E fill:#fce4ec
-{% endmermaid %}
+```
 
 ## 二、信息安全管理体系
 
@@ -225,7 +225,7 @@ ALE = 30万 × 0.1 = 3万元/年
 
 **Chinese Wall模型示例：**
 
-{% mermaid %}
+```mermaid
 graph TB
     U["用户（分析师）"]
     
@@ -255,7 +255,7 @@ graph TB
     style B2 fill:#f44336
     style C1 fill:#4caf50
     style C2 fill:#4caf50
-{% endmermaid %}
+```
 
 ## 六、身份认证
 

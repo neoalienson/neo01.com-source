@@ -29,7 +29,7 @@ RPC 服务需要可被发现。当客户端想要调用远程过程时，它需�
 3. 客户端必须查询端口映射器/端点映射器服务来发现端口
 4. 这增加了复杂性、延迟和潜在的故障点
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant Client as 客户端
     participant PortMapper as 端口映射器<br/>(端口 111)
@@ -41,7 +41,7 @@ sequenceDiagram
     PortMapper->>Client: 端口 54321
     Client->>RPC: 连接到 54321
     Note over Client,RPC: ❌ 复杂、脆弱、<br/>防火墙不友好
-{% endmermaid %}
+```
 
 ### 服务器应用程序使用动态端口的问题
 
@@ -73,7 +73,7 @@ Microsoft SQL Server 提供了一个完美的例子，说明为什么临时端�
 
 SQL Server 命名实例（例如 `SERVER\INSTANCE1`）默认使用动态端口。当命名实例启动时，它会绑定到可用的临时端口。客户端通过查询 UDP 端口 1434 上的 SQL Server Browser 服务来发现此端口。
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant Client as 客户端
     participant Browser as SQL Browser<br/>(UDP 1434)
@@ -85,7 +85,7 @@ sequenceDiagram
     Browser->>Client: 端口 49823
     Client->>Instance: 连接到 49823
     Note over Instance,Client: ❌ 防火墙噩梦<br/>重新启动时端口会改变
-{% endmermaid %}
+```
 
 ### 为什么这会造成问题
 
@@ -172,7 +172,7 @@ WMI 使用 DCOM（分布式 COM），它依赖于 RPC。默认情况下：
 - 实际的 WMI 通信使用 49152-65535 范围内的随机端口
 - 防火墙必须允许整个范围才能让 WMI 运作
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant Client as 客户端
     participant EPM as 端点映射器<br/>(端口 135)
@@ -182,7 +182,7 @@ sequenceDiagram
     EPM->>Client: 使用端口 52341
     Client->>WMI: 连接到 52341
     Note over Client,WMI: ❌ 需要在防火墙中<br/>打开 49152-65535
-{% endmermaid %}
+```
 
 ### 解决方案：限制 RPC 动态端口范围
 
@@ -362,7 +362,7 @@ spec:
 
 ## RPC 最佳实践摘要
 
-{% mermaid %}
+```mermaid
 graph TB
     A(["RPC 服务设计"]) --> B{需要外部<br/>访问？}
     B -->|是| C(["使用固定端口<br/>1024-49151"])
@@ -377,7 +377,7 @@ graph TB
     style C fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style E fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style H fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
-{% endmermaid %}
+```
 
 ## 旧版 RPC 系统
 

@@ -31,7 +31,7 @@ canonical_lang: zh-CN
     - 防火墙通过规则实现逻辑隔离
     - 数据仍然通过防火墙传输
 
-{% mermaid %}
+```mermaid
 graph LR
     A["隔离方式"]
     
@@ -51,7 +51,7 @@ graph LR
     
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#e8f5e9,stroke:#388e3d
-{% endmermaid %}
+```
 
 **隔离方式对比：**
 
@@ -94,7 +94,7 @@ graph LR
 
 威胁建模是识别和评估系统安全威胁的系统化方法。
 
-{% mermaid %}
+```mermaid
 graph TB
     A["威胁建模流程"]
     
@@ -125,7 +125,7 @@ graph TB
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 ### 3.2 威胁识别的正确理解
 
@@ -172,7 +172,7 @@ graph TB
 
 **危害国家秘密安全的四大类行为：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["危害国家秘密安全的行为"]
     
@@ -206,7 +206,7 @@ graph LR
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#e3f2fd,stroke:#1976d2
     style E fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 ### 4.2 严重违反保密规定行为
 
@@ -307,7 +307,7 @@ graph LR
 
 **危害国家秘密安全行为的法律责任：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["法律责任"]
     
@@ -334,7 +334,7 @@ graph LR
     style B fill:#fff3e0,stroke:#f57c00
     style C fill:#ffcdd2,stroke:#c62828
     style D fill:#e3f2fd,stroke:#1976d2
-{% endmermaid %}
+```
 
 **法律责任对比：**
 

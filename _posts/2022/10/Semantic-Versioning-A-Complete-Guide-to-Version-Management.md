@@ -45,7 +45,7 @@ This isn't just about numbering schemes. It's about creating a contract between 
 
 Let's trace how a library evolves through different types of changes:
 
-{% mermaid %}
+```mermaid
 gitGraph
     commit id: "1.0.0 Initial Release"
     commit id: "1.0.1 Bug Fix" tag: "PATCH"
@@ -54,7 +54,7 @@ gitGraph
     commit id: "1.1.1 Bug Fix" tag: "PATCH"
     commit id: "1.2.0 New API" tag: "MINOR"
     commit id: "2.0.0 Breaking Change" tag: "MAJOR"
-{% endmermaid %}
+```
 
 **Version 1.0.0 → 1.0.1**: Fixed null pointer exception in user validation
 **Version 1.0.1 → 1.0.2**: Patched SQL injection vulnerability
@@ -63,7 +63,7 @@ gitGraph
 **Version 1.1.1 → 1.2.0**: Added user role management API
 **Version 1.2.0 → 2.0.0**: Removed deprecated authentication methods
 
-{% mermaid %}
+```mermaid
 flowchart TD
     A["🔄 Code Change"] --> B{"💥 Breaking Change?"}
     B -->|Yes| C["📈 MAJOR Version"]
@@ -77,7 +77,7 @@ flowchart TD
     style E fill:#4ecdc4
     style G fill:#45b7d1
     style H fill:#96ceb4
-{% endmermaid %}
+```
 
 ## Pre-release and Build Metadata
 
@@ -132,7 +132,7 @@ SemVer defines strict precedence rules for version comparison:
 
 Here's how semantic versioning integrates with Git branching strategies:
 
-{% mermaid %}
+```mermaid
 gitGraph
     commit id: "2.1.0"
     branch feature/user-search
@@ -157,13 +157,13 @@ gitGraph
     checkout main
     merge feature/breaking-auth
     commit id: "3.0.0" tag: "MAJOR"
-{% endmermaid %}
+```
 
 ### Release Branch Strategy
 
 For complex projects, use release branches to stabilize versions:
 
-{% mermaid %}
+```mermaid
 gitGraph
     commit id: "2.0.0"
     commit id: "Feature A"
@@ -185,7 +185,7 @@ gitGraph
     checkout release/2.2
     commit id: "2.2.0-rc.1"
     commit id: "2.2.0" tag: "RELEASE"
-{% endmermaid %}
+```
 
 ## Implementing SemVer in Your Project
 
@@ -359,7 +359,7 @@ mypackage@1.3.0-beta.20221022
 ```
 
 **Workflow Example**:
-{% mermaid %}
+```mermaid
 gitGraph
     commit id: "1.2.0 Release"
     commit id: "Start 1.3.0-SNAPSHOT"
@@ -370,7 +370,7 @@ gitGraph
     commit id: "More features"
     commit id: "Publish SNAPSHOT-3"
     commit id: "1.3.0 Release" tag: "IMMUTABLE"
-{% endmermaid %}
+```
 
 ### Immutable Repositories
 

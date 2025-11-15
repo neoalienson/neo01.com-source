@@ -121,7 +121,8 @@ spec:
 !!!danger "🔓 节点级安全漏洞"
     如果防火墙规则允许节点访问互联网（即使只是为了一个 Pod），该节点上的每个 Pod 都会继承该访问权限。您无法使用传统防火墙强制执行 Pod 特定的出站策略。这就是为什么节点级安全性对 Kubernetes 来说是不够的。
 
-{% mermaid %}graph TB
+```mermaid
+graph TB
     subgraph "传统防火墙（节点级）"
         FW1["防火墙规则：允许互联网"]
         Node1["Kubernetes 节点"]
@@ -161,7 +162,7 @@ spec:
     style PodC2 fill:#ccffcc
     style FW1 fill:#ffeecc
     style NP1 fill:#ccffee
-{% endmermaid %}
+```
 
 **其他限制**：
 

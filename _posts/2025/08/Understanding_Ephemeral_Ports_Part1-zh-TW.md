@@ -21,7 +21,7 @@ excerpt: "揭開每個網路連接背後的隱形工作者。了解臨時埠如�
 
 當你在瀏覽器中輸入 URL 時，你的電腦需要建立與網頁伺服器的連接。伺服器監聽眾所周知的埠（HTTP 通常是埠 80，HTTPS 是埠 443），但你的電腦需要自己的埠號來接收回應。你的作業系統會自動選擇一個可用的臨時埠——比如說埠 54321——並將其用於這個特定的連接。
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant Client as 你的電腦<br/>(IP: 192.168.1.100)
     participant OS as 作業系統
@@ -34,7 +34,7 @@ sequenceDiagram
     OS->>Client: 將資料傳遞給瀏覽器
     Note over OS: 連接結束
     OS->>OS: 釋放埠 54321<br/>以供重用
-{% endmermaid %}
+```
 
 ### 埠號範圍
 
@@ -105,7 +105,7 @@ sequenceDiagram
 
 當通訊結束時，作業系統會將臨時埠標記為可重用。然而，通常會有一個短暫的等待期（TIME_WAIT 狀態），以確保來自舊連接的延遲封包不會到達並混淆使用相同埠的新連接。
 
-{% mermaid %}
+```mermaid
 stateDiagram-v2
     [*] --> Available: 埠在池中
     Available --> Assigned: 應用程式請求<br/>連接
@@ -118,7 +118,7 @@ stateDiagram-v2
         通常 30-120 秒
         防止封包混淆
     end note
-{% endmermaid %}
+```
 
 ### 多個同時連接
 
@@ -172,7 +172,7 @@ stateDiagram-v2
 
 **DHCP 客戶端**：獲取 IP 位址時，DHCP 客戶端使用特定埠，儘管不總是來自臨時埠範圍。
 
-{% mermaid %}
+```mermaid
 graph TB
     subgraph "你的電腦"
         Browser(["🌐 網頁瀏覽器"])
@@ -203,7 +203,7 @@ graph TB
     PortPool -->|54324:5432| Database
     
     style PortPool fill:#e3f2fd,stroke:#1976d2,stroke-width:3px
-{% endmermaid %}
+```
 
 ## 客戶端應用程式的最佳實踐
 

@@ -37,7 +37,7 @@ comments: true
 
 それでは、VPN/プロキシアドベンチャーに利用可能なクラウドサービスを調べてみましょう。クラウド上にVPN/プロキシサーバーを作成できます。簡単にするために、Google Cloud上のプロキシサーバーから始めましょう。以下のように動作します：
 
-{% mermaid %}
+```mermaid
 flowchart LR
 pc["あなたのPC\n国A\n\n"]
 ssh["SSHトンネル\n\n"]
@@ -46,7 +46,7 @@ proxy["Google Cloud上のプロキシ\n国B\n\n"]
 ssh-->proxy
 target["ターゲットWebサイト\n\n"]
 proxy-->target
-{% endmermaid %}
+```
 
 フローチャートは、Google Cloud上のプロキシサーバーのセットアップを示しています。あなたのPC（PC）は国Aにあり、場所によって制限されているか、コンテンツがブロックされているターゲットWebサイト（target）にアクセスしたいとします。PCから国BにあるGoogle Cloud上のプロキシサーバー（proxy）へのSSHトンネル（ssh）を確立します。これにより、地理的制限を回避し、国BにいるかのようにターゲットWebサイトにアクセスできます。
 

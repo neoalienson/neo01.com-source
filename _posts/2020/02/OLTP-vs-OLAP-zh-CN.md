@@ -28,7 +28,7 @@ comments: true
 - 预测需求
 - 识别模式
 
-{% mermaid %}
+```mermaid
 graph TB
     subgraph OLTP["🏪 OLTP 系统"]
         T1[客户订单]
@@ -69,7 +69,7 @@ graph TB
     style OLTP fill:#e3f2fd,stroke:#1976d2
     style OLAP fill:#f3e5f5,stroke:#7b1fa2
     style ETL fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 ## OLTP：运营主力
 
@@ -335,7 +335,7 @@ CREATE TABLE dim_store (
 );
 ```
 
-{% mermaid %}
+```mermaid
 graph TB
     F[事实表<br/>fact_sales<br/>sale_id, quantity, revenue, profit]
     
@@ -354,7 +354,7 @@ graph TB
     style D2 fill:#81c784,stroke:#388e3c
     style D3 fill:#81c784,stroke:#388e3c
     style D4 fill:#81c784,stroke:#388e3c
-{% endmermaid %}
+```
 
 ### OLAP 查询模式
 

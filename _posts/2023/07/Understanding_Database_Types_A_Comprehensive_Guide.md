@@ -26,7 +26,7 @@ But the internet era brought new challenges. Web applications needed to handle m
 
 Today, we live in a **polyglot persistence** world where applications use multiple database types, each handling the workload it's best suited for. Your e-commerce site might use a relational database for transactions, a document store for product catalogs, a cache for session data, and a graph database for recommendations.
 
-{% mermaid %}
+```mermaid
 timeline
     title Evolution of Database Systems
     1970s : Relational Databases
@@ -44,7 +44,7 @@ timeline
     2020s : Cloud-Native & Distributed
           : Serverless databases
           : Multi-model systems
-{% endmermaid %}
+```
 
 ## Relational Databases (RDBMS): The Foundation
 
@@ -108,7 +108,7 @@ Data is stored in tables with strict schemas. When you query data, the database 
     
     If any step fails, everything rolls back - no partial orders or inventory discrepancies.
 
-{% mermaid %}
+```mermaid
 graph TB
     A([👤 Customers]) --> B([📦 Orders])
     C([📚 Books]) --> D([📋 Order Items])
@@ -119,7 +119,7 @@ graph TB
     style B fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style C fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style D fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
-{% endmermaid %}
+```
 
 ## Document Databases: Flexible and Schema-Free
 
@@ -310,7 +310,7 @@ Data is stored in column families - groups of related columns. Unlike relational
     
     The database efficiently scans only the relevant column family for user 123, filtering by timestamp. Even with billions of activities across millions of users, the query returns results in milliseconds.
 
-{% mermaid %}
+```mermaid
 graph LR
     A([📊 Analytical Query]) --> B([Column Store])
     B --> C([Read Only<br/>Needed Columns])
@@ -322,7 +322,7 @@ graph LR
     
     style D fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style H fill:#ffebee,stroke:#c62828,stroke-width:2px
-{% endmermaid %}
+```
 
 ## Graph Databases: Relationships First
 
@@ -383,7 +383,7 @@ Instead of tables or documents, graph databases use nodes to represent entities 
     
     This query efficiently traverses relationships to find friend recommendations. In a relational database, this would require multiple self-joins and be much slower.
 
-{% mermaid %}
+```mermaid
 graph TB
     A([👤 Alice]) -->|FRIENDS_WITH| B([👤 Bob])
     A -->|FRIENDS_WITH| C([👤 Carol])
@@ -394,7 +394,7 @@ graph TB
     
     style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
     style E fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-{% endmermaid %}
+```
 
 ## Time-Series Databases: Optimized for Temporal Data
 
@@ -521,7 +521,7 @@ Instead of storing traditional data types, vector databases store vectors (array
     
     Traditional keyword search would miss these semantic connections.
 
-{% mermaid %}
+```mermaid
 graph TB
     A([📝 User Query<br/>"How to reset password?"]) --> B([🔢 Convert to Vector<br/>[0.23, -0.45, ...]])
     B --> C([🔍 Vector Database<br/>Find Similar Vectors])
@@ -532,7 +532,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
     style C fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style F fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-{% endmermaid %}
+```
 
 ## Embedded Databases: Lightweight and Self-Contained
 
@@ -630,7 +630,7 @@ Unlike client-server databases, embedded databases run in the same process as yo
     - Simple - no backend server needed for basic functionality
     - Sync later - can upload to cloud when connection available
 
-{% mermaid %}
+```mermaid
 graph TB
     A([📱 Mobile App]) --> B([SQLite Database<br/>Local File])
     B --> C([Offline Access<br/>No Network Needed])
@@ -641,7 +641,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
     style C fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style F fill:#fff3e0,stroke:#f57c00,stroke-width:2px
-{% endmermaid %}
+```
 
 !!!tip "💡 SQLite: The World's Most Deployed Database"
     SQLite is likely the most widely used database in the world:
@@ -763,7 +763,7 @@ An e-commerce platform might use:
 - **Neo4j**: Product recommendations (relationship-based suggestions)
 - **InfluxDB**: Application metrics (time-series monitoring data)
 
-{% mermaid %}
+```mermaid
 graph TB
     A([🛒 E-commerce<br/>Application]) --> B([PostgreSQL<br/>Orders & Inventory])
     A --> C([MongoDB<br/>Product Catalog])
@@ -779,7 +779,7 @@ graph TB
     style E fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
     style F fill:#e0f2f1,stroke:#00796b,stroke-width:2px
     style G fill:#fce4ec,stroke:#c2185b,stroke-width:2px
-{% endmermaid %}
+```
 
 ### Benefits
 
@@ -869,7 +869,7 @@ Blockchain stores data in blocks that are cryptographically linked together in a
     
     **Reality check**: 99% of applications don't need blockchain. Traditional databases are faster, cheaper, and more flexible. Only use blockchain when decentralization and immutability are absolute requirements.
 
-{% mermaid %}
+```mermaid
 graph LR
     A([📝 New Transaction]) --> B([Block Created])
     B --> C([Broadcast to Network])
@@ -882,7 +882,7 @@ graph LR
     style F fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style G fill:#ffebee,stroke:#c62828,stroke-width:2px
     style H fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
-{% endmermaid %}
+```
 
 ## Emerging Trends and Future Directions
 

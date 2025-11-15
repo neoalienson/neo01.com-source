@@ -48,7 +48,7 @@ comments: true
 
 **IDS的分类：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["入侵检测系统"]
     
@@ -74,7 +74,7 @@ graph TB
     
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 ### 1.2 IDS的优势
 
@@ -124,7 +124,7 @@ graph TB
 
 **IDS局限性详解：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["IDS的局限性"]
     
@@ -165,7 +165,7 @@ graph TB
     style D fill:#ffebee,stroke:#d32f2f
     style E fill:#fff9c4,stroke:#f57f17
     style F fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 ### 1.4 IDS的主要局限性
 
@@ -271,7 +271,7 @@ IDS的局限性：
 
 **IDS和IPS的结合使用：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["互联网"] --> B["IPS<br/>串联部署"]
     B --> C["防火墙"]
@@ -285,7 +285,7 @@ graph LR
     style B fill:#ffcdd2,stroke:#c62828
     style D fill:#e3f2fd,stroke:#1976d2
     style E fill:#e8f5e9,stroke:#388e3d
-{% endmermaid %}
+```
 
 ### 1.6 IDS的最佳实践
 
@@ -378,7 +378,7 @@ graph LR
 
 **法律的基本特点：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["法律的特点"]
     
@@ -412,7 +412,7 @@ graph TB
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#e8f5e9,stroke:#388e3d
     style E fill:#ffcdd2,stroke:#c62828
-{% endmermaid %}
+```
 
 ### 2.3 法律的公开性
 
@@ -496,7 +496,7 @@ graph TB
 
 **法律的"硬约束"特征：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["法律的硬约束"]
     
@@ -531,7 +531,7 @@ graph TB
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#e3f2fd,stroke:#1976d2
     style E fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 **法律责任的类型：**
 

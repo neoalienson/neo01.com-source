@@ -19,7 +19,8 @@ excerpt: "领域驱动设计承诺软件能说业务语言，但从数据库中�
 
 ### 领域驱动设计时间轴
 
-{% mermaid %}timeline
+```mermaid
+timeline
     title 领域中心设计的演进
     section 1990s
         1994 : 设计模式
@@ -48,7 +49,7 @@ excerpt: "领域驱动设计承诺软件能说业务语言，但从数据库中�
         2016 : 微服务 + DDD
              : 限界上下文即服务
              : 分布式领域模型
-{% endmermaid %}
+```
 
 ## 数据库中心的问题
 
@@ -645,7 +646,8 @@ DDD 提供战略模式来管理大型系统中的复杂性。
 
 限界上下文通过明确分离模型来解决这个问题。每个上下文都有自己针对其需求优化的模型。销售上下文有一个具有订单历史的 Customer。支持上下文有一个具有支持工单的 Customer。这些是不同的模型，这没问题。
 
-{% mermaid %}graph TB
+```mermaid
+graph TB
     subgraph Sales["销售上下文"]
         SC[客户<br/>- 订单<br/>- 信用额度<br/>- 付款条件]
     end
@@ -665,7 +667,7 @@ DDD 提供战略模式来管理大型系统中的复杂性。
     style Sales fill:#e1f5ff,stroke:#333,stroke-width:2px
     style Support fill:#fff4e1,stroke:#333,stroke-width:2px
     style Shipping fill:#e8f5e9,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 ### 上下文映射
 
@@ -1123,7 +1125,8 @@ DDD 与事件溯源和 CQRS 配合良好：
 
 DDD 自然适合六边形（端口与适配器）架构：
 
-{% mermaid %}graph TB
+```mermaid
+graph TB
     subgraph Core["领域核心"]
         DM[领域模型<br/>实体、值对象<br/>聚合、服务]
     end
@@ -1150,7 +1153,7 @@ DDD 自然适合六边形（端口与适配器）架构：
     style Core fill:#e1f5ff,stroke:#333,stroke-width:3px
     style Ports fill:#fff4e1,stroke:#333,stroke-width:2px
     style Adapters fill:#e8f5e9,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 !!!anote "🏛️ 六边形架构 + DDD"
     **结构**

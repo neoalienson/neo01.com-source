@@ -23,7 +23,7 @@ canonical_lang: zh-CN
 
 TCP/IP协议是Internet的基础协议，也是Internet构成的基础。TCP/IP通常被认为是一个四层协议，每一层都使用它的下一层所提供的网络服务来完成自己的功能。
 
-{% mermaid %}
+```mermaid
 graph TB
     A["TCP/IP四层模型"]
     
@@ -46,7 +46,7 @@ graph TB
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 !!!anote "💡 TCP/IP是四层协议"
     **四层结构：**
@@ -74,7 +74,7 @@ graph TB
 
 ### 1.3 TCP/IP与OSI模型对比
 
-{% mermaid %}
+```mermaid
 graph LR
     subgraph OSI["OSI七层模型"]
         O7["应用层"]
@@ -105,7 +105,7 @@ graph LR
     style T3 fill:#e8f5e9,stroke:#388e3d
     style T2 fill:#fff3e0,stroke:#f57c00
     style T1 fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 **主要区别：**
 
@@ -123,7 +123,7 @@ graph LR
 
 信息系统面临外部攻击者的恶意攻击威胁，从威胁能力和掌握资源分，这些威胁可以按照个人威胁、组织威胁和国家威胁三个层面划分。
 
-{% mermaid %}
+```mermaid
 graph TB
     A["威胁分类"]
     
@@ -150,7 +150,7 @@ graph TB
     style B fill:#e8f5e9,stroke:#388e3d
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#ffcdd2,stroke:#c62828
-{% endmermaid %}
+```
 
 ### 2.2 三个威胁层面详解
 
@@ -185,7 +185,7 @@ graph TB
 
 **针对不同威胁层面的防护策略：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["威胁应对策略"]
     
@@ -212,7 +212,7 @@ graph TB
     style B fill:#e8f5e9,stroke:#388e3d
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#ffcdd2,stroke:#c62828
-{% endmermaid %}
+```
 
 ## 三、IP地址管理
 
@@ -220,7 +220,7 @@ graph TB
 
 私有IP地址是一段保留的IP地址，只使用在局域网中，无法在Internet上使用。私有地址在A类、B类和C类地址中都有定义。
 
-{% mermaid %}
+```mermaid
 graph TB
     A["IP地址分类"]
     
@@ -251,7 +251,7 @@ graph TB
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#fff3e0,stroke:#f57c00
     style F fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 ### 3.2 私有IP地址范围
 
@@ -283,7 +283,7 @@ graph TB
 
 私有IP地址需要通过NAT（Network Address Translation）才能访问Internet。
 
-{% mermaid %}
+```mermaid
 graph LR
     A["内网设备<br/>192.168.1.10"]
     B["NAT路由器<br/>私有IP: 192.168.1.1<br/>公有IP: 203.0.113.5"]
@@ -298,7 +298,7 @@ graph LR
     style B fill:#fff3e0,stroke:#f57c00
     style C fill:#e3f2fd,stroke:#1976d2
     style D fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 **NAT的工作原理：**
 
@@ -350,7 +350,7 @@ graph LR
 
 **ARP广播问题场景：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["计算机A发送ARP请求"]
     B["交换机1收到请求"]
@@ -366,7 +366,7 @@ graph TB
     E --> F
     
     style F fill:#ffcdd2,stroke:#c62828
-{% endmermaid %}
+```
 
 **问题描述：**
 
@@ -393,7 +393,7 @@ graph TB
 
 **VLAN工作原理：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["物理网络"]
     
@@ -415,7 +415,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 **VLAN的优势：**
 

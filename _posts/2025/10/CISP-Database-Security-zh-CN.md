@@ -54,7 +54,7 @@ canonical_lang: zh-CN
     5. **开系统和闭系统策略**
     6. **按存取类型控制策略**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["数据库安全策略"]
     
@@ -78,7 +78,7 @@ graph TB
     style E fill:#f3e5f5,stroke:#7b1fa2
     style F fill:#fce4ec,stroke:#c2185b
     style G fill:#e1f5fe,stroke:#0277bd
-{% endmermaid %}
+```
 
 ### 2.2 最小特权策略
 
@@ -128,7 +128,7 @@ GRANT ALL PRIVILEGES ON employees TO analyst;
 
 **最大共享策略的实施：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["最大共享策略"]
     
@@ -155,7 +155,7 @@ graph TB
     style B fill:#ffcdd2,stroke:#c62828
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#e3f2fd,stroke:#1976d2
-{% endmermaid %}
+```
 
 **共享与安全的平衡：**
 
@@ -206,7 +206,7 @@ GRANT SELECT ON employee_public TO public_users;
 
 **数据库粒度层次：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["数据库粒度"]
     
@@ -230,7 +230,7 @@ graph TB
     style D fill:#81c784,stroke:#43a047
     style E fill:#66bb6a,stroke:#4caf50
     style F fill:#ffcdd2,stroke:#c62828
-{% endmermaid %}
+```
 
 **粒度选择对比：**
 
@@ -286,7 +286,7 @@ USING (department = current_user_department());
 
 **按内容存取控制的实现：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["按内容存取控制"]
     
@@ -305,7 +305,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 **实现示例：**
 
@@ -392,7 +392,7 @@ GRANT SELECT ON public_table TO specific_users;
 
 **存取类型分类：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["存取类型"]
     
@@ -416,7 +416,7 @@ graph TB
     style E fill:#ffcdd2,stroke:#c62828
     style F fill:#f3e5f5,stroke:#7b1fa2
     style G fill:#fce4ec,stroke:#c2185b
-{% endmermaid %}
+```
 
 **权限组合示例：**
 

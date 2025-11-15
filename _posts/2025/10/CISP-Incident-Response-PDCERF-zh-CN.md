@@ -66,7 +66,7 @@ canonical_lang: zh-CN
     5. **R - Recovery（恢复阶段）**
     6. **F - Follow-up（跟踪阶段）**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["P<br/>准备<br/>Preparation"]
     B["D<br/>检测<br/>Detection"]
@@ -88,7 +88,7 @@ graph LR
     style D fill:#ffcdd2,stroke:#c62828
     style E fill:#f3e5f5,stroke:#7b1fa2
     style F fill:#e1f5fe,stroke:#0277bd
-{% endmermaid %}
+```
 
 ### 2.2 准备阶段（Preparation）
 
@@ -152,7 +152,7 @@ graph LR
 
 **检测的来源：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["安全事件检测"]
     
@@ -180,7 +180,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 **事件分类和优先级：**
 
@@ -229,7 +229,7 @@ graph TB
 
 **遏制措施：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["遏制措施"]
     
@@ -263,7 +263,7 @@ graph TB
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 **证据收集：**
 
@@ -397,7 +397,7 @@ graph TB
 
 **恢复策略：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["恢复策略"]
     
@@ -431,7 +431,7 @@ graph TB
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 **恢复步骤：**
 
@@ -667,7 +667,7 @@ graph TB
 
 **应急响应 vs 风险管理：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["信息安全管理"]
     
@@ -687,7 +687,7 @@ graph TB
     
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 **应急响应规划的关键步骤：**
 

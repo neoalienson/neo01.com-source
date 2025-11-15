@@ -91,7 +91,8 @@ OAuth 定义了四个参与授权流程的不同角色：
 
 ### 流程概览
 
-{% mermaid %}sequenceDiagram
+```mermaid
+sequenceDiagram
     participant User as 👤 资源拥有者
     participant Browser as 🌐 浏览器
     participant Client as 📱 客户端应用程序
@@ -108,7 +109,7 @@ OAuth 定义了四个参与授权流程的不同角色：
     AuthServer->>Client: 8. 访问令牌 + 刷新令牌
     Client->>ResourceServer: 9. 使用访问令牌的 API 请求
     ResourceServer->>Client: 10. 受保护的资源数据
-{% endmermaid %}
+```
 
 ### 逐步分解
 
@@ -217,7 +218,8 @@ OAuth 定义了四个参与授权流程的不同角色：
 
 ### 隐式流程如何运作
 
-{% mermaid %}sequenceDiagram
+```mermaid
+sequenceDiagram
     participant User as 👤 资源拥有者
     participant Browser as 🌐 浏览器/SPA
     participant AuthServer as 🔐 授权服务器
@@ -230,7 +232,7 @@ OAuth 定义了四个参与授权流程的不同角色：
     Browser->>Browser: 5. 从 URL 提取令牌
     Browser->>ResourceServer: 6. 使用令牌的 API 请求
     ResourceServer->>Browser: 7. 受保护的资源
-{% endmermaid %}
+```
 
 ### 为什么隐式流程被弃用
 
@@ -284,7 +286,8 @@ OAuth 定义了四个参与授权流程的不同角色：
 PKCE 通过添加无法预先提取的动态、每次请求密钥来解决这个问题。
 ### PKCE 流程
 
-{% mermaid %}sequenceDiagram
+```mermaid
+sequenceDiagram
     participant User as 👤 资源拥有者
     participant Client as 📱 移动应用程序/SPA
     participant AuthServer as 🔐 授权服务器
@@ -301,7 +304,7 @@ PKCE 通过添加无法预先提取的动态、每次请求密钥来解决这个
     AuthServer->>Client: 9. 访问令牌
     Client->>ResourceServer: 10. API 请求
     ResourceServer->>Client: 11. 受保护的资源
-{% endmermaid %}
+```
 
 ### PKCE 实现细节
 
@@ -394,7 +397,8 @@ PKCE 现在建议所有 OAuth 客户端使用，包括能够存储密钥的机�
 
 ### 客户端凭证流程
 
-{% mermaid %}sequenceDiagram
+```mermaid
+sequenceDiagram
     participant Client as 🖥️ 客户端服务
     participant AuthServer as 🔐 授权服务器
     participant ResourceServer as 💾 资源服务器
@@ -404,7 +408,7 @@ PKCE 现在建议所有 OAuth 客户端使用，包括能够存储密钥的机�
     AuthServer->>Client: 3. 访问令牌
     Client->>ResourceServer: 4. 使用令牌的 API 请求
     ResourceServer->>Client: 5. 受保护的资源
-{% endmermaid %}
+```
 
 ### 实现
 
@@ -570,7 +574,8 @@ OpenID Connect (OIDC) 扩展 OAuth 2.0 以提供身份验证：
 
 ### 刷新令牌流程
 
-{% mermaid %}sequenceDiagram
+```mermaid
+sequenceDiagram
     participant Client as 📱 客户端应用程序
     participant AuthServer as 🔐 授权服务器
     participant ResourceServer as 💾 资源服务器
@@ -582,7 +587,7 @@ OpenID Connect (OIDC) 扩展 OAuth 2.0 以提供身份验证：
     AuthServer->>Client: 5. 新访问令牌 + 新刷新令牌
     Client->>ResourceServer: 6. 使用新令牌的 API 请求
     ResourceServer->>Client: 7. 受保护的资源
-{% endmermaid %}
+```
 
 ### 刷新令牌安全
 

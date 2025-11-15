@@ -40,7 +40,7 @@ Git分支策略是現代軟體開發工作流的基礎。正確的分支策略�
 
 ### Git Flow結構
 
-{% mermaid %}
+```mermaid
 ---
 config:
   logLevel: 'debug'
@@ -77,7 +77,7 @@ gitGraph
     commit id: "v1.0.1" tag: "v1.0.1"
     checkout develop
     merge hotfix/critical-bug
-{% endmermaid %}
+```
 
 ### Git Flow實施
 
@@ -123,7 +123,7 @@ GitHub Flow強調簡單性和持續部署，使其成為Web應用程式和SaaS�
 
 ### GitHub Flow結構
 
-{% mermaid %}
+```mermaid
 ---
 config:
   logLevel: 'debug'
@@ -154,7 +154,7 @@ gitGraph
     checkout main
     merge hotfix/payment-bug
     commit id: "部署" type: HIGHLIGHT
-{% endmermaid %}
+```
 
 ### GitHub Flow流程
 
@@ -194,7 +194,7 @@ GitLab Flow結合了GitHub Flow的簡單性和Git Flow的發布管理能力。
 
 ### 帶環境分支的GitLab Flow
 
-{% mermaid %}
+```mermaid
 ---
 config:
   logLevel: 'debug'
@@ -232,7 +232,7 @@ gitGraph
     merge feature/mobile-app
     checkout staging
     merge main
-{% endmermaid %}
+```
 
 ### GitLab Flow實施
 
@@ -270,7 +270,7 @@ git push origin production
 
 ### 功能分支結構
 
-{% mermaid %}
+```mermaid
 ---
 config:
   logLevel: 'debug'
@@ -300,7 +300,7 @@ gitGraph
     commit id: "發布分析"
     merge feature/notifications
     commit id: "發布通知"
-{% endmermaid %}
+```
 
 ### 進階分支模式
 

@@ -150,7 +150,8 @@ The pointer file is tiny—around 130 bytes regardless of actual file size. A 5G
 
 LFS requires additional infrastructure:
 
-{% mermaid %}graph TB
+```mermaid
+graph TB
     Dev[Developer]
     Git[Git Repository]
     LFS[LFS Server]
@@ -168,7 +169,7 @@ LFS requires additional infrastructure:
     style Git fill:#f9f,stroke:#333,stroke-width:2px
     style LFS fill:#bbf,stroke:#333,stroke-width:2px
     style Storage fill:#bfb,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 !!!anote "🏗️ LFS Infrastructure"
     **Components**

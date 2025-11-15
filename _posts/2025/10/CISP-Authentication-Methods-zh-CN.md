@@ -59,7 +59,7 @@ canonical_lang: zh-CN
        - 基于用户的生物特征
        - 如：指纹、虹膜、面部识别
 
-{% mermaid %}
+```mermaid
 graph TB
     A["身份鉴别方法"]
     
@@ -87,7 +87,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#e8f5e9,stroke:#388e3d
-{% endmermaid %}
+```
 
 ## 三、实体所知的鉴别方法
 
@@ -220,7 +220,7 @@ TOTP工作原理：
 
 **指纹识别：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["指纹采集"] --> B["特征提取"]
     B --> C["特征比对"]
@@ -230,7 +230,7 @@ graph LR
     style B fill:#fff3e0,stroke:#f57c00
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 **生物特征识别的优缺点：**
 
@@ -286,7 +286,7 @@ graph LR
     └── 允许支付操作
 ```
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant U as 用户
     participant A as 支付应用
@@ -303,7 +303,7 @@ sequenceDiagram
     
     style A fill:#e3f2fd,stroke:#1976d2
     style S fill:#e8f5e9,stroke:#388e3d
-{% endmermaid %}
+```
 
 ## 七、身份鉴别的安全考虑
 

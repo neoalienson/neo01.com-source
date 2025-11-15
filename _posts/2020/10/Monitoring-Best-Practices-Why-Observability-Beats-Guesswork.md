@@ -148,7 +148,8 @@ Each serves a different purpose:
 - Logs tell you why it's wrong
 - Traces tell you where it's wrong
 
-{% mermaid %}graph TD
+```mermaid
+graph TD
     A["🔔 Alert Triggered"] --> B["📊 Metrics"]
     B --> C{"What's Wrong?"}
     C --> D["📝 Logs"]
@@ -161,7 +162,7 @@ Each serves a different purpose:
     style D fill:#51cf66,stroke:#2f9e44,color:#fff
     style F fill:#ffd43b,stroke:#f59f00,color:#000
     style G fill:#69db7c,stroke:#2f9e44,color:#fff
-{% endmermaid %}
+```
 
 !!!info "ℹ️ The Observability Triangle"
     Metrics, logs, and traces work together. Metrics alert you to problems, logs help diagnose root causes, and traces show you the request flow. You need all three for complete observability.
@@ -302,7 +303,8 @@ The best monitoring system is useless if information doesn't reach the people wh
 
 ### Alert Routing Strategy
 
-{% mermaid %}graph LR
+```mermaid
+graph LR
     A["🚨 Alert Generated"] --> B{"Severity?"}
     
     B -->|Critical| C["📟 PagerDuty"]
@@ -323,7 +325,7 @@ The best monitoring system is useless if information doesn't reach the people wh
     style C fill:#fa5252,stroke:#c92a2a,color:#fff
     style D fill:#4dabf7,stroke:#1971c2,color:#fff
     style E fill:#51cf66,stroke:#2f9e44,color:#fff
-{% endmermaid %}
+```
 
 **Route by severity**:
 

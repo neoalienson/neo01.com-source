@@ -47,7 +47,8 @@ thumbnail_80: /assets/architecture/thumbnail_80.png
 
 ## リバースプロキシはどのように機能するか？
 
-{% mermaid %}flowchart LR
+```mermaid
+flowchart LR
     Client["👤 クライアント<br/>(ブラウザ)"]
     RP["🚪 リバースプロキシ<br/>(nginx/Traefik)"]
     
@@ -66,7 +67,7 @@ thumbnail_80: /assets/architecture/thumbnail_80.png
     
     style RP fill:#fff3e0
     style Backend fill:#e8f5e9
-{% endmermaid %}
+```
 
 **リクエストフロー：**
 
@@ -136,7 +137,8 @@ thumbnail_80: /assets/architecture/thumbnail_80.png
 
 **解決策：** リバースプロキシがすべてのSSL/TLS暗号化/復号化を処理。
 
-{% mermaid %}flowchart LR
+```mermaid
+flowchart LR
     Client["👤 クライアント"]
     RP["🚪 リバースプロキシ"]
     App1["🖥️ アプリサーバー 1"]
@@ -147,7 +149,7 @@ thumbnail_80: /assets/architecture/thumbnail_80.png
     RP <-->|"HTTP<br/>(平文)"| App2
     
     style RP fill:#fff3e0
-{% endmermaid %}
+```
 
 **メリット：**
 
@@ -345,7 +347,8 @@ upstream backend {
 
 **アクティブ-パッシブ：**
 
-{% mermaid %}flowchart TD
+```mermaid
+flowchart TD
     Client["👤 クライアント"]
     VIP["🌐 仮想IP<br/>(203.0.113.10)"]
     RP1["🚪 リバースプロキシ 1<br/>(アクティブ)"]
@@ -366,7 +369,7 @@ upstream backend {
     style RP1 fill:#c8e6c9
     style RP2 fill:#ffecb3
     style Backend fill:#e8f5e9
-{% endmermaid %}
+```
 
 **仕組み：**
 - 2つのリバースプロキシが仮想IPを共有

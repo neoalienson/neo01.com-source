@@ -65,7 +65,7 @@ class TraditionalAuthSystem {
 
 Delegate authentication to trusted external identity providers. Users authenticate once with their identity provider, then access multiple applications without re-entering credentials.
 
-{% mermaid %}
+```mermaid
 graph LR
     User([User]) -->|1. Access App| App[Application]
     App -->|2. Redirect to IdP| IdP[Identity Provider]
@@ -78,7 +78,7 @@ graph LR
     style App fill:#51cf66,stroke:#2f9e44
     style IdP fill:#ffd43b,stroke:#f59f00
     style STS fill:#ff8787,stroke:#c92a2a
-{% endmermaid %}
+```
 
 ### How It Works
 
@@ -439,7 +439,7 @@ const provider = discovery.discoverProvider('user@company.com');
 
 Users authenticate once and access multiple applications:
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant User
     participant App1
@@ -458,7 +458,7 @@ sequenceDiagram
     App2->>IdP: Check authentication
     IdP->>App2: Return existing token
     App2->>User: Grant access (no login required)
-{% endmermaid %}
+```
 
 ### 2. Centralized Identity Management
 

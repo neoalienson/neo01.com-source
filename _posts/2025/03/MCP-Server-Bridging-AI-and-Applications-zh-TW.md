@@ -251,7 +251,8 @@ MCP伺服器通常是包裝現有系統的輕量級程序。資料庫MCP伺服�
     - 透過`Mcp-Session-Id`標頭管理工作階段
     - 透過SSE事件ID和`Last-Event-ID`標頭支援串流可恢復性
 
-{% mermaid %}graph TB
+```mermaid
+graph TB
     subgraph "本地（Stdio）"
         A["AI應用程式<br/>（MCP客戶端）"]
         B["MCP伺服器<br/>（檔案系統）"]
@@ -286,7 +287,7 @@ MCP伺服器通常是包裝現有系統的輕量級程序。資料庫MCP伺服�
     style D fill:#fff9c4,stroke:#f57c00
     style E fill:#fff9c4,stroke:#f57c00
     style J fill:#ffccbc,stroke:#d84315
-{% endmermaid %}
+```
 
 ### 客戶端整合
 
@@ -561,7 +562,8 @@ MCP採用背後的驅動因素反映了軟體開發向模組化、可重用性�
 
 好處是巨大的：加速開發、提高可靠性、增強安全性和生態系統增長。採用MCP的組織在其AI策略中獲得了靈活性，避免了供應商鎖定，同時存取不斷增長的可重用整合庫。挑戰——標準化權衡、安全考量和生態系統成熟度——是可管理的，並且隨著協定的演進而減少。
 
-{% mermaid %}graph LR
+```mermaid
+graph LR
     A["MCP採用"]
     
     B["關鍵驅動因素"]
@@ -591,7 +593,7 @@ MCP採用背後的驅動因素反映了軟體開發向模組化、可重用性�
     style B fill:#e8f5e9,stroke:#388e3d
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 展望未來，MCP的演進將由社群貢獻、企業採用以及與新興AI能力的整合來塑造。協定的可擴展性確保它可以適應新需求，同時保持向後相容性。隨著專業伺服器生態系統的成熟和AI模型獲得原生MCP支援，協定的價值主張得到加強。
 

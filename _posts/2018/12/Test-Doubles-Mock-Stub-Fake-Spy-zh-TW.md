@@ -538,7 +538,8 @@ test('spy with partial override', () => {
 
 ### 決策框架
 
-{% mermaid %}graph TD
+```mermaid
+graph TD
     A["需要替換依賴項？"]
     A -->|是| B["需要驗證互動？"]
     A -->|否| Z["使用真實物件"]
@@ -556,7 +557,7 @@ test('spy with partial override', () => {
     style F fill:#e3f2fd,stroke:#1976d2
     style G fill:#fff3e0,stroke:#f57c00
     style H fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 ### 對比矩陣
 
@@ -811,7 +812,8 @@ fake = FakeRepository()
 - **Fake** 提供工作實作——用於複雜依賴項
 - **Spy** 觀察真實物件——當真實行為很重要時使用
 
-{% mermaid %}graph LR
+```mermaid
+graph LR
     A["測試替身"]
     
     B["Stub<br/>（控制輸出）"]
@@ -841,7 +843,7 @@ fake = FakeRepository()
     style C fill:#e3f2fd,stroke:#1976d2
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#e8f5e9,stroke:#388e3c
-{% endmermaid %}
+```
 
 最好的測試使用滿足其需求的最簡單的測試替身。優先使用 stub 而不是 mock，真實物件而不是測試替身，狀態驗證而不是行為驗證。在架構邊界處模擬，而不是內部實作細節。保持測試替身簡單——複雜的替身表明設計問題。
 

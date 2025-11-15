@@ -150,7 +150,8 @@ Git LFS 用指標替換大型檔案，同時將實際內容分開儲存。
 
 LFS 需要額外的基礎設施：
 
-{% mermaid %}graph TB
+```mermaid
+graph TB
     Dev[開發者]
     Git[Git 儲存庫]
     LFS[LFS 伺服器]
@@ -168,7 +169,7 @@ LFS 需要額外的基礎設施：
     style Git fill:#f9f,stroke:#333,stroke-width:2px
     style LFS fill:#bbf,stroke:#333,stroke-width:2px
     style Storage fill:#bfb,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 !!!anote "🏗️ LFS 基礎設施"
     **元件**

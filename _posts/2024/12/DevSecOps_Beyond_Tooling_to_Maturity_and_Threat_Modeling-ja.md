@@ -47,7 +47,7 @@ excerpt: "ツールだけでは答えにならない。脅威モデリングと�
 * [Microsoft Threat Modeling Tool](https://www.microsoft.com/en-us/download/details.aspx?id=49168&WT.mc)
 * draw.io
 
-{% mermaid %}
+```mermaid
 flowchart TD
     A[資産を特定] --> B[脅威を定義]
     B --> C[データフロー図を作成]
@@ -63,7 +63,7 @@ flowchart TD
     style A fill:#4CAF50,stroke:#333,stroke-width:2px,color:#fff
     style H fill:#2196F3,stroke:#333,stroke-width:2px,color:#fff
     style J fill:#FF9800,stroke:#333,stroke-width:2px,color:#fff
-{% endmermaid %}
+```
 
 ## 脅威モデリングフレームワーク
 

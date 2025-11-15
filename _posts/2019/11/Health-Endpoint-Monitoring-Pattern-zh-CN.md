@@ -60,7 +60,7 @@ class PaymentService {
 
 公开专用端点，让外部监控工具可以定期检查以验证应用程序的健康状态。
 
-{% mermaid %}
+```mermaid
 graph TB
     A[监控工具] -->|HTTP GET /health| B[负载均衡器]
     B --> C[应用程序实例 1]
@@ -95,7 +95,7 @@ graph TB
     style C1 fill:#51cf66,stroke:#2f9e44
     style D1 fill:#51cf66,stroke:#2f9e44
     style E1 fill:#ff6b6b,stroke:#c92a2a
-{% endmermaid %}
+```
 
 ### 基本实现
 
@@ -439,7 +439,7 @@ match health_ok {
 
 从不同地理位置检查应用程序：
 
-{% mermaid %}
+```mermaid
 graph TB
     A[监控服务 美东] -->|每 30 秒检查| B[应用程序]
     C[监控服务 欧洲西部] -->|每 30 秒检查| B
@@ -453,7 +453,7 @@ graph TB
     style B fill:#4dabf7,stroke:#1971c2
     style F fill:#ff6b6b,stroke:#c92a2a
     style G fill:#ffd43b,stroke:#fab005
-{% endmermaid %}
+```
 
 ```javascript
 class MultiLocationMonitor {

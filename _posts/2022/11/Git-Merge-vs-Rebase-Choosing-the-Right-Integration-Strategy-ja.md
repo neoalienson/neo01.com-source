@@ -24,7 +24,7 @@ Git merge は、2つのブランチの履歴を結びつける新しいコミッ
 
 ### Merge の仕組み
 
-{% mermaid %}
+```mermaid
 gitGraph
     commit id: "A"
     commit id: "B"
@@ -36,7 +36,7 @@ gitGraph
     commit id: "E"
     merge feature
     commit id: "マージコミット"
-{% endmermaid %}
+```
 
 **Merge プロセス**：
 ```bash
@@ -56,7 +56,7 @@ git merge feature
 **Fast-Forward Merge**：
 分岐した変更が存在しない場合、Git は単にブランチポインタを前方に移動します。
 
-{% mermaid %}
+```mermaid
 gitGraph
     commit id: "A"
     commit id: "B"
@@ -66,7 +66,7 @@ gitGraph
     commit id: "D"
     checkout main
     merge feature
-{% endmermaid %}
+```
 
 ```bash
 # Fast-forward マージ（マージコミットなし）
@@ -106,7 +106,7 @@ Git rebase は、あるブランチから別のブランチへコミットを移
 
 ### Rebase の仕組み
 
-{% mermaid %}
+```mermaid
 gitGraph
     commit id: "A"
     commit id: "B"
@@ -119,7 +119,7 @@ gitGraph
     checkout feature
     commit id: "C'" type: HIGHLIGHT
     commit id: "D'" type: HIGHLIGHT
-{% endmermaid %}
+```
 
 **Rebase プロセス**：
 ```bash
@@ -196,7 +196,7 @@ drop jkl012 デバッグログ
 
 ### ビジュアル比較
 
-{% mermaid %}
+```mermaid
 ---
 config:
   theme: 'default'
@@ -219,7 +219,7 @@ gitGraph
     checkout main
     cherry-pick id: "機能 C"
     cherry-pick id: "機能 D"
-{% endmermaid %}
+```
 
 ### 決定マトリックス
 
@@ -262,7 +262,7 @@ git merge --no-ff feature/user-profile
 
 ### Pull Request ワークフロー
 
-{% mermaid %}
+```mermaid
 gitGraph
     commit id: "ベース"
     branch feature
@@ -277,7 +277,7 @@ gitGraph
     checkout main
     merge feature
     commit id: "PR マージ済み"
-{% endmermaid %}
+```
 
 **Pull Request のベストプラクティス**：
 ```bash
@@ -353,7 +353,7 @@ git commit -m "完全なユーザープロフィール機能を追加"
 # 結果：すべての変更を含む単一のコミットがメインに
 ```
 
-{% mermaid %}
+```mermaid
 gitGraph
     commit id: "A"
     commit id: "B"
@@ -364,7 +364,7 @@ gitGraph
     commit id: "E"
     checkout main
     commit id: "Squash された C+D+E" type: HIGHLIGHT
-{% endmermaid %}
+```
 
 **Squash マージを使用するタイミング**：
 - 機能に多くの小さなコミットがある
@@ -457,7 +457,7 @@ squash mno345 テストを修正
 
 ### 決定フローチャート
 
-{% mermaid %}
+```mermaid
 flowchart TD
     A["🔀 ブランチを統合する必要？"] --> B{"📍 公開/共有ブランチ？"}
     B -->|はい| C["✅ MERGE を使用"]
@@ -474,7 +474,7 @@ flowchart TD
     style E fill:#45b7d1
     style G fill:#96ceb4
     style H fill:#ff6b6b
-{% endmermaid %}
+```
 
 ### チームガイドラインテンプレート
 

@@ -22,7 +22,7 @@ comments: true
 
 信息安全管理体系采用分层文件结构，确保从战略到执行的完整覆盖。
 
-{% mermaid %}
+```mermaid
 graph TB
     subgraph 第一层["第一层：方针策略"]
         A["信息安全方针政策"]
@@ -48,7 +48,7 @@ graph TB
     style 第二层 fill:#f3e5f5,stroke:#9c27b0
     style 第三层 fill:#e0f2f1,stroke:#009688
     style 第四层 fill:#fff3e0,stroke:#ff9800
-{% endmermaid %}
+```
 
 **各层文件特点：**
 
@@ -95,7 +95,7 @@ graph TB
 
 **评审触发条件：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["策略评审触发"]
     B["定期评审"]
@@ -115,7 +115,7 @@ graph LR
     style A fill:#e3f2fd,stroke:#1976d2
     style B fill:#e8f5e9,stroke:#388e3d
     style C fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 **评审考虑因素：**
 
@@ -142,7 +142,7 @@ graph LR
 
 高层管理者对信息安全的支持是安全管理成功的关键。
 
-{% mermaid %}
+```mermaid
 graph TB
     A["高层管理者承诺"]
     
@@ -166,7 +166,7 @@ graph TB
     style E fill:#e8f5e9,stroke:#388e3d
     style F fill:#ffebee,stroke:#c62828
     style G fill:#ffebee,stroke:#c62828
-{% endmermaid %}
+```
 
 **高层管理者的主要职责：**
 

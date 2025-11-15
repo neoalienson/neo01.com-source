@@ -26,7 +26,7 @@ Then came distributed systems and microservices. A single user request might tou
 
 Today, we're in the **observability era**. Logs are just one pillar of observability, working alongside metrics and traces to provide complete system visibility. Modern platforms correlate logs with performance metrics, distributed traces, and security events, giving teams unprecedented insight into system behavior.
 
-{% mermaid %}
+```mermaid
 timeline
     title Evolution of Logging
     1960s-1980s : Debug Era
@@ -42,7 +42,7 @@ timeline
                   : Logs + Metrics + Traces
                   : AI-powered analysis
                   : Real-time correlation
-{% endmermaid %}
+```
 
 ## Types of Logs: A Comprehensive Taxonomy
 
@@ -230,7 +230,7 @@ Performance logs track system and application performance metrics - response tim
 **Why They Matter:**
 Performance logs help identify bottlenecks before they impact users. A gradual increase in database query time might indicate missing indexes or growing data volumes requiring optimization.
 
-{% mermaid %}
+```mermaid
 graph TB
     A([👤 User Request]) --> B([🌐 Load Balancer<br/>Access Log])
     B --> C([🖥️ Web Server<br/>Application Log])
@@ -248,7 +248,7 @@ graph TB
     style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
     style E fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style F fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-{% endmermaid %}
+```
 
 ### Transaction Logs
 
@@ -296,7 +296,7 @@ SIEM platforms aggregate logs from across your infrastructure - firewalls, serve
 
 ### How SIEM Works
 
-{% mermaid %}
+```mermaid
 graph TB
     A([🖥️ Servers]) --> E([📥 SIEM Platform])
     B([🔥 Firewalls]) --> E
@@ -316,7 +316,7 @@ graph TB
     style G fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style I fill:#ffebee,stroke:#c62828,stroke-width:2px
     style K fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-{% endmermaid %}
+```
 
 ### SIEM Use Cases
 
@@ -487,7 +487,7 @@ Collecting logs is only half the battle - extracting insights requires effective
 
 **Alerting**: Configure alerts based on thresholds, anomalies, or specific patterns.
 
-{% mermaid %}
+```mermaid
 graph LR
     A([📊 Raw Logs]) --> B([🔍 Search<br/>& Filter])
     B --> C([📈 Aggregate<br/>& Analyze])
@@ -499,7 +499,7 @@ graph LR
     style C fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style E fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style F fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
-{% endmermaid %}
+```
 
 ## The Future of Logging: AI and Automation
 

@@ -52,7 +52,7 @@ thumbnail_80: /assets/cisp/thumbnail_80.png
 
 **恶意代码特征对比：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["恶意代码分类"]
     
@@ -70,7 +70,7 @@ graph TB
     style C fill:#ffd93d
     style D fill:#6bcf7f
     style E fill:#4d96ff
-{% endmermaid %}
+```
 
 **恶意代码特征组合：**
 
@@ -164,7 +164,7 @@ graph TB
 
 **数字签名完整流程：**
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant S as 发送者
     participant R as 接收者
@@ -182,7 +182,7 @@ sequenceDiagram
     else 签名无效
         Note over R: 消息被篡改或伪造
     end
-{% endmermaid %}
+```
 
 ### 2.3 数字签名验证
 

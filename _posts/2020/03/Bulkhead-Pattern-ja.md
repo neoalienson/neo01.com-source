@@ -41,7 +41,8 @@ comments: true
 3. **障害を封じ込め**て、指定されたパーティション内に留める
 4. **サービスを維持**する、影響を受けていないコンポーネントのために
 
-{% mermaid %}block-beta
+```mermaid
+block-beta
 columns 1
   block:WITHOUT["バルクヘッドなし"]:3
     A1["サービスA"]
@@ -74,7 +75,7 @@ columns 1
   PB -.->|"障害を封じ込め"| X2
   PA --> OK1
   PC --> OK2
-{% endmermaid %}
+```
 
 ## 仕組み：リソースの隔離
 
@@ -320,7 +321,8 @@ app.post('/api/reports', rateLimiter(bulkheadConfig.lowThroughput),
     
     **リソースの最適化**：実際の使用パターンと優先度に基づいてリソースを割り当てる。
 
-{% mermaid %}graph TD
+```mermaid
+graph TD
     A["リソース分析"] --> B{"共有リソース？"}
     B -->|"はい"| C{"重要なサービス？"}
     B -->|"いいえ"| D["使用状況を監視"]
@@ -333,7 +335,7 @@ app.post('/api/reports', rateLimiter(bulkheadConfig.lowThroughput),
     
     style E fill:#51cf66,stroke:#2f9e44
     style D fill:#4dabf7,stroke:#1971c2
-{% endmermaid %}
+```
 
 ## アーキテクチャ品質属性
 

@@ -52,7 +52,7 @@ canonical_lang: zh-CN
 
 **电子邮件炸弹的影响：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["电子邮件炸弹"]
     
@@ -83,7 +83,7 @@ graph TB
     style C fill:#f44336,stroke:#b71c1c
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#ffebee,stroke:#d32f2f
-{% endmermaid %}
+```
 
 ### 1.2 电子邮件炸弹防护
 
@@ -264,7 +264,7 @@ DNS协议传输层使用：
 
 **防火墙发展历程：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["包过滤防火墙"] --> B["状态检测防火墙"]
     B --> C["应用层防火墙"]
@@ -274,7 +274,7 @@ graph LR
     style B fill:#e8f5e9,stroke:#388e3d
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 ## 五、社会工程攻击
 

@@ -27,7 +27,7 @@ thumbnail: /assets/log/thumbnail.png
 
 今天，我们处于**可观测性时代**。日志只是可观测性的一个支柱，与指标和追踪一起工作，提供完整的系统可见性。现代平台将日志与性能指标、分布式追踪和安全事件关联起来，为团队提供前所未有的系统行为洞察。
 
-{% mermaid %}
+```mermaid
 timeline
     title 日志的演进
     1960s-1980s : 调试时代
@@ -43,7 +43,7 @@ timeline
                   : 日志 + 指标 + 追踪
                   : AI 驱动的分析
                   : 实时关联
-{% endmermaid %}
+```
 
 ## 日志类型：全面的分类
 
@@ -231,7 +231,7 @@ timeline
 **为什么它们重要：**
 性能日志有助于在影响用户之前识别瓶颈。数据库查询时间的逐渐增加可能表示缺少索引或数据量增长需要优化。
 
-{% mermaid %}
+```mermaid
 graph TB
     A([👤 用户请求]) --> B([🌐 负载均衡器<br/>访问日志])
     B --> C([🖥️ Web 服务器<br/>应用程序日志])
@@ -249,7 +249,7 @@ graph TB
     style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
     style E fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style F fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-{% endmermaid %}
+```
 
 ### 事务日志
 
@@ -297,7 +297,7 @@ SIEM 平台聚合来自整个基础设施的日志——防火墙、服务器、
 
 ### SIEM 如何运作
 
-{% mermaid %}
+```mermaid
 graph TB
     A([🖥️ 服务器]) --> E([📥 SIEM 平台])
     B([🔥 防火墙]) --> E
@@ -317,7 +317,7 @@ graph TB
     style G fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style I fill:#ffebee,stroke:#c62828,stroke-width:2px
     style K fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-{% endmermaid %}
+```
 
 ### SIEM 使用案例
 
@@ -488,7 +488,7 @@ graph TB
 
 **警报**：根据阈值、异常或特定模式配置警报。
 
-{% mermaid %}
+```mermaid
 graph LR
     A([📊 原始日志]) --> B([🔍 搜索<br/>与过滤])
     B --> C([📈 聚合<br/>与分析])
@@ -500,7 +500,7 @@ graph LR
     style C fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style E fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style F fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
-{% endmermaid %}
+```
 
 ## 日志的未来：AI 与自动化
 

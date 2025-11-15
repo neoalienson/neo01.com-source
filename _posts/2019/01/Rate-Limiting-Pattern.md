@@ -60,7 +60,8 @@ Durable messaging options include:
 - Event streaming platforms (e.g., Apache Kafka)
 - Cloud-based queue services
 
-{% mermaid %}graph LR
+```mermaid
+graph LR
     A["API<br/>(High Rate)"] --> B["Durable<br/>Message Queue"]
     B --> C["Job Processor 1"]
     B --> D["Job Processor 2"]
@@ -72,7 +73,7 @@ Durable messaging options include:
     style A fill:#e1f5ff
     style B fill:#fff4e1
     style F fill:#ffe1e1
-{% endmermaid %}
+```
 
 ### Granular Time Intervals
 
@@ -140,7 +141,8 @@ If a throttled system allows 500 requests per second:
 
 Use blob storage to create one small file per logical partition. Applications obtain exclusive leases on these files for short periods (e.g., 15 seconds). For each lease granted, the application can use that partition's capacity.
 
-{% mermaid %}block-beta
+```mermaid
+block-beta
 columns 3
   block:processes:3
     columns 3
@@ -170,7 +172,7 @@ columns 3
   style processes fill:#e1f5ff
   style leases fill:#fff4e1
   style service fill:#ffe1e1
-{% endmermaid %}
+```
 
 To reduce latency, allocate a small amount of exclusive capacity for each process. Processes only seek shared capacity leases when exceeding their reserved capacity.
 
@@ -201,7 +203,8 @@ Consider an application where users submit records of various types to an API. E
 
 All components (API, job processors) are separate processes that scale independently and don't directly communicate.
 
-{% mermaid %}graph TB
+```mermaid
+graph TB
     U1["User"] --> API["API"]
     U2["User"] --> API
     
@@ -222,7 +225,7 @@ All components (API, job processors) are separate processes that scale independe
     style QB fill:#fff4e1
     style LS fill:#f0e1ff
     style DB fill:#ffe1e1
-{% endmermaid %}
+```
 
 **Workflow:**
 

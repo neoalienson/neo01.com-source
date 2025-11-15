@@ -150,7 +150,8 @@ Git LFS は大容量ファイルをポインタに置き換え、実際のコン
 
 LFS には追加のインフラストラクチャが必要です：
 
-{% mermaid %}graph TB
+```mermaid
+graph TB
     Dev[開発者]
     Git[Git リポジトリ]
     LFS[LFS サーバー]
@@ -168,7 +169,7 @@ LFS には追加のインフラストラクチャが必要です：
     style Git fill:#f9f,stroke:#333,stroke-width:2px
     style LFS fill:#bbf,stroke:#333,stroke-width:2px
     style Storage fill:#bfb,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 !!!anote "🏗️ LFS インフラストラクチャ"
     **コンポーネント**

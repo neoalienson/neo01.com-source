@@ -28,7 +28,7 @@ comments: true
 - 需要を予測
 - パターンを特定
 
-{% mermaid %}
+```mermaid
 graph TB
     subgraph OLTP["🏪 OLTPシステム"]
         T1[顧客注文]
@@ -69,7 +69,7 @@ graph TB
     style OLTP fill:#e3f2fd,stroke:#1976d2
     style OLAP fill:#f3e5f5,stroke:#7b1fa2
     style ETL fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 ## OLTP：運用の主力
 
@@ -243,7 +243,7 @@ CREATE TABLE dim_customer (
 );
 ```
 
-{% mermaid %}
+```mermaid
 graph TB
     F[ファクトテーブル<br/>fact_sales<br/>sale_id, quantity, revenue, profit]
     
@@ -259,7 +259,7 @@ graph TB
     style D1 fill:#81c784,stroke:#388e3c
     style D2 fill:#81c784,stroke:#388e3c
     style D3 fill:#81c784,stroke:#388e3c
-{% endmermaid %}
+```
 
 !!!anote "💡 OLAPの主要機能"
     **複雑なクエリ**：多次元分析

@@ -177,7 +177,7 @@ paragraph *style me*{.red} more text
 
 程式碼：
 {% codeblock %}
-{% raw %}{% mermaid %}
+{% raw %}```mermaid
 block-beta
 columns 1
   db(("DB"))
@@ -192,11 +192,12 @@ columns 1
   ID --> D
   C --> D
   style B fill:#969,stroke:#333,stroke-width:4px
-{% endmermaid %}{% endraw %}
+```{% endraw %}
 {% endcodeblock %}
 
 結果：
-{% mermaid %}block-beta
+```mermaid
+block-beta
 columns 1
   db(("DB"))
   blockArrowId6<["&nbsp;&nbsp;&nbsp;"]>(down)
@@ -210,7 +211,7 @@ columns 1
   ID --> D
   C --> D
   style B fill:#969,stroke:#333,stroke-width:4px
-{% endmermaid %}
+```
 
 即時渲染
 

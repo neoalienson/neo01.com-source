@@ -19,7 +19,8 @@ This article traces the evolution from database-centric to domain-centric design
 
 ### Domain-Driven Design Timeline
 
-{% mermaid %}timeline
+```mermaid
+timeline
     title Evolution of Domain-Centric Design
     section 1990s
         1994 : Design Patterns
@@ -48,7 +49,7 @@ This article traces the evolution from database-centric to domain-centric design
         2016 : Microservices + DDD
              : Bounded contexts as services
              : Distributed domain models
-{% endmermaid %}
+```
 
 ## The Database-Centric Problem
 
@@ -643,7 +644,8 @@ Large systems cannot have a single unified model. The term "customer" means diff
 
 Bounded contexts solve this by explicitly separating models. Each context has its own model optimized for its needs. The sales context has a Customer with order history. The support context has a Customer with support tickets. These are different models, and that's okay.
 
-{% mermaid %}graph TB
+```mermaid
+graph TB
     subgraph Sales["Sales Context"]
         SC[Customer<br/>- Orders<br/>- Credit Limit<br/>- Payment Terms]
     end
@@ -663,7 +665,7 @@ Bounded contexts solve this by explicitly separating models. Each context has it
     style Sales fill:#e1f5ff,stroke:#333,stroke-width:2px
     style Support fill:#fff4e1,stroke:#333,stroke-width:2px
     style Shipping fill:#e8f5e9,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 ### Context Mapping
 
@@ -1120,7 +1122,8 @@ Event sourcing makes domain events the source of truth. CQRS separates command h
 
 DDD fits naturally with hexagonal (ports and adapters) architecture:
 
-{% mermaid %}graph TB
+```mermaid
+graph TB
     subgraph Core["Domain Core"]
         DM[Domain Model<br/>Entities, Value Objects<br/>Aggregates, Services]
     end
@@ -1147,7 +1150,7 @@ DDD fits naturally with hexagonal (ports and adapters) architecture:
     style Core fill:#e1f5ff,stroke:#333,stroke-width:3px
     style Ports fill:#fff4e1,stroke:#333,stroke-width:2px
     style Adapters fill:#e8f5e9,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 !!!anote "🏛️ Hexagonal Architecture + DDD"
     **Structure**

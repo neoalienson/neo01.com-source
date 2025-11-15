@@ -119,7 +119,8 @@ Kerberos は効率のために対称鍵暗号を使用します：
 
 認証フローを理解することで、Kerberos がどのように安全で効率的な認証を実現するかが明らかになります：
 
-{% mermaid %}---
+```mermaid
+---
 title: Kerberos 認証フロー
 ---
 sequenceDiagram
@@ -139,7 +140,7 @@ sequenceDiagram
     Service->>KDC: チケット検証
     KDC->>Service: チケット有効
     Service->>Client: アクセス許可
-{% endmermaid %}
+```
 
 ### ステップバイステップ認証
 

@@ -47,7 +47,8 @@ thumbnail_80: /assets/architecture/thumbnail_80.png
 
 ## 反向代理如何运作？
 
-{% mermaid %}flowchart LR
+```mermaid
+flowchart LR
     Client["👤 客户端<br/>(浏览器)"]
     RP["🚪 反向代理<br/>(nginx/Traefik)"]
     
@@ -66,7 +67,7 @@ thumbnail_80: /assets/architecture/thumbnail_80.png
     
     style RP fill:#fff3e0
     style Backend fill:#e8f5e9
-{% endmermaid %}
+```
 
 **请求流程：**
 
@@ -135,7 +136,8 @@ thumbnail_80: /assets/architecture/thumbnail_80.png
 
 **解决方案：**反向代理处理所有 SSL/TLS 加密/解密。
 
-{% mermaid %}flowchart LR
+```mermaid
+flowchart LR
     Client["👤 客户端"]
     RP["🚪 反向代理"]
     App1["🖥️ 应用服务器 1"]
@@ -146,7 +148,7 @@ thumbnail_80: /assets/architecture/thumbnail_80.png
     RP <-->|"HTTP<br/>(明文)"| App2
     
     style RP fill:#fff3e0
-{% endmermaid %}
+```
 
 **优点：**
 
@@ -343,7 +345,8 @@ upstream backend {
 
 **主动-被动：**
 
-{% mermaid %}flowchart TD
+```mermaid
+flowchart TD
     Client["👤 客户端"]
     VIP["🌐 虚拟 IP<br/>(203.0.113.10)"]
     RP1["🚪 反向代理 1<br/>(主动)"]
@@ -364,7 +367,7 @@ upstream backend {
     style RP1 fill:#c8e6c9
     style RP2 fill:#ffecb3
     style Backend fill:#e8f5e9
-{% endmermaid %}
+```
 
 **运作方式：**
 - 两个反向代理共享一个虚拟 IP

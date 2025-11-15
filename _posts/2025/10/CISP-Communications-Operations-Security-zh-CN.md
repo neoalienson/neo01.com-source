@@ -107,7 +107,7 @@ canonical_lang: zh-CN
 
 **销毁方法详解：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["存储介质销毁"]
     
@@ -136,7 +136,7 @@ graph TB
     style B3 fill:#fff3e0,stroke:#f57c00
     style C1 fill:#e8f5e9,stroke:#388e3d
     style C2 fill:#c8e6c9,stroke:#2e7d32
-{% endmermaid %}
+```
 
 !!!warning "⚠️ 常见误区"
     错误认知：
@@ -158,7 +158,7 @@ graph TB
 
 **冗余类型对比：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["网络可用性提升"]
     
@@ -192,7 +192,7 @@ graph TB
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#e3f2fd,stroke:#1976d2
     style E fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 !!!anote "💡 链路冗余最重要"
     为什么链路冗余能最有效提高可用性：
@@ -229,7 +229,7 @@ graph TB
 
 **TCP/IP各层的安全协议：**
 
-{% mermaid %}
+```mermaid
 graph TB
     subgraph 应用层["应用层 (Application Layer)"]
         A1["HTTPS, FTPS, SMTPS, SSH"]
@@ -255,7 +255,7 @@ graph TB
     style 传输层 fill:#c8e6c9,stroke:#2e7d32
     style 网络层 fill:#e0f2f1,stroke:#009688
     style 网络接口层 fill:#fff3e0,stroke:#ff9800
-{% endmermaid %}
+```
 
 !!!anote "💡 SSL/TLS属于传输层"
     为什么SSL/TLS属于传输层：
@@ -301,7 +301,7 @@ graph TB
 
 Wi-Fi联盟提出了多个无线局域网安全协议，其中WPA和WPA2是两个重要的版本。
 
-{% mermaid %}
+```mermaid
 graph TB
     A["无线安全协议演进"]
     
@@ -324,7 +324,7 @@ graph TB
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#c8e6c9,stroke:#2e7d32
     style E fill:#e3f2fd,stroke:#1976d2
-{% endmermaid %}
+```
 
 !!!anote "💡 WPA vs WPA2的核心区别"
     WPA是依照802.11i标准草案制定的，而WPA2是依照802.11i正式标准制定的
@@ -402,7 +402,7 @@ TCP/IP协议是互联网的基础协议栈，采用四层模型。
 
 **TCP/IP四层模型：**
 
-{% mermaid %}
+```mermaid
 graph TB
     subgraph 应用层["应用层 (Application Layer)"]
         A1["HTTP, FTP, SMTP, DNS"]
@@ -428,7 +428,7 @@ graph TB
     style 传输层 fill:#f3e5f5,stroke:#9c27b0
     style 网络层 fill:#e0f2f1,stroke:#009688
     style 网络接口层 fill:#fff3e0,stroke:#ff9800
-{% endmermaid %}
+```
 
 **各层功能说明：**
 
@@ -559,7 +559,7 @@ graph TB
 
 **星型拓扑：**
 
-{% mermaid %}
+```mermaid
 graph TB
     C["中心交换机"]
     
@@ -581,7 +581,7 @@ graph TB
     style D fill:#e3f2fd,stroke:#1976d2
     style E fill:#e3f2fd,stroke:#1976d2
     style F fill:#e3f2fd,stroke:#1976d2
-{% endmermaid %}
+```
 
 **星型拓扑特点：**
 
@@ -699,7 +699,7 @@ graph TB
 
 正确做法：最小化反馈信息
 
-{% mermaid %}
+```mermaid
 graph TB
     A["系统错误发生"]
     
@@ -720,7 +720,7 @@ graph TB
     
     style B fill:#ffcdd2,stroke:#b71c1c
     style C fill:#c8e6c9,stroke:#2e7d32
-{% endmermaid %}
+```
 
 !!!danger "🚨 详细错误信息的安全风险"
     为什么要最小化反馈信息：
@@ -804,7 +804,7 @@ graph TB
 
 存在问题的总结：公司自身拥有优势的技术人员，系统也是自己开发的，无需进行应急演练工作，因此今年仅制定了应急演练相关流程及文档，为了不影响业务，应急演练工作不举行
 
-{% mermaid %}
+```mermaid
 graph TB
     A["应急预案管理"]
     
@@ -826,7 +826,7 @@ graph TB
     
     style B fill:#c8e6c9,stroke:#2e7d32
     style C fill:#ffcdd2,stroke:#b71c1c
-{% endmermaid %}
+```
 
 !!!danger "🚨 不进行应急演练的风险"
     为什么必须进行应急演练：
@@ -922,7 +922,7 @@ graph TB
 
 正确做法：对于重要的服务，应在测试环境中安装并确认补丁兼容性问题后再在正式生产环境中部署
 
-{% mermaid %}
+```mermaid
 graph TB
     A["漏洞补丁发布"]
     
@@ -943,7 +943,7 @@ graph TB
     
     style B fill:#ffcdd2,stroke:#b71c1c
     style C fill:#c8e6c9,stroke:#2e7d32
-{% endmermaid %}
+```
 
 !!!anote "💡 补丁管理核心原则"
     测试后部署的重要性：
@@ -1051,7 +1051,7 @@ graph TB
 
 **安全操作习惯对比：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["网上购物安全实践"]
     
@@ -1082,7 +1082,7 @@ graph TB
     
     style B fill:#c8e6c9,stroke:#2e7d32
     style C fill:#ffcdd2,stroke:#b71c1c
-{% endmermaid %}
+```
 
 !!!danger "🚨 软件不升级的安全风险"
     不升级系统和软件的严重后果：
@@ -1205,7 +1205,7 @@ graph TB
 
 **安全措施评估：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["网页浏览安全措施"]
     
@@ -1231,7 +1231,7 @@ graph TB
     
     style B fill:#c8e6c9,stroke:#2e7d32
     style C fill:#ffcdd2,stroke:#b71c1c
-{% endmermaid %}
+```
 
 !!!danger "🚨 单一浏览器策略的局限性"
     强制统一浏览器的问题：
@@ -1355,7 +1355,7 @@ graph TB
 
 随机进程名技术原理：
 
-{% mermaid %}
+```mermaid
 graph TB
     A["恶意代码启动"]
     
@@ -1379,7 +1379,7 @@ graph TB
     style B fill:#fff3e0,stroke:#f57c00
     style C fill:#ffccbc,stroke:#d84315
     style D fill:#ffebee,stroke:#c62828
-{% endmermaid %}
+```
 
 !!!anote "💡 随机进程名技术的工作原理"
     随机进程名技术每次启动时随机生成恶意代码进程名称，通过不固定的进程名称使自己不容易被发现真实的恶意代码程序名称
@@ -1544,7 +1544,7 @@ ISO9001-2000标准鼓励在制定、实施质量管理体系以及改进其有�
 
 过程方法示意图的关键要素：
 
-{% mermaid %}
+```mermaid
 graph LR
     A["顾客需求"] --> B["输入"]
     B --> C["活动"]
@@ -1560,7 +1560,7 @@ graph LR
     style C fill:#c8e6c9,stroke:#2e7d32
     style E fill:#fff3e0,stroke:#f57c00
     style F fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 !!!anote "💡 过程方法的核心要素"
     过程方法的核心是活动
@@ -1629,7 +1629,7 @@ ISO9001过程方法要素：
 
 CMM的五个成熟度等级：
 
-{% mermaid %}
+```mermaid
 graph TB
     A["CMM成熟度等级"]
     
@@ -1656,7 +1656,7 @@ graph TB
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#c8e6c9,stroke:#2e7d32
     style F fill:#e3f2fd,stroke:#1976d2
-{% endmermaid %}
+```
 
 !!!danger "🚨 对CMM的常见误解"
     错误说法：CMM的基本思想是，因为问题是由技术落后引起的，所以新技术的运用会在一定程度上提高质量、生产率和利润率
@@ -1712,7 +1712,7 @@ CMM核心理念：
 
 CMM与技术的关系：
 
-{% mermaid %}
+```mermaid
 graph TB
     A["软件质量提升"]
     
@@ -1732,7 +1732,7 @@ graph TB
     
     style B fill:#ffcdd2,stroke:#b71c1c
     style C fill:#c8e6c9,stroke:#2e7d32
-{% endmermaid %}
+```
 
 !!!anote "💡 CMM的价值"
     CMM带来的好处：

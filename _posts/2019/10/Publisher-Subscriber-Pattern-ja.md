@@ -29,7 +29,7 @@ comments: true
 - 通信は非同期
 - コンシューマーは動的にサブスクライブ/アンサブスクライブできる
 
-{% mermaid %}
+```mermaid
 graph TB
     P[パブリッシャー] --> IC[入力チャネル]
     IC --> MB{メッセージブローカー}
@@ -45,7 +45,7 @@ graph TB
     style S1 fill:#51cf66,stroke:#2f9e44
     style S2 fill:#51cf66,stroke:#2f9e44
     style S3 fill:#51cf66,stroke:#2f9e44
-{% endmermaid %}
+```
 
 ## 問題：イベント配信における密結合
 
@@ -282,7 +282,7 @@ class Subscriber {
 
 パブリッシャーとサブスクライバーは独立して動作：
 
-{% mermaid %}
+```mermaid
 graph LR
     P1[注文サービス] --> MB{メッセージブローカー}
     P2[ユーザーサービス] --> MB
@@ -300,7 +300,7 @@ graph LR
     style S2 fill:#51cf66,stroke:#2f9e44
     style S3 fill:#51cf66,stroke:#2f9e44
     style S4 fill:#51cf66,stroke:#2f9e44
-{% endmermaid %}
+```
 
 ```javascript
 // パブリッシャーはサブスクライバーを知らない

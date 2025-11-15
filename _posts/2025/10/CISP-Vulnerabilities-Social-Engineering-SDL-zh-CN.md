@@ -25,7 +25,7 @@ canonical_lang: zh-CN
 
 **漏洞载体的核心特征：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["漏洞载体特征"]
     
@@ -44,13 +44,13 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#ffebee,stroke:#c62828
-{% endmermaid %}
+```
 
 ### 1.2 常见的漏洞载体
 
 **信息安全漏洞的三大载体：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["信息安全漏洞载体"]
     
@@ -80,7 +80,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 !!!anote "💡 漏洞载体详解"
     **1️⃣ 网络协议**
@@ -138,7 +138,7 @@ graph TB
 
 **从漏洞载体到数据泄露的攻击链：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["攻击者"] --> B["发现漏洞"]
     B --> C["利用漏洞载体"]
@@ -153,7 +153,7 @@ graph LR
     
     style C fill:#ffebee,stroke:#c62828
     style E1 fill:#e8f5e9,stroke:#388e3d
-{% endmermaid %}
+```
 
 **攻击链分析：**
 
@@ -201,7 +201,7 @@ graph LR
 
 **社会工程攻击的核心特征：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["社会工程攻击"]
     
@@ -229,7 +229,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#ffebee,stroke:#c62828
-{% endmermaid %}
+```
 
 ### 2.2 社会工程的独特性
 
@@ -264,7 +264,7 @@ graph TB
 
 **社会工程攻击的主要形式：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["社会工程攻击类型"]
     
@@ -295,7 +295,7 @@ graph TB
     style E fill:#fff9c4,stroke:#f9a825
     style F fill:#f3e5f5,stroke:#7b1fa2
     style G fill:#e1f5fe,stroke:#0277bd
-{% endmermaid %}
+```
 
 
 **各类社会工程攻击详解：**
@@ -345,7 +345,7 @@ graph TB
 
 **防护社会工程攻击的多层策略：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["社会工程防护"]
     
@@ -375,7 +375,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 !!!tip "💡 防护社会工程攻击的最佳实践"
     **技术层面：**
@@ -404,7 +404,7 @@ SDL（Security Development Lifecycle，安全开发生命周期）是Microsoft�
 
 **SDL的核心理念：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["SDL核心理念"]
     
@@ -434,7 +434,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 ### 3.2 SDL需求分析阶段
 
@@ -457,7 +457,7 @@ SDL的需求分析是安全开发生命周期的第一个关键阶段，为后�
 
 **SDL需求分析的输出：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["SDL需求分析"] --> B["安全标准"]
     A --> C["合规要求"]
@@ -483,7 +483,7 @@ graph LR
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 
 ### 3.3 SDL需求分析的核心内容
@@ -645,7 +645,7 @@ SDL需求分析内容：
 
 **安全需求的三大类别：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["安全需求"]
     
@@ -675,7 +675,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 
 **安全需求分类详解：**
@@ -788,7 +788,7 @@ graph TB
 
 **安全需求分析过程：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["电商支付系统<br/>安全需求分析"]
     
@@ -823,7 +823,7 @@ graph TB
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 **具体安全需求：**
 
@@ -943,7 +943,7 @@ graph TB
 
 **漏洞载体识别：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["金融系统<br/>漏洞载体识别"]
     
@@ -978,7 +978,7 @@ graph TB
     style C1 fill:#ffebee,stroke:#c62828
     style D1 fill:#ffebee,stroke:#c62828
     style E1 fill:#e8f5e9,stroke:#388e3d
-{% endmermaid %}
+```
 
 **防护措施矩阵：**
 
@@ -1066,7 +1066,7 @@ graph TB
 
 **需要避免的常见误区：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["常见误区"]
     
@@ -1093,7 +1093,7 @@ graph TB
     style B2 fill:#e8f5e9,stroke:#388e3d
     style C2 fill:#e8f5e9,stroke:#388e3d
     style D2 fill:#e8f5e9,stroke:#388e3d
-{% endmermaid %}
+```
 
 **误区纠正表：**
 

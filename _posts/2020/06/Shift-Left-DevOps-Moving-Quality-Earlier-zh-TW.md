@@ -20,7 +20,7 @@ thumbnail: /assets/devops/thumbnail.png
 
 幾十年來，軟體開發遵循線性路徑：
 
-{% mermaid %}
+```mermaid
 graph LR
     A([📝 需求]) --> B([💻 開發])
     B --> C([🧪 測試])
@@ -28,7 +28,7 @@ graph LR
     D --> E([⚙️ 維運])
     style C fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style E fill:#ffebee,stroke:#c62828,stroke-width:2px
-{% endmermaid %}
+```
 
 開發人員編寫程式碼。完成後，他們將程式碼「扔過牆」給 QA 團隊進行測試。如果發現 bug，程式碼會返回給開發人員。這個循環不斷重複，直到通過品質關卡。
 
@@ -48,7 +48,7 @@ graph LR
 
 左移改變了根本問題，從「我們如何測試這個？」變為「我們如何從一開始就建構品質？」
 
-{% mermaid %}
+```mermaid
 graph LR
     A([📝 需求<br/>+ 測試計畫]) --> B([💻 開發<br/>+ 單元測試])
     B --> C([🧪 整合測試<br/>+ 安全掃描])
@@ -57,7 +57,7 @@ graph LR
     style A fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
     style B fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style C fill:#fff3e0,stroke:#f57c00,stroke-width:2px
-{% endmermaid %}
+```
 
 品質實踐被整合到每個階段：
 
@@ -78,7 +78,7 @@ graph LR
 
 有效的左移實踐遵循一個持續改進循環，適用於開發的每個層面：
 
-{% mermaid %}
+```mermaid
 graph LR
     A([🔍 觀察<br/>當前狀態]) --> B([🎯 計畫<br/>改進])
     B --> C([⚡ 行動<br/>實施變更])
@@ -88,7 +88,7 @@ graph LR
     style B fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style C fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style D fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
-{% endmermaid %}
+```
 
 **觀察**：了解程式碼、測試和品質指標的當前狀態。什麼有效？什麼失敗了？瓶頸在哪裡？
 
@@ -132,7 +132,7 @@ TDD 顛覆了傳統的開發流程：在編寫程式碼之前先編寫測試。
 3. **重構**：在保持測試通過的同時提高程式碼品質
 4. **重複**：轉向下一個功能
 
-{% mermaid %}
+```mermaid
 graph LR
     A([❌ 編寫<br/>失敗測試]) --> B([✅ 使<br/>測試通過])
     B --> C([🔧 重構<br/>程式碼])
@@ -140,7 +140,7 @@ graph LR
     style A fill:#ffebee,stroke:#c62828,stroke-width:2px
     style B fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style C fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
-{% endmermaid %}
+```
 
 **好處：**
 
@@ -180,7 +180,7 @@ CI 自動化了整合程式碼變更和執行測試的過程。每次提交都�
 
 **CI 如何運作：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A([👨💻 開發者<br/>提交程式碼]) --> B([🔄 CI 伺服器<br/>偵測變更])
     B --> C([🏗️ 建置<br/>應用程式])
@@ -192,7 +192,7 @@ graph TB
     style E fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style F fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style G fill:#ffebee,stroke:#c62828,stroke-width:2px
-{% endmermaid %}
+```
 
 **關鍵原則：**
 
@@ -282,7 +282,7 @@ pipeline:
 
 **容器掃描**：分析 Docker 映像的安全問題。
 
-{% mermaid %}
+```mermaid
 graph TB
     A([💻 程式碼提交]) --> B([🔍 SAST 掃描])
     B --> C([📦 相依性檢查])
@@ -293,7 +293,7 @@ graph TB
     style E fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style F fill:#ffebee,stroke:#c62828,stroke-width:2px
     style G fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-{% endmermaid %}
+```
 
 **好處：**
 
@@ -381,7 +381,7 @@ terraform apply
 
 測試金字塔指導如何在不同層面分配測試工作。
 
-{% mermaid %}
+```mermaid
 graph TB
     A[🔺 測試金字塔]
     B[端對端測試<br/>少量、慢速、昂貴]
@@ -395,7 +395,7 @@ graph TB
     style B fill:#ffebee,stroke:#c62828,stroke-width:2px
     style C fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style D fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-{% endmermaid %}
+```
 
 **單元測試（基礎）：**
 - 測試單個函式或類別

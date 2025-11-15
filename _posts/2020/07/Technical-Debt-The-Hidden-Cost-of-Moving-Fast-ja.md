@@ -48,7 +48,7 @@ Ward Cunninghamは1992年に「技術的負債」という用語を作り、完�
 
 新しいコードが古い負債の上に構築されるため、複利は加速します：
 
-{% mermaid %}
+```mermaid
 graph TB
     A([第1週:<br/>設定をハードコード<br/>2時間節約]) --> B([第2週:<br/>回避策を追加<br/>コスト: 1時間])
     B --> C([第4週:<br/>別の回避策<br/>コスト: 2時間])
@@ -60,7 +60,7 @@ graph TB
     style C fill:#ffe0b2,stroke:#f57c00,stroke-width:2px
     style D fill:#ffccbc,stroke:#d84315,stroke-width:2px
     style E fill:#ffebee,stroke:#c62828,stroke-width:3px
-{% endmermaid %}
+```
 
 **第1週**：より速く出荷するために適切なエラー処理をスキップします。
 
@@ -144,7 +144,7 @@ graph TB
     
     目標はゼロ負債ではありません - 利息の支払いが価値を提供する能力を超えないようにすることです。
 
-{% mermaid %}
+```mermaid
 graph LR
     A([⚡ 迅速なソリューション<br/>高速出荷]) --> B([📈 技術的負債<br/>蓄積])
     B --> C([⏰ 利息が複利<br/>開発が遅くなる])
@@ -154,7 +154,7 @@ graph LR
     style B fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style C fill:#ffebee,stroke:#c62828,stroke-width:2px
     style D fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
-{% endmermaid %}
+```
 
 ## 技術的負債の種類
 
@@ -268,7 +268,7 @@ graph LR
 - どのような依存関係または前提条件が必要ですか？
 - リファクタリングされたバージョンをどのようにテストしますか？
 
-{% mermaid %}
+```mermaid
 graph TB
     A([🎯 ビジネスニーズ<br/>スピードが必要]) --> B{負債は<br/>正当化される?}
     B -->|いいえ| C([✅ 適切に構築<br/>近道なし])
@@ -282,7 +282,7 @@ graph TB
     style C fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style D fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
     style I fill:#fff3e0,stroke:#f57c00,stroke-width:2px
-{% endmermaid %}
+```
 
 !!!example "🎬 正しく行われた戦略的負債"
     スタートアップは3週間で投資家に製品をデモする必要がありました。彼らは意図的な負債を引き受けることを決定しました：
@@ -495,7 +495,7 @@ graph TB
 
 技術的負債の管理は、継続的改善サイクルに従います：
 
-{% mermaid %}
+```mermaid
 graph LR
     A([🔍 観察<br/>負債を特定]) --> B([🎯 計画<br/>作業を優先順位付け])
     B --> C([⚡ 実行<br/>リファクタ & 修正])
@@ -505,7 +505,7 @@ graph LR
     style B fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style C fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style D fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
-{% endmermaid %}
+```
 
 **観察**：コードベースを定期的に評価します。静的解析ツールを使用し、メトリクスを確認し、開発者のフィードバックを聞きます。負債はどこに蓄積していますか？何が最も痛みを引き起こしていますか？
 
@@ -647,7 +647,7 @@ graph LR
 - 安全であればデータベーステーブルをクリーンアップする
 - 複雑さの削減を祝う
 
-{% mermaid %}
+```mermaid
 graph TB
     A([📊 分析<br/>機能の使用]) --> B{維持する<br/>価値がある?}
     B -->|はい| C([✅ 維持 & メンテナンス])
@@ -660,7 +660,7 @@ graph TB
     
     style C fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style H fill:#e8f5e9,stroke:#388e3c,stroke-width:3px
-{% endmermaid %}
+```
 
 #### 挑戦すべき要件のタイプ
 
@@ -943,7 +943,7 @@ graph TB
 
 **ビジュアルで提示：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A([現在の状態<br/>四半期ごとに5機能<br/>高インシデント]) --> B{負債削減に<br/>投資する?}
     B -->|いいえ| C([6ヶ月後<br/>四半期ごとに2機能<br/>危機モード])
@@ -952,7 +952,7 @@ graph TB
     style A fill:#ffebee,stroke:#c62828,stroke-width:2px
     style C fill:#b71c1c,stroke:#000,stroke-width:3px,color:#fff
     style D fill:#e8f5e9,stroke:#388e3c,stroke-width:3px
-{% endmermaid %}
+```
 
 **異議を予測：**
 
@@ -1056,7 +1056,7 @@ graph TB
 
 **要件のギャップをキャッチ**：設計することで、エッジケース、エラー処理、統合ポイントを考え抜くことを強制されます。再作業が必要なコードを書く前に、欠けている要件を発見します。
 
-{% mermaid %}
+```mermaid
 graph TB
     A([📋 要件]) --> B([🎨 設計フェーズ<br/>アーキテクチャ & 計画])
     B --> C{設計<br/>レビュー}
@@ -1071,7 +1071,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
     style E fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style G fill:#ffebee,stroke:#c62828,stroke-width:2px
-{% endmermaid %}
+```
 
 **実用的なデザインファーストプラクティス：**
 

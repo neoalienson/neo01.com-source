@@ -40,7 +40,7 @@ Vincent Driessenによって導入されたGit Flowは、スケジュールさ�
 
 ### Git Flow構造
 
-{% mermaid %}
+```mermaid
 ---
 config:
   logLevel: 'debug'
@@ -77,7 +77,7 @@ gitGraph
     commit id: "v1.0.1" tag: "v1.0.1"
     checkout develop
     merge hotfix/critical-bug
-{% endmermaid %}
+```
 
 ### Git Flow実装
 
@@ -123,7 +123,7 @@ GitHub Flowはシンプルさと継続的デプロイメントを重視し、Web
 
 ### GitHub Flow構造
 
-{% mermaid %}
+```mermaid
 ---
 config:
   logLevel: 'debug'
@@ -154,7 +154,7 @@ gitGraph
     checkout main
     merge hotfix/payment-bug
     commit id: "デプロイ" type: HIGHLIGHT
-{% endmermaid %}
+```
 
 ### GitHub Flowプロセス
 
@@ -194,7 +194,7 @@ GitLab FlowはGitHub FlowのシンプルさとGit Flowのリリース管理機�
 
 ### 環境ブランチを持つGitLab Flow
 
-{% mermaid %}
+```mermaid
 ---
 config:
   logLevel: 'debug'
@@ -232,7 +232,7 @@ gitGraph
     merge feature/mobile-app
     checkout staging
     merge main
-{% endmermaid %}
+```
 
 ### GitLab Flow実装
 
@@ -270,7 +270,7 @@ git push origin production
 
 ### 機能ブランチ構造
 
-{% mermaid %}
+```mermaid
 ---
 config:
   logLevel: 'debug'
@@ -300,7 +300,7 @@ gitGraph
     commit id: "アナリティクスリリース"
     merge feature/notifications
     commit id: "通知リリース"
-{% endmermaid %}
+```
 
 ### 高度なブランチパターン
 

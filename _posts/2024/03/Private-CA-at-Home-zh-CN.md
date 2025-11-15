@@ -44,7 +44,8 @@ CA 是签发数字证书的实体。当你的浏览器信任某个 CA 时，它�
 
 **信任链：**
 
-{% mermaid %}flowchart TD
+```mermaid
+flowchart TD
     A["🏛️ 根 CA<br/>(你的私有 CA)"] --> B["📜 中继 CA<br/>(可选)"]
     B --> C["🔒 服务器证书<br/>(homeserver.local)"]
     B --> D["🔒 服务器证书<br/>(nas.local)"]
@@ -61,7 +62,7 @@ CA 是签发数字证书的实体。当你的浏览器信任某个 CA 时，它�
     style D fill:#e8f5e9
     style E fill:#e8f5e9
     style F fill:#fff3e0
-{% endmermaid %}
+```
 
 ### 根 CA vs 中继 CA
 
@@ -419,7 +420,8 @@ acme.sh --cron
 
 **ACME 流程图：**
 
-{% mermaid %}sequenceDiagram
+```mermaid
+sequenceDiagram
     participant Client as ACME 客户端
     participant CA as step-ca
     participant Web as 网页服务器
@@ -434,7 +436,7 @@ acme.sh --cron
     CA->>Client: 8. 签发证书
     
     Note over Client,CA: 证书自动签发！
-{% endmermaid %}
+```
 
 **为什么 ACME 更好：**
 
@@ -615,7 +617,8 @@ services:
 
 ### 证书生命周期
 
-{% mermaid %}flowchart TD
+```mermaid
+flowchart TD
     A["📝 建立证书"] --> B["🚀 部署到服务器"]
     B --> C["👁️ 监控到期日"]
     C --> D{"⏰ 即将到期？"}
@@ -630,7 +633,7 @@ services:
     style D fill:#fff9c4
     style E fill:#f3e5f5
     style F fill:#e8f5e9
-{% endmermaid %}
+```
 
 ### 更新脚本
 

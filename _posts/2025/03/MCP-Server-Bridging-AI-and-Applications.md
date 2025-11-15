@@ -250,7 +250,8 @@ MCP servers are typically lightweight processes that wrap existing systems. A da
     - Manages sessions via `Mcp-Session-Id` header
     - Supports stream resumability via SSE event IDs and `Last-Event-ID` header
 
-{% mermaid %}graph TB
+```mermaid
+graph TB
     subgraph "Local (Stdio)"
         A["AI Application<br/>(MCP Client)"]
         B["MCP Server<br/>(File System)"]
@@ -285,7 +286,7 @@ MCP servers are typically lightweight processes that wrap existing systems. A da
     style D fill:#fff9c4,stroke:#f57c00
     style E fill:#fff9c4,stroke:#f57c00
     style J fill:#ffccbc,stroke:#d84315
-{% endmermaid %}
+```
 
 ### Client Integration
 
@@ -559,7 +560,8 @@ The drivers behind MCP adoption reflect broader trends in software development t
 
 The benefits are substantial: accelerated development, improved reliability, enhanced security, and ecosystem growth. Organizations adopting MCP gain flexibility in their AI strategy, avoiding vendor lock-in while accessing a growing library of reusable integrations. The challenges—standardization trade-offs, security considerations, and ecosystem maturity—are manageable and diminishing as the protocol evolves.
 
-{% mermaid %}graph LR
+```mermaid
+graph LR
     A["MCP Adoption"]
     
     B["Key Drivers"]
@@ -589,7 +591,7 @@ The benefits are substantial: accelerated development, improved reliability, enh
     style B fill:#e8f5e9,stroke:#388e3d
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 Looking forward, MCP's evolution will be shaped by community contributions, enterprise adoption, and integration with emerging AI capabilities. The protocol's extensibility ensures it can adapt to new requirements while maintaining backward compatibility. As specialized server ecosystems mature and AI models gain native MCP support, the protocol's value proposition strengthens.
 

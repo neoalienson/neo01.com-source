@@ -286,7 +286,7 @@ MVP thinking integrates naturally with Scrum:
 
 Lean Startup's core cycle works within Agile frameworks:
 
-{% mermaid %}
+```mermaid
 graph LR
     A["💡 Ideas<br/>(Assumptions)"] --> B["🔨 Build<br/>(MVP)"]
     B --> C["📊 Measure<br/>(Data)"]
@@ -297,7 +297,7 @@ graph LR
     style B fill:#51cf66
     style C fill:#4dabf7
     style D fill:#ffd43b
-{% endmermaid %}
+```
 
 !!!anote "🔄 How It Maps to Agile"
     **Ideas → Product Backlog**

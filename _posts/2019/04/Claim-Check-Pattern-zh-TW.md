@@ -37,7 +37,7 @@ Claim-Check 模式透過分離資料儲存和訊息傳遞的關注點，優雅�
 3. **僅透過訊息系統傳送權杖**
 4. **在需要時使用權杖取回負載**
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant Sender as 傳送者
     participant DataStore as 外部資料儲存
@@ -51,7 +51,7 @@ sequenceDiagram
     Receiver->>DataStore: 5. 使用權杖取回負載
     DataStore-->>Receiver: 6. 回傳負載
     Receiver->>Receiver: 7. 處理負載
-{% endmermaid %}
+```
 
 ## 運作方式：模式實作
 
@@ -180,7 +180,7 @@ function generateClaimCheck() {
     
     **複雜路由**：當訊息穿越多個元件時，透過僅在中介層傳遞權杖來避免重複的序列化/反序列化開銷。
 
-{% mermaid %}
+```mermaid
 graph TD
     A[訊息大小分析] --> B{大小 > 閾值？}
     B -->|是| C[使用 Claim-Check]
@@ -192,7 +192,7 @@ graph TD
     
     style C fill:#51cf66,stroke:#2f9e44
     style F fill:#4dabf7,stroke:#1971c2
-{% endmermaid %}
+```
 
 ## 架構品質屬性
 

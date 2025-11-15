@@ -27,7 +27,7 @@ comments: true
 - サポート機能を提供する
 - 独立して動作する
 
-{% mermaid %}
+```mermaid
 graph LR
     A[クライアント] --> B[ロードバランサー]
     B --> C[アプリケーションインスタンス1]
@@ -43,7 +43,7 @@ graph LR
     style D fill:#4dabf7,stroke:#1971c2
     style C1 fill:#ffd43b,stroke:#fab005
     style D1 fill:#ffd43b,stroke:#fab005
-{% endmermaid %}
+```
 
 ## 問題：横断的関心事
 
@@ -275,7 +275,7 @@ kubectl set image deployment/my-app \
 
 サイドカープロキシがすべてのネットワーク通信を処理：
 
-{% mermaid %}
+```mermaid
 graph LR
     A[サービスA] --> A1[プロキシSidecar]
     B[サービスB] --> B1[プロキシSidecar]
@@ -289,7 +289,7 @@ graph LR
     style B fill:#4dabf7,stroke:#1971c2
     style A1 fill:#ffd43b,stroke:#fab005
     style B1 fill:#ffd43b,stroke:#fab005
-{% endmermaid %}
+```
 
 ```javascript
 // アプリケーションはシンプルなHTTP呼び出しを行う

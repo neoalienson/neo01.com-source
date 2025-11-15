@@ -82,7 +82,7 @@ canonical_lang: zh-CN
 
 **密码系统的五个组成部分：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["密码系统"]
     
@@ -109,7 +109,7 @@ graph TB
     style D fill:#e8f5e9,stroke:#388e3d
     style E fill:#f3e5f5,stroke:#7b1fa2
     style F fill:#ffcdd2,stroke:#c62828
-{% endmermaid %}
+```
 
 **加密和解密过程：**
 
@@ -145,7 +145,7 @@ graph TB
 
 **为什么不是算法决定安全性：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["密码系统安全性"]
     
@@ -173,7 +173,7 @@ graph TB
     
     style B fill:#ffcdd2,stroke:#b71c1c
     style C fill:#c8e6c9,stroke:#2e7d32
-{% endmermaid %}
+```
 
 **各组件对安全性的影响：**
 
@@ -209,7 +209,7 @@ graph TB
 
 **密钥生命周期管理：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["密钥生成"] --> B["密钥分发"]
     B --> C["密钥存储"]
@@ -230,7 +230,7 @@ graph LR
     style D fill:#f3e5f5,stroke:#7b1fa2
     style E fill:#fce4ec,stroke:#c2185b
     style F fill:#ffebee,stroke:#c62828
-{% endmermaid %}
+```
 
 **密钥管理最佳实践：**
 
@@ -270,7 +270,7 @@ graph LR
 
 **攻击面的组成：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["攻击面"]
     
@@ -304,7 +304,7 @@ graph TB
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#e8f5e9,stroke:#388e3d
     style E fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 ### 3.2 日志共享安全问题案例
 
@@ -314,7 +314,7 @@ graph TB
 
 **问题分析：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["日志共享安全问题"]
     
@@ -342,7 +342,7 @@ graph TB
     
     style B fill:#ffcdd2,stroke:#b71c1c
     style C fill:#c8e6c9,stroke:#2e7d32
-{% endmermaid %}
+```
 
 !!!anote "💡 正确的处理措施"
     **答案：只允许特定的IP地址从前置机提取日志，对日志共享设置访问控制且限定访问的时间**
@@ -372,7 +372,7 @@ graph TB
 
 **降低攻击面的通用策略：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["攻击面降低策略"]
     
@@ -406,7 +406,7 @@ graph TB
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#e8f5e9,stroke:#388e3d
     style E fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 **具体实施措施：**
 
@@ -447,7 +447,7 @@ graph TB
 
 **安全保障评估的关键要素：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["安全保障评估"]
     
@@ -474,7 +474,7 @@ graph TB
     style D fill:#e8f5e9,stroke:#388e3d
     style E fill:#f3e5f5,stroke:#7b1fa2
     style F fill:#fce4ec,stroke:#c2185b
-{% endmermaid %}
+```
 
 !!!anote "💡 安全保障评估的五个关键要素"
     安全保障评估是一个系统化的过程，包含五个核心要素：
@@ -523,7 +523,7 @@ graph TB
 
 **评估框架的组成：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["规划阶段"] --> B["实施阶段"]
     B --> C["评估阶段"]
@@ -539,7 +539,7 @@ graph LR
     style B fill:#fff3e0,stroke:#f57c00
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 **评估内容：**
 
@@ -585,7 +585,7 @@ graph LR
 
 **密码学发展四阶段：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["古典密码<br/>阶段"]
     B["近代密码<br/>阶段"]
@@ -605,7 +605,7 @@ graph LR
     style B fill:#fff3e0,stroke:#f57c00
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#e3f2fd,stroke:#1976d2
-{% endmermaid %}
+```
 
 ### 5.2 各阶段详解
 
@@ -748,7 +748,7 @@ Enigma密码机：
 
 **重要里程碑事件：**
 
-{% mermaid %}
+```mermaid
 timeline
     title 密码学发展里程碑
     古代 : 凯撒密码
@@ -759,7 +759,7 @@ timeline
     1977 : RSA算法（现代近期）
     1997 : AES标准
     2009 : 比特币（区块链密码学）
-{% endmermaid %}
+```
 
 ## 六、公钥密码体制
 
@@ -776,7 +776,7 @@ timeline
 
 **公钥密码vs对称密码：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["密码体制"]
     
@@ -798,7 +798,7 @@ graph TB
     
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 ### 6.2 公钥密码的困难问题
 
@@ -876,7 +876,7 @@ graph TB
 
 **按用途分类：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["公钥密码算法"]
     
@@ -903,7 +903,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#e8f5e9,stroke:#388e3d
-{% endmermaid %}
+```
 
 ### 6.4 公钥密码算法应用
 
@@ -964,7 +964,7 @@ graph TB
 
 **RSA应用场景：**
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant A as Alice
     participant B as Bob
@@ -987,7 +987,7 @@ sequenceDiagram
     A->>A: 用私钥A签名消息
     A->>B: 发送消息和签名
     B->>B: 用公钥A验证签名
-{% endmermaid %}
+```
 
 **RSA密钥交换流程：**
 
@@ -1026,7 +1026,7 @@ RSA密钥交换示例：
 
 **IPSec协议架构：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["IPSec协议族"]
     
@@ -1048,7 +1048,7 @@ graph TB
     
     style B fill:#fff3e0,stroke:#f57c00
     style C fill:#e3f2fd,stroke:#1976d2
-{% endmermaid %}
+```
 
 ### 7.2 AH协议详解
 
@@ -1167,7 +1167,7 @@ ESP协议数据包结构：
 
 **IPSec两种工作模式：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["IPSec工作模式"]
     
@@ -1189,7 +1189,7 @@ graph TB
     
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 **工作模式对比：**
 
@@ -1227,7 +1227,7 @@ IPSec应用场景：
 
 **IPSec VPN示例：**
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant H1 as 主机A<br/>192.168.1.10
     participant G1 as 网关1<br/>公网IP1
@@ -1243,7 +1243,7 @@ sequenceDiagram
     G2->>H2: 原始数据包
     
     Note over G1,G2: 提供机密性、完整性、认证
-{% endmermaid %}
+```
 
 ## 八、密码分析
 
@@ -1294,7 +1294,7 @@ sequenceDiagram
 
 **密码分析的方法：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["密码分析方法"]
     
@@ -1317,7 +1317,7 @@ graph TB
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#fff9c4,stroke:#f57f17
     style E fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 **密码分析攻击类型：**
 
@@ -1405,7 +1405,7 @@ RSA算法相比DSA具有更广泛的应用能力。
 
 **RSA vs DSA详细对比：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["公钥算法对比"]
     
@@ -1427,7 +1427,7 @@ graph TB
     
     style B fill:#c8e6c9,stroke:#2e7d32
     style C fill:#fff3e0,stroke:#f57c00
-{% endmermaid %}
+```
 
 **算法特性对比表：**
 
@@ -1543,7 +1543,7 @@ graph TB
 
 **公钥加密通信流程图：**
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant S as Sue<br/>(发送方)
     participant N as 网络<br/>(可能被窃听)
@@ -1560,7 +1560,7 @@ sequenceDiagram
     
     Note over A: 使用Alice的私钥解密<br/>密文 → 明文
     Note over A: 只有Alice能解密
-{% endmermaid %}
+```
 
 **密钥使用规则：**
 

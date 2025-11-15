@@ -29,7 +29,7 @@ RPCサービスは発見可能である必要があります。クライアン�
 3. クライアントはポートを発見するためにポートマッパー/エンドポイントマッパーサービスにクエリする必要がある
 4. これにより複雑さ、レイテンシ、潜在的な障害点が追加される
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant Client as クライアント
     participant PortMapper as ポートマッパー<br/>(ポート111)
@@ -41,7 +41,7 @@ sequenceDiagram
     PortMapper->>Client: ポート54321
     Client->>RPC: 54321に接続
     Note over Client,RPC: ❌ 複雑で脆弱、<br/>ファイアウォールに不親切
-{% endmermaid %}
+```
 
 ### サーバーアプリケーションの動的ポートの問題
 
@@ -73,7 +73,7 @@ Microsoft SQL Serverは、エフェメラルポートがなぜ問題を引き起
 
 SQL Server名前付きインスタンス（例：`SERVER\\INSTANCE1`）はデフォルトで動的ポートを使用します。名前付きインスタンスが起動すると、利用可能なエフェメラルポートにバインドします。クライアントは、UDPポート1434のSQL Server Browserサービスにクエリすることでこのポートを発見します。
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant Client as クライアント
     participant Browser as SQL Browser<br/>(UDP 1434)
@@ -85,7 +85,7 @@ sequenceDiagram
     Browser->>Client: ポート49823
     Client->>Instance: 49823に接続
     Note over Client,Instance: ❌ ファイアウォールの悪夢<br/>再起動時にポート変更
-{% endmermaid %}
+```
 
 ### なぜこれが問題なのか
 
@@ -172,7 +172,7 @@ WMIはDCOM（Distributed COM）を使用し、RPCに依存しています。デ�
 - 実際のWMI通信は49152-65535のランダムなポートを使用
 - WMIが機能するためにファイアウォールで全範囲を許可する必要がある
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant Client as クライアント
     participant EPM as エンドポイントマッパー<br/>(ポート135)
@@ -182,7 +182,7 @@ sequenceDiagram
     EPM->>Client: ポート52341を使用
     Client->>WMI: 52341に接続
     Note over Client,WMI: ❌ ファイアウォールで<br/>49152-65535を開く必要がある
-{% endmermaid %}
+```
 
 ### 解決策：RPC動的ポート範囲の制限
 
@@ -362,7 +362,7 @@ spec:
 
 ## RPCベストプラクティスのまとめ
 
-{% mermaid %}
+```mermaid
 graph TB
     A(["RPCサービス設計"]) --> B{外部<br/>アクセスが必要？}
     B -->|はい| C(["固定ポートを使用<br/>1024-49151"])
@@ -377,7 +377,7 @@ graph TB
     style C fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style E fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style H fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
-{% endmermaid %}
+```
 
 ## レガシーRPCシステム
 

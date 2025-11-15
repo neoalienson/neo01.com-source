@@ -35,7 +35,7 @@ thumbnail: /assets/devops/thumbnail.png
 
 よく設計されたエンタープライズCIパイプラインは、スピードと徹底性のバランスをとる構造化されたフローに従います。
 
-{% mermaid %}
+```mermaid
 graph LR
     A([📝 コードコミット]) --> B([🔍 静的解析])
     B --> C([🏗️ ビルド])
@@ -51,7 +51,7 @@ graph LR
     style F fill:#ffebee,stroke:#c62828,stroke-width:2px
     style I fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style J fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-{% endmermaid %}
+```
 
 ### ステージ1：ソース管理統合
 
@@ -89,7 +89,7 @@ graph LR
 
 **パフォーマンステスト**：変更がシステムパフォーマンスを低下させないことを確認。代表的なワークロードで実行。
 
-{% mermaid %}
+```mermaid
 graph TB
     A([🔺 テストピラミッド])
     A --> B([E2Eテスト<br/>遅い、包括的])
@@ -99,7 +99,7 @@ graph TB
     style B fill:#ffebee,stroke:#c62828,stroke-width:2px
     style C fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style D fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-{% endmermaid %}
+```
 
 ### ステージ5：アーティファクト管理
 
@@ -168,7 +168,7 @@ jobs:
 
 **テンプレート階層**：
 
-{% mermaid %}
+```mermaid
 graph TB
     A([🎯 ベーステンプレート<br/>すべてのプロジェクトの共通ステージ]) --> B([☕ Javaテンプレート<br/>Maven/Gradle固有])
     A --> C([🐍 Pythonテンプレート<br/>pip/pytest固有])
@@ -184,7 +184,7 @@ graph TB
     style E fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style F fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style G fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-{% endmermaid %}
+```
 
 **ベーステンプレートの例**（GitHub Actions）：
 
@@ -366,7 +366,7 @@ ci-templates-repo/
 
 **チームコラボレーションモデル**：
 
-{% mermaid %}
+```mermaid
 graph TB
     A([🏢 プラットフォームチーム<br/>テンプレート所有者]) -->|維持 & 公開| B([📦 テンプレートリポジトリ])
     B -->|消費| C([👥 チームA<br/>Javaサービス])
@@ -383,7 +383,7 @@ graph TB
     style A fill:#e3f2fd,stroke:#1976d2,stroke-width:3px
     style B fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style F fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-{% endmermaid %}
+```
 
 **チームのカスタマイズレイヤー**：
 
@@ -533,7 +533,7 @@ CIインフラストラクチャを保護：
 
 真にユニバーサルなパイプラインは、役に立たないほど汎用的になるか、維持するには複雑すぎるかのどちらかになります。これらのシナリオを考えてください：
 
-{% mermaid %}
+```mermaid
 graph TB
     A([ユニバーサルパイプライン]) --> B{アプリケーションタイプ?}
     B -->|Java| C[Mavenビルド<br/>JUnitテスト<br/>JARパッケージング]
@@ -548,7 +548,7 @@ graph TB
     style E fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style F fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style G fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-{% endmermaid %}
+```
 
 **複雑さの爆発**：
 

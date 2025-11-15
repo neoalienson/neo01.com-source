@@ -103,7 +103,8 @@ The Relying Party (RP) is the application requesting authentication—your web a
 
 ### Architecture Diagram
 
-{% mermaid %}---
+```mermaid
+---
 title: OpenID Connect Architecture
 ---
 flowchart TD
@@ -125,7 +126,7 @@ flowchart TD
     
     style AuthServer fill:#f96,stroke:#333,stroke-width:3px
     style Client fill:#9cf,stroke:#333,stroke-width:2px
-{% endmermaid %}
+```
 
 The client authenticates users through the authorization server, receiving both ID tokens and access tokens. The client uses ID tokens to establish user identity. Resource servers validate access tokens to authorize API requests.
 
@@ -163,7 +164,8 @@ The Authorization Code Flow is the most secure and recommended flow:
 
 This flow keeps tokens secure by exchanging the authorization code for tokens on the backend using a client secret. The authorization code passes through the browser, but tokens don't, protecting them from browser-based attacks.
 
-{% mermaid %}---
+```mermaid
+---
 title: OpenID Connect Authentication Flow
 ---
 sequenceDiagram
@@ -184,7 +186,7 @@ sequenceDiagram
     Client->>API: API Request + Access Token
     API->>API: Validate Access Token
     API->>Client: Protected Resource
-{% endmermaid %}
+```
 
 ### Authorization Code Flow with PKCE
 

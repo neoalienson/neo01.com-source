@@ -45,7 +45,8 @@ comments: true
 3. **クライアントがステータスエンドポイントをポーリング**するか、完了時にコールバックを受け取る
 4. **クライアントが結果を取得**する、処理が完了したら
 
-{% mermaid %}sequenceDiagram
+```mermaid
+sequenceDiagram
     participant Client as クライアント
     participant API as APIゲートウェイ
     participant Queue as メッセージキュー
@@ -71,7 +72,7 @@ comments: true
     API->>Storage: 12. 結果を取得
     Storage-->>API: 13. 結果を返す
     API-->>Client: 14. 200 OK + 結果データ
-{% endmermaid %}
+```
 
 ## 仕組み：パターンの実践
 

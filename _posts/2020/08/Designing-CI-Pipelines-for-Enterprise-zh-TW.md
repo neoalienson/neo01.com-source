@@ -35,7 +35,7 @@ thumbnail: /assets/devops/thumbnail.png
 
 設計良好的企業級 CI pipeline 遵循平衡速度與徹底性的結構化流程。
 
-{% mermaid %}
+```mermaid
 graph LR
     A([📝 程式碼提交]) --> B([🔍 靜態分析])
     B --> C([🏗️ 建置])
@@ -51,7 +51,7 @@ graph LR
     style F fill:#ffebee,stroke:#c62828,stroke-width:2px
     style I fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style J fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-{% endmermaid %}
+```
 
 ### 階段 1：原始碼控制整合
 
@@ -89,7 +89,7 @@ graph LR
 
 **效能測試**：確保變更不會降低系統效能。在代表性工作負載上執行。
 
-{% mermaid %}
+```mermaid
 graph TB
     A([🔺 測試金字塔])
     A --> B([E2E 測試<br/>慢速、全面])
@@ -99,7 +99,7 @@ graph TB
     style B fill:#ffebee,stroke:#c62828,stroke-width:2px
     style C fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style D fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-{% endmermaid %}
+```
 
 ### 階段 5：產物管理
 
@@ -168,7 +168,7 @@ jobs:
 
 **範本階層**：
 
-{% mermaid %}
+```mermaid
 graph TB
     A([🎯 基礎範本<br/>所有專案的共同階段]) --> B([☕ Java 範本<br/>Maven/Gradle 特定])
     A --> C([🐍 Python 範本<br/>pip/pytest 特定])
@@ -184,7 +184,7 @@ graph TB
     style E fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style F fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style G fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-{% endmermaid %}
+```
 
 **基礎範本範例**（GitHub Actions）：
 
@@ -365,7 +365,7 @@ ci-templates-repo/
 
 **團隊協作模型**：
 
-{% mermaid %}
+```mermaid
 graph TB
     A([🏢 平台團隊<br/>範本擁有者]) -->|維護與發布| B([📦 範本儲存庫])
     B -->|使用| C([👥 團隊 A<br/>Java 服務])
@@ -382,7 +382,7 @@ graph TB
     style A fill:#e3f2fd,stroke:#1976d2,stroke-width:3px
     style B fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style F fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-{% endmermaid %}
+```
 
 **團隊的客製化層級**：
 
@@ -661,7 +661,7 @@ metrics:
 
 真正的通用 pipeline 要麼變得過於通用而無用，要麼過於複雜而難以維護。考慮這些情境：
 
-{% mermaid %}
+```mermaid
 graph TB
     A([通用 Pipeline]) --> B{應用類型？}
     B -->|Java| C[Maven 建置<br/>JUnit 測試<br/>JAR 打包]
@@ -676,7 +676,7 @@ graph TB
     style E fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style F fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style G fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-{% endmermaid %}
+```
 
 **複雜度爆炸**：
 

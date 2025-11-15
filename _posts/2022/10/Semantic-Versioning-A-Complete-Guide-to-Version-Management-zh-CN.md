@@ -46,7 +46,7 @@ thumbnail: /assets/coding/2.png
 
 让我们追踪一个库如何通过不同类型的变更进行演进：
 
-{% mermaid %}
+```mermaid
 gitGraph
     commit id: "1.0.0 初始发布"
     commit id: "1.0.1 错误修复" tag: "PATCH"
@@ -55,7 +55,7 @@ gitGraph
     commit id: "1.1.1 错误修复" tag: "PATCH"
     commit id: "1.2.0 新 API" tag: "MINOR"
     commit id: "2.0.0 破坏性变更" tag: "MAJOR"
-{% endmermaid %}
+```
 
 **版本 1.0.0 → 1.0.1**：修复用户验证中的空指针异常
 **版本 1.0.1 → 1.0.2**：修补 SQL 注入漏洞
@@ -64,7 +64,7 @@ gitGraph
 **版本 1.1.1 → 1.2.0**：添加用户角色管理 API
 **版本 1.2.0 → 2.0.0**：删除已弃用的身份验证方法
 
-{% mermaid %}
+```mermaid
 flowchart TD
     A["🔄 代码变更"] --> B{"💥 破坏性变更？"}
     B -->|是| C["📈 主版本号"]
@@ -78,7 +78,7 @@ flowchart TD
     style E fill:#4ecdc4
     style G fill:#45b7d1
     style H fill:#96ceb4
-{% endmermaid %}
+```
 
 ## 预发布版本和构建元数据
 
@@ -133,7 +133,7 @@ SemVer 定义了严格的版本比较优先级规则：
 
 以下是语义化版本控制如何与 Git 分支策略集成：
 
-{% mermaid %}
+```mermaid
 gitGraph
     commit id: "2.1.0"
     branch feature/user-search
@@ -158,13 +158,13 @@ gitGraph
     checkout main
     merge feature/breaking-auth
     commit id: "3.0.0" tag: "MAJOR"
-{% endmermaid %}
+```
 
 ### 发布分支策略
 
 对于复杂项目，使用发布分支来稳定版本：
 
-{% mermaid %}
+```mermaid
 gitGraph
     commit id: "2.0.0"
     commit id: "功能 A"
@@ -186,7 +186,7 @@ gitGraph
     checkout release/2.2
     commit id: "2.2.0-rc.1"
     commit id: "2.2.0" tag: "发布"
-{% endmermaid %}
+```
 
 ## 在项目中实施 SemVer
 
@@ -360,7 +360,7 @@ mypackage@1.3.0-beta.20221022
 ```
 
 **工作流示例**：
-{% mermaid %}
+```mermaid
 gitGraph
     commit id: "1.2.0 发布"
     commit id: "开始 1.3.0-SNAPSHOT"
@@ -371,7 +371,7 @@ gitGraph
     commit id: "更多功能"
     commit id: "发布 SNAPSHOT-3"
     commit id: "1.3.0 发布" tag: "不可变"
-{% endmermaid %}
+```
 
 ### 不可变仓库
 

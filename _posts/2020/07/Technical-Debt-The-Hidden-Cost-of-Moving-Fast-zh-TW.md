@@ -48,7 +48,7 @@ Ward Cunningham 在 1992 年創造了「技術債」這個詞，用來描述完�
 
 複利加速是因為新程式碼建立在舊債務之上：
 
-{% mermaid %}
+```mermaid
 graph TB
     A([第 1 週：<br/>寫死設定<br/>節省 2 小時]) --> B([第 2 週：<br/>加入變通方法<br/>成本：1 小時])
     B --> C([第 4 週：<br/>另一個變通方法<br/>成本：2 小時])
@@ -60,7 +60,7 @@ graph TB
     style C fill:#ffe0b2,stroke:#f57c00,stroke-width:2px
     style D fill:#ffccbc,stroke:#d84315,stroke-width:2px
     style E fill:#ffebee,stroke:#c62828,stroke-width:3px
-{% endmermaid %}
+```
 
 **第 1 週**：你跳過適當的錯誤處理以更快交付。
 
@@ -144,7 +144,7 @@ graph TB
     
     目標不是零債務——而是確保利息支付不超過你交付價值的能力。
 
-{% mermaid %}
+```mermaid
 graph LR
     A([⚡ 快速解決方案<br/>快速交付]) --> B([📈 技術債<br/>累積])
     B --> C([⏰ 利息複利<br/>開發變慢])
@@ -154,7 +154,7 @@ graph LR
     style B fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style C fill:#ffebee,stroke:#c62828,stroke-width:2px
     style D fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
-{% endmermaid %}
+```
 
 ## 技術債的類型
 

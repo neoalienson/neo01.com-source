@@ -55,7 +55,7 @@ comments: true
 
 **系统输入输出的安全挑战：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["系统输入输出"]
     
@@ -78,7 +78,7 @@ graph TB
     style A fill:#ffcdd2,stroke:#c62828
     style B fill:#fff3e0,stroke:#f57c00
     style C fill:#e3f2fd,stroke:#1976d2
-{% endmermaid %}
+```
 
 **输入输出安全防护措施：**
 
@@ -200,7 +200,7 @@ graph TB
 
 **策略体系对比：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["信息安全策略体系"]
     
@@ -221,7 +221,7 @@ graph TB
     
     style C fill:#ffcdd2,stroke:#c62828
     style C1 fill:#ffcdd2,stroke:#c62828
-{% endmermaid %}
+```
 
 **策略体系文件特征对比：**
 
@@ -331,7 +331,7 @@ graph TB
 
 **风险评估的全过程管理：**
 
-{% mermaid %}
+```mermaid
 graph LR
     A["规划阶段"]
     B["设计阶段"]
@@ -350,7 +350,7 @@ graph LR
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#f3e5f5,stroke:#7b1fa2
     style E fill:#ffebee,stroke:#c62828
-{% endmermaid %}
+```
 
 ### 1.2 风险管理流程
 
@@ -374,7 +374,7 @@ graph LR
     - 风险预测：不是标准流程中的独立阶段
     - 风险评价：是风险评估阶段的一部分，不是评估之后的独立阶段
 
-{% mermaid %}
+```mermaid
 graph TB
     A["信息安全风险管理"]
     
@@ -400,7 +400,7 @@ graph TB
     style C fill:#fff3e0,stroke:#f57c00
     style D fill:#e8f5e9,stroke:#388e3d
     style E fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 **风险管理的关键阶段：**
 
@@ -419,7 +419,7 @@ graph TB
 
 **背景建立的核心任务：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["背景建立"]
     
@@ -452,7 +452,7 @@ graph TB
     style C fill:#e8f5e9,stroke:#388e3d
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#f3e5f5,stroke:#7b1fa2
-{% endmermaid %}
+```
 
 ### 2.2 背景建立的依据
 
@@ -745,7 +745,7 @@ graph TB
 
 **软件后门的风险场景：**
 
-{% mermaid %}
+```mermaid
 graph TB
     A["软件后门"]
     
@@ -766,7 +766,7 @@ graph TB
     style A fill:#ffcdd2,stroke:#c62828
     style B fill:#fff3e0,stroke:#f57c00
     style C fill:#e3f2fd,stroke:#1976d2
-{% endmermaid %}
+```
 
 **后门风险的影响：**
 

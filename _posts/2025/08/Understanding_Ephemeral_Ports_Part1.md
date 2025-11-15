@@ -20,7 +20,7 @@ Ephemeral ports are temporary port numbers automatically assigned by your operat
 
 When you type a URL into your browser, your computer needs to establish a connection to the web server. The server listens on a well-known port (typically port 80 for HTTP or 443 for HTTPS), but your computer needs its own port number to receive the response. Your operating system automatically picks an available ephemeral port - say, port 54321 - and uses it for this specific connection.
 
-{% mermaid %}
+```mermaid
 sequenceDiagram
     participant Client as Your Computer<br/>(IP: 192.168.1.100)
     participant OS as Operating System
@@ -33,7 +33,7 @@ sequenceDiagram
     OS->>Client: Deliver data to browser
     Note over OS: Connection ends
     OS->>OS: Release port 54321<br/>for reuse
-{% endmermaid %}
+```
 
 ### The Port Number Range
 
@@ -104,7 +104,7 @@ All data flowing between your browser and the server uses this four-part identif
 
 When the communication ends, the operating system marks the ephemeral port as available for reuse. However, there's often a brief waiting period (TIME_WAIT state) to ensure no delayed packets from the old connection arrive and confuse a new connection using the same port.
 
-{% mermaid %}
+```mermaid
 stateDiagram-v2
     [*] --> Available: Port in pool
     Available --> Assigned: Application requests<br/>connection
@@ -117,7 +117,7 @@ stateDiagram-v2
         Typically 30-120 seconds
         Prevents packet confusion
     end note
-{% endmermaid %}
+```
 
 ### Multiple Simultaneous Connections
 
@@ -171,7 +171,7 @@ While servers listen on well-known ports for incoming connections, they use ephe
 
 **DHCP Clients**: When obtaining an IP address, DHCP clients use specific ports, though not always from the ephemeral range.
 
-{% mermaid %}
+```mermaid
 graph TB
     subgraph "Your Computer"
         Browser(["🌐 Web Browser"])
@@ -202,7 +202,7 @@ graph TB
     PortPool -->|54324:5432| Database
     
     style PortPool fill:#e3f2fd,stroke:#1976d2,stroke-width:3px
-{% endmermaid %}
+```
 
 ## Best Practices for Client Applications
 

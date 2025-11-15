@@ -32,7 +32,7 @@ thumbnail: /2023/06/Certificate_Transparency_The_Public_Ledger_Securing_HTTPS/th
 
 每起事件都侵蝕了對整個憑證生態系統的信任。業界需要一個不僅僅依賴信任憑證機構的解決方案。
 
-{% mermaid %}
+```mermaid
 graph TB
     A([🏢 憑證機構<br/>發行憑證]) --> B{受信任的 CA？}
     B -->|是| C([✅ 瀏覽器信任<br/>憑證])
@@ -42,7 +42,7 @@ graph TB
     style E fill:#ffebee,stroke:#c62828,stroke-width:3px
     style C fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style D fill:#fff3e0,stroke:#f57c00,stroke-width:2px
-{% endmermaid %}
+```
 
 ## 解決方案：公開、僅可附加的日誌
 
@@ -58,7 +58,7 @@ graph TB
 
 這種透明化將憑證生態系統從「信任但不驗證」轉變為「信任並始終驗證」。
 
-{% mermaid %}
+```mermaid
 graph LR
     A([🏢 憑證<br/>機構]) --> B([📝 CT 日誌 1])
     A --> C([📝 CT 日誌 2])
@@ -75,7 +75,7 @@ graph LR
     style D fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
     style G fill:#ffebee,stroke:#c62828,stroke-width:2px
     style H fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-{% endmermaid %}
+```
 
 ## 憑證透明化如何運作
 
@@ -133,7 +133,7 @@ Merkle 樹以二元樹組織憑證，其中：
 
 **僅可附加證明**：Merkle 樹結構允許證明日誌只增長（新增憑證）而沒有修改或移除舊條目。這稱為「一致性證明」。
 
-{% mermaid %}
+```mermaid
 graph TB
     A([根雜湊值<br/>H1234]) --> B([H12])
     A --> C([H34])
@@ -149,7 +149,7 @@ graph TB
     style E fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style F fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style G fill:#fff3e0,stroke:#f57c00,stroke-width:2px
-{% endmermaid %}
+```
 
 !!!anote "🔐 密碼學保證"
     Merkle 樹結構提供數學確定性：
@@ -242,7 +242,7 @@ CT 最強大的功能之一是任何人都可以監控日誌。幾個工具和�
 
 **去中心化**：基於區塊鏈的方法可以進一步去中心化 CT 日誌，減少對特定日誌營運商的依賴並增加韌性。
 
-{% mermaid %}
+```mermaid
 timeline
     title 憑證透明化的演進
     2011 : DigiNotar 漏洞
@@ -259,7 +259,7 @@ timeline
     未來 : 增強的隱私與自動化
            : 隱私保護機制
            : 自動化威脅回應
-{% endmermaid %}
+```
 
 ## 開始使用憑證透明化
 

@@ -166,7 +166,7 @@ function escapeHtml(unsafe) {
 
 将安全融入软件开发的每个阶段：
 
-{% mermaid %}
+```mermaid
 graph LR
     A["需求分析"] --> B["设计"]
     B --> C["实现"]
@@ -187,7 +187,7 @@ graph LR
     style D fill:#e1f5ff
     style E fill:#fff3e0
     style F fill:#fff3e0
-{% endmermaid %}
+```
 
 ### 各阶段的安全活动
 
@@ -273,7 +273,7 @@ pipeline:
 
 **Microsoft SDL（Security Development Lifecycle）**是将安全融入软件开发每个阶段的框架。
 
-{% mermaid %}
+```mermaid
 graph LR
     A["培训"] --> B["需求"]
     B --> C["设计"]
@@ -297,7 +297,7 @@ graph LR
     style E fill:#e8f5e9,stroke:#388e3d
     style F fill:#fce4ec,stroke:#c2185b
     style G fill:#ffebee,stroke:#c62828
-{% endmermaid %}
+```
 
 ### SDL各阶段活动
 

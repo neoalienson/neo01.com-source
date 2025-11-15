@@ -48,7 +48,7 @@ That 2-hour shortcut has now cost 6.5 hours in "interest" - and the debt still i
 
 The compounding accelerates because new code builds on old debt:
 
-{% mermaid %}
+```mermaid
 graph TB
     A([Week 1:<br/>Hardcode Config<br/>Save 2 hours]) --> B([Week 2:<br/>Workaround Added<br/>Cost: 1 hour])
     B --> C([Week 4:<br/>Another Workaround<br/>Cost: 2 hours])
@@ -60,7 +60,7 @@ graph TB
     style C fill:#ffe0b2,stroke:#f57c00,stroke-width:2px
     style D fill:#ffccbc,stroke:#d84315,stroke-width:2px
     style E fill:#ffebee,stroke:#c62828,stroke-width:3px
-{% endmermaid %}
+```
 
 **Week 1**: You skip proper error handling to ship faster.
 
@@ -144,7 +144,7 @@ At this point, you're bankrupt - unable to make progress without a major restruc
     
     The goal isn't zero debt - it's ensuring interest payments don't exceed your ability to deliver value.
 
-{% mermaid %}
+```mermaid
 graph LR
     A([⚡ Quick Solution<br/>Ship Fast]) --> B([📈 Technical Debt<br/>Accumulates])
     B --> C([⏰ Interest Compounds<br/>Slower Development])
@@ -154,7 +154,7 @@ graph LR
     style B fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style C fill:#ffebee,stroke:#c62828,stroke-width:2px
     style D fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
-{% endmermaid %}
+```
 
 ## Types of Technical Debt
 
@@ -268,7 +268,7 @@ Before writing the shortcut code, plan how you'll fix it:
 - What dependencies or prerequisites are needed?
 - How will you test the refactored version?
 
-{% mermaid %}
+```mermaid
 graph TB
     A([🎯 Business Need<br/>Requires Speed]) --> B{Is Debt<br/>Justified?}
     B -->|No| C([✅ Build Properly<br/>No Shortcuts])
@@ -282,7 +282,7 @@ graph TB
     style C fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style D fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
     style I fill:#fff3e0,stroke:#f57c00,stroke-width:2px
-{% endmermaid %}
+```
 
 !!!example "🎬 Strategic Debt Done Right"
     A startup needed to demo their product to investors in 3 weeks. They decided to take on deliberate debt:
@@ -495,7 +495,7 @@ Effective debt management requires strategy, discipline, and continuous effort. 
 
 Managing technical debt follows a continuous improvement cycle:
 
-{% mermaid %}
+```mermaid
 graph LR
     A([🔍 Observe<br/>Identify Debt]) --> B([🎯 Plan<br/>Prioritize Work])
     B --> C([⚡ Act<br/>Refactor & Fix])
@@ -505,7 +505,7 @@ graph LR
     style B fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style C fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style D fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px
-{% endmermaid %}
+```
 
 **Observe**: Regularly assess your codebase. Use static analysis tools, review metrics, and listen to developer feedback. Where is debt accumulating? What's causing the most pain?
 
@@ -647,7 +647,7 @@ Once the requirement is retired:
 - Clean up database tables if safe
 - Celebrate the reduction in complexity
 
-{% mermaid %}
+```mermaid
 graph TB
     A([📊 Analyze<br/>Feature Usage]) --> B{Worth<br/>Keeping?}
     B -->|Yes| C([✅ Keep & Maintain])
@@ -660,7 +660,7 @@ graph TB
     
     style C fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style H fill:#e8f5e9,stroke:#388e3c,stroke-width:3px
-{% endmermaid %}
+```
 
 #### Types of Requirements to Challenge
 
@@ -943,7 +943,7 @@ Approval to allocate 20% of sprint capacity to technical debt reduction, with mo
 
 **Present with Visuals:**
 
-{% mermaid %}
+```mermaid
 graph TB
     A([Current State<br/>5 features/quarter<br/>High incidents]) --> B{Invest in<br/>Debt Reduction?}
     B -->|No| C([6 Months Later<br/>2 features/quarter<br/>Crisis mode])
@@ -952,7 +952,7 @@ graph TB
     style A fill:#ffebee,stroke:#c62828,stroke-width:2px
     style C fill:#b71c1c,stroke:#000,stroke-width:3px,color:#fff
     style D fill:#e8f5e9,stroke:#388e3c,stroke-width:3px
-{% endmermaid %}
+```
 
 **Anticipate Objections:**
 
@@ -1056,7 +1056,7 @@ One of the most effective ways to prevent technical debt is thinking before codi
 
 **Catches Requirements Gaps**: Designing forces you to think through edge cases, error handling, and integration points. You discover missing requirements before writing code that will need rework.
 
-{% mermaid %}
+```mermaid
 graph TB
     A([📋 Requirements]) --> B([🎨 Design Phase<br/>Architecture & Planning])
     B --> C{Design<br/>Review}
@@ -1071,7 +1071,7 @@ graph TB
     style B fill:#e3f2fd,stroke:#1976d2,stroke-width:2px
     style E fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
     style G fill:#ffebee,stroke:#c62828,stroke-width:2px
-{% endmermaid %}
+```
 
 **Practical Design-First Practices:**
 

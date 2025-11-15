@@ -41,20 +41,20 @@ comments: true
 4. **驗證是手動的**且不頻繁
 5. **文件變得陳舊**且不可信
 
-{% mermaid %}
+```mermaid
 graph TD
     UI[使用者介面] --> API[API 閘道]
     API --> AUTH[授權器]
     AUTH --> DB[(資料庫)]
-{% endmermaid %}
+```
 
 **圖 1：預期的架構設計（帶授權器的 API 閘道）**
 
-{% mermaid %}
+```mermaid
 graph TD
     UI[使用者介面] --> API[API 閘道]
     API --> DB[(資料庫)]
-{% endmermaid %}
+```
 
 **圖 2：實際實作（現實 - 缺少授權器）**
 

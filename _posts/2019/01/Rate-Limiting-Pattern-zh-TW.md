@@ -60,7 +60,8 @@ comments: true
 - 事件串流平台（例如，Apache Kafka）
 - 雲端佇列服務
 
-{% mermaid %}graph LR
+```mermaid
+graph LR
     A["API<br/>(高速率)"] --> B["持久化<br/>訊息佇列"]
     B --> C["作業處理器 1"]
     B --> D["作業處理器 2"]
@@ -72,7 +73,7 @@ comments: true
     style A fill:#e1f5ff
     style B fill:#fff4e1
     style F fill:#ffe1e1
-{% endmermaid %}
+```
 
 ### 細粒度時間間隔
 
@@ -140,7 +141,8 @@ comments: true
 
 使用 blob 儲存為每個邏輯分割區建立一個小檔案。應用程式在短時間內（例如，15 秒）獲得這些檔案的獨佔租約。對於授予的每個租約，應用程式可以使用該分割區的容量。
 
-{% mermaid %}block-beta
+```mermaid
+block-beta
 columns 3
   block:processes:3
     columns 3
@@ -170,7 +172,7 @@ columns 3
   style processes fill:#e1f5ff
   style leases fill:#fff4e1
   style service fill:#ffe1e1
-{% endmermaid %}
+```
 
 為了減少延遲，為每個處理程序分配少量獨佔容量。處理程序只在超過其保留容量時才尋求共享容量租約。
 
@@ -201,7 +203,8 @@ columns 3
 
 所有元件（API、作業處理器）都是獨立擴展的獨立處理程序，不直接通訊。
 
-{% mermaid %}graph TB
+```mermaid
+graph TB
     U1["使用者"] --> API["API"]
     U2["使用者"] --> API
     
@@ -222,7 +225,7 @@ columns 3
     style QB fill:#fff4e1
     style LS fill:#f0e1ff
     style DB fill:#ffe1e1
-{% endmermaid %}
+```
 
 **工作流程：**
 

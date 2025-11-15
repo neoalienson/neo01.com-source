@@ -237,7 +237,8 @@ Traditional AI: You ask, it answers once, done.
 
 **The Agentic Loop:**
 
-{% mermaid %}flowchart TD
+```mermaid
+flowchart TD
     A["🎯 Goal: Build White House"] --> B["🤔 Think: What's next?"]
     B --> C{"✅ Is goal complete?"}
     C -->|"No"| D["📋 Plan: Place foundation blocks<br/>to create base structure"]
@@ -253,7 +254,7 @@ Traditional AI: You ask, it answers once, done.
     style E fill:#e8f5e9
     style F fill:#e1f5fe
     style Z fill:#c8e6c9
-{% endmermaid %}
+```
 
 **Key Concepts:**
 

@@ -56,7 +56,7 @@ services:
 
 これで、アーキテクチャの制約が明示的で強制可能になりました。
 
-{% mermaid %}
+```mermaid
 graph LR
     A[暗黙的な決定<br/>コードに隠されている] -->|変換| B[明示的な決定<br/>アーキテクチャで定義]
     B --> C[機械可読]
@@ -67,7 +67,7 @@ graph LR
     style C fill:#4dabf7,stroke:#1971c2
     style D fill:#4dabf7,stroke:#1971c2
     style E fill:#4dabf7,stroke:#1971c2
-{% endmermaid %}
+```
 
 ### AaCにおける決定タイプ
 
@@ -141,7 +141,7 @@ describe('マイクロサービスアーキテクチャ', () => {
     3. **デプロイメントゲート**：本番デプロイメント前のアーキテクチャコンプライアンス
     4. **ランタイム監視**：本番環境での継続的な検証
 
-{% mermaid %}
+```mermaid
 graph TD
     A[開発者がコミット] --> B[プレコミットフック]
     B -->|合格| C[ブランチにプッシュ]
@@ -162,7 +162,7 @@ graph TD
     style K fill:#ffd43b,stroke:#fab005
     style I fill:#51cf66,stroke:#2f9e44
     style J fill:#ff6b6b,stroke:#c92a2a
-{% endmermaid %}
+```
 
 ## コア原則4：生きたドキュメント
 
@@ -189,7 +189,7 @@ graph TD
 
 これら4つのコア原則—明示的な決定、バージョン管理、自動検証、生きたドキュメント—が連携することで、Architecture as Codeはソフトウェア開発ライフサイクル全体にわたって説得力のある利点を提供します。
 
-{% mermaid %}
+```mermaid
 graph LR
     OS[注文サービス] -->|✓ ゲートウェイ経由| AG[APIゲートウェイ]
     AG --> US[ユーザーサービス]
@@ -199,7 +199,7 @@ graph LR
     style AG fill:#51cf66,stroke:#2f9e44
     style US fill:#4dabf7,stroke:#1971c2
     style PS fill:#4dabf7,stroke:#1971c2
-{% endmermaid %}
+```
 
 ### 一貫性と品質の向上
 
