@@ -1,8 +1,0 @@
-content: |
-  - 🔐 **認証シリーズ**
-    - [シングルサインオンの進化](/ja/2010/01/Evolution-of-Single-Sign-On-From-Kerberos-to-OIDC/)
-    - [SAML を理解する](/ja/2010/02/Understanding-SAML-Enterprise-Federation-Explained/)
-    - [Kerberos を理解する](/ja/2010/03/Understanding-Kerberos-Network-Authentication-Explained/)
-    - [OpenID Connect](/ja/2014/11/OpenID-Connect-Modern-Authentication-Explained/)
-    - [OAuth 2.0 セキュリティベストプラクティス](/ja/2020/12/OAuth-2.0-Security-Best-Practices-From-Design-to-Implementation/)
-    - [アイデンティティブローカー](/ja/2021/12/Identity-Broker-Patterns/)
