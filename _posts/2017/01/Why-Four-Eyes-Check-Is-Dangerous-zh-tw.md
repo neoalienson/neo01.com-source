@@ -1,8 +1,8 @@
 ---
 title: "為什麼四眼檢查很危險"
 date: 2017-01-28
-categories: [網路安全, DevOps]
-tags: [安全, 風險管理, 治理, 人為因素, 控制, 生產, 程式碼審查]
+categories: [Cybersecurity]
+tags: [Security, Risk Management, Governance, Human Factors, Controls, Production, Code Review]
 excerpt: "四眼檢查看起來是完美的控制措施——兩個人審查關鍵操作應該能發現錯誤並防止問題。但這種廣受信任的做法在安全、生產部署和營運決策中創造了危險的盲點。"
 ---
 
