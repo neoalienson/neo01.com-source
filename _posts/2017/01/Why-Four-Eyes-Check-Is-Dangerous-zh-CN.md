@@ -4,6 +4,7 @@ date: 2017-01-28
 categories: [Cybersecurity]
 tags: [Security, Risk Management, Governance, Human Factors, Controls, Production, Code Review]
 excerpt: "四眼检查看起来是完美的控制措施——两个人审查关键操作应该能发现错误并防止问题。但这种广受信任的做法在安全、生产部署和运营决策中创造了危险的盲点。"
+lang: zh-CN
 ---
 
 四眼检查无处不在。银行要求大额交易的双重批准。IT团队在生产部署前强制要求同行审查。制造业要求质量检查的双重签署。财务部门强制要求付款的双重签名。运营团队要求两名工程师批准基础设施变更。逻辑看起来无懈可击——两个人审查同一个操作应该能发现错误并防止问题。
