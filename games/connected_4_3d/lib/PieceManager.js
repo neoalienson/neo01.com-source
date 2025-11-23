@@ -1,4 +1,4 @@
-import * as THREE from './three.module.js';
+import * as THREE from '../../../cache/three.module.local.js';
 import { getCurrentPlayer } from './gameLogic.js';
 
 export class PieceManager {

@@ -1,4 +1,4 @@
-import * as THREE from '../../../cache/three.module.js';
+import * as THREE from '../../../cache/three.module.local.js';
 import { OrbitControls } from './OrbitControls.js';
 import { 
   getBoard, 
