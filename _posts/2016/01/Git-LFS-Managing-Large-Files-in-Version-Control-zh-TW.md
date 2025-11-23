@@ -5,6 +5,7 @@ lang: zh-TW
 categories: Development
 tags: [Git, Version Control, DevOps, Storage]
 excerpt: "Git 在處理大型二進位檔案時會遇到困難，但 Git LFS 提供了解決方案。了解何時使用 LFS 以及何時完全不將檔案納入版本控制，決定了它是成為強大工具還是過度工程化的負擔。"
+thumbnail: /assets/git/thumbnail.png
 ---
 
 版本控制系統擅長追蹤文字檔案。開發者提交程式碼、審查差異、無縫合併變更。但當引入大型二進位檔案——機器學習模型權重、影片素材、編譯後的二進位檔——Git 就會陷入停滯。儲存庫膨脹到數 GB。複製需要數小時。簡單的操作就會逾時。

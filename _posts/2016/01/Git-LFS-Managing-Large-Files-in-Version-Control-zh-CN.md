@@ -5,6 +5,7 @@ lang: zh-CN
 categories: Development
 tags: [Git, Version Control, DevOps, Storage]
 excerpt: "Git 在处理大型二进制文件时会遇到困难，但 Git LFS 提供了解决方案。了解何时使用 LFS 以及何时完全不将文件纳入版本控制，决定了它是成为强大工具还是过度工程化的负担。"
+thumbnail: /assets/git/thumbnail.png
 ---
 
 版本控制系统擅长跟踪文本文件。开发者提交代码、审查差异、无缝合并变更。但当引入大型二进制文件——机器学习模型权重、视频素材、编译后的二进制文件——Git 就会陷入停滞。仓库膨胀到数 GB。克隆需要数小时。简单的操作就会超时。

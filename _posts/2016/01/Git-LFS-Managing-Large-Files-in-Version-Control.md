@@ -5,6 +5,7 @@ lang: en
 categories: Development
 tags: [Git, Version Control, DevOps, Storage]
 excerpt: "Git struggles with large binary files, but Git LFS promises a solution. Understanding when to use LFS versus when to keep files out of version control entirely determines whether it becomes a powerful tool or an over-engineered burden."
+thumbnail: /assets/git/thumbnail.png
 ---
 
 Version control systems excel at tracking text files. Developers commit code, review diffs, and merge changes seamlessly. But introduce large binary files—machine learning model weights, video assets, compiled binaries—and Git grinds to a halt. Repositories balloon to gigabytes. Clones take hours. Simple operations timeout.
