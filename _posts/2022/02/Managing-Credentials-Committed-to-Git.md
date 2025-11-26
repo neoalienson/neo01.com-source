@@ -315,23 +315,12 @@ All collaborators must update their local copies:
     - Verify everyone has updated successfully
     
     **Instructions for Team Members**
-    ```bash
-    # Save any local work
-    git stash
-    
-    # Fetch rewritten history
-    git fetch origin
-    
-    # Reset to match remote
-    git reset --hard origin/main
-    
-    # Clean up old references
-    git reflog expire --expire=now --all
-    git gc --prune=now --aggressive
-    
-    # Restore local work
-    git stash pop
-    ```
+    - Save any local work: `git stash`
+    - Fetch rewritten history: `git fetch origin`
+    - Reset to match remote: `git reset --hard origin/main`
+    - Clean up old references: `git reflog expire --expire=now --all`
+    - Run garbage collection: `git gc --prune=now --aggressive`
+    - Restore local work: `git stash pop`
     
     **Handling Conflicts**
     - Local commits must be rebased onto new history

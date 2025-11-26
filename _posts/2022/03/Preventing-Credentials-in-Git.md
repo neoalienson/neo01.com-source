@@ -334,25 +334,16 @@ git secrets --scan-history
 
 !!!tip "🔧 git-secrets Configuration"
     **Global Installation**
-    ```bash
-    # Install hooks in all repositories
-    git secrets --install ~/.git-templates/git-secrets
-    git config --global init.templateDir ~/.git-templates/git-secrets
-    ```
+    - Install hooks in all repositories: `git secrets --install ~/.git-templates/git-secrets`
+    - Set global template directory: `git config --global init.templateDir ~/.git-templates/git-secrets`
     
     **Custom Patterns**
-    ```bash
-    # Add organization-specific patterns
-    git secrets --add 'MYCOMPANY_[A-Z_]+\s*=\s*["\'][^"\']+["\']'
-    git secrets --add 'internal[_-]token\s*:\s*["\'][^"\']+["\']'
-    ```
+    - Add organization-specific patterns: `git secrets --add 'MYCOMPANY_[A-Z_]+\s*=\s*["\'][^"\']+["\']'`
+    - Add internal token patterns: `git secrets --add 'internal[_-]token\s*:\s*["\'][^"\']+["\']'`
     
     **Allowed Patterns**
-    ```bash
-    # Whitelist false positives
-    git secrets --add --allowed 'example_password'
-    git secrets --add --allowed 'test_api_key'
-    ```
+    - Whitelist false positives: `git secrets --add --allowed 'example_password'`
+    - Allow test keys: `git secrets --add --allowed 'test_api_key'`
 
 ### Using detect-secrets
 
@@ -395,13 +386,8 @@ repos:
     - Supports multiple secret types
     
     **Managing False Positives**
-    ```bash
-    # Audit baseline
-    detect-secrets audit .secrets.baseline
-    
-    # Update baseline
-    detect-secrets scan --baseline .secrets.baseline
-    ```
+    - Audit baseline: `detect-secrets audit .secrets.baseline`
+    - Update baseline: `detect-secrets scan --baseline .secrets.baseline`
 
 ### Using pre-commit Framework
 
@@ -864,10 +850,7 @@ GitHub automatically scans public repositories:
     - Integration with security advisories
     
     **Enabling Push Protection**
-    ```
-    Settings → Code security and analysis
-    → Push protection → Enable
-    ```
+    - Settings → Code security and analysis → Push protection → Enable
 
 ### GitLab Secret Detection
 

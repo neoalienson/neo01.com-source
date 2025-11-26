@@ -93,25 +93,26 @@ Database-centric design produces anemic domain models:
     - Services contain all behavior
     - Objects are just data containers
     
-    **Example**
-    ```java
-    public class Order {
-        private Long id;
-        private List<OrderItem> items;
-        private BigDecimal total;
-        
-        // Only getters and setters
-        public Long getId() { return id; }
-        public void setId(Long id) { this.id = id; }
-        // ... more getters/setters
-    }
-    ```
-    
     **Why It's Problematic**
     - Violates object-oriented principles
     - Business logic separated from data
     - Difficult to maintain invariants
     - No encapsulation
+
+**Example of Anemic Model:**
+
+```java
+public class Order {
+    private Long id;
+    private List<OrderItem> items;
+    private BigDecimal total;
+    
+    // Only getters and setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    // ... more getters/setters
+}
+```
 
 Anemic models treat objects as data structures rather than behavioral entities. All business logic lives in service classes that manipulate these data containers. This procedural approach disguised as object-oriented code makes systems harder to understand and maintain.
 
@@ -399,34 +400,35 @@ DDD advocates for rich domain models with behavior:
     - Encapsulation protects invariants
     - Expressive, intention-revealing methods
     
-    **Example**
-    ```java
-    public class Order {
-        private OrderId id;
-        private List<OrderLine> lines;
-        private OrderStatus status;
-        
-        public void addLine(Product product, int quantity) {
-            if (status != OrderStatus.DRAFT) {
-                throw new IllegalStateException(
-                    "Cannot modify submitted order");
-            }
-            lines.add(new OrderLine(product, quantity));
-        }
-        
-        public Money calculateTotal() {
-            return lines.stream()
-                .map(OrderLine::getSubtotal)
-                .reduce(Money.ZERO, Money::add);
-        }
-    }
-    ```
-    
     **Benefits**
     - Business logic centralized
     - Invariants enforced
     - Self-documenting code
     - Easier to test and maintain
+
+**Example of Rich Model:**
+
+```java
+public class Order {
+    private OrderId id;
+    private List<OrderLine> lines;
+    private OrderStatus status;
+    
+    public void addLine(Product product, int quantity) {
+        if (status != OrderStatus.DRAFT) {
+            throw new IllegalStateException(
+                "Cannot modify submitted order");
+        }
+        lines.add(new OrderLine(product, quantity));
+    }
+    
+    public Money calculateTotal() {
+        return lines.stream()
+            .map(OrderLine::getSubtotal)
+            .reduce(Money.ZERO, Money::add);
+    }
+}
+```
 
 Rich models encapsulate business rules within domain objects. The Order class knows how to add items, calculate totals, and enforce business constraints. Business logic doesn't scatter across service layers—it lives where it belongs.
 
@@ -770,48 +772,56 @@ These patterns provide a structured way to organize domain logic. Entities have 
 Understanding the distinction is crucial:
 
 !!!anote "🔍 Entity vs Value Object"
-    **Entity Example: Customer**
-    ```java
-    public class Customer {
-        private CustomerId id;  // Identity
-        private String name;
-        private Email email;
-        
-        // Identity-based equality
-        public boolean equals(Object o) {
-            if (!(o instanceof Customer)) return false;
-            Customer other = (Customer) o;
-            return id.equals(other.id);
-        }
-    }
-    ```
+    **Key Differences**
+    - Entities have identity and lifecycle
+    - Value objects are defined by their attributes
+    - Entities are mutable, value objects are immutable
+    - Different equality semantics
+
+**Entity Example: Customer**
+
+```java
+public class Customer {
+    private CustomerId id;  // Identity
+    private String name;
+    private Email email;
     
-    **Value Object Example: Money**
-    ```java
-    public class Money {
-        private final BigDecimal amount;
-        private final Currency currency;
-        
-        // Immutable
-        public Money add(Money other) {
-            if (!currency.equals(other.currency)) {
-                throw new IllegalArgumentException(
-                    "Cannot add different currencies");
-            }
-            return new Money(
-                amount.add(other.amount), 
-                currency);
-        }
-        
-        // Value-based equality
-        public boolean equals(Object o) {
-            if (!(o instanceof Money)) return false;
-            Money other = (Money) o;
-            return amount.equals(other.amount) 
-                && currency.equals(other.currency);
-        }
+    // Identity-based equality
+    public boolean equals(Object o) {
+        if (!(o instanceof Customer)) return false;
+        Customer other = (Customer) o;
+        return id.equals(other.id);
     }
-    ```
+}
+```
+
+**Value Object Example: Money**
+
+```java
+public class Money {
+    private final BigDecimal amount;
+    private final Currency currency;
+    
+    // Immutable
+    public Money add(Money other) {
+        if (!currency.equals(other.currency)) {
+            throw new IllegalArgumentException(
+                "Cannot add different currencies");
+        }
+        return new Money(
+            amount.add(other.amount), 
+            currency);
+    }
+    
+    // Value-based equality
+    public boolean equals(Object o) {
+        if (!(o instanceof Money)) return false;
+        Money other = (Money) o;
+        return amount.equals(other.amount) 
+            && currency.equals(other.currency);
+    }
+}
+```
 
 Entities are compared by identity—two customers with the same name are different if they have different IDs. Value objects are compared by value—two Money objects with the same amount and currency are identical.
 
@@ -826,27 +836,28 @@ Domain events capture important business occurrences:
     - Immutable
     - Enable loose coupling
     
-    **Example**
-    ```java
-    public class OrderPlaced {
-        private final OrderId orderId;
-        private final CustomerId customerId;
-        private final Instant occurredAt;
-        
-        public OrderPlaced(OrderId orderId, 
-                          CustomerId customerId) {
-            this.orderId = orderId;
-            this.customerId = customerId;
-            this.occurredAt = Instant.now();
-        }
-    }
-    ```
-    
     **Benefits**
     - Explicit business events
     - Decoupled components
     - Audit trail
     - Enables event sourcing
+
+**Example Domain Event:**
+
+```java
+public class OrderPlaced {
+    private final OrderId orderId;
+    private final CustomerId customerId;
+    private final Instant occurredAt;
+    
+    public OrderPlaced(OrderId orderId, 
+                      CustomerId customerId) {
+        this.orderId = orderId;
+        this.customerId = customerId;
+        this.occurredAt = Instant.now();
+    }
+}
+```
 
 Domain events make implicit concepts explicit. Instead of silently updating state, the system publishes OrderPlaced events. Other parts of the system can react—send confirmation emails, update inventory, trigger shipping. Events enable loose coupling and provide a natural audit trail.
 
@@ -956,29 +967,30 @@ A trading system demonstrates DDD's power:
     - Regulatory compliance
     - Market hours and holidays
     
-    **Rich Domain Model**
-    ```java
-    public class Trade {
-        public void execute() {
-            if (!market.isOpen()) {
-                throw new MarketClosedException();
-            }
-            if (exceedsPositionLimit()) {
-                throw new PositionLimitException();
-            }
-            if (!passesRiskCheck()) {
-                throw new RiskLimitException();
-            }
-            // Execute trade
-        }
-    }
-    ```
-    
     **Benefits**
     - Business rules centralized
     - Compliance enforced in code
     - Domain experts can review logic
     - Changes tracked to business needs
+
+**Rich Domain Model Example:**
+
+```java
+public class Trade {
+    public void execute() {
+        if (!market.isOpen()) {
+            throw new MarketClosedException();
+        }
+        if (exceedsPositionLimit()) {
+            throw new PositionLimitException();
+        }
+        if (!passesRiskCheck()) {
+            throw new RiskLimitException();
+        }
+        // Execute trade
+    }
+}
+```
 
 Financial systems have complex, evolving rules. DDD's focus on the domain model keeps this complexity manageable. When regulations change, the domain model changes. The code reflects current business understanding.
 

@@ -166,31 +166,29 @@ graph TB
 - **Firebase Firestore**：实时同步、适合移动和网络应用程序
 
 !!!example "🎬 真实世界情境"
-    博客平台使用 MongoDB 存储文章：
-    
-    ```json
+    博客平台使用 MongoDB 存储文章。与文章相关的所有内容 - 作者信息、评论、标签 - 都在一个文档中。检索文章只需要一次查询，不需要多次连接。
+
+```json
+{
+  "_id": "article123",
+  "title": "理解数据库",
+  "author": {
+    "name": "Jane Doe",
+    "email": "jane@neo01.com"
+  },
+  "content": "...",
+  "tags": ["数据库", "教程"],
+  "comments": [
     {
-      "_id": "article123",
-      "title": "理解数据库",
-      "author": {
-        "name": "Jane Doe",
-        "email": "jane@neo01.com"
-      },
-      "content": "...",
-      "tags": ["数据库", "教程"],
-      "comments": [
-        {
-          "user": "John",
-          "text": "很棒的文章！",
-          "timestamp": "2023-07-15T10:30:00Z"
-        }
-      ],
-      "published": true,
-      "views": 1523
+      "user": "John",
+      "text": "很棒的文章！",
+      "timestamp": "2023-07-15T10:30:00Z"
     }
-    ```
-    
-    与文章相关的所有内容 - 作者信息、评论、标签 - 都在一个文档中。检索文章只需要一次查询，不需要多次连接。
+  ],
+  "published": true,
+  "views": 1523
+}
+```
 
 ## 键值存储：速度与简单性
 
@@ -234,24 +232,22 @@ graph TB
 - **Riak**：分布式、高可用性、适合大规模部署
 
 !!!example "🎬 真实世界情境"
-    电子商务网站使用 Redis 进行会话管理：
-    
-    ```
-    Key: "session:abc123"
-    Value: {
-      "user_id": 456,
-      "cart": ["item1", "item2"],
-      "last_activity": "2023-07-15T14:30:00Z"
-    }
-    ```
-    
-    当用户发出请求时，应用程序：
+    电子商务网站使用 Redis 进行会话管理。当用户发出请求时，应用程序：
     1. 从 cookie 中提取会话 ID
     2. 在 Redis 中查找会话数据（< 1ms）
     3. 使用会话上下文处理请求
     4. 如需要则更新会话数据
     
     这比每次请求都查询关系型数据库快得多。
+
+```
+Key: "session:abc123"
+Value: {
+  "user_id": 456,
+  "cart": ["item1", "item2"],
+  "last_activity": "2023-07-15T14:30:00Z"
+}
+```
 
 ## 列族存储：大规模分析
 
@@ -299,17 +295,13 @@ graph TB
 - **Amazon Redshift**：数据仓库服务、SQL 接口、列式存储
 
 !!!example "🎬 真实世界情境"
-    社交媒体平台使用 Cassandra 存储用户活动：
-    
-    ```
-    Column Family: user_activity
-    Row Key: user_id
-    Columns: timestamp1:action1, timestamp2:action2, ...
-    ```
-    
-    查询：「显示用户 123 在 2023 年 7 月的所有帖子」
-    
-    数据库有效地仅扫描用户 123 的相关列族，按时间戳过滤。即使有数百万用户的数十亿活动，查询也能在毫秒内返回结果。
+    社交媒体平台使用 Cassandra 存储用户活动。查询：「显示用户 123 在 2023 年 7 月的所有帖子」。数据库有效地仅扫描用户 123 的相关列族，按时间戳过滤。即使有数百万用户的数十亿活动，查询也能在毫秒内返回结果。
+
+```
+Column Family: user_activity
+Row Key: user_id
+Columns: timestamp1:action1, timestamp2:action2, ...
+```
 
 ```mermaid
 graph LR
@@ -370,19 +362,17 @@ graph LR
 - **JanusGraph**：分布式、可扩展、构建在其他存储后端之上
 
 !!!example "🎬 真实世界情境"
-    社交网络使用 Neo4j 建模用户关系：
-    
-    ```cypher
-    // 寻找喜欢徒步的朋友的朋友
-    MATCH (me:User {id: 123})-[:FRIENDS_WITH]->(friend)-[:FRIENDS_WITH]->(fof)
-    WHERE (fof)-[:LIKES]->(:Interest {name: "hiking"})
-      AND NOT (me)-[:FRIENDS_WITH]->(fof)
-    RETURN fof.name, COUNT(friend) as mutual_friends
-    ORDER BY mutual_friends DESC
-    LIMIT 10
-    ```
-    
-    此查询有效地遍历关系以寻找朋友推荐。在关系型数据库中，这需要多次自连接，速度会慢得多。
+    社交网络使用 Neo4j 建模用户关系。此查询有效地遍历关系以寻找朋友推荐。在关系型数据库中，这需要多次自连接，速度会慢得多。
+
+```cypher
+// 寻找喜欢徒步的朋友的朋友
+MATCH (me:User {id: 123})-[:FRIENDS_WITH]->(friend)-[:FRIENDS_WITH]->(fof)
+WHERE (fof)-[:LIKES]->(:Interest {name: "hiking"})
+  AND NOT (me)-[:FRIENDS_WITH]->(fof)
+RETURN fof.name, COUNT(friend) as mutual_friends
+ORDER BY mutual_friends DESC
+LIMIT 10
+```
 
 ```mermaid
 graph TB
@@ -439,26 +429,22 @@ graph TB
 - **Amazon Timestream**：完全托管、无服务器时间序列数据库
 
 !!!example "🎬 真实世界情境"
-    IoT 平台使用 InfluxDB 存储传感器数据：
-    
-    ```
-    Measurement: temperature
-    Tags: sensor_id=sensor1, location=warehouse_a
-    Fields: value=22.5
-    Timestamp: 2023-07-15T14:30:00Z
-    ```
-    
-    查询：「过去 7 天每小时的平均温度」
-    
-    ```sql
-    SELECT MEAN(value) 
-    FROM temperature 
-    WHERE location='warehouse_a' 
-      AND time > now() - 7d 
-    GROUP BY time(1h)
-    ```
-    
-    数据库有效地聚合数百万个数据点，在毫秒内返回结果。
+    IoT 平台使用 InfluxDB 存储传感器数据。查询：「过去 7 天每小时的平均温度」。数据库有效地聚合数百万个数据点，在毫秒内返回结果。
+
+```
+Measurement: temperature
+Tags: sensor_id=sensor1, location=warehouse_a
+Fields: value=22.5
+Timestamp: 2023-07-15T14:30:00Z
+```
+
+```sql
+SELECT MEAN(value) 
+FROM temperature 
+WHERE location='warehouse_a' 
+  AND time > now() - 7d 
+GROUP BY time(1h)
+```
 
 ## 向量数据库：AI 的相似性搜索
 
@@ -602,27 +588,7 @@ graph TB
     **何时使用：**小型企业数据库、部门应用程序、稍后将迁移到适当数据库的快速原型。对于严肃的应用程序，请改用 PostgreSQL 或 MySQL。
 
 !!!example "🎬 真实世界情境"
-    移动健身应用程序使用 SQLite 存储锻炼数据：
-    
-    ```sql
-    -- 应用程序首次启动时创建表格
-    CREATE TABLE workouts (
-      id INTEGER PRIMARY KEY,
-      date TEXT,
-      type TEXT,
-      duration INTEGER,
-      calories INTEGER
-    );
-    
-    -- 在本地存储锻炼数据
-    INSERT INTO workouts VALUES 
-      (1, '2023-07-15', 'Running', 30, 250);
-    
-    -- 查询锻炼历史
-    SELECT * FROM workouts 
-    WHERE date >= date('now', '-7 days')
-    ORDER BY date DESC;
-    ```
+    移动健身应用程序使用 SQLite 存储锻炼数据。
     
     **好处：**
     - 离线工作 - 用户可以在没有互联网的情况下记录锻炼
@@ -630,6 +596,26 @@ graph TB
     - 私密 - 数据保留在用户的设备上
     - 简单 - 基本功能不需要后端服务器
     - 稍后同步 - 可在连接可用时上传到云
+
+```sql
+-- 应用程序首次启动时创建表格
+CREATE TABLE workouts (
+  id INTEGER PRIMARY KEY,
+  date TEXT,
+  type TEXT,
+  duration INTEGER,
+  calories INTEGER
+);
+
+-- 在本地存储锻炼数据
+INSERT INTO workouts VALUES 
+  (1, '2023-07-15', 'Running', 30, 250);
+
+-- 查询锻炼历史
+SELECT * FROM workouts 
+WHERE date >= date('now', '-7 days')
+ORDER BY date DESC;
+```
 
 ```mermaid
 graph TB

@@ -119,19 +119,11 @@ sequenceDiagram
     - 客户端将用户重定向至授权服务器
     
     **2. 授权请求**
-    ```
-    GET /authorize?
-      response_type=code&
-      client_id=CLIENT_ID&
-      redirect_uri=https://client.app/callback&
-      scope=read:photos&
-      state=RANDOM_STRING
-    ```
-    - `response_type=code`：请求授权码
-    - `client_id`：识别客户端应用程序
-    - `redirect_uri`：发送授权码的位置
-    - `scope`：请求的权限
-    - `state`：CSRF 保护令牌
+    - response_type=code：请求授权码
+    - client_id：识别客户端应用程序
+    - redirect_uri：发送授权码的位置
+    - scope：请求的权限
+    - state：CSRF 保护令牌
     
     **3. 用户身份验证和同意**
     - 授权服务器验证用户身份（登录画面）
@@ -139,53 +131,71 @@ sequenceDiagram
     - 用户批准或拒绝访问
     
     **4. 发行授权码**
-    ```
-    HTTP/1.1 302 Found
-    Location: https://client.app/callback?
-      code=AUTHORIZATION_CODE&
-      state=RANDOM_STRING
-    ```
     - 短期授权码（通常 10 分钟）
     - 通过浏览器重定向返回
     - 仅限单次使用
     
     **5. 令牌交换**
-    ```
-    POST /token
-    Content-Type: application/x-www-form-urlencoded
-    
-    grant_type=authorization_code&
-    code=AUTHORIZATION_CODE&
-    redirect_uri=https://client.app/callback&
-    client_id=CLIENT_ID&
-    client_secret=CLIENT_SECRET
-    ```
     - 客户端交换授权码获得令牌
     - 包含客户端密钥（服务器对服务器）
     - 授权码被消耗并失效
     
     **6. 访问令牌响应**
-    ```json
-    {
-      "access_token": "eyJhbGciOiJSUzI1NiIs...",
-      "token_type": "Bearer",
-      "expires_in": 3600,
-      "refresh_token": "tGzv3JOkF0XG5Qx2TlKWIA",
-      "scope": "read:photos"
-    }
-    ```
     - 用于 API 请求的访问令牌
     - 用于获得新访问令牌的刷新令牌
     - 以秒为单位的过期时间
     
     **7. API 访问**
-    ```
-    GET /api/photos
-    Authorization: Bearer eyJhbGciOiJSUzI1NiIs...
-    ```
     - 客户端在请求中包含访问令牌
     - 资源服务器验证令牌
     - 返回受保护的资源
+
+**授权请求示例：**
+```
+GET /authorize?
+  response_type=code&
+  client_id=CLIENT_ID&
+  redirect_uri=https://client.app/callback&
+  scope=read:photos&
+  state=RANDOM_STRING
+```
+
+**授权码响应：**
+```
+HTTP/1.1 302 Found
+Location: https://client.app/callback?
+  code=AUTHORIZATION_CODE&
+  state=RANDOM_STRING
+```
+
+**令牌交换请求：**
+```
+POST /token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=authorization_code&
+code=AUTHORIZATION_CODE&
+redirect_uri=https://client.app/callback&
+client_id=CLIENT_ID&
+client_secret=CLIENT_SECRET
+```
+
+**访问令牌响应：**
+```json
+{
+  "access_token": "eyJhbGciOiJSUzI1NiIs...",
+  "token_type": "Bearer",
+  "expires_in": 3600,
+  "refresh_token": "tGzv3JOkF0XG5Qx2TlKWIA",
+  "scope": "read:photos"
+}
+```
+
+**API 访问示例：**
+```
+GET /api/photos
+Authorization: Bearer eyJhbGciOiJSUzI1NiIs...
+```
 
 ### 为什么这个流程是安全的
 
@@ -313,43 +323,41 @@ sequenceDiagram
     - 随机字符串：43-128 个字符
     - 密码学随机
     - 每次授权请求都重新生成
-    - 示例：`dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk`
+    - 示例：dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk
     
     **代码挑战**
     - 代码验证器的 SHA256 哈希（建议）
     - 或纯文本代码验证器（不建议）
     - 在授权请求中发送
-    - 示例：`E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM`
+    - 示例：E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM
     
-    **授权请求**
-    ```
-    GET /authorize?
-      response_type=code&
-      client_id=CLIENT_ID&
-      redirect_uri=https://app.example.com/callback&
-      scope=read:photos&
-      code_challenge=E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM&
-      code_challenge_method=S256
-    ```
-    
-    **令牌请求**
-    ```
-    POST /token
-    
-    grant_type=authorization_code&
-    code=AUTHORIZATION_CODE&
-    redirect_uri=https://app.example.com/callback&
-    client_id=CLIENT_ID&
-    code_verifier=dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk
-    ```
-    
-    **服务器验证**
-    ```
-    SHA256(code_verifier) == stored_code_challenge
-    ```
+    **服务器验证过程**
     - 授权服务器将 code_challenge 与授权码一起存储
     - 在令牌交换期间验证 code_verifier 符合
     - 防止授权码拦截攻击
+    - 公式：SHA256(code_verifier) == stored_code_challenge
+
+**PKCE 授权请求：**
+```
+GET /authorize?
+  response_type=code&
+  client_id=CLIENT_ID&
+  redirect_uri=https://app.example.com/callback&
+  scope=read:photos&
+  code_challenge=E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM&
+  code_challenge_method=S256
+```
+
+**PKCE 令牌请求：**
+```
+POST /token
+
+grant_type=authorization_code&
+code=AUTHORIZATION_CODE&
+redirect_uri=https://app.example.com/callback&
+client_id=CLIENT_ID&
+code_verifier=dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk
+```
 
 ### 为什么 PKCE 有效
 
@@ -412,33 +420,49 @@ sequenceDiagram
 
 ### 实现
 
-!!!anote "📋 客户端凭证请求"
-    **令牌请求**
-    ```
-    POST /token
-    Content-Type: application/x-www-form-urlencoded
+!!!anote "📋 客户端凭证实现"
+    **令牌请求过程**
+    - 向授权服务器发送客户端凭证
+    - 包含请求的范围
+    - 直接接收访问令牌
     
-    grant_type=client_credentials&
-    client_id=CLIENT_ID&
-    client_secret=CLIENT_SECRET&
-    scope=api:read api:write
-    ```
+    **令牌响应内容**
+    - 用于 API 请求的访问令牌
+    - 令牌类型（通常为 Bearer）
+    - 以秒为单位的过期时间
+    - 授予的范围
     
-    **令牌响应**
-    ```json
-    {
-      "access_token": "eyJhbGciOiJSUzI1NiIs...",
-      "token_type": "Bearer",
-      "expires_in": 3600,
-      "scope": "api:read api:write"
-    }
-    ```
-    
-    **API 请求**
-    ```
-    GET /api/resources
-    Authorization: Bearer eyJhbGciOiJSUzI1NiIs...
-    ```
+    **API 请求使用**
+    - 在 Authorization 标头中包含访问令牌
+    - 使用 Bearer 令牌格式
+    - 资源服务器验证令牌
+
+**客户端凭证令牌请求：**
+```
+POST /token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials&
+client_id=CLIENT_ID&
+client_secret=CLIENT_SECRET&
+scope=api:read api:write
+```
+
+**令牌响应：**
+```json
+{
+  "access_token": "eyJhbGciOiJSUzI1NiIs...",
+  "token_type": "Bearer",
+  "expires_in": 3600,
+  "scope": "api:read api:write"
+}
+```
+
+**API 请求：**
+```
+GET /api/resources
+Authorization: Bearer eyJhbGciOiJSUzI1NiIs...
+```
 
 这个流程很直接，但需要安全存储客户端凭证，且应该只用于服务对服务通信。
 
@@ -471,19 +495,24 @@ OAuth 经常被误解，导致安全漏洞和实现错误。
 
 许多应用程序仅使用 OAuth 实现「使用 [服务] 登录」：
 
+**不安全的实现示例：**
+```javascript
+// 不安全：不要这样做
+app.get('/callback', async (req, res) => {
+  const { code } = req.query;
+  const token = await exchangeCodeForToken(code);
+  
+  // 假设令牌属于合法用户
+  const user = await getUserFromToken(token);
+  req.session.userId = user.id; // 有漏洞
+});
+```
+
 !!!warning "⚠️ 不安全的 OAuth 登录模式"
     **有缺陷的实现**
-    ```javascript
-    // 不安全：不要这样做
-    app.get('/callback', async (req, res) => {
-      const { code } = req.query;
-      const token = await exchangeCodeForToken(code);
-      
-      // 假设令牌属于合法用户
-      const user = await getUserFromToken(token);
-      req.session.userId = user.id; // 有漏洞
-    });
-    ```
+    - 应用程序交换授权码获得访问令牌
+    - 假设令牌属于合法用户
+    - 直接使用令牌设置会话（有漏洞）
     
     **攻击场景**
     - 攻击者获得其账户的有效访问令牌
@@ -502,35 +531,35 @@ OpenID Connect (OIDC) 扩展 OAuth 2.0 以提供身份验证：
     - UserInfo 端点：标准化的用户信息
     - 身份验证验证
     - 标准化声明（sub、name、email 等）
-    
-    **安全实现**
-    ```javascript
-    // 安全：使用 OpenID Connect
-    app.get('/callback', async (req, res) => {
-      const { code } = req.query;
-      const tokens = await exchangeCodeForTokens(code);
-      
-      // 验证 ID 令牌签名和声明
-      const idToken = await verifyIdToken(tokens.id_token);
-      
-      // ID 令牌包含已验证的用户身份
-      req.session.userId = idToken.sub;
-      req.session.email = idToken.email;
-    });
-    ```
-    
-    **ID 令牌结构**
-    ```json
-    {
-      "iss": "https://auth.example.com",
-      "sub": "user123",
-      "aud": "client_id",
-      "exp": 1661529600,
-      "iat": 1661526000,
-      "email": "user@example.com",
-      "email_verified": true
-    }
-    ```
+
+**安全实现：**
+```javascript
+// 安全：使用 OpenID Connect
+app.get('/callback', async (req, res) => {
+  const { code } = req.query;
+  const tokens = await exchangeCodeForTokens(code);
+  
+  // 验证 ID 令牌签名和声明
+  const idToken = await verifyIdToken(tokens.id_token);
+  
+  // ID 令牌包含已验证的用户身份
+  req.session.userId = idToken.sub;
+  req.session.email = idToken.email;
+});
+```
+
+**ID 令牌结构：**
+```json
+{
+  "iss": "https://auth.example.com",
+  "sub": "user123",
+  "aud": "client_id",
+  "exp": 1661529600,
+  "iat": 1661526000,
+  "email": "user@example.com",
+  "email_verified": true
+}
+```
 
 使用 OAuth 2.0 进行 API 授权。使用 OpenID Connect 进行用户身份验证。
 ## 令牌安全最佳实践

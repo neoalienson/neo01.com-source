@@ -297,25 +297,27 @@ jobs:
 ```
 
 !!!tip "📦 模板库组织"
-    按范围组织模板：
-    
-    ```
-    .github/workflows/templates/
-    ├── base/
-    │   ├── ci-pipeline.yml          # 核心 CI 流程
-    │   └── cd-pipeline.yml          # 核心 CD 流程
-    ├── languages/
-    │   ├── java-pipeline.yml
-    │   ├── python-pipeline.yml
-    │   └── nodejs-pipeline.yml
-    ├── mixins/
-    │   ├── security-scan.yml
-    │   ├── compliance-check.yml
-    │   └── performance-test.yml
-    └── specialized/
-        ├── microservice-pipeline.yml
-        └── frontend-pipeline.yml
-    ```
+    按范围组织模板以获得更好的可维护性和可发现性。
+
+**模板目录结构：**
+
+```
+.github/workflows/templates/
+├── base/
+│   ├── ci-pipeline.yml          # 核心 CI 流程
+│   └── cd-pipeline.yml          # 核心 CD 流程
+├── languages/
+│   ├── java-pipeline.yml
+│   ├── python-pipeline.yml
+│   └── nodejs-pipeline.yml
+├── mixins/
+│   ├── security-scan.yml
+│   ├── compliance-check.yml
+│   └── performance-test.yml
+└── specialized/
+    ├── microservice-pipeline.yml
+    └── frontend-pipeline.yml
+```
 
 **模板版本控制策略**：
 
@@ -637,11 +639,14 @@ metrics:
 - **网络隔离**：在隔离网络中执行构建以防止横向移动
 
 !!!warning "⚠️ 常见安全错误"
+    **避免这些关键安全陷阱：**
     - 在环境变量中存储凭证
     - 以管理员权限执行构建
     - 允许在 pull request 中执行任意代码
     - 将内部服务暴露给构建运行器
     - 未能定期轮换凭证
+    
+    **影响：** 这些错误可能导致凭证盗用、权限提升和对生产系统的未授权访问。
 
 ## 单一 Pipeline 适用所有应用的辩论
 
@@ -832,21 +837,23 @@ stages:
 !!!warning "⚠️ 反模式：超大型 Pipeline"
     避免创建具有数百个条件分支的单一 pipeline：
     
-    ```yaml
-    # 不要这样做
-    if language == "java":
-      if build_tool == "maven":
-        if java_version == "8":
-          run: mvn -Djava.version=8 package
-        elif java_version == "11":
-          run: mvn -Djava.version=11 package
-      elif build_tool == "gradle":
-        # ... 更多条件
-    elif language == "python":
-      # ... 更多条件
-    ```
-    
     这变得难以维护且容易出错。改用模板。
+
+**反模式示例：**
+
+```yaml
+# 不要这样做
+if language == "java":
+  if build_tool == "maven":
+    if java_version == "8":
+      run: mvn -Djava.version=8 package
+    elif java_version == "11":
+      run: mvn -Djava.version=11 package
+  elif build_tool == "gradle":
+    # ... 更多条件
+elif language == "python":
+  # ... 更多条件
+```
 
 ### 结论：务实的灵活性
 

@@ -1279,61 +1279,6 @@ def etl_orders():
     - **Daily:** Data is 0-24 hours old
     - **Weekly:** Data is 0-7 days old
     
-    **Example Timeline:**
-    ```
-    Monday 9:00 AM - Customer places order
-    Monday 11:59 PM - ETL job starts
-    Tuesday 12:30 AM - ETL job completes
-    Tuesday 8:00 AM - Analyst views report
-    
-    Data age: ~23 hours old
-    ```
-    
-    **Why Batch is Better for Analytics:**
-    
-    1. **Consistent snapshots:**
-    ```python
-    # ETL captures point-in-time snapshot
-    # All data from same moment
-    snapshot_time = '2024-01-15 23:59:59'
-    
-    orders = extract_orders(snapshot_time)
-    customers = extract_customers(snapshot_time)
-    products = extract_products(snapshot_time)
-    
-    # All data is consistent
-    # No mid-query changes
-    ```
-    
-    2. **No mid-query updates:**
-    ```
-    Read Replica (live):
-    Start query: 100 orders
-    Mid-query: 5 new orders arrive
-    End query: Inconsistent results
-    
-    Data Warehouse (batch):
-    Start query: 100 orders
-    Mid-query: No changes (static snapshot)
-    End query: Consistent results
-    ```
-    
-    3. **Optimized for aggregations:**
-    ```sql
-    -- Pre-aggregated in warehouse
-    SELECT date, SUM(revenue) 
-    FROM daily_sales_summary  -- Already summed
-    WHERE date >= '2024-01-01';
-    -- Returns in 10ms
-    
-    -- vs Read Replica
-    SELECT DATE(created_at), SUM(total)
-    FROM orders  -- Must scan millions of rows
-    WHERE created_at >= '2024-01-01'
-    GROUP BY DATE(created_at);
-    -- Returns in 30 seconds
-    ```
-    
     **When Staleness is Acceptable:**
     - ✅ Monthly/quarterly reports
     - ✅ Year-over-year comparisons
@@ -1346,49 +1291,104 @@ def etl_orders():
     - ❌ Real-time alerts
     - ❌ Customer-facing data
     - ❌ Fraud detection
+
+**Example Timeline:**
+```
+Monday 9:00 AM - Customer places order
+Monday 11:59 PM - ETL job starts
+Tuesday 12:30 AM - ETL job completes
+Tuesday 8:00 AM - Analyst views report
+
+Data age: ~23 hours old
+```
+
+**Why Batch is Better for Analytics:**
+
+**1. Consistent snapshots:**
+```python
+# ETL captures point-in-time snapshot
+# All data from same moment
+snapshot_time = '2024-01-15 23:59:59'
+
+orders = extract_orders(snapshot_time)
+customers = extract_customers(snapshot_time)
+products = extract_products(snapshot_time)
+
+# All data is consistent
+# No mid-query changes
+```
+
+**2. No mid-query updates:**
+```
+Read Replica (live):
+Start query: 100 orders
+Mid-query: 5 new orders arrive
+End query: Inconsistent results
+
+Data Warehouse (batch):
+Start query: 100 orders
+Mid-query: No changes (static snapshot)
+End query: Consistent results
+```
+
+**3. Optimized for aggregations:**
+```sql
+-- Pre-aggregated in warehouse
+SELECT date, SUM(revenue) 
+FROM daily_sales_summary  -- Already summed
+WHERE date >= '2024-01-01';
+-- Returns in 10ms
+
+-- vs Read Replica
+SELECT DATE(created_at), SUM(total)
+FROM orders  -- Must scan millions of rows
+WHERE created_at >= '2024-01-01'
+GROUP BY DATE(created_at);
+-- Returns in 30 seconds
+```
+
+**Hybrid Solution: Lambda Architecture**
+```
+Real-time layer (Read Replica):
+- Last 24 hours of data
+- Fast queries on recent data
+- Acceptable lag: seconds
+
+Batch layer (Data Warehouse):
+- Historical data (>24 hours)
+- Complex analytics
+- Acceptable lag: hours/days
+
+Serving layer:
+- Merges both views
+- Recent + Historical
+```
+
+**Example Implementation:**
+```python
+def get_sales_report(start_date, end_date):
+    today = datetime.now().date()
     
-    **Hybrid Solution: Lambda Architecture**
-    ```
-    Real-time layer (Read Replica):
-    - Last 24 hours of data
-    - Fast queries on recent data
-    - Acceptable lag: seconds
-    
-    Batch layer (Data Warehouse):
-    - Historical data (>24 hours)
-    - Complex analytics
-    - Acceptable lag: hours/days
-    
-    Serving layer:
-    - Merges both views
-    - Recent + Historical
-    ```
-    
-    **Example Implementation:**
-    ```python
-    def get_sales_report(start_date, end_date):
-        today = datetime.now().date()
-        
-        # Historical data from warehouse
-        if end_date < today:
-            return warehouse.query(
-                "SELECT * FROM sales_summary WHERE date BETWEEN ? AND ?",
-                start_date, end_date
-            )
-        
-        # Recent data from replica
-        historical = warehouse.query(
+    # Historical data from warehouse
+    if end_date < today:
+        return warehouse.query(
             "SELECT * FROM sales_summary WHERE date BETWEEN ? AND ?",
-            start_date, today - timedelta(days=1)
+            start_date, end_date
         )
-        
-        recent = replica.query(
-            "SELECT * FROM orders WHERE date >= ?",
-            today
-        )
-        
-        return merge(historical, recent)
-    ```
+    
+    # Recent data from replica
+    historical = warehouse.query(
+        "SELECT * FROM sales_summary WHERE date BETWEEN ? AND ?",
+        start_date, today - timedelta(days=1)
+    )
+    
+    recent = replica.query(
+        "SELECT * FROM orders WHERE date >= ?",
+        today
+    )
+    
+    return merge(historical, recent)
+```
 
 **Comparison:**
 

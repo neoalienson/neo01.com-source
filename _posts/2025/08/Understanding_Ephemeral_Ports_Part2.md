@@ -155,10 +155,8 @@ New-NetFirewallRule -DisplayName "SQL INSTANCE1" -Direction Inbound -Protocol TC
 !!!warning "⚠️ Common Mistake"
     After configuring static ports, many administrators forget to update connection strings. Clients will still try to use SQL Browser (UDP 1434) unless you explicitly specify the port in the connection string:
     
-    ```
     ❌ Server=MYSERVER\INSTANCE1  (still uses SQL Browser)
     ✅ Server=MYSERVER,1435        (uses static port directly)
-    ```
 
 ## Windows RPC and WMI: Configuring Static Ports
 

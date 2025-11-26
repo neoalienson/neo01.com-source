@@ -75,21 +75,21 @@ Application logs record events within your software code - function calls, varia
 - Implement log rotation to prevent disk space exhaustion
 
 !!!example "🎬 Real-World Application Log"
-    ```json
-    {
-      "timestamp": "2020-06-15T14:32:18.123Z",
-      "level": "ERROR",
-      "service": "payment-service",
-      "correlationId": "abc-123-def-456",
-      "message": "Payment processing failed",
-      "error": "Gateway timeout",
-      "userId": "user_789",
-      "amount": 99.99,
-      "stackTrace": "..."
-    }
-    ```
-    
     This structured format makes it easy to search for all errors related to a specific user, correlation ID, or error type.
+
+```json
+{
+  "timestamp": "2020-06-15T14:32:18.123Z",
+  "level": "ERROR",
+  "service": "payment-service",
+  "correlationId": "abc-123-def-456",
+  "message": "Payment processing failed",
+  "error": "Gateway timeout",
+  "userId": "user_789",
+  "amount": 99.99,
+  "stackTrace": "..."
+}
+```
 
 ### System Logs
 
@@ -173,25 +173,27 @@ Audit logs provide a detailed, immutable record of who did what, when, and where
 | **Detail Level** | Technical details | Business actions |
 
 !!!example "🎯 Audit Log Example"
-    ```json
-    {
-      "timestamp": "2020-06-15T14:32:18.123Z",
-      "actor": {
-        "userId": "admin_123",
-        "ipAddress": "192.168.1.100",
-        "userAgent": "Mozilla/5.0..."
-      },
-      "action": "DELETE",
-      "resource": {
-        "type": "customer_record",
-        "id": "cust_456",
-        "name": "John Doe"
-      },
-      "result": "SUCCESS",
-      "reason": "Customer requested data deletion (GDPR)",
-      "signature": "a3f5b8c9d2e1..."
-    }
-    ```
+    Complete audit trail with actor, action, resource, and cryptographic signature for integrity.
+
+```json
+{
+  "timestamp": "2020-06-15T14:32:18.123Z",
+  "actor": {
+    "userId": "admin_123",
+    "ipAddress": "192.168.1.100",
+    "userAgent": "Mozilla/5.0..."
+  },
+  "action": "DELETE",
+  "resource": {
+    "type": "customer_record",
+    "id": "cust_456",
+    "name": "John Doe"
+  },
+  "result": "SUCCESS",
+  "reason": "Customer requested data deletion (GDPR)",
+  "signature": "a3f5b8c9d2e1..."
+}
+```
 
 ### Access Logs
 

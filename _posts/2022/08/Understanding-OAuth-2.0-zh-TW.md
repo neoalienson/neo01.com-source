@@ -120,19 +120,11 @@ sequenceDiagram
     - 客戶端將使用者重新導向至授權伺服器
     
     **2. 授權請求**
-    ```
-    GET /authorize?
-      response_type=code&
-      client_id=CLIENT_ID&
-      redirect_uri=https://client.app/callback&
-      scope=read:photos&
-      state=RANDOM_STRING
-    ```
-    - `response_type=code`：請求授權碼
-    - `client_id`：識別客戶端應用程式
-    - `redirect_uri`：發送授權碼的位置
-    - `scope`：請求的權限
-    - `state`：CSRF 保護權杖
+    - response_type=code：請求授權碼
+    - client_id：識別客戶端應用程式
+    - redirect_uri：發送授權碼的位置
+    - scope：請求的權限
+    - state：CSRF 保護權杖
     
     **3. 使用者身份驗證和同意**
     - 授權伺服器驗證使用者身份（登入畫面）
@@ -140,53 +132,71 @@ sequenceDiagram
     - 使用者核准或拒絕存取
     
     **4. 發行授權碼**
-    ```
-    HTTP/1.1 302 Found
-    Location: https://client.app/callback?
-      code=AUTHORIZATION_CODE&
-      state=RANDOM_STRING
-    ```
     - 短期授權碼（通常 10 分鐘）
     - 透過瀏覽器重新導向回傳
     - 僅限單次使用
     
     **5. 權杖交換**
-    ```
-    POST /token
-    Content-Type: application/x-www-form-urlencoded
-    
-    grant_type=authorization_code&
-    code=AUTHORIZATION_CODE&
-    redirect_uri=https://client.app/callback&
-    client_id=CLIENT_ID&
-    client_secret=CLIENT_SECRET
-    ```
     - 客戶端交換授權碼取得權杖
     - 包含客戶端密鑰（伺服器對伺服器）
     - 授權碼被消耗並失效
     
     **6. 存取權杖回應**
-    ```json
-    {
-      "access_token": "eyJhbGciOiJSUzI1NiIs...",
-      "token_type": "Bearer",
-      "expires_in": 3600,
-      "refresh_token": "tGzv3JOkF0XG5Qx2TlKWIA",
-      "scope": "read:photos"
-    }
-    ```
     - 用於 API 請求的存取權杖
     - 用於取得新存取權杖的重新整理權杖
     - 以秒為單位的過期時間
     
     **7. API 存取**
-    ```
-    GET /api/photos
-    Authorization: Bearer eyJhbGciOiJSUzI1NiIs...
-    ```
     - 客戶端在請求中包含存取權杖
     - 資源伺服器驗證權杖
     - 回傳受保護的資源
+
+**授權請求範例：**
+```
+GET /authorize?
+  response_type=code&
+  client_id=CLIENT_ID&
+  redirect_uri=https://client.app/callback&
+  scope=read:photos&
+  state=RANDOM_STRING
+```
+
+**授權碼回應：**
+```
+HTTP/1.1 302 Found
+Location: https://client.app/callback?
+  code=AUTHORIZATION_CODE&
+  state=RANDOM_STRING
+```
+
+**權杖交換請求：**
+```
+POST /token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=authorization_code&
+code=AUTHORIZATION_CODE&
+redirect_uri=https://client.app/callback&
+client_id=CLIENT_ID&
+client_secret=CLIENT_SECRET
+```
+
+**存取權杖回應：**
+```json
+{
+  "access_token": "eyJhbGciOiJSUzI1NiIs...",
+  "token_type": "Bearer",
+  "expires_in": 3600,
+  "refresh_token": "tGzv3JOkF0XG5Qx2TlKWIA",
+  "scope": "read:photos"
+}
+```
+
+**API 存取範例：**
+```
+GET /api/photos
+Authorization: Bearer eyJhbGciOiJSUzI1NiIs...
+```
 
 ### 為什麼這個流程是安全的
 
@@ -315,43 +325,41 @@ sequenceDiagram
     - 隨機字串：43-128 個字元
     - 密碼學隨機
     - 每次授權請求都重新產生
-    - 範例：`dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk`
+    - 範例：dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk
     
     **代碼挑戰**
     - 代碼驗證器的 SHA256 雜湊（建議）
     - 或純文字代碼驗證器（不建議）
     - 在授權請求中發送
-    - 範例：`E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM`
+    - 範例：E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM
     
-    **授權請求**
-    ```
-    GET /authorize?
-      response_type=code&
-      client_id=CLIENT_ID&
-      redirect_uri=https://app.example.com/callback&
-      scope=read:photos&
-      code_challenge=E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM&
-      code_challenge_method=S256
-    ```
-    
-    **權杖請求**
-    ```
-    POST /token
-    
-    grant_type=authorization_code&
-    code=AUTHORIZATION_CODE&
-    redirect_uri=https://app.example.com/callback&
-    client_id=CLIENT_ID&
-    code_verifier=dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk
-    ```
-    
-    **伺服器驗證**
-    ```
-    SHA256(code_verifier) == stored_code_challenge
-    ```
+    **伺服器驗證過程**
     - 授權伺服器將 code_challenge 與授權碼一起儲存
     - 在權杖交換期間驗證 code_verifier 符合
     - 防止授權碼攔截攻擊
+    - 公式：SHA256(code_verifier) == stored_code_challenge
+
+**PKCE 授權請求：**
+```
+GET /authorize?
+  response_type=code&
+  client_id=CLIENT_ID&
+  redirect_uri=https://app.example.com/callback&
+  scope=read:photos&
+  code_challenge=E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM&
+  code_challenge_method=S256
+```
+
+**PKCE 權杖請求：**
+```
+POST /token
+
+grant_type=authorization_code&
+code=AUTHORIZATION_CODE&
+redirect_uri=https://app.example.com/callback&
+client_id=CLIENT_ID&
+code_verifier=dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk
+```
 
 ### 為什麼 PKCE 有效
 
@@ -413,33 +421,49 @@ sequenceDiagram
 
 ### 實作
 
-!!!anote "📋 客戶端憑證請求"
-    **權杖請求**
-    ```
-    POST /token
-    Content-Type: application/x-www-form-urlencoded
+!!!anote "📋 客戶端憑證實作"
+    **權杖請求過程**
+    - 向授權伺服器發送客戶端憑證
+    - 包含請求的範圍
+    - 直接接收存取權杖
     
-    grant_type=client_credentials&
-    client_id=CLIENT_ID&
-    client_secret=CLIENT_SECRET&
-    scope=api:read api:write
-    ```
+    **權杖回應內容**
+    - 用於 API 請求的存取權杖
+    - 權杖類型（通常為 Bearer）
+    - 以秒為單位的過期時間
+    - 授予的範圍
     
-    **權杖回應**
-    ```json
-    {
-      "access_token": "eyJhbGciOiJSUzI1NiIs...",
-      "token_type": "Bearer",
-      "expires_in": 3600,
-      "scope": "api:read api:write"
-    }
-    ```
-    
-    **API 請求**
-    ```
-    GET /api/resources
-    Authorization: Bearer eyJhbGciOiJSUzI1NiIs...
-    ```
+    **API 請求使用**
+    - 在 Authorization 標頭中包含存取權杖
+    - 使用 Bearer 權杖格式
+    - 資源伺服器驗證權杖
+
+**客戶端憑證權杖請求：**
+```
+POST /token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials&
+client_id=CLIENT_ID&
+client_secret=CLIENT_SECRET&
+scope=api:read api:write
+```
+
+**權杖回應：**
+```json
+{
+  "access_token": "eyJhbGciOiJSUzI1NiIs...",
+  "token_type": "Bearer",
+  "expires_in": 3600,
+  "scope": "api:read api:write"
+}
+```
+
+**API 請求：**
+```
+GET /api/resources
+Authorization: Bearer eyJhbGciOiJSUzI1NiIs...
+```
 
 這個流程很直接，但需要安全儲存客戶端憑證，且應該只用於服務對服務通訊。
 
@@ -472,19 +496,24 @@ OAuth 經常被誤解，導致安全漏洞和實作錯誤。
 
 許多應用程式僅使用 OAuth 實作「使用 [服務] 登入」：
 
+**不安全的實作示例：**
+```javascript
+// 不安全：不要這樣做
+app.get('/callback', async (req, res) => {
+  const { code } = req.query;
+  const token = await exchangeCodeForToken(code);
+  
+  // 假設權杖屬於合法使用者
+  const user = await getUserFromToken(token);
+  req.session.userId = user.id; // 有漏洞
+});
+```
+
 !!!warning "⚠️ 不安全的 OAuth 登入模式"
     **有缺陷的實作**
-    ```javascript
-    // 不安全：不要這樣做
-    app.get('/callback', async (req, res) => {
-      const { code } = req.query;
-      const token = await exchangeCodeForToken(code);
-      
-      // 假設權杖屬於合法使用者
-      const user = await getUserFromToken(token);
-      req.session.userId = user.id; // 有漏洞
-    });
-    ```
+    - 應用程式交換授權碼取得存取權杖
+    - 假設權杖屬於合法使用者
+    - 直接使用權杖設定工作階段（有漏洞）
     
     **攻擊場景**
     - 攻擊者取得其帳戶的有效存取權杖
@@ -503,35 +532,35 @@ OpenID Connect (OIDC) 擴展 OAuth 2.0 以提供身份驗證：
     - UserInfo 端點：標準化的使用者資訊
     - 身份驗證驗證
     - 標準化聲明（sub、name、email 等）
-    
-    **安全實作**
-    ```javascript
-    // 安全：使用 OpenID Connect
-    app.get('/callback', async (req, res) => {
-      const { code } = req.query;
-      const tokens = await exchangeCodeForTokens(code);
-      
-      // 驗證 ID 權杖簽名和聲明
-      const idToken = await verifyIdToken(tokens.id_token);
-      
-      // ID 權杖包含已驗證的使用者身份
-      req.session.userId = idToken.sub;
-      req.session.email = idToken.email;
-    });
-    ```
-    
-    **ID 權杖結構**
-    ```json
-    {
-      "iss": "https://auth.example.com",
-      "sub": "user123",
-      "aud": "client_id",
-      "exp": 1661529600,
-      "iat": 1661526000,
-      "email": "user@example.com",
-      "email_verified": true
-    }
-    ```
+
+**安全實作：**
+```javascript
+// 安全：使用 OpenID Connect
+app.get('/callback', async (req, res) => {
+  const { code } = req.query;
+  const tokens = await exchangeCodeForTokens(code);
+  
+  // 驗證 ID 權杖簽名和聲明
+  const idToken = await verifyIdToken(tokens.id_token);
+  
+  // ID 權杖包含已驗證的使用者身份
+  req.session.userId = idToken.sub;
+  req.session.email = idToken.email;
+});
+```
+
+**ID 權杖結構：**
+```json
+{
+  "iss": "https://auth.example.com",
+  "sub": "user123",
+  "aud": "client_id",
+  "exp": 1661529600,
+  "iat": 1661526000,
+  "email": "user@example.com",
+  "email_verified": true
+}
+```
 
 使用 OAuth 2.0 進行 API 授權。使用 OpenID Connect 進行使用者身份驗證。
 ## 權杖安全最佳實務

@@ -76,21 +76,21 @@ timeline
 - 實施日誌輪替以防止磁碟空間耗盡
 
 !!!example "🎬 真實世界的應用程式日誌"
-    ```json
-    {
-      "timestamp": "2020-06-15T14:32:18.123Z",
-      "level": "ERROR",
-      "service": "payment-service",
-      "correlationId": "abc-123-def-456",
-      "message": "Payment processing failed",
-      "error": "Gateway timeout",
-      "userId": "user_789",
-      "amount": 99.99,
-      "stackTrace": "..."
-    }
-    ```
-    
     這種結構化格式使得搜尋與特定使用者、關聯 ID 或錯誤類型相關的所有錯誤變得容易。
+
+```json
+{
+  "timestamp": "2020-06-15T14:32:18.123Z",
+  "level": "ERROR",
+  "service": "payment-service",
+  "correlationId": "abc-123-def-456",
+  "message": "Payment processing failed",
+  "error": "Gateway timeout",
+  "userId": "user_789",
+  "amount": 99.99,
+  "stackTrace": "..."
+}
+```
 
 ### 系統日誌
 
@@ -174,25 +174,27 @@ timeline
 | **詳細程度** | 技術細節 | 業務操作 |
 
 !!!example "🎯 稽核日誌範例"
-    ```json
-    {
-      "timestamp": "2020-06-15T14:32:18.123Z",
-      "actor": {
-        "userId": "admin_123",
-        "ipAddress": "192.168.1.100",
-        "userAgent": "Mozilla/5.0..."
-      },
-      "action": "DELETE",
-      "resource": {
-        "type": "customer_record",
-        "id": "cust_456",
-        "name": "John Doe"
-      },
-      "result": "SUCCESS",
-      "reason": "Customer requested data deletion (GDPR)",
-      "signature": "a3f5b8c9d2e1..."
-    }
-    ```
+    完整的稽核軌跡，包含操作者、行為、資源和用於完整性的加密簽名。
+
+```json
+{
+  "timestamp": "2020-06-15T14:32:18.123Z",
+  "actor": {
+    "userId": "admin_123",
+    "ipAddress": "192.168.1.100",
+    "userAgent": "Mozilla/5.0..."
+  },
+  "action": "DELETE",
+  "resource": {
+    "type": "customer_record",
+    "id": "cust_456",
+    "name": "John Doe"
+  },
+  "result": "SUCCESS",
+  "reason": "Customer requested data deletion (GDPR)",
+  "signature": "a3f5b8c9d2e1..."
+}
+```
 
 ### 存取日誌
 

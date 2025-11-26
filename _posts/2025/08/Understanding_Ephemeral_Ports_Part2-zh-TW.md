@@ -156,10 +156,8 @@ New-NetFirewallRule -DisplayName "SQL INSTANCE1" -Direction Inbound -Protocol TC
 !!!warning "⚠️ 常見錯誤"
     設定靜態埠後，許多管理員忘記更新連接字串。除非你在連接字串中明確指定埠，否則客戶端仍會嘗試使用 SQL Browser（UDP 1434）：
     
-    ```
     ❌ Server=MYSERVER\INSTANCE1  (仍使用 SQL Browser)
     ✅ Server=MYSERVER,1435        (直接使用靜態埠)
-    ```
 
 ## Windows RPC 和 WMI：設定靜態埠
 

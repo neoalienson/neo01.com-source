@@ -53,20 +53,22 @@ DNS over HTTPS addresses these vulnerabilities by tunneling DNS queries through 
 DoH encapsulates DNS queries within HTTPS requests, typically using HTTP/2 or HTTP/3 for efficiency. Instead of sending queries to port 53, DoH clients send HTTPS POST or GET requests to a DoH server's endpoint (usually port 443).
 
 !!!anote "🔐 DoH Request Flow"
-    **Traditional DNS Query:**
-    ```
-    Client → DNS Resolver (port 53, UDP/TCP)
-    Query: "What is the IP for example.com?"
-    Response: "93.184.216.34" (all visible to network)
-    ```
-    
-    **DoH Query:**
-    ```
-    Client → DoH Server (port 443, HTTPS)
-    Encrypted POST request containing DNS query
-    Encrypted response containing IP address
-    (Network sees only encrypted HTTPS traffic)
-    ```
+    Traditional DNS queries are sent in plain text to port 53, making them visible to network observers. DoH queries are encrypted HTTPS requests to port 443, hiding the DNS queries within normal web traffic.
+
+**Traditional DNS Query:**
+```
+Client → DNS Resolver (port 53, UDP/TCP)
+Query: "What is the IP for example.com?"
+Response: "93.184.216.34" (all visible to network)
+```
+
+**DoH Query:**
+```
+Client → DoH Server (port 443, HTTPS)
+Encrypted POST request containing DNS query
+Encrypted response containing IP address
+(Network sees only encrypted HTTPS traffic)
+```
 
 ### Protocol Specifications
 

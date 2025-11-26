@@ -338,25 +338,16 @@ git secrets --scan-history
 
 !!!tip "🔧 git-secrets 配置"
     **全局安装**
-    ```bash
-    # 在所有仓库中安装钩子
-    git secrets --install ~/.git-templates/git-secrets
-    git config --global init.templateDir ~/.git-templates/git-secrets
-    ```
+    - 在所有仓库中安装钩子：`git secrets --install ~/.git-templates/git-secrets`
+    - 设置全局模板目录：`git config --global init.templateDir ~/.git-templates/git-secrets`
     
     **自定义模式**
-    ```bash
-    # 添加组织特定模式
-    git secrets --add 'MYCOMPANY_[A-Z_]+\s*=\s*["\'][^"\']+["\']'
-    git secrets --add 'internal[_-]token\s*:\s*["\'][^"\']+["\']'
-    ```
+    - 添加组织特定模式：`git secrets --add 'MYCOMPANY_[A-Z_]+\s*=\s*["\'][^"\']+["\']'`
+    - 添加内部令牌模式：`git secrets --add 'internal[_-]token\s*:\s*["\'][^"\']+["\']'`
     
     **允许的模式**
-    ```bash
-    # 将误报加入白名单
-    git secrets --add --allowed 'example_password'
-    git secrets --add --allowed 'test_api_key'
-    ```
+    - 将误报加入白名单：`git secrets --add --allowed 'example_password'`
+    - 允许测试密钥：`git secrets --add --allowed 'test_api_key'`
 
 ### 使用 detect-secrets
 
@@ -399,13 +390,8 @@ repos:
     - 支持多种密钥类型
     
     **管理误报**
-    ```bash
-    # 审计基线
-    detect-secrets audit .secrets.baseline
-    
-    # 更新基线
-    detect-secrets scan --baseline .secrets.baseline
-    ```
+    - 审计基线：`detect-secrets audit .secrets.baseline`
+    - 更新基线：`detect-secrets scan --baseline .secrets.baseline`
 
 ### 使用 pre-commit 框架
 
@@ -872,10 +858,7 @@ GitHub 自动扫描公开仓库：
     - 与安全公告集成
     
     **启用推送保护**
-    ```
-    Settings → Code security and analysis
-    → Push protection → Enable
-    ```
+    - Settings → Code security and analysis → Push protection → Enable
 
 ### GitLab 密钥检测
 

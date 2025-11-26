@@ -165,31 +165,29 @@ Each document is a self-contained unit containing all related data. Instead of s
 - **Firebase Firestore**: Real-time sync, excellent for mobile and web apps
 
 !!!example "🎬 Real-World Scenario"
-    A blogging platform uses MongoDB to store articles:
-    
-    ```json
+    A blogging platform uses MongoDB to store articles. Everything related to an article - author info, comments, tags - is in one document. Retrieving an article requires one query, not multiple joins.
+
+```json
+{
+  "_id": "article123",
+  "title": "Understanding Databases",
+  "author": {
+    "name": "Jane Doe",
+    "email": "jane@neo01.com"
+  },
+  "content": "...",
+  "tags": ["database", "tutorial"],
+  "comments": [
     {
-      "_id": "article123",
-      "title": "Understanding Databases",
-      "author": {
-        "name": "Jane Doe",
-        "email": "jane@neo01.com"
-      },
-      "content": "...",
-      "tags": ["database", "tutorial"],
-      "comments": [
-        {
-          "user": "John",
-          "text": "Great article!",
-          "timestamp": "2023-07-15T10:30:00Z"
-        }
-      ],
-      "published": true,
-      "views": 1523
+      "user": "John",
+      "text": "Great article!",
+      "timestamp": "2023-07-15T10:30:00Z"
     }
-    ```
-    
-    Everything related to an article - author info, comments, tags - is in one document. Retrieving an article requires one query, not multiple joins.
+  ],
+  "published": true,
+  "views": 1523
+}
+```
 
 ## Key-Value Stores: Speed and Simplicity
 
@@ -233,24 +231,22 @@ Data is accessed exclusively through keys. You provide a key, and the database r
 - **Riak**: Distributed, highly available, good for large-scale deployments
 
 !!!example "🎬 Real-World Scenario"
-    An e-commerce site uses Redis for session management:
-    
-    ```
-    Key: "session:abc123"
-    Value: {
-      "user_id": 456,
-      "cart": ["item1", "item2"],
-      "last_activity": "2023-07-15T14:30:00Z"
-    }
-    ```
-    
-    When a user makes a request, the application:
+    An e-commerce site uses Redis for session management. When a user makes a request, the application:
     1. Extracts session ID from cookie
     2. Looks up session data in Redis (< 1ms)
     3. Processes request with session context
     4. Updates session data if needed
     
     This is much faster than querying a relational database for every request.
+
+```
+Key: "session:abc123"
+Value: {
+  "user_id": 456,
+  "cart": ["item1", "item2"],
+  "last_activity": "2023-07-15T14:30:00Z"
+}
+```
 
 ## Column-Family Stores: Analytics at Scale
 
@@ -298,17 +294,13 @@ Data is stored in column families - groups of related columns. Unlike relational
 - **Amazon Redshift**: Data warehouse service, SQL interface, columnar storage
 
 !!!example "🎬 Real-World Scenario"
-    A social media platform uses Cassandra to store user activity:
-    
-    ```
-    Column Family: user_activity
-    Row Key: user_id
-    Columns: timestamp1:action1, timestamp2:action2, ...
-    ```
-    
-    Query: "Show me all posts by user 123 in July 2023"
-    
-    The database efficiently scans only the relevant column family for user 123, filtering by timestamp. Even with billions of activities across millions of users, the query returns results in milliseconds.
+    A social media platform uses Cassandra to store user activity. Query: "Show me all posts by user 123 in July 2023". The database efficiently scans only the relevant column family for user 123, filtering by timestamp. Even with billions of activities across millions of users, the query returns results in milliseconds.
+
+```
+Column Family: user_activity
+Row Key: user_id
+Columns: timestamp1:action1, timestamp2:action2, ...
+```
 
 ```mermaid
 graph LR
@@ -369,19 +361,17 @@ Instead of tables or documents, graph databases use nodes to represent entities 
 - **JanusGraph**: Distributed, scalable, built on top of other storage backends
 
 !!!example "🎬 Real-World Scenario"
-    A social network uses Neo4j to model user relationships:
-    
-    ```cypher
-    // Find friends of friends who like hiking
-    MATCH (me:User {id: 123})-[:FRIENDS_WITH]->(friend)-[:FRIENDS_WITH]->(fof)
-    WHERE (fof)-[:LIKES]->(:Interest {name: "hiking"})
-      AND NOT (me)-[:FRIENDS_WITH]->(fof)
-    RETURN fof.name, COUNT(friend) as mutual_friends
-    ORDER BY mutual_friends DESC
-    LIMIT 10
-    ```
-    
-    This query efficiently traverses relationships to find friend recommendations. In a relational database, this would require multiple self-joins and be much slower.
+    A social network uses Neo4j to model user relationships. This query efficiently traverses relationships to find friend recommendations. In a relational database, this would require multiple self-joins and be much slower.
+
+```cypher
+// Find friends of friends who like hiking
+MATCH (me:User {id: 123})-[:FRIENDS_WITH]->(friend)-[:FRIENDS_WITH]->(fof)
+WHERE (fof)-[:LIKES]->(:Interest {name: "hiking"})
+  AND NOT (me)-[:FRIENDS_WITH]->(fof)
+RETURN fof.name, COUNT(friend) as mutual_friends
+ORDER BY mutual_friends DESC
+LIMIT 10
+```
 
 ```mermaid
 graph TB
@@ -438,26 +428,22 @@ Data is organized by timestamp, with optimizations for time-based queries and ag
 - **Amazon Timestream**: Fully managed, serverless time-series database
 
 !!!example "🎬 Real-World Scenario"
-    An IoT platform uses InfluxDB to store sensor data:
-    
-    ```
-    Measurement: temperature
-    Tags: sensor_id=sensor1, location=warehouse_a
-    Fields: value=22.5
-    Timestamp: 2023-07-15T14:30:00Z
-    ```
-    
-    Query: "Average temperature per hour for the last 7 days"
-    
-    ```sql
-    SELECT MEAN(value) 
-    FROM temperature 
-    WHERE location='warehouse_a' 
-      AND time > now() - 7d 
-    GROUP BY time(1h)
-    ```
-    
-    The database efficiently aggregates millions of data points, returning results in milliseconds.
+    An IoT platform uses InfluxDB to store sensor data. Query: "Average temperature per hour for the last 7 days". The database efficiently aggregates millions of data points, returning results in milliseconds.
+
+```
+Measurement: temperature
+Tags: sensor_id=sensor1, location=warehouse_a
+Fields: value=22.5
+Timestamp: 2023-07-15T14:30:00Z
+```
+
+```sql
+SELECT MEAN(value) 
+FROM temperature 
+WHERE location='warehouse_a' 
+  AND time > now() - 7d 
+GROUP BY time(1h)
+```
 
 ## Vector Databases: Similarity Search for AI
 
@@ -601,27 +587,7 @@ Unlike client-server databases, embedded databases run in the same process as yo
     **When to use:** Small business databases, departmental applications, quick prototypes that will be migrated to proper databases later. For serious applications, start with PostgreSQL or MySQL instead.
 
 !!!example "🎬 Real-World Scenario"
-    A mobile fitness app uses SQLite to store workout data:
-    
-    ```sql
-    -- Create tables on app first launch
-    CREATE TABLE workouts (
-      id INTEGER PRIMARY KEY,
-      date TEXT,
-      type TEXT,
-      duration INTEGER,
-      calories INTEGER
-    );
-    
-    -- Store workout data locally
-    INSERT INTO workouts VALUES 
-      (1, '2023-07-15', 'Running', 30, 250);
-    
-    -- Query workout history
-    SELECT * FROM workouts 
-    WHERE date >= date('now', '-7 days')
-    ORDER BY date DESC;
-    ```
+    A mobile fitness app uses SQLite to store workout data.
     
     **Benefits:**
     - Works offline - users can log workouts without internet
@@ -629,6 +595,26 @@ Unlike client-server databases, embedded databases run in the same process as yo
     - Private - data stays on user's device
     - Simple - no backend server needed for basic functionality
     - Sync later - can upload to cloud when connection available
+
+```sql
+-- Create tables on app first launch
+CREATE TABLE workouts (
+  id INTEGER PRIMARY KEY,
+  date TEXT,
+  type TEXT,
+  duration INTEGER,
+  calories INTEGER
+);
+
+-- Store workout data locally
+INSERT INTO workouts VALUES 
+  (1, '2023-07-15', 'Running', 30, 250);
+
+-- Query workout history
+SELECT * FROM workouts 
+WHERE date >= date('now', '-7 days')
+ORDER BY date DESC;
+```
 
 ```mermaid
 graph TB

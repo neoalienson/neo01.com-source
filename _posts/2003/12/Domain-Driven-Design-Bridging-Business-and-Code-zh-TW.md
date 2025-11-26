@@ -93,25 +93,26 @@ timeline
     - 服務包含所有行為
     - 物件只是資料容器
     
-    **範例**
-    ```java
-    public class Order {
-        private Long id;
-        private List<OrderItem> items;
-        private BigDecimal total;
-        
-        // 只有 getter 和 setter
-        public Long getId() { return id; }
-        public void setId(Long id) { this.id = id; }
-        // ... 更多 getter/setter
-    }
-    ```
-    
     **為什麼有問題**
     - 違反物件導向原則
     - 業務邏輯與資料分離
     - 難以維護不變性
     - 沒有封裝
+
+**貧血模型範例：**
+
+```java
+public class Order {
+    private Long id;
+    private List<OrderItem> items;
+    private BigDecimal total;
+    
+    // 只有 getter 和 setter
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    // ... 更多 getter/setter
+}
+```
 
 貧血模型將物件視為資料結構而非行為實體。所有業務邏輯都存在於操作這些資料容器的服務類別中。這種偽裝成物件導向程式碼的程序式方法使系統更難理解和維護。
 
@@ -399,34 +400,35 @@ DDD 提倡具有行為的豐富領域模型：
     - 封裝保護不變性
     - 表達性、揭示意圖的方法
     
-    **範例**
-    ```java
-    public class Order {
-        private OrderId id;
-        private List<OrderLine> lines;
-        private OrderStatus status;
-        
-        public void addLine(Product product, int quantity) {
-            if (status != OrderStatus.DRAFT) {
-                throw new IllegalStateException(
-                    "無法修改已提交的訂單");
-            }
-            lines.add(new OrderLine(product, quantity));
-        }
-        
-        public Money calculateTotal() {
-            return lines.stream()
-                .map(OrderLine::getSubtotal)
-                .reduce(Money.ZERO, Money::add);
-        }
-    }
-    ```
-    
     **好處**
     - 業務邏輯集中
     - 不變性得到強制執行
     - 自我記錄的程式碼
     - 更容易測試和維護
+
+**豐富模型範例：**
+
+```java
+public class Order {
+    private OrderId id;
+    private List<OrderLine> lines;
+    private OrderStatus status;
+    
+    public void addLine(Product product, int quantity) {
+        if (status != OrderStatus.DRAFT) {
+            throw new IllegalStateException(
+                "無法修改已提交的訂單");
+        }
+        lines.add(new OrderLine(product, quantity));
+    }
+    
+    public Money calculateTotal() {
+        return lines.stream()
+            .map(OrderLine::getSubtotal)
+            .reduce(Money.ZERO, Money::add);
+    }
+}
+```
 
 豐富模型將業務規則封裝在領域物件中。Order 類別知道如何添加項目、計算總額和強制執行業務約束。業務邏輯不會散落在服務層中——它存在於應該存在的地方。
 
@@ -772,48 +774,56 @@ DDD 提供戰術模式來實作領域模型。
 理解區別至關重要：
 
 !!!anote "🔍 實體 vs 值物件"
-    **實體範例：Customer**
-    ```java
-    public class Customer {
-        private CustomerId id;  // 識別
-        private String name;
-        private Email email;
-        
-        // 基於識別的相等性
-        public boolean equals(Object o) {
-            if (!(o instanceof Customer)) return false;
-            Customer other = (Customer) o;
-            return id.equals(other.id);
-        }
-    }
-    ```
+    **關鍵區別**
+    - 實體具有識別和生命週期
+    - 值物件由其屬性定義
+    - 實體可變，值物件不可變
+    - 不同的相等語意
+
+**實體範例：Customer**
+
+```java
+public class Customer {
+    private CustomerId id;  // 識別
+    private String name;
+    private Email email;
     
-    **值物件範例：Money**
-    ```java
-    public class Money {
-        private final BigDecimal amount;
-        private final Currency currency;
-        
-        // 不可變
-        public Money add(Money other) {
-            if (!currency.equals(other.currency)) {
-                throw new IllegalArgumentException(
-                    "無法加總不同貨幣");
-            }
-            return new Money(
-                amount.add(other.amount), 
-                currency);
-        }
-        
-        // 基於值的相等性
-        public boolean equals(Object o) {
-            if (!(o instanceof Money)) return false;
-            Money other = (Money) o;
-            return amount.equals(other.amount) 
-                && currency.equals(other.currency);
-        }
+    // 基於識別的相等性
+    public boolean equals(Object o) {
+        if (!(o instanceof Customer)) return false;
+        Customer other = (Customer) o;
+        return id.equals(other.id);
     }
-    ```
+}
+```
+
+**值物件範例：Money**
+
+```java
+public class Money {
+    private final BigDecimal amount;
+    private final Currency currency;
+    
+    // 不可變
+    public Money add(Money other) {
+        if (!currency.equals(other.currency)) {
+            throw new IllegalArgumentException(
+                "無法加總不同貨幣");
+        }
+        return new Money(
+            amount.add(other.amount), 
+            currency);
+    }
+    
+    // 基於值的相等性
+    public boolean equals(Object o) {
+        if (!(o instanceof Money)) return false;
+        Money other = (Money) o;
+        return amount.equals(other.amount) 
+            && currency.equals(other.currency);
+    }
+}
+```
 
 實體透過識別進行比較——兩個具有相同名稱的客戶如果有不同的 ID 就是不同的。值物件透過值進行比較——兩個具有相同金額和貨幣的 Money 物件是相同的。
 
@@ -828,27 +838,28 @@ DDD 提供戰術模式來實作領域模型。
     - 不可變
     - 實現鬆耦合
     
-    **範例**
-    ```java
-    public class OrderPlaced {
-        private final OrderId orderId;
-        private final CustomerId customerId;
-        private final Instant occurredAt;
-        
-        public OrderPlaced(OrderId orderId, 
-                          CustomerId customerId) {
-            this.orderId = orderId;
-            this.customerId = customerId;
-            this.occurredAt = Instant.now();
-        }
-    }
-    ```
-    
     **好處**
     - 明確的業務事件
     - 解耦的元件
     - 稽核軌跡
     - 支援事件溯源
+
+**領域事件範例：**
+
+```java
+public class OrderPlaced {
+    private final OrderId orderId;
+    private final CustomerId customerId;
+    private final Instant occurredAt;
+    
+    public OrderPlaced(OrderId orderId, 
+                      CustomerId customerId) {
+        this.orderId = orderId;
+        this.customerId = customerId;
+        this.occurredAt = Instant.now();
+    }
+}
+```
 
 領域事件使隱含概念變得明確。系統不是默默更新狀態，而是發布 OrderPlaced 事件。系統的其他部分可以反應——發送確認電子郵件、更新庫存、觸發運送。事件實現鬆耦合並提供自然的稽核軌跡。
 
@@ -958,29 +969,30 @@ DDD 最適合複雜領域：
     - 法規遵循
     - 市場時間和假日
     
-    **豐富領域模型**
-    ```java
-    public class Trade {
-        public void execute() {
-            if (!market.isOpen()) {
-                throw new MarketClosedException();
-            }
-            if (exceedsPositionLimit()) {
-                throw new PositionLimitException();
-            }
-            if (!passesRiskCheck()) {
-                throw new RiskLimitException();
-            }
-            // 執行交易
-        }
-    }
-    ```
-    
     **好處**
     - 業務規則集中
     - 在程式碼中強制執行合規性
     - 領域專家可以審查邏輯
     - 變更追溯到業務需求
+
+**豐富領域模型範例：**
+
+```java
+public class Trade {
+    public void execute() {
+        if (!market.isOpen()) {
+            throw new MarketClosedException();
+        }
+        if (exceedsPositionLimit()) {
+            throw new PositionLimitException();
+        }
+        if (!passesRiskCheck()) {
+            throw new RiskLimitException();
+        }
+        // 執行交易
+    }
+}
+```
 
 金融系統具有複雜、不斷演進的規則。DDD 對領域模型的關注使這種複雜性保持可管理。當法規改變時，領域模型改變。程式碼反映當前的業務理解。
 

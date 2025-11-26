@@ -316,23 +316,12 @@ git push origin --force-with-lease --all
     - 验证每个人都已成功更新
     
     **团队成员的说明**
-    ```bash
-    # 保存任何本地工作
-    git stash
-    
-    # 获取重写的历史
-    git fetch origin
-    
-    # 重置以匹配远程
-    git reset --hard origin/main
-    
-    # 清理旧引用
-    git reflog expire --expire=now --all
-    git gc --prune=now --aggressive
-    
-    # 恢复本地工作
-    git stash pop
-    ```
+    - 保存任何本地工作：`git stash`
+    - 获取重写的历史：`git fetch origin`
+    - 重置以匹配远程：`git reset --hard origin/main`
+    - 清理旧引用：`git reflog expire --expire=now --all`
+    - 运行垃圾回收：`git gc --prune=now --aggressive`
+    - 恢复本地工作：`git stash pop`
     
     **处理冲突**
     - 本地提交必须变基到新历史

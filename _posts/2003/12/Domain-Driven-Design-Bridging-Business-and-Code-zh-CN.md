@@ -93,25 +93,26 @@ timeline
     - 服务包含所有行为
     - 对象只是数据容器
     
-    **示例**
-    ```java
-    public class Order {
-        private Long id;
-        private List<OrderItem> items;
-        private BigDecimal total;
-        
-        // 只有 getter 和 setter
-        public Long getId() { return id; }
-        public void setId(Long id) { this.id = id; }
-        // ... 更多 getter/setter
-    }
-    ```
-    
     **为什么有问题**
     - 违反面向对象原则
     - 业务逻辑与数据分离
     - 难以维护不变性
     - 没有封装
+
+**贫血模型示例：**
+
+```java
+public class Order {
+    private Long id;
+    private List<OrderItem> items;
+    private BigDecimal total;
+    
+    // 只有 getter 和 setter
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    // ... 更多 getter/setter
+}
+```
 
 贫血模型将对象视为数据结构而非行为实体。所有业务逻辑都存在于操作这些数据容器的服务类中。这种伪装成面向对象代码的过程式方法使系统更难理解和维护。
 
@@ -399,34 +400,35 @@ DDD 提倡具有行为的丰富领域模型：
     - 封装保护不变性
     - 表达性、揭示意图的方法
     
-    **示例**
-    ```java
-    public class Order {
-        private OrderId id;
-        private List<OrderLine> lines;
-        private OrderStatus status;
-        
-        public void addLine(Product product, int quantity) {
-            if (status != OrderStatus.DRAFT) {
-                throw new IllegalStateException(
-                    "无法修改已提交的订单");
-            }
-            lines.add(new OrderLine(product, quantity));
-        }
-        
-        public Money calculateTotal() {
-            return lines.stream()
-                .map(OrderLine::getSubtotal)
-                .reduce(Money.ZERO, Money::add);
-        }
-    }
-    ```
-    
     **好处**
     - 业务逻辑集中
     - 不变性得到强制执行
     - 自我记录的代码
     - 更容易测试和维护
+
+**丰富模型示例：**
+
+```java
+public class Order {
+    private OrderId id;
+    private List<OrderLine> lines;
+    private OrderStatus status;
+    
+    public void addLine(Product product, int quantity) {
+        if (status != OrderStatus.DRAFT) {
+            throw new IllegalStateException(
+                "无法修改已提交的订单");
+        }
+        lines.add(new OrderLine(product, quantity));
+    }
+    
+    public Money calculateTotal() {
+        return lines.stream()
+            .map(OrderLine::getSubtotal)
+            .reduce(Money.ZERO, Money::add);
+    }
+}
+```
 
 丰富模型将业务规则封装在领域对象中。Order 类知道如何添加项目、计算总额和强制执行业务约束。业务逻辑不会散落在服务层中——它存在于应该存在的地方。
 
@@ -772,48 +774,56 @@ DDD 提供战术模式来实现领域模型。
 理解区别至关重要：
 
 !!!anote "🔍 实体 vs 值对象"
-    **实体示例：Customer**
-    ```java
-    public class Customer {
-        private CustomerId id;  // 标识
-        private String name;
-        private Email email;
-        
-        // 基于标识的相等性
-        public boolean equals(Object o) {
-            if (!(o instanceof Customer)) return false;
-            Customer other = (Customer) o;
-            return id.equals(other.id);
-        }
-    }
-    ```
+    **关键区别**
+    - 实体具有标识和生命周期
+    - 值对象由其属性定义
+    - 实体可变，值对象不可变
+    - 不同的相等语义
+
+**实体示例：Customer**
+
+```java
+public class Customer {
+    private CustomerId id;  // 标识
+    private String name;
+    private Email email;
     
-    **值对象示例：Money**
-    ```java
-    public class Money {
-        private final BigDecimal amount;
-        private final Currency currency;
-        
-        // 不可变
-        public Money add(Money other) {
-            if (!currency.equals(other.currency)) {
-                throw new IllegalArgumentException(
-                    "无法加总不同货币");
-            }
-            return new Money(
-                amount.add(other.amount), 
-                currency);
-        }
-        
-        // 基于值的相等性
-        public boolean equals(Object o) {
-            if (!(o instanceof Money)) return false;
-            Money other = (Money) o;
-            return amount.equals(other.amount) 
-                && currency.equals(other.currency);
-        }
+    // 基于标识的相等性
+    public boolean equals(Object o) {
+        if (!(o instanceof Customer)) return false;
+        Customer other = (Customer) o;
+        return id.equals(other.id);
     }
-    ```
+}
+```
+
+**值对象示例：Money**
+
+```java
+public class Money {
+    private final BigDecimal amount;
+    private final Currency currency;
+    
+    // 不可变
+    public Money add(Money other) {
+        if (!currency.equals(other.currency)) {
+            throw new IllegalArgumentException(
+                "无法加总不同货币");
+        }
+        return new Money(
+            amount.add(other.amount), 
+            currency);
+    }
+    
+    // 基于值的相等性
+    public boolean equals(Object o) {
+        if (!(o instanceof Money)) return false;
+        Money other = (Money) o;
+        return amount.equals(other.amount) 
+            && currency.equals(other.currency);
+    }
+}
+```
 
 实体通过标识进行比较——两个具有相同名称的客户如果有不同的 ID 就是不同的。值对象通过值进行比较——两个具有相同金额和货币的 Money 对象是相同的。
 
@@ -828,27 +838,28 @@ DDD 提供战术模式来实现领域模型。
     - 不可变
     - 实现松耦合
     
-    **示例**
-    ```java
-    public class OrderPlaced {
-        private final OrderId orderId;
-        private final CustomerId customerId;
-        private final Instant occurredAt;
-        
-        public OrderPlaced(OrderId orderId, 
-                          CustomerId customerId) {
-            this.orderId = orderId;
-            this.customerId = customerId;
-            this.occurredAt = Instant.now();
-        }
-    }
-    ```
-    
     **好处**
     - 明确的业务事件
     - 解耦的组件
     - 审计轨迹
     - 支持事件溯源
+
+**领域事件示例：**
+
+```java
+public class OrderPlaced {
+    private final OrderId orderId;
+    private final CustomerId customerId;
+    private final Instant occurredAt;
+    
+    public OrderPlaced(OrderId orderId, 
+                      CustomerId customerId) {
+        this.orderId = orderId;
+        this.customerId = customerId;
+        this.occurredAt = Instant.now();
+    }
+}
+```
 
 领域事件使隐含概念变得明确。系统不是默默更新状态，而是发布 OrderPlaced 事件。系统的其他部分可以反应——发送确认电子邮件、更新库存、触发运输。事件实现松耦合并提供自然的审计轨迹。
 
@@ -958,29 +969,30 @@ DDD 最适合复杂领域：
     - 法规遵从
     - 市场时间和假日
     
-    **丰富领域模型**
-    ```java
-    public class Trade {
-        public void execute() {
-            if (!market.isOpen()) {
-                throw new MarketClosedException();
-            }
-            if (exceedsPositionLimit()) {
-                throw new PositionLimitException();
-            }
-            if (!passesRiskCheck()) {
-                throw new RiskLimitException();
-            }
-            // 执行交易
-        }
-    }
-    ```
-    
     **好处**
     - 业务规则集中
     - 在代码中强制执行合规性
     - 领域专家可以审查逻辑
     - 变更追溯到业务需求
+
+**丰富领域模型示例：**
+
+```java
+public class Trade {
+    public void execute() {
+        if (!market.isOpen()) {
+            throw new MarketClosedException();
+        }
+        if (exceedsPositionLimit()) {
+            throw new PositionLimitException();
+        }
+        if (!passesRiskCheck()) {
+            throw new RiskLimitException();
+        }
+        // 执行交易
+    }
+}
+```
 
 金融系统具有复杂、不断演进的规则。DDD 对领域模型的关注使这种复杂性保持可管理。当法规改变时，领域模型改变。代码反映当前的业务理解。
 

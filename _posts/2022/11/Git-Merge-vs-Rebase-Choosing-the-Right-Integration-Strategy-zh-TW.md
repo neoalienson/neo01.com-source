@@ -524,15 +524,7 @@ git reset --hard abc123
 !!!error "🚨 強制推送出錯"
     **問題**：強制推送了變基，隊友有衝突
     
-    **解決方案**：
-    ```bash
-    # 隊友應該重設他們的分支
-    git fetch origin
-    git reset --hard origin/feature-branch
-    
-    # 或將他們的工作變基到新歷史
-    git rebase origin/feature-branch
-    ```
+    **解決方案**：隊友應該重設他們的分支使用 `git fetch origin` 接著 `git reset --hard origin/feature-branch`，或將他們的工作變基到新歷史使用 `git rebase origin/feature-branch`
 
 ### Merge vs Rebase 衝突
 

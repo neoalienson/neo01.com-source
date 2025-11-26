@@ -523,15 +523,7 @@ git reset --hard abc123
 !!!error "🚨 Force Push Gone Wrong"
     **Problem**: Force pushed rebase, teammates have conflicts
     
-    **Solution**:
-    ```bash
-    # Teammates should reset their branches
-    git fetch origin
-    git reset --hard origin/feature-branch
-    
-    # Or rebase their work onto new history
-    git rebase origin/feature-branch
-    ```
+    **Solution**: Teammates should reset their branches using `git fetch origin` followed by `git reset --hard origin/feature-branch`, or rebase their work onto new history with `git rebase origin/feature-branch`
 
 ### Merge vs Rebase Conflicts
 

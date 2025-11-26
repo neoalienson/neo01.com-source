@@ -1282,61 +1282,6 @@ def etl_orders():
     - **每天：**資料是 0-24 小時舊
     - **每週：**資料是 0-7 天舊
     
-    **範例時間軸：**
-    ```
-    週一 9:00 AM - 客戶下訂單
-    週一 11:59 PM - ETL 作業開始
-    週二 12:30 AM - ETL 作業完成
-    週二 8:00 AM - 分析師查看報表
-    
-    資料年齡：約 23 小時舊
-    ```
-    
-    **為什麼批次對分析更好：**
-    
-    1. **一致的快照：**
-    ```python
-    # ETL 捕獲時間點快照
-    # 所有資料來自同一時刻
-    snapshot_time = '2024-01-15 23:59:59'
-    
-    orders = extract_orders(snapshot_time)
-    customers = extract_customers(snapshot_time)
-    products = extract_products(snapshot_time)
-    
-    # 所有資料都是一致的
-    # 無查詢中途變更
-    ```
-    
-    2. **無查詢中途更新：**
-    ```
-    讀取副本（即時）：
-    開始查詢：100 個訂單
-    查詢中途：5 個新訂單到達
-    結束查詢：不一致的結果
-    
-    資料倉儲（批次）：
-    開始查詢：100 個訂單
-    查詢中途：無變更（靜態快照）
-    結束查詢：一致的結果
-    ```
-    
-    3. **為聚合優化：**
-    ```sql
-    -- 倉儲中預先聚合
-    SELECT date, SUM(revenue) 
-    FROM daily_sales_summary  -- 已經求和
-    WHERE date >= '2024-01-01';
-    -- 10ms 返回
-    
-    -- vs 讀取副本
-    SELECT DATE(created_at), SUM(total)
-    FROM orders  -- 必須掃描數百萬行
-    WHERE created_at >= '2024-01-01'
-    GROUP BY DATE(created_at);
-    -- 30 秒返回
-    ```
-    
     **過時性可接受的情況：**
     - ✅ 月度/季度報表
     - ✅ 年度比較
@@ -1349,49 +1294,104 @@ def etl_orders():
     - ❌ 即時警報
     - ❌ 面向客戶的資料
     - ❌ 詐欺檢測
+
+**範例時間軸：**
+```
+週一 9:00 AM - 客戶下訂單
+週一 11:59 PM - ETL 作業開始
+週二 12:30 AM - ETL 作業完成
+週二 8:00 AM - 分析師查看報表
+
+資料年齡：約 23 小時舊
+```
+
+**為什麼批次對分析更好：**
+
+**1. 一致的快照：**
+```python
+# ETL 捕獲時間點快照
+# 所有資料來自同一時刻
+snapshot_time = '2024-01-15 23:59:59'
+
+orders = extract_orders(snapshot_time)
+customers = extract_customers(snapshot_time)
+products = extract_products(snapshot_time)
+
+# 所有資料都是一致的
+# 無查詢中途變更
+```
+
+**2. 無查詢中途更新：**
+```
+讀取副本（即時）：
+開始查詢：100 個訂單
+查詢中途：5 個新訂單到達
+結束查詢：不一致的結果
+
+資料倉儲（批次）：
+開始查詢：100 個訂單
+查詢中途：無變更（靜態快照）
+結束查詢：一致的結果
+```
+
+**3. 為聚合優化：**
+```sql
+-- 倉儲中預先聚合
+SELECT date, SUM(revenue) 
+FROM daily_sales_summary  -- 已經求和
+WHERE date >= '2024-01-01';
+-- 10ms 返回
+
+-- vs 讀取副本
+SELECT DATE(created_at), SUM(total)
+FROM orders  -- 必須掃描數百萬行
+WHERE created_at >= '2024-01-01'
+GROUP BY DATE(created_at);
+-- 30 秒返回
+```
+
+**混合解決方案：Lambda 架構**
+```
+即時層（讀取副本）：
+- 最近 24 小時的資料
+- 對最近資料的快速查詢
+- 可接受延遲：秒
+
+批次層（資料倉儲）：
+- 歷史資料（>24 小時）
+- 複雜分析
+- 可接受延遲：小時/天
+
+服務層：
+- 合併兩個視圖
+- 最近 + 歷史
+```
+
+**範例實作：**
+```python
+def get_sales_report(start_date, end_date):
+    today = datetime.now().date()
     
-    **混合解決方案：Lambda 架構**
-    ```
-    即時層（讀取副本）：
-    - 最近 24 小時的資料
-    - 對最近資料的快速查詢
-    - 可接受延遲：秒
-    
-    批次層（資料倉儲）：
-    - 歷史資料（>24 小時）
-    - 複雜分析
-    - 可接受延遲：小時/天
-    
-    服務層：
-    - 合併兩個視圖
-    - 最近 + 歷史
-    ```
-    
-    **範例實作：**
-    ```python
-    def get_sales_report(start_date, end_date):
-        today = datetime.now().date()
-        
-        # 從倉儲獲取歷史資料
-        if end_date < today:
-            return warehouse.query(
-                "SELECT * FROM sales_summary WHERE date BETWEEN ? AND ?",
-                start_date, end_date
-            )
-        
-        # 從副本獲取最近資料
-        historical = warehouse.query(
+    # 從倉儲獲取歷史資料
+    if end_date < today:
+        return warehouse.query(
             "SELECT * FROM sales_summary WHERE date BETWEEN ? AND ?",
-            start_date, today - timedelta(days=1)
+            start_date, end_date
         )
-        
-        recent = replica.query(
-            "SELECT * FROM orders WHERE date >= ?",
-            today
-        )
-        
-        return merge(historical, recent)
-    ```
+    
+    # 從副本獲取最近資料
+    historical = warehouse.query(
+        "SELECT * FROM sales_summary WHERE date BETWEEN ? AND ?",
+        start_date, today - timedelta(days=1)
+    )
+    
+    recent = replica.query(
+        "SELECT * FROM orders WHERE date >= ?",
+        today
+    )
+    
+    return merge(historical, recent)
+```
 
 **比較：**
 

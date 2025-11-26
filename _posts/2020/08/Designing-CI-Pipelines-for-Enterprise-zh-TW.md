@@ -297,25 +297,27 @@ jobs:
 ```
 
 !!!tip "📦 範本函式庫組織"
-    按範圍組織範本：
-    
-    ```
-    .github/workflows/templates/
-    ├── base/
-    │   ├── ci-pipeline.yml          # 核心 CI 流程
-    │   └── cd-pipeline.yml          # 核心 CD 流程
-    ├── languages/
-    │   ├── java-pipeline.yml
-    │   ├── python-pipeline.yml
-    │   └── nodejs-pipeline.yml
-    ├── mixins/
-    │   ├── security-scan.yml
-    │   ├── compliance-check.yml
-    │   └── performance-test.yml
-    └── specialized/
-        ├── microservice-pipeline.yml
-        └── frontend-pipeline.yml
-    ```
+    按範圍組織範本以獲得更好的可維護性和可發現性。
+
+**範本目錄結構：**
+
+```
+.github/workflows/templates/
+├── base/
+│   ├── ci-pipeline.yml          # 核心 CI 流程
+│   └── cd-pipeline.yml          # 核心 CD 流程
+├── languages/
+│   ├── java-pipeline.yml
+│   ├── python-pipeline.yml
+│   └── nodejs-pipeline.yml
+├── mixins/
+│   ├── security-scan.yml
+│   ├── compliance-check.yml
+│   └── performance-test.yml
+└── specialized/
+    ├── microservice-pipeline.yml
+    └── frontend-pipeline.yml
+```
 
 **範本版本控制策略**：
 
@@ -637,11 +639,14 @@ metrics:
 - **網路隔離**：在隔離網路中執行建置以防止橫向移動
 
 !!!warning "⚠️ 常見安全錯誤"
+    **避免這些關鍵安全陷阱：**
     - 在環境變數中儲存憑證
     - 以管理員權限執行建置
     - 允許在 pull request 中執行任意程式碼
     - 將內部服務暴露給建置執行器
     - 未能定期輪換憑證
+    
+    **影響：** 這些錯誤可能導致憑證盜用、權限提升和對生產系統的未授權存取。
 
 ## 單一 Pipeline 適用所有應用的辯論
 
@@ -832,21 +837,23 @@ stages:
 !!!warning "⚠️ 反模式：超大型 Pipeline"
     避免建立具有數百個條件分支的單一 pipeline：
     
-    ```yaml
-    # 不要這樣做
-    if language == "java":
-      if build_tool == "maven":
-        if java_version == "8":
-          run: mvn -Djava.version=8 package
-        elif java_version == "11":
-          run: mvn -Djava.version=11 package
-      elif build_tool == "gradle":
-        # ... 更多條件
-    elif language == "python":
-      # ... 更多條件
-    ```
-    
     這變得難以維護且容易出錯。改用範本。
+
+**反模式範例：**
+
+```yaml
+# 不要這樣做
+if language == "java":
+  if build_tool == "maven":
+    if java_version == "8":
+      run: mvn -Djava.version=8 package
+    elif java_version == "11":
+      run: mvn -Djava.version=11 package
+  elif build_tool == "gradle":
+    # ... 更多條件
+elif language == "python":
+  # ... 更多條件
+```
 
 ### 結論：務實的靈活性
 

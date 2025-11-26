@@ -156,10 +156,8 @@ New-NetFirewallRule -DisplayName "SQL INSTANCE1" -Direction Inbound -Protocol TC
 !!!warning "⚠️ 常见错误"
     配置静态端口后，许多管理员忘记更新连接字符串。除非你在连接字符串中明确指定端口，否则客户端仍会尝试使用 SQL Browser（UDP 1434）：
     
-    ```
     ❌ Server=MYSERVER\INSTANCE1  (仍使用 SQL Browser)
     ✅ Server=MYSERVER,1435        (直接使用静态端口)
-    ```
 
 ## Windows RPC 和 WMI：配置静态端口
 

@@ -135,19 +135,6 @@ Result:
 
 ---
 
-### Code block
-
-Result:
-~~~
-Code block 
-~~~
-
-Code:
-{% codeblock %}
-{% raw %}~~~
-Code block 
-~~~{% endraw %}
-{% endcodeblock %}
 
 ## Github Card
 
@@ -172,31 +159,6 @@ Result:
 
 ## Mermaid JS
 
-### Tag Syntax (Original)
-
-Prerendered.
-
-Code:
-{% codeblock %}
-{% raw %}```mermaid
-block-beta
-columns 1
-  db(("DB"))
-  blockArrowId6<["&nbsp;&nbsp;&nbsp;"]>(down)
-  block:ID
-    A
-    B["A wide one in the middle"]
-    C
-  end
-  space
-  D
-  ID --> D
-  C --> D
-  style B fill:#969,stroke:#333,stroke-width:4px
-```{% endraw %}
-{% endcodeblock %}
-
-Result:
 ```mermaid
 block-beta
 columns 1
@@ -214,48 +176,97 @@ columns 1
   style B fill:#969,stroke:#333,stroke-width:4px
 ```
 
-Live rendering
+## Admonition Blocks
 
-<pre class="mermaid">
-block-beta
-columns 1
-  db(("DB"))
-  blockArrowId6<["&nbsp;&nbsp;&nbsp;"]>(down)
-  block:ID
-    A
-    B["A wide one in the middle"]
-    C
-  end
-  space
-  D
-  ID --> D
-  C --> D
-  style B fill:#969,stroke:#333,stroke-width:4px
-</pre>
+### anote - General Notes
 
-### Markdown Syntax (New)
+!!!anote "📝 Quick Note"
+    This is a general note block for observations and additional context.
 
-Live rendering using standard markdown code fence.
+### info - Additional Information
 
-Code:
+!!!info "💡 Pro Tip"
+    Use absolute paths when referencing assets in localized content.
 
-Result:
-```mermaid
-block-beta
-columns 1
-  db(("DB"))
-  blockArrowId6<["&nbsp;&nbsp;&nbsp;"]>(down)
-  block:ID
-    A
-    B["A wide one in the middle"]
-    C
-  end
-  space
-  D
-  ID --> D
-  C --> D
-  style B fill:#969,stroke:#333,stroke-width:4px
-```
+### todo - Task Reminders
+
+!!!todo "✅ Action Items"
+    - Add excerpt to all blog posts
+    - Verify tag capitalization
+    - Test mermaid diagrams
+
+### warning - Important Warnings
+
+!!!warning "⚠️ Breaking Change"
+    Hexo 8.x requires Node.js 14.0.0 or higher. Update your environment before upgrading.
+
+### error - Critical Issues
+
+!!!error "❌ Common Mistake"
+    Do not use `note` type - it conflicts with CSS. Always use `anote` instead.
+
+### success - Positive Outcomes
+
+!!!success "✅ Build Successful"
+    Your site has been generated successfully and is ready for deployment.
+
+### tip - Best Practices
+
+!!!tip "💡 Performance Optimization"
+    Enable lazy loading for images to improve page load times.
+
+### question - Considerations
+
+!!!question "🤔 Design Decision"
+    Should we use Git Flow or GitHub Flow for this project?
+
+### quote - Citations
+
+!!!quote "💬 Linus Torvalds"
+    Talk is cheap. Show me the code.
+
+### Advanced Formatting Inside Blocks
+
+**Lists Inside Admonition**
+
+!!!warning "⚠️ Security Checklist"
+    Before deploying:
+    
+    1. Remove all API keys and secrets
+    2. Enable HTTPS
+    3. Update dependencies
+       - Check for vulnerabilities
+       - Run `npm audit fix`
+    4. Test in staging environment
+
+**Blockquote Inside Admonition**
+
+!!!anote "📋 Design Philosophy"
+    > Simplicity is the ultimate sophistication.
+    > — Leonardo da Vinci
+    
+    This principle applies to code architecture and user interface design.
+
+**Mixed Content**
+
+!!!example "💻 Complete Setup Guide"
+    **Step 1:** Install dependencies
+    
+    `npm install hexo-cli -g`
+    
+    **Step 2:** Create new project
+    
+    - Initialize: `hexo init blog`
+    - Navigate: `cd blog`
+    - Install: `npm install`
+    
+    **Step 3:** Configuration checklist
+    
+    1. Update `_config.yml`
+    2. Set site title and description
+    3. Configure deployment settings
+    
+    > **Note:** Always backup your configuration before major changes.
 
 ## Barchart
 

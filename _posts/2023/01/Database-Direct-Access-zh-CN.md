@@ -1281,61 +1281,6 @@ def etl_orders():
     - **每天：**数据是 0-24 小时旧
     - **每周：**数据是 0-7 天旧
     
-    **示例时间线：**
-    ```
-    周一 9:00 AM - 客户下订单
-    周一 11:59 PM - ETL 作业开始
-    周二 12:30 AM - ETL 作业完成
-    周二 8:00 AM - 分析师查看报表
-    
-    数据年龄：约 23 小时旧
-    ```
-    
-    **为什么批处理对分析更好：**
-    
-    1. **一致的快照：**
-    ```python
-    # ETL 捕获时间点快照
-    # 所有数据来自同一时刻
-    snapshot_time = '2024-01-15 23:59:59'
-    
-    orders = extract_orders(snapshot_time)
-    customers = extract_customers(snapshot_time)
-    products = extract_products(snapshot_time)
-    
-    # 所有数据都是一致的
-    # 无查询中途变更
-    ```
-    
-    2. **无查询中途更新：**
-    ```
-    读取副本（实时）：
-    开始查询：100 个订单
-    查询中途：5 个新订单到达
-    结束查询：不一致的结果
-    
-    数据仓库（批处理）：
-    开始查询：100 个订单
-    查询中途：无变更（静态快照）
-    结束查询：一致的结果
-    ```
-    
-    3. **为聚合优化：**
-    ```sql
-    -- 仓库中预先聚合
-    SELECT date, SUM(revenue) 
-    FROM daily_sales_summary  -- 已经求和
-    WHERE date >= '2024-01-01';
-    -- 10ms 返回
-    
-    -- vs 读取副本
-    SELECT DATE(created_at), SUM(total)
-    FROM orders  -- 必须扫描数百万行
-    WHERE created_at >= '2024-01-01'
-    GROUP BY DATE(created_at);
-    -- 30 秒返回
-    ```
-    
     **过时性可接受的情况：**
     - ✅ 月度/季度报表
     - ✅ 年度比较
@@ -1348,49 +1293,104 @@ def etl_orders():
     - ❌ 实时警报
     - ❌ 面向客户的数据
     - ❌ 欺诈检测
+
+**示例时间线：**
+```
+周一 9:00 AM - 客户下订单
+周一 11:59 PM - ETL 作业开始
+周二 12:30 AM - ETL 作业完成
+周二 8:00 AM - 分析师查看报表
+
+数据年龄：约 23 小时旧
+```
+
+**为什么批处理对分析更好：**
+
+**1. 一致的快照：**
+```python
+# ETL 捕获时间点快照
+# 所有数据来自同一时刻
+snapshot_time = '2024-01-15 23:59:59'
+
+orders = extract_orders(snapshot_time)
+customers = extract_customers(snapshot_time)
+products = extract_products(snapshot_time)
+
+# 所有数据都是一致的
+# 无查询中途变更
+```
+
+**2. 无查询中途更新：**
+```
+读取副本（实时）：
+开始查询：100 个订单
+查询中途：5 个新订单到达
+结束查询：不一致的结果
+
+数据仓库（批处理）：
+开始查询：100 个订单
+查询中途：无变更（静态快照）
+结束查询：一致的结果
+```
+
+**3. 为聚合优化：**
+```sql
+-- 仓库中预先聚合
+SELECT date, SUM(revenue) 
+FROM daily_sales_summary  -- 已经求和
+WHERE date >= '2024-01-01';
+-- 10ms 返回
+
+-- vs 读取副本
+SELECT DATE(created_at), SUM(total)
+FROM orders  -- 必须扫描数百万行
+WHERE created_at >= '2024-01-01'
+GROUP BY DATE(created_at);
+-- 30 秒返回
+```
+
+**混合解决方案：Lambda 架构**
+```
+实时层（读取副本）：
+- 最近 24 小时的数据
+- 对最近数据的快速查询
+- 可接受延迟：秒
+
+批处理层（数据仓库）：
+- 历史数据（>24 小时）
+- 复杂分析
+- 可接受延迟：小时/天
+
+服务层：
+- 合并两个视图
+- 最近 + 历史
+```
+
+**示例实现：**
+```python
+def get_sales_report(start_date, end_date):
+    today = datetime.now().date()
     
-    **混合解决方案：Lambda 架构**
-    ```
-    实时层（读取副本）：
-    - 最近 24 小时的数据
-    - 对最近数据的快速查询
-    - 可接受延迟：秒
-    
-    批处理层（数据仓库）：
-    - 历史数据（>24 小时）
-    - 复杂分析
-    - 可接受延迟：小时/天
-    
-    服务层：
-    - 合并两个视图
-    - 最近 + 历史
-    ```
-    
-    **示例实现：**
-    ```python
-    def get_sales_report(start_date, end_date):
-        today = datetime.now().date()
-        
-        # 从仓库获取历史数据
-        if end_date < today:
-            return warehouse.query(
-                "SELECT * FROM sales_summary WHERE date BETWEEN ? AND ?",
-                start_date, end_date
-            )
-        
-        # 从副本获取最近数据
-        historical = warehouse.query(
+    # 从仓库获取历史数据
+    if end_date < today:
+        return warehouse.query(
             "SELECT * FROM sales_summary WHERE date BETWEEN ? AND ?",
-            start_date, today - timedelta(days=1)
+            start_date, end_date
         )
-        
-        recent = replica.query(
-            "SELECT * FROM orders WHERE date >= ?",
-            today
-        )
-        
-        return merge(historical, recent)
-    ```
+    
+    # 从副本获取最近数据
+    historical = warehouse.query(
+        "SELECT * FROM sales_summary WHERE date BETWEEN ? AND ?",
+        start_date, today - timedelta(days=1)
+    )
+    
+    recent = replica.query(
+        "SELECT * FROM orders WHERE date >= ?",
+        today
+    )
+    
+    return merge(historical, recent)
+```
 
 **比较：**
 

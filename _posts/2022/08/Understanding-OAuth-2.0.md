@@ -119,19 +119,11 @@ sequenceDiagram
     - Client redirects user to authorization server
     
     **2. Authorization Request**
-    ```
-    GET /authorize?
-      response_type=code&
-      client_id=CLIENT_ID&
-      redirect_uri=https://client.app/callback&
-      scope=read:photos&
-      state=RANDOM_STRING
-    ```
-    - `response_type=code`: Requests authorization code
-    - `client_id`: Identifies the client application
-    - `redirect_uri`: Where to send authorization code
-    - `scope`: Requested permissions
-    - `state`: CSRF protection token
+    - response_type=code: Requests authorization code
+    - client_id: Identifies the client application
+    - redirect_uri: Where to send authorization code
+    - scope: Requested permissions
+    - state: CSRF protection token
     
     **3. User Authentication & Consent**
     - Authorization server authenticates user (login screen)
@@ -139,53 +131,71 @@ sequenceDiagram
     - User approves or denies access
     
     **4. Authorization Code Issued**
-    ```
-    HTTP/1.1 302 Found
-    Location: https://client.app/callback?
-      code=AUTHORIZATION_CODE&
-      state=RANDOM_STRING
-    ```
     - Short-lived authorization code (typically 10 minutes)
     - Returned via browser redirect
     - Single-use only
     
     **5. Token Exchange**
-    ```
-    POST /token
-    Content-Type: application/x-www-form-urlencoded
-    
-    grant_type=authorization_code&
-    code=AUTHORIZATION_CODE&
-    redirect_uri=https://client.app/callback&
-    client_id=CLIENT_ID&
-    client_secret=CLIENT_SECRET
-    ```
     - Client exchanges code for tokens
     - Includes client secret (server-to-server)
     - Authorization code consumed and invalidated
     
     **6. Access Token Response**
-    ```json
-    {
-      "access_token": "eyJhbGciOiJSUzI1NiIs...",
-      "token_type": "Bearer",
-      "expires_in": 3600,
-      "refresh_token": "tGzv3JOkF0XG5Qx2TlKWIA",
-      "scope": "read:photos"
-    }
-    ```
     - Access token for API requests
     - Refresh token for obtaining new access tokens
     - Expiration time in seconds
     
     **7. API Access**
-    ```
-    GET /api/photos
-    Authorization: Bearer eyJhbGciOiJSUzI1NiIs...
-    ```
     - Client includes access token in requests
     - Resource server validates token
     - Returns protected resources
+
+**Authorization Request Example:**
+```
+GET /authorize?
+  response_type=code&
+  client_id=CLIENT_ID&
+  redirect_uri=https://client.app/callback&
+  scope=read:photos&
+  state=RANDOM_STRING
+```
+
+**Authorization Code Response:**
+```
+HTTP/1.1 302 Found
+Location: https://client.app/callback?
+  code=AUTHORIZATION_CODE&
+  state=RANDOM_STRING
+```
+
+**Token Exchange Request:**
+```
+POST /token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=authorization_code&
+code=AUTHORIZATION_CODE&
+redirect_uri=https://client.app/callback&
+client_id=CLIENT_ID&
+client_secret=CLIENT_SECRET
+```
+
+**Access Token Response:**
+```json
+{
+  "access_token": "eyJhbGciOiJSUzI1NiIs...",
+  "token_type": "Bearer",
+  "expires_in": 3600,
+  "refresh_token": "tGzv3JOkF0XG5Qx2TlKWIA",
+  "scope": "read:photos"
+}
+```
+
+**API Access Example:**
+```
+GET /api/photos
+Authorization: Bearer eyJhbGciOiJSUzI1NiIs...
+```
 
 ### Why This Flow is Secure
 
@@ -314,43 +324,41 @@ sequenceDiagram
     - Random string: 43-128 characters
     - Cryptographically random
     - Generated fresh for each authorization request
-    - Example: `dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk`
+    - Example: dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk
     
     **Code Challenge**
     - SHA256 hash of code verifier (recommended)
     - Or plain code verifier (not recommended)
     - Sent in authorization request
-    - Example: `E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM`
+    - Example: E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM
     
-    **Authorization Request**
-    ```
-    GET /authorize?
-      response_type=code&
-      client_id=CLIENT_ID&
-      redirect_uri=https://app.example.com/callback&
-      scope=read:photos&
-      code_challenge=E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM&
-      code_challenge_method=S256
-    ```
-    
-    **Token Request**
-    ```
-    POST /token
-    
-    grant_type=authorization_code&
-    code=AUTHORIZATION_CODE&
-    redirect_uri=https://app.example.com/callback&
-    client_id=CLIENT_ID&
-    code_verifier=dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk
-    ```
-    
-    **Server Verification**
-    ```
-    SHA256(code_verifier) == stored_code_challenge
-    ```
+    **Server Verification Process**
     - Authorization server stores code_challenge with authorization code
     - Verifies code_verifier matches during token exchange
     - Prevents authorization code interception attacks
+    - Formula: SHA256(code_verifier) == stored_code_challenge
+
+**PKCE Authorization Request:**
+```
+GET /authorize?
+  response_type=code&
+  client_id=CLIENT_ID&
+  redirect_uri=https://app.example.com/callback&
+  scope=read:photos&
+  code_challenge=E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM&
+  code_challenge_method=S256
+```
+
+**PKCE Token Request:**
+```
+POST /token
+
+grant_type=authorization_code&
+code=AUTHORIZATION_CODE&
+redirect_uri=https://app.example.com/callback&
+client_id=CLIENT_ID&
+code_verifier=dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk
+```
 
 ### Why PKCE Works
 
@@ -413,33 +421,49 @@ sequenceDiagram
 
 ### Implementation
 
-!!!anote "📋 Client Credentials Request"
-    **Token Request**
-    ```
-    POST /token
-    Content-Type: application/x-www-form-urlencoded
+!!!anote "📋 Client Credentials Implementation"
+    **Token Request Process**
+    - Send client credentials to authorization server
+    - Include requested scopes
+    - Receive access token directly
     
-    grant_type=client_credentials&
-    client_id=CLIENT_ID&
-    client_secret=CLIENT_SECRET&
-    scope=api:read api:write
-    ```
+    **Token Response Contents**
+    - Access token for API requests
+    - Token type (typically Bearer)
+    - Expiration time in seconds
+    - Granted scopes
     
-    **Token Response**
-    ```json
-    {
-      "access_token": "eyJhbGciOiJSUzI1NiIs...",
-      "token_type": "Bearer",
-      "expires_in": 3600,
-      "scope": "api:read api:write"
-    }
-    ```
-    
-    **API Request**
-    ```
-    GET /api/resources
-    Authorization: Bearer eyJhbGciOiJSUzI1NiIs...
-    ```
+    **API Request Usage**
+    - Include access token in Authorization header
+    - Use Bearer token format
+    - Resource server validates token
+
+**Client Credentials Token Request:**
+```
+POST /token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials&
+client_id=CLIENT_ID&
+client_secret=CLIENT_SECRET&
+scope=api:read api:write
+```
+
+**Token Response:**
+```json
+{
+  "access_token": "eyJhbGciOiJSUzI1NiIs...",
+  "token_type": "Bearer",
+  "expires_in": 3600,
+  "scope": "api:read api:write"
+}
+```
+
+**API Request:**
+```
+GET /api/resources
+Authorization: Bearer eyJhbGciOiJSUzI1NiIs...
+```
 
 This flow is straightforward but requires secure storage of client credentials and should only be used for service-to-service communication.
 
@@ -472,19 +496,24 @@ The most common misconception is that OAuth provides authentication. It doesn't.
 
 Many applications implement "Login with [Service]" using OAuth alone:
 
+**Insecure implementation example:**
+```javascript
+// INSECURE: Do not do this
+app.get('/callback', async (req, res) => {
+  const { code } = req.query;
+  const token = await exchangeCodeForToken(code);
+  
+  // Assumes token belongs to legitimate user
+  const user = await getUserFromToken(token);
+  req.session.userId = user.id; // VULNERABLE
+});
+```
+
 !!!warning "⚠️ Insecure OAuth Login Pattern"
     **Flawed Implementation**
-    ```javascript
-    // INSECURE: Do not do this
-    app.get('/callback', async (req, res) => {
-      const { code } = req.query;
-      const token = await exchangeCodeForToken(code);
-      
-      // Assumes token belongs to legitimate user
-      const user = await getUserFromToken(token);
-      req.session.userId = user.id; // VULNERABLE
-    });
-    ```
+    - Application exchanges authorization code for access token
+    - Assumes token belongs to legitimate user
+    - Directly uses token to set session (VULNERABLE)
     
     **Attack Scenario**
     - Attacker obtains valid access token for their account
@@ -503,35 +532,35 @@ OpenID Connect (OIDC) extends OAuth 2.0 to provide authentication:
     - UserInfo endpoint: Standardized user information
     - Authentication verification
     - Standardized claims (sub, name, email, etc.)
-    
-    **Secure Implementation**
-    ```javascript
-    // SECURE: Using OpenID Connect
-    app.get('/callback', async (req, res) => {
-      const { code } = req.query;
-      const tokens = await exchangeCodeForTokens(code);
-      
-      // Verify ID token signature and claims
-      const idToken = await verifyIdToken(tokens.id_token);
-      
-      // ID token contains verified user identity
-      req.session.userId = idToken.sub;
-      req.session.email = idToken.email;
-    });
-    ```
-    
-    **ID Token Structure**
-    ```json
-    {
-      "iss": "https://auth.example.com",
-      "sub": "user123",
-      "aud": "client_id",
-      "exp": 1661529600,
-      "iat": 1661526000,
-      "email": "user@example.com",
-      "email_verified": true
-    }
-    ```
+
+**Secure Implementation:**
+```javascript
+// SECURE: Using OpenID Connect
+app.get('/callback', async (req, res) => {
+  const { code } = req.query;
+  const tokens = await exchangeCodeForTokens(code);
+  
+  // Verify ID token signature and claims
+  const idToken = await verifyIdToken(tokens.id_token);
+  
+  // ID token contains verified user identity
+  req.session.userId = idToken.sub;
+  req.session.email = idToken.email;
+});
+```
+
+**ID Token Structure:**
+```json
+{
+  "iss": "https://auth.example.com",
+  "sub": "user123",
+  "aud": "client_id",
+  "exp": 1661529600,
+  "iat": 1661526000,
+  "email": "user@example.com",
+  "email_verified": true
+}
+```
 
 Use OAuth 2.0 for API authorization. Use OpenID Connect for user authentication.
 

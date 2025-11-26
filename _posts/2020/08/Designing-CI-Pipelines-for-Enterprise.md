@@ -296,25 +296,27 @@ jobs:
 ```
 
 !!!tip "📦 Template Library Organization"
-    Organize templates by scope:
-    
-    ```
-    .github/workflows/templates/
-    ├── base/
-    │   ├── ci-pipeline.yml          # Core CI flow
-    │   └── cd-pipeline.yml          # Core CD flow
-    ├── languages/
-    │   ├── java-pipeline.yml
-    │   ├── python-pipeline.yml
-    │   └── nodejs-pipeline.yml
-    ├── mixins/
-    │   ├── security-scan.yml
-    │   ├── compliance-check.yml
-    │   └── performance-test.yml
-    └── specialized/
-        ├── microservice-pipeline.yml
-        └── frontend-pipeline.yml
-    ```
+    Organize templates by scope for better maintainability and discoverability.
+
+**Template Directory Structure:**
+
+```
+.github/workflows/templates/
+├── base/
+│   ├── ci-pipeline.yml          # Core CI flow
+│   └── cd-pipeline.yml          # Core CD flow
+├── languages/
+│   ├── java-pipeline.yml
+│   ├── python-pipeline.yml
+│   └── nodejs-pipeline.yml
+├── mixins/
+│   ├── security-scan.yml
+│   ├── compliance-check.yml
+│   └── performance-test.yml
+└── specialized/
+    ├── microservice-pipeline.yml
+    └── frontend-pipeline.yml
+```
 
 **Template Versioning Strategy**:
 
@@ -653,11 +655,14 @@ Protect your CI infrastructure:
 - **Network Isolation**: Run builds in isolated networks to prevent lateral movement
 
 !!!warning "⚠️ Common Security Mistakes"
+    **Avoid these critical security pitfalls:**
     - Storing credentials in environment variables
     - Running builds with admin privileges
     - Allowing arbitrary code execution in pull requests
     - Exposing internal services to build runners
     - Failing to rotate credentials regularly
+    
+    **Impact:** These mistakes can lead to credential theft, privilege escalation, and unauthorized access to production systems.
 
 ## The One-Pipeline-Fits-All Debate
 
@@ -848,21 +853,23 @@ Use this framework to decide your approach:
 !!!warning "⚠️ Anti-Pattern: The Mega-Pipeline"
     Avoid creating a single pipeline with hundreds of conditional branches:
     
-    ```yaml
-    # DON'T DO THIS
-    if language == "java":
-      if build_tool == "maven":
-        if java_version == "8":
-          run: mvn -Djava.version=8 package
-        elif java_version == "11":
-          run: mvn -Djava.version=11 package
-      elif build_tool == "gradle":
-        # ... more conditions
-    elif language == "python":
-      # ... more conditions
-    ```
-    
     This becomes unmaintainable and error-prone. Use templates instead.
+
+**Anti-Pattern Example:**
+
+```yaml
+# DON'T DO THIS
+if language == "java":
+  if build_tool == "maven":
+    if java_version == "8":
+      run: mvn -Djava.version=8 package
+    elif java_version == "11":
+      run: mvn -Djava.version=11 package
+  elif build_tool == "gradle":
+    # ... more conditions
+elif language == "python":
+  # ... more conditions
+```
 <!-- 
 ### Real-World Example: Evolution at Scale
 
