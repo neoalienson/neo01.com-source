@@ -29,7 +29,7 @@ Personal tech blog covering AI, cybersecurity, architecture, and development.
 **Tags:**
 - Must be in English only
 - Proper capitalization: Use title case (e.g., `Security`, `iOS`, `Android`, `Machine Learning`)
-- Concise and relevant: 3-7 tags maximum, directly related to content
+- Concise and relevant: 3 tags maximum, directly related to content
 - Consistent terminology: Use established terms (`Git` not `git`, `DevOps` not `devops`)
 - Examples: `Git`, `DevOps`, `Security`, `Database`, `AI`, `Machine Learning`, `Cloud Computing`, `Version Control`
 - Avoid: Generic tags like `Technology`, `Programming`, `Software`
