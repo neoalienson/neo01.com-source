@@ -3,7 +3,7 @@ title: "看板 vs Scrum：选择正确的敏捷框架"
 date: 2014-04-04
 lang: zh-CN
 categories: Development
-tags: [Agile, Scrum, Kanban, Project Management]
+tags: [Agile, Scrum, Kanban]
 series: agile
 excerpt: "Scrum和看板都承诺敏捷性，但它们的工作方式不同。了解何时使用每个框架、如何组合它们，以及避免将流程变成官僚主义的常见陷阱。"
 thumbnail: /assets/agile/thumbnail.png

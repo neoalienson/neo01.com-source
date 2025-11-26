@@ -3,7 +3,7 @@ title: "Domain-Driven Design: Bridging Business and Code"
 date: 2003-12-02
 lang: en
 categories: Architecture
-tags: [DDD, Software Architecture, Domain Modeling, Design Patterns, Ubiquitous Language]
+tags: [DDD, Software Architecture, Design Patterns]
 excerpt: "Domain-Driven Design promises software that speaks business language, but the journey from database-centric to domain-centric architecture reveals how modeling complexity evolved beyond CRUD operations."
 ---
 

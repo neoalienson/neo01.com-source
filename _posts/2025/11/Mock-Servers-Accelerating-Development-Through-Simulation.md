@@ -2,7 +2,7 @@
 title: "Mock Servers: Accelerating Development Through Simulation"
 date: 2025-11-01
 categories: Development
-tags: [Testing, API, Development, DevOps]
+tags: [Testing, API, Development]
 excerpt: "Discover how mock servers transform development workflows by simulating APIs and services, enabling parallel development, comprehensive testing, and faster iteration cycles without external dependencies."
 thumbnail: /assets/futuristic/mesh.png
 ---

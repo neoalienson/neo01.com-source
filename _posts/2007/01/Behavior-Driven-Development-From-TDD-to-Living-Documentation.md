@@ -2,7 +2,7 @@
 title: "Behavior-Driven Development: From TDD to Living Documentation"
 date: 2007-01-05
 categories: Development
-tags: [BDD, TDD, Testing, Agile, Software Quality, Cucumber, Gherkin]
+tags: [BDD, Testing, Agile]
 excerpt: "BDD promises tests that business stakeholders can read, but the journey from unit tests to executable specifications reveals how testing evolved beyond code coverage. Understand when BDD adds value and avoid common pitfalls."
 ---
 

@@ -3,7 +3,7 @@ title: "單點登入的演進：從 Kerberos 到 OIDC"
 date: 2010-01-22
 lang: zh-TW
 categories: Cybersecurity
-tags: [Security, Authentication, SSO, OAuth, OIDC, SAML, Kerberos]
+tags: [Security, Authentication, SSO]
 excerpt: "單點登入承諾一次登入即可存取所有系統，但從 Windows 身份驗證到現代 OAuth 流程的演進揭示了數十年的安全演變。了解何時使用每種協定，避免身份驗證陷阱。"
 thumbnail: /assets/security/lock.png
 series: authentication

@@ -2,7 +2,7 @@
 title: "在 Git 中防止憑證：分層防禦策略"
 date: 2022-03-21
 categories: Development
-tags: [Security, Git, Credentials, DevOps]
+tags: [Security, Git, DevOps]
 lang: zh-TW
 excerpt: "預防勝於補救。遵循 OWASP DevSecOps 原則，透過預提交鉤子、密鑰掃描、程式碼檢查和自動偵測建構多層防禦。"
 thumbnail: /assets/git/thumbnail.png

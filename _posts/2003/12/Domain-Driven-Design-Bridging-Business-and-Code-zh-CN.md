@@ -3,7 +3,7 @@ title: "领域驱动设计：连接业务与代码"
 date: 2003-12-02
 lang: zh-CN
 categories: Architecture
-tags: [DDD, Software Architecture, Domain Modeling, Design Patterns, Ubiquitous Language]
+tags: [DDD, Software Architecture, Design Patterns]
 excerpt: "领域驱动设计承诺软件能说业务语言，但从数据库中心到领域中心架构的旅程，揭示了建模复杂性如何超越 CRUD 操作而演进。"
 ---
 

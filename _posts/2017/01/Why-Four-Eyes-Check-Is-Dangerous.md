@@ -2,7 +2,7 @@
 title: "Why Four Eyes Check Is Dangerous"
 date: 2017-01-28
 categories: [Cybersecurity]
-tags: [Security, Risk Management, Governance, Human Factors, Controls, Production, Code Review]
+tags: [Security, Risk Management, Governance]
 excerpt: "Four eyes checks seem like perfect controls—two people reviewing critical actions should catch errors and prevent problems. But this widely trusted practice creates dangerous blind spots in security, production deployments, and operational decisions."
 ---
 

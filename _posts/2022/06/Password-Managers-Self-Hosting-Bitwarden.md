@@ -2,7 +2,7 @@
 title: "Credential Managers: Securing Passwords, Passkeys, and TOTP in One Vault"
 date: 2022-06-07
 categories: Cybersecurity
-tags: [Security, Password, Passkey, TOTP, Self-Hosting]
+tags: [Security, Password, Self-Hosting]
 excerpt: "Modern credential managers secure passwords, passkeys, and TOTP codes in encrypted vaults. Learn why you need one, how they work, and best practices for self-hosting."
 thumbnail: /assets/security/lock.png
 ---

@@ -2,7 +2,7 @@
 title: "Understanding SAML: Enterprise Federation Explained"
 date: 2010-02-11
 categories: Cybersecurity
-tags: [Security, Authentication, SSO, SAML, Federation]
+tags: [Security, Authentication, SAML]
 excerpt: "SAML enables enterprise SSO across organizational boundaries, but its XML complexity and browser-centric design reveal both strengths and limitations. Learn when SAML excels and when modern alternatives fit better."
 thumbnail: /assets/security/lock.png
 series: authentication

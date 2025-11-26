@@ -2,7 +2,7 @@
 title: "Understanding OAuth 2.0: The Authorization Framework Powering Modern APIs"
 date: 2022-08-16
 categories: Development
-tags: [Security, OAuth, API, Authentication]
+tags: [Security, OAuth, Authentication]
 excerpt: "OAuth 2.0 enables secure delegated access without sharing passwords. Learn how authorization flows work, common pitfalls, and why OAuth is not authentication."
 thumbnail: /assets/security/lock.png
 ---

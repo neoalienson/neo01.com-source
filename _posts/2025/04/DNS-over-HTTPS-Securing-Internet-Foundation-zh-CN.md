@@ -3,7 +3,7 @@ title: "DNS over HTTPS：保护互联网的基础设施"
 date: 2025-04-02
 lang: zh-CN
 categories: Cybersecurity
-tags: [Security, DNS, Privacy, Networking]
+tags: [Security, DNS, Privacy]
 excerpt: "探索 DNS over HTTPS (DoH) 如何通过加密 DNS 查询来改变互联网隐私，防止监控和操纵，同时重塑安全与网络控制之间的平衡。"
 thumbnail: /assets/futuristic/mesh.png
 ---

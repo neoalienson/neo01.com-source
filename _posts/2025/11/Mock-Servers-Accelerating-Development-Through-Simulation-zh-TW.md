@@ -3,7 +3,7 @@ title: "Mock 伺服器：透過模擬加速開發"
 date: 2025-11-01
 lang: zh-TW
 categories: Development
-tags: [Testing, API, Development, DevOps]
+tags: [Testing, API, Development]
 excerpt: "探索 Mock 伺服器如何透過模擬 API 和服務來轉變開發工作流程，實現並行開發、全面測試和更快的迭代週期，無需依賴外部服務。"
 thumbnail: /assets/futuristic/mesh.png
 ---

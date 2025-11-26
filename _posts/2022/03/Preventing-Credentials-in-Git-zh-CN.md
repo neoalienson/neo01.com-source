@@ -2,7 +2,7 @@
 title: "在 Git 中防止凭证：分层防御策略"
 date: 2022-03-21
 categories: Development
-tags: [Security, Git, Credentials, DevOps]
+tags: [Security, Git, DevOps]
 lang: zh-CN
 excerpt: "预防胜于补救。遵循 OWASP DevSecOps 原则，通过预提交钩子、密钥扫描、代码检查和自动检测构建多层防御。"
 thumbnail: /assets/git/thumbnail.png

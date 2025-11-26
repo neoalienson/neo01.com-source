@@ -2,7 +2,7 @@
 title: "IT Risk Management: Protecting Business Value"
 date: 2001-04-24
 categories: Cybersecurity
-tags: [Security, Risk Management, Governance, Compliance, Business Continuity]
+tags: [Security, Risk Management, Governance]
 excerpt: "IT risks can destroy business value overnight. From data breaches to system failures, understanding how to identify, assess, and mitigate technology risks is essential for protecting your organization."
 ---
 

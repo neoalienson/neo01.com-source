@@ -3,7 +3,7 @@ title: "測試替身：理解 Mock、Stub、Fake 和 Spy"
 date: 2018-12-02
 lang: zh-TW
 categories: Development
-tags: [Testing, Unit Testing, Software Engineering, Best Practices]
+tags: [Testing, Unit Testing, Best Practices]
 excerpt: "掌握測試替身的藝術，理解 mock、stub、fake 和 spy 之間的差異——這些是編寫有效、可維護單元測試的必備模式。"
 thumbnail: /assets/coding/1.png
 ---

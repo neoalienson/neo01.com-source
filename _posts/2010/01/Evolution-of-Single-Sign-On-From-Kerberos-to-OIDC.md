@@ -2,7 +2,7 @@
 title: "The Evolution of Single Sign-On: From Kerberos to OIDC"
 date: 2010-01-22
 categories: Cybersecurity
-tags: [Security, Authentication, SSO, OAuth, OIDC, SAML, Kerberos]
+tags: [Security, Authentication, SSO]
 excerpt: "Single Sign-On promises one login for everything, but the path from Windows authentication to modern OAuth flows reveals decades of security evolution. Understand when to use each protocol and avoid authentication pitfalls."
 thumbnail: /assets/security/lock.png
 series: authentication

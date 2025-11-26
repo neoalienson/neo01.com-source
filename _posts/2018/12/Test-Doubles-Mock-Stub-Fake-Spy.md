@@ -2,7 +2,7 @@
 title: "Test Doubles: Understanding Mock, Stub, Fake, and Spy"
 date: 2018-12-02
 categories: Development
-tags: [Testing, Unit Testing, Software Engineering, Best Practices]
+tags: [Testing, Unit Testing, Best Practices]
 excerpt: "Master the art of test doubles by understanding the differences between mocks, stubs, fakes, and spies—essential patterns for writing effective, maintainable unit tests."
 thumbnail: /assets/coding/1.png
 ---

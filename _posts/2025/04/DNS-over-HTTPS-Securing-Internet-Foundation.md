@@ -2,7 +2,7 @@
 title: "DNS over HTTPS: Securing the Internet's Foundation"
 date: 2025-04-02
 categories: Cybersecurity
-tags: [Security, DNS, Privacy, Networking]
+tags: [Security, DNS, Privacy]
 excerpt: "Explore how DNS over HTTPS (DoH) is transforming internet privacy by encrypting DNS queries, preventing surveillance and manipulation while reshaping the balance between security and network control."
 thumbnail: /assets/futuristic/mesh.png
 ---

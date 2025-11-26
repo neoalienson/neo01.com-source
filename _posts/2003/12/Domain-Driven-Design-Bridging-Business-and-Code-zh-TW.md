@@ -3,7 +3,7 @@ title: "領域驅動設計：連結業務與程式碼"
 date: 2003-12-02
 lang: zh-TW
 categories: Architecture
-tags: [DDD, Software Architecture, Domain Modeling, Design Patterns, Ubiquitous Language]
+tags: [DDD, Software Architecture, Design Patterns]
 excerpt: "領域驅動設計承諾軟體能說業務語言，但從資料庫中心到領域中心架構的旅程，揭示了建模複雜性如何超越 CRUD 操作而演進。"
 ---
 

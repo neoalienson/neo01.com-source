@@ -3,7 +3,7 @@ title: "IT 风险管理：保护业务价值"
 date: 2001-04-24
 lang: zh-CN
 categories: Cybersecurity
-tags: [Security, Risk Management, Governance, Compliance, Business Continuity]
+tags: [Security, Risk Management, Governance]
 excerpt: "IT 风险可能在一夜之间摧毁业务价值。从数据泄露到系统故障，了解如何识别、评估和降低技术风险对于保护您的组织至关重要。"
 ---
 

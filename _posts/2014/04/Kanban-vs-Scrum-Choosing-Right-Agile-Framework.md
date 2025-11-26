@@ -2,7 +2,7 @@
 title: "Kanban vs Scrum: Choosing the Right Agile Framework"
 date: 2014-04-04
 categories: Development
-tags: [Agile, Scrum, Kanban, Project Management]
+tags: [Agile, Scrum, Kanban]
 series: agile
 excerpt: "Scrum and Kanban both promise agility, but they work differently. Understand when to use each framework, how to combine them, and avoid common pitfalls that turn process into bureaucracy."
 thumbnail: /assets/agile/thumbnail.png

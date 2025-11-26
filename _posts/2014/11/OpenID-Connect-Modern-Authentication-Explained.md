@@ -2,7 +2,7 @@
 title: "OpenID Connect: Modern Authentication Explained"
 date: 2014-11-11
 categories: Cybersecurity
-tags: [Security, Authentication, OIDC, OAuth, SSO, JWT]
+tags: [Security, Authentication, OIDC]
 excerpt: "OpenID Connect builds on OAuth 2.0 to provide standardized authentication for modern applications. Learn how OIDC unifies authentication and authorization, when to use it over SAML, and how to implement it securely."
 thumbnail: /assets/security/lock.png
 series: authentication

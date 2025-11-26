@@ -2,7 +2,7 @@
 title: "Stories vs Tasks in Agile: Breaking Down Work That Actually Works"
 date: 2014-02-03
 categories: Development
-tags: [Agile, Scrum, Project Management, JIRA]
+tags: [Agile, Scrum, Project Management]
 series: agile
 excerpt: "User stories and tasks serve different purposes in Agile development. Learn how to write effective stories, when to split into tasks, and how to handle work that spans multiple sprints."
 thumbnail: /assets/agile/thumbnail.png

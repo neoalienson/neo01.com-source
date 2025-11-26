@@ -3,7 +3,7 @@ title: "敏捷開發中的故事與任務：真正有效的工作分解方法"
 date: 2014-02-03
 lang: zh-TW
 categories: Development
-tags: [Agile, Scrum, Project Management, JIRA]
+tags: [Agile, Scrum, Project Management]
 series: agile
 excerpt: "使用者故事和任務在敏捷開發中有不同的用途。學習如何編寫有效的故事、何時拆分為任務，以及如何處理跨越多個衝刺的工作。"
 thumbnail: /assets/agile/thumbnail.png

@@ -3,7 +3,7 @@ title: "Git LFS: Managing Large Files in Version Control"
 date: 2016-01-28
 lang: en
 categories: Development
-tags: [Git, Version Control, DevOps, Storage]
+tags: [Git, Version Control, DevOps]
 excerpt: "Git struggles with large binary files, but Git LFS promises a solution. Understanding when to use LFS versus when to keep files out of version control entirely determines whether it becomes a powerful tool or an over-engineered burden."
 thumbnail: /assets/git/thumbnail.png
 ---

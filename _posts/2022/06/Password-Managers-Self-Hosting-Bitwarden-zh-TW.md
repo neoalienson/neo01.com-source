@@ -2,7 +2,7 @@
 title: "憑證管理器：在一個保險庫中保護密碼、通行金鑰和TOTP"
 date: 2022-06-07
 categories: Cybersecurity
-tags: [Security, Password, Passkey, TOTP, Self-Hosting]
+tags: [Security, Password, Self-Hosting]
 excerpt: "現代憑證管理器在加密保險庫中保護密碼、通行金鑰和TOTP代碼。了解為什麼需要它、如何運作以及自架的最佳實踐。"
 lang: zh-TW
 thumbnail: /assets/security/lock.png

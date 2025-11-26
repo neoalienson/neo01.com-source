@@ -3,7 +3,7 @@ title: "Kanban vs Scrum：選擇正確的敏捷框架"
 date: 2014-04-04
 lang: zh-TW
 categories: Development
-tags: [Agile, Scrum, Kanban, Project Management]
+tags: [Agile, Scrum, Kanban]
 series: agile
 excerpt: "Scrum 和 Kanban 都承諾敏捷性，但運作方式不同。了解何時使用每個框架、如何結合它們，以及避免將流程變成官僚主義的常見陷阱。"
 thumbnail: /assets/agile/thumbnail.png

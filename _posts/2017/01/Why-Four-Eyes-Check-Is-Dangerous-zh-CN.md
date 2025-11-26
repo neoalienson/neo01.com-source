@@ -2,7 +2,7 @@
 title: "为什么四眼检查很危险"
 date: 2017-01-28
 categories: [Cybersecurity]
-tags: [Security, Risk Management, Governance, Human Factors, Controls, Production, Code Review]
+tags: [Security, Risk Management, Governance]
 excerpt: "四眼检查看起来是完美的控制措施——两个人审查关键操作应该能发现错误并防止问题。但这种广受信任的做法在安全、生产部署和运营决策中创造了危险的盲点。"
 lang: zh-CN
 ---

@@ -2,7 +2,7 @@
 title: "Preventing Credentials in Git: A Layered Defense Strategy"
 date: 2022-03-21
 categories: Development
-tags: [Security, Git, Credentials, DevOps]
+tags: [Security, Git, DevOps]
 excerpt: "Prevention beats remediation. Build a multi-layered defense following OWASP DevSecOps principles with pre-commit hooks, secrets scanning, code linting, and automated detection."
 thumbnail: /assets/git/thumbnail.png
 ---

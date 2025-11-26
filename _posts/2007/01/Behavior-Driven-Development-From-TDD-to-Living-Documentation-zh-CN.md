@@ -3,7 +3,7 @@ title: "行为驱动开发：从 TDD 到活文档"
 date: 2007-01-05
 lang: zh-CN
 categories: Development
-tags: [BDD, TDD, Testing, Agile, Software Quality, Cucumber, Gherkin]
+tags: [BDD, Testing, Agile]
 excerpt: "BDD 承诺让业务利益相关者能读懂测试，但从单元测试到可执行规范的旅程，揭示了测试如何超越代码覆盖率而演进。了解 BDD 何时能增加价值，并避免常见陷阱。"
 ---
 

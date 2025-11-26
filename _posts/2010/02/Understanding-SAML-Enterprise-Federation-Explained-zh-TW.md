@@ -3,7 +3,7 @@ title: "理解 SAML：企業聯合身份驗證詳解"
 date: 2010-02-11
 lang: zh-TW
 categories: Cybersecurity
-tags: [Security, Authentication, SSO, SAML, Federation]
+tags: [Security, Authentication, SAML]
 excerpt: "SAML 實現了跨組織邊界的企業單點登入，但其 XML 複雜性和以瀏覽器為中心的設計既展現了優勢也暴露了局限。了解 SAML 何時表現出色，何時現代替代方案更合適。"
 thumbnail: /assets/security/lock.png
 series: authentication

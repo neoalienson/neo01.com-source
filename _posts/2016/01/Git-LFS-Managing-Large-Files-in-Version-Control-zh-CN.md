@@ -3,7 +3,7 @@ title: "Git LFS：版本控制中的大型文件管理"
 date: 2016-01-28
 lang: zh-CN
 categories: Development
-tags: [Git, Version Control, DevOps, Storage]
+tags: [Git, Version Control, DevOps]
 excerpt: "Git 在处理大型二进制文件时会遇到困难，但 Git LFS 提供了解决方案。了解何时使用 LFS 以及何时完全不将文件纳入版本控制，决定了它是成为强大工具还是过度工程化的负担。"
 thumbnail: /assets/git/thumbnail.png
 ---

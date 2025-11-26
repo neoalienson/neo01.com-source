@@ -3,7 +3,7 @@ title: "DNS over HTTPS：保護網際網路的基礎設施"
 date: 2025-04-02
 lang: zh-TW
 categories: Cybersecurity
-tags: [Security, DNS, Privacy, Networking]
+tags: [Security, DNS, Privacy]
 excerpt: "探索 DNS over HTTPS (DoH) 如何透過加密 DNS 查詢來改變網際網路隱私，防止監控和操縱，同時重塑安全與網路控制之間的平衡。"
 thumbnail: /assets/futuristic/mesh.png
 ---

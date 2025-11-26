@@ -3,7 +3,7 @@ title: "行為驅動開發：從 TDD 到活文件"
 date: 2007-01-05
 lang: zh-TW
 categories: Development
-tags: [BDD, TDD, Testing, Agile, Software Quality, Cucumber, Gherkin]
+tags: [BDD, Testing, Agile]
 excerpt: "BDD 承諾讓業務利害關係人能讀懂測試，但從單元測試到可執行規格的旅程，揭示了測試如何超越程式碼覆蓋率而演進。了解 BDD 何時能增加價值，並避免常見陷阱。"
 ---
 

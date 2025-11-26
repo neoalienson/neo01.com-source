@@ -3,7 +3,7 @@ title: "IT 風險管理：保護業務價值"
 date: 2001-04-24
 lang: zh-TW
 categories: Cybersecurity
-tags: [Security, Risk Management, Governance, Compliance, Business Continuity]
+tags: [Security, Risk Management, Governance]
 excerpt: "IT 風險可能在一夜之間摧毀業務價值。從資料外洩到系統故障，了解如何識別、評估和降低技術風險對於保護您的組織至關重要。"
 ---
 

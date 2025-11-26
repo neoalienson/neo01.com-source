@@ -3,7 +3,7 @@ title: "理解 Kerberos：網路身份驗證詳解"
 date: 2010-03-04
 lang: zh-TW
 categories: Cybersecurity
-tags: [Security, Authentication, Kerberos, Active Directory, Windows]
+tags: [Security, Authentication, Kerberos]
 excerpt: "Kerberos 透過基於票據的安全性革新了網路身份驗證。了解這個 MIT 協定如何成為企業 SSO 的基礎，以及為什麼它至今仍然支撐著 Windows 網域。"
 thumbnail: /assets/security/lock.png
 series: authentication

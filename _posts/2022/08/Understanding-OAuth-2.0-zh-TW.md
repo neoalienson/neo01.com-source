@@ -3,7 +3,7 @@ title: "理解 OAuth 2.0：驅動現代 API 的授權框架"
 date: 2022-08-16
 lang: zh-TW
 categories: Development
-tags: [Security, OAuth, API, Authentication]
+tags: [Security, OAuth, Authentication]
 excerpt: "OAuth 2.0 實現安全的委託存取而無需共享密碼。了解授權流程如何運作、常見陷阱，以及為什麼 OAuth 不是身份驗證。"
 thumbnail: /assets/security/lock.png
 ---

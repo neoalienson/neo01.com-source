@@ -2,7 +2,7 @@
 title: "凭据管理器：在一个保险库中保护密码、通行密钥和TOTP"
 date: 2022-06-07
 categories: Cybersecurity
-tags: [Security, Password, Passkey, TOTP, Self-Hosting]
+tags: [Security, Password, Self-Hosting]
 excerpt: "现代凭据管理器在加密保险库中保护密码、通行密钥和TOTP代码。了解为什么需要它、如何工作以及自托管的最佳实践。"
 lang: zh-CN
 thumbnail: /assets/security/lock.png

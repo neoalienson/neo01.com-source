@@ -2,7 +2,7 @@
 title: "Understanding Kerberos: Network Authentication Explained"
 date: 2010-03-04
 categories: Cybersecurity
-tags: [Security, Authentication, Kerberos, Active Directory, Windows]
+tags: [Security, Authentication, Kerberos]
 excerpt: "Kerberos revolutionized network authentication with ticket-based security. Discover how this MIT protocol became the foundation of enterprise SSO and why it still powers Windows domains today."
 thumbnail: /assets/security/lock.png
 series: authentication

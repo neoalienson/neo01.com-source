@@ -3,7 +3,7 @@ title: "OpenID Connect：现代身份验证详解"
 date: 2014-11-11
 lang: zh-CN
 categories: Cybersecurity
-tags: [Security, Authentication, OIDC, OAuth, SSO, JWT]
+tags: [Security, Authentication, OIDC]
 excerpt: "OpenID Connect 基于 OAuth 2.0 构建，为现代应用程序提供标准化的身份验证。了解 OIDC 如何统一身份验证和授权、何时使用它而不是 SAML，以及如何安全实施。"
 thumbnail: /assets/security/lock.png
 series: authentication
