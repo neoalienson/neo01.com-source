@@ -6,8 +6,6 @@ tags:
   - Git
   - Version Control
   - DevOps
-  - Workflow
-  - Branching
 excerpt: "Master Git branching strategies from Git Flow to GitHub Flow, exploring when to use each approach and how to implement them effectively in your development workflow."
 thumbnail: /assets/git/thumbnail.png
 ---

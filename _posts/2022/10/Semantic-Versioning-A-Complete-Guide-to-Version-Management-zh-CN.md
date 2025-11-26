@@ -5,10 +5,8 @@ lang: zh-CN
 categories: Development
 tags:
   - Version Control
-  - Software Development
   - Release Management
   - Git
-  - Best Practices
 excerpt: "掌握语义化版本控制，清晰传达变更信息并可靠管理依赖关系。学习 MAJOR.MINOR.PATCH 格式、预发布标识符，以及如何在开发工作流中实施 SemVer。"
 thumbnail: /assets/coding/2.png
 ---

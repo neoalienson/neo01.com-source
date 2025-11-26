@@ -7,7 +7,6 @@ tags:
   - Git
   - Version Control
   - Workflow
-  - Best Practices
 excerpt: "理解 git merge 和 git rebase 之間的根本差異，學習何時使用每種方法，掌握保持 Git 歷史記錄清晰且有意義的技術。"
 thumbnail: /assets/git/thumbnail.png
 ---

@@ -4,10 +4,8 @@ date: 2022-10-22
 categories: Development
 tags:
   - Version Control
-  - Software Development
   - Release Management
   - Git
-  - Best Practices
 excerpt: "Master semantic versioning to communicate changes clearly and manage dependencies reliably. Learn the MAJOR.MINOR.PATCH format, pre-release identifiers, and how to implement SemVer in your development workflow."
 thumbnail: /assets/coding/2.png
 ---

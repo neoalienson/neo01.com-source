@@ -6,7 +6,6 @@ tags:
   - Git
   - Version Control
   - Workflow
-  - Best Practices
 excerpt: "Understand the fundamental differences between git merge and git rebase, learn when to use each approach, and master the techniques that keep your Git history clean and meaningful."
 thumbnail: /assets/git/thumbnail.png
 ---

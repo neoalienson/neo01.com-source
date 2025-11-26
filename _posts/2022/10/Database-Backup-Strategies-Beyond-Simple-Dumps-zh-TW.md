@@ -7,7 +7,6 @@ tags:
   - Database
   - Backup
   - MySQL
-  - PostgreSQL
 excerpt: "深入探討資料庫備份的專業技術：交易一致性、時間點復原、跨資料庫協調，以及為什麼簡單的mysqldump可能不夠用。"
 thumbnail: /assets/database/backup_thumbnail.jpeg
 ---

@@ -7,7 +7,6 @@ tags:
   - Backup
   - Data Protection
   - Disaster Recovery
-  - Best Practices
 excerpt: "备份不仅仅是复制文件。学习如何设计弹性备份策略，在需要之前就保护数据免受丢失、勒索软件和灾难的影响。"
 thumbnail: /assets/database/backup_thumbnail.jpeg
 ---

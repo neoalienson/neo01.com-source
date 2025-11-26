@@ -7,7 +7,6 @@ tags:
   - Backup
   - Data Protection
   - Disaster Recovery
-  - Best Practices
 excerpt: "Backups aren't just about copying files. Learn how to design resilient backup strategies that protect against data loss, ransomware, and disasters—before you need them."
 thumbnail: /assets/database/backup_thumbnail.jpeg
 ---

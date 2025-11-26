@@ -7,8 +7,6 @@ tags:
   - SRE
   - DevOps
   - Reliability
-  - Monitoring
-  - Automation
 excerpt: "探索站点可靠性工程如何超越Google的原始模型，审视现代实践、工具以及2022年向平台工程的转变。"
 thumbnail: /assets/engineering/1.jpeg
 ---

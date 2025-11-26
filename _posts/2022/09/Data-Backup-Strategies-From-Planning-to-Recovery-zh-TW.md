@@ -7,7 +7,6 @@ tags:
   - Backup
   - Data Protection
   - Disaster Recovery
-  - Best Practices
 excerpt: "備份不僅僅是複製檔案。學習如何設計彈性備份策略，在需要之前就保護資料免受遺失、勒索軟體和災難的影響。"
 thumbnail: /assets/database/backup_thumbnail.jpeg
 ---

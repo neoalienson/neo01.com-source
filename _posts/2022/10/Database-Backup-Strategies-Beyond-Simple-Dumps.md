@@ -6,10 +6,7 @@ categories:
 tags:
   - Database
   - Backup
-  - Data Protection
   - MySQL
-  - PostgreSQL
-  - Best Practices
 excerpt: "Database backups aren't just SQL dumps. Learn how to design robust database backup strategies that ensure consistency, minimize downtime, and protect against data corruption—before disaster strikes."
 thumbnail: /assets/database/backup_thumbnail.jpeg
 ---

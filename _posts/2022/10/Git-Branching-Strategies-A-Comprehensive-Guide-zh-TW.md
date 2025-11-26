@@ -7,8 +7,6 @@ tags:
   - Git
   - Version Control
   - DevOps
-  - Workflow
-  - Branching
 excerpt: "掌握從Git Flow到GitHub Flow的各種Git分支策略，探索何時使用每種方法以及如何在開發工作流中有效實施。"
 thumbnail: /assets/git/thumbnail.png
 ---

@@ -6,8 +6,6 @@ tags:
   - SRE
   - DevOps
   - Reliability
-  - Monitoring
-  - Automation
 excerpt: "Exploring how Site Reliability Engineering has evolved beyond Google's original model, examining modern practices, tools, and the shift toward platform engineering in 2022."
 thumbnail: /assets/engineering/1.jpeg
 ---
