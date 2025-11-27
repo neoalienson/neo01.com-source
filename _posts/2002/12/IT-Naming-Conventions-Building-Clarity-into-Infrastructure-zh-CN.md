@@ -98,39 +98,34 @@ excerpt: "命名规范将基础设施的混乱转化为清晰。从主机名称�
     
     新工程师加入团队。看到服务器列表。立即理解基础设施。不需要部落知识。
 
-!!!success "✅ 自动化赋能"
-    **你得到什么**
-    
-    可预测的命名使自动化可靠：
-    
-    **备份脚本：**
-    ```bash
-    # 备份所有生产环境数据库
-    for db in $(list-servers | grep "^prod-.*-db-"); do
-        backup-database $db
-    done
-    ```
-    
-    **监控设置：**
-    ```yaml
-    # 自动发现生产环境网页服务器
-    targets:
-      - pattern: "prod-*-web-*"
-        metrics: [cpu, memory, requests]
-        alerts: [high-cpu, high-memory]
-    ```
-    
-    **部署管道：**
-    ```python
-    # 部署到正确的环境
-    env = hostname.split('-')[0]  # 第一个组件是环境
-    config = load_config(env)
-    deploy(config)
-    ```
-    
-    **影响：**
-    
-    脚本可靠运作。新资源自动包含。消除手动配置。
+**自动化赋能好处：**
+
+可预测的命名使自动化可靠。脚本可靠运作，新资源自动包含，消除手动配置。
+
+**备份脚本示例：**
+```bash
+# 备份所有生产环境数据库
+for db in $(list-servers | grep "^prod-.*-db-"); do
+    backup-database $db
+done
+```
+
+**监控设置示例：**
+```yaml
+# 自动发现生产环境网页服务器
+targets:
+  - pattern: "prod-*-web-*"
+    metrics: [cpu, memory, requests]
+    alerts: [high-cpu, high-memory]
+```
+
+**部署管道示例：**
+```python
+# 部署到正确的环境
+env = hostname.split('-')[0]  # 第一个组件是环境
+config = load_config(env)
+deploy(config)
+```
 
 !!!success "✅ 安全与合规"
     **你得到什么**
@@ -210,13 +205,10 @@ excerpt: "命名规范将基础设施的混乱转化为清晰。从主机名称�
     - 支持自动化
 
 **要避免的反模式：**
-
-```
-❌ server-1, server-2          # 没有环境指示器
-❌ production-db, live-db      # 不一致的术语
-❌ p-web-01, prod-web-02       # 混合缩写
-✅ prod-web-01, prod-web-02    # 一致且清晰
-```
+- ❌ `server-1`, `server-2` - 没有环境指示器
+- ❌ `production-db`, `live-db` - 不一致的术语
+- ❌ `p-web-01`, `prod-web-02` - 混合缩写
+- ✅ `prod-web-01`, `prod-web-02` - 一致且清晰
 
 ### 网络区域
 
@@ -352,12 +344,7 @@ DNS 根据规范不区分大小写：
     
     **最佳实践**
     
-    主机名称始终使用小写：
-    ```
-    ✅ prod-useast-web-01
-    ❌ PROD-USEAST-WEB-01
-    ❌ Prod-UsEast-Web-01
-    ```
+    主机名称始终使用小写：✅ `prod-useast-web-01` ❌ `PROD-USEAST-WEB-01` ❌ `Prod-UsEast-Web-01`
 
 **跨平台兼容性：**
 
@@ -384,124 +371,56 @@ DNS 根据规范不区分大小写：
 
 某些资源需要谨慎处理大小写：
 
-!!!warning "⚠️ 区分大小写的系统"
-    **Linux 文件系统**
-    
-    路径和文件名称区分大小写：
-    ```bash
-    /var/log/app.log ≠ /var/log/App.log
-    /home/user/config ≠ /home/user/Config
-    ```
-    
-    **影响：**
-    - 脚本必须使用精确的大小写
-    - 拼写错误会产生难以发现的错误
-    - 最佳实践：路径使用小写
-    
-    **数据库对象名称**
-    
-    行为因数据库而异：
-    
-    **PostgreSQL：**
-    - 未加引号的标识符折叠为小写
-    - 加引号的标识符区分大小写
-    ```sql
-    CREATE TABLE Users;        -- 创建 "users"
-    CREATE TABLE "Users";      -- 创建 "Users"
-    SELECT * FROM Users;       -- 查询 "users"
-    SELECT * FROM "Users";     -- 查询 "Users"
-    ```
-    
-    **MySQL：**
-    - 大小写敏感性取决于操作系统
-    - Windows：不区分大小写
-    - Linux：区分大小写
-    - 最佳实践：使用小写
-    
-    **SQL Server：**
-    - 取决于排序规则
-    - 默认：不区分大小写
-    - 可以按数据库配置
-    
-    **Oracle：**
-    - 未加引号的标识符折叠为大写
-    - 加引号的标识符区分大小写
-    
-    **最佳实践：**
-    ```sql
-    ✅ 使用小写、未加引号的标识符
-    CREATE TABLE users (...);
-    CREATE TABLE order_items (...);
-    
-    ❌ 避免混合大小写
-    CREATE TABLE "UserAccounts" (...);
-    CREATE TABLE "OrderItems" (...);
-    ```
+**区分大小写的系统：**
 
-!!!warning "⚠️ 云端资源标签"
-    **AWS**
-    - 标签键区分大小写
-    - `Environment` ≠ `environment`
-    - 可以创建不同大小写的重复标签
-    
-    **Azure**
-    - 标签名称不区分大小写
-    - 存储为输入的内容
-    - 以不区分大小写的方式匹配
-    
-    **GCP**
-    - 标签（GCP 的标签）区分大小写
-    - 必须是小写
-    - 由平台强制执行
-    
-    **最佳实践：**
-    
-    所有标签/标签使用小写：
-    ```yaml
-    ✅ 跨平台一致
-    tags:
-      environment: prod
-      application: web
-      owner: platform-team
-    
-    ❌ 造成问题
-    tags:
-      Environment: prod
-      Application: web
-      Owner: platform-team
-    ```
+**Linux 文件系统：**
+- 路径和文件名称区分大小写：`/var/log/app.log` ≠ `/var/log/App.log`
+- 脚本必须使用精确的大小写
+- 最佳实践：路径使用小写
+
+**数据库对象名称：**
+- **PostgreSQL**: 未加引号的标识符折叠为小写，加引号的区分大小写
+- **MySQL**: 大小写敏感性取决于操作系统（Windows 不区分，Linux 区分）
+- **SQL Server**: 取决于排序规则，默认不区分大小写
+- **Oracle**: 未加引号的标识符折叠为大写
+- **最佳实践**: 使用小写、未加引号的标识符，如 `CREATE TABLE users (...);`
+
+**云端资源标签：**
+- **AWS**: 标签键区分大小写，`Environment` ≠ `environment`
+- **Azure**: 标签名称不区分大小写
+- **GCP**: 标签区分大小写，必须是小写
+- **最佳实践**: 所有标签使用小写，如 `environment: prod`, `application: web`
 
 ### 混合环境的最佳实践
 
-!!!success "✅ 通用指南"
-    **默认为小写**
-    - 在任何地方都有效
-    - 避免大小写敏感性问题
-    - 更容易输入和记忆
-    
-    **保持一致**
-    - 选择一种风格
-    - 记录它
-    - 强制执行它
-    
-    **避免驼峰式和帕斯卡式**
-    - 难以程序化解析
-    - 不一致的单词边界
-    - 改用连字符或下划线
-    
-    **示例：**
-    ```
-    ✅ prod-useast-web-01
-    ✅ prod_useast_web_01
-    ❌ prodUsEastWeb01
-    ❌ ProdUsEastWeb01
-    ```
-    
-    **分隔符选择**
-    - 主机名称：使用连字符（不允许下划线）
-    - 数据库：使用下划线（在 SQL 中更易读）
-    - 云端标签：使用连字符（更常见）
-    - 文件路径：使用连字符或下划线（避免空格）
+**混合环境的通用指南：**
+
+**默认为小写**
+- 在任何地方都有效
+- 避免大小写敏感性问题
+- 更容易输入和记忆
+
+**保持一致**
+- 选择一种风格
+- 记录它
+- 强制执行它
+
+**避免驼峰式和帕斯卡式**
+- 难以程序化解析
+- 不一致的单词边界
+- 改用连字符或下划线
+
+**示例：**
+- ✅ `prod-useast-web-01`
+- ✅ `prod_useast_web_01`
+- ❌ `prodUsEastWeb01`
+- ❌ `ProdUsEastWeb01`
+
+**分隔符选择：**
+- 主机名称：使用连字符（不允许下划线）
+- 数据库：使用下划线（在 SQL 中更易读）
+- 云端标签：使用连字符（更常见）
+- 文件路径：使用连字符或下划线（避免空格）
 
 ## 资源特定的规范
 
@@ -520,9 +439,8 @@ DNS 根据规范不区分大小写：
     - 不区分大小写（使用小写）
     
     **建议的结构**
-    ```
-    {environment}-{location}-{type}-{function}-{instance}
-    ```
+    
+    `{environment}-{location}-{type}-{function}-{instance}`
     
     **组件长度**
     - 环境：3-4 字符（`dev`、`prod`）
@@ -565,9 +483,8 @@ AD 组需要层次式命名：
     - 通讯组：电子邮件列表
     
     **建议的结构**
-    ```
-    {type}_{scope}_{resource}_{permission}
-    ```
+    
+    `{type}_{scope}_{resource}_{permission}`
     
     **类型前缀**
     - `SEC_` - 安全组
@@ -619,9 +536,8 @@ DL_SECURITY_ALERTS
 
 !!!anote "💾 数据库命名"
     **建议的结构**
-    ```
-    {environment}_{application}_{purpose}
-    ```
+    
+    `{environment}_{application}_{purpose}`
     
     **环境前缀**
     - `dev_` - 开发
@@ -666,22 +582,12 @@ prod_shared_config
     - 代表一个实体
     - 在代码中更清晰：`user.name` 而不是 `users.name`
     - 与 ORM 惯例一致
-    ```sql
-    user
-    order
-    product
-    order_item
-    ```
+    - 示例：`user`, `order`, `product`, `order_item`
     
     **复数**
     - 代表集合
     - 在 SQL 中更自然：`SELECT * FROM users`
-    ```sql
-    users
-    orders
-    products
-    order_items
-    ```
+    - 示例：`users`, `orders`, `products`, `order_items`
     
     **选择一个并保持一致**
 
@@ -726,60 +632,40 @@ temp_calculation_results
     - 全球唯一
     - 小写、数字、连字符
     - 模式：`{org}-{env}-{purpose}-{region}`
-    ```
-    acme-prod-backups-useast1
-    acme-prod-logs-useast1
-    ```
+    - 示例：`acme-prod-backups-useast1`, `acme-prod-logs-useast1`
     
     **RDS 实例**
-    ```
-    prod-useast-postgres-customer-01
-    prod-useast-mysql-inventory-01
-    ```
+    - 示例：`prod-useast-postgres-customer-01`, `prod-useast-mysql-inventory-01`
 
 !!!anote "☁️ Azure 命名规范"
     **资源组**
-    ```
-    rg-prod-useast-web
-    rg-prod-useast-data
-    ```
+    - 示例：`rg-prod-useast-web`, `rg-prod-useast-data`
     
     **虚拟机**
-    ```
-    vm-prod-useast-web-01
-    vm-prod-useast-app-01
-    ```
+    - 示例：`vm-prod-useast-web-01`, `vm-prod-useast-app-01`
 
 !!!anote "☁️ GCP 命名规范"
     **Compute 实例**
-    ```
-    prod-useast-web-api-01
-    prod-useast-app-auth-01
-    ```
+    - 示例：`prod-useast-web-api-01`, `prod-useast-app-auth-01`
     
     **Cloud Storage 存储桶**
-    ```
-    acme-prod-backups-us-east1
-    acme-prod-logs-us-east1
-    ```
+    - 示例：`acme-prod-backups-us-east1`, `acme-prod-logs-us-east1`
 
 **标签标准化：**
 
 !!!success "✅ 通用标签架构"
-    **必需标签**
-    ```yaml
-    environment: prod|stage|dev|test
-    application: web|api|database|cache
-    owner: team-name or email
-    cost-center: department or project code
-    ```
-    
-    **可选标签**
-    ```yaml
-    backup: daily|weekly|none
-    monitoring: enabled|disabled
-    compliance: pci|hipaa|sox|none
-    ```
+    所有云端资源应使用一致的标签架构以实现成本追踪、自动化和合规性。
+
+**必需标签：**
+- `environment`: prod|stage|dev|test
+- `application`: web|api|database|cache
+- `owner`: team-name or email
+- `cost-center`: department or project code
+
+**可选标签：**
+- `backup`: daily|weekly|none
+- `monitoring`: enabled|disabled
+- `compliance`: pci|hipaa|sox|none
 
 ## 建立你的规范
 
@@ -901,18 +787,14 @@ temp_calculation_results
 
 !!!error "❌ 缩写问题"
     **有问题的示例**
-    ```
-    ❌ srv-p-db-01        # 'p' 是什么？生产环境？主要？PostgreSQL？
-    ❌ app-e-web-01       # 'e' 是什么？东部？欧洲？外部？
-    ❌ db-c-01            # 'c' 是什么？缓存？客户？中央？
-    ```
+    - ❌ `srv-p-db-01` - 'p' 是什么？生产环境？主要？PostgreSQL？
+    - ❌ `app-e-web-01` - 'e' 是什么？东部？欧洲？外部？
+    - ❌ `db-c-01` - 'c' 是什么？缓存？客户？中央？
     
     **更好的替代方案**
-    ```
-    ✅ prod-useast-db-postgres-01
-    ✅ prod-euwest-web-external-01
-    ✅ prod-useast-cache-redis-01
-    ```
+    - ✅ `prod-useast-db-postgres-01`
+    - ✅ `prod-euwest-web-external-01`
+    - ✅ `prod-useast-cache-redis-01`
     
     **指南**
     - 使用完整单词以清晰
@@ -926,24 +808,15 @@ temp_calculation_results
 
 !!!error "❌ 分隔符不一致"
     **有问题的示例**
-    ```
-    ❌ prod-web_01         # 混合连字符和下划线
-    ❌ prodWebServer01     # 主机名称中的驼峰式
-    ❌ prod.web.01         # 点（与 FQDN 混淆）
-    ❌ prod web 01         # 空格（不允许）
-    ```
+    - ❌ `prod-web_01` - 混合连字符和下划线
+    - ❌ `prodWebServer01` - 主机名称中的驼峰式
+    - ❌ `prod.web.01` - 点（与 FQDN 混淆）
+    - ❌ `prod web 01` - 空格（不允许）
     
     **一致的方法**
-    ```
-    ✅ 主机名称：使用连字符
-    prod-useast-web-01
-    
-    ✅ 数据库：使用下划线
-    prod_ecommerce_main
-    
-    ✅ AD 组：使用下划线
-    SEC_PROD_DATABASE_ADMIN
-    ```
+    - ✅ 主机名称：使用连字符 - `prod-useast-web-01`
+    - ✅ 数据库：使用下划线 - `prod_ecommerce_main`
+    - ✅ AD 组：使用下划线 - `SEC_PROD_DATABASE_ADMIN`
 
 ### 过于复杂的方案
 
@@ -951,9 +824,7 @@ temp_calculation_results
 
 !!!error "❌ 复杂度过载"
     **有问题的示例**
-    ```
-    ❌ prod-v2-useast-1a-dmz-web-nginx-api-customer-v1-blue-01
-    ```
+    - ❌ `prod-v2-useast-1a-dmz-web-nginx-api-customer-v1-blue-01`
     
     **问题**
     - 12 个组件
@@ -962,19 +833,11 @@ temp_calculation_results
     - 难以输入
     
     **简化版本**
-    ```
-    ✅ prod-useast-web-api-01
-    ```
+    - ✅ `prod-useast-web-api-01`
     
     **通过标签的额外上下文**
-    ```yaml
-    Name: prod-useast-web-api-01
-    Tags:
-      version: v2
-      availability-zone: us-east-1a
-      network-zone: dmz
-      software: nginx
-    ```
+    - Name: `prod-useast-web-api-01`
+    - Tags: `version: v2`, `availability-zone: us-east-1a`, `network-zone: dmz`, `software: nginx`
 
 ### 缺少关键信息
 
@@ -982,28 +845,22 @@ temp_calculation_results
 
 !!!error "❌ 上下文不足"
     **环境模糊**
-    ```
-    ❌ web-server-01       # 哪个环境？
-    ❌ database-main       # 生产还是开发？
-    ✅ prod-useast-web-01
-    ✅ dev-useast-db-01
-    ```
+    - ❌ `web-server-01` - 哪个环境？
+    - ❌ `database-main` - 生产还是开发？
+    - ✅ `prod-useast-web-01`
+    - ✅ `dev-useast-db-01`
     
     **位置不确定**
-    ```
-    ❌ prod-web-01         # 哪个区域/数据中心？
-    ❌ prod-db-primary     # 它在哪里？
-    ✅ prod-useast-web-01
-    ✅ prod-euwest-db-primary-01
-    ```
+    - ❌ `prod-web-01` - 哪个区域/数据中心？
+    - ❌ `prod-db-primary` - 它在哪里？
+    - ✅ `prod-useast-web-01`
+    - ✅ `prod-euwest-db-primary-01`
     
     **目的不清楚**
-    ```
-    ❌ prod-server-01      # 它做什么？
-    ❌ prod-app-01         # 哪个应用程序？
-    ✅ prod-useast-web-storefront-01
-    ✅ prod-useast-app-checkout-01
-    ```
+    - ❌ `prod-server-01` - 它做什么？
+    - ❌ `prod-app-01` - 哪个应用程序？
+    - ✅ `prod-useast-web-storefront-01`
+    - ✅ `prod-useast-app-checkout-01`
 
 ## 工具与自动化
 

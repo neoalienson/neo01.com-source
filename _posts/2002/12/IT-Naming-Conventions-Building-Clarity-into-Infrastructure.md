@@ -100,36 +100,13 @@ Well-designed conventions deliver measurable value:
 !!!success "✅ Automation Enablement"
     **What You Get**
     
-    Predictable naming makes automation reliable:
+    Predictable naming makes automation reliable. Scripts work reliably, new resources automatically included, manual configuration eliminated.
     
-    **Backup Script:**
-    ```bash
-    # Backup all production databases
-    for db in $(list-servers | grep "^prod-.*-db-"); do
-        backup-database $db
-    done
-    ```
+    **Backup Script:** Use `for db in $(list-servers | grep "^prod-.*-db-"); do backup-database $db; done` to automatically backup all production databases
     
-    **Monitoring Setup:**
-    ```yaml
-    # Auto-discover production web servers
-    targets:
-      - pattern: "prod-*-web-*"
-        metrics: [cpu, memory, requests]
-        alerts: [high-cpu, high-memory]
-    ```
+    **Monitoring Setup:** Use pattern `prod-*-web-*` to auto-discover production web servers and monitor CPU, memory, and requests
     
-    **Deployment Pipeline:**
-    ```python
-    # Deploy to correct environment
-    env = hostname.split('-')[0]  # First component is environment
-    config = load_config(env)
-    deploy(config)
-    ```
-    
-    **Impact:**
-    
-    Scripts work reliably. New resources automatically included. Manual configuration eliminated.
+    **Deployment Pipeline:** Extract environment from hostname `env = hostname.split('-')[0]`, load corresponding config and deploy
 
 !!!success "✅ Security and Compliance"
     **What You Get**
@@ -209,13 +186,10 @@ Environment must be explicit and unambiguous:
     - Supports automation
 
 **Anti-Patterns to Avoid:**
-
-```
-❌ server-1, server-2          # No environment indicator
-❌ production-db, live-db      # Inconsistent terminology
-❌ p-web-01, prod-web-02       # Mixed abbreviations
-✅ prod-web-01, prod-web-02    # Consistent and clear
-```
+- ❌ `server-1`, `server-2` - No environment indicator
+- ❌ `production-db`, `live-db` - Inconsistent terminology
+- ❌ `p-web-01`, `prod-web-02` - Mixed abbreviations
+- ✅ `prod-web-01`, `prod-web-02` - Consistent and clear
 
 ### Network Zones
 
@@ -351,12 +325,7 @@ DNS is case-insensitive by specification:
     
     **Best Practice**
     
-    Always use lowercase for hostnames:
-    ```
-    ✅ prod-useast-web-01
-    ❌ PROD-USEAST-WEB-01
-    ❌ Prod-UsEast-Web-01
-    ```
+    Always use lowercase for hostnames: ✅ `prod-useast-web-01` ❌ `PROD-USEAST-WEB-01` ❌ `Prod-UsEast-Web-01`
 
 **Cross-Platform Compatibility:**
 
@@ -488,13 +457,7 @@ Some resources require careful case handling:
     - Inconsistent word boundaries
     - Use hyphens or underscores instead
     
-    **Examples:**
-    ```
-    ✅ prod-useast-web-01
-    ✅ prod_useast_web_01
-    ❌ prodUsEastWeb01
-    ❌ ProdUsEastWeb01
-    ```
+    **Examples:** ✅ `prod-useast-web-01` ✅ `prod_useast_web_01` ❌ `prodUsEastWeb01` ❌ `ProdUsEastWeb01`
     
     **Separator Choice**
     - Hostnames: Use hyphens (underscores not allowed)
@@ -519,9 +482,8 @@ Hostnames have specific technical constraints:
     - Case-insensitive (use lowercase)
     
     **Recommended Structure**
-    ```
-    {environment}-{location}-{type}-{function}-{instance}
-    ```
+    
+    `{environment}-{location}-{type}-{function}-{instance}`
     
     **Component Lengths**
     - Environment: 3-4 chars (`dev`, `prod`)
@@ -558,28 +520,16 @@ prod-uswest-web-api-01  # Different region
 
 !!!tip "💡 Hostname Variations"
     **Load Balancers**
-    ```
-    prod-useast-lb-external-01
-    prod-useast-lb-internal-01
-    ```
+    - Examples: `prod-useast-lb-external-01`, `prod-useast-lb-internal-01`
     
     **Bastion/Jump Hosts**
-    ```
-    prod-useast-bastion-01
-    prod-euwest-bastion-01
-    ```
+    - Examples: `prod-useast-bastion-01`, `prod-euwest-bastion-01`
     
     **Monitoring Systems**
-    ```
-    prod-useast-monitor-prometheus-01
-    prod-useast-monitor-grafana-01
-    ```
+    - Examples: `prod-useast-monitor-prometheus-01`, `prod-useast-monitor-grafana-01`
     
     **Build/CI Systems**
-    ```
-    shared-useast-build-jenkins-01
-    shared-useast-build-runner-01
-    ```
+    - Examples: `shared-useast-build-jenkins-01`, `shared-useast-build-runner-01`
 
 ### Active Directory Groups
 
@@ -591,9 +541,8 @@ AD groups require hierarchical naming:
     - Distribution groups: Email lists
     
     **Recommended Structure**
-    ```
-    {type}_{scope}_{resource}_{permission}
-    ```
+    
+    `{type}_{scope}_{resource}_{permission}`
     
     **Type Prefixes**
     - `SEC_` - Security group
@@ -662,9 +611,8 @@ Database naming affects organization and access:
 
 !!!anote "💾 Database Naming"
     **Recommended Structure**
-    ```
-    {environment}_{application}_{purpose}
-    ```
+    
+    `{environment}_{application}_{purpose}`
     
     **Environment Prefixes**
     - `dev_` - Development
@@ -702,23 +650,15 @@ prod_shared_config
 
 !!!tip "💡 Multi-Tenant Patterns"
     **Separate Databases per Tenant**
-    ```
-    prod_tenant_acme
-    prod_tenant_globex
-    prod_tenant_initech
-    ```
+    - Examples: `prod_tenant_acme`, `prod_tenant_globex`, `prod_tenant_initech`
     
     **Shared Database with Schema Separation**
-    ```
-    Database: prod_saas_main
-    Schemas: tenant_acme, tenant_globex, tenant_initech
-    ```
+    - Database: `prod_saas_main`
+    - Schemas: `tenant_acme`, `tenant_globex`, `tenant_initech`
     
     **Shared Database with Tenant Column**
-    ```
-    Database: prod_saas_main
-    Tables: users (with tenant_id column)
-    ```
+    - Database: `prod_saas_main`
+    - Tables: `users` (with `tenant_id` column)
 
 ### Database Tables
 
@@ -731,22 +671,12 @@ Table naming affects query readability:
     - Represents one entity
     - Clearer in code: `user.name` not `users.name`
     - Consistent with ORM conventions
-    ```sql
-    user
-    order
-    product
-    order_item
-    ```
+    - Examples: `user`, `order`, `product`, `order_item`
     
     **Plural**
     - Represents collection
     - More natural in SQL: `SELECT * FROM users`
-    ```sql
-    users
-    orders
-    products
-    order_items
-    ```
+    - Examples: `users`, `orders`, `products`, `order_items`
     
     **Choose One and Be Consistent**
 
@@ -783,25 +713,19 @@ temp_calculation_results
 
 !!!warning "⚠️ Avoid SQL Reserved Words"
     **Problematic Names**
-    ```sql
-    ❌ user (reserved in PostgreSQL)
-    ❌ order (reserved in most databases)
-    ❌ group (reserved word)
-    ❌ select (reserved word)
-    ```
+    - ❌ `user` (reserved in PostgreSQL)
+    - ❌ `order` (reserved in most databases)
+    - ❌ `group` (reserved word)
+    - ❌ `select` (reserved word)
     
     **Solutions**
-    ```sql
-    ✅ app_user or user_account
-    ✅ customer_order or sales_order
-    ✅ user_group or access_group
-    ✅ saved_query or query_definition
-    ```
+    - ✅ `app_user` or `user_account`
+    - ✅ `customer_order` or `sales_order`
+    - ✅ `user_group` or `access_group`
+    - ✅ `saved_query` or `query_definition`
     
     **Or Use Quoting (not recommended)**
-    ```sql
-    "user"  -- Works but requires quotes everywhere
-    ```
+    - `"user"` - Works but requires quotes everywhere
 
 **Schema Organization:**
 
@@ -838,118 +762,66 @@ Cloud platforms have specific naming requirements:
     - Globally unique
     - Lowercase, numbers, hyphens
     - Pattern: `{org}-{env}-{purpose}-{region}`
-    ```
-    acme-prod-backups-useast1
-    acme-prod-logs-useast1
-    acme-prod-assets-useast1
-    ```
+    - Examples: `acme-prod-backups-useast1`, `acme-prod-logs-useast1`, `acme-prod-assets-useast1`
     
     **RDS Instances**
-    ```
-    prod-useast-postgres-customer-01
-    prod-useast-mysql-inventory-01
-    ```
+    - Examples: `prod-useast-postgres-customer-01`, `prod-useast-mysql-inventory-01`
     
     **Lambda Functions**
-    ```
-    prod-process-orders
-    prod-send-notifications
-    prod-generate-reports
-    ```
+    - Examples: `prod-process-orders`, `prod-send-notifications`, `prod-generate-reports`
     
     **IAM Roles**
-    ```
-    prod-ec2-web-server-role
-    prod-lambda-execution-role
-    prod-rds-monitoring-role
-    ```
+    - Examples: `prod-ec2-web-server-role`, `prod-lambda-execution-role`, `prod-rds-monitoring-role`
 
 !!!anote "☁️ Azure Naming Conventions"
     **Resource Groups**
-    ```
-    rg-prod-useast-web
-    rg-prod-useast-data
-    rg-shared-useast-network
-    ```
+    - Examples: `rg-prod-useast-web`, `rg-prod-useast-data`, `rg-shared-useast-network`
     
     **Virtual Machines**
-    ```
-    vm-prod-useast-web-01
-    vm-prod-useast-app-01
-    ```
+    - Examples: `vm-prod-useast-web-01`, `vm-prod-useast-app-01`
     
     **Storage Accounts**
     - Lowercase, numbers only
     - 3-24 characters
     - Globally unique
-    ```
-    stproduseastlogs
-    stproduseastbackup
-    ```
+    - Examples: `stproduseastlogs`, `stproduseastbackup`
     
     **SQL Databases**
-    ```
-    sql-prod-useast-customer
-    sqldb-prod-customer-main
-    ```
+    - Examples: `sql-prod-useast-customer`, `sqldb-prod-customer-main`
 
 !!!anote "☁️ GCP Naming Conventions"
     **Compute Instances**
-    ```
-    prod-useast-web-api-01
-    prod-useast-app-auth-01
-    ```
+    - Examples: `prod-useast-web-api-01`, `prod-useast-app-auth-01`
     
     **Cloud Storage Buckets**
-    ```
-    acme-prod-backups-us-east1
-    acme-prod-logs-us-east1
-    ```
+    - Examples: `acme-prod-backups-us-east1`, `acme-prod-logs-us-east1`
     
     **Cloud SQL Instances**
-    ```
-    prod-useast-postgres-customer
-    prod-useast-mysql-inventory
-    ```
+    - Examples: `prod-useast-postgres-customer`, `prod-useast-mysql-inventory`
     
     **Cloud Functions**
-    ```
-    prod-process-orders
-    prod-send-notifications
-    ```
+    - Examples: `prod-process-orders`, `prod-send-notifications`
 
 **Tag Standardization:**
 
 !!!success "✅ Universal Tag Schema"
-    **Required Tags**
-    ```yaml
-    environment: prod|stage|dev|test
-    application: web|api|database|cache
-    owner: team-name or email
-    cost-center: department or project code
-    ```
-    
-    **Optional Tags**
-    ```yaml
-    backup: daily|weekly|none
-    monitoring: enabled|disabled
-    compliance: pci|hipaa|sox|none
-    data-classification: public|internal|confidential|restricted
-    ```
-    
-    **Example**
-    ```yaml
-    Name: prod-useast-web-api-01
-    Tags:
-      environment: prod
-      application: web
-      component: api
-      owner: platform-team
-      cost-center: engineering
-      backup: daily
-      monitoring: enabled
-      compliance: pci
-    ```
+    All cloud resources should use a consistent tag schema for cost tracking, automation, and compliance.
+
+**Required Tags:**
+- `environment`: prod|stage|dev|test
+- `application`: web|api|database|cache
+- `owner`: team-name or email
+- `cost-center`: department or project code
+
+**Optional Tags:**
+- `backup`: daily|weekly|none
+- `monitoring`: enabled|disabled
+- `compliance`: pci|hipaa|sox|none
+- `data-classification`: public|internal|confidential|restricted
+
+**Example:**
+- Name: `prod-useast-web-api-01`
+- Tags: `environment: prod`, `application: web`, `component: api`, `owner: platform-team`, `cost-center: engineering`, `backup: daily`, `monitoring: enabled`, `compliance: pci`
 
 ## Building Your Convention
 
@@ -1104,215 +976,101 @@ Standardized templates for common resources:
 
 !!!anote "📋 Naming Templates"
     **Hostnames**
-    ```
-    {env}-{location}-{type}-{function}-{instance}
-    
-    Examples:
-    prod-useast-web-api-01
-    stage-euwest-app-auth-01
-    dev-uswest-db-postgres-01
-    ```
+    - Pattern: `{env}-{location}-{type}-{function}-{instance}`
+    - Examples: `prod-useast-web-api-01`, `stage-euwest-app-auth-01`, `dev-uswest-db-postgres-01`
     
     **Databases**
-    ```
-    {env}_{application}_{purpose}
-    
-    Examples:
-    prod_ecommerce_main
-    prod_ecommerce_analytics
-    dev_crm_main
-    ```
+    - Pattern: `{env}_{application}_{purpose}`
+    - Examples: `prod_ecommerce_main`, `prod_ecommerce_analytics`, `dev_crm_main`
     
     **Database Tables**
-    ```
-    {entity} or {schema}_{entity}
-    
-    Examples:
-    user_account
-    sales.order
-    inventory.product
-    ```
+    - Pattern: `{entity}` or `{schema}_{entity}`
+    - Examples: `user_account`, `sales.order`, `inventory.product`
     
     **AD Groups**
-    ```
-    {type}_{scope}_{resource}_{permission}
-    
-    Examples:
-    SEC_PROD_DATABASE_ADMIN
-    APP_SALESFORCE_USER
-    ROLE_DEVELOPERS
-    ```
+    - Pattern: `{type}_{scope}_{resource}_{permission}`
+    - Examples: `SEC_PROD_DATABASE_ADMIN`, `APP_SALESFORCE_USER`, `ROLE_DEVELOPERS`
     
     **Cloud Storage**
-    ```
-    {org}-{env}-{purpose}-{region}
-    
-    Examples:
-    acme-prod-backups-useast1
-    acme-prod-logs-euwest1
-    acme-shared-assets-global
-    ```
+    - Pattern: `{org}-{env}-{purpose}-{region}`
+    - Examples: `acme-prod-backups-useast1`, `acme-prod-logs-euwest1`, `acme-shared-assets-global`
 
 ### Real-World Examples
 
 Complete naming schemes for different industries:
 
 !!!example "📝 E-Commerce Platform"
-    **Infrastructure**
-    ```
-    # Web Tier
-    prod-useast-web-storefront-01
-    prod-useast-web-storefront-02
-    prod-useast-web-admin-01
+    **Infrastructure - Web Tier**
+    - `prod-useast-web-storefront-01`, `prod-useast-web-storefront-02`, `prod-useast-web-admin-01`
     
-    # Application Tier
-    prod-useast-app-api-01
-    prod-useast-app-api-02
-    prod-useast-app-checkout-01
-    prod-useast-app-checkout-02
+    **Infrastructure - Application Tier**
+    - `prod-useast-app-api-01`, `prod-useast-app-api-02`, `prod-useast-app-checkout-01`, `prod-useast-app-checkout-02`
     
-    # Data Tier
-    prod-useast-db-postgres-primary-01
-    prod-useast-db-postgres-replica-01
-    prod-useast-db-postgres-replica-02
-    prod-useast-cache-redis-01
+    **Infrastructure - Data Tier**
+    - `prod-useast-db-postgres-primary-01`, `prod-useast-db-postgres-replica-01`, `prod-useast-db-postgres-replica-02`, `prod-useast-cache-redis-01`
     
-    # Supporting Services
-    prod-useast-queue-rabbitmq-01
-    prod-useast-search-elasticsearch-01
-    prod-useast-lb-external-01
-    ```
+    **Infrastructure - Supporting Services**
+    - `prod-useast-queue-rabbitmq-01`, `prod-useast-search-elasticsearch-01`, `prod-useast-lb-external-01`
     
     **Databases**
-    ```
-    prod_ecommerce_main
-    prod_ecommerce_analytics
-    prod_ecommerce_sessions
-    ```
+    - `prod_ecommerce_main`, `prod_ecommerce_analytics`, `prod_ecommerce_sessions`
     
     **Tables**
-    ```
-    customer
-    product
-    product_category
-    customer_order
-    order_item
-    payment_transaction
-    shipping_address
-    ```
+    - `customer`, `product`, `product_category`, `customer_order`, `order_item`, `payment_transaction`, `shipping_address`
     
     **AD Groups**
-    ```
-    SEC_PROD_ECOMMERCE_ADMIN
-    SEC_PROD_DATABASE_READ
-    APP_ECOMMERCE_DEVELOPER
-    ROLE_ECOMMERCE_OPERATIONS
-    ```
+    - `SEC_PROD_ECOMMERCE_ADMIN`, `SEC_PROD_DATABASE_READ`, `APP_ECOMMERCE_DEVELOPER`, `ROLE_ECOMMERCE_OPERATIONS`
 
 !!!example "📝 Financial Services"
-    **Infrastructure**
-    ```
-    # Trading Systems
-    prod-nyc-app-trading-primary-01
-    prod-nyc-app-trading-standby-01
-    prod-nyc-db-trading-primary-01
-    prod-nyc-db-trading-replica-01
+    **Infrastructure - Trading Systems**
+    - `prod-nyc-app-trading-primary-01`, `prod-nyc-app-trading-standby-01`, `prod-nyc-db-trading-primary-01`, `prod-nyc-db-trading-replica-01`
     
-    # Risk Management
-    prod-nyc-app-risk-calc-01
-    prod-nyc-app-risk-calc-02
-    prod-nyc-db-risk-primary-01
+    **Infrastructure - Risk Management**
+    - `prod-nyc-app-risk-calc-01`, `prod-nyc-app-risk-calc-02`, `prod-nyc-db-risk-primary-01`
     
-    # Compliance
-    prod-nyc-app-compliance-01
-    prod-nyc-db-audit-primary-01
+    **Infrastructure - Compliance**
+    - `prod-nyc-app-compliance-01`, `prod-nyc-db-audit-primary-01`
     
-    # Disaster Recovery
-    dr-london-app-trading-standby-01
-    dr-london-db-trading-replica-01
-    ```
+    **Infrastructure - Disaster Recovery**
+    - `dr-london-app-trading-standby-01`, `dr-london-db-trading-replica-01`
     
     **Databases**
-    ```
-    prod_trading_main
-    prod_trading_historical
-    prod_risk_calculations
-    prod_compliance_audit
-    ```
+    - `prod_trading_main`, `prod_trading_historical`, `prod_risk_calculations`, `prod_compliance_audit`
     
     **Tables**
-    ```
-    trade_order
-    trade_execution
-    position
-    risk_calculation
-    compliance_check
-    audit_log
-    ```
+    - `trade_order`, `trade_execution`, `position`, `risk_calculation`, `compliance_check`, `audit_log`
 
 !!!example "📝 Healthcare System"
-    **Infrastructure**
-    ```
-    # Patient Systems (HIPAA Compliant)
-    prod-useast-app-ehr-01
-    prod-useast-app-ehr-02
-    prod-useast-db-patient-primary-01
-    prod-useast-db-patient-replica-01
+    **Infrastructure - Patient Systems (HIPAA Compliant)**
+    - `prod-useast-app-ehr-01`, `prod-useast-app-ehr-02`, `prod-useast-db-patient-primary-01`, `prod-useast-db-patient-replica-01`
     
-    # Imaging Systems
-    prod-useast-app-pacs-01
-    prod-useast-storage-imaging-01
+    **Infrastructure - Imaging Systems**
+    - `prod-useast-app-pacs-01`, `prod-useast-storage-imaging-01`
     
-    # Administrative
-    prod-useast-app-billing-01
-    prod-useast-db-billing-01
-    ```
+    **Infrastructure - Administrative**
+    - `prod-useast-app-billing-01`, `prod-useast-db-billing-01`
     
     **Databases**
-    ```
-    prod_ehr_patient
-    prod_ehr_clinical
-    prod_imaging_pacs
-    prod_admin_billing
-    ```
+    - `prod_ehr_patient`, `prod_ehr_clinical`, `prod_imaging_pacs`, `prod_admin_billing`
     
     **Tables**
-    ```
-    patient
-    patient_encounter
-    clinical_note
-    medication_order
-    lab_result
-    imaging_study
-    ```
+    - `patient`, `patient_encounter`, `clinical_note`, `medication_order`, `lab_result`, `imaging_study`
 
 !!!example "📝 Multi-Region Deployment"
-    **Global Infrastructure**
-    ```
-    # US East Region
-    prod-useast-web-api-01
-    prod-useast-web-api-02
-    prod-useast-db-postgres-primary-01
-    prod-useast-db-postgres-replica-01
+    **US East Region**
+    - `prod-useast-web-api-01`, `prod-useast-web-api-02`, `prod-useast-db-postgres-primary-01`, `prod-useast-db-postgres-replica-01`
     
-    # US West Region
-    prod-uswest-web-api-01
-    prod-uswest-web-api-02
-    prod-uswest-db-postgres-replica-01
+    **US West Region**
+    - `prod-uswest-web-api-01`, `prod-uswest-web-api-02`, `prod-uswest-db-postgres-replica-01`
     
-    # Europe West Region
-    prod-euwest-web-api-01
-    prod-euwest-web-api-02
-    prod-euwest-db-postgres-primary-01
+    **Europe West Region**
+    - `prod-euwest-web-api-01`, `prod-euwest-web-api-02`, `prod-euwest-db-postgres-primary-01`
     
-    # Asia Pacific Region
-    prod-apsouth-web-api-01
-    prod-apsouth-db-postgres-replica-01
+    **Asia Pacific Region**
+    - `prod-apsouth-web-api-01`, `prod-apsouth-db-postgres-replica-01`
     
-    # Global Services
-    prod-global-cdn-cloudfront-01
-    prod-global-dns-route53-01
-    ```
+    **Global Services**
+    - `prod-global-cdn-cloudfront-01`, `prod-global-dns-route53-01`
 
 ## Anti-Patterns to Avoid
 
@@ -1324,18 +1082,14 @@ Cryptic shortcuts create confusion:
 
 !!!error "❌ Abbreviation Problems"
     **Problematic Examples**
-    ```
-    ❌ srv-p-db-01        # What is 'p'? Production? Primary? PostgreSQL?
-    ❌ app-e-web-01       # What is 'e'? East? Europe? External?
-    ❌ db-c-01            # What is 'c'? Cache? Customer? Central?
-    ```
+    - ❌ `srv-p-db-01` - What is 'p'? Production? Primary? PostgreSQL?
+    - ❌ `app-e-web-01` - What is 'e'? East? Europe? External?
+    - ❌ `db-c-01` - What is 'c'? Cache? Customer? Central?
     
     **Better Alternatives**
-    ```
-    ✅ prod-useast-db-postgres-01
-    ✅ prod-euwest-web-external-01
-    ✅ prod-useast-cache-redis-01
-    ```
+    - ✅ `prod-useast-db-postgres-01`
+    - ✅ `prod-euwest-web-external-01`
+    - ✅ `prod-useast-cache-redis-01`
     
     **Guidelines**
     - Use full words for clarity
@@ -1349,24 +1103,15 @@ Mixing separator styles causes problems:
 
 !!!error "❌ Separator Inconsistency"
     **Problematic Examples**
-    ```
-    ❌ prod-web_01         # Mixing hyphens and underscores
-    ❌ prodWebServer01     # CamelCase in hostnames
-    ❌ prod.web.01         # Dots (confusing with FQDN)
-    ❌ prod web 01         # Spaces (not allowed)
-    ```
+    - ❌ `prod-web_01` - Mixing hyphens and underscores
+    - ❌ `prodWebServer01` - CamelCase in hostnames
+    - ❌ `prod.web.01` - Dots (confusing with FQDN)
+    - ❌ `prod web 01` - Spaces (not allowed)
     
     **Consistent Approach**
-    ```
-    ✅ Hostnames: Use hyphens
-    prod-useast-web-01
-    
-    ✅ Databases: Use underscores
-    prod_ecommerce_main
-    
-    ✅ AD Groups: Use underscores
-    SEC_PROD_DATABASE_ADMIN
-    ```
+    - ✅ Hostnames: Use hyphens - `prod-useast-web-01`
+    - ✅ Databases: Use underscores - `prod_ecommerce_main`
+    - ✅ AD Groups: Use underscores - `SEC_PROD_DATABASE_ADMIN`
     
     **Why It Matters**
     - Parsing scripts break
@@ -1380,9 +1125,7 @@ Too many components reduce usability:
 
 !!!error "❌ Complexity Overload"
     **Problematic Example**
-    ```
-    ❌ prod-v2-useast-1a-dmz-web-nginx-api-customer-v1-blue-01
-    ```
+    - ❌ `prod-v2-useast-1a-dmz-web-nginx-api-customer-v1-blue-01`
     
     **Problems**
     - 12 components
@@ -1392,21 +1135,11 @@ Too many components reduce usability:
     - Exceeds practical limits
     
     **Simplified Version**
-    ```
-    ✅ prod-useast-web-api-01
-    ```
+    - ✅ `prod-useast-web-api-01`
     
     **Additional Context via Tags**
-    ```yaml
-    Name: prod-useast-web-api-01
-    Tags:
-      version: v2
-      availability-zone: us-east-1a
-      network-zone: dmz
-      software: nginx
-      service: customer-api
-      deployment: blue
-    ```
+    - Name: `prod-useast-web-api-01`
+    - Tags: `version: v2`, `availability-zone: us-east-1a`, `network-zone: dmz`, `software: nginx`, `service: customer-api`, `deployment: blue`
     
     **Guidelines**
     - 4-6 components maximum
@@ -1420,28 +1153,22 @@ Incomplete names create ambiguity:
 
 !!!error "❌ Insufficient Context"
     **Environment Ambiguity**
-    ```
-    ❌ web-server-01       # Which environment?
-    ❌ database-main       # Production or development?
-    ✅ prod-useast-web-01
-    ✅ dev-useast-db-01
-    ```
+    - ❌ `web-server-01` - Which environment?
+    - ❌ `database-main` - Production or development?
+    - ✅ `prod-useast-web-01`
+    - ✅ `dev-useast-db-01`
     
     **Location Uncertainty**
-    ```
-    ❌ prod-web-01         # Which region/datacenter?
-    ❌ prod-db-primary     # Where is it located?
-    ✅ prod-useast-web-01
-    ✅ prod-euwest-db-primary-01
-    ```
+    - ❌ `prod-web-01` - Which region/datacenter?
+    - ❌ `prod-db-primary` - Where is it located?
+    - ✅ `prod-useast-web-01`
+    - ✅ `prod-euwest-db-primary-01`
     
     **Purpose Unclear**
-    ```
-    ❌ prod-server-01      # What does it do?
-    ❌ prod-app-01         # Which application?
-    ✅ prod-useast-web-storefront-01
-    ✅ prod-useast-app-checkout-01
-    ```
+    - ❌ `prod-server-01` - What does it do?
+    - ❌ `prod-app-01` - Which application?
+    - ✅ `prod-useast-web-storefront-01`
+    - ✅ `prod-useast-app-checkout-01`
     
     **Impact**
     - Deployment mistakes
@@ -1458,258 +1185,30 @@ Automation enforces conventions reliably.
 Automated checks prevent naming violations:
 
 !!!tip "💡 Validation Approaches"
-    **Pre-Commit Hooks**
-    ```bash
-    #!/bin/bash
-    # .git/hooks/pre-commit
+    **Pre-Commit Hooks:** Create `.git/hooks/pre-commit` script to validate Terraform resource names against pattern `{env}-{location}-{type}-{function}-{instance}` before commit
     
-    # Validate Terraform resource names
-    terraform_files=$(git diff --cached --name-only | grep '.tf$')
+    **CI/CD Pipeline Checks:** Add GitHub Actions workflow to run `validate-naming.py` script on pull requests, checking infrastructure names against naming policy
     
-    for file in $terraform_files; do
-        # Check EC2 instance names
-        if grep -q 'resource "aws_instance"' $file; then
-            # Validate naming pattern
-            if ! grep -E 'Name.*=.*(prod|dev|stage)-[a-z]+-[a-z]+-[a-z]+-[0-9]+' $file; then
-                echo "ERROR: Invalid EC2 instance name in $file"
-                echo "Expected: {env}-{location}-{type}-{function}-{instance}"
-                exit 1
-            fi
-        fi
-    done
-    ```
-    
-    **CI/CD Pipeline Checks**
-    ```yaml
-    # .github/workflows/validate-naming.yml
-    name: Validate Naming Conventions
-    
-    on: [pull_request]
-    
-    jobs:
-      validate:
-        runs-on: ubuntu-latest
-        steps:
-          - uses: actions/checkout@v2
-          
-          - name: Validate Infrastructure Names
-            run: |
-              python scripts/validate-naming.py \
-                --terraform terraform/ \
-                --policy naming-policy.yaml
-    ```
-    
-    **Cloud Policy Enforcement**
-    ```python
-    # AWS Config Rule
-    import json
-    
-    def lambda_handler(event, context):
-        resource_name = event['configurationItem']['resourceName']
-        resource_type = event['configurationItem']['resourceType']
-        
-        # Validate EC2 instance naming
-        if resource_type == 'AWS::EC2::Instance':
-            pattern = r'^(prod|dev|stage)-[a-z]+-[a-z]+-[a-z]+-\d{2}$'
-            if not re.match(pattern, resource_name):
-                return {
-                    'compliance_type': 'NON_COMPLIANT',
-                    'annotation': f'Invalid name: {resource_name}'
-                }
-        
-        return {'compliance_type': 'COMPLIANT'}
-    ```
+    **Cloud Policy Enforcement:** Use AWS Config Rules with Lambda to validate EC2 instance names match pattern `^(prod|dev|stage)-[a-z]+-[a-z]+-[a-z]+-\d{2}$` and mark non-compliant resources
 
 ### Generation Scripts
 
 Templates ensure consistency:
 
 !!!anote "🛠️ Name Generation Tools"
-    **Interactive Generator**
-    ```python
-    #!/usr/bin/env python3
-    # generate-hostname.py
+    **Interactive Generator:** Create Python script `generate-hostname.py` that prompts for environment, location, type, function, and instance, validates inputs, and generates hostname in format `{env}-{location}-{type}-{function}-{instance}`
     
-    import sys
-    
-    ENVIRONMENTS = ['dev', 'test', 'stage', 'prod', 'dr']
-    LOCATIONS = ['useast', 'uswest', 'euwest', 'apsouth']
-    TYPES = ['web', 'app', 'db', 'cache', 'queue', 'lb']
-    
-    def generate_hostname():
-        print("Hostname Generator")
-        print("==================")
-        
-        # Environment
-        print(f"\nEnvironments: {', '.join(ENVIRONMENTS)}")
-        env = input("Environment: ").lower()
-        if env not in ENVIRONMENTS:
-            print(f"Error: Invalid environment")
-            sys.exit(1)
-        
-        # Location
-        print(f"\nLocations: {', '.join(LOCATIONS)}")
-        location = input("Location: ").lower()
-        if location not in LOCATIONS:
-            print(f"Error: Invalid location")
-            sys.exit(1)
-        
-        # Type
-        print(f"\nTypes: {', '.join(TYPES)}")
-        type_name = input("Type: ").lower()
-        if type_name not in TYPES:
-            print(f"Error: Invalid type")
-            sys.exit(1)
-        
-        # Function
-        function = input("Function (e.g., api, admin): ").lower()
-        
-        # Instance
-        instance = input("Instance number (01-99): ")
-        if not instance.isdigit() or len(instance) != 2:
-            print("Error: Instance must be 2 digits (01-99)")
-            sys.exit(1)
-        
-        # Generate
-        hostname = f"{env}-{location}-{type_name}-{function}-{instance}"
-        
-        print(f"\nGenerated hostname: {hostname}")
-        print(f"FQDN: {hostname}.example.com")
-        
-        return hostname
-    
-    if __name__ == '__main__':
-        generate_hostname()
-    ```
-    
-    **Terraform Module**
-    ```hcl
-    # modules/naming/main.tf
-    
-    variable "environment" {
-      type = string
-      validation {
-        condition     = contains(["dev", "test", "stage", "prod"], var.environment)
-        error_message = "Environment must be dev, test, stage, or prod."
-      }
-    }
-    
-    variable "location" {
-      type = string
-    }
-    
-    variable "resource_type" {
-      type = string
-    }
-    
-    variable "function" {
-      type = string
-    }
-    
-    variable "instance" {
-      type    = string
-      default = "01"
-    }
-    
-    locals {
-      name = "${var.environment}-${var.location}-${var.resource_type}-${var.function}-${var.instance}"
-    }
-    
-    output "name" {
-      value = local.name
-    }
-    ```
-    
-    **Usage**
-    ```hcl
-    module "web_server_name" {
-      source        = "./modules/naming"
-      environment   = "prod"
-      location      = "useast"
-      resource_type = "web"
-      function      = "api"
-      instance      = "01"
-    }
-    
-    resource "aws_instance" "web" {
-      ami           = "ami-12345678"
-      instance_type = "t3.medium"
-      
-      tags = {
-        Name = module.web_server_name.name
-      }
-    }
-    ```
+    **Terraform Module:** Create reusable Terraform module in `modules/naming/` with variables for environment, location, resource_type, function, and instance. Module validates environment values and outputs formatted name. Use in resources: `module.web_server_name.name`
 
 ### Documentation Systems
 
 Living documentation keeps conventions accessible:
 
-!!!anote "📚 Documentation Best Practices"
-    **Convention Document Structure**
-    ```markdown
-    # IT Naming Conventions
-    
-    ## Overview
-    - Purpose and scope
-    - Benefits
-    - Governance
-    
-    ## General Principles
-    - Lowercase preference
-    - Separator usage
-    - Length limits
-    - Character restrictions
-    
-    ## Resource-Specific Conventions
-    
-    ### Hostnames
-    - Pattern: {env}-{location}-{type}-{function}-{instance}
-    - Examples: prod-useast-web-api-01
-    - Constraints: 63 characters max
-    
-    ### Databases
-    - Pattern: {env}_{application}_{purpose}
-    - Examples: prod_ecommerce_main
-    
-    ### Tables
-    - Pattern: {entity} or {schema}_{entity}
-    - Examples: customer, sales.order
-    
-    ## Examples by Scenario
-    - E-commerce platform
-    - Financial services
-    - Healthcare systems
-    
-    ## Validation and Tools
-    - Validation scripts
-    - Generation tools
-    - CI/CD integration
-    
-    ## Exception Process
-    - When exceptions are allowed
-    - Approval workflow
-    - Documentation requirements
-    ```
-    
-    **Example Repository**
-    ```
-    naming-conventions/
-    ├── README.md                    # Main documentation
-    ├── policy.yaml                  # Machine-readable policy
-    ├── examples/
-    │   ├── ecommerce.md
-    │   ├── financial.md
-    │   └── healthcare.md
-    ├── scripts/
-    │   ├── validate-naming.py
-    │   ├── generate-hostname.py
-    │   └── audit-compliance.py
-    ├── terraform/
-    │   └── modules/
-    │       └── naming/
-    └── CHANGELOG.md                # Convention evolution
-    ```
+**Documentation Best Practices:**
+
+**Convention Document Structure:** Create comprehensive documentation covering overview (purpose, benefits, governance), general principles (lowercase, separators, limits), resource-specific conventions (hostnames, databases, tables with patterns and examples), scenario examples (e-commerce, financial, healthcare), validation tools, and exception process
+
+**Example Repository:** Organize as `naming-conventions/` with `README.md` (main docs), `policy.yaml` (machine-readable), `examples/` (industry-specific), `scripts/` (validation and generation tools), `terraform/modules/naming/` (reusable modules), and `CHANGELOG.md` (evolution tracking)
 
 ## Migration Strategies
 
@@ -1720,18 +1219,7 @@ Transitioning to new conventions requires careful planning.
 Understand what you're migrating from:
 
 !!!anote "📋 Migration Assessment"
-    **Inventory and Categorization**
-    ```bash
-    # Generate inventory
-    aws ec2 describe-instances \
-      --query 'Reservations[].Instances[].[Tags[?Key==`Name`].Value|[0]]' \
-      --output text > current-hostnames.txt
-    
-    # Categorize by pattern
-    grep -E '^prod-' current-hostnames.txt > prod-servers.txt
-    grep -E '^dev-' current-hostnames.txt > dev-servers.txt
-    grep -v -E '^(prod|dev)-' current-hostnames.txt > non-compliant.txt
-    ```
+    **Inventory and Categorization:** Use AWS CLI to generate inventory with `aws ec2 describe-instances`, then categorize by pattern using grep to identify prod servers, dev servers, and non-compliant resources
     
     **Risk Assessment**
     - High risk: Production databases, critical services
@@ -1826,51 +1314,52 @@ Minimize disruption during migration:
 
 Effective communication prevents confusion:
 
-!!!success "✅ Communication Plan"
-    **Announcement Email Template**
-    ```
-    Subject: New IT Naming Conventions - Migration Starting [Date]
-    
-    Team,
-    
-    We're implementing standardized naming conventions for all IT resources.
-    
-    WHY:
-    - Improve clarity and reduce confusion
-    - Enable better automation
-    - Enhance security and compliance
-    
-    WHAT'S CHANGING:
-    - Hostnames: {env}-{location}-{type}-{function}-{instance}
-    - Databases: {env}_{application}_{purpose}
-    - AD Groups: {type}_{scope}_{resource}_{permission}
-    
-    TIMELINE:
-    - Week 1: Documentation available
-    - Week 2: DNS aliases created
-    - Week 3-6: Application updates
-    - Week 7+: Old names deprecated
-    
-    RESOURCES:
-    - Full documentation: [link]
-    - Examples: [link]
-    - Support channel: #naming-migration
-    
-    QUESTIONS:
-    Contact [team] or post in #naming-migration
-    ```
-    
-    **Training Materials**
-    - Video walkthrough of new conventions
-    - Interactive examples
-    - Q&A sessions
-    - Office hours for support
-    
-    **Ongoing Updates**
-    - Weekly migration status reports
-    - Success stories and lessons learned
-    - Updated timeline if needed
-    - Recognition for early adopters
+**Communication Plan:**
+
+**Announcement Email Template:**
+```
+Subject: New IT Naming Conventions - Migration Starting [Date]
+
+Team,
+
+We're implementing standardized naming conventions for all IT resources.
+
+WHY:
+- Improve clarity and reduce confusion
+- Enable better automation
+- Enhance security and compliance
+
+WHAT'S CHANGING:
+- Hostnames: {env}-{location}-{type}-{function}-{instance}
+- Databases: {env}_{application}_{purpose}
+- AD Groups: {type}_{scope}_{resource}_{permission}
+
+TIMELINE:
+- Week 1: Documentation available
+- Week 2: DNS aliases created
+- Week 3-6: Application updates
+- Week 7+: Old names deprecated
+
+RESOURCES:
+- Full documentation: [link]
+- Examples: [link]
+- Support channel: #naming-migration
+
+QUESTIONS:
+Contact [team] or post in #naming-migration
+```
+
+**Training Materials:**
+- Video walkthrough of new conventions
+- Interactive examples
+- Q&A sessions
+- Office hours for support
+
+**Ongoing Updates:**
+- Weekly migration status reports
+- Success stories and lessons learned
+- Updated timeline if needed
+- Recognition for early adopters
 
 ## Conclusion
 

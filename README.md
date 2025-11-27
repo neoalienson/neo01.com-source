@@ -82,6 +82,8 @@ Personal tech blog covering AI, cybersecurity, architecture, and development.
 - **Be specific with titles** rather than using generic type names
 - **Keep content concise** but informative
 - **Use appropriate severity** - don't overuse warnings
+- **Do NOT use tables inside admonition blocks** - tables are not supported and will break rendering
+- **Do NOT use code blocks inside admonition blocks** - multi-line code blocks may not render correctly; use inline code with backticks instead or move code outside the block
 
 ## Directory Structure
 

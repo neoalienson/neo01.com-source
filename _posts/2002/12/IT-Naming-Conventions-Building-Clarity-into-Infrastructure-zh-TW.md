@@ -101,36 +101,13 @@ excerpt: "命名規範將基礎設施的混亂轉化為清晰。從主機名稱�
 !!!success "✅ 自動化賦能"
     **你得到什麼**
     
-    可預測的命名使自動化可靠：
+    可預測的命名使自動化可靠。腳本可靠運作，新資源自動包含，消除手動配置。
     
-    **備份腳本：**
-    ```bash
-    # 備份所有正式環境資料庫
-    for db in $(list-servers | grep "^prod-.*-db-"); do
-        backup-database $db
-    done
-    ```
+    **備份腳本：** 使用 `for db in $(list-servers | grep "^prod-.*-db-"); do backup-database $db; done` 自動備份所有正式環境資料庫
     
-    **監控設定：**
-    ```yaml
-    # 自動發現正式環境網頁伺服器
-    targets:
-      - pattern: "prod-*-web-*"
-        metrics: [cpu, memory, requests]
-        alerts: [high-cpu, high-memory]
-    ```
+    **監控設定：** 使用模式 `prod-*-web-*` 自動發現正式環境網頁伺服器，監控 CPU、記憶體和請求
     
-    **部署管線：**
-    ```python
-    # 部署到正確的環境
-    env = hostname.split('-')[0]  # 第一個元件是環境
-    config = load_config(env)
-    deploy(config)
-    ```
-    
-    **影響：**
-    
-    腳本可靠運作。新資源自動包含。消除手動配置。
+    **部署管線：** 從主機名稱提取環境 `env = hostname.split('-')[0]`，載入對應配置並部署
 
 !!!success "✅ 資安與合規"
     **你得到什麼**
@@ -210,13 +187,10 @@ excerpt: "命名規範將基礎設施的混亂轉化為清晰。從主機名稱�
     - 支援自動化
 
 **要避免的反模式：**
-
-```
-❌ server-1, server-2          # 沒有環境指示器
-❌ production-db, live-db      # 不一致的術語
-❌ p-web-01, prod-web-02       # 混合縮寫
-✅ prod-web-01, prod-web-02    # 一致且清晰
-```
+- ❌ `server-1`, `server-2` - 沒有環境指示器
+- ❌ `production-db`, `live-db` - 不一致的術語
+- ❌ `p-web-01`, `prod-web-02` - 混合縮寫
+- ✅ `prod-web-01`, `prod-web-02` - 一致且清晰
 
 ### 網路區域
 
@@ -352,12 +326,7 @@ DNS 根據規範不區分大小寫：
     
     **最佳實踐**
     
-    主機名稱始終使用小寫：
-    ```
-    ✅ prod-useast-web-01
-    ❌ PROD-USEAST-WEB-01
-    ❌ Prod-UsEast-Web-01
-    ```
+    主機名稱始終使用小寫：✅ `prod-useast-web-01` ❌ `PROD-USEAST-WEB-01` ❌ `Prod-UsEast-Web-01`
 
 **跨平台相容性：**
 
@@ -489,13 +458,7 @@ DNS 根據規範不區分大小寫：
     - 不一致的單詞邊界
     - 改用連字號或底線
     
-    **範例：**
-    ```
-    ✅ prod-useast-web-01
-    ✅ prod_useast_web_01
-    ❌ prodUsEastWeb01
-    ❌ ProdUsEastWeb01
-    ```
+    **範例：** ✅ `prod-useast-web-01` ✅ `prod_useast_web_01` ❌ `prodUsEastWeb01` ❌ `ProdUsEastWeb01`
     
     **分隔符選擇**
     - 主機名稱：使用連字號（不允許底線）
@@ -520,9 +483,8 @@ DNS 根據規範不區分大小寫：
     - 不區分大小寫（使用小寫）
     
     **建議的結構**
-    ```
-    {environment}-{location}-{type}-{function}-{instance}
-    ```
+    
+    `{environment}-{location}-{type}-{function}-{instance}`
     
     **元件長度**
     - 環境：3-4 字元（`dev`、`prod`）
@@ -564,10 +526,7 @@ AD 群組需要階層式命名：
     - 安全群組：存取控制
     - 通訊群組：電子郵件清單
     
-    **建議的結構**
-    ```
-    {type}_{scope}_{resource}_{permission}
-    ```
+    **建議的結構：** `{type}_{scope}_{resource}_{permission}`
     
     **類型前綴**
     - `SEC_` - 安全群組
@@ -618,10 +577,7 @@ DL_SECURITY_ALERTS
 資料庫命名影響組織和存取：
 
 !!!anote "💾 資料庫命名"
-    **建議的結構**
-    ```
-    {environment}_{application}_{purpose}
-    ```
+    **建議的結構：** `{environment}_{application}_{purpose}`
     
     **環境前綴**
     - `dev_` - 開發
@@ -666,22 +622,12 @@ prod_shared_config
     - 代表一個實體
     - 在程式碼中更清晰：`user.name` 而不是 `users.name`
     - 與 ORM 慣例一致
-    ```sql
-    user
-    order
-    product
-    order_item
-    ```
+    - 範例：`user`, `order`, `product`, `order_item`
     
     **複數**
     - 代表集合
     - 在 SQL 中更自然：`SELECT * FROM users`
-    ```sql
-    users
-    orders
-    products
-    order_items
-    ```
+    - 範例：`users`, `orders`, `products`, `order_items`
     
     **選擇一個並保持一致**
 
@@ -726,60 +672,39 @@ temp_calculation_results
     - 全球唯一
     - 小寫、數字、連字號
     - 模式：`{org}-{env}-{purpose}-{region}`
-    ```
-    acme-prod-backups-useast1
-    acme-prod-logs-useast1
-    ```
+    - 範例：`acme-prod-backups-useast1`, `acme-prod-logs-useast1`
     
     **RDS 實例**
-    ```
-    prod-useast-postgres-customer-01
-    prod-useast-mysql-inventory-01
-    ```
+    - 範例：`prod-useast-postgres-customer-01`, `prod-useast-mysql-inventory-01`
 
 !!!anote "☁️ Azure 命名規範"
     **資源群組**
-    ```
-    rg-prod-useast-web
-    rg-prod-useast-data
-    ```
+    - 範例：`rg-prod-useast-web`, `rg-prod-useast-data`
     
     **虛擬機器**
-    ```
-    vm-prod-useast-web-01
-    vm-prod-useast-app-01
-    ```
+    - 範例：`vm-prod-useast-web-01`, `vm-prod-useast-app-01`
 
 !!!anote "☁️ GCP 命名規範"
     **Compute 實例**
-    ```
-    prod-useast-web-api-01
-    prod-useast-app-auth-01
-    ```
+    - 範例：`prod-useast-web-api-01`, `prod-useast-app-auth-01`
     
     **Cloud Storage 儲存桶**
-    ```
-    acme-prod-backups-us-east1
-    acme-prod-logs-us-east1
-    ```
+    - 範例：`acme-prod-backups-us-east1`, `acme-prod-logs-us-east1`
 
 **標籤標準化：**
 
-!!!success "✅ 通用標籤架構"
-    **必需標籤**
-    ```yaml
-    environment: prod|stage|dev|test
-    application: web|api|database|cache
-    owner: team-name or email
-    cost-center: department or project code
-    ```
-    
-    **可選標籤**
-    ```yaml
-    backup: daily|weekly|none
-    monitoring: enabled|disabled
-    compliance: pci|hipaa|sox|none
-    ```
+**標籤標準化最佳實踐：**
+
+**必需標籤：**
+- `environment`: prod|stage|dev|test
+- `application`: web|api|database|cache
+- `owner`: team-name or email
+- `cost-center`: department or project code
+
+**可選標籤：**
+- `backup`: daily|weekly|none
+- `monitoring`: enabled|disabled
+- `compliance`: pci|hipaa|sox|none
 
 ## 建立你的規範
 
@@ -899,111 +824,84 @@ temp_calculation_results
 
 難懂的捷徑造成混淆：
 
-!!!error "❌ 縮寫問題"
-    **有問題的範例**
-    ```
-    ❌ srv-p-db-01        # 'p' 是什麼？正式環境？主要？PostgreSQL？
-    ❌ app-e-web-01       # 'e' 是什麼？東部？歐洲？外部？
-    ❌ db-c-01            # 'c' 是什麼？快取？客戶？中央？
-    ```
-    
-    **更好的替代方案**
-    ```
-    ✅ prod-useast-db-postgres-01
-    ✅ prod-euwest-web-external-01
-    ✅ prod-useast-cache-redis-01
-    ```
-    
-    **指南**
-    - 使用完整單詞以清晰
-    - 僅使用標準縮寫（db、web、app）
-    - 記錄所有縮寫
-    - 疑惑時，完整拼寫
+**模糊的縮寫問題：**
+
+**有問題的範例：**
+- ❌ `srv-p-db-01` - 'p' 是什麼？正式環境？主要？PostgreSQL？
+- ❌ `app-e-web-01` - 'e' 是什麼？東部？歐洲？外部？
+- ❌ `db-c-01` - 'c' 是什麼？快取？客戶？中央？
+
+**更好的替代方案：**
+- ✅ `prod-useast-db-postgres-01`
+- ✅ `prod-euwest-web-external-01`
+- ✅ `prod-useast-cache-redis-01`
+
+**指南：**
+- 使用完整單詞以清晰
+- 僅使用標準縮寫（db、web、app）
+- 記錄所有縮寫
+- 疑惑時，完整拼寫
 
 ### 不一致的分隔符
 
 混合分隔符風格造成問題：
 
-!!!error "❌ 分隔符不一致"
-    **有問題的範例**
-    ```
-    ❌ prod-web_01         # 混合連字號和底線
-    ❌ prodWebServer01     # 主機名稱中的駝峰式
-    ❌ prod.web.01         # 點（與 FQDN 混淆）
-    ❌ prod web 01         # 空格（不允許）
-    ```
-    
-    **一致的方法**
-    ```
-    ✅ 主機名稱：使用連字號
-    prod-useast-web-01
-    
-    ✅ 資料庫：使用底線
-    prod_ecommerce_main
-    
-    ✅ AD 群組：使用底線
-    SEC_PROD_DATABASE_ADMIN
-    ```
+**不一致的分隔符問題：**
+
+**有問題的範例：**
+- ❌ `prod-web_01` - 混合連字號和底線
+- ❌ `prodWebServer01` - 主機名稱中的駝峰式
+- ❌ `prod.web.01` - 點（與 FQDN 混淆）
+- ❌ `prod web 01` - 空格（不允許）
+
+**一致的方法：**
+- ✅ 主機名稱：使用連字號 - `prod-useast-web-01`
+- ✅ 資料庫：使用底線 - `prod_ecommerce_main`
+- ✅ AD 群組：使用底線 - `SEC_PROD_DATABASE_ADMIN`
 
 ### 過於複雜的方案
 
 太多元件降低可用性：
 
-!!!error "❌ 複雜度過載"
-    **有問題的範例**
-    ```
-    ❌ prod-v2-useast-1a-dmz-web-nginx-api-customer-v1-blue-01
-    ```
-    
-    **問題**
-    - 12 個元件
-    - 難以記憶
-    - 容易犯錯
-    - 難以輸入
-    
-    **簡化版本**
-    ```
-    ✅ prod-useast-web-api-01
-    ```
-    
-    **通過標籤的額外上下文**
-    ```yaml
-    Name: prod-useast-web-api-01
-    Tags:
-      version: v2
-      availability-zone: us-east-1a
-      network-zone: dmz
-      software: nginx
-    ```
+**過於複雜的方案問題：**
+
+**有問題的範例：**
+- ❌ `prod-v2-useast-1a-dmz-web-nginx-api-customer-v1-blue-01`
+
+**問題：**
+- 12 個元件
+- 難以記憶
+- 容易犯錯
+- 難以輸入
+
+**簡化版本：**
+- ✅ `prod-useast-web-api-01`
+
+**通過標籤的額外上下文：**
+- Name: `prod-useast-web-api-01`
+- Tags: `version: v2`, `availability-zone: us-east-1a`, `network-zone: dmz`, `software: nginx`
 
 ### 缺少關鍵資訊
 
-不完整的名稱造成模糊：
+不完整的名稱造成模糊。
 
-!!!error "❌ 上下文不足"
-    **環境模糊**
-    ```
-    ❌ web-server-01       # 哪個環境？
-    ❌ database-main       # 正式還是開發？
-    ✅ prod-useast-web-01
-    ✅ dev-useast-db-01
-    ```
-    
-    **位置不確定**
-    ```
-    ❌ prod-web-01         # 哪個區域/資料中心？
-    ❌ prod-db-primary     # 它在哪裡？
-    ✅ prod-useast-web-01
-    ✅ prod-euwest-db-primary-01
-    ```
-    
-    **目的不清楚**
-    ```
-    ❌ prod-server-01      # 它做什麼？
-    ❌ prod-app-01         # 哪個應用程式？
-    ✅ prod-useast-web-storefront-01
-    ✅ prod-useast-app-checkout-01
-    ```
+**環境模糊：**
+- ❌ `web-server-01` - 哪個環境？
+- ❌ `database-main` - 正式還是開發？
+- ✅ `prod-useast-web-01`
+- ✅ `dev-useast-db-01`
+
+**位置不確定：**
+- ❌ `prod-web-01` - 哪個區域/資料中心？
+- ❌ `prod-db-primary` - 它在哪裡？
+- ✅ `prod-useast-web-01`
+- ✅ `prod-euwest-db-primary-01`
+
+**目的不清楚：**
+- ❌ `prod-server-01` - 它做什麼？
+- ❌ `prod-app-01` - 哪個應用程式？
+- ✅ `prod-useast-web-storefront-01`
+- ✅ `prod-useast-app-checkout-01`
 
 ## 工具與自動化
 
@@ -1011,47 +909,48 @@ temp_calculation_results
 
 ### 驗證工具
 
-自動化檢查防止命名違規：
+自動化檢查防止命名違規。
 
-!!!tip "💡 驗證方法"
-    **Pre-Commit Hooks**
-    ```bash
-    #!/bin/bash
-    # .git/hooks/pre-commit
-    
-    # 驗證 Terraform 資源名稱
-    terraform_files=$(git diff --cached --name-only | grep '.tf$')
-    
-    for file in $terraform_files; do
-        if grep -q 'resource "aws_instance"' $file; then
-            if ! grep -E 'Name.*=.*(prod|dev|stage)-[a-z]+-[a-z]+-[a-z]+-[0-9]+' $file; then
-                echo "錯誤：$file 中的 EC2 實例名稱無效"
-                echo "預期：{env}-{location}-{type}-{function}-{instance}"
-                exit 1
-            fi
+**Pre-Commit Hooks 範例：**
+
+```bash
+#!/bin/bash
+# .git/hooks/pre-commit
+
+# 驗證 Terraform 資源名稱
+terraform_files=$(git diff --cached --name-only | grep '.tf$')
+
+for file in $terraform_files; do
+    if grep -q 'resource "aws_instance"' $file; then
+        if ! grep -E 'Name.*=.*(prod|dev|stage)-[a-z]+-[a-z]+-[a-z]+-[0-9]+' $file; then
+            echo "錯誤：$file 中的 EC2 實例名稱無效"
+            echo "預期：{env}-{location}-{type}-{function}-{instance}"
+            exit 1
         fi
-    done
-    ```
-    
-    **CI/CD 管線檢查**
-    ```yaml
-    # .github/workflows/validate-naming.yml
-    name: 驗證命名規範
-    
-    on: [pull_request]
-    
-    jobs:
-      validate:
-        runs-on: ubuntu-latest
-        steps:
-          - uses: actions/checkout@v2
-          
-          - name: 驗證基礎設施名稱
-            run: |
-              python scripts/validate-naming.py \
-                --terraform terraform/ \
-                --policy naming-policy.yaml
-    ```
+    fi
+done
+```
+
+**CI/CD 管線檢查範例：**
+
+```yaml
+# .github/workflows/validate-naming.yml
+name: 驗證命名規範
+
+on: [pull_request]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: 驗證基礎設施名稱
+        run: |
+          python scripts/validate-naming.py \
+            --terraform terraform/ \
+            --policy naming-policy.yaml
+```
 
 ## 結論
 
