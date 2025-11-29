@@ -59,7 +59,7 @@ Personal tech blog covering AI, cybersecurity, architecture, and development.
 
 ## Admonition Blocks
 
-**Use admonition blocks strategically to highlight important information and improve readability.**
+**Use admonition blocks strategically to highlight important information and improve readability. Do not use too frequent.**
 
 ### Supported Types and Usage
 
@@ -75,8 +75,30 @@ Personal tech blog covering AI, cybersecurity, architecture, and development.
 | `example` | Code examples, demonstrations | 📝 💻 🔍 |
 | `quote` | Citations, references | 💬 📖 🗣️ |
 
-### Best Practices
+**Correct Syntax:**
 
+```
+!!!anote "🏛️ Hierarchical Approaches"
+    **Cloud Resource Groups/Projects**
+    
+    Instead of encoding everything in name, use hierarchy:
+    
+    **Flat (Long):**
+    - `acme-prod-useast-web-api-logs`
+    - `acme-prod-useast-web-api-backups`
+    - `acme-prod-useast-db-postgres-backups`
+```
+
+**Important:** 
+- Use `!!!` (three exclamation marks), NOT `:::`
+- Always wrap the title in double quotes
+- Indent content with 4 spaces
+    
+
+### Syntax Rules
+
+- **Use `!!!` prefix** - Three exclamation marks, NOT `:::`
+- **Wrap title in double quotes** - `!!!anote "Title"` not `!!!anote Title`
 - **Always use emojis in titles** to make blocks visually engaging
 - **Use anote instead of note** to avoid CSS conflicts
 - **Be specific with titles** rather than using generic type names
