@@ -822,3 +822,46 @@ mindmap
 - [System Design Patterns](/assets/architecture/)
 - [DevOps Best Practices](/assets/devops/)
 - [Monitoring and Logging](/assets/monitoring/)
+
+---
+
+## Footnotes
+
+[^1]: **RTO** - Recovery Time Objective: Maximum acceptable downtime after a failure
+[^2]: **RPO** - Recovery Point Objective: Maximum acceptable data loss measured in time
+[^3]: **MTBF** - Mean Time Between Failures: Average time between system failures
+[^4]: **MTTR** - Mean Time To Repair: Average time to fix a failed system
+[^5]: **MTTF** - Mean Time To Failure: Average time until a system fails
+[^6]: **TPS** - Transactions Per Second: Measure of system throughput
+[^7]: **P50** - 50th Percentile: Median response time (50% of requests faster)
+[^8]: **P99** - 99th Percentile: 99% of requests complete within this time
+[^9]: **DR** - Disaster Recovery: Strategies for recovering from disasters
+[^10]: **DC** - Data Center: Facility housing computer systems and network infrastructure
+[^11]: **API** - Application Programming Interface: Interface for software components to communicate
+[^12]: **SQL** - Structured Query Language: Database query language
+[^13]: **CDC** - Change Data Capture: Process of identifying and capturing data changes
+[^14]: **SIEM** - Security Information and Event Management: Real-time security monitoring
+
+---
+
+## Acronyms and Abbreviations
+
+| Acronym | Full Name | Description |
+|---------|-----------|-------------|
+| **RTGS** | Real-Time Gross Settlement | System for immediate settlement of individual transactions |
+| **HA** | High Availability | System design for minimal downtime |
+| **RTO** | Recovery Time Objective | Maximum acceptable downtime |
+| **RPO** | Recovery Point Objective | Maximum acceptable data loss |
+| **MTBF** | Mean Time Between Failures | Average time between failures |
+| **MTTR** | Mean Time To Repair | Average repair time |
+| **MTTF** | Mean Time To Failure | Average time until failure |
+| **SLA** | Service Level Agreement | Contractual service commitment |
+| **SLO** | Service Level Objective | Internal service target |
+| **TPS** | Transactions Per Second | Throughput measurement |
+| **L1/L2/L3** | Level 1/2/3 Cache | Cache hierarchy levels |
+| **Redis** | Remote Dictionary Server | In-memory data structure store |
+| **Memcached** | Memory Cached | Distributed memory caching system |
+| **DNS** | Domain Name System | Translates domain names to IP addresses |
+| **VIP** | Virtual IP Address | Shared IP for load balancing |
+| **WRT** | Work Recovery Time | Time to resume operations |
+| **MTD** | Maximum Tolerable Downtime | Business impact threshold |

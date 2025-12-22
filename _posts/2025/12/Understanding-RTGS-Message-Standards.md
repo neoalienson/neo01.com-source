@@ -645,3 +645,39 @@ graph LR
 **Related Articles:**
 - [API Design Best Practices](/assets/architecture/)
 - [XML and JSON Processing](/assets/coding/)
+
+---
+
+## Footnotes
+
+[^1]: **ISO** - International Organization for Standardization: Develops international standards including ISO 20022
+[^2]: **SWIFT** - Society for Worldwide Interbank Financial Telecommunication: Global messaging network for financial institutions
+[^3]: **MT** - Message Type: SWIFT's legacy message format (e.g., MT103, MT202)
+[^4]: **XML** - Extensible Markup Language: Markup language used for ISO 20022 messages
+[^5]: **JSON** - JavaScript Object Notation: Lightweight data interchange format, emerging support in ISO 20022
+[^6]: **BIC** - Bank Identifier Code: Standard format for identifying banks (also called SWIFT code)
+[^7]: **API** - Application Programming Interface: Interface for software components to communicate
+[^8]: **TLS** - Transport Layer Security: Cryptographic protocol for secure communications
+[^9]: **mTLS** - Mutual TLS: TLS where both parties authenticate each other
+[^10]: **HSM** - Hardware Security Module: Physical device for managing digital keys and cryptographic operations
+
+---
+
+## Acronyms and Abbreviations
+
+| Acronym | Full Name | Description |
+|---------|-----------|-------------|
+| **RTGS** | Real-Time Gross Settlement | System for immediate settlement of individual transactions |
+| **ISO 20022** | ISO Standard 20022 | International standard for financial services messaging |
+| **pacs** | Payments Clearing and Settlement | ISO 20022 message category for payments |
+| **FIToFI** | Financial Institution to Financial Institution | Messages between banks |
+| **CstmrCdtTrf** | Customer Credit Transfer | Customer payment message type |
+| **PmtId** | Payment Identification | Unique identifier for payments |
+| **UltmtDbtr** | Ultimate Debtor | Original payer in a transaction |
+| **UltmtCdtr** | Ultimate Creditor | Final recipient of funds |
+| **RmtInf** | Remittance Information | Payment reference/details |
+| **ACSC** | Accepted Settlement Completed | Payment status code for successful settlement |
+| **RJCT** | Rejected | Payment status code for rejected payments |
+| **UML** | Unified Modeling Language | Standard modeling language used in ISO 20022 |
+| **XSD** | XML Schema Definition | Schema language for validating XML messages |
+| **PKI** | Public Key Infrastructure | Framework for managing digital certificates |

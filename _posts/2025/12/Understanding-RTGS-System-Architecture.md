@@ -704,3 +704,36 @@ graph LR
 **Related Articles:**
 - [Microservices Architecture Patterns](/assets/architecture/)
 - [Database Design Best Practices](/assets/database/)
+
+---
+
+## Footnotes
+
+[^1]: **API** - Application Programming Interface: Interface for software components to communicate
+[^2]: **HSM** - Hardware Security Module: Physical device for cryptographic operations
+[^3]: **mTLS** - Mutual TLS: TLS where both parties authenticate each other
+[^4]: **TLS** - Transport Layer Security: Cryptographic protocol for secure communications
+[^5]: **HSM** - Hardware Security Module: Physical device for managing digital keys
+[^6]: **ACID** - Atomicity, Consistency, Isolation, Durability: Database transaction properties
+[^7]: **SWIFT** - Society for Worldwide Interbank Financial Telecommunication: Global messaging network for financial institutions
+
+---
+
+## Acronyms and Abbreviations
+
+| Acronym | Full Name | Description |
+|---------|-----------|-------------|
+| **RTGS** | Real-Time Gross Settlement | System for immediate settlement of individual transactions |
+| **API** | Application Programming Interface | Interface for software components to communicate |
+| **HSM** | Hardware Security Module | Physical device for cryptographic operations |
+| **PKI** | Public Key Infrastructure | Framework for managing digital certificates |
+| **ACID** | Atomicity, Consistency, Isolation, Durability | Database transaction properties |
+| **RDBMS** | Relational Database Management System | Traditional relational database |
+| **SQL** | Structured Query Language | Database query language |
+| **TLS** | Transport Layer Security | Cryptographic protocol for secure communications |
+| **mTLS** | Mutual TLS | TLS where both parties authenticate each other |
+| **IDS** | Intrusion Detection System | Monitors for malicious activity |
+| **IPS** | Intrusion Prevention System | Blocks detected threats |
+| **DDoS** | Distributed Denial of Service | Attack that overwhelms systems |
+| **SIEM** | Security Information and Event Management | Real-time security monitoring |
+| **RBAC** | Role-Based Access Control | Access control based on roles |
