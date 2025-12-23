@@ -636,10 +636,11 @@ graph TB
 **Related Articles:**
 - [Security Architecture Patterns](/assets/security/)
 - [Compliance Frameworks](/assets/cisp/)
+- [RTGS Acronyms and Abbreviations Reference](/2025/12/rtgs-acronyms-and-abbreviations/)
 
 ---
 
-## Footnotes
+**Footnotes for this article:**
 
 [^1]: **HSM** - Hardware Security Module: Physical device for managing digital keys and cryptographic operations
 [^2]: **PKI** - Public Key Infrastructure: Framework for managing digital certificates and encryption
@@ -659,25 +660,4 @@ graph TB
 [^16]: **RTO** - Recovery Time Objective: Maximum acceptable downtime after a failure
 [^17]: **RPO** - Recovery Point Objective: Maximum acceptable data loss measured in time
 
----
-
-## Acronyms and Abbreviations
-
-| Acronym | Full Name | Description |
-|---------|-----------|-------------|
-| **RTGS** | Real-Time Gross Settlement | System for immediate settlement of individual transactions |
-| **CIA** | Confidentiality, Integrity, Availability | Three pillars of information security |
-| **HSM** | Hardware Security Module | Physical device for cryptographic operations |
-| **FIPS** | Federal Information Processing Standards | US government security standards |
-| **AES** | Advanced Encryption Standard | Symmetric encryption algorithm |
-| **RSA** | Rivest-Shamir-Adleman | Asymmetric encryption algorithm |
-| **ECC** | Elliptic Curve Cryptography | Public-key cryptography approach |
-| **ECDSA** | Elliptic Curve Digital Signature Algorithm | Digital signature algorithm |
-| **ECDH** | Elliptic Curve Diffie-Hellman | Key agreement protocol |
-| **SHA** | Secure Hash Algorithm | Cryptographic hash functions |
-| **RBAC** | Role-Based Access Control | Access control based on roles |
-| **MFA** | Multi-Factor Authentication | Authentication requiring multiple proofs |
-| **GDPR** | General Data Protection Regulation | EU data protection regulation |
-| **PSD2** | Payment Services Directive 2 | EU payment services regulation |
-| **SOX** | Sarbanes-Oxley Act | US financial reporting regulation |
-| **PCI DSS** | Payment Card Industry Data Security Standard | Card data security standard |
+> **Note:** For a complete list of all acronyms used in the RTGS series, see the [RTGS Acronyms and Abbreviations Reference](/2025/12/rtgs-acronyms-and-abbreviations/).

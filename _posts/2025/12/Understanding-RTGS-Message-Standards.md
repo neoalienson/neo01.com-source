@@ -645,10 +645,11 @@ graph LR
 **Related Articles:**
 - [API Design Best Practices](/assets/architecture/)
 - [XML and JSON Processing](/assets/coding/)
+- [RTGS Acronyms and Abbreviations Reference](/2025/12/rtgs-acronyms-and-abbreviations/)
 
 ---
 
-## Footnotes
+**Footnotes for this article:**
 
 [^1]: **ISO** - International Organization for Standardization: Develops international standards including ISO 20022
 [^2]: **SWIFT** - Society for Worldwide Interbank Financial Telecommunication: Global messaging network for financial institutions
@@ -661,23 +662,4 @@ graph LR
 [^9]: **mTLS** - Mutual TLS: TLS where both parties authenticate each other
 [^10]: **HSM** - Hardware Security Module: Physical device for managing digital keys and cryptographic operations
 
----
-
-## Acronyms and Abbreviations
-
-| Acronym | Full Name | Description |
-|---------|-----------|-------------|
-| **RTGS** | Real-Time Gross Settlement | System for immediate settlement of individual transactions |
-| **ISO 20022** | ISO Standard 20022 | International standard for financial services messaging |
-| **pacs** | Payments Clearing and Settlement | ISO 20022 message category for payments |
-| **FIToFI** | Financial Institution to Financial Institution | Messages between banks |
-| **CstmrCdtTrf** | Customer Credit Transfer | Customer payment message type |
-| **PmtId** | Payment Identification | Unique identifier for payments |
-| **UltmtDbtr** | Ultimate Debtor | Original payer in a transaction |
-| **UltmtCdtr** | Ultimate Creditor | Final recipient of funds |
-| **RmtInf** | Remittance Information | Payment reference/details |
-| **ACSC** | Accepted Settlement Completed | Payment status code for successful settlement |
-| **RJCT** | Rejected | Payment status code for rejected payments |
-| **UML** | Unified Modeling Language | Standard modeling language used in ISO 20022 |
-| **XSD** | XML Schema Definition | Schema language for validating XML messages |
-| **PKI** | Public Key Infrastructure | Framework for managing digital certificates |
+> **Note:** For a complete list of all acronyms used in the RTGS series, see the [RTGS Acronyms and Abbreviations Reference](/2025/12/rtgs-acronyms-and-abbreviations/).

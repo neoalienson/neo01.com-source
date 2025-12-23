@@ -538,10 +538,11 @@ This is the **first article** in our RTGS series for IT professionals. Upcoming 
 **Related Articles:**
 - [Understanding ISO 20022 Payment Messages](/2025/12/understanding-rtgs-message-standards/)
 - [High Availability System Design Patterns](/assets/architecture/)
+- [RTGS Acronyms and Abbreviations Reference](/2025/12/rtgs-acronyms-and-abbreviations/)
 
 ---
 
-## Footnotes
+**Footnotes for this article:**
 
 [^1]: **ACH** - Automated Clearing House: US electronic network for processing financial transactions, typically used for domestic low-value payments
 [^2]: **DNS** - Deferred Net Settlement: System that accumulates transactions and settles them in batches at predetermined intervals
@@ -549,39 +550,4 @@ This is the **first article** in our RTGS series for IT professionals. Upcoming 
 [^4]: **FX** - Foreign Exchange: The trading of currencies between different nations
 [^5]: **CLS** - Continuous Linked Settlement: Multi-currency cash settlement system for foreign exchange transactions, eliminating settlement risk
 
----
-
-## 8、Acronyms and Abbreviations
-
-| Acronym | Full Name | Description |
-|---------|-----------|-------------|
-| **RTGS** | Real-Time Gross Settlement | System for immediate settlement of individual transactions |
-| **ECB** | European Central Bank | Central bank for the Eurozone |
-| **PBOC** | People's Bank of China | Central bank of the People's Republic of China |
-| **CHAPS** | Clearing House Automated Payment System | UK same-day sterling payment system |
-| **Fedwire** | Federal Reserve Wire Network | US real-time gross settlement funds transfer system |
-| **TARGET2** | Trans-European Automated Real-time Gross settlement Express Transfer system | Eurozone RTGS system |
-| **BOJ-NET** | Bank of Japan Financial Network Network | Japanese RTGS system |
-| **CNAPS** | China National Advanced Payment System | Chinese payment system including HVPS (RTGS) |
-| **RITS** | Reserve Bank Information and Transfer System | Australian RTGS system |
-| **LVTS** | Large Value Transfer System | Canadian RTGS system (now replaced by Lynx) |
-| **SIC** | Swiss Interbank Clearing | Swiss RTGS system |
-| **ISO** | International Organization for Standardization | Develops international standards including ISO 20022 |
-| **SWIFT** | Society for Worldwide Interbank Financial Telecommunication | Global messaging network for financial institutions |
-| **BIC** | Bank Identifier Code | Standard format for identifying banks (also called SWIFT code) |
-| **IBAN** | International Bank Account Number | International standard for identifying bank accounts |
-| **HSM** | Hardware Security Module | Physical device for managing digital keys and cryptographic operations |
-| **PKI** | Public Key Infrastructure | Framework for managing digital certificates and encryption |
-| **TLS** | Transport Layer Security | Cryptographic protocol for secure communications |
-| **mTLS** | Mutual TLS | TLS where both parties authenticate each other |
-| **API** | Application Programming Interface | Interface for software components to communicate |
-| **XML** | Extensible Markup Language | Markup language for encoding documents (used in ISO 20022) |
-| **JSON** | JavaScript Object Notation | Lightweight data interchange format |
-| **ACID** | Atomicity, Consistency, Isolation, Durability | Properties guaranteeing reliable database transactions |
-| **TPS** | Transactions Per Second | Measure of system throughput |
-| **RTO** | Recovery Time Objective | Maximum acceptable downtime after a failure |
-| **RPO** | Recovery Point Objective | Maximum acceptable data loss measured in time |
-| **DR** | Disaster Recovery | Strategies and procedures for recovering from disasters |
-| **DC** | Data Center | Facility housing computer systems and network infrastructure |
-| **IoT** | Internet of Things | Network of physical devices with embedded connectivity |
-| **CDC** | Change Data Capture | Process of identifying and capturing data changes |
+> **Note:** For a complete list of all acronyms used in the RTGS series, see the [RTGS Acronyms and Abbreviations Reference](/2025/12/rtgs-acronyms-and-abbreviations/).
