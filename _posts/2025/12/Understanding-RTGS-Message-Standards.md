@@ -21,7 +21,7 @@ comments: true
 
 Message standards are the language of RTGS systems. This article explores the message formats, protocols, and standards that enable interoperability between financial institutions in real-time gross settlement networks.
 
-## 1、Evolution of Payment Message Standards
+## 1 Evolution of Payment Message Standards
 
 ### 1.1 Historical Context
 
@@ -51,7 +51,7 @@ timeline
 | **Fedwire** | Proprietary | 1918-present | US-specific |
 | **CHIPS** | Proprietary | 1971-present | US clearing only |
 
-## 2、ISO 20022 Fundamentals
+## 2 ISO 20022 Fundamentals
 
 ### 2.1 What is ISO 20022?
 
@@ -125,7 +125,7 @@ Example: pacs.008.001.08
 | **Cancel Request** | pacs.004 | Payment cancellation |
 | **Return** | pacs.004 | Payment return |
 
-## 3、Key ISO 20022 Messages for RTGS
+## 3 Key ISO 20022 Messages for RTGS
 
 ### 3.1 pacs.008 - Customer Credit Transfer
 
@@ -296,7 +296,7 @@ Provides status updates on payments:
 | **PDNG** | Pending | Awaiting processing |
 | **ACTC** | Accepted Technical Validation | Technically valid |
 
-## 4、SWIFT MT to ISO 20022 Migration
+## 4 SWIFT MT to ISO 20022 Migration
 
 ### 4.1 MT Message Categories
 
@@ -366,7 +366,7 @@ gantt
     MT Shutdown :crit, shutdown, 2025-11, 1m
 ```
 
-## 5、Message Validation and Processing
+## 5 Message Validation and Processing
 
 ### 5.1 Validation Layers
 
@@ -477,7 +477,7 @@ interface MessageValidator {
 | **Settlement (SA)** | SA01-SA99 | SA01: Invalid account |
 | **Regulatory (RV)** | RV01-RV99 | RV01: Sanctions check |
 
-## 6、Communication Protocols
+## 6 Communication Protocols
 
 ### 6.1 Transport Layer Security
 
@@ -569,7 +569,7 @@ graph TB
     style D fill:#fff3e0,stroke:#f57c00
 ```
 
-## 7、Testing and Certification
+## 7 Testing and Certification
 
 ### 7.1 Testing Levels
 
@@ -610,7 +610,7 @@ graph LR
     style C1 fill:#fff3e0,stroke:#f57c00
 ```
 
-## 8、Summary
+## 8 Summary
 
 !!!anote "📋 Key Takeaways"
     **Essential message standards knowledge:**

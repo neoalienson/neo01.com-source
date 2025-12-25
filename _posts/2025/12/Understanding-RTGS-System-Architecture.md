@@ -20,7 +20,7 @@ comments: true
 
 Building an RTGS system requires careful architectural design to meet the demanding requirements of financial settlement. This article explores the system architecture, core components, and design patterns used in modern RTGS implementations.
 
-## 1、Architectural Principles
+## 1 Architectural Principles
 
 ### 1.1 Design Goals
 
@@ -102,7 +102,7 @@ graph TB
     style D2 fill:#388e3c,stroke:#1b5e20,color:#fff
 ```
 
-## 2、Core System Components
+## 2 Core System Components
 
 ### 2.1 Component Overview
 
@@ -339,7 +339,7 @@ flowchart TD
 | **Isolation** | Concurrent settlements don't interfere |
 | **Durability** | Once settled, never reversed |
 
-## 3、Data Architecture
+## 3 Data Architecture
 
 ### 3.1 Database Schema (Simplified)
 
@@ -427,7 +427,7 @@ flowchart LR
     style I fill:#e8f5e9,stroke:#388e3c
 ```
 
-## 4、Integration Architecture
+## 4 Integration Architecture
 
 ### 4.1 Participant Connectivity
 
@@ -502,7 +502,7 @@ sequenceDiagram
     Note over P,S: All steps logged for audit
 ```
 
-## 5、Security Architecture
+## 5 Security Architecture
 
 ### 5.1 Security Layers
 
@@ -570,7 +570,7 @@ sequenceDiagram
     Note over P,HSM: Mutual TLS + Digital Signature
 ```
 
-## 6、Deployment Architecture
+## 6 Deployment Architecture
 
 ### 6.1 High Availability Setup
 
@@ -624,7 +624,7 @@ graph TB
 | **Message Queue** | Clustered | < 5 seconds |
 | **HSM** | Active-Passive | < 10 seconds |
 
-## 7、Monitoring and Observability
+## 7 Monitoring and Observability
 
 ### 7.1 Key Metrics
 
@@ -669,7 +669,7 @@ graph LR
 | **Medium** | < 1 hour | Performance degradation |
 | **Low** | Next business day | Non-critical warnings |
 
-## 8、Summary
+## 8 Summary
 
 !!!anote "📋 Key Takeaways"
     **Essential architecture concepts:**

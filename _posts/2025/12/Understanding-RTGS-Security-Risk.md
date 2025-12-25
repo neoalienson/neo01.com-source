@@ -21,7 +21,7 @@ comments: true
 
 Security and risk management are paramount in RTGS systems where trillions of dollars flow daily. This article explores the security architecture, threat landscape, and risk management frameworks essential for RTGS operations.
 
-## 1、Security Requirements for RTGS
+## 1 Security Requirements for RTGS
 
 ### 1.1 Security Objectives
 
@@ -53,7 +53,7 @@ Security and risk management are paramount in RTGS systems where trillions of do
 | **Auditability** | Track all actions | Complete audit trail |
 | **Accountability** | Assign responsibility | User identification, Logging |
 
-## 2、Threat Landscape
+## 2 Threat Landscape
 
 ### 2.1 Threat Categories
 
@@ -127,7 +127,7 @@ flowchart TD
 | **Carbanak Gang** | 2013-2018 | $1B+ stolen | Malware, Insider threats |
 | **Lazarus Group Attacks** | 2014-present | Multiple | State-sponsored, Persistence |
 
-## 3、Security Architecture
+## 3 Security Architecture
 
 ### 3.1 Defense in Depth
 
@@ -311,7 +311,7 @@ graph TB
 | **Auditor** | ❌ | ❌ | ✅ | ❌ | ❌ |
 | **Participant** | ✅ | ✅ (internal) | ✅ (own) | ❌ | ✅ (own users) |
 
-## 4、Risk Management Framework
+## 4 Risk Management Framework
 
 ### 4.1 Risk Categories in RTGS
 
@@ -412,7 +412,7 @@ interface FraudDetectionRule {
 }
 ```
 
-## 5、Audit and Compliance
+## 5 Audit and Compliance
 
 ### 5.1 Audit Trail Requirements
 
@@ -510,7 +510,7 @@ graph LR
 | **PCI DSS** | Global | Card data security (if applicable) |
 | **ISO 27001** | Global | Information security management |
 
-## 6、Incident Response
+## 6 Incident Response
 
 ### 6.1 Incident Classification
 
@@ -551,7 +551,7 @@ flowchart TD
     style K fill:#e8f5e9,stroke:#388e3c
 ```
 
-## 7、Business Continuity
+## 7 Business Continuity
 
 ### 7.1 Disaster Recovery Strategy
 
@@ -601,7 +601,7 @@ graph TB
 | **WRT (Work Recovery Time)** | < 1 hour | Time to resume operations |
 | **MTD (Maximum Tolerable Downtime)** | 4 hours | Business impact threshold |
 
-## 8、Summary
+## 8 Summary
 
 !!!anote "📋 Key Takeaways"
     **Essential security and risk concepts:**

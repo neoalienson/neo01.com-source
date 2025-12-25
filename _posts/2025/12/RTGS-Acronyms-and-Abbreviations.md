@@ -22,7 +22,7 @@ comments: true
 
 This reference guide consolidates all acronyms and abbreviations used throughout the RTGS (Real-Time Gross Settlement) series. Use this as a quick lookup when reading the other articles.
 
-## 1、Payment Systems & Financial Institutions
+## 1 Payment Systems & Financial Institutions
 
 | Acronym | Full Name | Description |
 |---------|-----------|-------------|
@@ -45,7 +45,7 @@ This reference guide consolidates all acronyms and abbreviations used throughout
 | **SEPA** | Single Euro Payments Area | EU payment integration initiative |
 | **FPS** | Faster Payments Service | UK instant payment system |
 
-## 2、Standards Organizations & Messaging
+## 2 Standards Organizations & Messaging
 
 | Acronym | Full Name | Description |
 |---------|-----------|-------------|
@@ -61,7 +61,7 @@ This reference guide consolidates all acronyms and abbreviations used throughout
 | **UML** | Unified Modeling Language | Standard modeling language used in ISO 20022 |
 | **XSD** | XML Schema Definition | Schema language for validating XML messages |
 
-## 3、ISO 20022 Message Elements
+## 3 ISO 20022 Message Elements
 
 | Acronym/Code | Full Name | Description |
 |--------------|-----------|-------------|
@@ -84,7 +84,7 @@ This reference guide consolidates all acronyms and abbreviations used throughout
 | **PDNG** | Pending | Payment status code for awaiting processing |
 | **ACTC** | Accepted Technical Validation | Payment status code for technically valid |
 
-## 4、Data Formats & Technologies
+## 4 Data Formats & Technologies
 
 | Acronym | Full Name | Description |
 |---------|-----------|-------------|
@@ -96,7 +96,7 @@ This reference guide consolidates all acronyms and abbreviations used throughout
 | **CDC** | Change Data Capture | Process of identifying and capturing data changes |
 | **IoT** | Internet of Things | Network of physical devices with embedded connectivity |
 
-## 5、Security & Cryptography
+## 5 Security & Cryptography
 
 | Acronym | Full Name | Description |
 |---------|-----------|-------------|
@@ -115,7 +115,7 @@ This reference guide consolidates all acronyms and abbreviations used throughout
 | **FIPS** | Federal Information Processing Standards | US government security standards |
 | **MFA** | Multi-Factor Authentication | Authentication requiring multiple proofs |
 
-## 6、Network Security
+## 6 Network Security
 
 | Acronym | Full Name | Description |
 |---------|-----------|-------------|
@@ -127,7 +127,7 @@ This reference guide consolidates all acronyms and abbreviations used throughout
 | **RBAC** | Role-Based Access Control | Access control based on user roles |
 | **LDAP** | Lightweight Directory Access Protocol | Protocol for accessing directory services |
 
-## 7、High Availability & Performance
+## 7 High Availability & Performance
 
 | Acronym | Full Name | Description |
 |---------|-----------|-------------|
@@ -150,7 +150,7 @@ This reference guide consolidates all acronyms and abbreviations used throughout
 | **DNS** | Domain Name System | Translates domain names to IP addresses |
 | **VIP** | Virtual IP Address | Shared IP for load balancing |
 
-## 8、Infrastructure & Operations
+## 8 Infrastructure & Operations
 
 | Acronym | Full Name | Description |
 |---------|-----------|-------------|
@@ -158,7 +158,7 @@ This reference guide consolidates all acronyms and abbreviations used throughout
 | **DC** | Data Center | Facility housing computer systems and network infrastructure |
 | **ACID** | Atomicity, Consistency, Isolation, Durability | Properties guaranteeing reliable database transactions |
 
-## 9、Regulations & Compliance
+## 9 Regulations & Compliance
 
 | Acronym | Full Name | Description |
 |---------|-----------|-------------|
@@ -168,7 +168,7 @@ This reference guide consolidates all acronyms and abbreviations used throughout
 | **PCI DSS** | Payment Card Industry Data Security Standard | Card data security standard |
 | **ISO 27001** | ISO Standard 27001 | Information security management standard |
 
-## 10、General IT & Architecture
+## 10 General IT & Architecture
 
 | Acronym | Full Name | Description |
 |---------|-----------|-------------|

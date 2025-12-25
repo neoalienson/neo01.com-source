@@ -20,7 +20,26 @@ comments: true
 
 Real-Time Gross Settlement (RTGS) systems form the backbone of modern financial infrastructure, processing trillions of dollars in transactions daily. For IT professionals, understanding RTGS is essential when working with financial systems, payment platforms, or enterprise architecture.
 
-## 1、What is RTGS?
+## 0 Before RTGS
+
+Back before RTGS was everywhere, we were basically running payment systems on hope and nightly batch courage. Picture this: you're the on-call devops / middleware engineer at a mid-tier bank. It's 1998–2005-ish, you're maintaining the high-value payment gateway that talks to whatever domestic large-value system your country had (CHAPS, Fedwire pre-full-RTGS vibes, Euro1, the old TARGET, take your pick).
+
+During the day everything feels deceptively chill. SWIFT messages fly in and out, your app logs them, sticks them in Oracle queues or flat files, updates shadow ledgers with gross debits and credits per counterparty. No real money moves. You're just keeping score: "we owe them 847m, they owe us 912m → net we're up 65m for now." Liquidity guys love it because the actual central-bank debits stay tiny until end-of-day.
+
+Then cut-off hits and the real fun begins.
+
+The batch job spins up—some crusty COBOL or early Java monster that does the multilateral netting across every participant. It crunches for 20–90 minutes depending on volume. You tail the logs, watch temp tables balloon, pray nobody deadlocks on the participant balance row. When it finishes, boom: net debit/credit positions land. Only those nets get settled via central-bank accounts, usually next morning or same evening if you're on a good scheme.
+
+From our side of the keyboard, the scary part wasn't the tech crashing (though it did). It was the 02:30 page that says:
+
+> PARTICIPANT ABC NET DEBIT USD 2.1BN – CANNOT COVER
+> Provisional credits already downstreamed to corporate DDA accounts
+
+You know what happens next if the central bank doesn't bail them out: unwind. Clawback city. Every bank that received net credits has to give some back. Customers who already spent "their" incoming wire get reversed. Trading desks blow up margin calls. And you—the poor bastard with prod access—are the one re-queueing, cancelling, or force-releasing whatever the risk committee decides at 3 a.m. while the liquidity head screams on the bridge line.
+
+Cross-border FX settlement was straight-up gambling with extra steps. You'd credit yen out of your Tokyo nostro at their close, then sit through eight hours of radio silence hoping the dollars hit New York the next morning. If the counterparty folded overnight? Tough luck. That was textbook Herstatt risk, and we lived it every value date.
+
+## 1 What is RTGS?
 
 ### 1.1 Definition and Core Concept
 
@@ -242,7 +261,7 @@ sequenceDiagram
     - Highest form of money safety
     - No commercial bank credit risk
 
-## 2、RTGS in the Payment System Ecosystem
+## 2 RTGS in the Payment System Ecosystem
 
 ### 2.1 Payment System Hierarchy
 
@@ -313,7 +332,7 @@ flowchart TD
 | **System Operators** | Technical operation | Central bank IT, Vendors |
 | **Settlement Agents** | Provide liquidity | Central bank, Commercial banks |
 
-## 3、Technical Architecture Overview
+## 3 Technical Architecture Overview
 
 ### 3.1 High-Level System Components
 
@@ -400,7 +419,7 @@ RTGS systems use standardized message formats:
 | **Fedwire** | US Federal Reserve | USA |
 | **TARGET2** | European System | EU |
 
-## 4、Real-World RTGS Systems
+## 4 Real-World RTGS Systems
 
 ### 4.1 Major RTGS Systems Worldwide
 
@@ -438,7 +457,7 @@ graph LR
 | **CHAPS** | Bank of England | GBP | £800+ billion |
 | **BOJ-NET** | Bank of Japan | JPY | ¥80+ trillion |
 
-## 5、Why IT Professionals Should Understand RTGS
+## 5 Why IT Professionals Should Understand RTGS
 
 ### 5.1 Career Relevance
 
@@ -497,7 +516,7 @@ graph TB
     style A fill:#1976d2,stroke:#0d47a1,color:#fff
 ```
 
-## 6、Series Overview
+## 6 Series Overview
 
 This is the **first article** in our RTGS series for IT professionals. Upcoming articles will cover:
 
@@ -509,7 +528,7 @@ This is the **first article** in our RTGS series for IT professionals. Upcoming 
 | **Part 4** | Security & Risk | Threats and mitigation |
 | **Part 5** | High Availability | Performance and resilience |
 
-## 7、Summary
+## 7 Summary
 
 !!!anote "📋 Key Takeaways"
     **Essential points to remember:**

@@ -21,7 +21,7 @@ comments: true
 
 High availability and performance are non-negotiable for RTGS systems. This final article in our series explores the architectural patterns, design strategies, and operational practices that ensure RTGS systems meet their demanding requirements.
 
-## 1、Availability Requirements
+## 1 Availability Requirements
 
 ### 1.1 RTGS Availability Standards
 
@@ -75,7 +75,7 @@ graph LR
 | **MTTR** | Total Downtime / Number of Failures | < 2 minutes |
 | **MTTF** | Total Uptime / Number of Units | > 100,000 hours |
 
-## 2、High Availability Architecture
+## 2 High Availability Architecture
 
 ### 2.1 Redundancy Patterns
 
@@ -250,7 +250,7 @@ flowchart TD
     style N fill:#fff3e0,stroke:#f57c00
 ```
 
-## 3、Performance Optimization
+## 3 Performance Optimization
 
 ### 3.1 Performance Requirements
 
@@ -440,7 +440,7 @@ FOR UPDATE SKIP LOCKED
 LIMIT 100;
 ```
 
-## 4、Scalability Design
+## 4 Scalability Design
 
 ### 4.1 Scaling Patterns
 
@@ -535,7 +535,7 @@ graph LR
     style Q3 fill:#1976d2,stroke:#0d47a1,color:#fff
 ```
 
-## 5、Monitoring and Observability
+## 5 Monitoring and Observability
 
 ### 5.1 Monitoring Architecture
 
@@ -662,7 +662,7 @@ sequenceDiagram
     Note over G,D: Each span tracked<br/>for performance analysis
 ```
 
-## 6、Operational Excellence
+## 6 Operational Excellence
 
 ### 6.1 Deployment Pipeline
 
@@ -735,7 +735,7 @@ graph LR
     style H fill:#e8f5e9,stroke:#388e3c
 ```
 
-## 7、Series Summary
+## 7 Series Summary
 
 ### 7.1 Complete Series Overview
 
@@ -786,7 +786,7 @@ mindmap
 | **Security** | NIST Frameworks, PCI DSS |
 | **Architecture** | Enterprise Architecture patterns |
 
-## 8、Summary
+## 8 Summary
 
 !!!anote "📋 Key Takeaways"
     **Essential high availability and performance concepts:**
