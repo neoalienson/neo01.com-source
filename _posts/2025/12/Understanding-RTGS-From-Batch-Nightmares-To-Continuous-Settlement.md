@@ -119,26 +119,6 @@ We traded cheap liquidity for bulletproof finality, and most of us would make th
 Nowadays when I see teams complaining about RTGS liquidity squeezes or ISO 20022 migration pain, I just smirk and think: at least you're not the guy who used to pray the multilateral net balanced at 4 a.m. while drinking yesterday's coffee.
 You still fighting legacy batch crap somewhere, or are you deep in the modern RTGS trenches already? What's the worst production horror story you've got from the pre-RTGS days?
 
-!!!tip "💡 Agile, DevOps, and Continuous Delivery practices vs RTGS"
-    RTGS vibes hard with core DevOps principles, especially the whole "smaller releases, less risk" mantra we live by.
-
-    Think about the old deferred net settlement world we were just talking about: that's basically the big-bang release equivalent in payments. You pile up hundreds/thousands of payment instructions all day (like accumulating features/code changes in a massive branch or monolith sprint). Then at end-of-day (or next morning), you do one giant batch/netting job—boom, everything settles in one atomic (but scary) commit. If anything goes sideways (a participant can't cover their net debit, bad data in the queue, deadlock, whatever), the blast radius is huge: potential unwind, clawbacks, systemic freeze, 3 a.m. war rooms. High risk because failure hits everything at once, and recovery is painful and cascading.
-
-    RTGS flips that to something way closer to continuous deployment / small, frequent releases with strong safety nets:
-
-    * Each payment = its own small, independent release. No bundling/netting. One instruction comes in → validate → check liquidity/cover → settle gross in real time (sub-second/atomic on central-bank books) → done, irrevocable. Fail fast and isolated—if the sender doesn't have funds, it queues or rejects outright. No provisional credits to claw back later.
-    * Risk is contained per transaction. Just like a canary/blue-green/canary deploy or trunk-based dev + feature flags: you ship small changes often, problems affect only that one change (or a tiny % of traffic), not the whole system. One counterparty failing? It doesn't unravel the entire day's net—only their unsettled payments get blocked/queued. Systemic risk drops massively because there's no accumulated exposure waiting for a single batch window.
-    * Fail fast, recover fast. In DevOps we hate long feedback loops—same here. Batch netting gives you feedback at dawn (too late). RTGS gives instant feedback: payment succeeds → funds usable immediately; fails → sender knows right away and can act (top up liquidity, retry, whatever). Mirrors CI/CD pipelines with automated gates, tests, and rollback on every commit.
-    * Trade-offs feel familiar too. RTGS demands more intraday liquidity (like needing more test environments, better observability tooling, or infra headroom for CD). It's "expensive" in constant readiness (24/7 HA, queue management, gridlock algos), but the payoff is much lower blast radius and no more "hope the nightly job doesn't blow up production" dread.
-
-    In short: deferred netting = waterfall/big-bang/monolithic releases → efficient on resources but high-stakes, high-risk when it fails.
-
-    RTGS = DevOps/CD/small batches/atomic deploys → higher operational cost (liquidity always hot, always-on monitoring) but way less existential risk, faster iteration (payments flow all day without waiting), and true finality/confidence.
-
-    We've basically DevOps-ified the backbone of money movement. The central banks did the risk equivalent of saying "screw it, no more quarterly monolith drops—let's ship every change as it happens, with guardrails."
-
-    You seeing the same parallels in the payment rails you're working on, or is there some twist in your setup that breaks the analogy?
-
 ### 1.2 RTGS vs. Net Settlement Systems
 
 Understanding the difference between RTGS and net settlement is fundamental. But first, what is a Net Settlement System and why does it exist?
@@ -291,6 +271,26 @@ sequenceDiagram
     - Settlement in central bank reserves
     - Highest form of money safety
     - No commercial bank credit risk
+
+!!!tip "💡 Agile, DevOps, and Continuous Delivery practices vs RTGS"
+    RTGS vibes hard with core DevOps principles, especially the whole "smaller releases, less risk" mantra we live by.
+
+    Think about the old deferred net settlement world we were just talking about: that's basically the big-bang release equivalent in payments. You pile up hundreds/thousands of payment instructions all day (like accumulating features/code changes in a massive branch or monolith sprint). Then at end-of-day (or next morning), you do one giant batch/netting job—boom, everything settles in one atomic (but scary) commit. If anything goes sideways (a participant can't cover their net debit, bad data in the queue, deadlock, whatever), the blast radius is huge: potential unwind, clawbacks, systemic freeze, 3 a.m. war rooms. High risk because failure hits everything at once, and recovery is painful and cascading.
+
+    RTGS flips that to something way closer to continuous deployment / small, frequent releases with strong safety nets:
+
+    * Each payment = its own small, independent release. No bundling/netting. One instruction comes in → validate → check liquidity/cover → settle gross in real time (sub-second/atomic on central-bank books) → done, irrevocable. Fail fast and isolated—if the sender doesn't have funds, it queues or rejects outright. No provisional credits to claw back later.
+    * Risk is contained per transaction. Just like a canary/blue-green/canary deploy or trunk-based dev + feature flags: you ship small changes often, problems affect only that one change (or a tiny % of traffic), not the whole system. One counterparty failing? It doesn't unravel the entire day's net—only their unsettled payments get blocked/queued. Systemic risk drops massively because there's no accumulated exposure waiting for a single batch window.
+    * Fail fast, recover fast. In DevOps we hate long feedback loops—same here. Batch netting gives you feedback at dawn (too late). RTGS gives instant feedback: payment succeeds → funds usable immediately; fails → sender knows right away and can act (top up liquidity, retry, whatever). Mirrors CI/CD pipelines with automated gates, tests, and rollback on every commit.
+    * Trade-offs feel familiar too. RTGS demands more intraday liquidity (like needing more test environments, better observability tooling, or infra headroom for CD). It's "expensive" in constant readiness (24/7 HA, queue management, gridlock algos), but the payoff is much lower blast radius and no more "hope the nightly job doesn't blow up production" dread.
+
+    In short: deferred netting = waterfall/big-bang/monolithic releases → efficient on resources but high-stakes, high-risk when it fails.
+
+    RTGS = DevOps/CD/small batches/atomic deploys → higher operational cost (liquidity always hot, always-on monitoring) but way less existential risk, faster iteration (payments flow all day without waiting), and true finality/confidence.
+
+    We've basically DevOps-ified the backbone of money movement. The central banks did the risk equivalent of saying "screw it, no more quarterly monolith drops—let's ship every change as it happens, with guardrails."
+
+    You seeing the same parallels in the payment rails you're working on, or is there some twist in your setup that breaks the analogy?
 
 That’s the foundation: how we crawled out of the deferred netting era’s nightly batch roulette and landed in the RTGS world of instant, irrevocable finality. If you’ve ever stared at a queue depth alert at 2 a.m. wondering whether the net would hold—or if you’re just now building or integrating with modern payment rails—this series is for you. Next up, we’ll dive straight into the engine room: how today’s RTGS systems actually work under the hood, the queuing logic that keeps trillions flowing without gridlock, the liquidity puzzles engineers fight every day, and the failure modes that still keep central-bank SREs on high alert. Stick around—things get technical, a little gritty, and (hopefully) a lot clearer. See you in the next one.
 
