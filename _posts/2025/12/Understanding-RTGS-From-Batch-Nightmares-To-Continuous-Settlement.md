@@ -156,30 +156,32 @@ Understanding the difference between RTGS and net settlement is fundamental. But
 
 **Visual Comparison: How Money Flows**
 
+**RTGS: Each Transaction Settled Immediately**
+
 ```mermaid
-graph LR
-    subgraph "RTGS: Each Transaction Settled Immediately"
-        A1[Bank A] -->|Pay $100| A2((RTGS))
-        A2 -->|Pay $100| A3[Bank B]
-        A1 -->|Pay $50| A2
-        A2 -->|Pay $50| A4[Bank C]
-        
-        A5[Bank B] -->|Pay $80| A2
-        A2 -->|Pay $80| A4
-    end
+
+graph TD
+    A1[Bank A] -->|Pay $100| A2((RTGS))
+    A2 -->|Pay $100| A3[Bank B]
+    A1 -->|Pay $50| A2
+    A2 -->|Pay $50| A4[Bank C]
     
-    subgraph "Net Settlement: Accumulate Then Net"
-        B1[Bank A] -->|Owe $150| B2((Clearing))
-        B3[Bank B] -->|Owe $80| B2
-        B4[Bank C] -->|Receive $70| B2
-        
-        B2 -->|Net: -$150| B1
-        B2 -->|Net: +$20| B3
-        B2 -->|Net: +$130| B4
-    end
+    A5[Bank B] -->|Pay $80| A2
+    A2 -->|Pay $80| A4
+```
+
+**Net Settlement: Accumulate Then Net**
+
+```mermaid
+
+graph TD
+    B1[Bank A] -->|Owe $150| B2((Clearing))
+    B3[Bank B] -->|Owe $80| B2
+    B4[Bank C] -->|Receive $70| B2
     
-    style A2 fill:#1976d2,stroke:#0d47a1,color:#fff
-    style B2 fill:#f57c00,stroke:#e65100,color:#fff
+    B2 -->|Net: -$150| B1
+    B2 -->|Net: +$20| B3
+    B2 -->|Net: +$130| B4
 ```
 
 **Detailed Comparison:**
