@@ -553,7 +553,7 @@ graph LR
 RTGS principles apply to many IT domains:
 
 ```mermaid
-graph TB
+graph LR
     A["RTGS Concepts"]
     
     A --> B["Real-Time Processing"]
