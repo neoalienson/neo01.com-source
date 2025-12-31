@@ -7,7 +7,7 @@ tags:
   - RTGS
   - Payment Systems
   - Financial Infrastructure
-excerpt: "A comprehensive introduction to Real-Time Gross Settlement systems, covering fundamental concepts, characteristics, and their role in modern financial infrastructure."
+excerpt: "Back before RTGS was everywhere, we were basically running payment systems on hope and nightly batch courage. Picture this: you're the on-call devops / middleware engineer at a mid-tier bank."
 lang: en
 available_langs: []
 permalink: /2025/12/understanding-rtgs-from-batch-nightmares-to-continuous-settlement/
