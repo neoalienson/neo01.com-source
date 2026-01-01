@@ -2,8 +2,7 @@
 title: "RTGS Reference: Complete Acronyms and Abbreviations Guide"
 date: 2025-12-30
 categories:
-  - Finance Technology
-  - Reference
+  - Misc
 tags:
   - RTGS
   - Reference
