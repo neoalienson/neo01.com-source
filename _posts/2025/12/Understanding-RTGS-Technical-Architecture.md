@@ -1,6 +1,6 @@
 ---
-title: "Understanding RTGS: Technical Architecture"
-date: 2025-12-02
+title: "Understanding RTGS: Technical Architecture for IT Professionals"
+date: 2025-12-03
 categories:
   - Misc
 tags:
@@ -651,13 +651,6 @@ graph LR
 
 ---
 
-**Related Articles:**
-- [Understanding RTGS: Core Finance Concepts](/2025/12/understanding-rtgs-finance-concepts/)
-- [Understanding ISO 20022 Payment Messages](/2025/12/understanding-rtgs-message-standards/)
-- [High Availability System Design Patterns](/assets/architecture/)
-- [RTGS Acronyms and Abbreviations Reference](/2025/12/rtgs-acronyms-and-abbreviations/)
-
----
 
 **Footnotes for this article:**
 
