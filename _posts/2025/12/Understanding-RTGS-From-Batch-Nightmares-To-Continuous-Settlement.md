@@ -20,7 +20,7 @@ comments: true
 
 Real-Time Gross Settlement (RTGS) systems form the backbone of modern financial infrastructure, processing trillions of dollars in transactions daily. For IT professionals, understanding RTGS is essential when working with financial systems, payment platforms, or enterprise architecture.
 
-## 0 Before RTGS
+## 1 Before RTGS
 
 Back before RTGS was everywhere, we were basically running payment systems on hope and nightly batch courage. Picture this: you're the on-call devops / middleware engineer at a mid-tier bank. It's 1998–2005-ish, you're maintaining the high-value payment gateway that talks to whatever domestic large-value system your country had (CHAPS, Fedwire pre-full-RTGS vibes, Euro1, the old TARGET, take your pick).
 
@@ -39,9 +39,9 @@ You know what happens next if the central bank doesn't bail them out: unwind. Cl
 
 Cross-border FX settlement was straight-up gambling with extra steps. You'd credit yen out of your Tokyo nostro at their close, then sit through eight hours of radio silence hoping the dollars hit New York the next morning. If the counterparty folded overnight? Tough luck. That was textbook Herstatt risk, and we lived it every value date.
 
-## 1 What is RTGS?
+## 2 What is RTGS?
 
-### 1.1 Definition and Core Concept
+### 2.1 Definition and Core Concept
 
 !!!tip "💡 RTGS Definition"
     **Real-Time Gross Settlement (RTGS)** is a funds transfer system where transactions are settled **immediately** and **individually** on a **gross basis** in real-time.
@@ -119,7 +119,7 @@ We traded cheap liquidity for bulletproof finality, and most of us would make th
 Nowadays when I see teams complaining about RTGS liquidity squeezes or ISO 20022 migration pain, I just smirk and think: at least you're not the guy who used to pray the multilateral net balanced at 4 a.m. while drinking yesterday's coffee.
 You still fighting legacy batch crap somewhere, or are you deep in the modern RTGS trenches already? What's the worst production horror story you've got from the pre-RTGS days?
 
-### 1.2 RTGS vs. Net Settlement Systems
+### 2.2 RTGS vs. Net Settlement Systems
 
 Understanding the difference between RTGS and net settlement is fundamental. But first, what is a Net Settlement System and why does it exist?
 
@@ -249,7 +249,7 @@ sequenceDiagram
 | **Securities Trading** | RTGS or Hybrid | DTC[^3], Euroclear |
 | **Foreign Exchange (FX)**[^4] | RTGS | CLS[^5] Bank |
 
-### 1.3 Key Characteristics of RTGS Systems
+### 2.3 Key Characteristics of RTGS Systems
 
 !!!anote "🔐 Essential RTGS Characteristics"
     RTGS systems share these critical characteristics that IT professionals must understand:
