@@ -642,13 +642,6 @@ graph LR
 
 ---
 
-**Related Articles:**
-- [API Design Best Practices](/assets/architecture/)
-- [XML and JSON Processing](/assets/coding/)
-- [RTGS Acronyms and Abbreviations Reference](/2025/12/rtgs-acronyms-and-abbreviations/)
-
----
-
 **Footnotes for this article:**
 
 [^1]: **ISO** - International Organization for Standardization: Develops international standards including ISO 20022

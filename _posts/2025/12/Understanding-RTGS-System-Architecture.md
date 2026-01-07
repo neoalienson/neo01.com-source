@@ -701,13 +701,6 @@ graph LR
 
 ---
 
-**Related Articles:**
-- [Microservices Architecture Patterns](/assets/architecture/)
-- [Database Design Best Practices](/assets/database/)
-- [RTGS Acronyms and Abbreviations Reference](/2025/12/rtgs-acronyms-and-abbreviations/)
-
----
-
 **Footnotes for this article:**
 
 [^1]: **API** - Application Programming Interface: Interface for software components to communicate

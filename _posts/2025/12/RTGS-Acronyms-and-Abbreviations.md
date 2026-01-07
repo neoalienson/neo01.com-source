@@ -189,10 +189,4 @@ This acronym guide supports the complete RTGS series:
 | **[Part 4: Security & Risk](/2025/12/understanding-rtgs-security-risk/)** | HSM, PKI, DDoS, MFA, GDPR |
 | **[Part 5: High Availability](/2025/12/understanding-rtgs-high-availability/)** | RTO, RPO, MTBF, MTTR, SLA |
 
----
 
-**Series Index:** [Understanding RTGS Complete Series](/2025/12/understanding-rtgs-core-concepts/)
-
-**Related Articles:**
-- [Understanding RTGS: Core Concepts](/2025/12/understanding-rtgs-core-concepts/)
-- [ISO 20022 Message Standards Guide](/2025/12/understanding-rtgs-message-standards/)

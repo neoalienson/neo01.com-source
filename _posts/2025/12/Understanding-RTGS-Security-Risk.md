@@ -633,13 +633,6 @@ graph TB
 
 ---
 
-**Related Articles:**
-- [Security Architecture Patterns](/assets/security/)
-- [Compliance Frameworks](/assets/cisp/)
-- [RTGS Acronyms and Abbreviations Reference](/2025/12/rtgs-acronyms-and-abbreviations/)
-
----
-
 **Footnotes for this article:**
 
 [^1]: **HSM** - Hardware Security Module: Physical device for managing digital keys and cryptographic operations
