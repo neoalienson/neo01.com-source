@@ -174,19 +174,3 @@ This reference guide consolidates all acronyms and abbreviations used throughout
 | **CIA** | Confidentiality, Integrity, Availability | Three pillars of information security |
 | **DR** | Disaster Recovery | Strategies for recovering from disasters |
 | **DC** | Data Center | Facility housing computer systems and network infrastructure |
-
----
-
-## Quick Reference by Article
-
-This acronym guide supports the complete RTGS series:
-
-| Article | Primary Acronyms |
-|---------|-----------------|
-| **[Part 1: Core Concepts](/2025/12/understanding-rtgs-core-concepts/)** | RTGS, ACH, DNS, FX, CLS, DTC |
-| **[Part 2: System Architecture](/2025/12/understanding-rtgs-system-architecture/)** | API, HSM, ACID, RBAC |
-| **[Part 3: Message Standards](/2025/12/understanding-rtgs-message-standards/)** | ISO 20022, SWIFT, pacs, BIC, XML |
-| **[Part 4: Security & Risk](/2025/12/understanding-rtgs-security-risk/)** | HSM, PKI, DDoS, MFA, GDPR |
-| **[Part 5: High Availability](/2025/12/understanding-rtgs-high-availability/)** | RTO, RPO, MTBF, MTTR, SLA |
-
-

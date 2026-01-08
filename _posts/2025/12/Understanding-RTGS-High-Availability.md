@@ -818,14 +818,6 @@ mindmap
 
 ---
 
-**Related Articles:**
-- [System Design Patterns](/assets/architecture/)
-- [DevOps Best Practices](/assets/devops/)
-- [Monitoring and Logging](/assets/monitoring/)
-- [RTGS Acronyms and Abbreviations Reference](/2025/12/rtgs-acronyms-and-abbreviations/)
-
----
-
 **Footnotes for this article:**
 
 [^1]: **RTO** - Recovery Time Objective: Maximum acceptable downtime after a failure
