@@ -11,7 +11,6 @@ tags:
 excerpt: "Final installment covering high availability architecture, performance optimization, scalability patterns, and operational excellence for RTGS systems."
 lang: en
 available_langs: []
-permalink: /2025/12/understanding-rtgs-high-availability/
 thumbnail: /assets/rtgs/thumbnail.jpg
 thumbnail_80: /assets/rtgs/thumbnail_80.jpg
 series: rtgs

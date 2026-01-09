@@ -10,7 +10,6 @@ tags:
 excerpt: "Deep dive into RTGS system architecture, exploring core components, design patterns, and technical considerations for building payment settlement systems."
 lang: en
 available_langs: []
-permalink: /2025/12/understanding-rtgs-system-architecture/
 thumbnail: /assets/rtgs/thumbnail.jpg
 thumbnail_80: /assets/rtgs/thumbnail_80.jpg
 series: rtgs

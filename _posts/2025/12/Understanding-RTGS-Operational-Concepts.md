@@ -11,7 +11,6 @@ tags:
 excerpt: "Essential operational concepts behind RTGS systems—reconciliation, intraday liquidity, central bank money, collateral management, and PvP/DvP settlement mechanisms."
 lang: en
 available_langs: []
-permalink: /2025/12/understanding-rtgs-operational-concepts/
 thumbnail: /assets/rtgs/thumbnail.jpg
 thumbnail_80: /assets/rtgs/thumbnail_80.jpg
 series: rtgs

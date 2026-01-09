@@ -10,7 +10,6 @@ tags:
 excerpt: "Back before RTGS was everywhere, we were basically running payment systems on hope and nightly batch courage. Picture this: you're the on-call devops / middleware engineer at a mid-tier bank."
 lang: en
 available_langs: []
-permalink: /2025/12/understanding-rtgs-from-batch-nightmares-to-continuous-settlement/
 thumbnail: /assets/rtgs/thumbnail.jpg
 thumbnail_80: /assets/rtgs/thumbnail_80.jpg
 series: rtgs

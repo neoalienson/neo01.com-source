@@ -11,7 +11,6 @@ tags:
 excerpt: "Comprehensive reference guide for all acronyms and abbreviations used in the RTGS series, from payment systems to security and architecture."
 lang: en
 available_langs: []
-permalink: /2025/12/rtgs-acronyms-and-abbreviations/
 thumbnail: /assets/rtgs/thumbnail.jpg
 thumbnail_80: /assets/rtgs/thumbnail_80.jpg
 series: rtgs

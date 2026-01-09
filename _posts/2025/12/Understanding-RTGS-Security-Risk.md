@@ -11,7 +11,6 @@ tags:
 excerpt: "Comprehensive guide to security architecture and risk management in RTGS systems, covering threats, controls, and compliance requirements."
 lang: en
 available_langs: []
-permalink: /2025/12/understanding-rtgs-security-risk/
 thumbnail: /assets/rtgs/thumbnail.jpg
 thumbnail_80: /assets/rtgs/thumbnail_80.jpg
 series: rtgs

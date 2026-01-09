@@ -11,7 +11,6 @@ tags:
 excerpt: "Comprehensive guide to RTGS message standards, focusing on ISO 20022, SWIFT MT migration, and message structure for payment settlement systems."
 lang: en
 available_langs: []
-permalink: /2025/12/understanding-rtgs-message-standards/
 thumbnail: /assets/rtgs/thumbnail.jpg
 thumbnail_80: /assets/rtgs/thumbnail_80.jpg
 series: rtgs

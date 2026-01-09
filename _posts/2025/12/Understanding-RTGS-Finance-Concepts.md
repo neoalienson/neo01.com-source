@@ -10,7 +10,6 @@ tags:
 excerpt: "A deep dive into the financial concepts behind Real-Time Gross Settlement systems—liquidity, finality, settlement risk, gridlock, and how central banks manage systemic risk."
 lang: en
 available_langs: []
-permalink: /2025/12/understanding-rtgs-finance-concepts/
 thumbnail: /assets/rtgs/thumbnail.jpg
 thumbnail_80: /assets/rtgs/thumbnail_80.jpg
 series: rtgs

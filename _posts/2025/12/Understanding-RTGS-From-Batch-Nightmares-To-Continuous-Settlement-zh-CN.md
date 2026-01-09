@@ -9,7 +9,6 @@ tags:
   - Financial Infrastructure
 excerpt: "在 RTGS 普及之前，我们基本上是靠着希望和夜间批次作业的勇气来运行支付系统。想象一下：你是一名中型银行的 on-call DevOps / 中间件工程师。"
 lang: zh-CN
-permalink: /2025/12/understanding-rtgs-from-batch-nightmares-to-continuous-settlement/
 thumbnail: /assets/rtgs/thumbnail.jpg
 thumbnail_80: /assets/rtgs/thumbnail_80.jpg
 series: rtgs

@@ -11,7 +11,6 @@ tags:
 excerpt: "A technical deep dive into RTGS system architecture—components, message standards, performance requirements, and transferable concepts for distributed systems engineers."
 lang: en
 available_langs: []
-permalink: /2025/12/understanding-rtgs-technical-architecture/
 thumbnail: /assets/rtgs/thumbnail.jpg
 thumbnail_80: /assets/rtgs/thumbnail_80.jpg
 series: rtgs
