@@ -298,4 +298,4 @@ Same idea for securities: **Delivery-versus-Payment (DvP)** ensures cash vs. sec
 [^4]: **Haircut** - Discount applied to collateral value to protect against market movements
 [^5]: **STP** - Straight-Through Processing: Automated end-to-end transaction processing without manual intervention
 
-> **Note:** For a complete list of all acronyms used in the RTGS series, see the [RTGS Acronyms and Abbreviations Reference](/2025/12/rtgs-acronyms-and-abbreviations/).
+> **Note:** For a complete list of all acronyms used in the RTGS series, see the [RTGS Acronyms and Abbreviations Reference](/2025/12/RTGS-Acronyms-and-Abbreviations/).

@@ -306,4 +306,4 @@ sequenceDiagram
 [^4]: **FX** - 外汇：不同国家货币之间的交易
 [^5]: **CLS** - 连续连结结算：外汇交易的多币种现金结算系统，消除结算风险
 
-> **注意：** 有关 RTGS 系列中使用的所有缩写的完整列表，请参阅 [RTGS 缩写和简称参考](/2025/12/rtgs-acronyms-and-abbreviations/)。
+> **注意：** 有关 RTGS 系列中使用的所有缩写的完整列表，请参阅 [RTGS 缩写和简称参考](/2025/12/RTGS-Acronyms-and-Abbreviations/)。

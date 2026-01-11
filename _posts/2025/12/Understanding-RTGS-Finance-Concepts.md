@@ -617,4 +617,4 @@ Transparency reduces **precautionary liquidity demand**—banks hold less "just 
 [^4]: **Bech-Soramäki** - Researchers who formalized cycle detection algorithms for payment systems
 [^5]: **Haircut** - Discount applied to collateral value to protect against market movements
 
-> **Note:** For a complete list of all acronyms used in the RTGS series, see the [RTGS Acronyms and Abbreviations Reference](/2025/12/rtgs-acronyms-and-abbreviations/).
+> **Note:** For a complete list of all acronyms used in the RTGS series, see the [RTGS Acronyms and Abbreviations Reference](/2025/12/RTGS-Acronyms-and-Abbreviations/).

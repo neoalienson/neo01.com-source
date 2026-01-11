@@ -834,4 +834,4 @@ mindmap
 [^13]: **CDC** - Change Data Capture: Process of identifying and capturing data changes
 [^14]: **SIEM** - Security Information and Event Management: Real-time security monitoring
 
-> **Note:** For a complete list of all acronyms used in the RTGS series, see the [RTGS Acronyms and Abbreviations Reference](/2025/12/rtgs-acronyms-and-abbreviations/).
+> **Note:** For a complete list of all acronyms used in the RTGS series, see the [RTGS Acronyms and Abbreviations Reference](/2025/12/RTGS-Acronyms-and-Abbreviations/).

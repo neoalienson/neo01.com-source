@@ -710,4 +710,4 @@ graph LR
 [^6]: **ACID** - Atomicity, Consistency, Isolation, Durability: Database transaction properties
 [^7]: **SWIFT** - Society for Worldwide Interbank Financial Telecommunication: Global messaging network for financial institutions
 
-> **Note:** For a complete list of all acronyms used in the RTGS series, see the [RTGS Acronyms and Abbreviations Reference](/2025/12/rtgs-acronyms-and-abbreviations/).
+> **Note:** For a complete list of all acronyms used in the RTGS series, see the [RTGS Acronyms and Abbreviations Reference](/2025/12/RTGS-Acronyms-and-Abbreviations/).

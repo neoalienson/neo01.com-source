@@ -661,4 +661,4 @@ graph LR
 [^6]: **2PC** - Two-Phase Commit: Protocol for achieving consensus in distributed transactions
 [^7]: **CQRS** - Command Query Responsibility Segregation: Pattern separating read and write operations
 
-> **Note:** For a complete list of all acronyms used in the RTGS series, see the [RTGS Acronyms and Abbreviations Reference](/2025/12/rtgs-acronyms-and-abbreviations/).
+> **Note:** For a complete list of all acronyms used in the RTGS series, see the [RTGS Acronyms and Abbreviations Reference](/2025/12/RTGS-Acronyms-and-Abbreviations/).

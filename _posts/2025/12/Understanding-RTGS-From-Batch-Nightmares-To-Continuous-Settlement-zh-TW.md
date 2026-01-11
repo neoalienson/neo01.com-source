@@ -306,4 +306,4 @@ sequenceDiagram
 [^4]: **FX** - 外匯：不同國家貨幣之間的交易
 [^5]: **CLS** - 連續連結結算：外匯交易的多幣種現金結算系統，消除結算風險
 
-> **注意：** 有關 RTGS 系列中使用的所有縮寫的完整列表，請參閱 [RTGS 縮寫和簡稱參考](/2025/12/rtgs-acronyms-and-abbreviations/)。
+> **注意：** 有關 RTGS 系列中使用的所有縮寫的完整列表，請參閱 [RTGS 縮寫和簡稱參考](/2025/12/RTGS-Acronyms-and-Abbreviations)。

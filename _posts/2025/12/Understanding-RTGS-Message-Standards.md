@@ -654,4 +654,4 @@ graph LR
 [^9]: **mTLS** - Mutual TLS: TLS where both parties authenticate each other
 [^10]: **HSM** - Hardware Security Module: Physical device for managing digital keys and cryptographic operations
 
-> **Note:** For a complete list of all acronyms used in the RTGS series, see the [RTGS Acronyms and Abbreviations Reference](/2025/12/rtgs-acronyms-and-abbreviations/).
+> **Note:** For a complete list of all acronyms used in the RTGS series, see the [RTGS Acronyms and Abbreviations Reference](/2025/12/RTGS-Acronyms-and-Abbreviations/).

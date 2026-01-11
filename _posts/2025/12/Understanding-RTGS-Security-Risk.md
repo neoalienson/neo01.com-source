@@ -652,4 +652,4 @@ graph TB
 [^16]: **RTO** - Recovery Time Objective: Maximum acceptable downtime after a failure
 [^17]: **RPO** - Recovery Point Objective: Maximum acceptable data loss measured in time
 
-> **Note:** For a complete list of all acronyms used in the RTGS series, see the [RTGS Acronyms and Abbreviations Reference](/2025/12/rtgs-acronyms-and-abbreviations/).
+> **Note:** For a complete list of all acronyms used in the RTGS series, see the [RTGS Acronyms and Abbreviations Reference](/2025/12/RTGS-Acronyms-and-Abbreviations/).
