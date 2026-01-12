@@ -371,7 +371,7 @@ Balance clarity with brevity:
 
 Use structure to reduce repetition:
 
-!!!anote 🏛️ Hierarchical Approaches
+!!!anote "🏛️ Hierarchical Approaches"
     **Cloud Resource Groups/Projects**
     
     Instead of encoding everything in name, use hierarchy:
@@ -414,7 +414,7 @@ Use structure to reduce repetition:
 
 Short names that remain clear:
 
-!!!example 📝 Short Name Examples
+!!!example "📝 Short Name Examples"
     **S3 Buckets (63 char limit)**
     
     Too long (68 chars):
@@ -453,7 +453,7 @@ Short names that remain clear:
 
 ### Length Optimization Checklist
 
-!!!success ✅ Optimization Strategy
+!!!success "✅ Optimization Strategy"
     **Step 1: Identify Constraints**
     - Document platform limits
     - Set practical targets (80% of max)

@@ -54,7 +54,6 @@ Create a complete inventory of resources to migrate:
     - Dependencies
     - Owner/team
     - Criticality
-:::
 
 ### Identify Naming Patterns
 
@@ -90,7 +89,6 @@ Analyze existing names to understand current state:
     - 21% partially compliant (minor updates)
     - 7% already compliant
     - 15% unclear ownership
-:::
 
 ### Risk Assessment
 
@@ -127,7 +125,6 @@ Evaluate migration risk for each resource:
     - Personal development instances
     
     **Approach:** Migrate quickly, use as learning opportunity
-:::
 
 ### Stakeholder Analysis
 
@@ -174,7 +171,6 @@ A phased approach minimizes risk and builds momentum.
     - 100% of new resources follow convention
     - Zero naming-related incidents
     - Team feedback collected
-:::
 
 !!!success "✅ Phase 2: Development and Test (Week 3-6)"
     **Objective:** Migrate non-production environments
@@ -196,7 +192,6 @@ A phased approach minimizes risk and builds momentum.
     - Automation scripts updated
     - Zero production impact
     - Lessons learned documented
-:::
 
 !!!success "✅ Phase 3: Production Non-Critical (Week 7-12)"
     **Objective:** Migrate production resources with lower risk
@@ -218,7 +213,6 @@ A phased approach minimizes risk and builds momentum.
     - No service disruptions
     - Positive team feedback
     - Automation reliability maintained
-:::
 
 !!!success "✅ Phase 4: Production Critical (Week 13-16)"
     **Objective:** Complete migration of high-risk resources
@@ -240,7 +234,6 @@ A phased approach minimizes risk and builds momentum.
     - All DNS aliases removed
     - Documentation complete
     - Team satisfaction high
-:::
 
 ### Priority Ranking Framework
 
@@ -273,7 +266,6 @@ Determine migration order using this matrix:
     **Migration Order:** 1 → 2 → 4 → 3
     
     (Skip Priority 3 if resources are being decommissioned)
-:::
 
 ### Timeline Planning
 
@@ -361,7 +353,6 @@ Keep old names working while transitioning to new ones:
     # Connection tracking
     netstat -an | grep "old-db-server"
     ```
-:::
 
 ### Database Synonyms and Views
 
@@ -419,7 +410,6 @@ Maintain database connectivity during name changes:
     4. Update application connection strings
     5. Monitor synonym usage
     6. Remove synonym after transition
-:::
 
 ### Application Configuration Updates
 
@@ -476,7 +466,6 @@ Update application references systematically:
     3. Verify functionality
     4. Deploy to remaining instances
     5. Monitor for errors
-:::
 
 ### Automation Script Updates
 
@@ -659,7 +648,6 @@ Communicate early, often, and clearly:
     - Lessons learned sharing
     - Recognition for contributors
     - Feedback collection
-:::
 
 ### Training and Documentation
 
@@ -699,7 +687,6 @@ Equip teams with knowledge and tools:
     - Validation script
     - Before/after comparisons
     - Industry-specific examples
-:::
 
 **Documentation Updates:**
 
@@ -789,7 +776,6 @@ Address resistance and build enthusiasm:
     
     **"What if something breaks?"**
     → "We have rollback procedures tested in dev. DNS aliases provide safety net."
-:::
 
 ## Rollback and Contingency Planning
 
@@ -823,7 +809,6 @@ Define clear rollback criteria and procedures:
     - Fix can be applied in < 15 minutes
     - No user impact
     - Learning opportunity for team
-:::
 
 **Rollback Execution:**
 
@@ -906,7 +891,6 @@ Track migration health in real-time:
     
     echo "Validation passed"
     ```
-:::
 
 ### Issue Tracking and Resolution
 
@@ -988,7 +972,6 @@ Systematically track and resolve migration issues:
     - Recreate alerts with new names
     - Verify metric collection working
     - Test alert delivery
-:::
 
 ### Contingency Plans
 
@@ -1098,7 +1081,6 @@ Remove temporary migration artifacts:
     - Remove from version control
     - Update deployment templates
     - Clean up environment variables
-:::
 
 ### Lessons Learned
 
@@ -1142,7 +1124,6 @@ Conduct retrospective to improve future migrations:
     - Incidents: 3 (all resolved < 30 minutes)
     - Downtime: 0 minutes
     - Team satisfaction: 8.5/10
-:::
 
 **Document Lessons Learned:**
 
@@ -1269,7 +1250,6 @@ Ensure conventions stick long-term:
     - Update examples with new resource types
     - Incorporate feedback from teams
     - Version control all changes
-:::
 
 ### Measuring Success
 
