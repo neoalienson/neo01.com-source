@@ -5,9 +5,7 @@ categories:
   - Misc
 tags:
   - RTGS
-  - High Availability
-  - Performance
-  - System Design
+  - Financial Infrastructure
 excerpt: "Final installment covering high availability architecture, performance optimization, scalability patterns, and operational excellence for RTGS systems."
 lang: en
 available_langs: []

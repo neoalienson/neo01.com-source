@@ -5,9 +5,7 @@ categories:
   - Misc
 tags:
   - RTGS
-  - Security
-  - Risk Management
-  - Financial Security
+  - Financial Infrastructure
 excerpt: "Comprehensive guide to security architecture and risk management in RTGS systems, covering threats, controls, and compliance requirements."
 lang: en
 available_langs: []

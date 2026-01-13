@@ -5,9 +5,7 @@ categories:
   - Misc
 tags:
   - RTGS
-  - Payment Systems
   - Financial Infrastructure
-  - Operations
 excerpt: "Essential operational concepts behind RTGS systems—reconciliation, intraday liquidity, central bank money, collateral management, and PvP/DvP settlement mechanisms."
 lang: en
 available_langs: []

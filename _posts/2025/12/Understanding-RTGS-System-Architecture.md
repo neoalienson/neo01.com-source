@@ -5,8 +5,7 @@ categories:
   - Misc
 tags:
   - RTGS
-  - System Architecture
-  - Payment Systems
+  - Financial Infrastructure
 excerpt: "Deep dive into RTGS system architecture, exploring core components, design patterns, and technical considerations for building payment settlement systems."
 lang: en
 available_langs: []

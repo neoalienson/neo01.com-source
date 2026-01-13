@@ -5,9 +5,7 @@ categories:
   - Misc
 tags:
   - RTGS
-  - Payment Systems
   - Financial Infrastructure
-  - System Architecture
 excerpt: "A technical deep dive into RTGS system architecture—components, message standards, performance requirements, and transferable concepts for distributed systems engineers."
 lang: en
 available_langs: []

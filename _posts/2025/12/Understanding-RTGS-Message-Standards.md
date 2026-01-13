@@ -5,9 +5,7 @@ categories:
   - Misc
 tags:
   - RTGS
-  - ISO 20022
-  - Payment Messages
-  - SWIFT
+  - Financial Infrastructure
 excerpt: "Comprehensive guide to RTGS message standards, focusing on ISO 20022, SWIFT MT migration, and message structure for payment settlement systems."
 lang: en
 available_langs: []
