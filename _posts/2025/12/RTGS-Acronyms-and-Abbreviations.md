@@ -5,9 +5,7 @@ categories:
   - Misc
 tags:
   - RTGS
-  - Reference
-  - Acronyms
-  - Glossary
+  - Financial Infrastructure
 excerpt: "Comprehensive reference guide for all acronyms and abbreviations used in the RTGS series, from payment systems to security and architecture."
 lang: en
 available_langs: []
