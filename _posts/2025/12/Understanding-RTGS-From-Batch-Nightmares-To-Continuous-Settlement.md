@@ -123,7 +123,7 @@ You still fighting legacy batch crap somewhere, or are you deep in the modern RT
 Understanding the difference between RTGS and net settlement is fundamental. But first, what is a Net Settlement System and why does it exist?
 
 !!!anote "🏦 What is Net Settlement?"
-    **Net Settlement** (also called Deferred Net Settlement or DNS[^2]) is a payment system where transactions are **accumulated over a period** and settled as **net positions** at predetermined intervals.
+    **Net Settlement** (also called Deferred Net Settlement or DNS) is a payment system where transactions are **accumulated over a period** and settled as **net positions** at predetermined intervals.
 
     **How it works:**
     1. Throughout the day, banks send payment instructions to the system
