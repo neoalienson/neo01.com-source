@@ -104,8 +104,6 @@ sequenceDiagram
     D->>U: 10. 允许访问
     
     Note over D,T: 集中式访问控制
-    
-    style T fill:#e3f2fd,stroke:#1976d2
 ```
 
 ### 1.3 TACACS+ vs RADIUS
