@@ -20,7 +20,7 @@ You've written your first ADRs. The template works. Your team is on board. Now w
 
 This article covers what happens when you scale ADRs beyond a single team—stakeholder management, organizational workflows, and proving the value to leadership.
 
-**This is Part 2 of a 2-part series.** [Part 1](/2026/01/Architecture-Decision-Log-Guide-Part1) covers the essentials—what ADLs are, the five questions every ADR must answer, and real examples. Start there if you're new to ADRs.
+**This is Part 2 of a 2-part series.** [Part 1](/2026/01/Architecture-Decision-Log-Guide) covers the essentials—what ADLs are, the five questions every ADR must answer, and real examples. Start there if you're new to ADRs.
 
 ---
 
