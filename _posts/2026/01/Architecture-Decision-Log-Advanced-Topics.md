@@ -9,7 +9,7 @@ tags:
   - Best Practices
 excerpt: "Scale Architecture Decision Logs across your organization. Stakeholder management, complete workflow, measuring effectiveness, and real before/after scenarios."
 lang: en
-available_langs: []
+available_langs: [zh-CN, zh-TW]
 thumbnail: /assets/architecture/thumbnail1.png
 thumbnail_80: /assets/architecture/thumbnail1_80.png
 canonical_lang: en

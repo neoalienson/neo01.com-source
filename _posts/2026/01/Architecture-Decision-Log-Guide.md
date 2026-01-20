@@ -9,7 +9,7 @@ tags:
   - Best Practices
 excerpt: "Learn how to write your first Architecture Decision Record. Templates, real e-commerce examples, and the five questions every ADR must answer."
 lang: en
-available_langs: []
+available_langs: [zh-CN, zh-TW]
 thumbnail: /assets/architecture/thumbnail1.png
 thumbnail_80: /assets/architecture/thumbnail1_80.png
 canonical_lang: en
