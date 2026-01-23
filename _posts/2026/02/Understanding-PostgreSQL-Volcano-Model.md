@@ -39,6 +39,55 @@ Each operator:
 
 This **pull-based** model means data flows up the tree, one row per call, until the top node returns results to the client.
 
+### Is It an Architecture? A Pattern? Something Else?
+
+The Volcano Model is often described using different terms. Here's the precise classification:
+
+| Term | Is Volcano This? | Why |
+|------|------------------|-----|
+| **Execution Model** | ✅ **Most accurate** | Defines *how* computation proceeds (row-by-row, pull-based) |
+| **Architectural Pattern** | ✅ **Also correct** | Defines high-level structure (operator trees with standard interface) |
+| **Design Pattern** | ⚠️ **Partially** | Built *on top of* the Iterator Pattern, but more than just one pattern |
+| **Software Architecture** | ❌ **Too broad** | It's *part of* a database's architecture, not the whole architecture |
+| **Algorithm** | ❌ **No** | It's a structural framework, not a specific computational procedure |
+
+**The Relationship:**
+
+```
+Iterator Pattern (GoF Design Pattern)
+        ↓
+    Used by
+        ↓
+Volcano Model (Architectural Pattern / Execution Model)
+        ↓
+    Implemented in
+        ↓
+PostgreSQL Executor (Software Architecture)
+```
+
+**Why the Confusion?**
+
+| Source | Uses Term | Reason |
+|--------|-----------|--------|
+| **Academic papers** | "Execution Model" | Focuses on computational semantics |
+| **Database vendors** | "Architecture" | Marketing; sounds more substantial |
+| **Software engineers** | "Pattern" | Familiar from design pattern vocabulary |
+| **PostgreSQL docs** | "Executor" | Implementation-focused naming |
+
+**The Precise Answer:**
+
+The Volcano Model is best described as an **architectural pattern for query execution** that:
+- Uses the **Iterator Pattern** as its foundation
+- Defines an **execution model** (pull-based, row-at-a-time)
+- Is **part of** a database's overall software architecture
+
+Think of it like this:
+- **Iterator Pattern** = "How do I traverse a collection?"
+- **Volcano Model** = "How do I compose operators to execute a query?"
+- **PostgreSQL Executor** = "The actual code that implements Volcano"
+
+---
+
 **Simple Example:**
 
 ```sql
@@ -193,6 +242,15 @@ flowchart BT
 
 Notice: **Sort must consume all input before returning anything**. This is a **blocking operator**—it breaks the pure streaming model.
 
+!!! question "🤔 Why Does This Matter?"
+    Blocking operators like `Sort`, `Hash Aggregate`, and `Hash Join (build phase)` force PostgreSQL to **buffer data** before producing results. This means:
+    
+    - **Memory pressure** — Must fit in `work_mem` or spill to disk
+    - **No early termination** — Can't stop early even with `LIMIT`
+    - **Latency impact** — First row takes longer to return
+    
+    When you see these in `EXPLAIN ANALYZE`, ask: *"Can I reduce the input size before this operator?"*
+
 ---
 
 ## 4 Row-by-Row Processing: The Good, The Bad, and The Slow
@@ -258,6 +316,9 @@ ExecFilter(FilterState *state)
 ```
 
 ~30 lines of code. Easy to reason about. Easy to debug.
+
+!!! tip "💡 Key Insight: Simplicity Enables Extensibility"
+    Because each operator is so simple (~30-100 lines), PostgreSQL can add new operator types without rewriting the entire executor. This is why extensions can add custom scan methods, join types, and aggregation strategies. The Volcano Model's **uniform interface** is what makes PostgreSQL extensible.
 
 ---
 
@@ -451,6 +512,15 @@ GROUP BY month;
 - **Function calls:** 200+ million (2 per row)
 - **Volcano overhead:** 20-40% of total time
 
+!!! warning "⚠️ The Hidden Cost: Not Just Function Calls"
+    The function call overhead is only part of the problem. Row-by-row processing also means:
+    
+    1. **Branch misprediction** — CPU can't predict which path each row takes
+    2. **SIMD underutilization** — Modern CPUs can process 4-8 values in parallel, but Volcano uses scalar operations
+    3. **Cache thrashing** — Each row may touch different memory locations
+    
+    For analytical queries, these CPU-level inefficiencies often matter more than the function call count itself.
+
 ---
 
 ## 7 Vectorized Execution: The Alternative
@@ -490,6 +560,16 @@ while (batch = NextBatch()) {
 | SIMD utilization | None | High (process 4-8 values per instruction) |
 | Cache efficiency | Poor (row layout) | High (column layout) |
 | Code complexity | Low | High (batch management, vectorization) |
+
+!!! question "🤔 So Why Doesn't PostgreSQL Switch?"
+    If vectorization is 5-10x faster for analytics, why not adopt it?
+    
+    - **Backward compatibility** — Extensions rely on the current `ExecProcNode()` API
+    - **Code complexity** — Rewriting 50+ node types is a massive undertaking
+    - **OLTP trade-off** — Vectorization helps analytics but can hurt OLTP latency
+    - **Philosophy** — PostgreSQL prefers stable, incremental improvements
+    
+    The answer: **Extensions, not core changes**. See the next section.
 
 ---
 
@@ -611,6 +691,19 @@ WHERE u.created_at > '2025-01-01';
 /* Planner pushes filter down to users scan */
 ```
 
+!!! tip "💡 Trust But Verify"
+    PostgreSQL's planner is smart about pushing filters down, but **not always optimal**. Use `EXPLAIN (ANALYZE, BUFFERS)` to verify:
+    
+    - Filter appears **before** expensive operations (Join, Sort, Aggregate)
+    - `Rows Removed by Filter` is reasonable (not scanning millions just to filter out 99%)
+    
+    If the planner gets it wrong, try:
+    - **CTEs** (in PG14+, they act as optimization fences)
+    - **Subqueries** to force evaluation order
+    - **Partial indexes** to make filtered scans cheaper
+
+---
+
 **2. Use Indexes to Reduce Rows**
 
 ```sql
@@ -665,6 +758,15 @@ SELECT COUNT(*) FROM large_table;
 
 **Most likely path:** Vectorization via extensions, not core changes.
 
+!!! info "📌 What This Means for You"
+    Don't wait for vectorization in PostgreSQL core. Instead:
+    
+    - **For OLTP:** Volcano works great—focus on indexing and query design
+    - **For Analytics:** Use extensions (Citus Columnar, Hydra) or purpose-built tools (DuckDB, ClickHouse)
+    - **For Mixed Workloads:** Leverage JIT compilation and parallel query
+    
+    The right tool depends on your query patterns, not just raw performance benchmarks.
+
 ---
 
 ## Summary: The Volcano Model in One Diagram
@@ -706,6 +808,16 @@ flowchart LR
 | **PostgreSQL status** | Core execution model since inception |
 
 The Volcano Model isn't perfect—but after 40+ years, it's still the foundation of most SQL databases. Understanding it helps you write queries that work *with* PostgreSQL's architecture, not against it.
+
+!!! success "✅ Key Takeaway"
+    The Volcano Model is a **trade-off**, not a mistake:
+    
+    - **Gains:** Simplicity, extensibility, streaming, early termination
+    - **Losses:** Function call overhead, no SIMD, cache inefficiency
+    
+    For OLTP and mixed workloads, the gains outweigh the losses. For pure analytics, consider columnar/vectorized alternatives.
+    
+    **Your job as a PostgreSQL user:** Know which queries play to Volcano's strengths—and which ones fight against it.
 
 ---
 
