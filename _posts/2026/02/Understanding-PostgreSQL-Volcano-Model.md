@@ -12,7 +12,6 @@ lang: en
 available_langs: []
 thumbnail: /assets/architecture/volcano-thumbnail.png
 thumbnail_80: /assets/architecture/volcano-thumbnail_80.png
-series: postgresql-internals
 canonical_lang: en
 comments: true
 ---
