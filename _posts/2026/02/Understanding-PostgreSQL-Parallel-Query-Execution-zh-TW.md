@@ -1,5 +1,5 @@
 ---
-title: "Understanding PostgreSQL Parallel Query Execution: Multi-Core Performance"
+title: "深入瞭解 PostgreSQL 平行查詢執行：多核心效能"
 date: 2026-02-16
 categories:
   - Architecture
@@ -7,8 +7,8 @@ tags:
   - PostgreSQL
   - Performance
   - Parallel Query
-excerpt: "Deep dive into PostgreSQL's parallel query execution—how Gather nodes, parallel workers, and multi-core processing accelerate large table scans, hash joins, and aggregations. Learn when parallelism helps, when it hurts, and how to tune it."
-lang: en
+excerpt: "深入探討 PostgreSQL 平行查詢執行——Gather 節點、平行 worker 程序與多核心處理如何加速大型表掃描、雜湊連接與聚合運算。瞭解何時使用平行化能提升效能，何時會造成反效果，以及如何調整設定。"
+lang: zh-TW
 available_langs: []
 thumbnail: /assets/architecture/sql_plan_thumbnail.jpg
 thumbnail_80: /assets/architecture/sql_plan_thumbnail_80.jpg
@@ -16,27 +16,27 @@ canonical_lang: en
 comments: true
 ---
 
-When PostgreSQL introduced **parallel query execution** in version 9.6, it unlocked a fundamental capability: leveraging multi-core CPUs to accelerate analytical workloads.
+當 PostgreSQL 在 9.6 版本引入**平行查詢執行**（parallel query execution）時，它解鎖了一項基本能力：利用多核心 CPU 來加速分析性工作負載。
 
-Before parallel query, PostgreSQL was strictly **single-threaded**—one query, one CPU core. On a 32-core server, a full table scan used 1 core at 100%, leaving 31 cores idle. For OLTP workloads (short, selective queries), this was fine. For analytics (scanning millions of rows), it was a bottleneck.
+在平行查詢出現之前，PostgreSQL 是嚴格的**單執行緒**架構——一個查詢，一個 CPU 核心。在 32 核心的伺服器上，完整表掃描只使用 1 個核心達到 100% 利用率，其餘 31 個核心閒置。對於 OLTP 工作負載（短暫、選擇性查詢），這沒問題。但對於分析型查詢（掃描數百萬列），這成為瓶頸。
 
-Parallel query changes this by allowing operations like **Seq Scan**, **Hash Join**, and **Aggregate** to split work across multiple **background worker processes**. A **Gather** or **Gather Merge** node collects results from workers and returns them to the client.
+平行查詢透過允許**順序掃描**（Seq Scan）、**雜湊連接**（Hash Join）和**聚合**（Aggregate）等運算拆分到多個**背景 worker 程序**來改變這種狀況。**Gather** 或 **Gather Merge** 節點收集 worker 的結果並回傳給用戶端。
 
-The result? **2x–4x speedup** (or more) on suitable workloads.
+結果是什麼？在適合的工作負載上可達到 **2 到 4 倍或更高的加速**。
 
-But parallel query isn't free. It adds overhead, consumes resources, and can *slow down* queries if misused. This guide explains how it works, when to use it, and how to tune it.
+但平行查詢不是免費的。它會增加額外開銷、消耗資源，如果使用不當甚至會*拖慢*查詢。本指南將解釋其運作原理、使用時機以及如何調整。
 
 ---
 
-## 1 The Problem: Single-Threaded Execution
+## 1 問題：單執行緒執行
 
-### The Pre-9.6 Reality
+### 9.6 版之前的現實
 
 ```sql
-SELECT COUNT(*) FROM transactions;  -- 100 million rows
+SELECT COUNT(*) FROM transactions;  -- 1 億列
 ```
 
-**Execution (single-threaded):**
+**執行（單執行緒）：**
 
 ```javascript
 ┌─────────────────────────────────────┐
@@ -49,18 +49,18 @@ SELECT COUNT(*) FROM transactions;  -- 100 million rows
 └─────────────────────────────────────┘
 ```
 
-**The bottleneck:** Disk I/O and CPU-bound operations (filtering, aggregation) can't be parallelized. One core does all the work.
+**瓶頸：** 磁碟 I/O 和 CPU 密集型運算（過濾、聚合）無法平行化。一個核心完成所有工作。
 
 ---
 
-### The Parallel Solution
+### 平行解決方案
 
 ```sql
 SET max_parallel_workers_per_gather = 4;
 SELECT COUNT(*) FROM transactions;
 ```
 
-**Execution (parallel):**
+**執行（平行）：**
 
 ```
 ┌─────────────────────────────────────────────────────────┐
@@ -84,13 +84,13 @@ Total Time: ~3,500ms (3.4x speedup)
 CPU: 4 cores @ ~90% each
 ```
 
-**Key insight:** The table is divided into **ranges**, each worker scans a portion, and results are combined at the top.
+**關鍵洞察：** 表被劃分為多個**範圍**，每個 worker 掃描一部分，結果在頂層合併。
 
 ---
 
-## 2 Architecture: How Parallel Query Works
+## 2 架構：平行查詢如何運作
 
-### The Parallel Execution Stack
+### 平行執行堆疊
 
 ```mermaid
 flowchart BT
@@ -100,12 +100,12 @@ flowchart BT
     C --> E[Worker 2]
     C --> F[Worker 3]
     C --> G[Worker 4]
-    
+
     D --> H[Seq Scan: Range 1]
     E --> I[Seq Scan: Range 2]
     F --> J[Seq Scan: Range 3]
     G --> K[Seq Scan: Range 4]
-    
+
     style B fill:#fce4ec,stroke:#c2185b
     style C fill:#e3f2fd,stroke:#1976d2
     style D fill:#fff3e0,stroke:#f57c00
@@ -114,21 +114,21 @@ flowchart BT
     style G fill:#fff3e0,stroke:#f57c00
 ```
 
-**Components:**
+**元件：**
 
-| Component | Role |
+| 元件 | 角色 |
 |-----------|------|
-| **Parallel Leader** | Main backend that coordinates workers |
-| **Parallel Workers** | Background processes that execute portions of the plan |
-| **Gather Node** | Collects results from workers and returns to client |
-| **Gather Merge Node** | Like Gather, but preserves sort order |
-| **Shared Memory** | Communication channel between leader and workers |
+| **Parallel Leader** | 協調 worker 的主要後端程序 |
+| **Parallel Workers** | 執行部分計畫的背景程序 |
+| **Gather Node** | 收集 worker 的結果並回傳給用戶端 |
+| **Gather Merge Node** | 類似 Gather，但保持排序順序 |
+| **Shared Memory** | leader 與 worker 之間的通訊通道 |
 
 ---
 
-### The Gather Node: Collecting Results
+### Gather 節點：收集結果
 
-The **Gather** node is the bridge between parallel workers and the client:
+**Gather** 節點是平行 worker 與用戶端之間的橋樑：
 
 ```c
 /* Simplified from src/backend/executor/nodeGather.c */
@@ -147,15 +147,15 @@ ExecGather(GatherState *node)
         InitializeParallelWorkers(node);
         node->workers_initialized = true;
     }
-    
+
     /* Get next row from any worker */
     while (node->pending_result == NULL) {
         if (all_workers_done(node))
             return NULL;  /* No more rows */
-        
+
         node->pending_result = FetchRowFromWorker(node);
     }
-    
+
     /* Return row to parent */
     TupleTableSlot *result = node->pending_result;
     node->pending_result = NULL;
@@ -163,35 +163,35 @@ ExecGather(GatherState *node)
 }
 ```
 
-**The Contract:**
+**契約：**
 
-| Method | Purpose |
+| 方法 | 目的 |
 |--------|---------|
-| `InitializeParallelWorkers()` | Launch worker processes |
-| `FetchRowFromWorker()` | Get next row from any worker (round-robin) |
-| `all_workers_done()` | Check if all workers finished |
+| `InitializeParallelWorkers()` | 啟動 worker 程序 |
+| `FetchRowFromWorker()` | 從任意 worker 取得下一列（輪詢） |
+| `all_workers_done()` | 檢查所有 worker 是否完成 |
 
-**Gather vs. Gather Merge:**
+**Gather 與 Gather Merge 的比較：**
 
-| Node Type | Use Case | Preserves Order? |
+| 節點類型 | 使用情境 | 保持順序？ |
 |-----------|----------|------------------|
-| **Gather** | General parallel execution | ❌ No |
-| **Gather Merge** | Parallel execution with ORDER BY | ✅ Yes (merge-sort) |
+| **Gather** | 一般平行執行 | ❌ 否 |
+| **Gather Merge** | 帶有 ORDER BY 的平行執行 | ✅ 是（合併排序） |
 
 ```sql
--- Uses Gather
+-- 使用 Gather
 SELECT COUNT(*) FROM large_table;
 
--- Uses Gather Merge
+-- 使用 Gather Merge
 SELECT * FROM large_table ORDER BY created_at;
--- Workers return sorted chunks; Gather Merge combines them
+-- Worker 回傳排序後的區塊；Gather Merge 合併它們
 ```
 
 ---
 
-### Parallel Workers: Background Processes
+### Parallel Workers：背景程序
 
-Workers are **separate PostgreSQL backend processes**:
+Worker 是**獨立的 PostgreSQL 後端程序**：
 
 ```
 postgres: parallel worker for database neo01              # Worker 1
@@ -201,73 +201,73 @@ postgres: parallel worker for database neo01              # Worker 4
 postgres: neo01                                           # Parallel Leader
 ```
 
-**Key properties:**
+**關鍵特性：**
 
-| Property | Description |
+| 特性 | 說明 |
 |----------|-------------|
-| **Separate processes** | Not threads—full OS processes with own memory |
-| **Shared memory** | Communicate via DSM (Dynamic Shared Memory) |
-| **Inherit transaction** | Workers see the same transaction snapshot |
-| **No direct client access** | Only the leader communicates with the client |
-| **Temporary** | Workers exit when query completes |
+| **獨立程序** | 不是執行緒——是具有自己記憶體的完整作業系統程序 |
+| **共享記憶體** | 透過 DSM（Dynamic Shared Memory）通訊 |
+| **繼承事務** | Worker 看到相同的事務快照 |
+| **無直接用戶端存取** | 只有 leader 與用戶端通訊 |
+| **暫時性** | 查詢完成後 worker 退出 |
 
-!!! warning "⚠️ Process Overhead"
-    Because workers are separate processes (not threads), there's overhead:
-    
-    - **Process creation:** ~1-5ms per worker
-    - **DSM setup:** Shared memory allocation
-    - **Context switching:** OS must schedule multiple processes
-    
-    For queries that run in <100ms, parallel overhead often exceeds the benefit.
+!!! warning "⚠️ 程序開銷"
+    由於 worker 是獨立程序（而非執行緒），因此存在開銷：
+
+    - **程序建立：** 每個 worker 約 1-5ms
+    - **DSM 設定：** 共享記憶體配置
+    - **上下文切換：** 作業系統必須排程多個程序
+
+    對於執行時間 <100ms 的查詢，平行開銷通常超過其效益。
 
 ---
 
-## 3 Parallel-Aware Operators
+## 3 感知平行的運算子
 
-Not all operators can run in parallel. PostgreSQL supports parallelism for specific node types:
+並非所有運算子都能平行執行。PostgreSQL 僅支援特定節點類型的平行化：
 
-### Parallel-Capable Operators
+### 支援平行的運算子
 
-| Operator | Parallel Strategy | Speedup Potential |
+| 運算子 | 平行策略 | 加速潛力 |
 |----------|-------------------|-------------------|
-| **Seq Scan** | Split table into ranges; each worker scans a range | ⭐⭐⭐ High |
-| **Hash Join** | Build phase: parallel hash; Probe phase: parallel probe | ⭐⭐⭐ High |
-| **Aggregate** | Each worker computes partial aggregate; leader combines | ⭐⭐⭐ High |
-| **Bitmap Heap Scan** | Split bitmap into ranges | ⭐⭐ Medium |
-| **Index Scan** | Limited support (index-only scans) | ⭐ Low |
-| **Sort** | Each worker sorts a chunk; Gather Merge combines | ⭐⭐ Medium |
+| **Seq Scan** | 將表劃分為範圍；每個 worker 掃描一個範圍 | ⭐⭐⭐ 高 |
+| **Hash Join** | 建立階段：平行雜湊；探測階段：平行探測 | ⭐⭐⭐ 高 |
+| **Aggregate** | 每個 worker 計算部分聚合；leader 合併 | ⭐⭐⭐ 高 |
+| **Bitmap Heap Scan** | 將 bitmap 劃分為範圍 | ⭐⭐ 中 |
+| **Index Scan** | 有限支援（僅限 index-only scans） | ⭐ 低 |
+| **Sort** | 每個 worker 排序一個區塊；Gather Merge 合併 | ⭐⭐ 中 |
 
-### Non-Parallel Operators
+### 不支援平行的運算子
 
-| Operator | Why Not Parallel? |
+| 運算子 | 無法平行的原因 |
 |----------|-------------------|
-| **Nested Loop Join** | Inherently sequential (inner depends on outer) |
-| **Window Functions** | Require ordered input; hard to partition |
-| **CTEs (pre-PG15)** | Optimization fence; executed separately |
-| **Functions (most)** | Not marked `PARALLEL SAFE` |
-| **INSERT/UPDATE/DELETE** | Row-level locking conflicts |
+| **Nested Loop Join** | 本質上是順序的（內部依賴外部） |
+| **Window Functions** | 需要有序輸入；難以分割 |
+| **CTEs（PG15 之前）** | 優化圍欄；分別執行 |
+| **函式（大多數）** | 未標記為 `PARALLEL SAFE` |
+| **INSERT/UPDATE/DELETE** | 列級鎖定衝突 |
 
-!!! info "📌 PARALLEL Safety Levels"
-    Functions are marked with parallel safety:
-    
-    | Level | Meaning | Can Run in Parallel? |
+!!! info "📌 PARALLEL 安全等級"
+    函式標記有平行安全性：
+
+    | 等級 | 意義 | 可以平行執行？ |
     |-------|---------|---------------------|
-    | `PARALLEL UNSAFE` | May modify state | ❌ No |
-    | `PARALLEL RESTRICTED` | Read-only, but can't execute parallel plans | ⚠️ Leader only |
-    | `PARALLEL SAFE` | Pure read-only | ✅ Yes |
-    
+    | `PARALLEL UNSAFE` | 可能修改狀態 | ❌ 否 |
+    | `PARALLEL RESTRICTED` | 僅唯讀，但不能執行平行計畫 | ⚠️ 僅 leader |
+    | `PARALLEL SAFE` | 純唯讀 | ✅ 是 |
+
     ```sql
-    -- Check function parallel safety
-    SELECT proname, proparallel 
-    FROM pg_proc 
+    -- 檢查函式平行安全性
+    SELECT proname, proparallel
+    FROM pg_proc
     WHERE proname = 'random';  -- 'u' = UNSAFE
-    
-    -- random() is UNSAFE (uses global RNG state)
+
+    -- random() 是 UNSAFE（使用全域 RNG 狀態）
     ```
 
 ---
 
-### Example: Parallel Seq Scan
+### 範例：平行 Seq Scan
 
 ```sql
 EXPLAIN (ANALYZE, BUFFERS)
@@ -275,7 +275,7 @@ SELECT COUNT(*) FROM transactions
 WHERE created_at >= '2025-01-01';
 ```
 
-**Plan:**
+**計畫：**
 
 ```
                                                     QUERY PLAN
@@ -301,20 +301,20 @@ WHERE created_at >= '2025-01-01';
  Execution Time: 3545.678 ms
 ```
 
-**Key observations:**
+**關鍵觀察：**
 
-| Metric | Value | Meaning |
+| 指標 | 值 | 意義 |
 |--------|-------|---------|
-| `Workers Planned` | 4 | Planner requested 4 workers |
-| `Workers Launched` | 4 | All 4 workers started (no resource limits hit) |
-| `loops=4` | 4 | Each worker executed this node once |
-| `rows=25000000` | 25M per worker | Total: 100M rows scanned |
-| `Partial Aggregate` | Per-worker | Each worker counts its portion |
-| `Finalize Aggregate` | Leader | Combines 4 partial counts |
+| `Workers Planned` | 4 | 規劃器請求 4 個 worker |
+| `Workers Launched` | 4 | 所有 4 個 worker 已啟動（未觸及資源限制） |
+| `loops=4` | 4 | 每個 worker 執行此節點一次 |
+| `rows=25000000` | 每個 worker 2500 萬列 | 總計：掃描 1 億列 |
+| `Partial Aggregate` | 每個 worker | 每個 worker 計算其部分的計數 |
+| `Finalize Aggregate` | Leader | 合併 4 個部分計數 |
 
 ---
 
-### Example: Parallel Hash Join
+### 範例：平行 Hash Join
 
 ```sql
 EXPLAIN (ANALYZE, BUFFERS)
@@ -325,7 +325,7 @@ WHERE u.created_at > '2025-01-01'
 GROUP BY u.name;
 ```
 
-**Plan:**
+**計畫：**
 
 ```
                                                                QUERY PLAN
@@ -361,7 +361,7 @@ GROUP BY u.name;
  Execution Time: 8267.890 ms
 ```
 
-**Execution Flow:**
+**執行流程：**
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -398,75 +398,75 @@ GROUP BY u.name;
    └─────────┘          └───────────┘
 ```
 
-**Key insight:** The hash table is built **once** (by the leader or workers collectively) and stored in **shared memory**. All workers probe the same hash table.
+**關鍵洞察：** 雜湊表僅建立**一次**（由 leader 或 worker 共同建立）並儲存在**共享記憶體**中。所有 worker 探測相同的雜湊表。
 
 ---
 
-## 4 Configuration: Tuning Parallel Query
+## 4 設定：調整平行查詢
 
-PostgreSQL provides several GUCs (Grand Unified Configuration) to control parallel query:
+PostgreSQL 提供多個 GUC（Grand Unified Configuration）來控制平行查詢：
 
-### Core Parameters
+### 核心參數
 
-| Parameter | Default | Description |
+| 參數 | 預設值 | 說明 |
 |-----------|---------|-------------|
-| `max_parallel_workers_per_gather` | 2 | Max workers per Gather node |
-| `max_parallel_workers` | 8 | Total workers available system-wide |
-| `max_parallel_maintenance_workers` | 2 | Workers for maintenance (VACUUM, CREATE INDEX) |
-| `parallel_leader_participation` | on | Whether leader also works |
-| `min_parallel_table_scan_size` | 8MB | Minimum table size for parallel scan |
-| `min_parallel_index_scan_size` | 512kB | Minimum index size for parallel scan |
-| `parallel_setup_cost` | 1000.0 | Planner cost estimate for parallel setup |
-| `parallel_tuple_cost` | 0.1 | Planner cost per tuple transferred |
+| `max_parallel_workers_per_gather` | 2 | 每個 Gather 節點的最大 worker 數 |
+| `max_parallel_workers` | 8 | 系統範圍可用的 worker 總數 |
+| `max_parallel_maintenance_workers` | 2 | 用於維護的 worker（VACUUM、CREATE INDEX） |
+| `parallel_leader_participation` | on | leader 是否也參與工作 |
+| `min_parallel_table_scan_size` | 8MB | 平行掃描的最小表大小 |
+| `min_parallel_index_scan_size` | 512kB | 平行掃描的最小索引大小 |
+| `parallel_setup_cost` | 1000.0 | 規劃器對平行設定的成本估計 |
+| `parallel_tuple_cost` | 0.1 | 規劃器對每個傳輸元組的成本 |
 
 ---
 
-### Parameter Deep Dive
+### 參數深入探討
 
 #### `max_parallel_workers_per_gather`
 
 ```sql
--- Default: 2
+-- 預設：2
 SET max_parallel_workers_per_gather = 4;
 
--- For a single large query
+-- 對於單一大型查詢
 SET LOCAL max_parallel_workers_per_gather = 8;
 SELECT COUNT(*) FROM huge_table;
 ```
 
-**Trade-off:**
+**取捨：**
 
-| Value | Pros | Cons |
+| 值 | 優點 | 缺點 |
 |-------|------|------|
-| Low (1-2) | Less overhead, more predictable | Limited speedup |
-| High (8+) | Maximum parallelism | Diminishing returns, resource contention |
+| 低 (1-2) | 開銷較小，更可預測 | 加速有限 |
+| 高 (8+) | 最大化平行化 | 報酬遞減，資源競爭 |
 
-**Rule of thumb:** Start with 4, measure, adjust.
+**經驗法則：** 從 4 開始，測量，調整。
 
 ---
 
 #### `max_parallel_workers`
 
 ```sql
--- System-wide limit (postgresql.conf)
-max_parallel_workers = 16  -- Total workers across all queries
+-- 系統範圍限制（postgresql.conf）
+max_parallel_workers = 16  -- 所有查詢的 worker 總數
 
--- Check current usage
-SELECT count(*) 
-FROM pg_stat_activity 
+-- 檢查當前使用情況
+SELECT count(*)
+FROM pg_stat_activity
 WHERE backend_type = 'parallel worker';
 ```
 
-**Relationship:**
+**關係：**
 
 ```
 max_parallel_workers_per_gather ≤ max_parallel_workers
 
-Example:
+範例：
   max_parallel_workers = 8
   max_parallel_workers_per_gather = 4
-  
-  → Max 2 concurrent parallel queries (8 / 4 = 2)
+
+  → 最多 2 個並發平行查詢（8 / 4 = 2）
 ```
 
 ---
@@ -474,109 +474,109 @@ Example:
 #### `parallel_leader_participation`
 
 ```sql
--- Default: on (leader also does work)
+-- 預設：on（leader 也參與工作）
 SET parallel_leader_participation = on;
 
--- Leader coordinates AND scans a portion of the table
+-- Leader 協調並掃描表的一部分
 ```
 
-**When to disable:**
+**何時停用：**
 
-| Scenario | Setting | Why |
+| 情境 | 設定 | 原因 |
 |----------|---------|-----|
-| Many concurrent queries | `off` | Leader handles coordination, workers do all scanning |
-| Small number of workers | `on` | Maximize parallelism (leader + workers) |
-| I/O-bound workloads | `on` | Leader can help with I/O |
-| CPU-bound workloads | `off` | Leader focuses on coordination |
+| 許多並發查詢 | `off` | Leader 處理協調，worker 執行所有掃描 |
+| 少量 worker | `on` | 最大化平行化（leader + workers） |
+| I/O 綁定工作負載 | `on` | Leader 可協助 I/O |
+| CPU 綁定工作負載 | `off` | Leader 專注於協調 |
 
 ---
 
 #### `min_parallel_table_scan_size`
 
 ```sql
--- Default: 8MB
+-- 預設：8MB
 SET min_parallel_table_scan_size = 16MB;
 
--- Tables smaller than 16MB won't use parallel scan
+-- 小於 16MB 的表不會使用平行掃描
 ```
 
-**Why it exists:** Parallel overhead (~5-10ms) exceeds benefit for small tables.
+**存在原因：** 對於小表，平行開銷（~5-10ms）超過效益。
 
-**Tuning:**
+**調整：**
 
-| Workload | Recommended Value |
+| 工作負載 | 建議值 |
 |----------|-------------------|
-| OLTP (small queries) | 32MB+ (discourage parallelism) |
-| Analytics (large scans) | 4-8MB (encourage parallelism) |
-| Mixed | 8-16MB (balance) |
+| OLTP（小查詢） | 32MB+（不鼓勵平行化） |
+| 分析（大型掃描） | 4-8MB（鼓勵平行化） |
+| 混合 | 8-16MB（平衡） |
 
 ---
 
-### Planner Cost Parameters
+### 規劃器成本參數
 
-The planner uses cost estimates to decide whether parallelism is worthwhile:
+規劃器使用成本估計來決定平行化是否值得：
 
 ```sql
--- Default costs
-parallel_setup_cost = 1000.0    -- Equivalent to ~10ms of work
-parallel_tuple_cost = 0.1       -- Per-row transfer cost
+-- 預設成本
+parallel_setup_cost = 1000.0    -- 相當於 ~10ms 的工作
+parallel_tuple_cost = 0.1       -- 每列傳輸成本
 ```
 
-**How the planner decides:**
+**規劃器如何決定：**
 
 ```
-Total Parallel Cost = parallel_setup_cost 
+Total Parallel Cost = parallel_setup_cost
                     + (parallel_tuple_cost × rows)
                     + (scan_cost / workers)
 
 If Parallel Cost < Serial Cost → Choose Parallel
 ```
 
-**Tuning:**
+**調整：**
 
 ```sql
--- Make parallelism more attractive
-SET parallel_setup_cost = 500.0;   -- Lower setup penalty
-SET parallel_tuple_cost = 0.05;    -- Lower transfer cost
+-- 讓平行化更具吸引力
+SET parallel_setup_cost = 500.0;   -- 降低設定懲罰
+SET parallel_tuple_cost = 0.05;    -- 降低傳輸成本
 
--- Make parallelism less attractive
-SET parallel_setup_cost = 2000.0;  -- Higher setup penalty
+-- 讓平行化較不具吸引力
+SET parallel_setup_cost = 2000.0;  -- 提高設定懲罰
 ```
 
-!!! tip "💡 Debugging Planner Decisions"
-    Use `EXPLAIN (VERBOSE, COSTS)` to see why the planner chose (or rejected) parallelism:
-    
+!!! tip "💡 除錯規劃器決策"
+    使用 `EXPLAIN (VERBOSE, COSTS)` 查看規劃器為何選擇（或拒絕）平行化：
+
     ```sql
     EXPLAIN (VERBOSE, COSTS)
     SELECT COUNT(*) FROM transactions;
-    
-    -- Look for:
-    -- "Workers Planned: 0" → Planner rejected parallelism
-    -- "Workers Planned: 4" → Planner chose parallel
+
+    -- 尋找：
+    -- "Workers Planned: 0" → 規劃器拒絕平行化
+    -- "Workers Planned: 4" → 規劃器選擇平行
     ```
 
 ---
 
-## 5 When Parallel Query Helps (and When It Hurts)
+## 5 何時平行查詢有幫助（何時有害）
 
-### Ideal Workloads for Parallel Query
+### 平行查詢的理想工作負載
 
-| Workload | Characteristics | Expected Speedup |
+| 工作負載 | 特徵 | 預期加速 |
 |----------|-----------------|------------------|
-| **Large table scans** | >100MB tables, selective filters | 2x-4x |
-| **Bulk aggregations** | COUNT, SUM, AVG over millions of rows | 3x-5x |
-| **Hash joins** | Large fact tables joining to dimensions | 2x-4x |
-| **Index-only scans** | Covering indexes on large tables | 2x-3x |
-| **Parallel CREATE INDEX** | `CREATE INDEX CONCURRENTLY` (PG11+) | 2x-3x |
+| **大型表掃描** | >100MB 表，選擇性過濾 | 2-4 倍 |
+| **大量聚合** | 數百萬列的 COUNT、SUM、AVG | 3-5 倍 |
+| **雜湊連接** | 大型事實表連接到維度表 | 2-4 倍 |
+| **僅索引掃描** | 大型表的覆蓋索引 | 2-3 倍 |
+| **平行 CREATE INDEX** | `CREATE INDEX CONCURRENTLY`（PG11+） | 2-3 倍 |
 
-**Example: Large Aggregation**
+**範例：大型聚合**
 
 ```sql
--- Before: 12 seconds (single-threaded)
--- After: 3.5 seconds (4 workers)
+-- 之前：12 秒（單執行緒）
+-- 之後：3.5 秒（4 個 worker）
 SET max_parallel_workers_per_gather = 4;
 
-SELECT 
+SELECT
     DATE_TRUNC('hour', created_at) as hour,
     COUNT(*) as transactions,
     SUM(amount) as total_amount
@@ -587,84 +587,84 @@ GROUP BY hour;
 
 ---
 
-### When Parallel Query Hurts
+### 何時平行查詢有害
 
-| Scenario | Why It Hurts | Alternative |
+| 情境 | 有害原因 | 替代方案 |
 |----------|--------------|-------------|
-| **Small tables (<10MB)** | Overhead > benefit | Disable parallelism |
-| **OLTP queries (<100ms)** | Setup time dominates | Keep `max_parallel_workers_per_gather = 0` |
-| **Many concurrent queries** | Worker starvation | Limit `max_parallel_workers` |
-| **Memory-bound workloads** | Workers compete for cache | Reduce workers |
-| **Functions marked UNSAFE** | Falls back to serial | Mark functions SAFE if possible |
+| **小表（<10MB）** | 開銷 > 效益 | 停用平行化 |
+| **OLTP 查詢（<100ms）** | 設定時間主導 | 保持 `max_parallel_workers_per_gather = 0` |
+| **許多並發查詢** | Worker 飢餓 | 限制 `max_parallel_workers` |
+| **記憶體綁定工作負載** | Worker 競爭快取 | 減少 worker |
+| **標記為 UNSAFE 的函式** | 回退到序列 | 盡可能標記函式為 SAFE |
 
-**Example: Parallel Overhead**
+**範例：平行開銷**
 
 ```sql
--- Small table: parallel is SLOWER
-SELECT COUNT(*) FROM small_table;  -- 50ms serial, 80ms parallel
+-- 小表：平行更慢
+SELECT COUNT(*) FROM small_table;  -- 序列 50ms，平行 80ms
 
--- Why?
--- - Process creation: 5ms × 4 workers = 20ms
--- - DSM setup: 10ms
--- - Coordination: 5ms
--- - Actual scan: 5ms (table is tiny)
--- Total parallel: 40ms overhead + 5ms scan = 45ms+ (vs 50ms serial)
+-- 為什麼？
+-- - 程序建立：5ms × 4 workers = 20ms
+-- - DSM 設定：10ms
+-- - 協調：5ms
+-- - 實際掃描：5ms（表很小）
+-- 總計平行：40ms 開銷 + 5ms 掃描 = 45ms+（vs 50ms 序列）
 ```
 
-!!! warning "⚠️ The OLTP Trap"
-    For OLTP workloads (short, frequent queries), parallel query often **degrades** performance:
-    
-```sql
--- Typical OLTP query
-SELECT * FROM users WHERE id = 12345;  -- Uses index, returns 1 row
+!!! warning "⚠️ OLTP 陷阱"
+    對於 OLTP 工作負載（短暫、頻繁的查詢），平行查詢通常會**降低**效能：
 
--- Parallel overhead: 30-50ms
--- Serial execution: 0.5ms
--- Result: 60-100x slower with parallelism!
+```sql
+-- 典型 OLTP 查詢
+SELECT * FROM users WHERE id = 12345;  -- 使用索引，回傳 1 列
+
+-- 平行開銷：30-50ms
+-- 序列執行：0.5ms
+-- 結果：平行化慢 60-100 倍！
 ```
 
-**Solution:** Disable parallelism for OLTP:
+**解決方案：** 為 OLTP 停用平行化：
 
 ```sql
--- In postgresql.conf for OLTP databases
+-- 在 OLTP 資料庫的 postgresql.conf 中
 max_parallel_workers_per_gather = 0
 max_parallel_workers = 0
 ```
 
 ---
 
-## 6 Debugging Parallel Query Issues
+## 6 除錯平行查詢問題
 
-### Common Problems
+### 常見問題
 
-#### Problem 1: Workers Not Launched
+#### 問題 1：Worker 未啟動
 
 ```
 Workers Planned: 4
-Workers Launched: 2  -- Only 2 started!
+Workers Launched: 2  -- 只啟動了 2 個！
 ```
 
-**Causes:**
+**原因：**
 
-| Cause | Check | Fix |
+| 原因 | 檢查 | 修復 |
 |-------|-------|-----|
-| Worker limit hit | `SHOW max_parallel_workers;` | Increase limit |
-| Memory pressure | Check `work_mem × workers` | Reduce `max_parallel_workers` |
-| Table too small | Check table size vs `min_parallel_table_scan_size` | Lower threshold or accept serial |
-| Function is UNSAFE | Check `proparallel` in `pg_proc` | Mark SAFE or rewrite |
+| 觸及 worker 限制 | `SHOW max_parallel_workers;` | 增加限制 |
+| 記憶體壓力 | 檢查 `work_mem × workers` | 減少 `max_parallel_workers` |
+| 表太小 | 檢查表大小與 `min_parallel_table_scan_size` | 降低閾值或接受序列 |
+| 函式是 UNSAFE | 檢查 `pg_proc` 中的 `proparallel` | 標記為 SAFE 或重寫 |
 
 ---
 
-#### Problem 2: Parallel Scan Falls Back to Index Scan
+#### 問題 2：平行掃描回退到索引掃描
 
 ```sql
--- Expected: Parallel Seq Scan
--- Actual: Index Scan (serial)
+-- 預期：Parallel Seq Scan
+-- 實際：Index Scan（序列）
 ```
 
-**Why:** The planner determined index scan is cheaper.
+**原因：** 規劃器確定索引掃描更便宜。
 
-**Force parallel scan (for testing):**
+**強制平行掃描（僅測試）：**
 
 ```sql
 SET enable_indexscan = off;
@@ -675,12 +675,12 @@ EXPLAIN ANALYZE
 SELECT COUNT(*) FROM large_table;
 ```
 
-!!! warning "⚠️ Don't Force in Production"
-    Disabling index scans is for **debugging only**. The planner usually knows best. If parallel seq scan is truly better, adjust cost parameters instead.
+!!! warning "⚠️ 不要在生產環境強制"
+    停用索引掃描僅用於**除錯**。規劃器通常最清楚。如果平行序列掃描確實更好，請改為調整成本參數。
 
 ---
 
-#### Problem 3: Uneven Worker Load
+#### 問題 3：Worker 負載不均
 
 ```
 Worker 1: 50M rows, 3000ms
@@ -689,25 +689,25 @@ Worker 3: 15M rows, 900ms
 Worker 4: 5M rows, 300ms
 ```
 
-**Why:** Data skew (workers scan different-sized ranges).
+**原因：** 數據偏斜（worker 掃描不同大小的範圍）。
 
-**Impact:** Slowest worker determines total time (Amdahl's Law).
+**影響：** 最慢的 worker 決定總時間（Amdahl 定律）。
 
-**Mitigation:**
+**緩解：**
 
-| Strategy | How |
+| 策略 | 方法 |
 |----------|-----|
-| Better data distribution | Reorganize table (PARTITION BY) |
-| More workers | More granular ranges |
-| Accept imbalance | Often not worth optimizing |
+| 更好的數據分佈 | 重組表（PARTITION BY） |
+| 更多 worker | 更細粒度的範圍 |
+| 接受不平衡 | 通常不值得優化 |
 
 ---
 
-### Monitoring Parallel Query
+### 監控平行查詢
 
 ```sql
--- Check active parallel workers
-SELECT 
+-- 檢查活躍的平行 worker
+SELECT
     pid,
     usename,
     query,
@@ -715,16 +715,16 @@ SELECT
 FROM pg_stat_activity
 WHERE backend_type = 'parallel worker';
 
--- Check parallel query statistics (PG14+)
-SELECT 
+-- 檢查平行查詢統計（PG14+）
+SELECT
     datname,
     numbackends,
     xact_commit,
     xact_rollback
 FROM pg_stat_database;
 
--- View parallel worker memory usage
-SELECT 
+-- 查看平行 worker 記憶體使用情況
+SELECT
     pid,
     usename,
     query,
@@ -736,11 +736,11 @@ WHERE query LIKE '%parallel%';
 
 ---
 
-## 7 Advanced: Parallel Query Internals
+## 7 進階：平行查詢內部實作
 
 ### Dynamic Shared Memory (DSM)
 
-Workers communicate via **Dynamic Shared Memory**:
+Worker 透過**動態共享記憶體**通訊：
 
 ```c
 /* Simplified from src/backend/storage/ipc/dsm.c */
@@ -766,19 +766,19 @@ dsm_attach(dsm_handle handle)
 }
 ```
 
-**What's stored in DSM:**
+**DSM 中儲存的內容：**
 
-| Data | Size | Purpose |
+| 數據 | 大小 | 目的 |
 |------|------|---------|
-| Query plan | ~10-100KB | Workers need to know what to execute |
-| Table scan ranges | ~1KB per worker | Which blocks each worker scans |
-| Hash tables | Variable (MBs) | Shared hash for parallel hash join |
-| Partial aggregates | ~1KB per worker | Intermediate results |
-| Tuple queues | Variable | Rows transferred from workers to leader |
+| 查詢計畫 | ~10-100KB | Worker 需要知道執行什麼 |
+| 表掃描範圍 | 每個 worker ~1KB | 每個 worker 掃描哪些區塊 |
+| 雜湊表 | 可變（MB） | 平行雜湊連接的共享雜湊 |
+| 部分聚合 | 每個 worker ~1KB | 中間結果 |
+| 元組佇列 | 可變 | 從 worker 傳輸到 leader 的列 |
 
 ---
 
-### Parallel Context Switching
+### 平行上下文切換
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -796,7 +796,7 @@ dsm_attach(dsm_handle handle)
 └─────────────────────────────────────────────────────────────┘
 ```
 
-**Timeline:**
+**時間軸：**
 
 ```
 0ms     5ms     10ms    15ms    20ms    100ms   3500ms
@@ -810,89 +810,89 @@ dsm_attach(dsm_handle handle)
 
 ---
 
-## 8 Practical Tuning Guide
+## 8 實用調整指南
 
-### OLTP Database
+### OLTP 資料庫
 
 ```sql
 -- postgresql.conf
-max_parallel_workers_per_gather = 0  -- Disable parallel query
+max_parallel_workers_per_gather = 0  -- 停用平行查詢
 max_parallel_workers = 0
-max_parallel_maintenance_workers = 1  -- Keep for maintenance
+max_parallel_maintenance_workers = 1  -- 保留用於維護
 
--- Why: OLTP queries are short; parallel overhead hurts more than helps
+-- 原因：OLTP 查詢很短；平行開銷弊大於利
 ```
 
 ---
 
-### Analytics Database
+### 分析資料庫
 
 ```sql
 -- postgresql.conf
-max_parallel_workers_per_gather = 8   -- Maximize parallelism
-max_parallel_workers = 32             -- Support multiple concurrent queries
-max_parallel_maintenance_workers = 4  -- Parallel VACUUM, CREATE INDEX
+max_parallel_workers_per_gather = 8   -- 最大化平行化
+max_parallel_workers = 32             -- 支援多個並發查詢
+max_parallel_maintenance_workers = 4  -- 平行 VACUUM、CREATE INDEX
 
-min_parallel_table_scan_size = 4MB    -- Encourage parallelism
-parallel_setup_cost = 500.0           -- Lower barrier to parallelism
+min_parallel_table_scan_size = 4MB    -- 鼓勵平行化
+parallel_setup_cost = 500.0           -- 降低平行化門檻
 parallel_tuple_cost = 0.05
 
--- Per-query (for critical reports)
+-- 每個查詢（用於關鍵報表）
 SET LOCAL max_parallel_workers_per_gather = 16;
-SELECT /* complex analytical query */;
+SELECT /* 複雜分析查詢 */;
 ```
 
 ---
 
-### Mixed Workload
+### 混合工作負載
 
 ```sql
 -- postgresql.conf
-max_parallel_workers_per_gather = 4   -- Moderate parallelism
-max_parallel_workers = 16             -- Support ~4 concurrent parallel queries
+max_parallel_workers_per_gather = 4   -- 適度平行化
+max_parallel_workers = 16             -- 支援約 4 個並發平行查詢
 max_parallel_maintenance_workers = 2
 
-min_parallel_table_scan_size = 16MB   -- Only parallelize large scans
+min_parallel_table_scan_size = 16MB   -- 僅平行化大型掃描
 
--- Application-level tuning
--- OLTP queries: Use default (4 workers)
--- Analytical queries: SET LOCAL max_parallel_workers_per_gather = 8
+-- 應用程式層級調整
+-- OLTP 查詢：使用預設（4 個 worker）
+-- 分析查詢：SET LOCAL max_parallel_workers_per_gather = 8
 ```
 
 ---
 
-### Tuning Checklist
+### 調整檢查清單
 
 ```
-□ Check current settings:
+□ 檢查當前設定：
   SHOW max_parallel_workers_per_gather;
   SHOW max_parallel_workers;
   SHOW min_parallel_table_scan_size;
 
-□ Identify candidate queries:
-  -- Find queries with sequential scans on large tables
+□ 識別候選查詢：
+  -- 尋找在大型表上具有順序掃描的查詢
   SELECT query, total_exec_time, calls
   FROM pg_stat_statements
   WHERE query LIKE '%Seq Scan%'
   ORDER BY total_exec_time DESC;
 
-□ Test with parallelism:
+□ 測試平行化：
   SET max_parallel_workers_per_gather = 4;
   EXPLAIN (ANALYZE, BUFFERS) <query>;
 
-□ Measure speedup:
-  -- Compare serial vs parallel execution time
-  -- Check Workers Launched matches Workers Planned
+□ 測量加速：
+  -- 比較序列與平行執行時間
+  -- 檢查 Workers Launched 是否符合 Workers Planned
 
-□ Adjust based on results:
-  -- Good speedup (2x+): Keep settings
-  -- Marginal speedup (<1.5x): Reduce workers or disable
-  -- Slower: Disable parallelism for this query type
+□ 根據結果調整：
+  -- 良好的加速（2x+）：保持設定
+  -- 邊際加速（<1.5x）：減少 worker 或停用
+  -- 更慢：為此類查詢停用平行化
 ```
 
 ---
 
-## Summary: Parallel Query in One Diagram
+## 總結：一張圖看懂平行查詢
 
 ```mermaid
 flowchart BT
@@ -903,30 +903,30 @@ flowchart BT
         C --> E[Worker 2]
         C --> F[Worker 3]
         C --> G[Worker 4]
-        
+
         D --> H[Parallel Seq Scan]
         E --> I[Parallel Seq Scan]
         F --> J[Parallel Seq Scan]
         G --> K[Parallel Seq Scan]
-        
+
         H --> L[Table Range 1]
         I --> M[Table Range 2]
         J --> N[Table Range 3]
         K --> O[Table Range 4]
     end
-    
+
     subgraph "Configuration"
         P[max_parallel_workers_per_gather]
         Q[max_parallel_workers]
         R[min_parallel_table_scan_size]
     end
-    
+
     subgraph "Best For"
         S[Large table scans]
         T[Bulk aggregations]
         U[Hash joins]
     end
-    
+
     style B fill:#fce4ec,stroke:#c2185b
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#fff3e0,stroke:#f57c00
@@ -937,21 +937,21 @@ flowchart BT
     style R fill:#e3f2fd,stroke:#1976d2
 ```
 
-**Key Takeaways:**
+**關鍵要點：**
 
-| Aspect | Parallel Query |
+| 面向 | 平行查詢 |
 |--------|----------------|
-| **Architecture** | Leader + workers via DSM |
-| **Gather node** | Collects results from workers |
-| **Gather Merge** | Preserves sort order |
-| **Best for** | Large scans, aggregations, hash joins |
-| **Avoid for** | OLTP, small tables, sub-100ms queries |
-| **Speedup** | 2x-4x typical, up to 10x for ideal workloads |
-| **Overhead** | ~20-50ms setup time |
+| **架構** | Leader + worker 透過 DSM |
+| **Gather 節點** | 收集 worker 的結果 |
+| **Gather Merge** | 保持排序順序 |
+| **最適合** | 大型掃描、聚合、雜湊連接 |
+| **避免用於** | OLTP、小表、低於 100ms 的查詢 |
+| **加速** | 通常 2-4 倍，理想工作負載可達 10 倍 |
+| **開銷** | 約 20-50ms 設定時間 |
 
 ---
 
-**Further Reading:**
+**進一步閱讀：**
 
 - PostgreSQL Docs: ["Parallel Query"](https://www.postgresql.org/docs/current/parallel-query.html)
 - Robert Haas: ["Parallel Query in PostgreSQL"](https://rhaas.blogspot.com/2015/10/parallel-query-in-postgresql.html) (2015)

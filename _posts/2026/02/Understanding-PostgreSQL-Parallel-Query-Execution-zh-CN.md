@@ -1,5 +1,5 @@
 ---
-title: "Understanding PostgreSQL Parallel Query Execution: Multi-Core Performance"
+title: "深入了解 PostgreSQL 并行查询执行：多核性能"
 date: 2026-02-16
 categories:
   - Architecture
@@ -7,8 +7,8 @@ tags:
   - PostgreSQL
   - Performance
   - Parallel Query
-excerpt: "Deep dive into PostgreSQL's parallel query execution—how Gather nodes, parallel workers, and multi-core processing accelerate large table scans, hash joins, and aggregations. Learn when parallelism helps, when it hurts, and how to tune it."
-lang: en
+excerpt: "深入探讨 PostgreSQL 并行查询执行——Gather 节点、并行 worker 进程与多核处理如何加速大型表扫描、哈希连接与聚合运算。了解何时使用并行化能提升性能，何时会造成反效果，以及如何调整设置。"
+lang: zh-CN
 available_langs: []
 thumbnail: /assets/architecture/sql_plan_thumbnail.jpg
 thumbnail_80: /assets/architecture/sql_plan_thumbnail_80.jpg
@@ -16,27 +16,27 @@ canonical_lang: en
 comments: true
 ---
 
-When PostgreSQL introduced **parallel query execution** in version 9.6, it unlocked a fundamental capability: leveraging multi-core CPUs to accelerate analytical workloads.
+当 PostgreSQL 在 9.6 版本引入**并行查询执行**（parallel query execution）时，它解锁了一项基本能力：利用多核 CPU 来加速分析性工作负载。
 
-Before parallel query, PostgreSQL was strictly **single-threaded**—one query, one CPU core. On a 32-core server, a full table scan used 1 core at 100%, leaving 31 cores idle. For OLTP workloads (short, selective queries), this was fine. For analytics (scanning millions of rows), it was a bottleneck.
+在并行查询出现之前，PostgreSQL 是严格的**单线程**架构——一个查询，一个 CPU 核心。在 32 核心的服务器上，完整表扫描只使用 1 个核心达到 100% 利用率，其余 31 个核心闲置。对于 OLTP 工作负载（短暂、选择性查询），这没问题。但对于分析型查询（扫描数百万行），这成为瓶颈。
 
-Parallel query changes this by allowing operations like **Seq Scan**, **Hash Join**, and **Aggregate** to split work across multiple **background worker processes**. A **Gather** or **Gather Merge** node collects results from workers and returns them to the client.
+并行查询通过允许**顺序扫描**（Seq Scan）、**哈希连接**（Hash Join）和**聚合**（Aggregate）等运算拆分到多个**后台 worker 进程**来改变这种状况。**Gather** 或 **Gather Merge** 节点收集 worker 的结果并返回给客户端。
 
-The result? **2x–4x speedup** (or more) on suitable workloads.
+结果是什么？在适合的工作负载上可达到 **2 到 4 倍或更高的加速**。
 
-But parallel query isn't free. It adds overhead, consumes resources, and can *slow down* queries if misused. This guide explains how it works, when to use it, and how to tune it.
+但并行查询不是免费的。它会增加额外开销、消耗资源，如果使用不当甚至会*拖慢*查询。本指南将解释其运作原理、使用时机以及如何调整。
 
 ---
 
-## 1 The Problem: Single-Threaded Execution
+## 1 问题：单线程执行
 
-### The Pre-9.6 Reality
+### 9.6 版之前的现实
 
 ```sql
-SELECT COUNT(*) FROM transactions;  -- 100 million rows
+SELECT COUNT(*) FROM transactions;  -- 1 亿行
 ```
 
-**Execution (single-threaded):**
+**执行（单线程）：**
 
 ```javascript
 ┌─────────────────────────────────────┐
@@ -49,18 +49,18 @@ SELECT COUNT(*) FROM transactions;  -- 100 million rows
 └─────────────────────────────────────┘
 ```
 
-**The bottleneck:** Disk I/O and CPU-bound operations (filtering, aggregation) can't be parallelized. One core does all the work.
+**瓶颈：** 磁盘 I/O 和 CPU 密集型运算（过滤、聚合）无法并行化。一个核心完成所有工作。
 
 ---
 
-### The Parallel Solution
+### 并行解决方案
 
 ```sql
 SET max_parallel_workers_per_gather = 4;
 SELECT COUNT(*) FROM transactions;
 ```
 
-**Execution (parallel):**
+**执行（并行）：**
 
 ```
 ┌─────────────────────────────────────────────────────────┐
@@ -84,13 +84,13 @@ Total Time: ~3,500ms (3.4x speedup)
 CPU: 4 cores @ ~90% each
 ```
 
-**Key insight:** The table is divided into **ranges**, each worker scans a portion, and results are combined at the top.
+**关键洞察：** 表被划分为多个**范围**，每个 worker 扫描一部分，结果在顶层合并。
 
 ---
 
-## 2 Architecture: How Parallel Query Works
+## 2 架构：并行查询如何运作
 
-### The Parallel Execution Stack
+### 并行执行堆栈
 
 ```mermaid
 flowchart BT
@@ -100,12 +100,12 @@ flowchart BT
     C --> E[Worker 2]
     C --> F[Worker 3]
     C --> G[Worker 4]
-    
+
     D --> H[Seq Scan: Range 1]
     E --> I[Seq Scan: Range 2]
     F --> J[Seq Scan: Range 3]
     G --> K[Seq Scan: Range 4]
-    
+
     style B fill:#fce4ec,stroke:#c2185b
     style C fill:#e3f2fd,stroke:#1976d2
     style D fill:#fff3e0,stroke:#f57c00
@@ -114,21 +114,21 @@ flowchart BT
     style G fill:#fff3e0,stroke:#f57c00
 ```
 
-**Components:**
+**组件：**
 
-| Component | Role |
+| 组件 | 角色 |
 |-----------|------|
-| **Parallel Leader** | Main backend that coordinates workers |
-| **Parallel Workers** | Background processes that execute portions of the plan |
-| **Gather Node** | Collects results from workers and returns to client |
-| **Gather Merge Node** | Like Gather, but preserves sort order |
-| **Shared Memory** | Communication channel between leader and workers |
+| **Parallel Leader** | 协调 worker 的主要后端进程 |
+| **Parallel Workers** | 执行部分计划的后台进程 |
+| **Gather Node** | 收集 worker 的结果并返回给客户端 |
+| **Gather Merge Node** | 类似 Gather，但保持排序顺序 |
+| **Shared Memory** | leader 与 worker 之间的通信通道 |
 
 ---
 
-### The Gather Node: Collecting Results
+### Gather 节点：收集结果
 
-The **Gather** node is the bridge between parallel workers and the client:
+**Gather** 节点是并行 worker 与客户端之间的桥梁：
 
 ```c
 /* Simplified from src/backend/executor/nodeGather.c */
@@ -147,15 +147,15 @@ ExecGather(GatherState *node)
         InitializeParallelWorkers(node);
         node->workers_initialized = true;
     }
-    
+
     /* Get next row from any worker */
     while (node->pending_result == NULL) {
         if (all_workers_done(node))
             return NULL;  /* No more rows */
-        
+
         node->pending_result = FetchRowFromWorker(node);
     }
-    
+
     /* Return row to parent */
     TupleTableSlot *result = node->pending_result;
     node->pending_result = NULL;
@@ -163,35 +163,35 @@ ExecGather(GatherState *node)
 }
 ```
 
-**The Contract:**
+**契约：**
 
-| Method | Purpose |
+| 方法 | 目的 |
 |--------|---------|
-| `InitializeParallelWorkers()` | Launch worker processes |
-| `FetchRowFromWorker()` | Get next row from any worker (round-robin) |
-| `all_workers_done()` | Check if all workers finished |
+| `InitializeParallelWorkers()` | 启动 worker 进程 |
+| `FetchRowFromWorker()` | 从任意 worker 获取下一行（轮询） |
+| `all_workers_done()` | 检查所有 worker 是否完成 |
 
-**Gather vs. Gather Merge:**
+**Gather 与 Gather Merge 的比较：**
 
-| Node Type | Use Case | Preserves Order? |
+| 节点类型 | 使用场景 | 保持顺序？ |
 |-----------|----------|------------------|
-| **Gather** | General parallel execution | ❌ No |
-| **Gather Merge** | Parallel execution with ORDER BY | ✅ Yes (merge-sort) |
+| **Gather** | 一般并行执行 | ❌ 否 |
+| **Gather Merge** | 带有 ORDER BY 的并行执行 | ✅ 是（合并排序） |
 
 ```sql
--- Uses Gather
+-- 使用 Gather
 SELECT COUNT(*) FROM large_table;
 
--- Uses Gather Merge
+-- 使用 Gather Merge
 SELECT * FROM large_table ORDER BY created_at;
--- Workers return sorted chunks; Gather Merge combines them
+-- Worker 返回排序后的区块；Gather Merge 合并它们
 ```
 
 ---
 
-### Parallel Workers: Background Processes
+### Parallel Workers：后台进程
 
-Workers are **separate PostgreSQL backend processes**:
+Worker 是**独立的 PostgreSQL 后端进程**：
 
 ```
 postgres: parallel worker for database neo01              # Worker 1
@@ -201,73 +201,73 @@ postgres: parallel worker for database neo01              # Worker 4
 postgres: neo01                                           # Parallel Leader
 ```
 
-**Key properties:**
+**关键特性：**
 
-| Property | Description |
+| 特性 | 说明 |
 |----------|-------------|
-| **Separate processes** | Not threads—full OS processes with own memory |
-| **Shared memory** | Communicate via DSM (Dynamic Shared Memory) |
-| **Inherit transaction** | Workers see the same transaction snapshot |
-| **No direct client access** | Only the leader communicates with the client |
-| **Temporary** | Workers exit when query completes |
+| **独立进程** | 不是线程——是具有自己内存的完整操作系统进程 |
+| **共享内存** | 通过 DSM（Dynamic Shared Memory）通信 |
+| **继承事务** | Worker 看到相同的事务快照 |
+| **无直接客户端访问** | 只有 leader 与客户端通信 |
+| **暂时性** | 查询完成后 worker 退出 |
 
-!!! warning "⚠️ Process Overhead"
-    Because workers are separate processes (not threads), there's overhead:
-    
-    - **Process creation:** ~1-5ms per worker
-    - **DSM setup:** Shared memory allocation
-    - **Context switching:** OS must schedule multiple processes
-    
-    For queries that run in <100ms, parallel overhead often exceeds the benefit.
+!!! warning "⚠️ 进程开销"
+    由于 worker 是独立进程（而非线程），因此存在开销：
+
+    - **进程创建：** 每个 worker 约 1-5ms
+    - **DSM 设置：** 共享内存配置
+    - **上下文切换：** 操作系统必须调度多个进程
+
+    对于执行时间 <100ms 的查询，并行开销通常超过其收益。
 
 ---
 
-## 3 Parallel-Aware Operators
+## 3 感知并行的算子
 
-Not all operators can run in parallel. PostgreSQL supports parallelism for specific node types:
+并非所有算子都能并行执行。PostgreSQL 仅支持特定节点类型的并行化：
 
-### Parallel-Capable Operators
+### 支持并行的算子
 
-| Operator | Parallel Strategy | Speedup Potential |
+| 算子 | 并行策略 | 加速潜力 |
 |----------|-------------------|-------------------|
-| **Seq Scan** | Split table into ranges; each worker scans a range | ⭐⭐⭐ High |
-| **Hash Join** | Build phase: parallel hash; Probe phase: parallel probe | ⭐⭐⭐ High |
-| **Aggregate** | Each worker computes partial aggregate; leader combines | ⭐⭐⭐ High |
-| **Bitmap Heap Scan** | Split bitmap into ranges | ⭐⭐ Medium |
-| **Index Scan** | Limited support (index-only scans) | ⭐ Low |
-| **Sort** | Each worker sorts a chunk; Gather Merge combines | ⭐⭐ Medium |
+| **Seq Scan** | 将表划分为范围；每个 worker 扫描一个范围 | ⭐⭐⭐ 高 |
+| **Hash Join** | 创建阶段：并行哈希；探测阶段：并行探测 | ⭐⭐⭐ 高 |
+| **Aggregate** | 每个 worker 计算部分聚合；leader 合并 | ⭐⭐⭐ 高 |
+| **Bitmap Heap Scan** | 将 bitmap 划分为范围 | ⭐⭐ 中 |
+| **Index Scan** | 有限支持（仅限 index-only scans） | ⭐ 低 |
+| **Sort** | 每个 worker 排序一个区块；Gather Merge 合并 | ⭐⭐ 中 |
 
-### Non-Parallel Operators
+### 不支持并行的算子
 
-| Operator | Why Not Parallel? |
+| 算子 | 无法并行的原因 |
 |----------|-------------------|
-| **Nested Loop Join** | Inherently sequential (inner depends on outer) |
-| **Window Functions** | Require ordered input; hard to partition |
-| **CTEs (pre-PG15)** | Optimization fence; executed separately |
-| **Functions (most)** | Not marked `PARALLEL SAFE` |
-| **INSERT/UPDATE/DELETE** | Row-level locking conflicts |
+| **Nested Loop Join** | 本质上是顺序的（内部依赖外部） |
+| **Window Functions** | 需要有序输入；难以分割 |
+| **CTEs（PG15 之前）** | 优化屏障；分别执行 |
+| **函数（大多数）** | 未标记为 `PARALLEL SAFE` |
+| **INSERT/UPDATE/DELETE** | 行级锁冲突 |
 
-!!! info "📌 PARALLEL Safety Levels"
-    Functions are marked with parallel safety:
-    
-    | Level | Meaning | Can Run in Parallel? |
+!!! info "📌 PARALLEL 安全等级"
+    函数标记有并行安全性：
+
+    | 等级 | 意义 | 可以并行执行？ |
     |-------|---------|---------------------|
-    | `PARALLEL UNSAFE` | May modify state | ❌ No |
-    | `PARALLEL RESTRICTED` | Read-only, but can't execute parallel plans | ⚠️ Leader only |
-    | `PARALLEL SAFE` | Pure read-only | ✅ Yes |
-    
+    | `PARALLEL UNSAFE` | 可能修改状态 | ❌ 否 |
+    | `PARALLEL RESTRICTED` | 仅只读，但不能执行并行计划 | ⚠️ 仅 leader |
+    | `PARALLEL SAFE` | 纯只读 | ✅ 是 |
+
     ```sql
-    -- Check function parallel safety
-    SELECT proname, proparallel 
-    FROM pg_proc 
+    -- 检查函数并行安全性
+    SELECT proname, proparallel
+    FROM pg_proc
     WHERE proname = 'random';  -- 'u' = UNSAFE
-    
-    -- random() is UNSAFE (uses global RNG state)
+
+    -- random() 是 UNSAFE（使用全局 RNG 状态）
     ```
 
 ---
 
-### Example: Parallel Seq Scan
+### 示例：并行 Seq Scan
 
 ```sql
 EXPLAIN (ANALYZE, BUFFERS)
@@ -275,7 +275,7 @@ SELECT COUNT(*) FROM transactions
 WHERE created_at >= '2025-01-01';
 ```
 
-**Plan:**
+**计划：**
 
 ```
                                                     QUERY PLAN
@@ -301,20 +301,20 @@ WHERE created_at >= '2025-01-01';
  Execution Time: 3545.678 ms
 ```
 
-**Key observations:**
+**关键观察：**
 
-| Metric | Value | Meaning |
+| 指标 | 值 | 意义 |
 |--------|-------|---------|
-| `Workers Planned` | 4 | Planner requested 4 workers |
-| `Workers Launched` | 4 | All 4 workers started (no resource limits hit) |
-| `loops=4` | 4 | Each worker executed this node once |
-| `rows=25000000` | 25M per worker | Total: 100M rows scanned |
-| `Partial Aggregate` | Per-worker | Each worker counts its portion |
-| `Finalize Aggregate` | Leader | Combines 4 partial counts |
+| `Workers Planned` | 4 | 规划器请求 4 个 worker |
+| `Workers Launched` | 4 | 所有 4 个 worker 已启动（未触及资源限制） |
+| `loops=4` | 4 | 每个 worker 执行此节点一次 |
+| `rows=25000000` | 每个 worker 2500 万行 | 总计：扫描 1 亿行 |
+| `Partial Aggregate` | 每个 worker | 每个 worker 计算其部分的计数 |
+| `Finalize Aggregate` | Leader | 合并 4 个部分计数 |
 
 ---
 
-### Example: Parallel Hash Join
+### 示例：并行 Hash Join
 
 ```sql
 EXPLAIN (ANALYZE, BUFFERS)
@@ -325,7 +325,7 @@ WHERE u.created_at > '2025-01-01'
 GROUP BY u.name;
 ```
 
-**Plan:**
+**计划：**
 
 ```
                                                                QUERY PLAN
@@ -361,7 +361,7 @@ GROUP BY u.name;
  Execution Time: 8267.890 ms
 ```
 
-**Execution Flow:**
+**执行流程：**
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -398,75 +398,75 @@ GROUP BY u.name;
    └─────────┘          └───────────┘
 ```
 
-**Key insight:** The hash table is built **once** (by the leader or workers collectively) and stored in **shared memory**. All workers probe the same hash table.
+**关键洞察：** 哈希表仅创建**一次**（由 leader 或 worker 共同创建）并存储在**共享内存**中。所有 worker 探测相同的哈希表。
 
 ---
 
-## 4 Configuration: Tuning Parallel Query
+## 4 设置：调整并行查询
 
-PostgreSQL provides several GUCs (Grand Unified Configuration) to control parallel query:
+PostgreSQL 提供多个 GUC（Grand Unified Configuration）来控制并行查询：
 
-### Core Parameters
+### 核心参数
 
-| Parameter | Default | Description |
+| 参数 | 默认值 | 说明 |
 |-----------|---------|-------------|
-| `max_parallel_workers_per_gather` | 2 | Max workers per Gather node |
-| `max_parallel_workers` | 8 | Total workers available system-wide |
-| `max_parallel_maintenance_workers` | 2 | Workers for maintenance (VACUUM, CREATE INDEX) |
-| `parallel_leader_participation` | on | Whether leader also works |
-| `min_parallel_table_scan_size` | 8MB | Minimum table size for parallel scan |
-| `min_parallel_index_scan_size` | 512kB | Minimum index size for parallel scan |
-| `parallel_setup_cost` | 1000.0 | Planner cost estimate for parallel setup |
-| `parallel_tuple_cost` | 0.1 | Planner cost per tuple transferred |
+| `max_parallel_workers_per_gather` | 2 | 每个 Gather 节点的最大 worker 数 |
+| `max_parallel_workers` | 8 | 系统范围可用的 worker 总数 |
+| `max_parallel_maintenance_workers` | 2 | 用于维护的 worker（VACUUM、CREATE INDEX） |
+| `parallel_leader_participation` | on | leader 是否也参与工作 |
+| `min_parallel_table_scan_size` | 8MB | 并行扫描的最小表大小 |
+| `min_parallel_index_scan_size` | 512kB | 并行扫描的最小索引大小 |
+| `parallel_setup_cost` | 1000.0 | 规划器对并行设置的成本估算 |
+| `parallel_tuple_cost` | 0.1 | 规划器对每个传输元组的成本 |
 
 ---
 
-### Parameter Deep Dive
+### 参数深入探讨
 
 #### `max_parallel_workers_per_gather`
 
 ```sql
--- Default: 2
+-- 默认：2
 SET max_parallel_workers_per_gather = 4;
 
--- For a single large query
+-- 对于单一大型查询
 SET LOCAL max_parallel_workers_per_gather = 8;
 SELECT COUNT(*) FROM huge_table;
 ```
 
-**Trade-off:**
+**权衡：**
 
-| Value | Pros | Cons |
+| 值 | 优点 | 缺点 |
 |-------|------|------|
-| Low (1-2) | Less overhead, more predictable | Limited speedup |
-| High (8+) | Maximum parallelism | Diminishing returns, resource contention |
+| 低 (1-2) | 开销较小，更可预测 | 加速有限 |
+| 高 (8+) | 最大化并行化 | 报酬递减，资源竞争 |
 
-**Rule of thumb:** Start with 4, measure, adjust.
+**经验法则：** 从 4 开始，测量，调整。
 
 ---
 
 #### `max_parallel_workers`
 
 ```sql
--- System-wide limit (postgresql.conf)
-max_parallel_workers = 16  -- Total workers across all queries
+-- 系统范围限制（postgresql.conf）
+max_parallel_workers = 16  -- 所有查询的 worker 总数
 
--- Check current usage
-SELECT count(*) 
-FROM pg_stat_activity 
+-- 检查当前使用情况
+SELECT count(*)
+FROM pg_stat_activity
 WHERE backend_type = 'parallel worker';
 ```
 
-**Relationship:**
+**关系：**
 
 ```
 max_parallel_workers_per_gather ≤ max_parallel_workers
 
-Example:
+示例：
   max_parallel_workers = 8
   max_parallel_workers_per_gather = 4
-  
-  → Max 2 concurrent parallel queries (8 / 4 = 2)
+
+  → 最多 2 个并发并行查询（8 / 4 = 2）
 ```
 
 ---
@@ -474,109 +474,109 @@ Example:
 #### `parallel_leader_participation`
 
 ```sql
--- Default: on (leader also does work)
+-- 默认：on（leader 也参与工作）
 SET parallel_leader_participation = on;
 
--- Leader coordinates AND scans a portion of the table
+-- Leader 协调并扫描表的一部分
 ```
 
-**When to disable:**
+**何时禁用：**
 
-| Scenario | Setting | Why |
+| 场景 | 设置 | 原因 |
 |----------|---------|-----|
-| Many concurrent queries | `off` | Leader handles coordination, workers do all scanning |
-| Small number of workers | `on` | Maximize parallelism (leader + workers) |
-| I/O-bound workloads | `on` | Leader can help with I/O |
-| CPU-bound workloads | `off` | Leader focuses on coordination |
+| 许多并发查询 | `off` | Leader 处理协调，worker 执行所有扫描 |
+| 少量 worker | `on` | 最大化并行化（leader + workers） |
+| I/O 绑定工作负载 | `on` | Leader 可协助 I/O |
+| CPU 绑定工作负载 | `off` | Leader 专注于协调 |
 
 ---
 
 #### `min_parallel_table_scan_size`
 
 ```sql
--- Default: 8MB
+-- 默认：8MB
 SET min_parallel_table_scan_size = 16MB;
 
--- Tables smaller than 16MB won't use parallel scan
+-- 小于 16MB 的表不会使用并行扫描
 ```
 
-**Why it exists:** Parallel overhead (~5-10ms) exceeds benefit for small tables.
+**存在原因：** 对于小表，并行开销（~5-10ms）超过收益。
 
-**Tuning:**
+**调整：**
 
-| Workload | Recommended Value |
+| 工作负载 | 建议值 |
 |----------|-------------------|
-| OLTP (small queries) | 32MB+ (discourage parallelism) |
-| Analytics (large scans) | 4-8MB (encourage parallelism) |
-| Mixed | 8-16MB (balance) |
+| OLTP（小查询） | 32MB+（不鼓励并行化） |
+| 分析（大型扫描） | 4-8MB（鼓励并行化） |
+| 混合 | 8-16MB（平衡） |
 
 ---
 
-### Planner Cost Parameters
+### 规划器成本参数
 
-The planner uses cost estimates to decide whether parallelism is worthwhile:
+规划器使用成本估算来决定并行化是否值得：
 
 ```sql
--- Default costs
-parallel_setup_cost = 1000.0    -- Equivalent to ~10ms of work
-parallel_tuple_cost = 0.1       -- Per-row transfer cost
+-- 默认成本
+parallel_setup_cost = 1000.0    -- 相当于 ~10ms 的工作
+parallel_tuple_cost = 0.1       -- 每行传输成本
 ```
 
-**How the planner decides:**
+**规划器如何决定：**
 
 ```
-Total Parallel Cost = parallel_setup_cost 
+Total Parallel Cost = parallel_setup_cost
                     + (parallel_tuple_cost × rows)
                     + (scan_cost / workers)
 
 If Parallel Cost < Serial Cost → Choose Parallel
 ```
 
-**Tuning:**
+**调整：**
 
 ```sql
--- Make parallelism more attractive
-SET parallel_setup_cost = 500.0;   -- Lower setup penalty
-SET parallel_tuple_cost = 0.05;    -- Lower transfer cost
+-- 让并行化更具吸引力
+SET parallel_setup_cost = 500.0;   -- 降低设置惩罚
+SET parallel_tuple_cost = 0.05;    -- 降低传输成本
 
--- Make parallelism less attractive
-SET parallel_setup_cost = 2000.0;  -- Higher setup penalty
+-- 让并行化较不具吸引力
+SET parallel_setup_cost = 2000.0;  -- 提高设置惩罚
 ```
 
-!!! tip "💡 Debugging Planner Decisions"
-    Use `EXPLAIN (VERBOSE, COSTS)` to see why the planner chose (or rejected) parallelism:
-    
+!!! tip "💡 调试规划器决策"
+    使用 `EXPLAIN (VERBOSE, COSTS)` 查看规划器为何选择（或拒绝）并行化：
+
     ```sql
     EXPLAIN (VERBOSE, COSTS)
     SELECT COUNT(*) FROM transactions;
-    
-    -- Look for:
-    -- "Workers Planned: 0" → Planner rejected parallelism
-    -- "Workers Planned: 4" → Planner chose parallel
+
+    -- 寻找：
+    -- "Workers Planned: 0" → 规划器拒绝并行化
+    -- "Workers Planned: 4" → 规划器选择并行
     ```
 
 ---
 
-## 5 When Parallel Query Helps (and When It Hurts)
+## 5 何时并行查询有帮助（何时有害）
 
-### Ideal Workloads for Parallel Query
+### 并行查询的理想工作负载
 
-| Workload | Characteristics | Expected Speedup |
+| 工作负载 | 特征 | 预期加速 |
 |----------|-----------------|------------------|
-| **Large table scans** | >100MB tables, selective filters | 2x-4x |
-| **Bulk aggregations** | COUNT, SUM, AVG over millions of rows | 3x-5x |
-| **Hash joins** | Large fact tables joining to dimensions | 2x-4x |
-| **Index-only scans** | Covering indexes on large tables | 2x-3x |
-| **Parallel CREATE INDEX** | `CREATE INDEX CONCURRENTLY` (PG11+) | 2x-3x |
+| **大型表扫描** | >100MB 表，选择性过滤 | 2-4 倍 |
+| **大量聚合** | 数百万行的 COUNT、SUM、AVG | 3-5 倍 |
+| **哈希连接** | 大型事实表连接到维度表 | 2-4 倍 |
+| **仅索引扫描** | 大型表的覆盖索引 | 2-3 倍 |
+| **并行 CREATE INDEX** | `CREATE INDEX CONCURRENTLY`（PG11+） | 2-3 倍 |
 
-**Example: Large Aggregation**
+**示例：大型聚合**
 
 ```sql
--- Before: 12 seconds (single-threaded)
--- After: 3.5 seconds (4 workers)
+-- 之前：12 秒（单线程）
+-- 之后：3.5 秒（4 个 worker）
 SET max_parallel_workers_per_gather = 4;
 
-SELECT 
+SELECT
     DATE_TRUNC('hour', created_at) as hour,
     COUNT(*) as transactions,
     SUM(amount) as total_amount
@@ -587,84 +587,84 @@ GROUP BY hour;
 
 ---
 
-### When Parallel Query Hurts
+### 何时并行查询有害
 
-| Scenario | Why It Hurts | Alternative |
+| 场景 | 有害原因 | 替代方案 |
 |----------|--------------|-------------|
-| **Small tables (<10MB)** | Overhead > benefit | Disable parallelism |
-| **OLTP queries (<100ms)** | Setup time dominates | Keep `max_parallel_workers_per_gather = 0` |
-| **Many concurrent queries** | Worker starvation | Limit `max_parallel_workers` |
-| **Memory-bound workloads** | Workers compete for cache | Reduce workers |
-| **Functions marked UNSAFE** | Falls back to serial | Mark functions SAFE if possible |
+| **小表（<10MB）** | 开销 > 收益 | 禁用并行化 |
+| **OLTP 查询（<100ms）** | 设置时间主导 | 保持 `max_parallel_workers_per_gather = 0` |
+| **许多并发查询** | Worker 饿死 | 限制 `max_parallel_workers` |
+| **内存绑定工作负载** | Worker 竞争缓存 | 减少 worker |
+| **标记为 UNSAFE 的函数** | 回退到串行 | 尽可能标记函数为 SAFE |
 
-**Example: Parallel Overhead**
+**示例：并行开销**
 
 ```sql
--- Small table: parallel is SLOWER
-SELECT COUNT(*) FROM small_table;  -- 50ms serial, 80ms parallel
+-- 小表：并行更慢
+SELECT COUNT(*) FROM small_table;  -- 串行 50ms，并行 80ms
 
--- Why?
--- - Process creation: 5ms × 4 workers = 20ms
--- - DSM setup: 10ms
--- - Coordination: 5ms
--- - Actual scan: 5ms (table is tiny)
--- Total parallel: 40ms overhead + 5ms scan = 45ms+ (vs 50ms serial)
+-- 为什么？
+-- - 进程创建：5ms × 4 workers = 20ms
+-- - DSM 设置：10ms
+-- - 协调：5ms
+-- - 实际扫描：5ms（表很小）
+-- 总计并行：40ms 开销 + 5ms 扫描 = 45ms+（vs 50ms 串行）
 ```
 
-!!! warning "⚠️ The OLTP Trap"
-    For OLTP workloads (short, frequent queries), parallel query often **degrades** performance:
-    
-```sql
--- Typical OLTP query
-SELECT * FROM users WHERE id = 12345;  -- Uses index, returns 1 row
+!!! warning "⚠️ OLTP 陷阱"
+    对于 OLTP 工作负载（短暂、频繁的查询），并行查询通常会**降低**性能：
 
--- Parallel overhead: 30-50ms
--- Serial execution: 0.5ms
--- Result: 60-100x slower with parallelism!
+```sql
+-- 典型 OLTP 查询
+SELECT * FROM users WHERE id = 12345;  -- 使用索引，返回 1 行
+
+-- 并行开销：30-50ms
+-- 串行执行：0.5ms
+-- 结果：并行化慢 60-100 倍！
 ```
 
-**Solution:** Disable parallelism for OLTP:
+**解决方案：** 为 OLTP 禁用并行化：
 
 ```sql
--- In postgresql.conf for OLTP databases
+-- 在 OLTP 数据库的 postgresql.conf 中
 max_parallel_workers_per_gather = 0
 max_parallel_workers = 0
 ```
 
 ---
 
-## 6 Debugging Parallel Query Issues
+## 6 调试并行查询问题
 
-### Common Problems
+### 常见问题
 
-#### Problem 1: Workers Not Launched
+#### 问题 1：Worker 未启动
 
 ```
 Workers Planned: 4
-Workers Launched: 2  -- Only 2 started!
+Workers Launched: 2  -- 只启动了 2 个！
 ```
 
-**Causes:**
+**原因：**
 
-| Cause | Check | Fix |
+| 原因 | 检查 | 修复 |
 |-------|-------|-----|
-| Worker limit hit | `SHOW max_parallel_workers;` | Increase limit |
-| Memory pressure | Check `work_mem × workers` | Reduce `max_parallel_workers` |
-| Table too small | Check table size vs `min_parallel_table_scan_size` | Lower threshold or accept serial |
-| Function is UNSAFE | Check `proparallel` in `pg_proc` | Mark SAFE or rewrite |
+| 触及 worker 限制 | `SHOW max_parallel_workers;` | 增加限制 |
+| 内存压力 | 检查 `work_mem × workers` | 减少 `max_parallel_workers` |
+| 表太小 | 检查表大小与 `min_parallel_table_scan_size` | 降低阈值或接受串行 |
+| 函数是 UNSAFE | 检查 `pg_proc` 中的 `proparallel` | 标记为 SAFE 或重写 |
 
 ---
 
-#### Problem 2: Parallel Scan Falls Back to Index Scan
+#### 问题 2：并行扫描回退到索引扫描
 
 ```sql
--- Expected: Parallel Seq Scan
--- Actual: Index Scan (serial)
+-- 预期：Parallel Seq Scan
+-- 实际：Index Scan（串行）
 ```
 
-**Why:** The planner determined index scan is cheaper.
+**原因：** 规划器确定索引扫描更便宜。
 
-**Force parallel scan (for testing):**
+**强制并行扫描（仅测试）：**
 
 ```sql
 SET enable_indexscan = off;
@@ -675,12 +675,12 @@ EXPLAIN ANALYZE
 SELECT COUNT(*) FROM large_table;
 ```
 
-!!! warning "⚠️ Don't Force in Production"
-    Disabling index scans is for **debugging only**. The planner usually knows best. If parallel seq scan is truly better, adjust cost parameters instead.
+!!! warning "⚠️ 不要在生产环境强制"
+    禁用索引扫描仅用于**调试**。规划器通常最清楚。如果并行顺序扫描确实更好，请改为调整成本参数。
 
 ---
 
-#### Problem 3: Uneven Worker Load
+#### 问题 3：Worker 负载不均
 
 ```
 Worker 1: 50M rows, 3000ms
@@ -689,25 +689,25 @@ Worker 3: 15M rows, 900ms
 Worker 4: 5M rows, 300ms
 ```
 
-**Why:** Data skew (workers scan different-sized ranges).
+**原因：** 数据倾斜（worker 扫描不同大小的范围）。
 
-**Impact:** Slowest worker determines total time (Amdahl's Law).
+**影响：** 最慢的 worker 决定总时间（Amdahl 定律）。
 
-**Mitigation:**
+**缓解：**
 
-| Strategy | How |
+| 策略 | 方法 |
 |----------|-----|
-| Better data distribution | Reorganize table (PARTITION BY) |
-| More workers | More granular ranges |
-| Accept imbalance | Often not worth optimizing |
+| 更好的数据分布 | 重组表（PARTITION BY） |
+| 更多 worker | 更细粒度的范围 |
+| 接受不平衡 | 通常不值得优化 |
 
 ---
 
-### Monitoring Parallel Query
+### 监控并行查询
 
 ```sql
--- Check active parallel workers
-SELECT 
+-- 检查活跃的并行 worker
+SELECT
     pid,
     usename,
     query,
@@ -715,16 +715,16 @@ SELECT
 FROM pg_stat_activity
 WHERE backend_type = 'parallel worker';
 
--- Check parallel query statistics (PG14+)
-SELECT 
+-- 检查并行查询统计（PG14+）
+SELECT
     datname,
     numbackends,
     xact_commit,
     xact_rollback
 FROM pg_stat_database;
 
--- View parallel worker memory usage
-SELECT 
+-- 查看并行 worker 内存使用情况
+SELECT
     pid,
     usename,
     query,
@@ -736,11 +736,11 @@ WHERE query LIKE '%parallel%';
 
 ---
 
-## 7 Advanced: Parallel Query Internals
+## 7 高级：并行查询内部实现
 
 ### Dynamic Shared Memory (DSM)
 
-Workers communicate via **Dynamic Shared Memory**:
+Worker 通过**动态共享内存**通信：
 
 ```c
 /* Simplified from src/backend/storage/ipc/dsm.c */
@@ -766,19 +766,19 @@ dsm_attach(dsm_handle handle)
 }
 ```
 
-**What's stored in DSM:**
+**DSM 中存储的内容：**
 
-| Data | Size | Purpose |
+| 数据 | 大小 | 目的 |
 |------|------|---------|
-| Query plan | ~10-100KB | Workers need to know what to execute |
-| Table scan ranges | ~1KB per worker | Which blocks each worker scans |
-| Hash tables | Variable (MBs) | Shared hash for parallel hash join |
-| Partial aggregates | ~1KB per worker | Intermediate results |
-| Tuple queues | Variable | Rows transferred from workers to leader |
+| 查询计划 | ~10-100KB | Worker 需要知道执行什么 |
+| 表扫描范围 | 每个 worker ~1KB | 每个 worker 扫描哪些区块 |
+| 哈希表 | 可变（MB） | 并行哈希连接的共享哈希 |
+| 部分聚合 | 每个 worker ~1KB | 中间结果 |
+| 元组队列 | 可变 | 从 worker 传输到 leader 的行 |
 
 ---
 
-### Parallel Context Switching
+### 并行上下文切换
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -796,7 +796,7 @@ dsm_attach(dsm_handle handle)
 └─────────────────────────────────────────────────────────────┘
 ```
 
-**Timeline:**
+**时间轴：**
 
 ```
 0ms     5ms     10ms    15ms    20ms    100ms   3500ms
@@ -810,89 +810,89 @@ dsm_attach(dsm_handle handle)
 
 ---
 
-## 8 Practical Tuning Guide
+## 8 实用调整指南
 
-### OLTP Database
+### OLTP 数据库
 
 ```sql
 -- postgresql.conf
-max_parallel_workers_per_gather = 0  -- Disable parallel query
+max_parallel_workers_per_gather = 0  -- 禁用并行查询
 max_parallel_workers = 0
-max_parallel_maintenance_workers = 1  -- Keep for maintenance
+max_parallel_maintenance_workers = 1  -- 保留用于维护
 
--- Why: OLTP queries are short; parallel overhead hurts more than helps
+-- 原因：OLTP 查询很短；并行开销弊大于利
 ```
 
 ---
 
-### Analytics Database
+### 分析数据库
 
 ```sql
 -- postgresql.conf
-max_parallel_workers_per_gather = 8   -- Maximize parallelism
-max_parallel_workers = 32             -- Support multiple concurrent queries
-max_parallel_maintenance_workers = 4  -- Parallel VACUUM, CREATE INDEX
+max_parallel_workers_per_gather = 8   -- 最大化并行化
+max_parallel_workers = 32             -- 支持多个并发查询
+max_parallel_maintenance_workers = 4  -- 并行 VACUUM、CREATE INDEX
 
-min_parallel_table_scan_size = 4MB    -- Encourage parallelism
-parallel_setup_cost = 500.0           -- Lower barrier to parallelism
+min_parallel_table_scan_size = 4MB    -- 鼓励并行化
+parallel_setup_cost = 500.0           -- 降低并行化门槛
 parallel_tuple_cost = 0.05
 
--- Per-query (for critical reports)
+-- 每个查询（用于关键报表）
 SET LOCAL max_parallel_workers_per_gather = 16;
-SELECT /* complex analytical query */;
+SELECT /* 复杂分析查询 */;
 ```
 
 ---
 
-### Mixed Workload
+### 混合工作负载
 
 ```sql
 -- postgresql.conf
-max_parallel_workers_per_gather = 4   -- Moderate parallelism
-max_parallel_workers = 16             -- Support ~4 concurrent parallel queries
+max_parallel_workers_per_gather = 4   -- 适度并行化
+max_parallel_workers = 16             -- 支持约 4 个并发并行查询
 max_parallel_maintenance_workers = 2
 
-min_parallel_table_scan_size = 16MB   -- Only parallelize large scans
+min_parallel_table_scan_size = 16MB   -- 仅并行化大型扫描
 
--- Application-level tuning
--- OLTP queries: Use default (4 workers)
--- Analytical queries: SET LOCAL max_parallel_workers_per_gather = 8
+-- 应用程序级别调整
+-- OLTP 查询：使用默认（4 个 worker）
+-- 分析查询：SET LOCAL max_parallel_workers_per_gather = 8
 ```
 
 ---
 
-### Tuning Checklist
+### 调整检查清单
 
 ```
-□ Check current settings:
+□ 检查当前设置：
   SHOW max_parallel_workers_per_gather;
   SHOW max_parallel_workers;
   SHOW min_parallel_table_scan_size;
 
-□ Identify candidate queries:
-  -- Find queries with sequential scans on large tables
+□ 识别候选查询：
+  -- 寻找在大型表上具有顺序扫描的查询
   SELECT query, total_exec_time, calls
   FROM pg_stat_statements
   WHERE query LIKE '%Seq Scan%'
   ORDER BY total_exec_time DESC;
 
-□ Test with parallelism:
+□ 测试并行化：
   SET max_parallel_workers_per_gather = 4;
   EXPLAIN (ANALYZE, BUFFERS) <query>;
 
-□ Measure speedup:
-  -- Compare serial vs parallel execution time
-  -- Check Workers Launched matches Workers Planned
+□ 测量加速：
+  -- 比较串行与并行执行时间
+  -- 检查 Workers Launched 是否符合 Workers Planned
 
-□ Adjust based on results:
-  -- Good speedup (2x+): Keep settings
-  -- Marginal speedup (<1.5x): Reduce workers or disable
-  -- Slower: Disable parallelism for this query type
+□ 根据结果调整：
+  -- 良好的加速（2x+）：保持设置
+  -- 边际加速（<1.5x）：减少 worker 或禁用
+  -- 更慢：为此类查询禁用并行化
 ```
 
 ---
 
-## Summary: Parallel Query in One Diagram
+## 总结：一张图看懂并行查询
 
 ```mermaid
 flowchart BT
@@ -903,30 +903,30 @@ flowchart BT
         C --> E[Worker 2]
         C --> F[Worker 3]
         C --> G[Worker 4]
-        
+
         D --> H[Parallel Seq Scan]
         E --> I[Parallel Seq Scan]
         F --> J[Parallel Seq Scan]
         G --> K[Parallel Seq Scan]
-        
+
         H --> L[Table Range 1]
         I --> M[Table Range 2]
         J --> N[Table Range 3]
         K --> O[Table Range 4]
     end
-    
+
     subgraph "Configuration"
         P[max_parallel_workers_per_gather]
         Q[max_parallel_workers]
         R[min_parallel_table_scan_size]
     end
-    
+
     subgraph "Best For"
         S[Large table scans]
         T[Bulk aggregations]
         U[Hash joins]
     end
-    
+
     style B fill:#fce4ec,stroke:#c2185b
     style D fill:#fff3e0,stroke:#f57c00
     style E fill:#fff3e0,stroke:#f57c00
@@ -937,21 +937,21 @@ flowchart BT
     style R fill:#e3f2fd,stroke:#1976d2
 ```
 
-**Key Takeaways:**
+**关键要点：**
 
-| Aspect | Parallel Query |
+| 面向 | 并行查询 |
 |--------|----------------|
-| **Architecture** | Leader + workers via DSM |
-| **Gather node** | Collects results from workers |
-| **Gather Merge** | Preserves sort order |
-| **Best for** | Large scans, aggregations, hash joins |
-| **Avoid for** | OLTP, small tables, sub-100ms queries |
-| **Speedup** | 2x-4x typical, up to 10x for ideal workloads |
-| **Overhead** | ~20-50ms setup time |
+| **架构** | Leader + worker 通过 DSM |
+| **Gather 节点** | 收集 worker 的结果 |
+| **Gather Merge** | 保持排序顺序 |
+| **最适合** | 大型扫描、聚合、哈希连接 |
+| **避免用于** | OLTP、小表、低于 100ms 的查询 |
+| **加速** | 通常 2-4 倍，理想工作负载可达 10 倍 |
+| **开销** | 约 20-50ms 设置时间 |
 
 ---
 
-**Further Reading:**
+**进一步阅读：**
 
 - PostgreSQL Docs: ["Parallel Query"](https://www.postgresql.org/docs/current/parallel-query.html)
 - Robert Haas: ["Parallel Query in PostgreSQL"](https://rhaas.blogspot.com/2015/10/parallel-query-in-postgresql.html) (2015)
