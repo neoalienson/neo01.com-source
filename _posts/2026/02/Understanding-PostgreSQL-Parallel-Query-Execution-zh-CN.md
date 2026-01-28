@@ -250,20 +250,20 @@ postgres: neo01                                           # Parallel Leader
 !!! info "📌 PARALLEL 安全等级"
     函数标记有并行安全性：
 
-    | 等级 | 意义 | 可以并行执行？ |
-    |-------|---------|---------------------|
-    | `PARALLEL UNSAFE` | 可能修改状态 | ❌ 否 |
-    | `PARALLEL RESTRICTED` | 仅只读，但不能执行并行计划 | ⚠️ 仅 leader |
-    | `PARALLEL SAFE` | 纯只读 | ✅ 是 |
+| 等级 | 意义 | 可以并行执行？ |
+|-------|---------|---------------------|
+| `PARALLEL UNSAFE` | 可能修改状态 | ❌ 否 |
+| `PARALLEL RESTRICTED` | 仅只读，但不能执行并行计划 | ⚠️ 仅 leader |
+| `PARALLEL SAFE` | 纯只读 | ✅ 是 |
 
-    ```sql
-    -- 检查函数并行安全性
-    SELECT proname, proparallel
-    FROM pg_proc
-    WHERE proname = 'random';  -- 'u' = UNSAFE
+```sql
+-- 检查函数并行安全性
+SELECT proname, proparallel
+FROM pg_proc
+WHERE proname = 'random';  -- 'u' = UNSAFE
 
-    -- random() 是 UNSAFE（使用全局 RNG 状态）
-    ```
+-- random() 是 UNSAFE（使用全局 RNG 状态）
+```
 
 ---
 

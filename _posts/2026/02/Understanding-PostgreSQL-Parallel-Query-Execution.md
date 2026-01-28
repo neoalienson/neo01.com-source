@@ -250,20 +250,20 @@ Not all operators can run in parallel. PostgreSQL supports parallelism for speci
 !!! info "📌 PARALLEL Safety Levels"
     Functions are marked with parallel safety:
     
-    | Level | Meaning | Can Run in Parallel? |
-    |-------|---------|---------------------|
-    | `PARALLEL UNSAFE` | May modify state | ❌ No |
-    | `PARALLEL RESTRICTED` | Read-only, but can't execute parallel plans | ⚠️ Leader only |
-    | `PARALLEL SAFE` | Pure read-only | ✅ Yes |
-    
-    ```sql
-    -- Check function parallel safety
-    SELECT proname, proparallel 
-    FROM pg_proc 
-    WHERE proname = 'random';  -- 'u' = UNSAFE
-    
-    -- random() is UNSAFE (uses global RNG state)
-    ```
+| Level | Meaning | Can Run in Parallel? |
+|-------|---------|---------------------|
+| `PARALLEL UNSAFE` | May modify state | ❌ No |
+| `PARALLEL RESTRICTED` | Read-only, but can't execute parallel plans | ⚠️ Leader only |
+| `PARALLEL SAFE` | Pure read-only | ✅ Yes |
+
+```sql
+-- Check function parallel safety
+SELECT proname, proparallel 
+FROM pg_proc 
+WHERE proname = 'random';  -- 'u' = UNSAFE
+
+-- random() is UNSAFE (uses global RNG state)
+```
 
 ---
 

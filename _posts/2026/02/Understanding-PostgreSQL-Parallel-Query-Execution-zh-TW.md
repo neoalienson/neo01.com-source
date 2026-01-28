@@ -250,20 +250,20 @@ postgres: neo01                                           # Parallel Leader
 !!! info "📌 PARALLEL 安全等級"
     函式標記有平行安全性：
 
-    | 等級 | 意義 | 可以平行執行？ |
-    |-------|---------|---------------------|
-    | `PARALLEL UNSAFE` | 可能修改狀態 | ❌ 否 |
-    | `PARALLEL RESTRICTED` | 僅唯讀，但不能執行平行計畫 | ⚠️ 僅 leader |
-    | `PARALLEL SAFE` | 純唯讀 | ✅ 是 |
+| 等級 | 意義 | 可以平行執行？ |
+|-------|---------|---------------------|
+| `PARALLEL UNSAFE` | 可能修改狀態 | ❌ 否 |
+| `PARALLEL RESTRICTED` | 僅唯讀，但不能執行平行計畫 | ⚠️ 僅 leader |
+| `PARALLEL SAFE` | 純唯讀 | ✅ 是 |
 
-    ```sql
-    -- 檢查函式平行安全性
-    SELECT proname, proparallel
-    FROM pg_proc
-    WHERE proname = 'random';  -- 'u' = UNSAFE
+```sql
+-- 檢查函式平行安全性
+SELECT proname, proparallel
+FROM pg_proc
+WHERE proname = 'random';  -- 'u' = UNSAFE
 
-    -- random() 是 UNSAFE（使用全域 RNG 狀態）
-    ```
+-- random() 是 UNSAFE（使用全域 RNG 狀態）
+```
 
 ---
 
