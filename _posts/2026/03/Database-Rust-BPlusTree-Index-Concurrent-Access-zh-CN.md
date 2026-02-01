@@ -17,7 +17,7 @@ canonical_lang: en
 comments: true
 ---
 
-在 [第一部分](/2026/03/Building-PostgreSQL-Compatible-Database-Rust-Page-Storage-Buffer-Pool-zh-CN/) 中，我们建立了基础：页面式存储和缓冲池。但有个问题。
+在 [第一部分](/zh-CN/2026/03/Building-PostgreSQL-Compatible-Database-Rust-Page-Storage-Buffer-Pool/) 中，我们建立了基础：页面式存储和缓冲池。但有个问题。
 
 **寻找一列需要完整表扫描：**
 
