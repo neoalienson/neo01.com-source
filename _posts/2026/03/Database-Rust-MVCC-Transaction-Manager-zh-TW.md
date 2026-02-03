@@ -1,5 +1,5 @@
 ---
-title: "Building a PostgreSQL-Compatible Database in Rust: MVCC and Transaction Management"
+title: "使用 Rust 建構 PostgreSQL 相容資料庫：MVCC 與交易管理"
 date: 2026-03-03
 categories:
   - Development
@@ -7,8 +7,8 @@ tags:
   - PostgreSQL
   - Rust
   - Database Internals
-excerpt: "Part 3 of the Vaultgres journey: implementing MVCC for non-blocking reads and snapshot isolation. Deep dive into transaction IDs, visibility rules, vacuum, and the horror of transaction ID wraparound."
-lang: en
+excerpt: "Vaultgres 旅程第三部分：實作 MVCC 以實現非阻塞讀取和快照隔離。深入探討交易 ID、可見性規則、VACUUM，以及交易 ID 環繞的噩夢。"
+lang: zh-TW
 available_langs: []
 thumbnail: /assets/architecture/vaultgres_thumbnail.jpg
 thumbnail_80: /assets/architecture/vaultgres_thumbnail_80.jpg
@@ -17,9 +17,9 @@ canonical_lang: en
 comments: true
 ---
 
-In [Part 2](/2026/03/Building-PostgreSQL-Compatible-Database-Rust-BPlusTree-Index-Concurrent-Access/), we built a concurrent B+Tree index. But there's a fundamental problem with our approach.
+在 [第二部分](/zh-TW/2026/03/Building-PostgreSQL-Compatible-Database-Rust-BPlusTree-Index-Concurrent-Access/) 中，我們建構了併發 B+Tree 索引。但我們的方法有個根本問題。
 
-**Readers block writers. Writers block readers.**
+**讀者阻塞寫入者。寫入者阻塞讀者。**
 
 ```rust
 // Current implementation
@@ -29,19 +29,19 @@ let lock = page.read();  // Reader acquires lock
 // Writer: 😭
 ```
 
-This is unacceptable for a real database. PostgreSQL handles **thousands of concurrent transactions** with readers never blocking writers. How?
+這對真正的資料庫來說是無法接受的。PostgreSQL 處理**數千個併發交易**，讀者永遠不會阻塞寫入者。如何做到？
 
-**MVCC: Multi-Version Concurrency Control.**
+**MVCC：多版本併發控制。**
 
-Today: implementing MVCC in Rust with snapshot isolation, transaction management, and confronting the nightmare of transaction ID wraparound.
+今天：在 Rust 中實作帶快照隔離的 MVCC、交易管理，並面對交易 ID 環繞的噩夢。
 
 ---
 
-## 1 The MVCC Insight
+## 1 MVCC 的洞察
 
-### The Problem: Locking Is Too Restrictive
+### 問題：鎖定太嚴格
 
-**Traditional locking (2PL):**
+**傳統鎖定（2PL）：**
 
 ```
 Transaction A: SELECT * FROM users WHERE id = 1  -- Reads row X
@@ -51,24 +51,24 @@ Transaction A: (still reading, maybe for 10 seconds)
 Transaction B: 😡 Still blocked!
 ```
 
-**MVCC approach:**
+**MVCC 方法：**
 
 ```
 Transaction A: SELECT * FROM users WHERE id = 1
-               -- Sees version 1 of row X (old but consistent)
+               -- 看見版本 1 的列 X（舊但一致）
 
 Transaction B: UPDATE users SET balance = 100 WHERE id = 1
-               -- Creates version 2 of row X
-               -- Not blocked!
+               -- 建立版本 2 的列 X
+               -- 不被阻塞！
 
-Both transactions proceed without blocking each other.
+兩個交易互不阻塞。
 ```
 
 ---
 
-### How MVCC Works
+### MVCC 如何運作
 
-**Every row has multiple versions:**
+**每列有多個版本：**
 
 ```
 Row: users.id = 1
@@ -88,20 +88,20 @@ Version 3: {id: 1, balance: 150, xmin: 300, xmax: 400}
                              by txn 300  txn 400
 ```
 
-**Transaction metadata:**
+**交易中繼資料：**
 
-| Field | Meaning |
+| 欄位 | 意義 |
 |-------|---------|
-| `xmin` | Transaction ID that created this version |
-| `xmax` | Transaction ID that deleted this version (NULL = still alive) |
-| `cmin` | Command ID within transaction (for statement-level visibility) |
-| `cmax` | Command ID that deleted this version |
+| `xmin` | 建立此版本的交易 ID |
+| `xmax` | 刪除此版本的交易 ID（NULL = 仍然存活） |
+| `cmin` | 交易內的命令 ID（用於語句級可見性） |
+| `cmax` | 刪除此版本的命令 ID |
 
 ---
 
-## 2 Transaction IDs and Snapshots
+## 2 交易 ID 和快照
 
-### Transaction ID Allocation
+### 交易 ID 分配
 
 ```rust
 // src/transaction/txn_id.rs
@@ -131,15 +131,15 @@ impl TransactionIdGenerator {
 }
 ```
 
-**Problem:** `u32` wraps at 4 billion. What happens then?
+**問題：** `u32` 在 40 億時會環繞。然後發生什麼？
 
-**Answer:** Catastrophe. We'll handle this later.
+**答案：** 災難。我們稍後處理。
 
 ---
 
-### Snapshots: The Heart of MVCC
+### 快照：MVCC 的核心
 
-A **snapshot** captures which transactions are visible:
+**快照** 捕捉哪些交易是可見的：
 
 ```rust
 // src/transaction/snapshot.rs
@@ -179,7 +179,7 @@ impl Snapshot {
 }
 ```
 
-**Visual example:**
+**視覺範例：**
 
 ```
 Time:     100    150    200    250    300    350
@@ -200,9 +200,9 @@ Visibility rules:
 
 ---
 
-## 3 Row Layout with MVCC
+## 3 帶 MVCC 的列佈局
 
-### Extended Page Header
+### 擴展頁面標頭
 
 ```rust
 // src/storage/mvcc_page.rs
@@ -224,7 +224,7 @@ pub struct MvccRow {
 }
 ```
 
-**Page layout with MVCC:**
+**帶 MVCC 的頁面佈局：**
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -242,7 +242,7 @@ pub struct MvccRow {
 
 ---
 
-### Insert: Creating a New Version
+### 插入：建立新版本
 
 ```rust
 // src/transaction/mvcc_operations.rs
@@ -270,7 +270,7 @@ impl MvccTable {
 }
 ```
 
-**WAL record for insert:**
+**插入的 WAL 記錄：**
 
 ```rust
 #[derive(Debug, Clone)]
@@ -284,9 +284,9 @@ pub struct WalRecordInsert {
 
 ---
 
-### Update: Creating a New Version and Marking Old
+### 更新：建立新版本並標記舊版本
 
-**Update is actually delete + insert:**
+**更新實際上是刪除 + 插入：**
 
 ```mermaid
 flowchart TD
@@ -332,7 +332,7 @@ impl MvccTable {
 
 ---
 
-### Select: Visibility Check
+### 查詢：可見性檢查
 
 ```rust
 impl MvccTable {
@@ -350,7 +350,7 @@ impl MvccTable {
 }
 ```
 
-**Example scenario:**
+**範例情境：**
 
 ```
 Transaction A (xid=100):          Transaction B (xid=200):
@@ -373,9 +373,9 @@ Transaction A (xid=100):          Transaction B (xid=200):
 
 ---
 
-## 4 Transaction States and Visibility
+## 4 交易狀態和可見性
 
-### Transaction Lifecycle
+### 交易生命週期
 
 ```mermaid
 stateDiagram-v2
@@ -401,21 +401,21 @@ stateDiagram-v2
     end note
 ```
 
-### Visibility Matrix
+### 可見性矩陣
 
-| Row State | Transaction State | Visible? |
+| 列狀態 | 交易狀態 | 可見？ |
 |-----------|-------------------|----------|
-| `xmin < snapshot.xmin`, `xmax = 0` | Committed | ✅ Yes |
-| `xmin < snapshot.xmin`, `xmax < snapshot.xmin` | Committed | ❌ No (deleted) |
-| `xmin < snapshot.xmin`, `xmin in active` | In Progress | ❌ No |
-| `xmin >= snapshot.xmax` | Any | ❌ No (future) |
-| `xmin = current_txn` | Current | ✅ Yes (own changes) |
+| `xmin < snapshot.xmin`, `xmax = 0` | Committed | ✅ 是 |
+| `xmin < snapshot.xmin`, `xmax < snapshot.xmin` | Committed | ❌ 否（已刪除） |
+| `xmin < snapshot.xmin`, `xmin in active` | In Progress | ❌ 否 |
+| `xmin >= snapshot.xmax` | Any | ❌ 否（未來） |
+| `xmin = current_txn` | Current | ✅ 是（自己的變更） |
 
 ---
 
-## 5 VACUUM: Cleaning Up Dead Versions
+## 5 VACUUM：清理死版本
 
-### The Problem: Dead Tuples Accumulate
+### 問題：死元組累積
 
 ```
 After many updates:
@@ -431,11 +431,11 @@ Page:
 └─────────────────────────────────────────────────────────────┘
 ```
 
-**Without VACUUM:** Table grows forever. Performance degrades.
+**沒有 VACUUM：** 表永遠增長。效能下降。
 
 ---
 
-### VACUUM Process
+### VACUUM 流程
 
 ```rust
 // src/transaction/vacuum.rs
@@ -474,12 +474,12 @@ impl VacuumWorker {
 }
 ```
 
-**VACUUM doesn't lock:**
+**VACUUM 不鎖定：**
 
-| Operation | Lock Level |
+| 操作 | 鎖定級別 |
 |-----------|------------|
-| Regular VACUUM | `ShareUpdateExclusiveLock` (allows reads/writes) |
-| VACUUM FULL | `AccessExclusiveLock` (blocks everything) |
+| Regular VACUUM | `ShareUpdateExclusiveLock`（允許讀取/寫入） |
+| VACUUM FULL | `AccessExclusiveLock`（阻塞所有） |
 
 ---
 
@@ -524,9 +524,9 @@ pub fn vacuum_full(&self, table_id: u64) -> Result<(), VacuumError> {
 
 ---
 
-## 6 Transaction ID Wraparound: The 4 Billion Row Problem
+## 6 交易 ID 環繞：40 億列問題
 
-### The Math
+### 數學計算
 
 ```rust
 TransactionId = u32  // 0 to 4,294,967,295
@@ -539,7 +539,7 @@ After 50 days: OVERFLOW! 😱
 
 ---
 
-### What Happens on Wraparound
+### 環繞時發生什麼
 
 ```
 Before wraparound:
@@ -550,7 +550,7 @@ Transaction 0 (wrapped):   SELECT * FROM users;
                            → Wrong visibility! CORRUPTION!
 ```
 
-**PostgreSQL's solution: 2-phase transaction IDs**
+**PostgreSQL 的解決方案：2 相位交易 ID**
 
 ```rust
 // Transaction ID comparison with wraparound handling
@@ -568,9 +568,9 @@ pub fn transaction_id_precedes(id1: TransactionId, id2: TransactionId) -> bool {
 
 ---
 
-### Freezing Old Transactions
+### 冷凍舊交易
 
-**Vacuum freeze:** Mark very old transactions as "frozen"
+**Vacuum freeze：** 標記非常舊的交易為「冷凍」
 
 ```rust
 pub const FROZEN_XID: TransactionId = 2;  // Special value
@@ -598,7 +598,7 @@ pub fn vacuum_freeze(&self, table_id: u64, freeze_limit: TransactionId) -> Resul
 }
 ```
 
-**Frozen rows are always visible:**
+**冷凍列永遠可見：**
 
 ```rust
 impl Snapshot {
@@ -615,7 +615,7 @@ impl Snapshot {
 
 ---
 
-### Autovacuum: Preventing Wraparound Automatically
+### Autovacuum：自動防止環繞
 
 ```rust
 // src/transaction/autovacuum.rs
@@ -645,39 +645,39 @@ impl AutovacuumLauncher {
 }
 ```
 
-**PostgreSQL's default thresholds:**
+**PostgreSQL 的預設閾值：**
 
-| Parameter | Default | Meaning |
+| 參數 | 預設值 | 意義 |
 |-----------|---------|---------|
-| `autovacuum_vacuum_threshold` | 50 | Min dead tuples before vacuum |
-| `autovacuum_vacuum_scale_factor` | 0.2 | +20% of table size |
-| `autovacuum_freeze_max_age` | 200M | Max transactions before forced freeze |
+| `autovacuum_vacuum_threshold` | 50 | 真空前的最小死元組 |
+| `autovacuum_vacuum_scale_factor` | 0.2 | +表大小的 20% |
+| `autovacuum_freeze_max_age` | 200M | 強制冷凍前的最大交易數 |
 
 ---
 
-## 7 Isolation Levels
+## 7 隔離級別
 
-### ANSI SQL Isolation Levels
+### ANSI SQL 隔離級別
 
-| Isolation Level | Dirty Read | Non-Repeatable Read | Phantom Read |
+| 隔離級別 | 髒讀 | 不可重複讀 | 幻影讀 |
 |-----------------|------------|---------------------|--------------|
-| Read Uncommitted | Possible | Possible | Possible |
-| Read Committed | ❌ Prevented | Possible | Possible |
-| Repeatable Read | ❌ Prevented | ❌ Prevented | Possible |
-| Serializable | ❌ Prevented | ❌ Prevented | ❌ Prevented |
+| Read Uncommitted | 可能 | 可能 | 可能 |
+| Read Committed | ❌ 防止 | 可能 | 可能 |
+| Repeatable Read | ❌ 防止 | ❌ 防止 | 可能 |
+| Serializable | ❌ 防止 | ❌ 防止 | ❌ 防止 |
 
 ---
 
-### PostgreSQL's Implementation
+### PostgreSQL 的實作
 
-**PostgreSQL uses MVCC for all isolation levels:**
+**PostgreSQL 對所有隔離級別使用 MVCC：**
 
-| Isolation Level | Implementation |
+| 隔離級別 | 實作 |
 |-----------------|----------------|
-| Read Uncommitted | Same as Read Committed |
-| Read Committed | Fresh snapshot per statement |
-| Repeatable Read | Single snapshot per transaction |
-| Serializable | Single snapshot + predicate locking |
+| Read Uncommitted | 同 Read Committed |
+| Read Committed | 每個語句新快照 |
+| Repeatable Read | 每個交易單一笑快照 |
+| Serializable | 單一笑快照 + 謂詞鎖定 |
 
 ```rust
 #[derive(Debug, Clone, Copy)]
@@ -705,7 +705,7 @@ impl Transaction {
 
 ---
 
-### Serializable Isolation: Predicate Locking
+### 可序列化隔離：謂詞鎖定
 
 ```rust
 // Simplified predicate locking
@@ -736,15 +736,15 @@ impl TransactionManager {
 }
 ```
 
-**On conflict:** Abort one transaction with `serialization_failure` error.
+**衝突時：** 中止一個交易，帶 `serialization_failure` 錯誤。
 
 ---
 
-## 8 Challenges Building in Rust
+## 8 用 Rust 建構的挑戰
 
-### Challenge 1: Snapshot Lifetime
+### 挑戰 1：快照生命週期
 
-**Problem:** Snapshots need to outlive the transaction that created them.
+**問題：** 快照需要比建立它的交易更長壽。
 
 ```rust
 // ❌ Doesn't work
@@ -754,7 +754,7 @@ pub fn begin_transaction(&self) -> Transaction {
 }
 ```
 
-**Solution: Owned snapshots**
+**解決方案： owned 快照**
 
 ```rust
 // ✅ Works
@@ -769,9 +769,9 @@ pub fn begin_transaction(&self) -> Transaction {
 
 ---
 
-### Challenge 2: Atomic Transaction State
+### 挑戰 2：原子交易狀態
 
-**Problem:** Multiple threads need to see consistent transaction state.
+**問題：** 多個執行緒需要看到一致的交易狀態。
 
 ```rust
 // ❌ Race condition
@@ -781,7 +781,7 @@ pub fn commit(&self, txn: &mut Transaction) {
 }
 ```
 
-**Solution: Atomic state with proper ordering**
+**解決方案：帶適當順序的原子狀態**
 
 ```rust
 // ✅ Works
@@ -807,9 +807,9 @@ impl Transaction {
 
 ---
 
-### Challenge 3: Vacuum Without Blocking
+### 挑戰 3：不阻塞的 VACUUM
 
-**Problem:** How to vacuum while transactions are reading?
+**問題：** 如何在交易讀取時進行 VACUUM？
 
 ```rust
 // ❌ Blocks readers
@@ -819,7 +819,7 @@ pub fn vacuum(&self) {
 }
 ```
 
-**Solution: Two-phase vacuum**
+**解決方案：兩階段 VACUUM**
 
 ```rust
 // ✅ Non-blocking
@@ -838,44 +838,44 @@ pub fn vacuum(&self) {
 
 ---
 
-## 9 How AI Accelerated This
+## 9 AI 如何加速這項工作
 
-### What AI Got Right
+### AI 做對了什麼
 
-| Task | AI Contribution |
+| 任務 | AI 貢獻 |
 |------|-----------------|
-| **Visibility rules** | Generated correct xmin/xmax logic |
-| **Wraparound handling** | Explained 2's complement trick |
-| **Snapshot structure** | Suggested xmin/xmax/active pattern |
-| **VACUUM design** | Outlined two-phase approach |
+| **可見性規則** | 產生正確的 xmin/xmax 邏輯 |
+| **環繞處理** | 解釋 2 的補數技巧 |
+| **快照結構** | 建議 xmin/xmax/active 模式 |
+| **VACUUM 設計** | 概述兩階段方法 |
 
 ---
 
-### What AI Got Wrong
+### AI 做錯了什麼
 
-| Issue | What Happened |
+| 問題 | 發生什麼事 |
 |-------|---------------|
-| **Initial visibility** | First draft didn't handle own uncommitted writes |
-| **Freeze logic** | Missed that frozen rows need special handling in visibility |
-| **Serializable isolation** | Suggested full serializability without predicate locking (wrong!) |
+| **初始可見性** | 初稿沒有處理自己未提交的寫入 |
+| **冷凍邏輯** | 忽略了冷凍列需要在可見性中特殊處理 |
+| **可序列化隔離** | 建議沒有謂詞鎖定的完全可序列化（錯誤！） |
 
-**Pattern:** MVCC is subtle. AI gets the 80% case. Edge cases require deep understanding.
+**模式：** MVCC 很微妙。AI 獲得 80% 的情況。邊界情況需要深入理解。
 
 ---
 
-### Example: Debugging a Visibility Bug
+### 範例：除錯可見性錯誤
 
-**My question to AI:**
+**我問 AI 的問題：**
 
-> "Transaction A inserts a row, then selects it. But the select doesn't see the row. Why?"
+> "交易 A 插入一列，然後查詢它。但查詢看不到該列。為什麼？"
 
-**What I learned:**
+**我學到的：**
 
-1. Transactions must see their **own** uncommitted writes
-2. Need to track `current_transaction_id` in snapshot
-3. Visibility check needs special case for `row_xmin == my_xid`
+1. 交易必須看到**自己的**未提交寫入
+2. 需要在快照中追蹤 `current_transaction_id`
+3. 可見性檢查需要為 `row_xmin == my_xid` 特殊處理
 
-**Result:** Fixed `is_visible()`:
+**結果：** 修復 `is_visible()`：
 
 ```rust
 pub fn is_visible(&self, row_xmin: TransactionId, row_xmax: Option<TransactionId>, my_xid: TransactionId) -> bool {
@@ -890,7 +890,7 @@ pub fn is_visible(&self, row_xmin: TransactionId, row_xmax: Option<TransactionId
 
 ---
 
-## Summary: MVCC in One Diagram
+## 總結：MVCC 一張圖
 
 ```mermaid
 flowchart BT
@@ -927,20 +927,20 @@ flowchart BT
     style O fill:#fff3e0,stroke:#f57c00
 ```
 
-**Key Takeaways:**
+**關鍵要點：**
 
-| Concept | Why It Matters |
+| 概念 | 為什麼重要 |
 |---------|----------------|
-| **MVCC** | Readers don't block writers, writers don't block readers |
-| **Snapshots** | Consistent view of data at a point in time |
-| **Transaction IDs** | Track version creation/deletion |
-| **VACUUM** | Reclaim space from dead versions |
-| **Wraparound** | 4 billion transaction limit requires freezing |
-| **Isolation levels** | Trade-off between consistency and concurrency |
+| **MVCC** | 讀者不阻塞寫入者，寫入者不阻塞讀者 |
+| **快照** | 在時間點一致的資料視圖 |
+| **交易 ID** | 追蹤版本建立/刪除 |
+| **VACUUM** | 從死版本回收空間 |
+| **環繞** | 40 億交易限制需要冷凍 |
+| **隔離級別** | 一致性與併發性之間的權衡 |
 
 ---
 
-**Further Reading:**
+**進一步閱讀：**
 
 - PostgreSQL Source: [`src/backend/access/heap/heapam_visibility.c`](https://github.com/postgres/postgres/blob/master/src/backend/access/heap/heapam_visibility.c)
 - PostgreSQL Source: [`src/backend/access/transam/`](https://github.com/postgres/tree/master/src/backend/access/transam)
