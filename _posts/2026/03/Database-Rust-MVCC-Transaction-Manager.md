@@ -1,5 +1,5 @@
 ---
-title: "Building a PostgreSQL-Compatible Database in Rust: MVCC and Transaction Management"
+title: "Database in Rust: MVCC and Transaction Management"
 date: 2026-03-03
 categories:
   - Development
