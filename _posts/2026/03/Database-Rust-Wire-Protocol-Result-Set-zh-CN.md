@@ -1,5 +1,5 @@
 ---
-title: "Database in Rust: Wire Protocol and Result Set Serialization"
+title: "使用 Rust 构建 PostgreSQL 兼容数据库：通信协议与结果集序列化"
 date: 2026-03-05
 categories:
   - Development
@@ -7,8 +7,8 @@ tags:
   - PostgreSQL
   - Rust
   - Database Internals
-excerpt: "Part 5 of the Vaultgres journey: implementing the PostgreSQL wire protocol. Deep dive into message framing, startup handshake, extended query protocol, and serializing result sets that psql and drivers can understand."
-lang: en
+excerpt: "Vaultgres 旅程第五部分：实现 PostgreSQL 通信协议。深入探讨消息框架、启动握手、扩展查询协议，以及序列化 psql 和驱动程序能理解的结果集。"
+lang: zh-CN
 available_langs: []
 thumbnail: /assets/architecture/vaultgres_thumbnail.jpg
 thumbnail_80: /assets/architecture/vaultgres_thumbnail_80.jpg
@@ -17,9 +17,9 @@ canonical_lang: en
 comments: true
 ---
 
-In [Part 4](/2026/03/Building-PostgreSQL-Compatible-Database-Rust-WAL-Crash-Recovery-ARIES/), we built WAL and crash recovery. Our database can now survive power failures. But there's a problem.
+在 [第四部分](/zh-CN/2026/03/Building-PostgreSQL-Compatible-Database-Rust-WAL-Crash-Recovery-ARIES/) 中，我们构建了 WAL 和崩溃恢复。我们的数据库现在可以在停电中存活。但有个问题。
 
-**How do clients actually talk to our database?**
+**客户端实际上如何与我们的数据库对话？**
 
 ```
 ┌─────────────┐                          ┌─────────────┐
@@ -29,19 +29,19 @@ In [Part 4](/2026/03/Building-PostgreSQL-Compatible-Database-Rust-WAL-Crash-Reco
 └─────────────┘                          └─────────────┘
 ```
 
-We could invent our own protocol. But then we'd need to build a client from scratch.
+我们可以发明自己的协议。但那样我们就必须从头构建客户端。
 
-**Better approach:** Speak PostgreSQL's wire protocol. Then `psql`, JDBC, libpq—all existing tools—just work.
+**更好的方法：** 说 PostgreSQL 的通信协议。然后 `psql`、JDBC、libpq——所有现有工具——都能直接用。
 
-Today: implementing the PostgreSQL wire protocol in Rust, from startup handshake to result set serialization.
+今天：在 Rust 中实现 PostgreSQL 通信协议，从启动握手到结果集序列化。
 
 ---
 
-## 1 The Wire Protocol Overview
+## 1 通信协议概述
 
-### Frontend/Backend Model
+### Frontend/Backend 模型
 
-PostgreSQL uses a **frontend/backend** architecture:
+PostgreSQL 使用 **frontend/backend** 架构：
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -62,9 +62,9 @@ PostgreSQL uses a **frontend/backend** architecture:
 
 ---
 
-### Message Structure
+### 消息结构
 
-Every message has the same format:
+每个消息都有相同的格式：
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -84,34 +84,34 @@ Example: SimpleQuery ('Q')
 └─────────────────────────────────────────────────────────────┘
 ```
 
-**Key insight:** Length is **big-endian** (network byte order) and **includes itself** (not the type byte).
+**关键洞察：** 长度是**大端序**（网络字节顺序）且**包含自身**（不包含类型字节）。
 
 ---
 
-### Message Types
+### 消息类型
 
-| Type | Code | Direction | Purpose |
+| 类型 | 代码 | 方向 | 目的 |
 |------|------|-----------|---------|
-| **StartupMessage** | (none) | F→B | Initial connection (no type byte) |
-| **AuthenticationOk** | 'R' | B→F | Login successful |
-| **Query** | 'Q' | F→B | Simple query (SQL string) |
-| **RowDescription** | 'T' | B→F | Column metadata |
-| **DataRow** | 'D' | B→F | Actual row data |
-| **CommandComplete** | 'C' | B→F | Query finished |
-| **ReadyForQuery** | 'Z' | B→F | Server ready for next query |
-| **ErrorResponse** | 'E' | B→F | Something went wrong |
-| **Parse** | 'P' | F→B | Extended query: prepare |
-| **Bind** | 'B' | F→B | Extended query: bind parameters |
-| **Execute** | 'E' | F→B | Extended query: run |
-| **Sync** | 'S' | F→B | Extended query: finish batch |
+| **StartupMessage** | (none) | F→B | 初始连接（无类型字节） |
+| **AuthenticationOk** | 'R' | B→F | 登录成功 |
+| **Query** | 'Q' | F→B | 简单查询（SQL 字符串） |
+| **RowDescription** | 'T' | B→F | 字段元数据 |
+| **DataRow** | 'D' | B→F | 实际行数据 |
+| **CommandComplete** | 'C' | B→F | 查询完成 |
+| **ReadyForQuery** | 'Z' | B→F | 服务器准备好下一个查询 |
+| **ErrorResponse** | 'E' | B→F | 出错了 |
+| **Parse** | 'P' | F→B | 扩展查询：准备 |
+| **Bind** | 'B' | F→B | 扩展查询：绑定参数 |
+| **Execute** | 'E' | F→B | 扩展查询：执行 |
+| **Sync** | 'S' | F→B | 扩展查询：完成批次 |
 
 F→B = Frontend to Backend, B→F = Backend to Frontend
 
 ---
 
-## 2 Connection Startup
+## 2 连接启动
 
-### The Handshake Flow
+### 握手流程
 
 ```mermaid
 sequenceDiagram
@@ -134,7 +134,7 @@ sequenceDiagram
 
 ### StartupMessage
 
-The first message is special—**no type byte**, just length:
+第一个消息很特殊——**没有类型字节**，只有长度：
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -215,7 +215,7 @@ impl StartupMessage {
 
 ---
 
-### Authentication and ParameterStatus
+### Authentication 和 ParameterStatus
 
 ```rust
 // src/wire_protocol/messages.rs
@@ -271,20 +271,20 @@ pub enum TransactionStatus {
 }
 ```
 
-**Server sends these parameters:**
+**服务器发送这些参数：**
 
-| Parameter | Value | Purpose |
+| 参数 | 值 | 目的 |
 |-----------|-------|---------|
-| `server_version` | `16.0` | PostgreSQL version we're emulating |
-| `server_encoding` | `UTF8` | Character encoding |
-| `client_encoding` | `UTF8` | Client's encoding |
-| `integer_datetimes` | `on` | 64-bit integer timestamps |
+| `server_version` | `16.0` | 我们模拟的 PostgreSQL 版本 |
+| `server_encoding` | `UTF8` | 字符编码 |
+| `client_encoding` | `UTF8` | 客户端的编码 |
+| `integer_datetimes` | `on` | 64 位整数时间戳 |
 
 ---
 
-## 3 Simple Query Protocol
+## 3 简单查询协议
 
-### Query Flow
+### 查询流程
 
 ```
 Client: Query("SELECT id, name FROM users WHERE id = 1")
@@ -298,7 +298,7 @@ Server: ReadyForQuery ('I')
 
 ---
 
-### RowDescription: Telling Clients About Columns
+### RowDescription：告诉客户端关于字段
 
 ```rust
 // src/wire_protocol/row_description.rs
@@ -345,7 +345,7 @@ impl RowDescription {
 }
 ```
 
-**Example output:**
+**范例输出：**
 
 ```
 SELECT id, name FROM users
@@ -374,7 +374,7 @@ RowDescription:
 
 ---
 
-### DataRow: Serializing Actual Rows
+### DataRow：序列化实际行
 
 ```rust
 // src/wire_protocol/data_row.rs
@@ -420,7 +420,7 @@ impl DataRow {
 }
 ```
 
-**Example:**
+**范例：**
 
 ```
 Row: id=1, name="Alice", email=NULL
@@ -437,9 +437,9 @@ DataRow:
 
 ---
 
-### Text vs. Binary Format
+### 文本 vs. 二进制格式
 
-**Text format (format_code = 0):** Human-readable strings
+**文本格式（format_code = 0）：** 可读字符串
 
 ```
 INT4: "42"
@@ -447,7 +447,7 @@ TEXT: "Alice"
 TIMESTAMP: "2026-03-29 14:30:00.123456+00"
 ```
 
-**Binary format (format_code = 1):** Native representation
+**二进制格式（format_code = 1）：** 原生表示
 
 ```rust
 // src/wire_protocol/type_encoding.rs
@@ -489,18 +489,18 @@ pub fn encode_timestamp(value: chrono::DateTime<chrono::Utc>, format: i16) -> Ve
 
 ---
 
-## 4 Extended Query Protocol
+## 4 扩展查询协议
 
-### Why Extended Query?
+### 为什么需要扩展查询？
 
-**Simple Query:** SQL injection risk, no prepared statements
+**简单查询：** SQL 注入风险，无预备语句
 
 ```
 Client: Query("SELECT * FROM users WHERE id = " + user_input)
 → SQL injection vulnerability!
 ```
 
-**Extended Query:** Prepared statements, parameter binding
+**扩展查询：** 预备语句，参数绑定
 
 ```
 Client: Parse("SELECT * FROM users WHERE id = $1")
@@ -511,7 +511,7 @@ Client: Execute()
 
 ---
 
-### Extended Query Flow
+### 扩展查询流程
 
 ```mermaid
 sequenceDiagram
@@ -536,7 +536,7 @@ sequenceDiagram
 
 ---
 
-### Parse: Preparing a Statement
+### Parse：准备语句
 
 ```rust
 // src/wire_protocol/parse.rs
@@ -587,7 +587,7 @@ pub fn parse_complete(builder: &mut MessageBuilder) -> &[u8] {
 
 ---
 
-### Bind: Creating a Portal
+### Bind：创建 Portal
 
 ```rust
 // src/wire_protocol/bind.rs
@@ -663,7 +663,7 @@ pub fn bind_complete(builder: &mut MessageBuilder) -> &[u8] {
 
 ---
 
-### Execute: Running the Prepared Statement
+### Execute：执行预备语句
 
 ```rust
 // src/wire_protocol/execute.rs
@@ -682,11 +682,11 @@ impl ExecuteMessage {
 }
 ```
 
-**Server response:** DataRow messages (no specific "ExecuteComplete" message)
+**服务器响应：** DataRow 消息（没有特定的 "ExecuteComplete" 消息）
 
 ---
 
-### Sync: Finishing the Batch
+### Sync：完成批次
 
 ```rust
 // src/wire_protocol/sync.rs
@@ -717,9 +717,9 @@ pub fn sync_complete(builder: &mut MessageBuilder, status: TransactionStatus) ->
 
 ---
 
-## 5 Complete Query Execution Flow
+## 5 完整的查询执行流程
 
-### Putting It All Together
+### 整合在一起
 
 ```rust
 // src/wire_protocol/handler.rs
@@ -804,7 +804,7 @@ impl ProtocolHandler {
 
 ---
 
-### Result Set Serialization Example
+### 结果集序列化范例
 
 ```rust
 // src/wire_protocol/result_set.rs
@@ -879,7 +879,7 @@ let result = ResultSet {
 result.send_to(&mut stream, &mut builder)?;
 ```
 
-**What psql receives:**
+**psql 接收的内容：**
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -902,25 +902,25 @@ result.send_to(&mut stream, &mut builder)?;
 
 ---
 
-## 6 PostgreSQL Type OIDs
+## 6 PostgreSQL 类型 OID
 
-### Common Types
+### 常见类型
 
-| Type Name | OID | Size | Description |
+| 类型名称 | OID | 大小 | 说明 |
 |-----------|-----|------|-------------|
-| `BOOL` | 16 | 1 | Boolean |
-| `INT2` (SMALLINT) | 21 | 2 | 2-byte integer |
-| `INT4` (INTEGER) | 23 | 4 | 4-byte integer |
-| `INT8` (BIGINT) | 20 | 8 | 8-byte integer |
-| `TEXT` | 25 | -1 | Variable-length text |
-| `VARCHAR` | 1043 | -1 | Variable-length char |
-| `TIMESTAMP` | 1114 | 8 | Timestamp without timezone |
-| `TIMESTAMPTZ` | 1184 | 8 | Timestamp with timezone |
-| `FLOAT4` (REAL) | 700 | 4 | 4-byte float |
-| `FLOAT8` (DOUBLE) | 701 | 8 | 8-byte float |
-| `NUMERIC` | 1700 | -1 | Arbitrary precision |
-| `BYTEA` | 17 | -1 | Binary data |
-| `OID` | 26 | 4 | Object identifier |
+| `BOOL` | 16 | 1 | 布尔值 |
+| `INT2` (SMALLINT) | 21 | 2 | 2 字节整数 |
+| `INT4` (INTEGER) | 23 | 4 | 4 字节整数 |
+| `INT8` (BIGINT) | 20 | 8 | 8 字节整数 |
+| `TEXT` | 25 | -1 | 可变长度文本 |
+| `VARCHAR` | 1043 | -1 | 可变长度字符 |
+| `TIMESTAMP` | 1114 | 8 | 无时区时间戳 |
+| `TIMESTAMPTZ` | 1184 | 8 | 有时区时间戳 |
+| `FLOAT4` (REAL) | 700 | 4 | 4 字节浮点数 |
+| `FLOAT8` (DOUBLE) | 701 | 8 | 8 字节浮点数 |
+| `NUMERIC` | 1700 | -1 | 任意精度 |
+| `BYTEA` | 17 | -1 | 二进制数据 |
+| `OID` | 26 | 4 | 对象标识符 |
 
 ```rust
 // src/wire_protocol/oids.rs
@@ -943,11 +943,11 @@ pub mod oid {
 
 ---
 
-## 7 Challenges Building in Rust
+## 7 用 Rust 构建的挑战
 
-### Challenge 1: Async I/O and Borrowing
+### 挑战 1：异步 I/O 和借用
 
-**Problem:** tokio requires `&mut self` for async I/O, but we need to borrow from self.
+**问题：** tokio 需要 `&mut self` 进行异步 I/O，但我们需要从 self 借用。
 
 ```rust
 // ❌ Doesn't compile
@@ -960,7 +960,7 @@ impl ProtocolHandler {
 }
 ```
 
-**Solution: Restructure to avoid concurrent borrows**
+**解决方案：重构以避免同时借用**
 
 ```rust
 // ✅ Works
@@ -981,9 +981,9 @@ impl ProtocolHandler {
 
 ---
 
-### Challenge 2: Zero-Copy vs. Allocation
+### 挑战 2：零拷贝 vs. 分配
 
-**Problem:** Wire protocol messages need to be serialized. Copying is expensive.
+**问题：** 通信协议消息需要序列化。拷贝很昂贵。
 
 ```rust
 // ❌ Allocates on every message
@@ -995,7 +995,7 @@ pub fn serialize_row(&self) -> Vec<u8> {
 }
 ```
 
-**Solution: Reuse buffers**
+**解决方案：重用缓冲区**
 
 ```rust
 // ✅ Reuses allocated buffer
@@ -1021,9 +1021,9 @@ impl MessageBuilder {
 
 ---
 
-### Challenge 3: Error Handling Across Layers
+### 挑战 3：跨层错误处理
 
-**Problem:** Wire protocol errors, query errors, storage errors—all different types.
+**问题：** 通信协议错误、查询错误、存储错误——所有不同的类型。
 
 ```rust
 // ❌ Error type explosion
@@ -1037,7 +1037,7 @@ pub enum Error {
 }
 ```
 
-**Solution: Use `thiserror` and conversion traits**
+**解决方案：使用 `thiserror` 和转换特性**
 
 ```rust
 // ✅ Clean error handling
@@ -1063,45 +1063,45 @@ pub async fn handle_query(&mut self) -> Result<(), ProtocolError> {
 
 ---
 
-## 8 How AI Accelerated This
+## 8 AI 如何加速这项工作
 
-### What AI Got Right
+### AI 做对了什么
 
-| Task | AI Contribution |
+| 任务 | AI 贡献 |
 |------|-----------------|
-| **Message format** | Correct big-endian encoding |
-| **Extended query flow** | Parse → Bind → Execute sequence |
-| **Type OIDs** | Accurate PostgreSQL type OIDs |
-| **Null handling** | -1 length prefix for NULLs |
+| **消息格式** | 正确的大端序编码 |
+| **扩展查询流程** | Parse → Bind → Execute 顺序 |
+| **类型 OID** | 准确的 PostgreSQL 类型 OID |
+| **NULL 处理** | NULL 的 -1 长度前缀 |
 
 ---
 
-### What AI Got Wrong
+### AI 做错了什么
 
-| Issue | What Happened |
+| 问题 | 发生什么事 |
 |-------|---------------|
-| **Length calculation** | First draft didn't include length bytes in length |
-| **Startup message** | Tried to add type byte (startup has none!) |
-| **Binary format** | Suggested little-endian (PostgreSQL uses big-endian) |
-| **Portal lifetime** | Missed that portals are destroyed after Execute |
+| **长度计算** | 初稿没有在长度中包含长度字节 |
+| **启动消息** | 尝试添加类型字节（启动没有！） |
+| **二进制格式** | 建议小端序（PostgreSQL 使用大端序） |
+| **Portal 生命周期** | 忽略了 portal 在 Execute 后被销毁 |
 
-**Pattern:** Wire protocol is precise. Off-by-one errors break everything.
+**模式：** 通信协议很精确。差一错误会破坏一切。
 
 ---
 
-### Example: Debugging psql Connection
+### 范例：调试 psql 连接
 
-**My question to AI:**
+**我问 AI 的问题：**
 
-> "psql connects but immediately disconnects. What's wrong?"
+> "psql 连接但立即断开。什么错了？"
 
-**What I learned:**
+**我学到的：**
 
-1. psql expects specific ParameterStatus messages
-2. Missing `server_version` causes silent disconnect
-3. ReadyForQuery must be sent after authentication
+1. psql 期望特定的 ParameterStatus 消息
+2. 缺少 `server_version` 会导致无声断开
+3. ReadyForQuery 必须在验证后发送
 
-**Result:** Added required parameters:
+**结果：** 添加了必需的参数：
 
 ```rust
 stream.write_all(self.builder.parameter_status("server_version", "16.0")).await?;
@@ -1110,7 +1110,7 @@ stream.write_all(self.builder.parameter_status("client_encoding", "UTF8")).await
 stream.write_all(self.builder.ready_for_query(TransactionStatus::Idle)).await?;
 ```
 
-**Now psql connects successfully!**
+**现在 psql 连接成功！**
 
 ```
 $ psql -h localhost -p 5432 -U neo vaultgres
@@ -1126,7 +1126,7 @@ vaultgres=> SELECT 1;
 
 ---
 
-## Summary: Wire Protocol in One Diagram
+## 总结：通信协议一张图
 
 ```mermaid
 flowchart TD
@@ -1168,21 +1168,21 @@ flowchart TD
     style P fill:#fff3e0,stroke:#f57c00
 ```
 
-**Key Takeaways:**
+**关键要点：**
 
-| Concept | Why It Matters |
+| 概念 | 为什么重要 |
 |---------|----------------|
-| **Wire protocol** | Compatibility with existing PostgreSQL tools |
-| **Message framing** | Length-prefixed binary protocol |
-| **Simple vs. Extended** | Quick queries vs. prepared statements |
-| **RowDescription** | Column metadata for clients |
-| **DataRow** | Actual row data (text or binary) |
-| **Type OIDs** | PostgreSQL type identification |
-| **Null encoding** | -1 length prefix |
+| **通信协议** | 与现有 PostgreSQL 工具兼容 |
+| **消息框架** | 长度前缀二进制协议 |
+| **简单 vs. 扩展** | 快速查询 vs. 预备语句 |
+| **RowDescription** | 客户端的字段元数据 |
+| **DataRow** | 实际行数据（文本或二进制） |
+| **类型 OID** | PostgreSQL 类型识别 |
+| **NULL 编码** | -1 长度前缀 |
 
 ---
 
-**Further Reading:**
+**进一步阅读：**
 
 - PostgreSQL Source: [`src/backend/tcop/postgres.c`](https://github.com/postgres/postgres/blob/master/src/backend/tcop/postgres.c)
 - PostgreSQL Source: [`src/include/libpq/pqformat.h`](https://github.com/postgres/postgres/blob/master/src/include/libpq/pqformat.h)
