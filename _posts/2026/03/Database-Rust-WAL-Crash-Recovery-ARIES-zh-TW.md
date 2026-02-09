@@ -1132,7 +1132,3 @@ flowchart TD
 - "Database Management Systems" by Ramakrishnan (Ch. 17: Recovery)
 - "Readings in Database Systems" (Red Book) - ARIES chapter
 - Vaultgres Repository: [github.com/neoalienson/Vaultgres](https://github.com/neoalienson/Vaultgres)
-
----
-
-**系列下一篇：** 查詢執行——解析 SQL、建構查詢計劃，以及使用我們所有的儲存基礎設施來實際回答查詢。
