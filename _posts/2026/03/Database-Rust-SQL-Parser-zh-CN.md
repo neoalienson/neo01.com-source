@@ -17,7 +17,7 @@ canonical_lang: en
 comments: true
 ---
 
-在 [第五部分](/zh-CN/2026/03/Building-PostgreSQL-Compatible-Database-Rust-Wire-Protocol-Result-Set/) 中，我们构建了 PostgreSQL 通信协议。客户端现在可以连接和发送查询。但有个问题。
+在 [第五部分](/zh-CN/2026/03/Database-Rust-Wire-Protocol-Result-Set/) 中，我们构建了 PostgreSQL 通信协议。客户端现在可以连接和发送查询。但有个问题。
 
 **我们收到 SQL 字符串。然后呢？**
 

@@ -17,7 +17,7 @@ canonical_lang: en
 comments: true
 ---
 
-在 [第三部分](/zh-TW/2026/03/Building-PostgreSQL-Compatible-Database-Rust-MVCC-Transaction-Manager/) 中，我們建構了用於併發交易的 MVCC。但有一個可怕的問題我們還沒有回答。
+在 [第三部分](/zh-TW/2026/03/Database-Rust-MVCC-Transaction-Manager/) 中，我們建構了用於併發交易的 MVCC。但有一個可怕的問題我們還沒有回答。
 
 **停電時會發生什麼？**
 

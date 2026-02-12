@@ -17,7 +17,7 @@ canonical_lang: en
 comments: true
 ---
 
-In [Part 2](/2026/03/Building-PostgreSQL-Compatible-Database-Rust-BPlusTree-Index-Concurrent-Access/), we built a concurrent B+Tree index. But there's a fundamental problem with our approach.
+In [Part 2](/2026/03/Database-Rust-BPlusTree-Index-Concurrent-Access/), we built a concurrent B+Tree index. But there's a fundamental problem with our approach.
 
 **Readers block writers. Writers block readers.**
 

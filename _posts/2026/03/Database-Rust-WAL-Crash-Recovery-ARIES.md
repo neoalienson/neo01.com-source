@@ -17,7 +17,7 @@ canonical_lang: en
 comments: true
 ---
 
-In [Part 3](/2026/03/Building-PostgreSQL-Compatible-Database-Rust-MVCC-Transaction-Manager/), we built MVCC for concurrent transactions. But there's a terrifying question we haven't answered.
+In [Part 3](/2026/03/Database-Rust-MVCC-Transaction-Manager/), we built MVCC for concurrent transactions. But there's a terrifying question we haven't answered.
 
 **What happens when the power goes out?**
 

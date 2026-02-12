@@ -17,7 +17,7 @@ canonical_lang: en
 comments: true
 ---
 
-In [Part 5](/2026/03/Building-PostgreSQL-Compatible-Database-Rust-Wire-Protocol-Result-Set/), we built the PostgreSQL wire protocol. Clients can now connect and send queries. But there's a problem.
+In [Part 5](/2026/03/Database-Rust-Wire-Protocol-Result-Set/), we built the PostgreSQL wire protocol. Clients can now connect and send queries. But there's a problem.
 
 **We receive SQL strings. Now what?**
 

@@ -17,7 +17,7 @@ canonical_lang: en
 comments: true
 ---
 
-在 [第三部分](/zh-CN/2026/03/Building-PostgreSQL-Compatible-Database-Rust-MVCC-Transaction-Manager/) 中，我们构建了用于并发事务的 MVCC。但有一个可怕的问题我们还没有回答。
+在 [第三部分](/zh-CN/2026/03/Database-Rust-MVCC-Transaction-Manager/) 中，我们构建了用于并发事务的 MVCC。但有一个可怕的问题我们还没有回答。
 
 **停电时会发生什么？**
 

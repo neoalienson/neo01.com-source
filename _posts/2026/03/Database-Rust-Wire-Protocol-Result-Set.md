@@ -17,7 +17,7 @@ canonical_lang: en
 comments: true
 ---
 
-In [Part 4](/2026/03/Building-PostgreSQL-Compatible-Database-Rust-WAL-Crash-Recovery-ARIES/), we built WAL and crash recovery. Our database can now survive power failures. But there's a problem.
+In [Part 4](/2026/03/Database-Rust-WAL-Crash-Recovery-ARIES/), we built WAL and crash recovery. Our database can now survive power failures. But there's a problem.
 
 **How do clients actually talk to our database?**
 

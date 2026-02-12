@@ -17,7 +17,7 @@ canonical_lang: en
 comments: true
 ---
 
-在 [第一部分](/zh-TW/2026/03/Building-PostgreSQL-Compatible-Database-Rust-Page-Storage-Buffer-Pool/) 中，我們建立了基礎：頁面式儲存和緩衝池。但有個問題。
+在 [第一部分](/zh-TW/2026/03/Database-Rust-Page-Storage-Buffer-Pool/) 中，我們建立了基礎：頁面式儲存和緩衝池。但有個問題。
 
 **尋找一列需要完整表掃描：**
 

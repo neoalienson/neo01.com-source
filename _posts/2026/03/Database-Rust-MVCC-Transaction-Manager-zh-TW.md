@@ -17,7 +17,7 @@ canonical_lang: en
 comments: true
 ---
 
-在 [第二部分](/zh-TW/2026/03/Building-PostgreSQL-Compatible-Database-Rust-BPlusTree-Index-Concurrent-Access/) 中，我們建構了併發 B+Tree 索引。但我們的方法有個根本問題。
+在 [第二部分](/zh-TW/2026/03/Database-Rust-BPlusTree-Index-Concurrent-Access/) 中，我們建構了併發 B+Tree 索引。但我們的方法有個根本問題。
 
 **讀者阻塞寫入者。寫入者阻塞讀者。**
 
