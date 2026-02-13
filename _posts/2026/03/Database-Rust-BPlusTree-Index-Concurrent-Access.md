@@ -17,7 +17,7 @@ canonical_lang: en
 comments: true
 ---
 
-In [Part 1](/2026/03/Database-Rust-Page-Storage-Buffer-Pool/), we built the foundation: page-based storage and a buffer pool. But there's a problem.
+In [Part 1](/2026/03/Building-PostgreSQL-Compatible-Database-Rust-Page-Storage-Buffer-Pool/), we built the foundation: page-based storage and a buffer pool. But there's a problem.
 
 **Finding a row requires a full table scan:**
 
