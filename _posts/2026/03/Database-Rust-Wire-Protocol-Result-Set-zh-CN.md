@@ -17,7 +17,7 @@ canonical_lang: en
 comments: true
 ---
 
-在 [第四部分](/zh-CN/2026/03/Building-PostgreSQL-Compatible-Database-Rust-WAL-Crash-Recovery-ARIES/) 中，我们构建了 WAL 和崩溃恢复。我们的数据库现在可以在停电中存活。但有个问题。
+在 [第四部分](/zh-CN/2026/03/Database-Rust-WAL-Crash-Recovery-ARIES/) 中，我们构建了 WAL 和崩溃恢复。我们的数据库现在可以在停电中存活。但有个问题。
 
 **客户端实际上如何与我们的数据库对话？**
 
