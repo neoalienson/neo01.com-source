@@ -1,5 +1,5 @@
 ---
-title: "Building a PostgreSQL-Compatible Database in Rust: Comprehensive SQL Parser (DDL, DML, Queries)"
+title: "Database in Rust: Comprehensive SQL Parser (DDL, DML, Queries)"
 date: 2026-03-06
 categories:
   - Development

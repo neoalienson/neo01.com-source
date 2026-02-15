@@ -1,6 +1,6 @@
 ---
 title: "Database in Rust: B+Tree Indexes with Concurrent Access"
-date: 2026-03-08
+date: 2026-03-02
 categories:
   - Development
 tags:
@@ -75,7 +75,7 @@ Today: implementing a thread-safe B+Tree index in Rust, integrated with our buff
             ▼                ▼                ▼
     ┌──────────────┐ ┌──────────────┐ ┌──────────────┐
     │  Node [10]   │ │  Node [50]   │ │  Node [∞]    │  ← Page 1, 2, 3
-    │ [1,5,7]│[10] │ │ [20,30]│[50] │ │ [60,80,90]  │
+    │ [1,5,7]│[10] │ │ [20,30]│[50] │ │ [60,80,90]   │
     └──────────────┘ └──────────────┘ └──────────────┘
             │                │                │
             ▼                ▼                ▼
