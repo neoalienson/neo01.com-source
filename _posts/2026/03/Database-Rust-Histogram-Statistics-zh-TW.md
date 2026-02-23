@@ -7,8 +7,6 @@ tags:
   - PostgreSQL
   - Rust
   - Database Internals
-  - Query Optimization
-  - Statistics
 excerpt: "Vaultgres 旅程第八部分：深入探討直方圖統計。建構等深直方圖、處理偏斜資料、多欄位統計，以及在基於成本的最佳化中使用直方圖進行準確的選擇性估計。"
 lang: zh-TW
 available_langs: []
