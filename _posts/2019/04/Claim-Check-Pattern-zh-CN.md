@@ -5,9 +5,9 @@ lang: zh-CN
 categories: Architecture
 tags:
   - Architecture
-series: architecture_pattern
   - Design Patterns
   - Messaging
+series: architecture_pattern
 excerpt: "了解 Claim-Check 模式如何通过将数据存储在外部并传递轻量级令牌，解决消息系统中传输大型负载的挑战。"
 thumbnail: /assets/architecture/thumbnail.png
 thumbnail_80: /assets/architecture/thumbnail_80.png

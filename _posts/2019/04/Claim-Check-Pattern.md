@@ -4,9 +4,9 @@ date: 2019-04-10
 categories: Architecture
 tags:
   - Architecture
-series: architecture_pattern
   - Design Patterns
   - Messaging
+series: architecture_pattern
 excerpt: "Learn how the Claim-Check pattern solves the challenge of transferring large payloads in messaging systems by storing data externally and passing lightweight tokens instead."
 thumbnail: /assets/architecture/thumbnail.png
 thumbnail_80: /assets/architecture/thumbnail_80.png
