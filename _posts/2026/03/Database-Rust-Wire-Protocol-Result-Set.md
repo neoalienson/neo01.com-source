@@ -12,7 +12,7 @@ lang: en
 available_langs: []
 thumbnail: /assets/architecture/vaultgres_thumbnail.jpg
 thumbnail_80: /assets/architecture/vaultgres_thumbnail_80.jpg
-series: vaultgres-journey
+series: database
 canonical_lang: en
 comments: true
 ---
