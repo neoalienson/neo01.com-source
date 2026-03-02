@@ -7,8 +7,6 @@ tags:
     - Architecture
 thumbnail: banner.jpg
 thumbnail_80: thumbnail.jpg
-series: Architecture as Code
-series_part: 1
 lang: zh-TW
 excerpt: 當架構圖在建立後幾週就過時時會發生什麼？探索架構即程式碼如何將靜態文件轉變為可執行、可驗證的系統設計。
 comments: true

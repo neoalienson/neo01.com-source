@@ -8,8 +8,6 @@ tags:
   - Software Engineering
 thumbnail: banner.jpg
 thumbnail_80: thumbnail.jpg
-series: Architecture as Code
-series_part: 2
 lang: zh-TW
 excerpt: 將架構從抽象概念轉變為可執行程式碼。探索明確決策、自動驗證和活文件如何防止凌晨2點的生產災難。
 comments: true

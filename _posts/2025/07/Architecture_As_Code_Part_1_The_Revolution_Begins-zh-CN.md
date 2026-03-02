@@ -7,8 +7,6 @@ tags:
     - Architecture
 thumbnail: banner.jpg
 thumbnail_80: thumbnail.jpg
-series: Architecture as Code
-series_part: 1
 lang: zh-CN
 excerpt: 当架构图在创建后几周就过时时会发生什么？探索架构即代码如何将静态文档转变为可执行、可验证的系统设计。
 comments: true

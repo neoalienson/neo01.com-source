@@ -8,8 +8,6 @@ tags:
   - Software Engineering
 thumbnail: banner.jpg
 thumbnail_80: thumbnail.jpg
-series: Architecture as Code
-series_part: 2
 excerpt: Transform architecture from abstract concepts into enforceable code. Discover explicit decisions, automated validation, and living documentation that prevent 2 AM production disasters.
 comments: true
 ---

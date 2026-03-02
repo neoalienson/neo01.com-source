@@ -7,8 +7,6 @@ tags:
     - Architecture
 thumbnail: banner.jpg
 thumbnail_80: thumbnail.jpg
-series: Architecture as Code
-series_part: 1
 excerpt: What happens when architecture diagrams become outdated weeks after creation? Discover how Architecture as Code transforms static documentation into executable, verifiable system design.
 comments: true
 ---
