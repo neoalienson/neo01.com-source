@@ -6,6 +6,7 @@ content: |
     - [Technical Architecture](/2025/12/Understanding-RTGS-Technical-Architecture/)    
     - [System Architecture and Components](/2025/12/Understanding-RTGS-System-Architecture/)
     - [Message Standards and Protocols](/2025/12/Understanding-RTGS-Message-Standards/)
+    - [Message Implementation and Validation](/2025/12/Understanding-RTGS-Message-Implementation/)
     - [Security and Risk Management](/2025/12/Understanding-RTGS-Security-Risk/)
     - [High Availability and Performance Design](/2025/12/Understanding-RTGS-High-Availability/)
     - [Acronyms and Abbreviations](/2025/12/RTGS-Acronyms-and-Abbreviations/)
