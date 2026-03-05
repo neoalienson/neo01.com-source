@@ -1,4 +1,4 @@
-,---
+---
 title: "Understanding RTGS: Message Implementation and Validation"
 date: 2025-12-10
 categories:
