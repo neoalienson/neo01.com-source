@@ -443,6 +443,94 @@ graph LR
     style C1 fill:#fff3e0,stroke:#f57c00
 ```
 
+**Positive Test Scenarios**
+
+Positive tests verify that valid messages are processed correctly end-to-end:
+
+| Test ID | Scenario | Input | Expected Result |
+|---------|----------|-------|-----------------|
+| POS-001 | Valid customer payment | pacs.008 with all required fields | Payment accepted, pacs.002 with ACSC status |
+| POS-002 | Valid interbank transfer | pacs.009 between participating banks | Transfer settled, reserves updated |
+| POS-003 | Payment status inquiry | pacs.002 request for known transaction | Status returned with current state |
+| POS-004 | Valid cancellation request | pacs.004 for pending payment | Cancellation accepted, original payment reversed |
+| POS-005 | Batch submission | Multiple payments in single batch | All valid payments processed, summary returned |
+| POS-006 | Urgent payment | pacs.008 with priority=URGP | Payment expedited through priority queue |
+| POS-007 | Future-dated payment | Settlement date > current date | Payment queued for future settlement |
+| POS-008 | Cross-border payment | Different currency, correspondent banks | FX conversion applied, correspondent notified |
+
+**Negative Test Scenarios**
+
+Negative tests verify that invalid messages are properly rejected with appropriate error codes:
+
+| Test ID | Scenario | Input | Expected Result |
+|---------|----------|-------|-----------------|
+| NEG-001 | Invalid XML syntax | Malformed XML document | Reject with syntax error |
+| NEG-002 | Schema validation failure | Missing required element | Reject with schema error code |
+| NEG-003 | Invalid currency code | Currency = "XXX" (not ISO 4217) | Reject with code validation error |
+| NEG-004 | Negative amount | Amount = -100.00 | Reject with AM04 (incorrect amount) |
+| NEG-005 | Zero amount | Amount = 0.00 | Reject with AM04 |
+| NEG-006 | Amount exceeds limit | Amount > system maximum | Reject with limit exceeded error |
+| NEG-007 | Invalid BIC code | BIC = "INVALID123" | Reject with invalid institution code |
+| NEG-008 | Duplicate transaction ID | Same TxId as recent payment | Reject with duplicate reference |
+| NEG-009 | Past settlement date | Settlement date < today | Reject with invalid date error |
+| NEG-010 | Invalid signature | Tampered XML signature | Reject with security error |
+| NEG-011 | Expired certificate | Signature cert expired | Reject with certificate validation error |
+| NEG-012 | Sanctions hit | Debtor on OFAC list | Reject with compliance hold, alert generated |
+| NEG-013 | Insufficient funds | Debtor balance < amount | Reject with insufficient liquidity |
+| NEG-014 | Invalid message type | Unknown message identifier | Reject with unsupported message type |
+| NEG-015 | Circular payment | Debtor agent = Creditor agent | Reject with business rule violation |
+
+**Edge Case Scenarios**
+
+Edge cases test system behavior at boundaries and under stress:
+
+| Test ID | Scenario | Input | Expected Result |
+|---------|----------|-------|-----------------|
+| EDGE-001 | Maximum amount | Amount = system maximum | Payment processed successfully |
+| EDGE-002 | Maximum decimal precision | Amount = 100.005 (3 decimals) | Rounded or rejected per currency rules |
+| EDGE-003 | Maximum name length | Party name = 140 characters | Truncated or accepted per schema |
+| EDGE-004 | Cut-off time boundary | Submission at exactly cut-off time | Processed or queued per policy |
+| EDGE-005 | Just after cut-off | Submission 1 second after cut-off | Queued for next business day |
+| EDGE-006 | Weekend submission | Payment on Saturday | Queued for next business day |
+| EDGE-007 | Holiday submission | Payment on bank holiday | Queued for next business day |
+| EDGE-008 | High volume burst | 10,000 payments in 1 second | All processed within SLA, no data loss |
+| EDGE-009 | Sustained load | Maximum throughput for 1 hour | System stable, performance within bounds |
+| EDGE-010 | Primary system failure | Kill primary node during processing | Failover to secondary, no transaction loss |
+| EDGE-011 | Network partition | Isolate node from cluster | Node gracefully stops, cluster continues |
+| EDGE-012 | Database connection loss | Drop DB connection mid-transaction | Transaction rolled back, retry succeeds |
+| EDGE-013 | Clock skew | Server clock 5 seconds ahead | NTP sync, timestamps corrected |
+| EDGE-014 | Large batch | 10,000 transactions in single batch | Batch processed, partial failures handled |
+| EDGE-015 | Unicode characters | Names with emoji, CJK, RTL text | Properly stored and displayed |
+
+**Compliance Test Scenarios**
+
+Compliance tests verify regulatory and audit requirements:
+
+| Test ID | Scenario | Input | Expected Result |
+|---------|----------|-------|-----------------|
+| COMP-001 | AML screening | Payment with high-risk country | Enhanced due diligence triggered |
+| COMP-002 | PEP detection | Beneficiary is politically exposed | Flagged for manual review |
+| COMP-003 | Transaction monitoring | Structured payments (just under threshold) | Pattern detected, alert generated |
+| COMP-004 | Audit trail | Any valid payment | Complete audit log with timestamps |
+| COMP-005 | Data retention | Query payment from 7 years ago | Retrieved from archive per retention policy |
+| COMP-006 | Right to erasure | GDPR deletion request (where applicable) | Personal data anonymized, transaction preserved |
+| COMP-007 | Regulatory reporting | End-of-day batch | Reports generated for central bank |
+
+**Performance Test Scenarios**
+
+Performance tests validate system meets throughput and latency requirements:
+
+| Test ID | Scenario | Metric | Target |
+|---------|----------|--------|--------|
+| PERF-001 | Single payment latency | P99 response time | < 500ms |
+| PERF-002 | Batch processing | Payments per second | > 1,000 pps |
+| PERF-003 | Peak load | Sustained throughput at 2x normal | No degradation |
+| PERF-004 | Database query | Status lookup latency | < 100ms |
+| PERF-005 | Message queue | Queue depth under load | < 1000 messages |
+| PERF-006 | API rate limiting | Requests above threshold | Throttled with 429 response |
+| PERF-007 | Memory usage | Heap under sustained load | < 80% of allocated |
+| PERF-008 | CPU utilization | Under peak load | < 70% average |
+
 ## 4 Summary
 
 !!!anote "📋 Key Takeaways"
