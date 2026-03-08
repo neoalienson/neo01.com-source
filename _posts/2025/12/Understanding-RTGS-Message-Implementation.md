@@ -576,5 +576,3 @@ Performance tests validate system meets throughput and latency requirements:
 [^12]: **API** - Application Programming Interface: Interface for software components to communicate
 [^13]: **OpenAPI** - OpenAPI Specification: Standard for describing REST APIs
 [^14]: **XPath** - XML Path Language: Query language for selecting XML nodes
-
-> **Note:** For a complete list of all acronyms used in the RTGS series, see the [RTGS Acronyms and Abbreviations Reference](/2025/12/RTGS-Acronyms-and-Abbreviations/).

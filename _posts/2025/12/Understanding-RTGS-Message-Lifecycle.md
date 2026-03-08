@@ -60,6 +60,8 @@ The lifecycle begins when a payer initiates a payment through their bank.
 
 ### 2.1 Initiation Channels
 
+Payment initiation occurs through diverse channels depending on the payer type and use case. Corporate customers typically use host-to-host connections for automated high-volume payments, while retail customers access payment services through branch counters, online banking portals, or mobile applications. Financial market infrastructure such as securities settlement systems and central counterparties initiate payments for trade settlement. Government systems use RTGS for tax collections and benefit disbursements. Each channel has different requirements for authentication, authorization workflows, and message formatting, but all ultimately result in the same ISO 20022 message being sent to the RTGS system.
+
 ```mermaid
 graph TB
     A[Payment Initiation]
@@ -172,6 +174,8 @@ The signed message is transmitted from the participant bank to the RTGS system.
 
 ### 3.2 Submission Flow
 
+The submission flow ensures secure, reliable message delivery from the participant bank to the RTGS system. The process begins with an HTTPS POST request to the API gateway, which serves as the single entry point for all submissions. The load balancer distributes incoming requests across multiple gateway instances to handle high volumes. The API gateway performs TLS termination to decrypt the message, validates rate limits to prevent abuse, and enqueues the message for processing. Upon successful queuing, the gateway returns an HTTP 202 Accepted response to the sender, acknowledging receipt without guaranteeing immediate processing. This asynchronous design allows the system to handle traffic spikes while maintaining reliability.
+
 ```mermaid
 sequenceDiagram
     participant B as Participant Bank
@@ -211,6 +215,8 @@ The RTGS system performs multi-layer validation before processing the payment.
 
 ### 4.1 Validation Pipeline
 
+The validation pipeline implements a defense-in-depth strategy where each layer catches different types of errors before the payment proceeds. Early layers (XML well-formedness, XSD schema) are fast and reject obviously malformed messages. Middle layers (business rules, security) validate the semantic correctness and authenticity of the message. The final compliance layer screens against regulatory requirements. This layered approach ensures that expensive operations like sanctions screening only run on messages that have passed all prior checks. Messages flow through the pipeline sequentially, with rejection at any stage halting further processing and triggering an error response to the sender.
+
 ```mermaid
 flowchart TD
     A[Message from Queue] --> B[Layer 1: XML Well-Formedness]
@@ -244,6 +250,8 @@ flowchart TD
 
 ### 4.2 Validation Layers Detail
 
+Each validation layer serves a specific purpose and uses specialized technology optimized for that task. XML well-formedness checking is the fastest layer, performed by streaming parsers that can process megabytes of XML per second. XSD schema validation is more computationally intensive as it must verify complex type constraints and element relationships. Business rules validation using Schematron allows expressive XPath-based assertions that can span multiple elements. Security validation involves cryptographic operations including signature verification and certificate chain validation, which require access to PKI infrastructure. Compliance screening may query external sanctions databases and apply machine learning models for anomaly detection, making it the most variable layer in terms of processing time.
+
 | Layer | Validates | Technology | Duration |
 |-------|-----------|------------|----------|
 | **1. XML Well-Formedness** | Syntax, namespaces, encoding | XML Parser (SAX/DOM) | < 10ms |
@@ -253,6 +261,8 @@ flowchart TD
 | **5. Compliance** | Sanctions lists, PEP screening | AML/KYC Systems | < 500ms |
 
 ### 4.3 Validation Outcomes
+
+After passing through all validation layers, a message receives one of four possible outcomes. A PASS result means the message is valid and proceeds to settlement. A REJECT result indicates a fatal error that cannot be resolved without sender intervention; the message is returned with an error code. A HOLD result applies to compliance-related issues requiring manual review by a human analyst; the message remains in a pending state until released or rejected. A DEFER result applies to timing-related conditions such as cut-off times or system maintenance; the message is queued for automatic retry when conditions change.
 
 ```
 ┌─────────────────────────────────────────────────────────┐
@@ -272,6 +282,8 @@ flowchart TD
 After validation, the system determines whether the payment can settle immediately or must be queued.
 
 ### 5.1 Queue Decision Logic
+
+Not all validated payments can settle immediately. The queue decision logic evaluates three critical conditions in sequence. First, it checks whether the settlement date matches the current business day; future-dated payments are held until their scheduled date. Second, it verifies whether the submission occurred before the daily cut-off time; late submissions are deferred to the next business day. Third, and most critically, it checks whether the sender has sufficient liquidity to cover the payment amount. Only payments that pass all three conditions proceed directly to settlement; all others are routed to the appropriate queue for later processing.
 
 ```mermaid
 flowchart TD
@@ -301,6 +313,8 @@ flowchart TD
 
 ### 5.2 Queue Types
 
+The RTGS system maintains multiple queues, each serving a distinct purpose with different release mechanisms. Future-dated queues automatically release payments when the settlement date arrives. Cut-off queues release at the start of the next business day. Liquidity queues are the most complex, as they continuously monitor the sender's account balance and release payments when sufficient funds become available, often through incoming payments or liquidity top-ups. Compliance queues require manual intervention by compliance officers who review flagged transactions and decide whether to release or reject. Technical queues handle system outages and automatically retry when services are restored.
+
 | Queue Type | Reason | Resolution |
 |------------|--------|------------|
 | **Future-Dated** | Settlement date > today | Auto-release on settlement date |
@@ -310,6 +324,8 @@ flowchart TD
 | **Technical** | System maintenance/unavailable | Retry when system available |
 
 ### 5.3 Queue Management
+
+The queue manager continuously monitors all queued payments and evaluates release conditions in real-time. For liquidity queues, this involves tracking incoming payments that may free up sufficient balance for queued outbound payments. The queue manager also handles priority overrides, where certain payments (such as urgent market operations or time-critical settlements) can be expedited ahead of normal-priority payments. Sophisticated queue management algorithms optimize settlement throughput by identifying cycles of interdependent payments that can be settled together, maximizing liquidity efficiency across the system.
 
 ```mermaid
 flowchart LR
@@ -338,6 +354,8 @@ flowchart LR
 The core RTGS function: transferring funds between participant accounts.
 
 ### 6.1 Settlement Process
+
+Settlement is the heart of the RTGS system, where actual fund transfers occur between participant banks. The settlement engine coordinates with the account manager to verify balances, execute debits and credits, and update the general ledger. The process follows strict atomicity guarantees: either all steps complete successfully, or the entire transaction rolls back with no partial effects. The settlement engine also enforces the principle of finality—once settlement completes, it cannot be undone. This finality is what distinguishes RTGS from net settlement systems and provides certainty to participants that received funds are definitively theirs.
 
 ```mermaid
 sequenceDiagram
@@ -368,6 +386,8 @@ sequenceDiagram
 
 ### 6.2 Account Movements
 
+Settlement involves simultaneous movements in two participant accounts: a debit to the sender's reserve account and a credit to the receiver's reserve account. These accounts are held at the central bank and represent the bank's claim on central bank money. The settlement engine ensures both legs of the transfer occur atomically—the sender's account is debited and the receiver's account is credited in the same operation. Each movement is recorded in the general ledger with a unique settlement ID, creating an immutable audit trail. The account movement diagrams illustrate how balances change instantaneously at the moment of settlement.
+
 **Before Settlement:**
 ```
 ┌─────────────────────────────────────────────────────────┐
@@ -391,6 +411,8 @@ sequenceDiagram
 ```
 
 ### 6.3 Settlement Properties
+
+RTGS settlement is characterized by five fundamental properties that define its role in the financial system. Real-time processing means payments settle individually as they arrive, not in batches at predetermined times. Gross settlement means each payment is processed in full without netting against other payments. Finality means that once settlement occurs, it is unconditional and cannot be revoked. Irrevocability means the sender cannot cancel the payment after settlement. Unconditionality means settlement is not subject to any conditions or contingencies. These properties collectively provide the certainty and finality that financial markets require for high-value transactions.
 
 | Property | Description |
 |----------|-------------|
@@ -458,6 +480,8 @@ The RTGS system generates a pacs.002 Payment Status Report:
 
 ### 7.2 Status Code Meanings
 
+ISO 20022 defines standardized status codes that communicate the current state of a payment throughout its lifecycle. These codes follow a consistent pattern: the first two letters indicate the general status (AC = Accepted, RJ = Rejected, PD = Pending, CA = Cancelled), and the remaining letters provide specific details. Understanding these codes is essential for operations teams monitoring payment flows and for developers building payment tracking interfaces. The status code is included in every pacs.002 message and provides an unambiguous indication of whether the payment succeeded, failed, or awaits further action.
+
 | Code | Meaning | Stage |
 |------|---------|-------|
 | **ACCP** | Accepted Customer Profile | After validation |
@@ -468,6 +492,8 @@ The RTGS system generates a pacs.002 Payment Status Report:
 | **CANC** | Cancelled | Payment cancelled |
 
 ### 7.3 Notification Distribution
+
+Once settlement completes, notifications fan out to multiple parties through parallel distribution channels. The sender bank receives confirmation for their records and to notify their customer. The receiver bank is notified to credit the ultimate beneficiary's account. Central bank records are updated for regulatory oversight and monetary policy purposes. In many cases, the notification chain extends further: commercial banks trigger notifications to their customers through online banking portals, mobile apps, or treasury management systems. This distributed notification architecture ensures all stakeholders have timely, consistent information about payment status.
 
 ```mermaid
 flowchart LR
@@ -495,6 +521,8 @@ All payment data is archived for regulatory compliance and audit purposes.
 
 ### 8.1 Data Retention Requirements
 
+Regulatory frameworks worldwide mandate minimum retention periods for payment records, driven by anti-money laundering regulations, tax laws, and banking supervision requirements. Retention periods vary by jurisdiction, ranging from 5 to 7 years minimum. The requirements extend beyond simple transaction records to include all supporting documentation: original messages, status updates, validation results, compliance screening records, and audit trails. Modern RTGS systems implement tiered storage strategies, keeping recent data on high-performance storage for quick access while archiving older records to lower-cost systems. GDPR and similar privacy regulations add complexity by requiring balancing retention obligations against data minimization principles.
+
 | Jurisdiction | Minimum Retention | Requirements |
 |--------------|-------------------|--------------|
 | **United States** | 5 years | FFIEC, SAR records |
@@ -504,6 +532,8 @@ All payment data is archived for regulatory compliance and audit purposes.
 | **Hong Kong** | 7 years | HKMA requirements |
 
 ### 8.2 Archived Data Elements
+
+The archived payment record is a comprehensive snapshot of the entire payment lifecycle, preserving not just the transaction details but the complete context in which it occurred. The original pacs.008 message captures the sender's intent and payment instructions. Status messages (pacs.002) document the journey through the system. Validation results provide evidence of due diligence and rule enforcement. Settlement details establish the definitive record of fund movements. Digital signatures and certificates prove authenticity and non-repudiation. The audit trail captures the who, what, when of every action. Compliance screening results demonstrate regulatory adherence. Queue history shows any delays and their reasons. Together, these elements create an immutable, court-admissible record.
 
 ```
 ┌─────────────────────────────────────────────────────────┐
@@ -521,6 +551,8 @@ All payment data is archived for regulatory compliance and audit purposes.
 ```
 
 ### 8.3 Audit Trail
+
+The audit trail is a chronological, append-only log that records every significant event in a payment's lifecycle. Each log entry captures five essential elements: a precise timestamp (typically with millisecond accuracy), the actor or component that performed the action, a description of the action taken, the result or outcome, and a correlation ID linking related entries across distributed systems. Audit trails serve multiple purposes: operational debugging, forensic investigation, regulatory examination, and legal proceedings. To maintain integrity, audit logs are written to write-once-read-many (WORM) storage that prevents tampering or deletion. Modern systems also replicate audit logs to geographically distributed locations for disaster recovery.
 
 ```mermaid
 flowchart LR
@@ -551,6 +583,8 @@ Not all payments complete successfully. This section covers exception scenarios.
 
 ### 9.1 Exception Types and Handling
 
+Exception handling is a critical capability of RTGS systems, ensuring that problems are detected, communicated, and resolved appropriately. Each exception type requires a specific handling strategy tailored to its nature and severity. Validation errors result in immediate rejection with detailed error codes so senders can correct and resubmit. Liquidity shortages trigger queuing with automatic retry when funds arrive. Compliance hits require human judgment and may involve escalation to authorities. System failures demand automatic rollback and recovery procedures to maintain data integrity. The exception handling framework ensures no payment is lost or silently dropped—every payment either completes successfully or returns to the sender with a clear explanation.
+
 | Exception | Stage | Handling |
 |-----------|-------|----------|
 | **Invalid Message** | Validation | Reject with error code, notify sender |
@@ -562,6 +596,8 @@ Not all payments complete successfully. This section covers exception scenarios.
 | **Receiver Unknown** | Settlement | Return to sender with error |
 
 ### 9.2 Payment Cancellation Flow
+
+Payment cancellation is governed by the principle of finality: queued payments can be cancelled, but settled payments cannot. When a sender bank submits a cancellation request (pacs.004), the RTGS system first checks the current status of the original payment. If the payment remains in a queue (typically due to insufficient liquidity), the cancellation succeeds and the payment is removed from the queue. If settlement has already occurred, the cancellation request is rejected because settlement is final and irrevocable. In cases where funds must be returned after settlement, the receiver bank must initiate a new payment (return) rather than a cancellation. This distinction preserves the legal certainty of RTGS settlement.
 
 ```mermaid
 sequenceDiagram
@@ -585,6 +621,8 @@ sequenceDiagram
 ```
 
 ### 9.3 Payment Return Flow
+
+Payment returns address situations where a settled payment cannot be credited to the intended beneficiary. Common scenarios include incorrect account numbers, closed accounts, or unidentified beneficiaries. Unlike cancellations, returns occur after settlement and therefore require reversing the original fund movement. The receiver bank initiates the return by sending a message to the RTGS system, which reverses the settlement by debiting the receiver's account and crediting the sender's account. The return message includes a reason code explaining why the original payment could not be applied, enabling the sender to investigate and potentially resubmit with corrected information. Returns demonstrate that while settlement is final, the system provides mechanisms to correct genuine errors.
 
 When a payment cannot be credited to the ultimate beneficiary:
 
@@ -611,6 +649,8 @@ Let's trace a real payment through all stages:
 
 ### 10.1 Scenario: Corporate Payment
 
+This example traces a realistic high-value corporate payment through all seven lifecycle stages, illustrating typical processing times and events. The scenario involves a USD 5 million invoice payment between two corporations banking at different institutions—a common use case for RTGS systems. The payment is initiated during normal business hours with sufficient liquidity, representing the "happy path" where no exceptions occur. Understanding this baseline flow helps identify where and how exceptions might arise in alternative scenarios.
+
 **Payment Details:**
 - Amount: USD 5,000,000
 - Sender: ABC Corporation (bank: ORIGUS33XXX)
@@ -619,6 +659,8 @@ Let's trace a real payment through all stages:
 - Initiated: 2025-12-10 09:15:00 UTC
 
 ### 10.2 Timeline
+
+The timeline demonstrates the remarkable speed of modern RTGS systems: a complete end-to-end settlement in just 700 milliseconds. The majority of this time (400ms) is spent in validation, reflecting the comprehensive checks performed on every payment. Settlement itself takes only 100ms, as does confirmation and notification. This sub-second processing enables time-critical payments such as foreign exchange settlements, securities transactions, and emergency liquidity transfers. The millisecond-level timestamps also illustrate the precision required for audit trails and dispute resolution.
 
 | Time | Stage | Event |
 |------|-------|-------|
@@ -639,6 +681,8 @@ Let's trace a real payment through all stages:
 **Total End-to-End Time: 700ms**
 
 ### 10.3 Message Flow Diagram
+
+The message flow diagram provides a swimlane view of the payment journey across all participants: the corporate payer, the originating bank, the RTGS system, and the destination bank. Each numbered step corresponds to a specific message or action, showing how the payment instruction flows from initiator to final recipient. The diagram highlights the central role of the RTGS system as the trusted intermediary that validates, settles, and confirms transactions. Note that steps 3-8 occur entirely within the RTGS system boundary, representing the internal processing that transforms a payment instruction into settled funds.
 
 ```mermaid
 sequenceDiagram
