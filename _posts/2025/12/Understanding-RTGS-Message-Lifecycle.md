@@ -6,8 +6,6 @@ categories:
 tags:
   - RTGS
   - Financial Infrastructure
-  - Message Processing
-  - Settlement
 excerpt: "Complete guide to the RTGS message lifecycle, from payment initiation through validation, settlement, and archival."
 lang: en
 available_langs: []

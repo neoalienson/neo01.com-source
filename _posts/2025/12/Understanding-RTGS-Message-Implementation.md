@@ -6,8 +6,6 @@ categories:
 tags:
   - RTGS
   - Financial Infrastructure
-  - XML
-  - Validation
 excerpt: "Technical guide to ISO 20022 message validation, XML technologies, communication protocols, and testing for RTGS payment systems."
 lang: en
 available_langs: []
