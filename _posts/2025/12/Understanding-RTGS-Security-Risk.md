@@ -55,7 +55,7 @@ Security and risk management are paramount in RTGS systems where trillions of do
 ### 2.1 Threat Categories
 
 ```mermaid
-graph TB
+graph LR
     A["RTGS Threat Landscape"]
     
     A --> B["External Threats"]
@@ -85,8 +85,9 @@ graph TB
 **Common Attack Scenarios:**
 
 ```mermaid
-flowchart TD
+flowchart LR
     subgraph "Attack Vector 1: Credential Theft"
+        direction TB
         A1[Phishing Email] --> A2[Stolen Credentials]
         A2 --> A3[Unauthorized Access]
         A3 --> A4[Fraudulent Payment]
@@ -105,10 +106,17 @@ flowchart TD
     end
     
     subgraph "Attack Vector 4: Insider Threat"
+        direction TB
         D1[Privileged User] --> D2[Bypass Controls]
         D2 --> D3[Unauthorized Transaction]
         D3 --> D4[Fund Misappropriation]
     end
+
+    Start --> A1
+    Start --> B1
+    Start --> C1
+    Start --> D1
+        
     
     style A1 fill:#ffebee,stroke:#c62828
     style B1 fill:#ffebee,stroke:#c62828
@@ -261,7 +269,7 @@ sequenceDiagram
 **Role-Based Access Control (RBAC):**
 
 ```mermaid
-graph TB
+graph LR
     subgraph "Roles"
         A[System Admin]
         B[Operator]
@@ -313,7 +321,7 @@ graph TB
 ### 4.1 Risk Categories in RTGS
 
 ```mermaid
-graph TB
+graph LR
     A["RTGS Risk Categories"]
     
     A --> B["Credit Risk"]
