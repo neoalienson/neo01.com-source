@@ -710,5 +710,3 @@ This companion article covers:
 [^8]: **KYC** - Know Your Customer: Due diligence requirements for customer identification
 [^9]: **STP** - Straight-Through Processing: Automated end-to-end transaction processing without manual intervention
 [^10]: **G20** - Group of Twenty: International forum for international economic cooperation
-
-> **Note:** For a complete list of all acronyms used in the RTGS series, see the [RTGS Acronyms and Abbreviations Reference](/2025/12/RTGS-Acronyms-and-Abbreviations/).

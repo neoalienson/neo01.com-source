@@ -16,7 +16,7 @@ canonical_lang: en
 comments: true
 ---
 
-This article traces the complete lifecycle of a payment message through an RTGS system. For background on message formats, see [Understanding RTGS: Message Standards and Protocols](/2025/12/Understanding-RTGS-Message-Standards/). For technical implementation details, see [Understanding RTGS: Message Implementation and Validation](/2025/12/Understanding-RTGS-Message-Implementation/).
+This article traces the complete lifecycle of a payment message through an RTGS system.
 
 ## 1 Overview: The Message Lifecycle
 

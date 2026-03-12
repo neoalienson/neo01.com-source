@@ -16,8 +16,7 @@ canonical_lang: en
 comments: true
 ---
 
-This article covers the technical implementation aspects of ISO 20022 messaging in RTGS systems. For background on message standards and formats, see [Understanding RTGS: Message Standards and Protocols](/2025/12/Understanding-RTGS-Message-Standards/).
-
+This article covers the technical implementation aspects of ISO 20022 messaging in RTGS systems.
 ## 1 Message Validation and Processing
 
 ### 1.1 Validation Layers

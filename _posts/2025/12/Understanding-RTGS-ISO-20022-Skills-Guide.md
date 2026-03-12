@@ -558,7 +558,3 @@ gantt
 [^4]: **admi** - Administration message family
 [^5]: **XSD** - XML Schema Definition: Validation schema for XML documents
 [^6]: **Cardinality** - Rules defining how many times an element can appear (0..1, 1..n, etc.)
-
-> **Related Articles:**
-> - [Message Standards and Protocols](/2025/12/Understanding-RTGS-Message-Standards/) — Technical foundation on ISO 20022 structure
-> - [Message Implementation and Validation](/2025/12/Understanding-RTGS-Message-Implementation/) — XML validation, communication protocols, testing
