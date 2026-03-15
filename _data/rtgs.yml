@@ -1,14 +1,21 @@
 content: |
   - 📐 **Understanding RTGS**
-    - [From Batch Nightmares to Continuous Settlement](/2025/12/Understanding-RTGS-From-Batch-Nightmares-To-Continuous-Settlement/)
-    - [Core Finance Concepts](/2025/12/Understanding-RTGS-Finance-Concepts/)
-    - [Financial Operation Concepts](/2025/12/Understanding-RTGS-Operational-Concepts/)
-    - [Technical Architecture](/2025/12/Understanding-RTGS-Technical-Architecture/)    
-    - [System Architecture and Components](/2025/12/Understanding-RTGS-System-Architecture/)
-    - [Message Standards and Protocols](/2025/12/Understanding-RTGS-Message-Standards/)
-    - [ISO 20022 Skills Guide](/2025/12/Understanding-RTGS-ISO-20022-Skills-Guide/)    
-    - [Message Implementation and Validation](/2025/12/Understanding-RTGS-Message-Implementation/)
-    - [Message Lifecycle](/2025/12/Understanding-RTGS-Message-Lifecycle/)
-    - [Security and Risk Management](/2025/12/Understanding-RTGS-Security-Risk/)
-    - [High Availability and Performance Design](/2025/12/Understanding-RTGS-High-Availability/)
+    - **📚 Foundation & Concepts**
+      - [From Batch Nightmares to Continuous Settlement](/2025/12/Understanding-RTGS-From-Batch-Nightmares-To-Continuous-Settlement/)
+      - [Core Finance Concepts](/2025/12/Understanding-RTGS-Finance-Concepts/)
+      - [Financial Operation Concepts](/2025/12/Understanding-RTGS-Operational-Concepts/)
+    - **🏗️ Architecture & Design**
+      - [Technical Architecture](/2025/12/Understanding-RTGS-Technical-Architecture/)    
+      - [System Architecture and Components](/2025/12/Understanding-RTGS-System-Architecture/)
+      - [High Availability and Performance Design](/2025/12/Understanding-RTGS-High-Availability/)
+      - [Security and Risk Management](/2025/12/Understanding-RTGS-Security-Risk/)
+    - **📨 Messages & Standards**
+      - [Message Standards and Protocols](/2025/12/Understanding-RTGS-Message-Standards/)
+      - [ISO 20022 Skills Guide](/2025/12/Understanding-RTGS-ISO-20022-Skills-Guide/)    
+      - [Cardinality Rules](/2025/12/Understanding-RTGS-Cardinality-Rules/)    
+      - [Version Migration CBPR](/2025/12/Understanding-RTGS-Version-Migration-CBPR/)    
+      - [Message Implementation and Validation](/2025/12/Understanding-RTGS-Message-Implementation/)
+      - [Message Lifecycle](/2025/12/Understanding-RTGS-Message-Lifecycle/)
+    - **📋 Operations & Compliance**
+      - [PFMI Principles](/2025/12/Understanding-RTGS-PFMI-Principles/)    
     - [Acronyms and Abbreviations](/2025/12/RTGS-Acronyms-and-Abbreviations/)
