@@ -23,7 +23,11 @@ The **PFMI** (Principles for Financial Market Infrastructures) establishes the g
 
 ## 1 What is PFMI?
 
+The Principles for Financial Market Infrastructures (PFMI) are a set of internationally recognized standards for designing and operating FMIs. Developed by the Committee on Payment and Settlement Systems (CPSS) and the International Organization of Securities Commissions (IOSCO), they aim to enhance safety and efficiency in payment, clearing, settlement, and recording systems, thereby limiting systemic risk and fostering financial stability.
+
 ### 1.1 Overview
+
+This section provides a high-level visual summary of the PFMI's structure, outlining its origin from CPSS-IOSCO, its composition of 24 principles and 5 responsibilities, and its core focus areas. The diagram illustrates how these components interrelate to form a comprehensive framework for FMI oversight.
 
 ```mermaid
 graph LR
@@ -62,6 +66,8 @@ graph LR
 
 ### 1.2 The 24 PFMI Principles
 
+The 24 PFMI principles are categorized into key areas covering the full spectrum of FMI operations. This mind map provides a complete overview, grouping the principles into logical domains such as Risk Management, Settlement, and Operations. This structure helps in systematically addressing all facets of FMI resilience and integrity.
+
 ```mermaid
 mindmap
   root((PFMI Principles))
@@ -96,6 +102,8 @@ mindmap
 
 ### 1.3 Why PFMI Matters for RTGS Developers
 
+PFMI is not just a high-level policy concern; it has direct and tangible implications for the entire development lifecycle of an RTGS system. From architectural design to daily operations, these principles translate into specific technical requirements that shape how the system is built, maintained, and managed. The following table breaks down the relevance of PFMI for various stakeholders involved in the RTGS project.
+
 | Stakeholder | PFMI Relevance |
 |-------------|----------------|
 | **Architects** | Drives high availability, disaster recovery, security architecture |
@@ -106,7 +114,11 @@ mindmap
 
 ## 2 PFMI Principles: Technical Mapping
 
+This section delves into the practical application of specific PFMI principles to the technical implementation of an RTGS system. Each principle is first stated, followed by an explanation of the corresponding technical controls, architectural patterns, and code-level examples. The goal is to bridge the gap between regulatory requirements and engineering execution.
+
 ### 2.1 Principle 1: Legal Basis
+
+Principle 1 emphasizes that an FMI's operations must be grounded in a solid legal framework. For an RTGS system, this means that the rules of participation, settlement finality, and liability are not just documented but are also programmatically enforced. The system itself becomes a key tool for ensuring that all activities are compliant with the established legal agreements.
 
 **PFMI Requirement:**
 > The FMI should have a well-founded, clear, transparent, and enforceable legal basis for each material aspect of its activities.
@@ -174,6 +186,8 @@ public class PaymentValidator {
 
 ### 2.2 Principle 2: Governance
 
+Effective governance is crucial for an FMI's stability and public confidence. In an RTGS system, this principle translates into technical controls that ensure clear lines of responsibility, accountability, and oversight. This includes implementing robust access control, creating detailed audit trails for decision-making, and providing transparent reporting mechanisms for all stakeholders.
+
 **PFMI Requirement:**
 > The FMI should have governance arrangements that are clear and transparent, promote the safety and efficiency of the FMI, and support the stability of the broader financial system.
 
@@ -228,6 +242,8 @@ graph TB
 
 ### 2.3 Principle 3: Framework for Management of Risk
 
+A comprehensive risk management framework is the backbone of an FMI's resilience. This principle requires the RTGS system to have integrated tools for identifying, measuring, monitoring, and mitigating a wide range of risks. From a technical standpoint, this involves creating real-time dashboards, automated alert systems, and control mechanisms that are embedded directly into the system's architecture.
+
 **PFMI Requirement:**
 > The FMI should have a sound risk management framework for comprehensive management of legal, credit, liquidity, operational, and other risks.
 
@@ -261,7 +277,7 @@ graph LR
     style E fill:#e8f5e9,stroke:#2e7d32
 ```
 
-**Risk Dashboard Metrics:**
+**Proposed Risk Dashboard Metrics:**
 
 ```yaml
 # Real-time risk metrics
@@ -281,7 +297,11 @@ operational_risk:
   - incident_count: active_incidents
 ```
 
+*   **Note:** The YAML structure above is a proposed example. PFMI mandates that risks are measured and monitored, but it does not prescribe a specific data format for displaying those metrics. This structure represents a best-practice approach.
+
 ### 2.4 Principle 4: Credit Risk
+
+Credit risk in an RTGS system arises from the potential for a participant to fail to meet its financial obligations. The system must implement sophisticated controls to manage this risk, including real-time exposure monitoring, enforcement of credit limits, and automated collateral management. These technical measures are essential for preventing defaults from cascading and threatening the stability of the financial system.
 
 **PFMI Requirement:**
 > The FMI should effectively measure, monitor, and manage its credit exposures to participants and arising from its payment, clearing, and settlement processes.
@@ -295,7 +315,7 @@ operational_risk:
 | **Collateral management** | Haircut calculations, margin calls |
 | **Loss allocation** | Default waterfall, pro-rata distribution |
 
-**Credit Limit System:**
+**Proposed Credit Limit System:**
 
 ```java
 public class CreditLimitManager {
@@ -338,7 +358,11 @@ public class CreditLimitManager {
 }
 ```
 
+*   **Note:** The code above is a proposed example. PFMI mandates the effective management of credit risk, but it does not prescribe a specific class structure or method implementation. This example shows a practical, best-practice approach to implementing credit risk controls.
+
 ### 2.5 Principle 7: Liquidity Risk
+
+Liquidity risk is the danger that a participant has insufficient funds to settle its payment obligations on time. An RTGS system must include advanced features to manage this, such as real-time liquidity monitoring, sophisticated queue management algorithms, and tools for optimizing settlement. These features help ensure the smooth flow of payments and prevent gridlock, where transactions are blocked pending the receipt of other funds.
 
 **PFMI Requirement:**
 > The FMI should effectively measure, monitor, and manage its liquidity risk.
@@ -412,6 +436,8 @@ public class LiquidityQueueManager {
 
 ### 2.6 Principle 8: Settlement Finality
 
+Settlement finality is the bedrock of a payment system's integrity. It ensures that once a payment is settled, it is irrevocable and unconditional. From a technical perspective, this is achieved through atomic database transactions, the creation of immutable audit logs, and the immediate dispatch of confirmation messages. This provides legal certainty to participants and removes the risk of a settlement being unwound.
+
 **PFMI Requirement:**
 > The FMI should provide clear and certain final settlement, at a minimum by the end of the value date.
 
@@ -424,7 +450,7 @@ public class LiquidityQueueManager {
 | **Timestamping** | Trusted timestamp, sequence numbering |
 | **Confirmation** | Immediate pacs.002 status notification |
 
-**Settlement Finality Implementation:**
+**Proposed Settlement Finality Implementation:**
 
 ```java
 @Transactional
@@ -459,7 +485,9 @@ public class SettlementEngine {
 }
 ```
 
-**Database Transaction for Finality:**
+*   **Note:** The code above is a proposed example. PFMI mandates that settlement be final, but it does not prescribe a specific class structure or method implementation. This example shows a practical, best-practice approach to achieving settlement finality through transactional logic.
+
+**Proposed Database Transaction for Finality:**
 
 ```sql
 -- Settlement transaction with audit trail
@@ -505,7 +533,11 @@ INSERT INTO audit_trail (
 COMMIT;  -- Finality point
 ```
 
+*   **Note:** The SQL script above is a proposed example. PFMI mandates that settlement be final, which is often achieved via atomic database transactions, but it does not prescribe a specific SQL implementation. This example shows a practical, best-practice approach.
+
 ### 2.7 Principle 17: Operational Risk
+
+Operational risk encompasses failures in internal processes, people, and systems, as well as external events. For a systemically important RTGS, managing this risk is paramount. This principle drives the need for a highly resilient architecture, including active-active data centers, robust disaster recovery plans, stringent security controls, and formalized change management processes to ensure continuous and reliable operation.
 
 **PFMI Requirement:**
 > The FMI should identify the plausible sources of operational risk, both internal and external, and mitigate their impact through the use of appropriate systems, policies, procedures, and controls.
@@ -513,7 +545,7 @@ COMMIT;  -- Finality point
 **Technical Implementation:**
 
 ```mermaid
-graph TB
+graph LR
     A["Operational Risk Management"]
     
     A --> B["High Availability"]
@@ -619,6 +651,8 @@ incidents:
 
 ### 2.8 Principle 20: Disclosure (Public)
 
+Transparency is key to building trust and enabling participants to manage their risks effectively. This principle requires the FMI to make key information publicly available. Technically, this can be implemented through a public-facing portal that provides access to system documentation, fee schedules, performance metrics (like uptime and transaction volumes), and risk disclosures.
+
 **PFMI Requirement:**
 > The FMI should provide clear and comprehensive public disclosure of its rules, procedures, and risks.
 
@@ -660,7 +694,11 @@ graph LR
 
 ## 3 Complete PFMI Control Matrix
 
+To provide a consolidated view, this section maps all 24 PFMI principles to their corresponding technical controls and implementation examples. It serves as a quick reference guide for architects, developers, and compliance officers to understand the scope of work required for full PFMI alignment.
+
 ### 3.1 Summary Table
+
+The following table provides a comprehensive summary that links each of the 24 PFMI principles to its most critical technical controls and specific implementation examples. This matrix is designed to be a practical tool for mapping regulatory requirements directly to system features and functionalities.
 
 | Principle | Key Technical Controls | Implementation Examples |
 |-----------|----------------------|------------------------|
@@ -691,6 +729,8 @@ graph LR
 
 ### 3.2 Implementation Priority
 
+While all principles are important, some are more foundational or complex to implement than others. This quadrant chart helps prioritize implementation efforts by plotting principles based on their criticality versus their implementation difficulty. This allows teams to focus on the most crucial and challenging areas first, such as operational risk and settlement finality.
+
 ```mermaid
 quadrantChart
     title PFMI Implementation Priority
@@ -708,7 +748,11 @@ quadrantChart
 
 ## 4 Audit and Compliance
 
+Demonstrating compliance with PFMI is an ongoing activity that relies on robust auditing and reporting capabilities. This section explores the technical features required to support internal and external audits, as well as to meet regulatory reporting obligations. A well-designed system makes compliance a continuous, automated process rather than a periodic, manual effort.
+
 ### 4.1 PFMI Audit Trail Requirements
+
+A cornerstone of PFMI compliance is the ability to produce a complete and trustworthy audit trail. The system must log every significant action, from transaction processing to user access and configuration changes. These logs must be immutable, easily searchable, and detailed enough to reconstruct events for forensic analysis and regulatory review.
 
 ```mermaid
 graph LR
@@ -738,7 +782,7 @@ graph LR
     style E fill:#f5f5f5,stroke:#616161
 ```
 
-**Audit Log Structure:**
+**Proposed Audit Log Structure:**
 
 ```json
 {
@@ -772,7 +816,12 @@ graph LR
 }
 ```
 
+*   **What PFMI Mandates:** The PFMI principles require that a financial market infrastructure (FMI) must have comprehensive, secure, and tamper-evident audit trails to reconstruct events and support audits. The principles define what must be achieved (e.g., traceability, accountability).
+*   **What the Article Shows:** The JSON structure is a practical, best-practice implementation of how to meet those requirements. It includes all the critical elements (who, what, when, before/after state, integrity hash) needed for a robust and auditable log.
+
 ### 4.2 Regulatory Reporting
+
+FMIs are required to submit regular reports to regulators to demonstrate their compliance and provide transparency into their operations. The RTGS system should be designed to automate the generation of these reports. This reduces the operational burden, minimizes the risk of human error, and ensures timely and accurate submission of all required data.
 
 ```yaml
 # Automated regulatory reports
@@ -802,6 +851,8 @@ regulatory_reports:
 ```
 
 ## 5 Summary
+
+This article has provided a comprehensive overview of the PFMI principles and their direct translation into the technical design and implementation of an RTGS system. From legal frameworks to operational resilience and public disclosure, adherence to PFMI is not just a compliance exercise but a foundational element of building a safe, efficient, and reliable financial market infrastructure.
 
 !!!anote "📋 Key Takeaways"
     **Essential PFMI implementation knowledge:**
