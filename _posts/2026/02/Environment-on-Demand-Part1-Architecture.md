@@ -27,6 +27,8 @@ This pattern enables teams to:
 
 But it's also why teams adopting EoD hit similar pain points around **provisioning latency**, **CDN propagation delays**, **cost overruns**, and **operational complexity**. Here's the deep dive: what Environment on Demand is, why teams need it, how to architect it, and where reality bites back.
 
+With this overview, let's dive deeper into what Environment on Demand truly entails, starting with its core definition.
+
 ---
 
 ## 1 What Is Environment on Demand?
@@ -41,6 +43,14 @@ Each environment includes:
 - Policies (admission control, IAM roles, service mesh)
 
 This **pull-based** model means infrastructure flows from Git, one commit at a time, until the environment is ready for testing.
+
+!!! info "New to these concepts?"
+    *   **GitOps**: An operational framework that takes DevOps best practices used for application development, like version control, collaboration, compliance, and CI/CD, and applies them to infrastructure automation. It means managing infrastructure and applications using Git as the single source of truth.
+    *   **Argo CD**: A declarative, GitOps continuous delivery tool for Kubernetes. It automates the deployment of desired application states specified in Git repositories to Kubernetes clusters.
+    *   **Terraform**: An open-source infrastructure as code (IaC) tool that allows you to define and provision infrastructure using a declarative configuration language. It can manage a wide range of cloud services and on-premise resources.
+    *   **PR (Pull Request)**: A mechanism in version control systems (like Git) for a developer to notify team members that they have completed a feature or bug fix and are ready to merge their changes from a separate branch into the main codebase. It initiates a review process.
+
+Given this foundational understanding, it's crucial to properly classify Environment on Demand. Is it a platform, a pattern, or something else entirely?
 
 ### Is It a Platform? A Pattern? Something Else?
 
@@ -89,6 +99,8 @@ Think of it like this:
 - **Environment on Demand** = "How do I create isolated environments per PR?"
 - **Argo CD + Terraform + Kubernetes** = "The actual tools that implement EoD"
 
+To illustrate this concept, let's walk through a simple example of an Environment on Demand provisioning flow.
+
 ---
 
 **Simple Example:**
@@ -131,6 +143,8 @@ Environment: "Ready at pr-123.neo01.com"
 ```
 
 Each component is **independent**. The namespace doesn't know if pods run on Fargate or EC2. The DNS doesn't know if it's a preview or staging env. This **modularity** is EoD's superpower.
+
+Now that we've seen a high-level overview, let's zoom in on the core mechanism enabling this, starting with the GitOps interface and Argo CD ApplicationSets.
 
 ---
 
@@ -197,6 +211,8 @@ end
 ```
 
 This loop—**reconcile Git to cluster, repeat**—is the entire GitOps model. Every environment, no matter how complex, reduces to this pattern.
+
+Understanding the GitOps sync mechanism, let's explore how these environments translate into actual cloud resources, forming an 'infrastructure tree'.
 
 ---
 
@@ -288,6 +304,8 @@ Notice: **Database and CDN must complete before environment is usable**. These a
     - **Feedback delay** — Can't validate changes quickly
 
     When you see these in your IaC plan, ask: *"Can I use shared resources instead of per-env provisioning?"*
+
+With a grasp of the provisioning process, it's time to analyze the effectiveness of Environment on Demand by examining its strengths and weaknesses.
 
 ---
 
@@ -418,6 +436,8 @@ Some resources must coordinate across services:
 
 When a blocking dependency is in the plan, **upstream resources can't proceed**—they must wait.
 
+Having explored the trade-offs, let's look at a concrete cloud implementation of Environment on Demand, focusing on Kubernetes, serverless, and Infrastructure as Code.
+
 ---
 
 ## 5 Cloud Implementation: Example with Kubernetes + Serverless + IaC
@@ -505,6 +525,8 @@ resource "cdn_distribution" "preview" {
 
 This pattern repeats across ~20-30 resource types per environment.
 
+With an understanding of how EoD is implemented, let's now analyze its performance implications and identify scenarios where it truly shines or struggles.
+
 ---
 
 ## 6 Performance Implications: When EoD Shines vs. Struggles
@@ -575,6 +597,8 @@ testing:
 
     For quick iterations, these workflow inefficiencies often matter more than the provisioning time itself.
 
+Given these performance challenges and potential overheads, it's worth exploring alternative approaches to Environment on Demand and understanding their respective trade-offs.
+
 ---
 
 ## 7 Alternative Approaches: The Trade-Offs
@@ -607,7 +631,7 @@ while (pr = pull_request.opened) {
 }
 ```
 
-**Benefits:**
+**Benefits (Example):**
 
 | Aspect | Full EoD (Per-Env Resources) | Lightweight (Namespace + Shared) |
 |--------|------------------------------|----------------------------------|
@@ -648,6 +672,8 @@ Full EoD for all PRs = 10x cost increase with no velocity gain for simple change
 Regulated industries require audit trails, approval gates for certain resources (e.g., no public storage in previews).
 
 Self-service ideal clashes with "needs review" for sensitive changes.
+
+Bringing all these concepts together, let's summarize the architectural components and key characteristics of Environment on Demand.
 
 ---
 
