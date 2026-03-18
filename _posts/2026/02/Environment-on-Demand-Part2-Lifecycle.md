@@ -654,7 +654,7 @@ In **Part 3**, we'll explore alternatives to EoD:
 
 **Further Reading:**
 
-- **Mock Servers:** [Mock Servers: Accelerating Development Through Simulation](https://neo01.com/2025/11/Mock-Servers-Accelerating-Development-Through-Simulation/) — Deep dive into simulation-based development
+- [Mock Servers: Accelerating Development Through Simulation](/2025/11/Mock-Servers-Accelerating-Development-Through-Simulation/) — Deep dive into simulation-based development
 - LaunchDarkly. ["Feature Flag Best Practices"](https://docs.launchdarkly.com/guides/best-practices) — When to use flags vs. environments
 - GitHub. ["Development Containers"](https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration) — Consistent local environments
 - Pact. ["Getting Started with Contract Testing"](https://docs.pact.io/getting_started) — Contract testing for microservices

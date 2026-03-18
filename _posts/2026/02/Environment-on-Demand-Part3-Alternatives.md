@@ -437,9 +437,7 @@ Don't adopt EoD because it's trendy. Adopt it because it solves *your* specific 
 ---
 
 **Related Articles:**
-- **[Mock Servers: Accelerating Development Through Simulation](/2025/11/Mock-Servers-Accelerating-Development-Through-Simulation/)** — Deep dive into simulation-based development
-
-**External Resources:**
+- [Mock Servers: Accelerating Development Through Simulation](/2025/11/Mock-Servers-Accelerating-Development-Through-Simulation/) — Deep dive into simulation-based development
 - LaunchDarkly. ["Feature Flag Best Practices"](https://docs.launchdarkly.com/guides/best-practices) — When to use flags vs. environments
 - Pact. ["Getting Started with Contract Testing"](https://docs.pact.io/getting_started) — Contract testing for microservices
 - GitHub. ["Development Containers"](https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration) — Consistent local environments
