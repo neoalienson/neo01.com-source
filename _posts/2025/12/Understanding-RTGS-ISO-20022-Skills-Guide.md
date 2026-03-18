@@ -7,7 +7,6 @@ tags:
   - RTGS
   - Financial Infrastructure
   - ISO 20022
-  - Career Development
 excerpt: "Practical guidance on ISO 20022 competencies for RTGS developers and architects—what skills matter, what to prioritize, and how to build operational mastery."
 lang: en
 available_langs: []

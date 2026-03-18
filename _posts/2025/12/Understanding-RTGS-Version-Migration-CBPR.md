@@ -7,8 +7,6 @@ tags:
   - RTGS
   - Financial Infrastructure
   - ISO 20022
-  - CBPR+
-  - Version Management
 excerpt: "Guide to ISO 20022 version migration—understanding CBPR+ market practices, message version changes, and strategies for evolving RTGS systems without breaking settlement."
 lang: en
 available_langs: []

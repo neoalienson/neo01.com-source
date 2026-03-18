@@ -7,8 +7,6 @@ tags:
   - RTGS
   - Financial Infrastructure
   - PFMI
-  - Risk Management
-  - Compliance
 excerpt: "Mapping CPSS-IOSCO PFMI principles to technical controls—how RTGS systems implement regulatory requirements through architecture, monitoring, and operational procedures."
 lang: en
 available_langs: []

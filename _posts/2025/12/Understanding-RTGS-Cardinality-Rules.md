@@ -7,7 +7,6 @@ tags:
   - RTGS
   - Financial Infrastructure
   - ISO 20022
-  - XML Validation
 excerpt: "Comprehensive guide to ISO 20022 cardinality rules—notation, validation, common pitfalls, and practical examples for RTGS developers."
 lang: en
 available_langs: []

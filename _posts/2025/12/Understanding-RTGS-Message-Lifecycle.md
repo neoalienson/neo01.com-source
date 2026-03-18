@@ -90,6 +90,8 @@ graph TB
 
 The originating bank creates an ISO 20022 message (typically pacs.008 for customer payments):
 
+*   **Note:** The XML snippet below is a proposed example of a `pacs.008` message. While `pacs.008` is a standardized message type, the specific values and some elements presented here are illustrative and may vary in actual implementations.
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <Document xmlns="urn:iso:std:iso:20022:tech:xsd:pacs.008.001.08">
@@ -143,6 +145,8 @@ The originating bank creates an ISO 20022 message (typically pacs.008 for custom
 
 Before submission, the message is digitally signed to ensure authenticity and integrity:
 
+*   **Note:** The process outlined below is a proposed example of how digital signing might be implemented. While digital signatures are mandated for security, the specific sequence of steps can vary depending on the cryptographic libraries and security policies in use.
+
 ```
 ┌─────────────────────────────────────────────────────────┐
 │  Message Signing Process                                │
@@ -174,6 +178,8 @@ The signed message is transmitted from the participant bank to the RTGS system.
 
 The submission flow ensures secure, reliable message delivery from the participant bank to the RTGS system. The process begins with an HTTPS POST request to the API gateway, which serves as the single entry point for all submissions. The load balancer distributes incoming requests across multiple gateway instances to handle high volumes. The API gateway performs TLS termination to decrypt the message, validates rate limits to prevent abuse, and enqueues the message for processing. Upon successful queuing, the gateway returns an HTTP 202 Accepted response to the sender, acknowledging receipt without guaranteeing immediate processing. This asynchronous design allows the system to handle traffic spikes while maintaining reliability.
 
+*   **Note:** The sequence diagram below illustrates a proposed submission flow. While the general stages of message submission are common, the specific components (e.g., Load Balancer, API Gateway) and their interactions can vary across RTGS implementations.
+
 ```mermaid
 sequenceDiagram
     participant B as Participant Bank
@@ -195,6 +201,8 @@ sequenceDiagram
 
 ### 3.3 Submission Response
 
+*   **Note:** The JSON structure below is a proposed example of a submission response. The specific fields and their naming conventions may differ based on the RTGS system's API design.
+
 ```json
 {
   "status": "ACCEPTED",
@@ -214,6 +222,8 @@ The RTGS system performs multi-layer validation before processing the payment.
 ### 4.1 Validation Pipeline
 
 The validation pipeline implements a defense-in-depth strategy where each layer catches different types of errors before the payment proceeds. Early layers (XML well-formedness, XSD schema) are fast and reject obviously malformed messages. Middle layers (business rules, security) validate the semantic correctness and authenticity of the message. The final compliance layer screens against regulatory requirements. This layered approach ensures that expensive operations like sanctions screening only run on messages that have passed all prior checks. Messages flow through the pipeline sequentially, with rejection at any stage halting further processing and triggering an error response to the sender.
+
+*   **Note:** The flowchart below illustrates a proposed validation pipeline. While multi-layered validation is essential for RTGS, the specific layers, their order, and the technologies used can vary across implementations.
 
 ```mermaid
 flowchart TD
@@ -283,6 +293,8 @@ After validation, the system determines whether the payment can settle immediate
 
 Not all validated payments can settle immediately. The queue decision logic evaluates three critical conditions in sequence. First, it checks whether the settlement date matches the current business day; future-dated payments are held until their scheduled date. Second, it verifies whether the submission occurred before the daily cut-off time; late submissions are deferred to the next business day. Third, and most critically, it checks whether the sender has sufficient liquidity to cover the payment amount. Only payments that pass all three conditions proceed directly to settlement; all others are routed to the appropriate queue for later processing.
 
+*   **Note:** The flowchart below illustrates a proposed queue decision logic. The specific conditions and their evaluation order can vary based on the RTGS system's rules and liquidity management strategies.
+
 ```mermaid
 flowchart TD
     A[Validated Payment] --> B{Settlement Date = Today?}
@@ -325,6 +337,8 @@ The RTGS system maintains multiple queues, each serving a distinct purpose with 
 
 The queue manager continuously monitors all queued payments and evaluates release conditions in real-time. For liquidity queues, this involves tracking incoming payments that may free up sufficient balance for queued outbound payments. The queue manager also handles priority overrides, where certain payments (such as urgent market operations or time-critical settlements) can be expedited ahead of normal-priority payments. Sophisticated queue management algorithms optimize settlement throughput by identifying cycles of interdependent payments that can be settled together, maximizing liquidity efficiency across the system.
 
+*   **Note:** The flowchart below illustrates a proposed queue management process. The specific algorithms for releasing and optimizing queued payments can vary greatly between RTGS implementations.
+
 ```mermaid
 flowchart LR
     subgraph "Queue Processing"
@@ -354,6 +368,8 @@ The core RTGS function: transferring funds between participant accounts.
 ### 6.1 Settlement Process
 
 Settlement is the heart of the RTGS system, where actual fund transfers occur between participant banks. The settlement engine coordinates with the account manager to verify balances, execute debits and credits, and update the general ledger. The process follows strict atomicity guarantees: either all steps complete successfully, or the entire transaction rolls back with no partial effects. The settlement engine also enforces the principle of finality—once settlement completes, it cannot be undone. This finality is what distinguishes RTGS from net settlement systems and provides certainty to participants that received funds are definitively theirs.
+
+*   **Note:** The sequence diagram below illustrates a proposed settlement process. While the core steps are universal, the specific interactions between components and the granular details of account updates can vary based on the RTGS system's architecture.
 
 ```mermaid
 sequenceDiagram
@@ -385,6 +401,8 @@ sequenceDiagram
 ### 6.2 Account Movements
 
 Settlement involves simultaneous movements in two participant accounts: a debit to the sender's reserve account and a credit to the receiver's reserve account. These accounts are held at the central bank and represent the bank's claim on central bank money. The settlement engine ensures both legs of the transfer occur atomically—the sender's account is debited and the receiver's account is credited in the same operation. Each movement is recorded in the general ledger with a unique settlement ID, creating an immutable audit trail. The account movement diagrams illustrate how balances change instantaneously at the moment of settlement.
+
+*   **Note:** The ASCII art diagrams below are proposed examples illustrating account movements. The specific account identifiers, balances, and payment amounts are illustrative.
 
 **Before Settlement:**
 ```
@@ -429,6 +447,8 @@ After settlement, all relevant parties are notified of the outcome.
 ### 7.1 Status Message Generation
 
 The RTGS system generates a pacs.002 Payment Status Report:
+
+*   **Note:** The XML snippet below is a proposed example of a `pacs.002` message. While `pacs.002` is a standardized message type, the specific values and some elements presented here are illustrative and may vary in actual implementations.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -493,6 +513,8 @@ ISO 20022 defines standardized status codes that communicate the current state o
 
 Once settlement completes, notifications fan out to multiple parties through parallel distribution channels. The sender bank receives confirmation for their records and to notify their customer. The receiver bank is notified to credit the ultimate beneficiary's account. Central bank records are updated for regulatory oversight and monetary policy purposes. In many cases, the notification chain extends further: commercial banks trigger notifications to their customers through online banking portals, mobile apps, or treasury management systems. This distributed notification architecture ensures all stakeholders have timely, consistent information about payment status.
 
+*   **Note:** The flowchart below illustrates a proposed notification distribution process. The specific channels and involved parties can vary based on the RTGS system's design and regulatory requirements.
+
 ```mermaid
 flowchart LR
     A[Settlement Complete] --> B[Generate pacs.002]
@@ -532,6 +554,8 @@ Regulatory frameworks worldwide mandate minimum retention periods for payment re
 ### 8.2 Archived Data Elements
 
 The archived payment record is a comprehensive snapshot of the entire payment lifecycle, preserving not just the transaction details but the complete context in which it occurred. The original pacs.008 message captures the sender's intent and payment instructions. Status messages (pacs.002) document the journey through the system. Validation results provide evidence of due diligence and rule enforcement. Settlement details establish the definitive record of fund movements. Digital signatures and certificates prove authenticity and non-repudiation. The audit trail captures the who, what, when of every action. Compliance screening results demonstrate regulatory adherence. Queue history shows any delays and their reasons. Together, these elements create an immutable, court-admissible record.
+
+*   **Note:** The list of archived data elements below is a proposed example for a comprehensive payment record. The specific elements and their granularity may vary based on regulatory requirements and system design.
 
 ```
 ┌─────────────────────────────────────────────────────────┐
