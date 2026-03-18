@@ -213,6 +213,7 @@ Document [1..1]
 ```
 
 ### 3.3 Valid vs. Invalid Examples
+*   **Note:** The XML snippets below are proposed examples of valid and invalid `pacs.008` messages to illustrate cardinality rules. These are simplified and do not represent complete `pacs.008` messages.
 
 **✅ Valid pacs.008 (Minimal):**
 
@@ -432,7 +433,7 @@ StatusReport [1..1]
 ## 6 Cardinality in Data Modeling
 
 ### 6.1 Mapping to Object-Oriented Classes
-
+*   **Note:** The Java code snippet below is a proposed example demonstrating how ISO 20022 cardinality rules can be mapped to object-oriented class fields. The specific annotations and class structure may vary based on the framework and design choices.
 ```java
 // Cardinality: 1..1 → Required field, non-nullable
 @XmlElement(required = true)
@@ -452,7 +453,7 @@ private List<String> addressLine;
 ```
 
 ### 6.2 Mapping to Database Schema
-
+*   **Note:** The SQL script below is a proposed example of how cardinality rules can be mapped to database schema design using `NOT NULL` constraints and table relationships. The specific table names, column types, and constraints may vary based on the database system and ORM used.
 ```sql
 -- Cardinality: 1..1 → NOT NULL constraint
 CREATE TABLE payment_message (
@@ -488,7 +489,7 @@ CREATE TABLE address_line (
 ```
 
 ### 6.3 Mapping to JSON APIs
-
+*   **Note:** The TypeScript interface below is a proposed example illustrating how ISO 20022 cardinality rules can be reflected in JSON API definitions. The specific types and optional indicators may vary based on the API design principles.
 ```typescript
 // TypeScript interface reflecting cardinality
 interface FIToFICustomerCreditTransfer {
@@ -531,8 +532,7 @@ Common validation error messages for cardinality violations:
 | `Maximum number of address lines exceeded` | More than 7 lines | 0..7 violated |
 
 ### 7.2 Schematron Rules for Cardinality
-
-Beyond XSD, Schematron can enforce business-level cardinality:
+*   **Note:** The XML snippet below is a proposed example of Schematron rules for enforcing business-level cardinality. The specific rules and XPath expressions will depend on the detailed validation requirements.
 
 ```xml
 <sch:rule context="FIToFICstmrCdtTrf">
@@ -549,11 +549,8 @@ Beyond XSD, Schematron can enforce business-level cardinality:
   </sch:rule>
 </sch:rule>
 ```
-
 ### 7.3 Application-Level Validation
-
-Even after schema validation, implement defensive checks:
-
+*   **Note:** The Java code snippet below is a proposed example demonstrating application-level validation for cardinality. The specific implementation will vary based on the programming language and validation framework used.
 ```java
 public void processPayment(FIToFICstmrCdtTrf payment) {
     // XSD ensures these exist, but validate business rules
@@ -579,7 +576,7 @@ public void processPayment(FIToFICstmrCdtTrf payment) {
 ## 8 Common Pitfalls and How to Avoid Them
 
 ### 8.1 Pitfall 1: Assuming Optional Means "Always Present"
-
+*   **Note:** The Java code snippets below are proposed examples illustrating a common pitfall and best practices for handling optional elements.
 ```java
 // ❌ WRONG: Assumes optional element exists
 String debtorName = transaction.getUltmtDbtr().getNm();  // NullPointerException!
@@ -595,7 +592,7 @@ String debtorName = Optional.ofNullable(transaction.getUltmtDbtr())
 ```
 
 ### 8.2 Pitfall 2: Not Validating Collection Size
-
+*   **Note:** The Java code snippets below are proposed examples illustrating a common pitfall and best practices for validating collection sizes.
 ```java
 // ❌ WRONG: Assumes any size is valid
 List<String> addrLines = address.getAddrLine();
@@ -614,7 +611,7 @@ if (addrLines != null && addrLines.size() <= 7) {
 ```
 
 ### 8.3 Pitfall 3: Confusing 0..1 with 1..1 in Database Design
-
+*   **Note:** The SQL snippets below are proposed examples illustrating a common pitfall in database design related to cardinality and best practices for handling optional foreign keys.
 ```sql
 -- ❌ WRONG: Making optional field NOT NULL
 CREATE TABLE payment (
@@ -628,7 +625,7 @@ CREATE TABLE payment (
 ```
 
 ### 8.4 Pitfall 4: Ignoring Bounded Cardinality
-
+*   **Note:** The Java code snippets below are proposed examples illustrating a common pitfall related to bounded cardinality and best practices for enforcing element limits.
 ```java
 // ❌ WRONG: No validation of upper bound
 for (String line : address.getAddrLine()) {

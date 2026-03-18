@@ -103,6 +103,8 @@ quadrantChart
 
 For a complete reference on cardinality rules, see **[ISO 20022 Cardinality Rules Deep Dive](/2025/12/Understanding-RTGS-Cardinality-Rules/)**.
 
+*   **Note:** The table below provides a proposed example for reading cardinality notation for selected message elements. The specific elements and their cardinalities are illustrative.
+
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │ Element                    │ Cardinality │ Meaning          │
@@ -121,6 +123,8 @@ For a complete reference on cardinality rules, see **[ISO 20022 Cardinality Rule
 **Practical Exercise:**
 
 Given this pacs.008 snippet, identify validation issues:
+
+*   **Note:** The XML snippet below is a proposed example for a practical exercise. This is a simplified and incomplete `pacs.008` message, designed to illustrate common validation issues.
 
 ```xml
 <CdtTrfTxInf>
@@ -261,6 +265,7 @@ graph TB
 Understanding one message family deeply is better than superficial knowledge of many. Here's what a developer should know about pacs.008:
 
 **Key Sections:**
+*   **Note:** The ASCII art diagram below provides a proposed high-level breakdown of the `pacs.008` message structure. This is a simplified representation of the full message and its elements.
 
 ```
 pacs.008.001.08
@@ -324,7 +329,7 @@ graph LR
 ### 4.2 Example: Party Information Mapping
 
 **ISO 20022 Structure:**
-
+*   **Note:** The XML snippet below is a proposed example of ISO 20022 party information structure. This is a simplified representation to illustrate mapping concepts.
 ```xml
 <UltmtDbtr>
   <Nm>ABC Corporation</Nm>
@@ -340,7 +345,7 @@ graph LR
 ```
 
 **Internal Domain Model:**
-
+*   **Note:** The Java code snippet below provides a proposed example of an internal domain model for party information. The specific class structure and fields may vary based on the application's requirements.
 ```java
 public class Party {
     private String name;
@@ -361,7 +366,7 @@ public class Address {
 ```
 
 **Database Schema:**
-
+*   **Note:** The SQL code snippet below provides a proposed example of a database schema for storing party information. The specific table and column definitions may vary based on the database system and ORM used.
 ```sql
 CREATE TABLE party (
     id              BIGSERIAL PRIMARY KEY,

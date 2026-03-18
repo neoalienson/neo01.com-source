@@ -77,7 +77,7 @@ graph LR
 ### 2.1 Redundancy Patterns
 
 **Active-Active Configuration:**
-
+*   **Note:** The diagram below illustrates a proposed Active-Active architectural pattern. The specific components and replication mechanisms can vary based on infrastructure and RPO/RTO objectives.
 ```mermaid
 graph TB
     subgraph "Site A (Active)"
@@ -121,7 +121,7 @@ graph TB
 ```
 
 **Active-Passive Configuration:**
-
+*   **Note:** The diagram below illustrates a proposed Active-Passive architectural pattern. The specific components, health monitoring, and failover mechanisms can vary based on infrastructure and RPO/RTO objectives.
 ```mermaid
 graph TB
     subgraph "Primary Site (Active)"
@@ -163,7 +163,7 @@ graph TB
 ### 2.2 Database High Availability
 
 **Synchronous Replication:**
-
+*   **Note:** The sequence diagram below illustrates a proposed flow for synchronous database replication. While it ensures zero data loss, it introduces higher latency compared to asynchronous replication.
 ```mermaid
 sequenceDiagram
     participant App as Application
@@ -186,7 +186,7 @@ sequenceDiagram
 ```
 
 **Asynchronous Replication:**
-
+*   **Note:** The sequence diagram below illustrates a proposed flow for asynchronous database replication. While it offers lower latency, there is a potential for data loss in the event of a primary database failure.
 ```mermaid
 sequenceDiagram
     participant App as Application
@@ -218,7 +218,7 @@ sequenceDiagram
 | **Use Case** | Critical data | Disaster recovery |
 
 ### 2.3 Failover Strategies
-
+*   **Note:** The flowchart below illustrates a proposed failover strategy. The specific steps and actions will depend on the type of failure and the recovery procedures defined for the RTGS system.
 ```mermaid
 flowchart TD
     A[Failure Detected] --> B{Failure Type}
@@ -260,7 +260,7 @@ flowchart TD
 | **Settlement Time** | < 1 second | End-to-end settlement |
 
 ### 3.2 Performance Architecture
-
+*   **Note:** The diagram below illustrates a proposed performance architecture with various optimization layers and techniques. The specific components and their configuration will vary based on the performance requirements and system design.
 ```mermaid
 graph TB
     subgraph "Performance Layers"
@@ -297,7 +297,7 @@ graph TB
 ### 3.3 Caching Strategy
 
 **Multi-Level Caching:**
-
+*   **Note:** The diagram below illustrates a proposed multi-level caching hierarchy. The specific cache types, data stored, and eviction policies will depend on the application's performance characteristics.
 ```mermaid
 graph LR
     subgraph "Cache Hierarchy"
@@ -324,7 +324,7 @@ graph LR
 ```
 
 **Cache Implementation:**
-
+*   **Note:** The Java code snippet below provides a proposed conceptual interface and example implementation for a caching layer. The actual implementation will vary significantly based on the chosen caching framework and specific data access patterns.
 ```java
 // Conceptual caching layer for RTGS
 interface RTGSCache {
@@ -380,7 +380,7 @@ interface RTGSCache {
 ### 3.4 Database Optimization
 
 **Indexing Strategy:**
-
+*   **Note:** The diagram below illustrates a proposed indexing strategy. The specific indexes and their composition should be determined based on the database schema, query patterns, and performance requirements.
 ```mermaid
 graph TB
     subgraph "Critical Indexes"
@@ -411,7 +411,7 @@ graph TB
 ```
 
 **Query Optimization Examples:**
-
+*   **Note:** The SQL snippets below are proposed examples of database query optimization techniques. The specific optimizations will depend on the database system, data volume, and query patterns.
 ```sql
 -- Optimized query for transaction lookup
 -- Uses covering index to avoid table scan
@@ -442,7 +442,7 @@ LIMIT 100;
 ### 4.1 Scaling Patterns
 
 **Horizontal Scaling:**
-
+*   **Note:** The diagram below illustrates a proposed horizontal scaling architecture. The specific components, load balancing strategies, and shared resources will vary based on the application's scalability requirements.
 ```mermaid
 graph TB
     subgraph "Scale-Out Architecture"
@@ -495,7 +495,7 @@ graph TB
 | **Message Queue** | Partitioning | Order preservation, Consumer groups |
 
 ### 4.2 Queue Scaling
-
+*   **Note:** The diagram below illustrates a proposed queue scaling architecture. The specific partitioning strategy and consumer group configuration will depend on the message processing requirements and chosen message queue technology.
 ```mermaid
 graph LR
     subgraph "Producers"
@@ -503,30 +503,30 @@ graph LR
         P2[Producer 2]
         P3[Producer 3]
     end
-    
+
     subgraph "Message Queue"
         Q1[Partition 1]
         Q2[Partition 2]
         Q3[Partition 3]
     end
-    
+
     subgraph "Consumers"
         C1[Consumer Group A]
         C2[Consumer Group B]
     end
-    
+
     P1 --> Q1
     P2 --> Q2
     P3 --> Q3
-    
+
     Q1 --> C1
     Q2 --> C1
     Q3 --> C1
-    
+
     Q1 --> C2
     Q2 --> C2
     Q3 --> C2
-    
+
     style Q1 fill:#1976d2,stroke:#0d47a1,color:#fff
     style Q2 fill:#1976d2,stroke:#0d47a1,color:#fff
     style Q3 fill:#1976d2,stroke:#0d47a1,color:#fff
@@ -535,7 +535,7 @@ graph LR
 ## 5 Monitoring and Observability
 
 ### 5.1 Monitoring Architecture
-
+*   **Note:** The diagram below illustrates a proposed monitoring architecture. The specific tools, data sources, and correlation mechanisms will vary based on the observability requirements.
 ```mermaid
 graph TB
     subgraph "Data Collection"
@@ -585,7 +585,7 @@ graph TB
 ### 5.2 Key Performance Indicators
 
 **System Health Metrics:**
-
+*   **Note:** The table below presents proposed system health metrics with illustrative thresholds and alert levels. The specific KPIs and their targets should be established based on the RTGS system's SLA and operational requirements.
 | Category | Metric | Threshold | Alert Level |
 |----------|--------|-----------|-------------|
 | **Availability** | Uptime % | < 99.99% | Critical |
@@ -594,9 +594,9 @@ graph TB
 | **Error Rate** | Failed Transactions | > 0.1% | Critical |
 | **Queue Depth** | Pending Payments | > 1000 | Medium |
 | **Database** | Connection Pool Usage | > 80% | Medium |
-
+```
 **Business Metrics Dashboard:**
-
+*   **Note:** The diagram below illustrates a proposed structure for a business metrics dashboard. The specific metrics, their visualization, and aggregation methods can vary based on business needs.
 ```mermaid
 graph LR
     subgraph "Real-Time Metrics"
@@ -625,7 +625,7 @@ graph LR
 ```
 
 ### 5.3 Distributed Tracing
-
+*   **Note:** The sequence diagram below illustrates a proposed distributed tracing flow. The specific services, spans, and metrics captured will depend on the tracing framework and microservices architecture.
 ```mermaid
 sequenceDiagram
     participant G as API Gateway
@@ -662,7 +662,7 @@ sequenceDiagram
 ## 6 Operational Excellence
 
 ### 6.1 Deployment Pipeline
-
+*   **Note:** The flowchart below illustrates a proposed deployment pipeline. The specific stages, automation tools, and approval gates will vary based on the CI/CD practices and regulatory requirements.
 ```mermaid
 flowchart LR
     A[Code Commit] --> B[Automated Tests]
@@ -684,7 +684,7 @@ flowchart LR
 ```
 
 ### 6.2 Change Management
-
+*   **Note:** The table below presents a proposed example of change management policies. The specific approval workflows, testing requirements, and deployment windows should be defined based on the organization's risk appetite and operational procedures.
 | Change Type | Approval | Testing | Deployment Window |
 |-------------|----------|---------|-------------------|
 | **Critical Security** | Emergency | Minimal | Immediate |
@@ -693,7 +693,7 @@ flowchart LR
 | **Infrastructure** | Architecture | Performance | Maintenance Window |
 
 ### 6.3 Capacity Planning
-
+*   **Note:** The diagram below illustrates a proposed capacity planning process. The specific inputs, modeling techniques, and outputs will vary based on the system's growth patterns and resource management strategies.
 ```mermaid
 graph LR
     subgraph "Capacity Inputs"

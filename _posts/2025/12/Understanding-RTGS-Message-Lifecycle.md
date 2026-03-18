@@ -576,6 +576,8 @@ The archived payment record is a comprehensive snapshot of the entire payment li
 
 The audit trail is a chronological, append-only log that records every significant event in a payment's lifecycle. Each log entry captures five essential elements: a precise timestamp (typically with millisecond accuracy), the actor or component that performed the action, a description of the action taken, the result or outcome, and a correlation ID linking related entries across distributed systems. Audit trails serve multiple purposes: operational debugging, forensic investigation, regulatory examination, and legal proceedings. To maintain integrity, audit logs are written to write-once-read-many (WORM) storage that prevents tampering or deletion. Modern systems also replicate audit logs to geographically distributed locations for disaster recovery.
 
+*   **Note:** The flowchart below illustrates a proposed process for an audit trail. The specific data elements captured in each log entry and the storage mechanisms can vary.
+
 ```mermaid
 flowchart LR
     A[Payment Received] --> B[Log Entry Created]
@@ -621,6 +623,8 @@ Exception handling is a critical capability of RTGS systems, ensuring that probl
 
 Payment cancellation is governed by the principle of finality: queued payments can be cancelled, but settled payments cannot. When a sender bank submits a cancellation request (pacs.004), the RTGS system first checks the current status of the original payment. If the payment remains in a queue (typically due to insufficient liquidity), the cancellation succeeds and the payment is removed from the queue. If settlement has already occurred, the cancellation request is rejected because settlement is final and irrevocable. In cases where funds must be returned after settlement, the receiver bank must initiate a new payment (return) rather than a cancellation. This distinction preserves the legal certainty of RTGS settlement.
 
+*   **Note:** The sequence diagram below illustrates a proposed payment cancellation flow. The specific messages and states may vary depending on the RTGS system's implementation.
+
 ```mermaid
 sequenceDiagram
     participant S as Sender Bank
@@ -647,6 +651,8 @@ sequenceDiagram
 Payment returns address situations where a settled payment cannot be credited to the intended beneficiary. Common scenarios include incorrect account numbers, closed accounts, or unidentified beneficiaries. Unlike cancellations, returns occur after settlement and therefore require reversing the original fund movement. The receiver bank initiates the return by sending a message to the RTGS system, which reverses the settlement by debiting the receiver's account and crediting the sender's account. The return message includes a reason code explaining why the original payment could not be applied, enabling the sender to investigate and potentially resubmit with corrected information. Returns demonstrate that while settlement is final, the system provides mechanisms to correct genuine errors.
 
 When a payment cannot be credited to the ultimate beneficiary:
+
+*   **Note:** The sequence diagram below illustrates a proposed payment return flow. The specific messages and interactions may vary depending on the RTGS system's implementation.
 
 ```mermaid
 sequenceDiagram
@@ -684,6 +690,8 @@ This example traces a realistic high-value corporate payment through all seven l
 
 The timeline demonstrates the remarkable speed of modern RTGS systems: a complete end-to-end settlement in just 700 milliseconds. The majority of this time (400ms) is spent in validation, reflecting the comprehensive checks performed on every payment. Settlement itself takes only 100ms, as does confirmation and notification. This sub-second processing enables time-critical payments such as foreign exchange settlements, securities transactions, and emergency liquidity transfers. The millisecond-level timestamps also illustrate the precision required for audit trails and dispute resolution.
 
+*   **Note:** The timeline below presents a proposed example of payment processing durations. Actual times may vary significantly based on system load, network latency, and specific implementation details.
+
 | Time | Stage | Event |
 |------|-------|-------|
 | 09:15:00.000 | Initiation | ABC Corp submits payment via corporate banking |
@@ -705,6 +713,8 @@ The timeline demonstrates the remarkable speed of modern RTGS systems: a complet
 ### 10.3 Message Flow Diagram
 
 The message flow diagram provides a swimlane view of the payment journey across all participants: the corporate payer, the originating bank, the RTGS system, and the destination bank. Each numbered step corresponds to a specific message or action, showing how the payment instruction flows from initiator to final recipient. The diagram highlights the central role of the RTGS system as the trusted intermediary that validates, settles, and confirms transactions. Note that steps 3-8 occur entirely within the RTGS system boundary, representing the internal processing that transforms a payment instruction into settled funds.
+
+*   **Note:** The sequence diagram below illustrates a proposed message flow for a complete payment lifecycle. The specific interactions and message types can vary across RTGS implementations.
 
 ```mermaid
 sequenceDiagram

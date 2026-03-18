@@ -100,6 +100,8 @@ graph TB
 
 ISO 20022 message versions follow a standard pattern:
 
+*   **Note:** The example notation below illustrates the ISO 20022 versioning pattern. The specific message type (`pacs.008.001.08`) is used as an illustrative example.
+
 ```
 <BusinessArea>.<MessageNumber>.<Variant>.<Version>
 
@@ -140,24 +142,24 @@ graph LR
 | **Breaking** | Removed elements, type changes | Critical | Field length reduction |
 
 ### 2.3 Version Compatibility Matrix
-
+*   **Note:** The diagram below illustrates a proposed version compatibility model. Actual backward compatibility is not guaranteed by ISO 20022 and depends on each central bank's specific coexistence rules.
 ```mermaid
 graph TB
     subgraph "v08 Systems"
         A1[Can read v08]
         A2[Cannot read v09]
     end
-    
+
     subgraph "v09 Systems"
         B1[Can read v09]
         B2[Can read v08<br/>(backward compatible)]
     end
-    
+
     subgraph "v10 Systems"
         C1[Can read v10]
         C2[Can read v09, v08<br/>(backward compatible)]
     end
-    
+
     style A1 fill:#e8f5e9,stroke:#2e7d32
     style A2 fill:#ffebee,stroke:#c62828
     style B1 fill:#e8f5e9,stroke:#2e7d32
@@ -222,7 +224,7 @@ graph TB
 Here's a concrete example of how CBPR+ influenced message evolution:
 
 **Changed Elements:**
-
+*   **Note:** The table below illustrates proposed element changes between `pacs.008` versions 08 and 09. These changes are specific examples to demonstrate the evolution of message structure and cardinality.
 ```diff
 pacs.008.001.08 → pacs.008.001.09
 
@@ -250,7 +252,7 @@ pacs.008.001.08 → pacs.008.001.09
 ```
 
 **XML Comparison:**
-
+*   **Note:** The XML snippets below are proposed examples to illustrate changes between `pacs.008` versions 08 and 09. These examples are simplified and do not represent complete `pacs.008` messages.
 ```xml
 <!-- pacs.008.001.08 (Old) -->
 <CdtTrfTxInf>
@@ -285,6 +287,8 @@ pacs.008.001.08 → pacs.008.001.09
 
 CBPR+ introduces additional validation beyond XSD:
 
+*   **Note:** The XML snippet below is a proposed example of Schematron rules for CBPR+ validation. The specific rules implemented will depend on the business requirements and market practices.
+
 ```xml
 <!-- Schematron Rule Example -->
 <sch:rule context="UltmtDbtr">
@@ -300,6 +304,7 @@ CBPR+ introduces additional validation beyond XSD:
     Warning: Mixing structured and unstructured address elements
   </sch:report>
 </sch:rule>
+```
 ```
 
 ## 4 Local Market Practice Variations
@@ -345,7 +350,7 @@ graph TB
 | **Middle East** | Arabic script support | Bi-directional text handling |
 
 ### 4.3 Example: European vs. US Address Handling
-
+*   **Note:** The XML snippets below are proposed examples illustrating different approaches to address handling. The actual fields and their usage may vary based on local market practices and ISO 20022 guidelines.
 ```xml
 <!-- European Style (Structured, IBAN-focused) -->
 <UltmtDbtr>
@@ -441,8 +446,9 @@ mindmap
 ```
 
 ### 5.3 Database Schema Evolution
-
 Example: Handling pacs.008 v08 → v09 changes
+
+*   **Note:** The SQL script below is a proposed example of database schema evolution to accommodate message version changes. The specific table and column modifications will depend on the existing database design and the nature of the message updates.
 
 ```sql
 -- v08 Schema
@@ -477,16 +483,15 @@ ALTER TABLE party_address
 ```
 
 ### 5.4 Code Evolution Strategy
-
 **Version-Aware Processing:**
-
+*   **Note:** The Java code snippet below is a proposed example of a version-aware processing strategy. The specific implementation using `switch` statements or adapter patterns may vary based on the programming language and architectural choices.
 ```java
 public class PaymentProcessor {
-    
+
     // Support multiple versions simultaneously
     public void processMessage(Document message) {
         String version = extractVersion(message);
-        
+
         switch (version) {
             case "pacs.008.001.08":
                 processV08(message);
@@ -498,7 +503,7 @@ public class PaymentProcessor {
                 throw new UnsupportedVersionException(version);
         }
     }
-    
+
     private void processV08(Document message) {
         // v08-specific handling
         // ChrgsInf is optional (0..1)
@@ -507,7 +512,7 @@ public class PaymentProcessor {
             // Process single charge
         }
     }
-    
+
     private void processV09(Document message) {
         // v09-specific handling
         // ChrgsInf is repeatable (0..n) and ChrgBr is mandatory
@@ -570,24 +575,24 @@ gantt
 ## 7 Version Management Best Practices
 
 ### 7.1 Design for Evolution
-
+*   **Note:** The diagram below outlines proposed design principles for building evolvable systems in the context of ISO 20022 message versioning. The specific principles and their application can vary.
 ```mermaid
 graph TB
     A["Design Principles"]
-    
+
     A --> B["Abstraction"]
     A --> C["Configuration"]
     A --> D["Validation Framework"]
-    
+
     B --> B1["Version-agnostic models"]
     B --> B2["Adapter patterns"]
-    
+
     C --> C1["Externalize rules"]
     C --> C2["Code lists in DB"]
-    
+
     D --> D1["Pluggable validators"]
     D --> D2["Rule engines"]
-    
+
     style A fill:#1976d2,stroke:#0d47a1,color:#fff
     style B fill:#e3f2fd,stroke:#1976d2
     style C fill:#fff3e0,stroke:#f57c00
@@ -597,7 +602,7 @@ graph TB
 ### 7.2 Implementation Patterns
 
 **Pattern 1: Version Adapter**
-
+*   **Note:** The Java code snippet below is a proposed example of a Version Adapter pattern. This pattern can be used to provide a consistent interface for different versions of messages.
 ```java
 public interface PaymentMessage {
     String getTransactionId();
@@ -627,7 +632,7 @@ public class Pacs008V09Adapter implements PaymentMessage {
 ```
 
 **Pattern 2: Externalized Validation**
-
+*   **Note:** The XML snippet below is a proposed example of externalized validation rules. This approach allows rules to be updated without code changes but requires a separate rule engine.
 ```xml
 <!-- validation-rules.xml -->
 <validation-rules version="pacs.008.001.09">
@@ -644,7 +649,7 @@ public class Pacs008V09Adapter implements PaymentMessage {
 ```
 
 ### 7.3 Monitoring and Alerting
-
+*   **Note:** The YAML snippet below is a proposed example of a monitoring configuration for version migration. The specific metrics, alert conditions, and labels will depend on the monitoring system and the migration strategy.
 ```yaml
 # Monitoring configuration for version migration
 metrics:

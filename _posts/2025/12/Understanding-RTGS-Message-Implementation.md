@@ -20,7 +20,7 @@ This article covers the technical implementation aspects of ISO 20022 messaging 
 ## 1 Message Validation and Processing
 
 ### 1.1 Validation Layers
-
+*   **Note:** The flowchart below illustrates a proposed validation pipeline. While multi-layered validation is essential, the specific layers, their order, and the technologies used can vary across implementations.
 ```mermaid
 flowchart TD
     A[Incoming Message] --> B[Syntax Validation]
@@ -54,6 +54,8 @@ flowchart TD
 ### 1.2 XML Validation Technologies
 
 Since ISO 20022 messages are XML-based, multiple validation layers and technologies can be applied:
+
+*   **Note:** The diagram below illustrates a proposed layering of XML validation technologies. The specific technologies and their configuration can vary based on system requirements.
 
 ```mermaid
 graph TB
@@ -92,6 +94,7 @@ The first validation layer ensures the message is valid XML. XML parsers verify 
 | **Namespace Validation** | Verify XML namespaces | Standard parser feature |
 
 **Example (Java):**
+*   **Note:** The Java code snippet below is a proposed example for checking XML well-formedness. The specific API and error handling may vary based on the Java XML parser used.
 ```java
 DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 factory.setNamespaceAware(true);
@@ -112,6 +115,7 @@ Once well-formedness is confirmed, XSD (XML Schema Definition) validation verifi
 | **Namespaces** | ISO 20022 namespace URIs |
 
 **ISO 20022 XSD Example:**
+*   **Note:** The XML snippet below is a proposed example showing an XSD structure. While XSD is a standard, this specific representation is illustrative and does not encompass the entire `pacs.008.001.08.xsd` file.
 ```xml
 <!-- pacs.008.001.08.xsd -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
@@ -142,6 +146,7 @@ Once well-formedness is confirmed, XSD (XML Schema Definition) validation verifi
 ```
 
 **XSD Validation (Python):**
+*   **Note:** The Python code snippet below is a proposed example for performing XSD validation. The specific library and implementation details may vary based on the programming language and chosen XML toolkit.
 ```python
 from lxml import etree
 
@@ -170,6 +175,7 @@ Schematron addresses the limitations of XSD by providing rule-based validation u
 | Cannot check external references | Access to external data sources |
 
 **Schematron Example:**
+*   **Note:** The XML snippet below is a proposed example of Schematron rules for business validation. While Schematron is a standard, the specific rules implemented will depend on the business requirements and market practices.
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron">
@@ -211,6 +217,7 @@ The final validation layer handles cryptographic security. XML Signature (XMLDSi
 | **XAdES** | Advanced electronic signatures (EU compliance) | ETSI TS 101 903 |
 
 **XML Signature Example:**
+*   **Note:** The XML snippet below is a proposed example of an XML Digital Signature. While XMLDSig is a standard, the specific elements included and their values will vary based on the signing implementation and requirements.
 ```xml
 <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
   <SignedInfo>
@@ -231,7 +238,7 @@ The final validation layer handles cryptographic security. XML Signature (XMLDSi
 ```
 
 ### 1.3 Validation Framework Implementation
-
+*   **Note:** The Java code snippet below provides a conceptual interface for a validation framework. The actual implementation will vary significantly based on the chosen programming language, architecture, and specific validation engines.
 ```java
 // Conceptual validation framework
 interface MessageValidator {
@@ -266,7 +273,7 @@ interface MessageValidator {
 ### 1.4 Error Handling
 
 **Error Response Structure:**
-
+*   **Note:** The XML snippet below is a proposed example of an error response structure, typically using a `pacs.004` message for a rejection. While `pacs.004` is a standard, the specific elements and error codes will depend on the RTGS system's error handling conventions.
 ```xml
 <Document>
   <pacs.004>
@@ -310,7 +317,7 @@ interface MessageValidator {
 ## 2 Communication Protocols
 
 ### 2.1 Transport Layer Security
-
+*   **Note:** The sequence diagram below illustrates a proposed flow for Transport Layer Security (TLS) and mutual TLS (mTLS) in an RTGS system. The specific handshake details and certificate validation steps can vary based on implementation.
 ```mermaid
 sequenceDiagram
     participant P as Participant
@@ -330,7 +337,7 @@ sequenceDiagram
 ### 2.2 API Standards
 
 **RESTful API for RTGS:**
-
+*   **Note:** The YAML snippet below is a proposed example of an OpenAPI Specification for an RTGS payment API. While OpenAPI is a standard, the specific paths, operations, and schemas are illustrative of a potential RTGS API design.
 ```yaml
 # OpenAPI Specification Example
 openapi: 3.0.0
@@ -372,7 +379,7 @@ paths:
 ```
 
 ### 2.3 Message Queue Integration
-
+*   **Note:** The diagram below illustrates a proposed architecture for message queue integration in an RTGS system. The specific message queue technology, secure channel implementation, and consumer/producer patterns can vary.
 ```mermaid
 graph TB
     subgraph "Participant Side"
@@ -412,7 +419,7 @@ graph TB
 | **Security Testing** | Encryption and authentication | Penetration testing |
 
 ### 3.2 Test Scenarios
-
+*   **Note:** The diagram below illustrates a proposed categorization of test scenarios for an RTGS system. The specific test types and their relationships can vary based on the testing strategy.
 ```mermaid
 graph LR
     subgraph "Positive Tests"
@@ -440,9 +447,11 @@ graph LR
     style C1 fill:#fff3e0,stroke:#f57c00
 ```
 
-**Positive Test Scenarios**
+**Proposed Positive Test Scenarios**
 
 Positive tests verify that valid messages are processed correctly end-to-end:
+
+*   **Note:** The table below presents proposed positive test scenarios. The specific test cases and expected results are illustrative and should be adapted to the particular RTGS implementation being tested.
 
 | Test ID | Scenario | Input | Expected Result |
 |---------|----------|-------|-----------------|
@@ -455,9 +464,11 @@ Positive tests verify that valid messages are processed correctly end-to-end:
 | POS-007 | Future-dated payment | Settlement date > current date | Payment queued for future settlement |
 | POS-008 | Cross-border payment | Different currency, correspondent banks | FX conversion applied, correspondent notified |
 
-**Negative Test Scenarios**
+**Proposed Negative Test Scenarios**
 
 Negative tests verify that invalid messages are properly rejected with appropriate error codes:
+
+*   **Note:** The table below presents proposed negative test scenarios. The specific test cases and expected error codes are illustrative and should be adapted to the particular RTGS implementation being tested.
 
 | Test ID | Scenario | Input | Expected Result |
 |---------|----------|-------|-----------------|
@@ -477,9 +488,11 @@ Negative tests verify that invalid messages are properly rejected with appropria
 | NEG-014 | Invalid message type | Unknown message identifier | Reject with unsupported message type |
 | NEG-015 | Circular payment | Debtor agent = Creditor agent | Reject with business rule violation |
 
-**Edge Case Scenarios**
+**Proposed Edge Case Scenarios**
 
 Edge cases test system behavior at boundaries and under stress:
+
+*   **Note:** The table below presents proposed edge case scenarios. These test cases are illustrative and should be adapted to the specific performance and resilience requirements of the RTGS implementation.
 
 | Test ID | Scenario | Input | Expected Result |
 |---------|----------|-------|-----------------|
@@ -499,9 +512,11 @@ Edge cases test system behavior at boundaries and under stress:
 | EDGE-014 | Large batch | 10,000 transactions in single batch | Batch processed, partial failures handled |
 | EDGE-015 | Unicode characters | Names with emoji, CJK, RTL text | Properly stored and displayed |
 
-**Compliance Test Scenarios**
+**Proposed Compliance Test Scenarios**
 
 Compliance tests verify regulatory and audit requirements:
+
+*   **Note:** The table below presents proposed compliance test scenarios. The specific test cases and expected outcomes are illustrative and should be aligned with applicable regulatory frameworks and internal policies.
 
 | Test ID | Scenario | Input | Expected Result |
 |---------|----------|-------|-----------------|
@@ -513,9 +528,11 @@ Compliance tests verify regulatory and audit requirements:
 | COMP-006 | Right to erasure | GDPR deletion request (where applicable) | Personal data anonymized, transaction preserved |
 | COMP-007 | Regulatory reporting | End-of-day batch | Reports generated for central bank |
 
-**Performance Test Scenarios**
+**Proposed Performance Test Scenarios**
 
 Performance tests validate system meets throughput and latency requirements:
+
+*   **Note:** The table below presents proposed performance test scenarios. The specific metrics, targets, and test methodologies should be tailored to the RTGS system's functional and non-functional requirements.
 
 | Test ID | Scenario | Metric | Target |
 |---------|----------|--------|--------|

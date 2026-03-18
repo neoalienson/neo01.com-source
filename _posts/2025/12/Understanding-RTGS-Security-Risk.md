@@ -83,7 +83,7 @@ graph LR
 ### 2.2 Attack Vectors
 
 **Common Attack Scenarios:**
-
+*   **Note:** The flowcharts below illustrate proposed examples of common attack scenarios relevant to RTGS systems. The specific steps and outcomes are illustrative.
 ```mermaid
 flowchart LR
     subgraph "Attack Vector 1: Credential Theft"
@@ -135,7 +135,7 @@ flowchart LR
 ## 3 Security Architecture
 
 ### 3.1 Defense in Depth
-
+*   **Note:** The diagram below presents a proposed architectural approach to defense-in-depth, illustrating various security layers and their associated controls. The specific technologies and their implementation may vary.
 ```mermaid
 graph TB
     subgraph "Layer 1: Perimeter Security"
@@ -143,44 +143,44 @@ graph TB
         A2[IDS/IPS]
         A3[DDoS Protection]
     end
-    
+
     subgraph "Layer 2: Network Security"
         B1[Network Segmentation]
         B2[VLANs]
         B3[Private Links]
     end
-    
+
     subgraph "Layer 3: Transport Security"
         C1[TLS 1.3]
         C2[mTLS]
         C3[IPSec VPN]
     end
-    
+
     subgraph "Layer 4: Application Security"
         D1[Authentication]
         D2[Authorization]
         D3[Input Validation]
         D4[Session Management]
     end
-    
+
     subgraph "Layer 5: Data Security"
         E1[Encryption at Rest]
         E2[Tokenization]
         E3[Data Masking]
     end
-    
+
     subgraph "Layer 6: Physical Security"
         F1[Data Center Access]
         F2[Surveillance]
         F3[Environmental Controls]
     end
-    
+
     A1 --> B1
     B1 --> C1
     C1 --> D1
     D1 --> E1
     E1 --> F1
-    
+
     style A1 fill:#e3f2fd,stroke:#1976d2
     style B1 fill:#e3f2fd,stroke:#1976d2
     style C1 fill:#fff3e0,stroke:#f57c00
@@ -192,7 +192,7 @@ graph TB
 ### 3.2 Cryptographic Infrastructure
 
 **Hardware Security Module (HSM):**
-
+*   **Note:** The diagram below illustrates a proposed conceptual architecture for HSM integration and its functions within an RTGS system. The specific functions and their usage can vary based on the HSM product and security policy.
 ```mermaid
 graph TB
     subgraph "HSM Functions"
@@ -201,19 +201,19 @@ graph TB
         C[Encryption/Decryption]
         D[Digital Signatures]
     end
-    
+
     subgraph "HSM Usage in RTGS"
         E[Message Signing]
         F[Certificate Validation]
         G[PIN Processing]
         H[Secure Key Exchange]
     end
-    
+
     A --> E
     B --> F
     C --> G
     D --> H
-    
+
     style A fill:#1976d2,stroke:#0d47a1,color:#fff
     style B fill:#1976d2,stroke:#0d47a1,color:#fff
     style C fill:#1976d2,stroke:#0d47a1,color:#fff
@@ -221,7 +221,7 @@ graph TB
 ```
 
 **Cryptographic Standards:**
-
+*   **Note:** The table below presents proposed cryptographic standards and parameters. While these are widely accepted, the specific selection and key sizes for an RTGS system should be determined based on a thorough risk assessment and compliance with relevant regulations.
 | Operation | Algorithm | Key Size | Standard |
 |-----------|-----------|----------|----------|
 | **Asymmetric Encryption** | RSA, ECC | 2048+, 256+ | FIPS 140-2 |
@@ -231,9 +231,7 @@ graph TB
 | **Key Exchange** | ECDH | 256+ | SP 800-56A |
 
 ### 3.3 Authentication Architecture
-
-**Multi-Factor Authentication Flow:**
-
+*   **Note:** The sequence diagram below illustrates a proposed Multi-Factor Authentication (MFA) flow. The specific steps, authentication factors, and integration points can vary based on the chosen MFA solution and security policies.
 ```mermaid
 sequenceDiagram
     participant U as User
@@ -267,7 +265,7 @@ sequenceDiagram
 ### 3.4 Authorization Model
 
 **Role-Based Access Control (RBAC):**
-
+*   **Note:** The diagram below illustrates a proposed Role-Based Access Control (RBAC) model. The specific roles, their assigned permissions, and their hierarchical structure will depend on the organization's security policy and operational requirements.
 ```mermaid
 graph LR
     subgraph "Roles"
@@ -276,7 +274,7 @@ graph LR
         C[Auditor]
         D[Participant]
     end
-    
+
     subgraph "Permissions"
         E[Configure System]
         F[Process Payments]
@@ -286,20 +284,20 @@ graph LR
         J[Manage Users]
         K[Approve High Value]
     end
-    
+
     A --> E
     A --> J
     A --> K
-    
+
     B --> F
     B --> G
-    
+
     C --> I
     C --> G
-    
+
     D --> H
     D --> G
-    
+
     style A fill:#e3f2fd,stroke:#1976d2
     style B fill:#fff3e0,stroke:#f57c00
     style C fill:#e8f5e9,stroke:#388e3c
@@ -307,7 +305,7 @@ graph LR
 ```
 
 **Permission Matrix:**
-
+*   **Note:** The table below presents a proposed example of a permission matrix. The actual permissions and their assignment to roles should be defined based on a detailed access control policy.
 | Role | Submit Payment | Approve Payment | View Reports | Configure System | Manage Users |
 |------|---------------|-----------------|--------------|------------------|--------------|
 | **System Admin** | ❌ | ❌ | ✅ | ✅ | ✅ |
@@ -364,7 +362,7 @@ graph LR
 ### 4.3 Fraud Detection
 
 **Real-time Fraud Monitoring:**
-
+*   **Note:** The flowchart below illustrates a proposed workflow for real-time fraud monitoring. The specific rules, risk scoring mechanisms, and response actions will vary based on the fraud detection strategy and system capabilities.
 ```mermaid
 flowchart TD
     A[Payment Received] --> B[Rule Engine]
@@ -393,7 +391,7 @@ flowchart TD
 ```
 
 **Fraud Detection Rules:**
-
+*   **Note:** The Java code snippet below provides a proposed conceptual interface for fraud detection rules. The actual implementation will involve specific algorithms, data sources, and business logic.
 ```java
 // Conceptual fraud detection rules
 interface FraudDetectionRule {
@@ -459,7 +457,7 @@ graph LR
 ```
 
 ### 5.2 Audit Log Structure
-
+*   **Note:** The JSON structure below is a proposed example of an audit log event. While comprehensive audit logs are mandated, the specific fields and their naming conventions may differ based on the RTGS system's design and compliance requirements.
 ```json
 {
   "auditEvent": {
@@ -527,29 +525,29 @@ graph LR
 | **Low (P4)** | < 24 hours | Minor policy deviation, Audit findings |
 
 ### 6.2 Incident Response Process
-
+*   **Note:** The flowchart below illustrates a proposed workflow for an incident response process. The specific steps, teams involved, and escalation procedures will vary based on the organization's incident management framework.
 ```mermaid
 flowchart TD
     A[Incident Detected] --> B[Initial Assessment]
     B --> C{Severity Level}
-    
+
     C -->|P1 Critical| D1[Activate Crisis Team]
     C -->|P2 High| D2[Security Team Alert]
     C -->|P3 Medium| D3[Standard Response]
     C -->|P4 Low| D4[Schedule Review]
-    
+
     D1 --> E[Containment]
     D2 --> E
     D3 --> E
-    
+
     E --> F[Eradication]
     F --> G[Recovery]
     G --> H[Post-Incident Review]
-    
+
     H --> I[Lessons Learned]
     I --> J[Update Controls]
     J --> K[Documentation]
-    
+
     style A fill:#e3f2fd,stroke:#1976d2
     style D1 fill:#ffebee,stroke:#c62828
     style E fill:#fff3e0,stroke:#f57c00
@@ -559,7 +557,7 @@ flowchart TD
 ## 7 Business Continuity
 
 ### 7.1 Disaster Recovery Strategy
-
+*   **Note:** The diagram below illustrates a proposed disaster recovery strategy. The specific sites, replication methods, and failover mechanisms will depend on the RTO/RPO objectives and available infrastructure.
 ```mermaid
 graph TB
     subgraph "Primary Site"
@@ -567,31 +565,31 @@ graph TB
         A2[Primary Database]
         A3[Real-time Replication]
     end
-    
+
     subgraph "Secondary Site"
         B1[Standby RTGS System]
         B2[Secondary Database]
         B3[Sync Replication]
     end
-    
+
     subgraph "Tertiary Site (DR)"
         C1[Cold Standby]
         C2[Backup Database]
         C3[Daily Backups]
     end
-    
+
     A1 --> A3
     A3 -.->|Synchronous| B3
     B3 --> B2
     B2 --> B1
-    
+
     A3 -.->|Asynchronous| C3
     C3 --> C2
     C2 --> C1
-    
+
     B1 -.->|Failover Target| A1
     C1 -.->|Last Resort| A1
-    
+
     style A1 fill:#1976d2,stroke:#0d47a1,color:#fff
     style B1 fill:#fff3e0,stroke:#f57c00
     style C1 fill:#e8f5e9,stroke:#388e3c

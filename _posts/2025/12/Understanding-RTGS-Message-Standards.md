@@ -346,7 +346,7 @@ The transformation from UML model to XML schema follows deterministic rules:
 > For detailed coverage of cardinality rules and multiplicity, see **[ISO 20022 Cardinality Rules Deep Dive](/2025/12/Understanding-RTGS-Cardinality-Rules/)**.
 
 **UML to XML Transformation Example:**
-
+*   **Note:** The ASCII art diagram below provides a proposed example illustrating how a UML class definition can be transformed into its corresponding XML output. This is a simplified representation of the auto-generation process.
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │ UML Class                    │ XML Output                   │
@@ -390,7 +390,7 @@ The difference between ISO 20022's model-driven approach and SWIFT MT's format-d
 ```
 
 **ISO 20022 Approach (Model-Driven):**
-
+*   **Note:** The XML snippet below is a proposed example illustrating the model-driven approach of ISO 20022. This is a simplified and partial representation of a `pacs.008` message, serving as an illustration.
 ```xml
 <TxId>TRANSACTION-001</TxId>                    ← Typed element
 <IntrBkSttlmAmt Ccy="USD">1000000.00</IntrBkSttlmAmt>  ← Structured amount
@@ -424,6 +424,8 @@ This model-driven methodology is why ISO 20022 achieves **straight-through proce
 ### 3.1 pacs.008 - Customer Credit Transfer
 
 The primary message for customer payments:
+
+*   **Note:** The XML snippet below is a proposed example of a `pacs.008` message. While `pacs.008` is a standardized message type, the specific values and some elements presented here are illustrative and may vary in actual implementations.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -542,6 +544,8 @@ graph LR
 ### 3.3 pacs.002 - Payment Status Report
 
 Provides status updates on payments:
+
+*   **Note:** The XML snippet below is a proposed example of a `pacs.002` message. While `pacs.002` is a standardized message type, the specific values and some elements presented here are illustrative and may vary in actual implementations.
 
 ```xml
 <Document xmlns="urn:iso:std:iso:20022:tech:xsd:pacs.002.001.10">

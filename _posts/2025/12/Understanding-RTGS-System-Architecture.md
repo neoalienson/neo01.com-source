@@ -48,7 +48,7 @@ Building an RTGS system requires careful architectural design to meet the demand
 ### 1.2 Architectural Patterns
 
 **Layered Architecture:**
-
+*   **Note:** The diagram below illustrates a proposed layered architectural pattern. The specific layers, their responsibilities, and components can vary based on the system's design principles and requirements.
 ```mermaid
 graph TB
     subgraph "Presentation Layer"
@@ -119,6 +119,8 @@ graph TB
 
 The payment processor is the heart of the RTGS system:
 
+*   **Note:** The flowchart below illustrates a proposed workflow for a payment processor. The specific steps, validation rules, and queuing logic can vary based on the RTGS system's design.
+
 ```mermaid
 flowchart TD
     Start([Payment Received]) --> A[Message Validation]
@@ -152,7 +154,7 @@ flowchart TD
 ```
 
 **Payment Processor Responsibilities:**
-
+*   **Note:** The Java code snippet below provides a proposed conceptual interface for a payment processor. The actual implementation will involve concrete classes with detailed business logic for each method.
 ```java
 // Conceptual payment processor interface
 interface PaymentProcessor {
@@ -186,8 +188,8 @@ interface PaymentProcessor {
 
 ### 2.3 Queue Manager
 
-RTGS systems use queues to handle payments when liquidity is insufficient:
-
+**RTGS systems use queues to handle payments when liquidity is insufficient:**
+*   **Note:** The diagram below illustrates a proposed queue structure and operations. The specific queue types and algorithms can vary based on the RTGS system's requirements for liquidity management and payment prioritization.
 ```mermaid
 graph LR
     subgraph "Queue Structure"
@@ -195,32 +197,32 @@ graph LR
         B[FIFO Queue]
         C[Time-critical Queue]
     end
-    
+
     subgraph "Queue Operations"
         D[Enqueue]
         E[Reorder]
         F[Release]
         G[Cancel]
     end
-    
+
     subgraph "Queue Algorithms"
         H[FIFO]
         I[Priority-based]
         J[Optimization]
     end
-    
+
     A --> D
     B --> D
     C --> D
-    
+
     D --> E
     E --> F
     F --> G
-    
+
     D --> H
     E --> I
     F --> J
-    
+
     style A fill:#e3f2fd,stroke:#1976d2
     style F fill:#fff3e0,stroke:#f57c00
     style J fill:#e8f5e9,stroke:#388e3c
@@ -237,29 +239,29 @@ graph LR
 
 ### 2.4 Liquidity Manager
 
-Manages participant account balances and liquidity:
-
+**Manages participant account balances and liquidity:**
+*   **Note:** The flowchart below illustrates a proposed workflow for a liquidity manager. The specific steps and decision logic can vary based on the RTGS system's liquidity management policies.
 ```mermaid
 flowchart TD
     A[Participant Account] --> B[Available Balance]
     A --> C[Reserved Balance]
     A --> D[Blocked Balance]
-    
+
     B --> E{Payment Request}
     E -->|Sufficient| F[Reserve Funds]
     E -->|Insufficient| G[Queue Payment]
-    
+
     F --> H[Update Balances]
     H --> I[Notify Settlement]
-    
+
     G --> J{Liquidity Added?}
     J -->|Yes| E
     J -->|No| Wait[Wait for Liquidity]
-    
+
     I --> K[Settlement Complete]
     K --> L[Release Reservation]
     L --> M[Final Balance Update]
-    
+
     style A fill:#e3f2fd,stroke:#1976d2
     style F fill:#fff3e0,stroke:#f57c00
     style K fill:#e8f5e9,stroke:#388e3c
@@ -267,7 +269,7 @@ flowchart TD
 ```
 
 **Liquidity Operations:**
-
+*   **Note:** The sequence diagram below illustrates a proposed sequence of operations for liquidity management. The specific interactions and messages can vary based on the RTGS system's design and external interfaces.
 ```mermaid
 sequenceDiagram
     participant P as Participant
@@ -299,6 +301,7 @@ sequenceDiagram
 ### 2.5 Settlement Engine
 
 The settlement engine executes the final transfer:
+*   **Note:** The flowchart below illustrates a proposed workflow for a settlement engine. The specific steps, validation checks, and rollback mechanisms can vary based on the RTGS system's design.
 
 ```mermaid
 flowchart TD
@@ -340,7 +343,7 @@ flowchart TD
 ## 3 Data Architecture
 
 ### 3.1 Database Schema (Simplified)
-
+*   **Note:** The ER diagram below presents a simplified, proposed database schema. The actual schema will be more complex and detailed, reflecting all data elements required by the RTGS system.
 ```mermaid
 erDiagram
     PARTICIPANT ||--o{ ACCOUNT : owns
@@ -394,7 +397,7 @@ erDiagram
 ```
 
 ### 3.2 Data Flow
-
+*   **Note:** The flowchart below illustrates a proposed data flow through the RTGS system. The specific stages, processing steps, and storage mechanisms can vary based on the system's architecture.
 ```mermaid
 flowchart LR
     subgraph "Ingestion"
@@ -428,7 +431,7 @@ flowchart LR
 ## 4 Integration Architecture
 
 ### 4.1 Participant Connectivity
-
+*   **Note:** The diagram below illustrates a proposed architecture for participant connectivity. The specific connectivity options, protocols, and security layers can vary based on the RTGS system's design and market requirements.
 ```mermaid
 graph TB
     subgraph "RTGS System"
@@ -470,7 +473,7 @@ graph TB
 ```
 
 ### 4.2 Message Flow
-
+*   **Note:** The sequence diagram below illustrates a proposed message flow between components. The specific interactions, message types, and processing steps can vary based on the RTGS system's architecture.
 ```mermaid
 sequenceDiagram
     participant P as Participant System
@@ -503,7 +506,7 @@ sequenceDiagram
 ## 5 Security Architecture
 
 ### 5.1 Security Layers
-
+*   **Note:** The diagram below illustrates a proposed layered security architecture. The specific layers, their controls, and technologies can vary based on the security requirements and threat model.
 ```mermaid
 graph TB
     subgraph "Network Security"
@@ -549,7 +552,7 @@ graph TB
 ```
 
 ### 5.2 Authentication Flow
-
+*   **Note:** The sequence diagram below illustrates a proposed authentication flow. The specific steps, protocols, and involved components will vary based on the authentication mechanisms implemented.
 ```mermaid
 sequenceDiagram
     participant P as Participant
@@ -571,7 +574,7 @@ sequenceDiagram
 ## 6 Deployment Architecture
 
 ### 6.1 High Availability Setup
-
+*   **Note:** The diagram below illustrates a proposed high availability setup. The specific data center configurations, replication strategies, and failover mechanisms will depend on the RTO/RPO objectives and infrastructure choices.
 ```mermaid
 graph TB
     subgraph "Primary Data Center"
@@ -613,7 +616,7 @@ graph TB
 ```
 
 ### 6.2 Component Redundancy
-
+*   **Note:** The table below presents a proposed example of component redundancy strategies and failover times. The actual strategies and targets should be defined based on a thorough analysis of system components and their criticality.
 | Component | Redundancy Strategy | Failover Time |
 |-----------|---------------------|---------------|
 | **Load Balancer** | Active-Passive | < 1 second |
@@ -625,7 +628,7 @@ graph TB
 ## 7 Monitoring and Observability
 
 ### 7.1 Key Metrics
-
+*   **Note:** The diagram below illustrates a proposed classification of key metrics for monitoring an RTGS system. The specific metrics, their categories, and collection methods will vary based on observability requirements.
 ```mermaid
 graph LR
     subgraph "Performance Metrics"
@@ -659,7 +662,7 @@ graph LR
 ```
 
 ### 7.2 Alerting Strategy
-
+*   **Note:** The table below presents a proposed example of an alerting strategy. The specific alert levels, response times, and examples should be defined based on the incident management framework and system criticality.
 | Alert Level | Response Time | Examples |
 |-------------|---------------|----------|
 | **Critical** | Immediate | System down, Settlement failure |

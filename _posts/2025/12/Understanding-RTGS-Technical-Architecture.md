@@ -328,7 +328,7 @@ graph TB
 ### 2.2 Transaction Flow in RTGS
 
 **Complete Transaction Lifecycle:**
-
+*   **Note:** The flowchart below illustrates a proposed conceptual transaction flow in an RTGS system. The specific steps, validation points, and queuing logic can vary based on the RTGS system's design.
 ```mermaid
 flowchart TD
     Start([Payer Initiates Payment]) --> A[Originating Bank]
@@ -375,7 +375,7 @@ flowchart TD
 Now that we've covered the why and how RTGS works at a business level, here's the technical plumbing most of us end up integrating with or monitoring.
 
 ### 3.1 High-Level System Components
-
+*   **Note:** The diagram below presents a proposed high-level system component architecture for RTGS. The specific components, their responsibilities, and the layering can vary based on the system's design and technological choices.
 ```mermaid
 graph TB
     subgraph "External Interface Layer"
