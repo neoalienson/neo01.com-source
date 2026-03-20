@@ -599,7 +599,7 @@ Provides status updates on payments:
 ### 4.1 MT Message Categories
 
 ```mermaid
-graph TB
+graph LR
     A["SWIFT MT Messages"]
     
     A --> B["Category 1: Customer"]
@@ -655,10 +655,10 @@ gantt
     MT & ISO Parallel :active, coex, 2022-11, 2025-11
     
     section Migration
-    Phase 1: Readiness :done, phase1, 2022-11, 2023-06
-    Phase 2: Testing :done, phase2, 2023-06, 2024-06
-    Phase 3: Migration :active, phase3, 2024-06, 2025-06
-    Phase 4: Completion :phase4, 2025-06, 2025-11
+    Phase 1 Readiness :done, phase1, 2022-11, 2023-06
+    Phase 2 Testing :done, phase2, 2023-06, 2024-06
+    Phase 3 Migration :active, phase3, 2024-06, 2025-06
+    Phase 4 Completion :phase4, 2025-06, 2025-11
     
     section End of MT
     MT Shutdown :crit, shutdown, 2025-11, 1m
