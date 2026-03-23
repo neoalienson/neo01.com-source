@@ -84,10 +84,6 @@ sequenceDiagram
     App->>You: Deliver service
     You->>Bank: Revoke consent (anytime)
     Bank-->>App: Cut off data access
-
-    style You fill:#1976d2,stroke:#0d47a1,color:#fff
-    style App fill:#e8f5e9,stroke:#388e3c
-    style Bank fill:#e3f2fd,stroke:#1976d2
 ```
 
 ### 2.2 Why Consents Matter

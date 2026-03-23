@@ -83,10 +83,6 @@ sequenceDiagram
     App->>你：提供服務
     你->>銀行：撤銷同意（隨時）
     銀行-->>App: 切斷資料存取
-
-    style 你 fill:#1976d2,stroke:#0d47a1,color:#fff
-    style App fill:#e8f5e9,stroke:#388e3c
-    style 銀行 fill:#e3f2fd,stroke:#1976d2
 ```
 
 ### 2.2 為什麼同意很重要
