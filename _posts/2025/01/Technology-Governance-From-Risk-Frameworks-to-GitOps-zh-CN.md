@@ -2,7 +2,7 @@
 title: "技术治理：从风险框架到 GitOps"
 date: 2025-01-15
 categories: Cybersecurity
-tags: [Governance, Risk Management, GitOps, DevOps, Security]
+tags: [Governance, Risk Management, GitOps]
 excerpt: "技术治理已从董事会风险框架演变为代码强制执行的政策。了解现代组织如何将传统风险管理与 GitOps 驱动的治理相结合，快速交付而不破坏系统。"
 lang: zh-CN
 canonical_lang: en
