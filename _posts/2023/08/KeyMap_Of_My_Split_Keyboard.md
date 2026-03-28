@@ -53,9 +53,9 @@ Lastly, the key layout is QGMLWY, which has been proven to be more ergonomic tha
 ## Right Hand Layers
 
 <box></box><box>        </box><box>        </box><box>        </box><box>        </box><box>        </box><mbox></mbox><box>        </box><box>        </box><box>        </box><box>        </box><box>        </box><box></box>
-<box></box><kbd>&#x2800;</kbd><kbd>&#x2800;</kbd><kbd>&#x2800;</kbd><kbd>&#x2800;</kbd><kbd>&#x2800;</kbd><mbox></mbox><kbd>&#x2800;</kbd><kbd>F7      </kbd><kbd>F8      </kbd><kbd>F9      </kbd><kbd>F10     </kbd><box></box>
+<box></box><kbd>BT 0    </kbd><kbd>BT 1    </kbd><kbd>BT 2    </kbd><kbd>BT 3    </kbd><kbd>BT 4    </kbd><mbox></mbox><kbd>&#x2800;</kbd><kbd>F7      </kbd><kbd>F8      </kbd><kbd>F9      </kbd><kbd>F10     </kbd><box></box>
 <box></box><kbd>GUI     </kbd><kbd>ALT     </kbd><kbd>CTRL    </kbd><kbd>&#x21E7;</kbd><kbd>&#x2800;</kbd><mbox></mbox><kbd>INS     </kbd><kbd>F4      </kbd><kbd>F5      </kbd><kbd>F6      </kbd><kbd>F11     </kbd><box></box>
-<box></box><kbd>&#x2800;</kbd><kbd>&#x2800;</kbd><kbd>&#x2800;</kbd><kbd>&#x2800;</kbd><kbd>&#x2800;</kbd><mbox></mbox><kbd>DEL     </kbd><kbd>F1      </kbd><kbd>F2      </kbd><kbd>F3      </kbd><kbd>F12     </kbd><box></box>
+<box></box><kbd>BOOTLDR </kbd><kbd>BT PREV </kbd><kbd>BT NEXT </kbd><kbd>OUT USB </kbd><kbd>OUT BLE </kbd><mbox></mbox><kbd>DEL     </kbd><kbd>F1      </kbd><kbd>F2      </kbd><kbd>F3      </kbd><kbd>F12     </kbd><box></box>
 <left-space></left-space><kbd>&#x21E7;</kbd><kbd>&#x2800;</kbd><kbd>&#x2800;</kbd><mid></mid><kbd style="background-color: yellow">HOLD</kbd><kbd>&#x2800;</kbd><kbd>&#x21E7;</kbd>
 
 <box></box><box>        </box><box>        </box><box>        </box><box>        </box><box>        </box><mbox></mbox><box>        </box><box>        </box><box>        </box><box>        </box><box>        </box><box></box>
