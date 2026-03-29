@@ -1,18 +1,16 @@
 ---
 title: "Your Documentation Is a Time Bomb: Why 2029 Will Force Your Hand (And Why You'll Thank Us)"
-date: 2026-03-29
+date: 2026-04-01
 categories:
-  - Engineering Culture
+  - Misc
 tags:
   - Documentation
   - GitOps
-  - DevOps
-  - Platform Engineering
 excerpt: "Confluence on-prem dies in 2029. Word docs live in shared drives nobody can find. Your runbooks are trapped behind paywalls and login screens. Here's why Document as Code—built on Git and Markdown—is your escape route, and why the clock is ticking."
 lang: en
 available_langs: []
-thumbnail: /assets/documentation/doc-as-code-thumbnail.jpg
-thumbnail_80: /assets/documentation/doc-as-code-thumbnail_80.jpg
+thumbnail: /assets/misc/2029.png
+thumbnail_80: /assets/misc/2029_80.png
 canonical_lang: en
 comments: true
 ---
