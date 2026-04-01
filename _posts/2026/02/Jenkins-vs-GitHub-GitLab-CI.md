@@ -2,16 +2,16 @@
 title: "Jenkins vs GitHub Actions vs GitLab CI: A Pure CI Perspective"
 date: 2026-02-26
 categories:
-  - DevOps
+  - Development
 tags:
-  - CI/CD
   - Jenkins
   - Platform Engineering
 excerpt: "Choosing a CI platform? Skip the marketing. This comparison breaks down Jenkins, GitHub Actions, and GitLab CI purely from a continuous integration perspective—performance, maintenance, developer experience, and real-world trade-offs."
 lang: en
-available_langs: []
-thumbnail: /assets/ci/jenkins-github-gitlab-comparison.jpg
-thumbnail_80: /assets/ci/jenkins-github-gitlab-comparison_80.jpg
+available_langs:
+  - zh-TW
+  - zh-CN
+thumbnail: /assets/jenkins/thumbnail.png
 canonical_lang: en
 comments: true
 ---
