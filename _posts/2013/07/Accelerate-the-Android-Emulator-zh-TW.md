@@ -3,7 +3,7 @@ title: 加速 Android 模擬器
 date: 2013-07-17
 tags:
   - Android
-category:
+categories:
   - Development
 lang: zh-TW
 excerpt: Android 模擬器從啟動到鎖屏要幾分鐘?用 Intel HAXM 加速到 10 秒!告別龜速開發體驗。

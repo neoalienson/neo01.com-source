@@ -2,7 +2,7 @@
 title: "我開發的 Hexo 插件"
 date: 2024-05-02
 lang: zh-TW
-category: Development
+categories: Development
 excerpt: "我開發的 Hexo 插件集合，用於增強靜態部落格的留言、GitHub 卡片等功能。"
 thumbnail: /assets/hexo/thumbnail.png
 ---

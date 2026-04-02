@@ -3,7 +3,7 @@ title: Accelerate the Android Emulator
 date: 2013-07-17
 tags:
   - Android
-category:
+categories:
   - Development  
 spell_checked: 2025-01-01
 grammar_checked: 2025-07-01

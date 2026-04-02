@@ -4,7 +4,7 @@ date: 2017-12-08
 tags:
   - Visualization
   - Mac
-category:
+categories:
   - Development
 lang: zh-TW
 excerpt: "用炅酷的 3D 動畫展示你的程式碼歷史！在 Mac 上安裝 Gource，讓非技術人員看到開發者的努力。"

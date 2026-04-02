@@ -3,7 +3,7 @@ title: 如何在 macOS High Sierra 上自动登录 Cisco VPN
 date: 2017-12-06
 tags:
   - MacOS
-category:
+categories:
   - Cybersecurity
 lang: zh-CN
 excerpt: "厨烦每次输入 VPN 密码？使用 AppleScript 和 Automator 自动化 Cisco VPN 登录，一键连接！"

@@ -4,7 +4,7 @@ date: 2017-12-08
 tags:
   - Visualization
   - Mac
-category:
+categories:
   - Development
 spell_checked: 2025-01-01
 grammar_checked: 2025-07-01

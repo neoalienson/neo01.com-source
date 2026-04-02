@@ -2,7 +2,7 @@
 title: "Hexo Plugins I Developed"
 date: 2024-05-02
 lang: en
-category: Development
+categories: Development
 excerpt: "A collection of Hexo plugins I developed to enhance static blogs with comments, GitHub cards, and more functionality."
 thumbnail: /assets/hexo/thumbnail.png
 ---

@@ -3,7 +3,7 @@ title: 加速 Android 模拟器
 date: 2013-07-17
 tags:
   - Android
-category:
+categories:
   - Development
 lang: zh-CN
 excerpt: Android 模拟器从启动到锁屏要几分钟?用 Intel HAXM 加速到 10 秒!告别龟速开发体验。

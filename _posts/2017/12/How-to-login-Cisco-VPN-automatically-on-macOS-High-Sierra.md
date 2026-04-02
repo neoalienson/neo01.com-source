@@ -3,7 +3,7 @@ title: How to login Cisco VPN automatically on macOS High Sierra
 date: 2017-12-06
 tags:
   - MacOS
-category:
+categories:
   - Cybersecurity
 spell_checked: 2025-01-01
 grammar_checked: 2025-07-01
