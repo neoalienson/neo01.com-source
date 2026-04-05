@@ -1,0 +1,32 @@
+{
+  "name": "tools-vite",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite build --watch --mode development",
+    "build": "vite build",
+    "build:prod": "vite build --mode production",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "i18next": "^24.2.3",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "react-i18next": "^15.4.1"
+  },
+  "devDependencies": {
+    "@mdx-js/react": "^3.1.1",
+    "@mdx-js/rollup": "^3.1.1",
+    "@testing-library/react": "^16.0.0",
+    "@vitejs/plugin-react": "^4.4.1",
+    "jsdom": "^26.0.0",
+    "terser": "^5.39.0",
+    "unified": "^11.0.0",
+    "vite": "^6.2.2",
+    "vite-plugin-html": "^3.2.2",
+    "vitest": "^3.0.0"
+  }
+}

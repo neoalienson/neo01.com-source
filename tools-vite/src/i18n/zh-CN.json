@@ -1,0 +1,28 @@
+{
+  "common": {
+    "copy": "复制",
+    "copied": "已复制！"
+  },
+  "caseConverter": {
+    "title": "命名转换器",
+    "inputLabel": "要转换的文本：",
+    "placeholder": "输入要转换的文本...",
+    "cases": {
+      "camelCase": "驼峰命名",
+      "PascalCase": "帕斯卡命名",
+      "snake_case": "下划线命名",
+      "Pascal_Snake_Case": "帕斯卡下划线",
+      "kebab-case": "短横线命名",
+      "Pascal-Kebab-Case": "帕斯卡短横线",
+      "CONSTANT_CASE": "常量命名",
+      "dot.case": "点分隔命名",
+      "path/case": "路径命名",
+      "Title Case": "首字母大写",
+      "Sentence case": "句首大写",
+      "UPPER CASE": "全大写",
+      "lower case": "全小写",
+      "aLtErNaTiNg CaSe": "大小写交替",
+      "InVeRsE CaSe": "反转换"
+    }
+  }
+}

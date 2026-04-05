@@ -1,0 +1,28 @@
+{
+  "common": {
+    "copy": "Copy",
+    "copied": "Copied!"
+  },
+  "caseConverter": {
+    "title": "Case Converter",
+    "inputLabel": "Text to convert:",
+    "placeholder": "Enter text to convert...",
+    "cases": {
+      "camelCase": "camelCase",
+      "PascalCase": "PascalCase",
+      "snake_case": "snake_case",
+      "Pascal_Snake_Case": "Pascal_Snake_Case",
+      "kebab-case": "kebab-case",
+      "Pascal-Kebab-Case": "Pascal-Kebab-Case",
+      "CONSTANT_CASE": "CONSTANT_CASE",
+      "dot.case": "dot.case",
+      "path/case": "path/case",
+      "Title Case": "Title Case",
+      "Sentence case": "Sentence case",
+      "UPPER CASE": "UPPER CASE",
+      "lower case": "lower case",
+      "aLtErNaTiNg CaSe": "aLtErNaTiNg CaSe",
+      "InVeRsE CaSe": "InVeRsE CaSe"
+    }
+  }
+}
