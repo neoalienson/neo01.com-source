@@ -1,3 +1,5 @@
 cache/*
 tools-vite/node_modules/
 tools-vite/public/
+node_modules
+
