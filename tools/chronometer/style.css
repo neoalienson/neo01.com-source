@@ -1,13 +1,10 @@
-.chronometer-container {
+.tool_main {
             text-align: center;
             max-width: 600px;
             margin: 0 auto;
+            padding: 20px;
         }
-        .time-display {
-            font-family: 'Courier New', monospace;
-            font-size: 4rem;
-            font-weight: bold;
-            color: #007acc;
+        .chrono-display {
             background: #f8f9fa;
             border: 3px solid #e9ecef;
             border-radius: 10px;
@@ -18,14 +15,20 @@
             align-items: center;
             justify-content: center;
         }
-        .controls {
+        .chrono-time {
+            font-family: 'Courier New', monospace;
+            font-size: 4rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        .chrono-controls {
             display: flex;
             gap: 15px;
             justify-content: center;
             margin: 20px 0;
             flex-wrap: wrap;
         }
-        .btn {
+        .chrono-btn {
             padding: 12px 24px;
             border: none;
             border-radius: 6px;
@@ -34,37 +37,60 @@
             font-weight: 500;
             min-width: 100px;
         }
-        .btn-start {
+        .chrono-btn.start {
             background: #28a745;
             color: white;
         }
-        .btn-pause {
+        .chrono-btn.pause {
             background: #ffc107;
             color: #212529;
         }
-        .btn-stop {
+        .chrono-btn.stop {
             background: #dc3545;
             color: white;
         }
-        .btn-reset {
+        .chrono-btn.reset {
             background: #6c757d;
             color: white;
         }
-        .btn-lap {
+        .chrono-btn.lap {
             background: #17a2b8;
             color: white;
         }
-        .laps-container {
+        .chrono-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .chrono-laps {
             margin-top: 30px;
             text-align: left;
         }
-        .laps-title {
+        .laps-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .laps-header h3 {
             font-size: 1.2rem;
             font-weight: bold;
             color: #495057;
-            margin-bottom: 15px;
+            margin: 0;
         }
-        .lap-time {
+        .clear-laps-btn {
+            background: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .laps-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .lap-item {
             background: #f8f9fa;
             border: 1px solid #e9ecef;
             border-radius: 4px;
@@ -77,19 +103,30 @@
         .lap-number {
             color: #6c757d;
         }
-        .lap-duration {
+        .lap-time {
             color: #007acc;
             font-weight: bold;
         }
+        .lap-total {
+            color: #6c757d;
+        }
+        .no-laps {
+            color: #6c757d;
+            font-style: italic;
+            text-align: center;
+            padding: 20px;
+        }
         @media (max-width: 768px) {
-            .time-display {
+            .chrono-time {
                 font-size: 2.5rem;
+            }
+            .chrono-display {
                 padding: 20px;
             }
-            .controls {
+            .chrono-controls {
                 gap: 10px;
             }
-            .btn {
+            .chrono-btn {
                 padding: 10px 16px;
                 font-size: 14px;
                 min-width: 80px;
