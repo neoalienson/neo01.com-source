@@ -218,7 +218,7 @@ postgres: neo01                                           # Parallel Leader
     - **DSM setup:** Shared memory allocation
     - **Context switching:** OS must schedule multiple processes
     
-    For queries that run in <100ms, parallel overhead often exceeds the benefit.
+    For queries that run in < 100ms, parallel overhead often exceeds the benefit.
 
 ---
 
@@ -591,8 +591,8 @@ GROUP BY hour;
 
 | Scenario | Why It Hurts | Alternative |
 |----------|--------------|-------------|
-| **Small tables (<10MB)** | Overhead > benefit | Disable parallelism |
-| **OLTP queries (<100ms)** | Setup time dominates | Keep `max_parallel_workers_per_gather = 0` |
+| **Small tables (< 10MB)** | Overhead > benefit | Disable parallelism |
+| **OLTP queries (< 100ms)** | Setup time dominates | Keep `max_parallel_workers_per_gather = 0` |
 | **Many concurrent queries** | Worker starvation | Limit `max_parallel_workers` |
 | **Memory-bound workloads** | Workers compete for cache | Reduce workers |
 | **Functions marked UNSAFE** | Falls back to serial | Mark functions SAFE if possible |
@@ -886,7 +886,7 @@ min_parallel_table_scan_size = 16MB   -- Only parallelize large scans
 
 □ Adjust based on results:
   -- Good speedup (2x+): Keep settings
-  -- Marginal speedup (<1.5x): Reduce workers or disable
+  -- Marginal speedup (< 1.5x): Reduce workers or disable
   -- Slower: Disable parallelism for this query type
 ```
 
