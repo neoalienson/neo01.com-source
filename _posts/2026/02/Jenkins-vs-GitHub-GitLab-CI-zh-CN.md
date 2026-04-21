@@ -11,7 +11,7 @@ lang: zh-CN
 available_langs:
   - zh-TW
 thumbnail: /assets/jenkins/thumbnail.png
-thumbnail_80: /assets/jenkins/thumbnail_80.png
+thumbnail_80: /assets/jenkins/thumbnail.png
 canonical_lang: en
 canonical_url: /2026/02/Jenkins-vs-GitHub-GitLab-CI.html
 comments: true

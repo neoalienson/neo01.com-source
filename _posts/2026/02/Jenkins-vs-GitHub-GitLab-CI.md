@@ -12,6 +12,7 @@ available_langs:
   - zh-TW
   - zh-CN
 thumbnail: /assets/jenkins/thumbnail.png
+thumbnail_80: /assets/jenkins/thumbnail.png
 canonical_lang: en
 comments: true
 ---
