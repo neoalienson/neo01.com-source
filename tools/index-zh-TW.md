@@ -306,10 +306,6 @@ lang: zh-TW
 
 ---
 
-* [單元測試](/tools/test-runner.html) - 開發者工具的 JavaScript 單元測試。
-
----
-
 *更多工具即將推出...*
 
 <link rel="stylesheet" href="/tools/tools.css">

@@ -318,10 +318,6 @@ A curated collection of useful tools for developers and content creators
 
 ---
 
-* [Unit Tests](/tools/test-runner.html) - JavaScript unit tests for the developer tools.
-
----
-
 *More tools coming soon...*
 
 <link rel="stylesheet" href="/tools/tools.css">
